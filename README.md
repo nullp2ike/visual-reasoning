@@ -5,12 +5,11 @@ AI-powered visual assertions for E2E tests. Send screenshots to Claude, GPT, or 
 ## Installation
 
 ```bash
-# Install the library
+# Install the library (includes OpenAI SDK by default)
 npm install visual-ai-assertions
 
-# Install your preferred provider SDK (pick one or more)
+# Optional: install additional provider SDKs
 npm install @anthropic-ai/sdk    # for Claude
-npm install openai               # for GPT
 npm install @google/genai        # for Gemini
 
 # Zod is a peer dependency
