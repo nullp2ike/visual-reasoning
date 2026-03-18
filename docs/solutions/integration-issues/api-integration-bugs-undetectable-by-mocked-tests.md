@@ -2,7 +2,7 @@
 title: "API Integration Bugs Undetectable by Mocked Tests"
 date: 2026-02-17
 severity: medium
-component: src/core/client.ts, src/core/pricing.ts, src/core/response.ts
+component: src/constants.ts, src/core/pricing.ts, src/core/response.ts
 tags:
   - response-parsing
   - model-configuration
@@ -47,28 +47,32 @@ The drivers were updated to newer models, but `DEFAULT_MODELS` and `PRICING_TABL
 Align all three locations:
 
 ```typescript
-// src/core/client.ts
-const DEFAULT_MODELS: Record<string, string> = {
-  anthropic: "claude-sonnet-4-5-20250929",
-  openai: "gpt-4.1-mini", // Was: "gpt-4o"
-  google: "gemini-2.5-flash", // Was: "gemini-2.0-flash"
-};
+// src/constants.ts — single source of truth for models and defaults
+export const Model = {
+  Anthropic: { SONNET_4_6: "claude-sonnet-4-6" /* ... */ },
+  OpenAI: { GPT_5_4_MINI: "gpt-5.4-mini" /* ... */ },
+  Google: { GEMINI_3_FLASH_PREVIEW: "gemini-3-flash-preview" /* ... */ },
+} as const;
 
-// src/core/pricing.ts
+export const DEFAULT_MODELS = {
+  [Provider.ANTHROPIC]: Model.Anthropic.SONNET_4_6, // "claude-sonnet-4-6"
+  [Provider.OPENAI]: Model.OpenAI.GPT_5_4_MINI, // "gpt-5.4-mini"
+  [Provider.GOOGLE]: Model.Google.GEMINI_3_FLASH_PREVIEW, // "gemini-3-flash-preview"
+} as const;
+
+// src/core/pricing.ts — imports Model and Provider from constants.ts
 const PRICING_TABLE: Record<string, ModelPricing> = {
-  "anthropic:claude-sonnet-4-5-20250929": {
-    inputPricePerToken: 3 / 1_000_000,
-    outputPricePerToken: 15 / 1_000_000,
+  [`${Provider.ANTHROPIC}:${Model.Anthropic.SONNET_4_6}`]: {
+    inputPricePerToken: 3 / PER_MILLION,
+    outputPricePerToken: 15 / PER_MILLION,
   },
-  "openai:gpt-4.1-mini": {
-    // Was: "openai:gpt-4o"
-    inputPricePerToken: 0.4 / 1_000_000,
-    outputPricePerToken: 1.6 / 1_000_000,
+  [`${Provider.OPENAI}:${Model.OpenAI.GPT_5_4_MINI}`]: {
+    inputPricePerToken: 0.75 / PER_MILLION,
+    outputPricePerToken: 4.5 / PER_MILLION,
   },
-  "google:gemini-2.5-flash": {
-    // Was: "google:gemini-2.0-flash"
-    inputPricePerToken: 0.15 / 1_000_000,
-    outputPricePerToken: 0.6 / 1_000_000,
+  [`${Provider.GOOGLE}:${Model.Google.GEMINI_3_FLASH_PREVIEW}`]: {
+    inputPricePerToken: 0.5 / PER_MILLION,
+    outputPricePerToken: 3 / PER_MILLION,
   },
 };
 ```
@@ -128,7 +132,7 @@ Every mocked Anthropic response was a raw JSON string like `'{"pass":true,...}'`
 Two smoke tests failed with `expected false to be true`:
 
 - Anthropic `pageLoad()`: Claude saw a "missing/broken" product image and returned `pass: false`
-- OpenAI `compare()` with identical images: GPT-4.1-mini returned `pass: false`
+- OpenAI `compare()` with identical images: GPT-5.4-mini returned `pass: false`
 
 ### Root Cause
 
@@ -158,7 +162,7 @@ assertUsageTracked(result); // Usage and cost tracking work
 
 ### For Model Mismatch
 
-1. **Single source of truth**: Consider extracting `MODEL_DEFAULTS` and `PRICING_TABLE` into a shared `src/core/models.ts` module that both `client.ts` and `pricing.ts` import from, and that drivers reference for their defaults.
+1. **Single source of truth**: Extract model names and defaults into one shared module. **This has been implemented**: `src/constants.ts` now defines `Model.*` constants and `DEFAULT_MODELS`, which both `pricing.ts` and `config.ts` import. Drivers also reference these constants, eliminating the multi-location sync problem.
 
 2. **Consistency test**: Add a test that verifies every entry in `DEFAULT_MODELS` has a corresponding entry in `PRICING_TABLE`:
 

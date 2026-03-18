@@ -60,13 +60,16 @@ export const Model = {
     HAIKU_4_5: "claude-haiku-4-5",
   },
   OpenAI: {
+    GPT_5_4: "gpt-5.4",
+    GPT_5_4_PRO: "gpt-5.4-pro",
+    GPT_5_4_MINI: "gpt-5.4-mini",
+    GPT_5_4_NANO: "gpt-5.4-nano",
     GPT_5_2: "gpt-5.2",
     GPT_5_MINI: "gpt-5-mini",
   },
   Google: {
     GEMINI_3_1_PRO_PREVIEW: "gemini-3.1-pro-preview",
     GEMINI_3_FLASH_PREVIEW: "gemini-3-flash-preview",
-    GEMINI_2_5_FLASH: "gemini-2.5-flash",
   },
 } as const;
 
@@ -77,8 +80,8 @@ export type KnownModelName =
 
 export const DEFAULT_MODELS = {
   [Provider.ANTHROPIC]: Model.Anthropic.SONNET_4_6,
-  [Provider.OPENAI]: Model.OpenAI.GPT_5_MINI,
-  [Provider.GOOGLE]: Model.Google.GEMINI_2_5_FLASH,
+  [Provider.OPENAI]: Model.OpenAI.GPT_5_4_MINI,
+  [Provider.GOOGLE]: Model.Google.GEMINI_3_FLASH_PREVIEW,
 } as const satisfies Record<ProviderName, KnownModelName>;
 
 export const VALID_PROVIDERS: readonly ProviderName[] = Object.values(Provider);
@@ -88,24 +91,27 @@ export const VALID_PROVIDERS: readonly ProviderName[] = Object.values(Provider);
 
 - **`src/core/client.ts`** — removed internal `VALID_PROVIDERS`/`DEFAULT_MODELS`, imported from constants
 - **`src/core/pricing.ts`** — replaced hardcoded keys with template literals: `` `${Provider.ANTHROPIC}:${Model.Anthropic.OPUS_4_6}` ``
-- **`src/providers/anthropic.ts`** — `Model.Anthropic.SONNET_4_6` instead of `"claude-sonnet-4-6"`
-- **`src/providers/openai.ts`** — `Model.OpenAI.GPT_5_MINI` instead of `"gpt-5-mini"`
-- **`src/providers/google.ts`** — `Model.Google.GEMINI_2_5_FLASH` instead of `"gemini-2.5-flash"`
+- **`src/providers/*.ts`** — provider drivers no longer hardcode fallback model defaults; they receive the resolved model via config injection from the client, which uses `DEFAULT_MODELS` from constants
 
 ### 3. Exported from public API
 
 ```typescript
 // src/index.ts
-export { Provider, Model, DEFAULT_MODELS, VALID_PROVIDERS } from "./constants.js";
-export type { KnownModelName } from "./constants.js";
+export { Provider, Model, Content, Layout, Accessibility, DEFAULT_MODELS } from "./constants.js";
+export type {
+  KnownModelName,
+  ContentCheckName,
+  LayoutCheckName,
+  AccessibilityCheckName,
+} from "./constants.js";
 ```
 
 ### 4. Consumer usage
 
 ```typescript
-import { createClient, Provider, Model } from "visual-ai-assertions";
+import { visualAI, Provider, Model } from "visual-ai-assertions";
 
-const client = createClient({
+const client = visualAI({
   provider: Provider.ANTHROPIC,
   model: Model.Anthropic.SONNET_4_6,
 });
