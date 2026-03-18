@@ -52,7 +52,7 @@ describe("visualAI template methods", () => {
       usage: { input_tokens: 100, output_tokens: 50 },
     });
 
-    const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
     const image = await readFile(join(FIXTURES_DIR, "small.png"));
     const result = await ai.elementsVisible(image, ["A", "B", "C"]);
 
@@ -66,7 +66,7 @@ describe("visualAI template methods", () => {
       usage: { input_tokens: 100, output_tokens: 50 },
     });
 
-    const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
     const image = await readFile(join(FIXTURES_DIR, "small.png"));
     const result = await ai.elementsHidden(image, ["Spinner", "Modal"]);
 
@@ -75,13 +75,13 @@ describe("visualAI template methods", () => {
   });
 
   it("elementsVisible() throws on empty elements array", async () => {
-    const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
     const image = await readFile(join(FIXTURES_DIR, "small.png"));
     await expect(ai.elementsVisible(image, [])).rejects.toThrow("At least one element");
   });
 
   it("elementsHidden() throws on empty elements array", async () => {
-    const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
     const image = await readFile(join(FIXTURES_DIR, "small.png"));
     await expect(ai.elementsHidden(image, [])).rejects.toThrow("At least one element");
   });
@@ -92,7 +92,7 @@ describe("visualAI template methods", () => {
       usage: { input_tokens: 100, output_tokens: 50 },
     });
 
-    const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
     const image = await readFile(join(FIXTURES_DIR, "small.png"));
     const result = await ai.accessibility(image);
 
@@ -105,7 +105,7 @@ describe("visualAI template methods", () => {
       usage: { input_tokens: 100, output_tokens: 50 },
     });
 
-    const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
     const image = await readFile(join(FIXTURES_DIR, "small.png"));
     const result = await ai.layout(image);
 
@@ -118,7 +118,7 @@ describe("visualAI template methods", () => {
       usage: { input_tokens: 100, output_tokens: 50 },
     });
 
-    const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
     const image = await readFile(join(FIXTURES_DIR, "small.png"));
     const result = await ai.pageLoad(image);
 
@@ -131,7 +131,7 @@ describe("visualAI template methods", () => {
       usage: { input_tokens: 100, output_tokens: 50 },
     });
 
-    const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
     const image = await readFile(join(FIXTURES_DIR, "small.png"));
     const result = await ai.content(image);
 
@@ -144,7 +144,7 @@ describe("visualAI template methods", () => {
       usage: { input_tokens: 100, output_tokens: 50 },
     });
 
-    const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
     const image = await readFile(join(FIXTURES_DIR, "small.png"));
     const result = await ai.accessibility(image, { checks: ["contrast"] });
 
@@ -167,7 +167,7 @@ describe("visualAI template methods", () => {
         usage: { input_tokens: 100, output_tokens: 50 },
       });
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
 
       let result;
@@ -189,7 +189,7 @@ describe("visualAI template methods", () => {
       usage: { input_tokens: 100, output_tokens: 50 },
     });
 
-    const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
     const image = await readFile(join(FIXTURES_DIR, "small.png"));
     const result = await ai.content(image, { checks: ["error-messages"] });
 

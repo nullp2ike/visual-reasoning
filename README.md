@@ -98,9 +98,8 @@ const ai = visualAI();
 
 // Explicit configuration
 const ai = visualAI({
-  provider: "anthropic", // optional — auto-inferred from model or API key
-  apiKey: "sk-...", // optional, defaults to provider env var
   model: "claude-sonnet-4-6", // optional, sensible defaults per provider
+  apiKey: "sk-...", // optional, defaults to provider env var
   debug: true, // optional, logs prompts/responses to stderr
   maxTokens: 4096, // optional, default 4096
   reasoningEffort: "high", // optional, "low" | "medium" | "high" | "xhigh"
@@ -109,7 +108,6 @@ const ai = visualAI({
 
 // Use constants for IDE autocomplete
 const ai = visualAI({
-  provider: Provider.ANTHROPIC,
   model: Model.Anthropic.SONNET_4_6,
 });
 ```
@@ -389,18 +387,16 @@ The `VisualAIKnownError` union and `isVisualAIKnownError()` helper are useful wh
 
 ### Optional Configuration
 
-| Variable                | Description                                                                                                                                                              |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `VISUAL_AI_PROVIDER`    | Default provider when `provider` is not set in config. Must be `"anthropic"`, `"openai"`, or `"google"`. Falls back to auto-detecting from which API key env var is set. |
-| `VISUAL_AI_MODEL`       | Default model when `model` is not set in config. Overrides the provider's default model.                                                                                 |
-| `VISUAL_AI_DEBUG`       | Enable debug logging when `debug` is not set in config. Use `"true"` or `"1"` to enable.                                                                                 |
-| `VISUAL_AI_TRACK_USAGE` | Enable usage tracking when `trackUsage` is not set in config. Use `"true"` or `"1"` to enable.                                                                           |
+| Variable                | Description                                                                                    |
+| ----------------------- | ---------------------------------------------------------------------------------------------- |
+| `VISUAL_AI_MODEL`       | Default model when `model` is not set in config. Overrides the provider's default model.       |
+| `VISUAL_AI_DEBUG`       | Enable debug logging when `debug` is not set in config. Use `"true"` or `"1"` to enable.       |
+| `VISUAL_AI_TRACK_USAGE` | Enable usage tracking when `trackUsage` is not set in config. Use `"true"` or `"1"` to enable. |
 
 ## Configuration
 
 | Option            | Type    | Default          | Description                                                                   |
 | ----------------- | ------- | ---------------- | ----------------------------------------------------------------------------- |
-| `provider`        | string  | auto-inferred    | `"anthropic"` `"openai"` `"google"` — inferred from model name or API key     |
 | `apiKey`          | string  | env var          | API key for the provider                                                      |
 | `model`           | string  | provider default | Model to use                                                                  |
 | `debug`           | boolean | `false`          | Log prompts/responses to stderr                                               |

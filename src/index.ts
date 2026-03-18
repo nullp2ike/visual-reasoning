@@ -2,15 +2,7 @@
 export { visualAI } from "./core/client.js";
 
 // Constants
-export {
-  Provider,
-  Model,
-  Content,
-  Layout,
-  Accessibility,
-  DEFAULT_MODELS,
-  VALID_PROVIDERS,
-} from "./constants.js";
+export { Provider, Model, Content, Layout, Accessibility, DEFAULT_MODELS } from "./constants.js";
 export type {
   KnownModelName,
   ContentCheckName,

@@ -39,7 +39,7 @@ import { parseAskResponse, parseCheckResponse, parseCompareResponse } from "./re
  *
  * @example
  * ```ts
- * const client = visualAI({ provider: "openai" });
+ * const client = visualAI({ model: "gpt-5-mini" });
  * const result = await client.check("./tests/fixtures/small.png", "The button is visible");
  * ```
  */
@@ -214,7 +214,7 @@ function createDriver(provider: ProviderName, config: ProviderConfig): ProviderD
 /**
  * Creates a configured visual AI client.
  *
- * @param config Provider selection and runtime options for subsequent requests.
+ * @param config Model selection and runtime options for subsequent requests.
  * @returns A `VisualAIClient` instance with check, compare, ask, and template helpers.
  * @throws {VisualAIConfigError} When the provider or model configuration is invalid.
  * @throws {VisualAIAuthError} When required API credentials are missing.
@@ -225,7 +225,7 @@ function createDriver(provider: ProviderName, config: ProviderConfig): ProviderD
  *
  * test("hero loads correctly", async ({ page }) => {
  *   const client = visualAI({
- *     provider: "openai",
+ *     model: "gpt-5-mini",
  *     apiKey: process.env.OPENAI_API_KEY,
  *   });
  *

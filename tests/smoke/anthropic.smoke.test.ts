@@ -44,7 +44,7 @@ function assertUsageTracked(result: CheckResult | AskResult): void {
 }
 
 describe("smoke: Anthropic provider", () => {
-  const ai = visualAI({ provider: "anthropic", trackUsage: true });
+  const ai = visualAI({ model: "claude-sonnet-4-6", trackUsage: true });
 
   it("check() — positive assertion", async () => {
     const result = await ai.check(image, "A search bar is visible at the top of the screen");

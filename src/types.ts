@@ -137,14 +137,12 @@ export type ReasoningEffort = "low" | "medium" | "high" | "xhigh";
  * @example
  * ```ts
  * const client = visualAI({
- *   provider: "openai",
  *   model: "gpt-5-mini",
  *   apiKey: process.env.OPENAI_API_KEY,
  * });
  * ```
  */
 export interface VisualAIConfig {
-  provider?: ProviderName;
   apiKey?: string;
   model?: string;
   debug?: boolean;

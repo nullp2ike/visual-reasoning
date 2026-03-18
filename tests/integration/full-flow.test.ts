@@ -100,7 +100,7 @@ describe("integration: full flow per provider", () => {
         usage: { input_tokens: 500, output_tokens: 200 },
       });
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test-key" });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test-key" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       const result = await ai.check(image, "Page loaded");
 
@@ -120,7 +120,7 @@ describe("integration: full flow per provider", () => {
         usage: { input_tokens: 500, output_tokens: 300 },
       });
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test-key" });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test-key" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       const result = await ai.check(image, ["Page loaded", "Contrast OK"]);
 
@@ -139,7 +139,7 @@ describe("integration: full flow per provider", () => {
         usage: { input_tokens: 500, output_tokens: 250 },
       });
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test-key" });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test-key" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       const result = await ai.ask(image, "Analyze this page for issues");
 
@@ -157,7 +157,7 @@ describe("integration: full flow per provider", () => {
         usage: { input_tokens: 400, output_tokens: 150 },
       });
 
-      const ai = visualAI({ provider: "openai", apiKey: "test-key" });
+      const ai = visualAI({ model: "gpt-5-mini", apiKey: "test-key" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       const result = await ai.check(image, "Page loaded");
 
@@ -174,7 +174,7 @@ describe("integration: full flow per provider", () => {
         usage: { input_tokens: 400, output_tokens: 200 },
       });
 
-      const ai = visualAI({ provider: "openai", apiKey: "test-key" });
+      const ai = visualAI({ model: "gpt-5-mini", apiKey: "test-key" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       const result = await ai.ask(image, "Analyze this page");
 
@@ -190,7 +190,7 @@ describe("integration: full flow per provider", () => {
         usageMetadata: { promptTokenCount: 300, candidatesTokenCount: 100 },
       });
 
-      const ai = visualAI({ provider: "google", apiKey: "test-key" });
+      const ai = visualAI({ model: "gemini-3-flash-preview", apiKey: "test-key" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       const result = await ai.check(image, "Page loaded");
 
@@ -207,7 +207,7 @@ describe("integration: full flow per provider", () => {
         usageMetadata: { promptTokenCount: 600, candidatesTokenCount: 200 },
       });
 
-      const ai = visualAI({ provider: "google", apiKey: "test-key" });
+      const ai = visualAI({ model: "gemini-3-flash-preview", apiKey: "test-key" });
       const before = await readFile(join(FIXTURES_DIR, "small.png"));
       const after = await readFile(join(FIXTURES_DIR, "small.jpg"));
       const result = await ai.compare(before, after, { prompt: "What changed?" });
@@ -228,7 +228,7 @@ describe("integration: error flows", () => {
     const err = Object.assign(new Error("Invalid API key"), { status: 401 });
     mockAnthropicCreate.mockRejectedValueOnce(err);
 
-    const ai = visualAI({ provider: "anthropic", apiKey: "bad-key" });
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "bad-key" });
     const image = await readFile(join(FIXTURES_DIR, "small.png"));
     await expect(ai.check(image, "test")).rejects.toThrow(VisualAIAuthError);
   });
@@ -237,7 +237,7 @@ describe("integration: error flows", () => {
     const err = Object.assign(new Error("Rate limited"), { status: 429 });
     mockOpenAICreate.mockRejectedValueOnce(err);
 
-    const ai = visualAI({ provider: "openai", apiKey: "test-key" });
+    const ai = visualAI({ model: "gpt-5-mini", apiKey: "test-key" });
     const image = await readFile(join(FIXTURES_DIR, "small.png"));
     await expect(ai.check(image, "test")).rejects.toThrow(VisualAIRateLimitError);
   });
@@ -248,13 +248,13 @@ describe("integration: error flows", () => {
       usage: { input_tokens: 100, output_tokens: 50 },
     });
 
-    const ai = visualAI({ provider: "anthropic", apiKey: "test-key" });
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test-key" });
     const image = await readFile(join(FIXTURES_DIR, "small.png"));
     await expect(ai.check(image, "test")).rejects.toThrow(VisualAIResponseParseError);
   });
 
   it("corrupt image → VisualAIImageError", async () => {
-    const ai = visualAI({ provider: "anthropic", apiKey: "test-key" });
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test-key" });
     const corruptImage = await readFile(join(FIXTURES_DIR, "corrupt.png"));
     await expect(ai.check(corruptImage, "test")).rejects.toThrow(VisualAIImageError);
   });
@@ -271,7 +271,7 @@ describe("integration: image auto-resize", () => {
       usage: { input_tokens: 100, output_tokens: 50 },
     });
 
-    const ai = visualAI({ provider: "anthropic", apiKey: "test-key" });
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test-key" });
     const image = await readFile(join(FIXTURES_DIR, "oversized.png"));
     const result = await ai.check(image, "test");
 

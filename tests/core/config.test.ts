@@ -4,7 +4,6 @@ import { resolveConfig } from "../../src/core/config.js";
 import { VisualAIConfigError } from "../../src/errors.js";
 
 const ORIGINAL_ENV = {
-  VISUAL_AI_PROVIDER: process.env.VISUAL_AI_PROVIDER,
   VISUAL_AI_MODEL: process.env.VISUAL_AI_MODEL,
   VISUAL_AI_DEBUG: process.env.VISUAL_AI_DEBUG,
   VISUAL_AI_TRACK_USAGE: process.env.VISUAL_AI_TRACK_USAGE,
@@ -14,9 +13,6 @@ const ORIGINAL_ENV = {
 };
 
 function restoreEnv(): void {
-  if (ORIGINAL_ENV.VISUAL_AI_PROVIDER === undefined) delete process.env.VISUAL_AI_PROVIDER;
-  else process.env.VISUAL_AI_PROVIDER = ORIGINAL_ENV.VISUAL_AI_PROVIDER;
-
   if (ORIGINAL_ENV.VISUAL_AI_MODEL === undefined) delete process.env.VISUAL_AI_MODEL;
   else process.env.VISUAL_AI_MODEL = ORIGINAL_ENV.VISUAL_AI_MODEL;
 
@@ -41,13 +37,13 @@ describe("resolveConfig", () => {
     restoreEnv();
   });
 
-  it("returns a fully resolved provider config with defaults", () => {
-    const resolved = resolveConfig({ provider: "openai", apiKey: "test-key" });
+  it("returns a fully resolved config with defaults", () => {
+    const resolved = resolveConfig({ model: "gpt-5-mini", apiKey: "test-key" });
 
     expect(resolved).toEqual({
       provider: "openai",
       apiKey: "test-key",
-      model: DEFAULT_MODELS.openai,
+      model: "gpt-5-mini",
       maxTokens: DEFAULT_MAX_TOKENS,
       reasoningEffort: undefined,
       debug: false,
@@ -60,7 +56,7 @@ describe("resolveConfig", () => {
     process.env.VISUAL_AI_DEBUG = "true";
     process.env.VISUAL_AI_TRACK_USAGE = "1";
 
-    const resolved = resolveConfig({ provider: "openai", apiKey: "test-key" });
+    const resolved = resolveConfig({ apiKey: "test-key" });
 
     expect(resolved.model).toBe("gpt-5.4");
     expect(resolved.debug).toBe(true);
@@ -72,7 +68,7 @@ describe("resolveConfig", () => {
     process.env.VISUAL_AI_TRACK_USAGE = "0";
 
     const resolved = resolveConfig({
-      provider: "google",
+      model: "gemini-3-flash-preview",
       apiKey: "test-key",
       debug: true,
       trackUsage: true,
@@ -95,7 +91,7 @@ describe("resolveConfig", () => {
     expect(resolved.provider).toBe("anthropic");
   });
 
-  it("falls back to API key env detection when provider is omitted", () => {
+  it("falls back to API key env detection when model is omitted", () => {
     process.env.GOOGLE_API_KEY = "env-google-key";
 
     const resolved = resolveConfig({});
@@ -105,18 +101,10 @@ describe("resolveConfig", () => {
     expect(resolved.model).toBe(DEFAULT_MODELS.google);
   });
 
-  it("throws on model and provider mismatch", () => {
-    expect(() =>
-      resolveConfig({
-        provider: "google",
-        model: "claude-sonnet-4-6",
-      }),
-    ).toThrow(VisualAIConfigError);
-  });
-
   it("throws on invalid VISUAL_AI_DEBUG values", () => {
     process.env.VISUAL_AI_DEBUG = "definitely";
+    process.env.OPENAI_API_KEY = "test-key";
 
-    expect(() => resolveConfig({ provider: "openai" })).toThrow(VisualAIConfigError);
+    expect(() => resolveConfig({})).toThrow(VisualAIConfigError);
   });
 });

@@ -44,10 +44,8 @@ describe("public API exports", () => {
     expect(mod.Accessibility.CONTRAST).toBe("contrast");
   });
 
-  it("exports DEFAULT_MODELS and VALID_PROVIDERS", () => {
+  it("exports DEFAULT_MODELS", () => {
     expect(mod.DEFAULT_MODELS).toBeDefined();
-    expect(mod.VALID_PROVIDERS).toBeDefined();
-    expect(mod.VALID_PROVIDERS).toContain("anthropic");
   });
 
   it("error classes inherit from VisualAIError", () => {

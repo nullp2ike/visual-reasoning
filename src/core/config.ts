@@ -1,9 +1,4 @@
-import {
-  DEFAULT_MAX_TOKENS,
-  DEFAULT_MODELS,
-  MODEL_TO_PROVIDER,
-  VALID_PROVIDERS,
-} from "../constants.js";
+import { DEFAULT_MAX_TOKENS, DEFAULT_MODELS, MODEL_TO_PROVIDER } from "../constants.js";
 import { VisualAIConfigError } from "../errors.js";
 import type { ProviderName, VisualAIConfig } from "../types.js";
 
@@ -35,25 +30,6 @@ function inferProviderFromModel(model: string): ProviderName | undefined {
 }
 
 function resolveProvider(config: VisualAIConfig): ProviderName {
-  if (config.provider) {
-    if (!VALID_PROVIDERS.includes(config.provider)) {
-      throw new VisualAIConfigError(
-        `Unknown provider: "${config.provider}". Supported: ${VALID_PROVIDERS.join(", ")}`,
-      );
-    }
-    return config.provider;
-  }
-
-  const envProvider = process.env.VISUAL_AI_PROVIDER;
-  if (envProvider) {
-    if (VALID_PROVIDERS.includes(envProvider as ProviderName)) {
-      return envProvider as ProviderName;
-    }
-    throw new VisualAIConfigError(
-      `Invalid VISUAL_AI_PROVIDER: "${envProvider}". Supported: ${VALID_PROVIDERS.join(", ")}`,
-    );
-  }
-
   const model = config.model ?? process.env.VISUAL_AI_MODEL;
   if (model) {
     const inferred = inferProviderFromModel(model);
@@ -69,7 +45,7 @@ function resolveProvider(config: VisualAIConfig): ProviderName {
   if (detected) return detected[1];
 
   throw new VisualAIConfigError(
-    "No provider specified. Set `provider` in config, `VISUAL_AI_PROVIDER` env variable, or an API key env variable (ANTHROPIC_API_KEY, OPENAI_API_KEY, GOOGLE_API_KEY).",
+    "Cannot determine provider. Set a model name (config or VISUAL_AI_MODEL) or an API key env variable (ANTHROPIC_API_KEY, OPENAI_API_KEY, GOOGLE_API_KEY).",
   );
 }
 
@@ -86,13 +62,6 @@ function parseBooleanEnv(envName: string, value: string | undefined): boolean | 
 export function resolveConfig(config: VisualAIConfig): ResolvedConfig {
   const provider = resolveProvider(config);
   const model = config.model ?? process.env.VISUAL_AI_MODEL ?? DEFAULT_MODELS[provider];
-
-  const modelProvider = inferProviderFromModel(model);
-  if (modelProvider && modelProvider !== provider) {
-    throw new VisualAIConfigError(
-      `Model "${model}" appears to be a ${modelProvider} model, but provider is "${provider}". Either change the provider or use a ${provider}-compatible model.`,
-    );
-  }
 
   return {
     provider,

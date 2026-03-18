@@ -44,7 +44,7 @@ function assertUsageTracked(result: CheckResult | AskResult): void {
 }
 
 describe("smoke: OpenAI provider", () => {
-  const ai = visualAI({ provider: "openai", trackUsage: true });
+  const ai = visualAI({ model: "gpt-5-mini", trackUsage: true });
 
   it("check() — positive assertion", async () => {
     const result = await ai.check(image, "Products with prices are displayed on the screen");

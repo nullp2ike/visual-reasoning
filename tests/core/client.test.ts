@@ -103,61 +103,24 @@ describe("visualAI", () => {
     vi.clearAllMocks();
   });
 
-  it("throws on invalid provider", () => {
-    expect(() => visualAI({ provider: "invalid" as "anthropic" })).toThrow(VisualAIConfigError);
-  });
-
   describe("provider resolution", () => {
-    const savedVisualAiProvider = process.env.VISUAL_AI_PROVIDER;
     const savedAnthropicKey = process.env.ANTHROPIC_API_KEY;
     const savedOpenaiKey = process.env.OPENAI_API_KEY;
     const savedGoogleKey = process.env.GOOGLE_API_KEY;
 
     beforeEach(() => {
-      delete process.env.VISUAL_AI_PROVIDER;
       delete process.env.ANTHROPIC_API_KEY;
       delete process.env.OPENAI_API_KEY;
       delete process.env.GOOGLE_API_KEY;
     });
 
     afterEach(() => {
-      process.env.VISUAL_AI_PROVIDER = savedVisualAiProvider!;
       process.env.ANTHROPIC_API_KEY = savedAnthropicKey!;
       process.env.OPENAI_API_KEY = savedOpenaiKey!;
       process.env.GOOGLE_API_KEY = savedGoogleKey!;
-      if (savedVisualAiProvider === undefined) delete process.env.VISUAL_AI_PROVIDER;
       if (savedAnthropicKey === undefined) delete process.env.ANTHROPIC_API_KEY;
       if (savedOpenaiKey === undefined) delete process.env.OPENAI_API_KEY;
       if (savedGoogleKey === undefined) delete process.env.GOOGLE_API_KEY;
-    });
-
-    it("uses provider from config when specified", async () => {
-      process.env.VISUAL_AI_PROVIDER = "google";
-      mockAnthropicCreate.mockResolvedValueOnce({
-        content: [{ type: "text", text: makeCheckResponse(true) }],
-        usage: { input_tokens: 10, output_tokens: 5 },
-      });
-
-      const ai = visualAI({ provider: "anthropic", apiKey: "test" });
-      const image = await readFile(join(FIXTURES_DIR, "small.png"));
-      await ai.check(image, "test");
-
-      expect(mockAnthropicCreate).toHaveBeenCalled();
-      expect(mockGoogleGenerate).not.toHaveBeenCalled();
-    });
-
-    it("falls back to VISUAL_AI_PROVIDER env var when no provider in config", async () => {
-      process.env.VISUAL_AI_PROVIDER = "openai";
-      mockOpenAICreate.mockResolvedValueOnce({
-        output_text: makeCheckResponse(true),
-        usage: { input_tokens: 10, output_tokens: 5 },
-      });
-
-      const ai = visualAI({ apiKey: "test" });
-      const image = await readFile(join(FIXTURES_DIR, "small.png"));
-      await ai.check(image, "test");
-
-      expect(mockOpenAICreate).toHaveBeenCalled();
     });
 
     it("auto-detects anthropic from ANTHROPIC_API_KEY", async () => {
@@ -200,23 +163,6 @@ describe("visualAI", () => {
       await ai.check(image, "test");
 
       expect(mockGoogleGenerate).toHaveBeenCalled();
-    });
-
-    it("prefers VISUAL_AI_PROVIDER over API key auto-detection", async () => {
-      process.env.ANTHROPIC_API_KEY = "sk-test";
-      process.env.OPENAI_API_KEY = "sk-test";
-      process.env.VISUAL_AI_PROVIDER = "openai";
-      mockOpenAICreate.mockResolvedValueOnce({
-        output_text: makeCheckResponse(true),
-        usage: { input_tokens: 10, output_tokens: 5 },
-      });
-
-      const ai = visualAI();
-      const image = await readFile(join(FIXTURES_DIR, "small.png"));
-      await ai.check(image, "test");
-
-      expect(mockOpenAICreate).toHaveBeenCalled();
-      expect(mockAnthropicCreate).not.toHaveBeenCalled();
     });
 
     it("infers anthropic from known model in config", async () => {
@@ -286,54 +232,6 @@ describe("visualAI", () => {
       delete process.env.VISUAL_AI_MODEL;
     });
 
-    it("explicit config.provider wins over model inference for unknown models", async () => {
-      mockGoogleGenerate.mockResolvedValueOnce({
-        text: makeCheckResponse(true),
-        usageMetadata: { promptTokenCount: 10, candidatesTokenCount: 5 },
-      });
-
-      const ai = visualAI({
-        provider: "google",
-        model: "custom-model-v1",
-        apiKey: "test",
-      });
-      const image = await readFile(join(FIXTURES_DIR, "small.png"));
-      await ai.check(image, "test");
-
-      expect(mockGoogleGenerate).toHaveBeenCalled();
-    });
-
-    it("throws on model/provider mismatch", () => {
-      expect(() =>
-        visualAI({
-          provider: "google",
-          model: "claude-sonnet-4-6",
-          apiKey: "test",
-        }),
-      ).toThrow(VisualAIConfigError);
-      expect(() =>
-        visualAI({
-          provider: "google",
-          model: "claude-sonnet-4-6",
-          apiKey: "test",
-        }),
-      ).toThrow(/appears to be a anthropic model/);
-    });
-
-    it("VISUAL_AI_PROVIDER env wins over model inference for unknown models", async () => {
-      process.env.VISUAL_AI_PROVIDER = "openai";
-      mockOpenAICreate.mockResolvedValueOnce({
-        output_text: makeCheckResponse(true),
-        usage: { input_tokens: 10, output_tokens: 5 },
-      });
-
-      const ai = visualAI({ model: "custom-model-v1", apiKey: "test" });
-      const image = await readFile(join(FIXTURES_DIR, "small.png"));
-      await ai.check(image, "test");
-
-      expect(mockOpenAICreate).toHaveBeenCalled();
-    });
-
     it("falls through to API key detection when model has no recognizable prefix", async () => {
       process.env.GOOGLE_API_KEY = "test-key";
       mockGoogleGenerate.mockResolvedValueOnce({
@@ -350,13 +248,7 @@ describe("visualAI", () => {
 
     it("throws when no provider can be determined", () => {
       expect(() => visualAI()).toThrow(VisualAIConfigError);
-      expect(() => visualAI()).toThrow(/No provider specified/);
-    });
-
-    it("throws when env var has invalid value", () => {
-      process.env.VISUAL_AI_PROVIDER = "invalid-provider";
-      expect(() => visualAI({ apiKey: "test" })).toThrow(VisualAIConfigError);
-      expect(() => visualAI({ apiKey: "test" })).toThrow(/Invalid VISUAL_AI_PROVIDER/);
+      expect(() => visualAI()).toThrow(/Cannot determine provider/);
     });
   });
 
@@ -378,7 +270,7 @@ describe("visualAI", () => {
         usage: { input_tokens: 10, output_tokens: 5 },
       });
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+      const ai = visualAI({ apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       await ai.check(image, "test");
 
@@ -394,7 +286,6 @@ describe("visualAI", () => {
       });
 
       const ai = visualAI({
-        provider: "anthropic",
         apiKey: "test",
         model: "claude-haiku-3-5-20241022",
       });
@@ -413,7 +304,7 @@ describe("visualAI", () => {
         usage: { input_tokens: 100, output_tokens: 50 },
       });
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       const result = await ai.check(image, "Test statement");
 
@@ -450,7 +341,7 @@ describe("visualAI", () => {
         usage: { input_tokens: 100, output_tokens: 50 },
       });
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       const result = await ai.check(image, ["A", "B"]);
 
@@ -464,7 +355,7 @@ describe("visualAI", () => {
         usage: { input_tokens: 0, output_tokens: 0 },
       });
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       await expect(ai.check(image, "test")).rejects.toThrow(VisualAIResponseParseError);
     });
@@ -477,7 +368,7 @@ describe("visualAI", () => {
         usage: { input_tokens: 200, output_tokens: 100 },
       });
 
-      const ai = visualAI({ provider: "openai", apiKey: "test" });
+      const ai = visualAI({ model: "gpt-5-mini", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       const result = await ai.ask(image, "Analyze this page");
 
@@ -498,7 +389,7 @@ describe("visualAI", () => {
         usage: { input_tokens: 200, output_tokens: 100 },
       });
 
-      const ai = visualAI({ provider: "openai", apiKey: "test" });
+      const ai = visualAI({ model: "gpt-5-mini", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       await ai.ask(image, "Analyze this page", {
         instructions: ["Ignore decorative elements"],
@@ -516,7 +407,7 @@ describe("visualAI", () => {
         usageMetadata: { promptTokenCount: 300, candidatesTokenCount: 150 },
       });
 
-      const ai = visualAI({ provider: "google", model: "custom-model-v1", apiKey: "test" });
+      const ai = visualAI({ model: "gemini-custom-v1", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       const result = await ai.compare(image, image, { prompt: "Describe differences" });
 
@@ -531,7 +422,7 @@ describe("visualAI", () => {
         usageMetadata: { promptTokenCount: 300, candidatesTokenCount: 150 },
       });
 
-      const ai = visualAI({ provider: "google", model: "custom-model-v1", apiKey: "test" });
+      const ai = visualAI({ model: "gemini-custom-v1", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       const result = await ai.compare(image, image);
 
@@ -564,7 +455,6 @@ describe("visualAI", () => {
       });
 
       const ai = visualAI({
-        provider: "google",
         model: Model.Google.GEMINI_3_FLASH_PREVIEW,
         apiKey: "test",
       });
@@ -584,7 +474,6 @@ describe("visualAI", () => {
       });
 
       const ai = visualAI({
-        provider: "google",
         model: Model.Google.GEMINI_3_1_PRO_PREVIEW,
         apiKey: "test",
       });
@@ -602,7 +491,6 @@ describe("visualAI", () => {
       });
 
       const ai = visualAI({
-        provider: "google",
         model: Model.Google.GEMINI_3_FLASH_PREVIEW,
         apiKey: "test",
       });
@@ -619,7 +507,7 @@ describe("visualAI", () => {
         usageMetadata: { promptTokenCount: 300, candidatesTokenCount: 150 },
       });
 
-      const ai = visualAI({ provider: "google", model: "custom-model-v1", apiKey: "test" });
+      const ai = visualAI({ model: "gemini-custom-v1", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       const result = await ai.compare(image, image);
 
@@ -652,7 +540,7 @@ describe("visualAI", () => {
         usageMetadata: { promptTokenCount: 500, candidatesTokenCount: 200 },
       });
 
-      const ai = visualAI({ provider: "google", apiKey: "test" });
+      const ai = visualAI({ model: "gemini-3-flash-preview", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "diff-base.png"));
       const result = await ai.compare(image, image, {
         diffImage: true,
@@ -691,7 +579,6 @@ describe("visualAI", () => {
       });
 
       const ai = visualAI({
-        provider: "google",
         model: Model.Google.GEMINI_3_FLASH_PREVIEW,
         apiKey: "test",
       });
@@ -718,7 +605,6 @@ describe("visualAI", () => {
       });
 
       const ai = visualAI({
-        provider: "google",
         model: Model.Google.GEMINI_3_1_PRO_PREVIEW,
         apiKey: "test",
       });
@@ -737,7 +623,7 @@ describe("visualAI", () => {
         usage: { input_tokens: 100, output_tokens: 50 },
       });
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       const result = await ai.compare(image, image, { diffImage: true });
       expect(result.pass).toBe(true);
@@ -753,7 +639,7 @@ describe("visualAI", () => {
       });
 
       const ai = visualAI({
-        provider: "anthropic",
+        model: "claude-sonnet-4-6",
         apiKey: "test",
         reasoningEffort: "high",
       });
@@ -772,7 +658,7 @@ describe("visualAI", () => {
       });
 
       const ai = visualAI({
-        provider: "openai",
+        model: "gpt-5-mini",
         apiKey: "test",
         reasoningEffort: "low",
       });
@@ -790,7 +676,7 @@ describe("visualAI", () => {
       });
 
       const ai = visualAI({
-        provider: "google",
+        model: "gemini-3-flash-preview",
         apiKey: "test",
         reasoningEffort: "medium",
       });
@@ -811,7 +697,7 @@ describe("visualAI", () => {
 
       const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test", debug: true });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test", debug: true });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       await ai.check(image, "test");
 
@@ -833,7 +719,7 @@ describe("visualAI", () => {
 
       const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test", trackUsage: true });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test", trackUsage: true });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       await ai.check(image, "test");
 
@@ -853,7 +739,7 @@ describe("visualAI", () => {
 
       const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       await ai.check(image, "test");
 
@@ -871,7 +757,7 @@ describe("visualAI", () => {
 
       const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test", trackUsage: false });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test", trackUsage: false });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       await ai.check(image, "test");
 
@@ -887,7 +773,7 @@ describe("visualAI", () => {
         usage: { input_tokens: 1000, output_tokens: 500 },
       });
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test", trackUsage: false });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test", trackUsage: false });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       const result = await ai.check(image, "test");
 
@@ -901,9 +787,8 @@ describe("visualAI", () => {
       });
 
       const ai = visualAI({
-        provider: "anthropic",
         apiKey: "test",
-        model: "custom-model-v1",
+        model: "claude-custom-v1",
         trackUsage: false,
       });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
@@ -921,9 +806,8 @@ describe("visualAI", () => {
       const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
 
       const ai = visualAI({
-        provider: "anthropic",
         apiKey: "test",
-        model: "custom-model-v1",
+        model: "claude-custom-v1",
         trackUsage: true,
       });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
@@ -947,7 +831,7 @@ describe("visualAI", () => {
 
       const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       const result = await ai.check(image, "test");
 
@@ -969,7 +853,7 @@ describe("visualAI", () => {
 
       const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test", trackUsage: true });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test", trackUsage: true });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       await ai.check(image, "test");
 
@@ -988,7 +872,7 @@ describe("visualAI", () => {
 
       const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test", trackUsage: false });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test", trackUsage: false });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       const result = await ai.check(image, "test");
 
@@ -1008,7 +892,7 @@ describe("visualAI", () => {
 
       const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
 
-      const ai = visualAI({ provider: "openai", apiKey: "test" });
+      const ai = visualAI({ model: "gpt-5-mini", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       const result = await ai.check(image, "test");
 
@@ -1030,7 +914,7 @@ describe("visualAI", () => {
       const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
 
       const ai = visualAI({
-        provider: "anthropic",
+        model: "claude-sonnet-4-6",
         apiKey: "test",
         debug: false,
         trackUsage: true,
@@ -1071,7 +955,7 @@ describe("visualAI", () => {
 
       const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       await ai.check(image, "test");
 
@@ -1090,7 +974,7 @@ describe("visualAI", () => {
 
       const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       await ai.check(image, "test");
 
@@ -1109,7 +993,7 @@ describe("visualAI", () => {
 
       const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       await ai.check(image, "test");
 
@@ -1128,7 +1012,7 @@ describe("visualAI", () => {
 
       const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test", debug: false });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test", debug: false });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       await ai.check(image, "test");
 
@@ -1147,7 +1031,7 @@ describe("visualAI", () => {
 
       const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       await ai.check(image, "test");
 
@@ -1166,7 +1050,7 @@ describe("visualAI", () => {
 
       const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       await ai.check(image, "test");
 
@@ -1185,7 +1069,7 @@ describe("visualAI", () => {
 
       const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       await ai.check(image, "test");
 
@@ -1204,7 +1088,7 @@ describe("visualAI", () => {
 
       const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test", trackUsage: false });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test", trackUsage: false });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       await ai.check(image, "test");
 
@@ -1216,10 +1100,10 @@ describe("visualAI", () => {
 
     it("throws on invalid boolean env value", () => {
       process.env.VISUAL_AI_DEBUG = "maybe";
-      expect(() => visualAI({ provider: "anthropic", apiKey: "test" })).toThrow(
+      expect(() => visualAI({ model: "claude-sonnet-4-6", apiKey: "test" })).toThrow(
         VisualAIConfigError,
       );
-      expect(() => visualAI({ provider: "anthropic", apiKey: "test" })).toThrow(
+      expect(() => visualAI({ model: "claude-sonnet-4-6", apiKey: "test" })).toThrow(
         /Invalid VISUAL_AI_DEBUG value/,
       );
     });
@@ -1232,7 +1116,7 @@ describe("visualAI", () => {
 
       const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
 
-      const ai = visualAI({ provider: "anthropic", apiKey: "test" });
+      const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "small.png"));
       await ai.check(image, "test");
 

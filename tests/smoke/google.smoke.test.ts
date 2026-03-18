@@ -44,7 +44,7 @@ function assertUsageTracked(result: CheckResult | AskResult): void {
 }
 
 describe("smoke: Google provider", () => {
-  const ai = visualAI({ provider: "google", trackUsage: true });
+  const ai = visualAI({ model: "gemini-3-flash-preview", trackUsage: true });
 
   it("check() — positive assertion", async () => {
     const result = await ai.check(image, "Category icons are visible on the screen");

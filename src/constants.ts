@@ -2,7 +2,7 @@ import type { ProviderName } from "./types.js";
 
 // --- Provider constants ---
 
-/** Supported provider identifiers for configuring `visualAI()`. */
+/** Supported provider identifiers used internally for pricing and provider selection. */
 export const Provider = {
   ANTHROPIC: "anthropic",
   OPENAI: "openai",
