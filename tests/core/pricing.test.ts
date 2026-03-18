@@ -14,6 +14,18 @@ describe("calculateCost", () => {
     expect(cost).toBeCloseTo(0.00125, 10);
   });
 
+  it("calculates cost for openai gpt-5.4-mini", () => {
+    const cost = calculateCost("openai", "gpt-5.4-mini", 1000, 500);
+    // 1000 * (0.75/1M) + 500 * (4.5/1M) = 0.00075 + 0.00225 = 0.003
+    expect(cost).toBeCloseTo(0.003, 10);
+  });
+
+  it("calculates cost for openai gpt-5.4-nano", () => {
+    const cost = calculateCost("openai", "gpt-5.4-nano", 1000, 500);
+    // 1000 * (0.2/1M) + 500 * (1.25/1M) = 0.0002 + 0.000625 = 0.000825
+    expect(cost).toBeCloseTo(0.000825, 10);
+  });
+
   it("calculates cost for google gemini-3-flash-preview", () => {
     const cost = calculateCost("google", "gemini-3-flash-preview", 1000, 500);
     // 1000 * (0.5/1M) + 500 * (3/1M) = 0.0005 + 0.0015 = 0.002

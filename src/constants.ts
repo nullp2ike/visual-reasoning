@@ -21,6 +21,8 @@ export const Model = {
   OpenAI: {
     GPT_5_4: "gpt-5.4",
     GPT_5_4_PRO: "gpt-5.4-pro",
+    GPT_5_4_MINI: "gpt-5.4-mini",
+    GPT_5_4_NANO: "gpt-5.4-nano",
     GPT_5_2: "gpt-5.2",
     GPT_5_MINI: "gpt-5-mini",
   },
@@ -43,7 +45,7 @@ export type KnownModelName =
 /** Default model selection used when a caller omits `config.model`. */
 export const DEFAULT_MODELS = {
   [Provider.ANTHROPIC]: Model.Anthropic.SONNET_4_6,
-  [Provider.OPENAI]: Model.OpenAI.GPT_5_MINI,
+  [Provider.OPENAI]: Model.OpenAI.GPT_5_4_MINI,
   [Provider.GOOGLE]: Model.Google.GEMINI_3_FLASH_PREVIEW,
 } as const satisfies Record<ProviderName, KnownModelName>;
 

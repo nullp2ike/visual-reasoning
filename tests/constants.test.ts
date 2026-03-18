@@ -32,6 +32,8 @@ describe("Model", () => {
   it("has correct OpenAI model values", () => {
     expect(Model.OpenAI.GPT_5_4).toBe("gpt-5.4");
     expect(Model.OpenAI.GPT_5_4_PRO).toBe("gpt-5.4-pro");
+    expect(Model.OpenAI.GPT_5_4_MINI).toBe("gpt-5.4-mini");
+    expect(Model.OpenAI.GPT_5_4_NANO).toBe("gpt-5.4-nano");
     expect(Model.OpenAI.GPT_5_2).toBe("gpt-5.2");
     expect(Model.OpenAI.GPT_5_MINI).toBe("gpt-5-mini");
   });
@@ -54,7 +56,7 @@ describe("Model", () => {
 describe("DEFAULT_MODELS", () => {
   it("maps each provider to a known model", () => {
     expect(DEFAULT_MODELS[Provider.ANTHROPIC]).toBe(Model.Anthropic.SONNET_4_6);
-    expect(DEFAULT_MODELS[Provider.OPENAI]).toBe(Model.OpenAI.GPT_5_MINI);
+    expect(DEFAULT_MODELS[Provider.OPENAI]).toBe(Model.OpenAI.GPT_5_4_MINI);
     expect(DEFAULT_MODELS[Provider.GOOGLE]).toBe(Model.Google.GEMINI_3_FLASH_PREVIEW);
   });
 
