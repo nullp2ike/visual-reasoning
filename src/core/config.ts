@@ -9,6 +9,8 @@ export interface ResolvedConfig {
   maxTokens: number;
   reasoningEffort: VisualAIConfig["reasoningEffort"];
   debug: boolean;
+  debugPrompt: boolean;
+  debugResponse: boolean;
   trackUsage: boolean;
 }
 
@@ -62,6 +64,8 @@ function parseBooleanEnv(envName: string, value: string | undefined): boolean | 
 export function resolveConfig(config: VisualAIConfig): ResolvedConfig {
   const provider = resolveProvider(config);
   const model = config.model ?? process.env.VISUAL_AI_MODEL ?? DEFAULT_MODELS[provider];
+  const debug =
+    config.debug ?? parseBooleanEnv("VISUAL_AI_DEBUG", process.env.VISUAL_AI_DEBUG) ?? false;
 
   return {
     provider,
@@ -69,7 +73,15 @@ export function resolveConfig(config: VisualAIConfig): ResolvedConfig {
     model,
     maxTokens: config.maxTokens ?? DEFAULT_MAX_TOKENS,
     reasoningEffort: config.reasoningEffort,
-    debug: config.debug ?? parseBooleanEnv("VISUAL_AI_DEBUG", process.env.VISUAL_AI_DEBUG) ?? false,
+    debug,
+    debugPrompt:
+      config.debugPrompt ??
+      parseBooleanEnv("VISUAL_AI_DEBUG_PROMPT", process.env.VISUAL_AI_DEBUG_PROMPT) ??
+      debug,
+    debugResponse:
+      config.debugResponse ??
+      parseBooleanEnv("VISUAL_AI_DEBUG_RESPONSE", process.env.VISUAL_AI_DEBUG_RESPONSE) ??
+      debug,
     trackUsage:
       config.trackUsage ??
       parseBooleanEnv("VISUAL_AI_TRACK_USAGE", process.env.VISUAL_AI_TRACK_USAGE) ??

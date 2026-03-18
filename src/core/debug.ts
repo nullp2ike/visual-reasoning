@@ -3,8 +3,22 @@ import type { ResolvedConfig } from "./config.js";
 import type { ProviderDriver, RawProviderResponse } from "../providers/types.js";
 import type { NormalizedImage, UsageInfo } from "../types.js";
 
-export function debugLog(config: ResolvedConfig, label: string, data: string): void {
-  if (config.debug) {
+export type DebugLogKind = "prompt" | "response" | "error";
+
+export function debugLog(
+  config: ResolvedConfig,
+  label: string,
+  data: string,
+  kind: DebugLogKind = "error",
+): void {
+  const enabled =
+    kind === "prompt"
+      ? config.debugPrompt
+      : kind === "response"
+        ? config.debugResponse
+        : config.debug;
+
+  if (enabled) {
     process.stderr.write(`[visual-ai-assertions] ${label}: ${data}\n`);
   }
 }

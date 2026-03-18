@@ -1127,4 +1127,99 @@ describe("visualAI", () => {
       stderrSpy.mockRestore();
     });
   });
+
+  describe("granular debug logging", () => {
+    it("debugPrompt=true logs only prompts, not responses", async () => {
+      mockAnthropicCreate.mockResolvedValueOnce({
+        content: [{ type: "text", text: makeCheckResponse(true) }],
+        usage: { input_tokens: 0, output_tokens: 0 },
+      });
+
+      const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
+
+      const ai = visualAI({
+        model: "claude-sonnet-4-6",
+        apiKey: "test",
+        debugPrompt: true,
+      });
+      const image = await readFile(join(FIXTURES_DIR, "small.png"));
+      await ai.check(image, "test");
+
+      const calls = stderrSpy.mock.calls.map((c) => String(c[0]));
+      expect(calls.some((c) => c.includes("check prompt"))).toBe(true);
+      expect(calls.some((c) => c.includes("check response"))).toBe(false);
+
+      stderrSpy.mockRestore();
+    });
+
+    it("debugResponse=true logs only responses, not prompts", async () => {
+      mockAnthropicCreate.mockResolvedValueOnce({
+        content: [{ type: "text", text: makeCheckResponse(true) }],
+        usage: { input_tokens: 0, output_tokens: 0 },
+      });
+
+      const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
+
+      const ai = visualAI({
+        model: "claude-sonnet-4-6",
+        apiKey: "test",
+        debugResponse: true,
+      });
+      const image = await readFile(join(FIXTURES_DIR, "small.png"));
+      await ai.check(image, "test");
+
+      const calls = stderrSpy.mock.calls.map((c) => String(c[0]));
+      expect(calls.some((c) => c.includes("check prompt"))).toBe(false);
+      expect(calls.some((c) => c.includes("check response"))).toBe(true);
+
+      stderrSpy.mockRestore();
+    });
+
+    it("debug=true still logs both prompts and responses", async () => {
+      mockAnthropicCreate.mockResolvedValueOnce({
+        content: [{ type: "text", text: makeCheckResponse(true) }],
+        usage: { input_tokens: 0, output_tokens: 0 },
+      });
+
+      const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
+
+      const ai = visualAI({
+        model: "claude-sonnet-4-6",
+        apiKey: "test",
+        debug: true,
+      });
+      const image = await readFile(join(FIXTURES_DIR, "small.png"));
+      await ai.check(image, "test");
+
+      const calls = stderrSpy.mock.calls.map((c) => String(c[0]));
+      expect(calls.some((c) => c.includes("check prompt"))).toBe(true);
+      expect(calls.some((c) => c.includes("check response"))).toBe(true);
+
+      stderrSpy.mockRestore();
+    });
+
+    it("debugPrompt=false with debug=true suppresses prompt logging only", async () => {
+      mockAnthropicCreate.mockResolvedValueOnce({
+        content: [{ type: "text", text: makeCheckResponse(true) }],
+        usage: { input_tokens: 0, output_tokens: 0 },
+      });
+
+      const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
+
+      const ai = visualAI({
+        model: "claude-sonnet-4-6",
+        apiKey: "test",
+        debug: true,
+        debugPrompt: false,
+      });
+      const image = await readFile(join(FIXTURES_DIR, "small.png"));
+      await ai.check(image, "test");
+
+      const calls = stderrSpy.mock.calls.map((c) => String(c[0]));
+      expect(calls.some((c) => c.includes("check prompt"))).toBe(false);
+      expect(calls.some((c) => c.includes("check response"))).toBe(true);
+
+      stderrSpy.mockRestore();
+    });
+  });
 });

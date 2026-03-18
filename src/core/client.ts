@@ -263,10 +263,10 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
 
     const img = await normalizeImage(image);
     const prompt = buildElementsVisibilityPrompt(elements, visible, options);
-    debugLog(resolvedConfig, `${methodName} prompt`, prompt);
+    debugLog(resolvedConfig, `${methodName} prompt`, prompt, "prompt");
 
     const response = await timedSendMessage(driver, [img], prompt);
-    debugLog(resolvedConfig, `${methodName} response`, response.text);
+    debugLog(resolvedConfig, `${methodName} response`, response.text, "response");
 
     const result = parseCheckResponse(response.text);
     return {
@@ -284,10 +284,10 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
 
       const img = await normalizeImage(image);
       const prompt = buildCheckPrompt(stmts, { instructions: options?.instructions });
-      debugLog(resolvedConfig, "check prompt", prompt);
+      debugLog(resolvedConfig, "check prompt", prompt, "prompt");
 
       const response = await timedSendMessage(driver, [img], prompt);
-      debugLog(resolvedConfig, "check response", response.text);
+      debugLog(resolvedConfig, "check response", response.text, "response");
 
       const result = parseCheckResponse(response.text);
       return {
@@ -299,10 +299,10 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
     async ask(image, userPrompt, options) {
       const img = await normalizeImage(image);
       const prompt = buildAskPrompt(userPrompt, { instructions: options?.instructions });
-      debugLog(resolvedConfig, "ask prompt", prompt);
+      debugLog(resolvedConfig, "ask prompt", prompt, "prompt");
 
       const response = await timedSendMessage(driver, [img], prompt);
-      debugLog(resolvedConfig, "ask response", response.text);
+      debugLog(resolvedConfig, "ask response", response.text, "response");
 
       const result = parseAskResponse(response.text);
       return {
@@ -317,10 +317,10 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
         userPrompt: options?.prompt,
         instructions: options?.instructions,
       });
-      debugLog(resolvedConfig, "compare prompt", prompt);
+      debugLog(resolvedConfig, "compare prompt", prompt, "prompt");
 
       const response = await timedSendMessage(driver, [imgA, imgB], prompt);
-      debugLog(resolvedConfig, "compare response", response.text);
+      debugLog(resolvedConfig, "compare response", response.text, "response");
 
       const supportsAnnotatedDiff =
         resolvedConfig.provider === "google" &&
@@ -333,12 +333,7 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
           diffImage = await generateAiDiff(imgA, imgB, resolvedConfig.model, driver);
         } catch (err: unknown) {
           const msg = err instanceof Error ? err.message : String(err);
-          debugLog(resolvedConfig, "ai diff error", msg);
-          if (!resolvedConfig.debug) {
-            process.stderr.write(
-              `[visual-ai-assertions] warning: diff generation failed: ${msg}\n`,
-            );
-          }
+          process.stderr.write(`[visual-ai-assertions] warning: diff generation failed: ${msg}\n`);
         }
       }
 
@@ -361,10 +356,10 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
     async accessibility(image, options) {
       const img = await normalizeImage(image);
       const prompt = buildAccessibilityPrompt(options);
-      debugLog(resolvedConfig, "accessibility prompt", prompt);
+      debugLog(resolvedConfig, "accessibility prompt", prompt, "prompt");
 
       const response = await timedSendMessage(driver, [img], prompt);
-      debugLog(resolvedConfig, "accessibility response", response.text);
+      debugLog(resolvedConfig, "accessibility response", response.text, "response");
 
       const result = parseCheckResponse(response.text);
       return {
@@ -381,10 +376,10 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
     async layout(image, options) {
       const img = await normalizeImage(image);
       const prompt = buildLayoutPrompt(options);
-      debugLog(resolvedConfig, "layout prompt", prompt);
+      debugLog(resolvedConfig, "layout prompt", prompt, "prompt");
 
       const response = await timedSendMessage(driver, [img], prompt);
-      debugLog(resolvedConfig, "layout response", response.text);
+      debugLog(resolvedConfig, "layout response", response.text, "response");
 
       const result = parseCheckResponse(response.text);
       return {
@@ -396,10 +391,10 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
     async pageLoad(image, options) {
       const img = await normalizeImage(image);
       const prompt = buildPageLoadPrompt(options);
-      debugLog(resolvedConfig, "pageLoad prompt", prompt);
+      debugLog(resolvedConfig, "pageLoad prompt", prompt, "prompt");
 
       const response = await timedSendMessage(driver, [img], prompt);
-      debugLog(resolvedConfig, "pageLoad response", response.text);
+      debugLog(resolvedConfig, "pageLoad response", response.text, "response");
 
       const result = parseCheckResponse(response.text);
       return {
@@ -411,10 +406,10 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
     async content(image, options) {
       const img = await normalizeImage(image);
       const prompt = buildContentPrompt(options);
-      debugLog(resolvedConfig, "content prompt", prompt);
+      debugLog(resolvedConfig, "content prompt", prompt, "prompt");
 
       const response = await timedSendMessage(driver, [img], prompt);
-      debugLog(resolvedConfig, "content response", response.text);
+      debugLog(resolvedConfig, "content response", response.text, "response");
 
       const result = parseCheckResponse(response.text);
       return {

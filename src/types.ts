@@ -146,6 +146,8 @@ export interface VisualAIConfig {
   apiKey?: string;
   model?: string;
   debug?: boolean;
+  debugPrompt?: boolean;
+  debugResponse?: boolean;
   maxTokens?: number;
   reasoningEffort?: ReasoningEffort;
   trackUsage?: boolean;
