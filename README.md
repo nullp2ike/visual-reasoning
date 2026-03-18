@@ -387,13 +387,13 @@ The `VisualAIKnownError` union and `isVisualAIKnownError()` helper are useful wh
 
 ### Optional Configuration
 
-| Variable                   | Description                                                                                                                            |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `VISUAL_AI_MODEL`          | Default model when `model` is not set in config. Overrides the provider's default model.                                               |
-| `VISUAL_AI_DEBUG`          | Enable error diagnostic logging when `debug` is not set in config. Does **not** enable prompt/response logging. Use `"true"` or `"1"`. |
-| `VISUAL_AI_DEBUG_PROMPT`   | Enable prompt-only debug logging. Use `"true"` or `"1"`.                                                                               |
-| `VISUAL_AI_DEBUG_RESPONSE` | Enable response-only debug logging. Use `"true"` or `"1"`.                                                                             |
-| `VISUAL_AI_TRACK_USAGE`    | Enable usage tracking when `trackUsage` is not set in config. Use `"true"` or `"1"` to enable.                                         |
+| Variable                   | Description                                                                                                    |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `VISUAL_AI_MODEL`          | Default model when `model` is not set in config. Overrides the provider's default model.                       |
+| `VISUAL_AI_DEBUG`          | Enable error diagnostic logging to stderr. Does **not** enable prompt/response logging. Use `"true"` or `"1"`. |
+| `VISUAL_AI_DEBUG_PROMPT`   | Enable prompt-only debug logging to stderr. Use `"true"` or `"1"`.                                             |
+| `VISUAL_AI_DEBUG_RESPONSE` | Enable response-only debug logging to stderr. Use `"true"` or `"1"`.                                           |
+| `VISUAL_AI_TRACK_USAGE`    | Enable usage tracking (token counts and cost) to stderr. Use `"true"` or `"1"`.                                |
 
 ## Configuration
 
