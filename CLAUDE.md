@@ -42,3 +42,12 @@ Run all checks: `pnpm typecheck && pnpm lint && pnpm test && pnpm build`
 - Functions: camelCase (`visualAI`, `normalizeImage`)
 - Constants: UPPER_SNAKE_CASE (`DEFAULT_MAX_TOKENS`)
 - Test files: `*.test.ts` in `tests/` directory
+
+## Releasing a new version
+
+1. Update `"version"` in `package.json`
+2. Run all checks: `pnpm typecheck && pnpm lint && pnpm test && pnpm build`
+3. Commit: `git commit -m "Bump to vX.Y.Z: <summary of changes>"`
+4. Tag: `git tag -a vX.Y.Z -m "vX.Y.Z: <summary>"`
+5. Push: `git push origin main --tags`
+6. Publish: `pnpm publish --access public`
