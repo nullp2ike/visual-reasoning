@@ -2,6 +2,7 @@ import { calculateCost } from "./pricing.js";
 import type { ResolvedConfig } from "./config.js";
 import type { ProviderDriver, RawProviderResponse } from "../providers/types.js";
 import type { NormalizedImage, UsageInfo } from "../types.js";
+import { VisualAIError, VisualAIResponseParseError } from "../errors.js";
 
 export type DebugLogKind = "prompt" | "response" | "error";
 
@@ -48,6 +49,38 @@ export function processUsage(
   };
   usageLog(config, method, usage);
   return usage;
+}
+
+const MAX_RAW_RESPONSE_PREVIEW = 500;
+
+export function formatError(error: unknown): string {
+  if (error instanceof VisualAIResponseParseError) {
+    const truncated =
+      error.rawResponse.length > MAX_RAW_RESPONSE_PREVIEW
+        ? error.rawResponse.slice(0, MAX_RAW_RESPONSE_PREVIEW) + "..."
+        : error.rawResponse;
+    return `${error.name} (${error.code}): ${error.message}. Raw (truncated): ${truncated}`;
+  }
+  if (error instanceof VisualAIError) {
+    return `${error.name} (${error.code}): ${error.message}`;
+  }
+  if (error instanceof Error) {
+    return `${error.name}: ${error.message}`;
+  }
+  return String(error);
+}
+
+export async function withErrorDebug<T>(
+  config: ResolvedConfig,
+  method: string,
+  fn: () => Promise<T>,
+): Promise<T> {
+  try {
+    return await fn();
+  } catch (error) {
+    debugLog(config, `${method} error`, formatError(error), "error");
+    throw error;
+  }
 }
 
 export async function timedSendMessage(

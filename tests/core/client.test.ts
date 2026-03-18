@@ -689,7 +689,7 @@ describe("visualAI", () => {
   });
 
   describe("debug mode", () => {
-    it("logs to stderr when debug is true", async () => {
+    it("debug=true emits deprecation warning but does not log prompts/responses", async () => {
       mockAnthropicCreate.mockResolvedValueOnce({
         content: [{ type: "text", text: makeCheckResponse(true) }],
         usage: { input_tokens: 0, output_tokens: 0 },
@@ -703,8 +703,9 @@ describe("visualAI", () => {
 
       expect(stderrSpy).toHaveBeenCalled();
       const calls = stderrSpy.mock.calls.map((c) => String(c[0]));
-      expect(calls.some((c) => c.includes("check prompt"))).toBe(true);
-      expect(calls.some((c) => c.includes("check response"))).toBe(true);
+      expect(calls.some((c) => c.includes("VISUAL_AI_DEBUG no longer enables"))).toBe(true);
+      expect(calls.some((c) => c.includes("check prompt"))).toBe(false);
+      expect(calls.some((c) => c.includes("check response"))).toBe(false);
 
       stderrSpy.mockRestore();
     });
@@ -946,7 +947,7 @@ describe("visualAI", () => {
       else process.env.VISUAL_AI_TRACK_USAGE = savedTrackUsage;
     });
 
-    it("VISUAL_AI_DEBUG=true enables debug logging", async () => {
+    it("VISUAL_AI_DEBUG=true does not enable prompt/response logging", async () => {
       process.env.VISUAL_AI_DEBUG = "true";
       mockAnthropicCreate.mockResolvedValueOnce({
         content: [{ type: "text", text: makeCheckResponse(true) }],
@@ -960,12 +961,13 @@ describe("visualAI", () => {
       await ai.check(image, "test");
 
       const calls = stderrSpy.mock.calls.map((c) => String(c[0]));
-      expect(calls.some((c) => c.includes("check prompt"))).toBe(true);
+      expect(calls.some((c) => c.includes("check prompt"))).toBe(false);
+      expect(calls.some((c) => c.includes("check response"))).toBe(false);
 
       stderrSpy.mockRestore();
     });
 
-    it("VISUAL_AI_DEBUG=1 enables debug logging", async () => {
+    it("VISUAL_AI_DEBUG=1 does not enable prompt/response logging", async () => {
       process.env.VISUAL_AI_DEBUG = "1";
       mockAnthropicCreate.mockResolvedValueOnce({
         content: [{ type: "text", text: makeCheckResponse(true) }],
@@ -979,7 +981,8 @@ describe("visualAI", () => {
       await ai.check(image, "test");
 
       const calls = stderrSpy.mock.calls.map((c) => String(c[0]));
-      expect(calls.some((c) => c.includes("check prompt"))).toBe(true);
+      expect(calls.some((c) => c.includes("check prompt"))).toBe(false);
+      expect(calls.some((c) => c.includes("check response"))).toBe(false);
 
       stderrSpy.mockRestore();
     });
@@ -1003,7 +1006,7 @@ describe("visualAI", () => {
       stderrSpy.mockRestore();
     });
 
-    it("config.debug takes precedence over VISUAL_AI_DEBUG", async () => {
+    it("config.debug=false takes precedence over VISUAL_AI_DEBUG env", async () => {
       process.env.VISUAL_AI_DEBUG = "true";
       mockAnthropicCreate.mockResolvedValueOnce({
         content: [{ type: "text", text: makeCheckResponse(true) }],
@@ -1018,6 +1021,7 @@ describe("visualAI", () => {
 
       const calls = stderrSpy.mock.calls.map((c) => String(c[0]));
       expect(calls.some((c) => c.includes("check prompt"))).toBe(false);
+      expect(calls.some((c) => c.includes("check response"))).toBe(false);
 
       stderrSpy.mockRestore();
     });
@@ -1175,7 +1179,7 @@ describe("visualAI", () => {
       stderrSpy.mockRestore();
     });
 
-    it("debug=true still logs both prompts and responses", async () => {
+    it("debug=true does not log prompts or responses", async () => {
       mockAnthropicCreate.mockResolvedValueOnce({
         content: [{ type: "text", text: makeCheckResponse(true) }],
         usage: { input_tokens: 0, output_tokens: 0 },
@@ -1192,13 +1196,13 @@ describe("visualAI", () => {
       await ai.check(image, "test");
 
       const calls = stderrSpy.mock.calls.map((c) => String(c[0]));
-      expect(calls.some((c) => c.includes("check prompt"))).toBe(true);
-      expect(calls.some((c) => c.includes("check response"))).toBe(true);
+      expect(calls.some((c) => c.includes("check prompt"))).toBe(false);
+      expect(calls.some((c) => c.includes("check response"))).toBe(false);
 
       stderrSpy.mockRestore();
     });
 
-    it("debugPrompt=false with debug=true suppresses prompt logging only", async () => {
+    it("debugPrompt=false with debug=true does not log prompts or responses", async () => {
       mockAnthropicCreate.mockResolvedValueOnce({
         content: [{ type: "text", text: makeCheckResponse(true) }],
         usage: { input_tokens: 0, output_tokens: 0 },
@@ -1217,9 +1221,73 @@ describe("visualAI", () => {
 
       const calls = stderrSpy.mock.calls.map((c) => String(c[0]));
       expect(calls.some((c) => c.includes("check prompt"))).toBe(false);
-      expect(calls.some((c) => c.includes("check response"))).toBe(true);
+      expect(calls.some((c) => c.includes("check response"))).toBe(false);
 
       stderrSpy.mockRestore();
+    });
+
+    it("debug=true logs errors when provider throws", async () => {
+      mockAnthropicCreate.mockRejectedValueOnce(new Error("API connection failed"));
+
+      const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
+
+      const ai = visualAI({
+        model: "claude-sonnet-4-6",
+        apiKey: "test",
+        debug: true,
+      });
+      const image = await readFile(join(FIXTURES_DIR, "small.png"));
+      await expect(ai.check(image, "test")).rejects.toThrow("API connection failed");
+
+      const calls = stderrSpy.mock.calls.map((c) => String(c[0]));
+      expect(calls.some((c) => c.includes("check error"))).toBe(true);
+
+      stderrSpy.mockRestore();
+    });
+
+    it("debug=false does not log errors when provider throws", async () => {
+      mockAnthropicCreate.mockRejectedValueOnce(new Error("API connection failed"));
+
+      const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
+
+      const ai = visualAI({
+        model: "claude-sonnet-4-6",
+        apiKey: "test",
+      });
+      const image = await readFile(join(FIXTURES_DIR, "small.png"));
+      await expect(ai.check(image, "test")).rejects.toThrow("API connection failed");
+
+      const calls = stderrSpy.mock.calls.map((c) => String(c[0]));
+      expect(calls.some((c) => c.includes("check error"))).toBe(false);
+
+      stderrSpy.mockRestore();
+    });
+
+    it("VISUAL_AI_DEBUG=true logs errors when response parse fails", async () => {
+      const savedDebug = process.env.VISUAL_AI_DEBUG;
+      try {
+        mockAnthropicCreate.mockResolvedValueOnce({
+          content: [{ type: "text", text: "not valid json" }],
+          usage: { input_tokens: 0, output_tokens: 0 },
+        });
+
+        const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
+
+        process.env.VISUAL_AI_DEBUG = "true";
+        const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
+        const image = await readFile(join(FIXTURES_DIR, "small.png"));
+        await expect(ai.check(image, "test")).rejects.toThrow();
+
+        const calls = stderrSpy.mock.calls.map((c) => String(c[0]));
+        expect(
+          calls.some((c) => c.includes("check error") && c.includes("RESPONSE_PARSE_FAILED")),
+        ).toBe(true);
+
+        stderrSpy.mockRestore();
+      } finally {
+        if (savedDebug === undefined) delete process.env.VISUAL_AI_DEBUG;
+        else process.env.VISUAL_AI_DEBUG = savedDebug;
+      }
     });
   });
 });

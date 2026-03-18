@@ -61,11 +61,33 @@ function parseBooleanEnv(envName: string, value: string | undefined): boolean | 
   );
 }
 
+let debugDeprecationWarned = false;
+
+/** @internal Reset the deprecation warning guard. For testing only. */
+export function resetDebugDeprecationWarning(): void {
+  debugDeprecationWarned = false;
+}
+
 export function resolveConfig(config: VisualAIConfig): ResolvedConfig {
   const provider = resolveProvider(config);
   const model = config.model ?? process.env.VISUAL_AI_MODEL ?? DEFAULT_MODELS[provider];
   const debug =
     config.debug ?? parseBooleanEnv("VISUAL_AI_DEBUG", process.env.VISUAL_AI_DEBUG) ?? false;
+  const debugPrompt =
+    config.debugPrompt ??
+    parseBooleanEnv("VISUAL_AI_DEBUG_PROMPT", process.env.VISUAL_AI_DEBUG_PROMPT) ??
+    false;
+  const debugResponse =
+    config.debugResponse ??
+    parseBooleanEnv("VISUAL_AI_DEBUG_RESPONSE", process.env.VISUAL_AI_DEBUG_RESPONSE) ??
+    false;
+
+  if (debug && !debugPrompt && !debugResponse && !debugDeprecationWarned) {
+    debugDeprecationWarned = true;
+    process.stderr.write(
+      `[visual-ai-assertions] Warning: VISUAL_AI_DEBUG no longer enables prompt/response logging. Use VISUAL_AI_DEBUG_PROMPT=true and/or VISUAL_AI_DEBUG_RESPONSE=true instead.\n`,
+    );
+  }
 
   return {
     provider,
@@ -74,14 +96,8 @@ export function resolveConfig(config: VisualAIConfig): ResolvedConfig {
     maxTokens: config.maxTokens ?? DEFAULT_MAX_TOKENS,
     reasoningEffort: config.reasoningEffort,
     debug,
-    debugPrompt:
-      config.debugPrompt ??
-      parseBooleanEnv("VISUAL_AI_DEBUG_PROMPT", process.env.VISUAL_AI_DEBUG_PROMPT) ??
-      debug,
-    debugResponse:
-      config.debugResponse ??
-      parseBooleanEnv("VISUAL_AI_DEBUG_RESPONSE", process.env.VISUAL_AI_DEBUG_RESPONSE) ??
-      debug,
+    debugPrompt,
+    debugResponse,
     trackUsage:
       config.trackUsage ??
       parseBooleanEnv("VISUAL_AI_TRACK_USAGE", process.env.VISUAL_AI_TRACK_USAGE) ??

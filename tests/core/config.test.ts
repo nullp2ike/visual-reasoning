@@ -1,6 +1,6 @@
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { DEFAULT_MAX_TOKENS, DEFAULT_MODELS } from "../../src/constants.js";
-import { resolveConfig } from "../../src/core/config.js";
+import { resetDebugDeprecationWarning, resolveConfig } from "../../src/core/config.js";
 import { VisualAIConfigError } from "../../src/errors.js";
 
 const ORIGINAL_ENV = {
@@ -44,6 +44,7 @@ function restoreEnv(): void {
 describe("resolveConfig", () => {
   afterEach(() => {
     restoreEnv();
+    resetDebugDeprecationWarning();
   });
 
   it("returns a fully resolved config with defaults", () => {
@@ -126,17 +127,21 @@ describe("resolveConfig", () => {
       expect(resolved.debugResponse).toBe(false);
     });
 
-    it("inherits from debug=true when not explicitly set", () => {
+    it("does not inherit from debug=true", () => {
+      const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
       const resolved = resolveConfig({ model: "gpt-5-mini", apiKey: "k", debug: true });
-      expect(resolved.debugPrompt).toBe(true);
-      expect(resolved.debugResponse).toBe(true);
+      expect(resolved.debugPrompt).toBe(false);
+      expect(resolved.debugResponse).toBe(false);
+      stderrSpy.mockRestore();
     });
 
-    it("inherits from VISUAL_AI_DEBUG env var", () => {
+    it("does not inherit from VISUAL_AI_DEBUG env var", () => {
+      const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
       process.env.VISUAL_AI_DEBUG = "true";
       const resolved = resolveConfig({ model: "gpt-5-mini", apiKey: "k" });
-      expect(resolved.debugPrompt).toBe(true);
-      expect(resolved.debugResponse).toBe(true);
+      expect(resolved.debugPrompt).toBe(false);
+      expect(resolved.debugResponse).toBe(false);
+      stderrSpy.mockRestore();
     });
 
     it("VISUAL_AI_DEBUG_PROMPT=true enables prompt logging independently", () => {
@@ -175,7 +180,8 @@ describe("resolveConfig", () => {
       expect(resolved.debugResponse).toBe(false);
     });
 
-    it("config.debugPrompt=false suppresses even when debug=true", () => {
+    it("config.debugPrompt=false stays false even when debug=true", () => {
+      const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
       const resolved = resolveConfig({
         model: "gpt-5-mini",
         apiKey: "k",
@@ -184,10 +190,12 @@ describe("resolveConfig", () => {
       });
       expect(resolved.debug).toBe(true);
       expect(resolved.debugPrompt).toBe(false);
-      expect(resolved.debugResponse).toBe(true);
+      expect(resolved.debugResponse).toBe(false);
+      stderrSpy.mockRestore();
     });
 
-    it("config.debugResponse=false suppresses even when debug=true", () => {
+    it("config.debugResponse=false stays false even when debug=true", () => {
+      const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
       const resolved = resolveConfig({
         model: "gpt-5-mini",
         apiKey: "k",
@@ -195,8 +203,9 @@ describe("resolveConfig", () => {
         debugResponse: false,
       });
       expect(resolved.debug).toBe(true);
-      expect(resolved.debugPrompt).toBe(true);
+      expect(resolved.debugPrompt).toBe(false);
       expect(resolved.debugResponse).toBe(false);
+      stderrSpy.mockRestore();
     });
 
     it("throws on invalid VISUAL_AI_DEBUG_PROMPT values", () => {
@@ -221,6 +230,36 @@ describe("resolveConfig", () => {
       process.env.VISUAL_AI_DEBUG_RESPONSE = "";
       const resolved = resolveConfig({ model: "gpt-5-mini", apiKey: "k" });
       expect(resolved.debugResponse).toBe(false);
+    });
+
+    it("emits deprecation warning when debug=true without granular vars", () => {
+      const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
+      resolveConfig({ model: "gpt-5-mini", apiKey: "k", debug: true });
+      const calls = stderrSpy.mock.calls.map((c) => String(c[0]));
+      expect(
+        calls.some((c) => c.includes("VISUAL_AI_DEBUG no longer enables prompt/response")),
+      ).toBe(true);
+      stderrSpy.mockRestore();
+    });
+
+    it("does not emit deprecation warning when debug=true with debugPrompt=true", () => {
+      const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
+      resolveConfig({ model: "gpt-5-mini", apiKey: "k", debug: true, debugPrompt: true });
+      const calls = stderrSpy.mock.calls.map((c) => String(c[0]));
+      expect(
+        calls.some((c) => c.includes("VISUAL_AI_DEBUG no longer enables prompt/response")),
+      ).toBe(false);
+      stderrSpy.mockRestore();
+    });
+
+    it("does not emit deprecation warning when debug=false", () => {
+      const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
+      resolveConfig({ model: "gpt-5-mini", apiKey: "k" });
+      const calls = stderrSpy.mock.calls.map((c) => String(c[0]));
+      expect(
+        calls.some((c) => c.includes("VISUAL_AI_DEBUG no longer enables prompt/response")),
+      ).toBe(false);
+      stderrSpy.mockRestore();
     });
   });
 });

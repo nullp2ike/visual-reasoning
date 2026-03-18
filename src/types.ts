@@ -145,8 +145,11 @@ export type ReasoningEffort = "low" | "medium" | "high" | "xhigh";
 export interface VisualAIConfig {
   apiKey?: string;
   model?: string;
+  /** Enable error diagnostic logging to stderr. Does not enable prompt/response logging — use `debugPrompt` and `debugResponse` for that. */
   debug?: boolean;
+  /** Log prompts to stderr. */
   debugPrompt?: boolean;
+  /** Log responses to stderr. */
   debugResponse?: boolean;
   maxTokens?: number;
   reasoningEffort?: ReasoningEffort;

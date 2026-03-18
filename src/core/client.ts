@@ -28,7 +28,7 @@ import { GoogleDriver } from "../providers/google.js";
 import { OpenAIDriver } from "../providers/openai.js";
 import type { ProviderConfig, ProviderDriver } from "../providers/types.js";
 import { resolveConfig } from "./config.js";
-import { debugLog, processUsage, timedSendMessage } from "./debug.js";
+import { debugLog, processUsage, timedSendMessage, withErrorDebug } from "./debug.js";
 import { generateAiDiff } from "./diff.js";
 import { normalizeImage } from "./image.js";
 import { buildAskPrompt, buildCheckPrompt, buildComparePrompt } from "./prompt.js";
@@ -261,18 +261,20 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
       throw new VisualAIConfigError(`At least one element is required for ${methodName}()`);
     }
 
-    const img = await normalizeImage(image);
-    const prompt = buildElementsVisibilityPrompt(elements, visible, options);
-    debugLog(resolvedConfig, `${methodName} prompt`, prompt, "prompt");
+    return withErrorDebug(resolvedConfig, methodName, async () => {
+      const img = await normalizeImage(image);
+      const prompt = buildElementsVisibilityPrompt(elements, visible, options);
+      debugLog(resolvedConfig, `${methodName} prompt`, prompt, "prompt");
 
-    const response = await timedSendMessage(driver, [img], prompt);
-    debugLog(resolvedConfig, `${methodName} response`, response.text, "response");
+      const response = await timedSendMessage(driver, [img], prompt);
+      debugLog(resolvedConfig, `${methodName} response`, response.text, "response");
 
-    const result = parseCheckResponse(response.text);
-    return {
-      ...result,
-      usage: processUsage(methodName, response.usage, response.durationSeconds, resolvedConfig),
-    };
+      const result = parseCheckResponse(response.text);
+      return {
+        ...result,
+        usage: processUsage(methodName, response.usage, response.durationSeconds, resolvedConfig),
+      };
+    });
   }
 
   return {
@@ -282,67 +284,75 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
         throw new VisualAIConfigError("At least one statement is required for check()");
       }
 
-      const img = await normalizeImage(image);
-      const prompt = buildCheckPrompt(stmts, { instructions: options?.instructions });
-      debugLog(resolvedConfig, "check prompt", prompt, "prompt");
+      return withErrorDebug(resolvedConfig, "check", async () => {
+        const img = await normalizeImage(image);
+        const prompt = buildCheckPrompt(stmts, { instructions: options?.instructions });
+        debugLog(resolvedConfig, "check prompt", prompt, "prompt");
 
-      const response = await timedSendMessage(driver, [img], prompt);
-      debugLog(resolvedConfig, "check response", response.text, "response");
+        const response = await timedSendMessage(driver, [img], prompt);
+        debugLog(resolvedConfig, "check response", response.text, "response");
 
-      const result = parseCheckResponse(response.text);
-      return {
-        ...result,
-        usage: processUsage("check", response.usage, response.durationSeconds, resolvedConfig),
-      };
+        const result = parseCheckResponse(response.text);
+        return {
+          ...result,
+          usage: processUsage("check", response.usage, response.durationSeconds, resolvedConfig),
+        };
+      });
     },
 
     async ask(image, userPrompt, options) {
-      const img = await normalizeImage(image);
-      const prompt = buildAskPrompt(userPrompt, { instructions: options?.instructions });
-      debugLog(resolvedConfig, "ask prompt", prompt, "prompt");
+      return withErrorDebug(resolvedConfig, "ask", async () => {
+        const img = await normalizeImage(image);
+        const prompt = buildAskPrompt(userPrompt, { instructions: options?.instructions });
+        debugLog(resolvedConfig, "ask prompt", prompt, "prompt");
 
-      const response = await timedSendMessage(driver, [img], prompt);
-      debugLog(resolvedConfig, "ask response", response.text, "response");
+        const response = await timedSendMessage(driver, [img], prompt);
+        debugLog(resolvedConfig, "ask response", response.text, "response");
 
-      const result = parseAskResponse(response.text);
-      return {
-        ...result,
-        usage: processUsage("ask", response.usage, response.durationSeconds, resolvedConfig),
-      };
+        const result = parseAskResponse(response.text);
+        return {
+          ...result,
+          usage: processUsage("ask", response.usage, response.durationSeconds, resolvedConfig),
+        };
+      });
     },
 
     async compare(imageA, imageB, options) {
-      const [imgA, imgB] = await Promise.all([normalizeImage(imageA), normalizeImage(imageB)]);
-      const prompt = buildComparePrompt({
-        userPrompt: options?.prompt,
-        instructions: options?.instructions,
-      });
-      debugLog(resolvedConfig, "compare prompt", prompt, "prompt");
+      return withErrorDebug(resolvedConfig, "compare", async () => {
+        const [imgA, imgB] = await Promise.all([normalizeImage(imageA), normalizeImage(imageB)]);
+        const prompt = buildComparePrompt({
+          userPrompt: options?.prompt,
+          instructions: options?.instructions,
+        });
+        debugLog(resolvedConfig, "compare prompt", prompt, "prompt");
 
-      const response = await timedSendMessage(driver, [imgA, imgB], prompt);
-      debugLog(resolvedConfig, "compare response", response.text, "response");
+        const response = await timedSendMessage(driver, [imgA, imgB], prompt);
+        debugLog(resolvedConfig, "compare response", response.text, "response");
 
-      const supportsAnnotatedDiff =
-        resolvedConfig.provider === "google" &&
-        resolvedConfig.model === Model.Google.GEMINI_3_FLASH_PREVIEW;
-      const effectiveDiffImage = options?.diffImage ?? (supportsAnnotatedDiff ? true : false);
+        const supportsAnnotatedDiff =
+          resolvedConfig.provider === "google" &&
+          resolvedConfig.model === Model.Google.GEMINI_3_FLASH_PREVIEW;
+        const effectiveDiffImage = options?.diffImage ?? (supportsAnnotatedDiff ? true : false);
 
-      let diffImage;
-      if (effectiveDiffImage) {
-        try {
-          diffImage = await generateAiDiff(imgA, imgB, resolvedConfig.model, driver);
-        } catch (err: unknown) {
-          const msg = err instanceof Error ? err.message : String(err);
-          process.stderr.write(`[visual-ai-assertions] warning: diff generation failed: ${msg}\n`);
+        let diffImage;
+        if (effectiveDiffImage) {
+          try {
+            diffImage = await generateAiDiff(imgA, imgB, resolvedConfig.model, driver);
+          } catch (err: unknown) {
+            const msg = err instanceof Error ? err.message : String(err);
+            process.stderr.write(
+              `[visual-ai-assertions] warning: diff generation failed: ${msg}\n`,
+            );
+          }
         }
-      }
 
-      const result = parseCompareResponse(response.text);
-      return {
-        ...result,
-        ...(diffImage ? { diffImage } : {}),
-        usage: processUsage("compare", response.usage, response.durationSeconds, resolvedConfig),
-      };
+        const result = parseCompareResponse(response.text);
+        return {
+          ...result,
+          ...(diffImage ? { diffImage } : {}),
+          usage: processUsage("compare", response.usage, response.durationSeconds, resolvedConfig),
+        };
+      });
     },
 
     elementsVisible(image, elements, options) {
@@ -354,68 +364,76 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
     },
 
     async accessibility(image, options) {
-      const img = await normalizeImage(image);
-      const prompt = buildAccessibilityPrompt(options);
-      debugLog(resolvedConfig, "accessibility prompt", prompt, "prompt");
+      return withErrorDebug(resolvedConfig, "accessibility", async () => {
+        const img = await normalizeImage(image);
+        const prompt = buildAccessibilityPrompt(options);
+        debugLog(resolvedConfig, "accessibility prompt", prompt, "prompt");
 
-      const response = await timedSendMessage(driver, [img], prompt);
-      debugLog(resolvedConfig, "accessibility response", response.text, "response");
+        const response = await timedSendMessage(driver, [img], prompt);
+        debugLog(resolvedConfig, "accessibility response", response.text, "response");
 
-      const result = parseCheckResponse(response.text);
-      return {
-        ...result,
-        usage: processUsage(
-          "accessibility",
-          response.usage,
-          response.durationSeconds,
-          resolvedConfig,
-        ),
-      };
+        const result = parseCheckResponse(response.text);
+        return {
+          ...result,
+          usage: processUsage(
+            "accessibility",
+            response.usage,
+            response.durationSeconds,
+            resolvedConfig,
+          ),
+        };
+      });
     },
 
     async layout(image, options) {
-      const img = await normalizeImage(image);
-      const prompt = buildLayoutPrompt(options);
-      debugLog(resolvedConfig, "layout prompt", prompt, "prompt");
+      return withErrorDebug(resolvedConfig, "layout", async () => {
+        const img = await normalizeImage(image);
+        const prompt = buildLayoutPrompt(options);
+        debugLog(resolvedConfig, "layout prompt", prompt, "prompt");
 
-      const response = await timedSendMessage(driver, [img], prompt);
-      debugLog(resolvedConfig, "layout response", response.text, "response");
+        const response = await timedSendMessage(driver, [img], prompt);
+        debugLog(resolvedConfig, "layout response", response.text, "response");
 
-      const result = parseCheckResponse(response.text);
-      return {
-        ...result,
-        usage: processUsage("layout", response.usage, response.durationSeconds, resolvedConfig),
-      };
+        const result = parseCheckResponse(response.text);
+        return {
+          ...result,
+          usage: processUsage("layout", response.usage, response.durationSeconds, resolvedConfig),
+        };
+      });
     },
 
     async pageLoad(image, options) {
-      const img = await normalizeImage(image);
-      const prompt = buildPageLoadPrompt(options);
-      debugLog(resolvedConfig, "pageLoad prompt", prompt, "prompt");
+      return withErrorDebug(resolvedConfig, "pageLoad", async () => {
+        const img = await normalizeImage(image);
+        const prompt = buildPageLoadPrompt(options);
+        debugLog(resolvedConfig, "pageLoad prompt", prompt, "prompt");
 
-      const response = await timedSendMessage(driver, [img], prompt);
-      debugLog(resolvedConfig, "pageLoad response", response.text, "response");
+        const response = await timedSendMessage(driver, [img], prompt);
+        debugLog(resolvedConfig, "pageLoad response", response.text, "response");
 
-      const result = parseCheckResponse(response.text);
-      return {
-        ...result,
-        usage: processUsage("pageLoad", response.usage, response.durationSeconds, resolvedConfig),
-      };
+        const result = parseCheckResponse(response.text);
+        return {
+          ...result,
+          usage: processUsage("pageLoad", response.usage, response.durationSeconds, resolvedConfig),
+        };
+      });
     },
 
     async content(image, options) {
-      const img = await normalizeImage(image);
-      const prompt = buildContentPrompt(options);
-      debugLog(resolvedConfig, "content prompt", prompt, "prompt");
+      return withErrorDebug(resolvedConfig, "content", async () => {
+        const img = await normalizeImage(image);
+        const prompt = buildContentPrompt(options);
+        debugLog(resolvedConfig, "content prompt", prompt, "prompt");
 
-      const response = await timedSendMessage(driver, [img], prompt);
-      debugLog(resolvedConfig, "content response", response.text, "response");
+        const response = await timedSendMessage(driver, [img], prompt);
+        debugLog(resolvedConfig, "content response", response.text, "response");
 
-      const result = parseCheckResponse(response.text);
-      return {
-        ...result,
-        usage: processUsage("content", response.usage, response.durationSeconds, resolvedConfig),
-      };
+        const result = parseCheckResponse(response.text);
+        return {
+          ...result,
+          usage: processUsage("content", response.usage, response.durationSeconds, resolvedConfig),
+        };
+      });
     },
   };
 }

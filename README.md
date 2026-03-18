@@ -387,13 +387,13 @@ The `VisualAIKnownError` union and `isVisualAIKnownError()` helper are useful wh
 
 ### Optional Configuration
 
-| Variable                   | Description                                                                                           |
-| -------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `VISUAL_AI_MODEL`          | Default model when `model` is not set in config. Overrides the provider's default model.              |
-| `VISUAL_AI_DEBUG`          | Enable debug logging (prompts + responses) when `debug` is not set in config. Use `"true"` or `"1"`.  |
-| `VISUAL_AI_DEBUG_PROMPT`   | Enable prompt-only debug logging. Overrides `VISUAL_AI_DEBUG` for prompts. Use `"true"` or `"1"`.     |
-| `VISUAL_AI_DEBUG_RESPONSE` | Enable response-only debug logging. Overrides `VISUAL_AI_DEBUG` for responses. Use `"true"` or `"1"`. |
-| `VISUAL_AI_TRACK_USAGE`    | Enable usage tracking when `trackUsage` is not set in config. Use `"true"` or `"1"` to enable.        |
+| Variable                   | Description                                                                                                                            |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `VISUAL_AI_MODEL`          | Default model when `model` is not set in config. Overrides the provider's default model.                                               |
+| `VISUAL_AI_DEBUG`          | Enable error diagnostic logging when `debug` is not set in config. Does **not** enable prompt/response logging. Use `"true"` or `"1"`. |
+| `VISUAL_AI_DEBUG_PROMPT`   | Enable prompt-only debug logging. Use `"true"` or `"1"`.                                                                               |
+| `VISUAL_AI_DEBUG_RESPONSE` | Enable response-only debug logging. Use `"true"` or `"1"`.                                                                             |
+| `VISUAL_AI_TRACK_USAGE`    | Enable usage tracking when `trackUsage` is not set in config. Use `"true"` or `"1"` to enable.                                         |
 
 ## Configuration
 
@@ -401,9 +401,9 @@ The `VisualAIKnownError` union and `isVisualAIKnownError()` helper are useful wh
 | ----------------- | ------- | ---------------- | ----------------------------------------------------------------------------- |
 | `apiKey`          | string  | env var          | API key for the provider                                                      |
 | `model`           | string  | provider default | Model to use                                                                  |
-| `debug`           | boolean | `false`          | Log prompts and responses to stderr                                           |
-| `debugPrompt`     | boolean | `debug`          | Log only prompts to stderr. Overrides `debug` for prompt logging.             |
-| `debugResponse`   | boolean | `debug`          | Log only responses to stderr. Overrides `debug` for response logging.         |
+| `debug`           | boolean | `false`          | Enable error diagnostic logging to stderr                                     |
+| `debugPrompt`     | boolean | `false`          | Log prompts to stderr                                                         |
+| `debugResponse`   | boolean | `false`          | Log responses to stderr                                                       |
 | `maxTokens`       | number  | `4096`           | Max tokens for AI response                                                    |
 | `reasoningEffort` | string  | `undefined`      | `"low"` `"medium"` `"high"` `"xhigh"` — controls how deeply the model reasons |
 | `trackUsage`      | boolean | `false`          | Log token usage and estimated cost to stderr                                  |
