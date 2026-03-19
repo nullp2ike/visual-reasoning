@@ -17,6 +17,7 @@ describe("parseCheckResponse", () => {
 
     const result = parseCheckResponse(json);
     expect(result.pass).toBe(true);
+    expect(result.reasoning).toBe("1 of 1 checks passed. All checks passed");
     expect(result.statements).toHaveLength(1);
     expect(result.issues).toHaveLength(0);
   });
@@ -69,6 +70,7 @@ describe("parseCheckResponse", () => {
 
     const result = parseCheckResponse(json);
     expect(result.pass).toBe(false);
+    expect(result.reasoning).toBe("0 of 1 checks passed. 1 check failed");
     expect(result.issues).toHaveLength(1);
     expect(result.issues[0]!.priority).toBe("major");
   });
@@ -103,6 +105,110 @@ describe("parseCheckResponse", () => {
 
     const result = parseCheckResponse(json);
     expect(result).not.toHaveProperty("extraField");
+  });
+
+  describe("result consistency enforcement", () => {
+    it("overrides pass to false when any statement fails", () => {
+      const raw = JSON.stringify({
+        pass: true,
+        reasoning: "All checks passed",
+        issues: [],
+        statements: [
+          { statement: "Header visible", pass: true, reasoning: "Visible", confidence: "high" },
+          { statement: "Button visible", pass: false, reasoning: "Not found", confidence: "high" },
+        ],
+      });
+      const result = parseCheckResponse(raw);
+      expect(result.pass).toBe(false);
+      expect(result.reasoning).toMatch(/^1 of 2 checks passed/);
+    });
+
+    it("overrides pass to true when all statements pass", () => {
+      const raw = JSON.stringify({
+        pass: false,
+        reasoning: "1 of 2 checks failed",
+        issues: [],
+        statements: [
+          { statement: "Header visible", pass: true, reasoning: "Visible", confidence: "high" },
+          { statement: "Button visible", pass: true, reasoning: "Visible", confidence: "high" },
+        ],
+      });
+      const result = parseCheckResponse(raw);
+      expect(result.pass).toBe(true);
+      expect(result.reasoning).toMatch(/^2 of 2 checks passed/);
+    });
+
+    it("adds count prefix even when model pass is consistent", () => {
+      const raw = JSON.stringify({
+        pass: true,
+        reasoning: "Everything looks good",
+        issues: [],
+        statements: [
+          { statement: "Header visible", pass: true, reasoning: "Visible", confidence: "high" },
+        ],
+      });
+      const result = parseCheckResponse(raw);
+      expect(result.pass).toBe(true);
+      expect(result.reasoning).toMatch(/^1 of 1 checks passed/);
+      expect(result.reasoning).toContain("Everything looks good");
+    });
+
+    it("preserves model reasoning after count prefix", () => {
+      const raw = JSON.stringify({
+        pass: false,
+        reasoning: "The submit button is hidden behind a modal overlay",
+        issues: [
+          {
+            priority: "major",
+            category: "missing-element",
+            description: "Button hidden",
+            suggestion: "Fix z-index",
+          },
+        ],
+        statements: [
+          { statement: "Header visible", pass: true, reasoning: "Visible", confidence: "high" },
+          {
+            statement: "Button visible",
+            pass: false,
+            reasoning: "Hidden by modal",
+            confidence: "high",
+          },
+          { statement: "Footer visible", pass: true, reasoning: "Visible", confidence: "high" },
+        ],
+      });
+      const result = parseCheckResponse(raw);
+      expect(result.pass).toBe(false);
+      expect(result.reasoning).toBe(
+        "2 of 3 checks passed. The submit button is hidden behind a modal overlay",
+      );
+    });
+
+    it("preserves model pass when statements array is empty", () => {
+      const raw = JSON.stringify({
+        pass: false,
+        reasoning: "Could not evaluate",
+        issues: [],
+        statements: [],
+      });
+      const result = parseCheckResponse(raw);
+      expect(result.pass).toBe(false);
+      expect(result.reasoning).toBe("Could not evaluate");
+    });
+
+    it("handles all statements failing", () => {
+      const raw = JSON.stringify({
+        pass: false,
+        reasoning: "Nothing passed",
+        issues: [],
+        statements: [
+          { statement: "A", pass: false, reasoning: "Failed", confidence: "high" },
+          { statement: "B", pass: false, reasoning: "Failed", confidence: "high" },
+        ],
+      });
+      const result = parseCheckResponse(raw);
+      expect(result.pass).toBe(false);
+      expect(result.reasoning).toMatch(/^0 of 2 checks passed/);
+    });
   });
 });
 

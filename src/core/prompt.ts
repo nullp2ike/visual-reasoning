@@ -10,12 +10,18 @@ Each issue must have:
 - "suggestion": how to fix or improve it
 `;
 
-const CHECK_OUTPUT_SCHEMA = `Respond with a JSON object matching this exact structure:
+const CHECK_OUTPUT_SCHEMA = `IMPORTANT: Follow this evaluation order:
+1. First, evaluate EACH statement independently and populate the "statements" array
+2. Then, set "pass" to true ONLY if every statement passed (logical AND of all statement results)
+3. Write "reasoning" as a brief overall summary of the evaluation
+4. Include "issues" only for statements that failed
+
+Respond with a JSON object matching this exact structure:
 {
-  "pass": boolean,          // true ONLY if ALL statements are true
-  "reasoning": string,      // brief overall summary (e.g. "3 of 4 checks passed...")
-  "issues": [...],          // list of issues found (empty if all pass)
-  "statements": [           // one entry per statement, in order
+  "pass": boolean,          // true ONLY if ALL statements passed — derive from statements array
+  "reasoning": string,      // brief overall summary of the evaluation
+  "issues": [...],          // one issue per failing statement (empty if all pass)
+  "statements": [           // one entry per statement, in order — evaluate these FIRST
     {
       "statement": string,  // the original statement text
       "pass": boolean,      // whether this statement is true
@@ -34,7 +40,7 @@ Only include issues for statements that fail. If all statements pass, issues sho
 Example for a failing check:
 {
   "pass": false,
-  "reasoning": "1 of 2 checks failed. The submit button is not visible.",
+  "reasoning": "The submit button is not visible on the page.",
   "issues": [
     { "priority": "major", "category": "missing-element", "description": "Submit button is not visible on the page", "suggestion": "Verify the submit button component is rendered and not hidden by CSS" }
   ],

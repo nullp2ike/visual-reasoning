@@ -35,8 +35,27 @@ function parseResponse<T>(raw: string, schema: z.ZodType<T>): T {
   return result.data;
 }
 
+function reconcileCheckResult(result: Omit<CheckResult, "usage">): Omit<CheckResult, "usage"> {
+  if (result.statements.length === 0) {
+    return result;
+  }
+
+  const passCount = result.statements.filter((s) => s.pass).length;
+  const total = result.statements.length;
+  const computedPass = passCount === total;
+  const countPrefix = `${passCount} of ${total} checks passed`;
+  const reasoning = `${countPrefix}. ${result.reasoning}`;
+
+  return {
+    ...result,
+    pass: computedPass,
+    reasoning,
+  };
+}
+
 export function parseCheckResponse(raw: string): Omit<CheckResult, "usage"> {
-  return parseResponse(raw, CheckResponseSchema);
+  const result = parseResponse(raw, CheckResponseSchema);
+  return reconcileCheckResult(result);
 }
 
 export function parseAskResponse(raw: string): Omit<AskResult, "usage"> {
