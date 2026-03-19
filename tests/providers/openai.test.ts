@@ -85,7 +85,7 @@ describe("OpenAIDriver", () => {
 
     const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
     expect(callArgs).toHaveProperty("text", {
-      format: { type: "json_object", name: "visual_ai_response" },
+      format: { type: "json_object" },
     });
   });
 
@@ -284,11 +284,9 @@ describe("OpenAIDriver", () => {
     expect(callArgs).toHaveProperty("text", {
       format: {
         type: "json_schema",
-        json_schema: {
-          name: "visual_ai_response",
-          strict: true,
-          schema,
-        },
+        name: "visual_ai_response",
+        strict: true,
+        schema,
       },
     });
   });
@@ -305,7 +303,7 @@ describe("OpenAIDriver", () => {
 
     const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
     expect(callArgs).toHaveProperty("text", {
-      format: { type: "json_object", name: "visual_ai_response" },
+      format: { type: "json_object" },
     });
   });
 });
