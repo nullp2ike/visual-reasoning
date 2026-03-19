@@ -95,18 +95,18 @@ describe("GoogleDriver", () => {
 
     const callArgs = mockGenerateContent.mock.calls[0]![0] as Record<string, unknown>;
     const config = callArgs.config as Record<string, unknown>;
-    expect(config).toHaveProperty("thinkingConfig", { thinkingBudget: 8192 });
+    expect(config).toHaveProperty("thinkingConfig", { thinkingLevel: "low" });
   });
 
-  it("maps reasoning effort levels to correct budget values", async () => {
-    const expectedBudgets: Record<string, number> = {
-      low: 1024,
-      medium: 8192,
-      high: 24576,
-      xhigh: 24576,
+  it("maps reasoning effort levels to correct thinking levels", async () => {
+    const expectedLevels: Record<string, string> = {
+      low: "minimal",
+      medium: "low",
+      high: "medium",
+      xhigh: "high",
     };
 
-    for (const [level, budget] of Object.entries(expectedBudgets)) {
+    for (const [level, thinkingLevel] of Object.entries(expectedLevels)) {
       mockGenerateContent.mockResolvedValueOnce({ text: "{}" });
 
       const driver = makeDriver({
@@ -116,7 +116,7 @@ describe("GoogleDriver", () => {
 
       const callArgs = mockGenerateContent.mock.calls.at(-1)![0] as Record<string, unknown>;
       const config = callArgs.config as Record<string, unknown>;
-      expect(config).toHaveProperty("thinkingConfig", { thinkingBudget: budget });
+      expect(config).toHaveProperty("thinkingConfig", { thinkingLevel });
     }
   });
 

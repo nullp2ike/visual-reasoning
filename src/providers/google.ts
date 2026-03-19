@@ -56,12 +56,12 @@ interface GoogleClient {
   };
 }
 
-const GOOGLE_THINKING_BUDGET: Record<ReasoningEffort, number> = {
-  low: 1024,
-  medium: 8192,
-  high: 24576,
-  xhigh: 24576,
-};
+const GOOGLE_THINKING_LEVEL = {
+  low: "minimal",
+  medium: "low",
+  high: "medium",
+  xhigh: "high",
+} as const satisfies Record<ReasoningEffort, string>;
 
 export class GoogleDriver implements ProviderDriver {
   private client: GoogleClient | null;
@@ -120,7 +120,7 @@ export class GoogleDriver implements ProviderDriver {
           maxOutputTokens: this.maxTokens,
           ...(this.reasoningEffort && {
             thinkingConfig: {
-              thinkingBudget: GOOGLE_THINKING_BUDGET[this.reasoningEffort],
+              thinkingLevel: GOOGLE_THINKING_LEVEL[this.reasoningEffort],
             },
           }),
         },

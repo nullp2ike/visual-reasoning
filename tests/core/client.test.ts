@@ -684,7 +684,7 @@ describe("visualAI", () => {
       await ai.check(image, "test");
 
       const callArgs = mockGoogleGenerate.mock.calls[0][0];
-      expect(callArgs.config).toHaveProperty("thinkingConfig", { thinkingBudget: 8192 });
+      expect(callArgs.config).toHaveProperty("thinkingConfig", { thinkingLevel: "low" });
     });
   });
 
