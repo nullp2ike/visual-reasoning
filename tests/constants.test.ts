@@ -40,6 +40,7 @@ describe("Model", () => {
 
   it("has correct Google model values", () => {
     expect(Model.Google.GEMINI_3_1_PRO_PREVIEW).toBe("gemini-3.1-pro-preview");
+    expect(Model.Google.GEMINI_3_1_FLASH_LITE_PREVIEW).toBe("gemini-3.1-flash-lite-preview");
     expect(Model.Google.GEMINI_3_FLASH_PREVIEW).toBe("gemini-3-flash-preview");
   });
 
