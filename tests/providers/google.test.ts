@@ -4,6 +4,7 @@ import {
   VisualAIAuthError,
   VisualAIProviderError,
   VisualAIRateLimitError,
+  VisualAITruncationError,
 } from "../../src/errors.js";
 import type { NormalizedImage } from "../../src/types.js";
 
@@ -161,6 +162,87 @@ describe("GoogleDriver", () => {
     const driver = makeDriver();
     const result = await driver.sendMessage([makeImage()], "test");
     expect(result.usage).toBeUndefined();
+  });
+
+  it("throws VisualAITruncationError when finishReason is MAX_TOKENS", async () => {
+    mockGenerateContent.mockResolvedValueOnce({
+      text: '{"pass": tr',
+      candidates: [{ finishReason: "MAX_TOKENS" }],
+      usageMetadata: { promptTokenCount: 100, candidatesTokenCount: 4096 },
+    });
+
+    const driver = makeDriver();
+    const err = await driver.sendMessage([makeImage()], "test").catch((e: unknown) => e);
+    expect(err).toBeInstanceOf(VisualAITruncationError);
+    const truncErr = err as VisualAITruncationError;
+    expect(truncErr.code).toBe("RESPONSE_TRUNCATED");
+    expect(truncErr.partialResponse).toBe('{"pass": tr');
+    expect(truncErr.maxTokens).toBe(4096);
+  });
+
+  it("throws VisualAIProviderError when finishReason is SAFETY", async () => {
+    mockGenerateContent.mockResolvedValueOnce({
+      text: "",
+      candidates: [{ finishReason: "SAFETY" }],
+    });
+
+    const driver = makeDriver();
+    await expect(driver.sendMessage([makeImage()], "test")).rejects.toThrow(VisualAIProviderError);
+  });
+
+  it("throws VisualAIProviderError when finishReason is RECITATION", async () => {
+    mockGenerateContent.mockResolvedValueOnce({
+      text: "",
+      candidates: [{ finishReason: "RECITATION" }],
+    });
+
+    const driver = makeDriver();
+    await expect(driver.sendMessage([makeImage()], "test")).rejects.toThrow(VisualAIProviderError);
+  });
+
+  it("does not throw on finishReason STOP", async () => {
+    mockGenerateContent.mockResolvedValueOnce({
+      text: '{"pass": true}',
+      candidates: [{ finishReason: "STOP" }],
+      usageMetadata: { promptTokenCount: 100, candidatesTokenCount: 50 },
+    });
+
+    const driver = makeDriver();
+    const result = await driver.sendMessage([makeImage()], "test");
+    expect(result.text).toBe('{"pass": true}');
+  });
+
+  it("extracts reasoning tokens from usageMetadata", async () => {
+    mockGenerateContent.mockResolvedValueOnce({
+      text: "{}",
+      candidates: [{ finishReason: "STOP" }],
+      usageMetadata: {
+        promptTokenCount: 100,
+        candidatesTokenCount: 200,
+        thoughtsTokenCount: 150,
+      },
+    });
+
+    const driver = makeDriver();
+    const result = await driver.sendMessage([makeImage()], "test");
+    expect(result.usage).toEqual({
+      inputTokens: 100,
+      outputTokens: 200,
+      reasoningTokens: 150,
+    });
+  });
+
+  it("omits reasoning tokens when not present in usage", async () => {
+    mockGenerateContent.mockResolvedValueOnce({
+      text: "{}",
+      candidates: [{ finishReason: "STOP" }],
+      usageMetadata: { promptTokenCount: 100, candidatesTokenCount: 50 },
+    });
+
+    const driver = makeDriver();
+    const result = await driver.sendMessage([makeImage()], "test");
+    expect(result.usage).toEqual({ inputTokens: 100, outputTokens: 50 });
+    expect(result.usage).not.toHaveProperty("reasoningTokens");
   });
 
   describe("generateImage", () => {

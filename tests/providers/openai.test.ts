@@ -4,6 +4,7 @@ import {
   VisualAIAuthError,
   VisualAIRateLimitError,
   VisualAIProviderError,
+  VisualAITruncationError,
 } from "../../src/errors.js";
 import type { NormalizedImage } from "../../src/types.js";
 
@@ -24,10 +25,12 @@ function makeImage(): NormalizedImage {
   };
 }
 
-function makeResponse(text = "{}") {
+function makeResponse(text = "{}", overrides: Record<string, unknown> = {}) {
   return {
     output_text: text,
     usage: { input_tokens: 100, output_tokens: 50 },
+    status: "completed",
+    ...overrides,
   };
 }
 
@@ -193,7 +196,7 @@ describe("OpenAIDriver", () => {
   });
 
   it("handles missing usage in response", async () => {
-    mockCreate.mockResolvedValueOnce({ output_text: "{}" });
+    mockCreate.mockResolvedValueOnce({ output_text: "{}", status: "completed" });
 
     const driver = new OpenAIDriver({
       apiKey: "test-key",
@@ -202,5 +205,103 @@ describe("OpenAIDriver", () => {
     });
     const result = await driver.sendMessage([makeImage()], "test");
     expect(result.usage).toBeUndefined();
+  });
+
+  it("throws VisualAITruncationError when status is incomplete", async () => {
+    mockCreate.mockResolvedValueOnce({
+      output_text: '{"pass": tr',
+      usage: { input_tokens: 100, output_tokens: 4096 },
+      status: "incomplete",
+      incomplete_details: { reason: "max_output_tokens" },
+    });
+
+    const driver = new OpenAIDriver({
+      apiKey: "test-key",
+      model: "gpt-5-mini",
+      maxTokens: 4096,
+    });
+
+    const err = await driver.sendMessage([makeImage()], "test").catch((e: unknown) => e);
+    expect(err).toBeInstanceOf(VisualAITruncationError);
+    const truncErr = err as VisualAITruncationError;
+    expect(truncErr.code).toBe("RESPONSE_TRUNCATED");
+    expect(truncErr.partialResponse).toBe('{"pass": tr');
+    expect(truncErr.maxTokens).toBe(4096);
+    expect(truncErr.message).toContain("max_output_tokens");
+  });
+
+  it("extracts reasoning tokens from usage", async () => {
+    mockCreate.mockResolvedValueOnce({
+      output_text: "{}",
+      usage: {
+        input_tokens: 100,
+        output_tokens: 500,
+        output_tokens_details: { reasoning_tokens: 350 },
+      },
+      status: "completed",
+    });
+
+    const driver = new OpenAIDriver({
+      apiKey: "test-key",
+      model: "gpt-5-mini",
+      maxTokens: 4096,
+    });
+    const result = await driver.sendMessage([makeImage()], "test");
+    expect(result.usage).toEqual({
+      inputTokens: 100,
+      outputTokens: 500,
+      reasoningTokens: 350,
+    });
+  });
+
+  it("omits reasoning tokens when not present", async () => {
+    mockCreate.mockResolvedValueOnce(makeResponse());
+
+    const driver = new OpenAIDriver({
+      apiKey: "test-key",
+      model: "gpt-5-mini",
+      maxTokens: 4096,
+    });
+    const result = await driver.sendMessage([makeImage()], "test");
+    expect(result.usage).toEqual({ inputTokens: 100, outputTokens: 50 });
+    expect(result.usage).not.toHaveProperty("reasoningTokens");
+  });
+
+  it("uses json_schema format when responseSchema is provided", async () => {
+    mockCreate.mockResolvedValueOnce(makeResponse());
+
+    const driver = new OpenAIDriver({
+      apiKey: "test-key",
+      model: "gpt-5-mini",
+      maxTokens: 4096,
+    });
+    const schema = { type: "object", properties: { pass: { type: "boolean" } } };
+    await driver.sendMessage([makeImage()], "test", { responseSchema: schema });
+
+    const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
+    expect(callArgs).toHaveProperty("text", {
+      format: {
+        type: "json_schema",
+        json_schema: {
+          name: "visual_ai_response",
+          strict: true,
+          schema,
+        },
+      },
+    });
+  });
+
+  it("falls back to json_object when no responseSchema is provided", async () => {
+    mockCreate.mockResolvedValueOnce(makeResponse());
+
+    const driver = new OpenAIDriver({
+      apiKey: "test-key",
+      model: "gpt-5-mini",
+      maxTokens: 4096,
+    });
+    await driver.sendMessage([makeImage()], "test");
+
+    const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
+    expect(callArgs).toHaveProperty("text", { format: { type: "json_object" } });
   });
 });

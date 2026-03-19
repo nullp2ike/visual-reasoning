@@ -26,13 +26,28 @@ import type {
 import { AnthropicDriver } from "../providers/anthropic.js";
 import { GoogleDriver } from "../providers/google.js";
 import { OpenAIDriver } from "../providers/openai.js";
-import type { ProviderConfig, ProviderDriver } from "../providers/types.js";
+import type { ProviderConfig, ProviderDriver, SendMessageOptions } from "../providers/types.js";
 import { resolveConfig } from "./config.js";
 import { debugLog, processUsage, timedSendMessage, withErrorDebug } from "./debug.js";
 import { generateAiDiff } from "./diff.js";
 import { normalizeImage } from "./image.js";
 import { buildAskPrompt, buildCheckPrompt, buildComparePrompt } from "./prompt.js";
-import { parseAskResponse, parseCheckResponse, parseCompareResponse } from "./response.js";
+import {
+  AskResponseSchema,
+  CheckResponseSchema,
+  CompareResponseSchema,
+  parseAskResponse,
+  parseCheckResponse,
+  parseCompareResponse,
+} from "./response.js";
+import { zodToJsonSchema } from "zod-to-json-schema";
+import type { z } from "zod";
+
+function toSchemaOptions(schema: z.ZodType): SendMessageOptions {
+  return {
+    responseSchema: zodToJsonSchema(schema, { target: "openAi" }) as Record<string, unknown>,
+  };
+}
 
 /**
  * High-level client for running visual checks against screenshots or other images.
@@ -211,6 +226,10 @@ function createDriver(provider: ProviderName, config: ProviderConfig): ProviderD
   return PROVIDER_REGISTRY[provider](config);
 }
 
+const checkSchemaOptions = toSchemaOptions(CheckResponseSchema);
+const askSchemaOptions = toSchemaOptions(AskResponseSchema);
+const compareSchemaOptions = toSchemaOptions(CompareResponseSchema);
+
 /**
  * Creates a configured visual AI client.
  *
@@ -266,7 +285,7 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
       const prompt = buildElementsVisibilityPrompt(elements, visible, options);
       debugLog(resolvedConfig, `${methodName} prompt`, prompt, "prompt");
 
-      const response = await timedSendMessage(driver, [img], prompt);
+      const response = await timedSendMessage(driver, [img], prompt, checkSchemaOptions);
       debugLog(resolvedConfig, `${methodName} response`, response.text, "response");
 
       const result = parseCheckResponse(response.text);
@@ -289,7 +308,7 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
         const prompt = buildCheckPrompt(stmts, { instructions: options?.instructions });
         debugLog(resolvedConfig, "check prompt", prompt, "prompt");
 
-        const response = await timedSendMessage(driver, [img], prompt);
+        const response = await timedSendMessage(driver, [img], prompt, checkSchemaOptions);
         debugLog(resolvedConfig, "check response", response.text, "response");
 
         const result = parseCheckResponse(response.text);
@@ -306,7 +325,7 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
         const prompt = buildAskPrompt(userPrompt, { instructions: options?.instructions });
         debugLog(resolvedConfig, "ask prompt", prompt, "prompt");
 
-        const response = await timedSendMessage(driver, [img], prompt);
+        const response = await timedSendMessage(driver, [img], prompt, askSchemaOptions);
         debugLog(resolvedConfig, "ask response", response.text, "response");
 
         const result = parseAskResponse(response.text);
@@ -326,7 +345,7 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
         });
         debugLog(resolvedConfig, "compare prompt", prompt, "prompt");
 
-        const response = await timedSendMessage(driver, [imgA, imgB], prompt);
+        const response = await timedSendMessage(driver, [imgA, imgB], prompt, compareSchemaOptions);
         debugLog(resolvedConfig, "compare response", response.text, "response");
 
         const supportsAnnotatedDiff =
@@ -369,7 +388,7 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
         const prompt = buildAccessibilityPrompt(options);
         debugLog(resolvedConfig, "accessibility prompt", prompt, "prompt");
 
-        const response = await timedSendMessage(driver, [img], prompt);
+        const response = await timedSendMessage(driver, [img], prompt, checkSchemaOptions);
         debugLog(resolvedConfig, "accessibility response", response.text, "response");
 
         const result = parseCheckResponse(response.text);
@@ -391,7 +410,7 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
         const prompt = buildLayoutPrompt(options);
         debugLog(resolvedConfig, "layout prompt", prompt, "prompt");
 
-        const response = await timedSendMessage(driver, [img], prompt);
+        const response = await timedSendMessage(driver, [img], prompt, checkSchemaOptions);
         debugLog(resolvedConfig, "layout response", response.text, "response");
 
         const result = parseCheckResponse(response.text);
@@ -408,7 +427,7 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
         const prompt = buildPageLoadPrompt(options);
         debugLog(resolvedConfig, "pageLoad prompt", prompt, "prompt");
 
-        const response = await timedSendMessage(driver, [img], prompt);
+        const response = await timedSendMessage(driver, [img], prompt, checkSchemaOptions);
         debugLog(resolvedConfig, "pageLoad response", response.text, "response");
 
         const result = parseCheckResponse(response.text);
@@ -425,7 +444,7 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
         const prompt = buildContentPrompt(options);
         debugLog(resolvedConfig, "content prompt", prompt, "prompt");
 
-        const response = await timedSendMessage(driver, [img], prompt);
+        const response = await timedSendMessage(driver, [img], prompt, checkSchemaOptions);
         debugLog(resolvedConfig, "content response", response.text, "response");
 
         const result = parseCheckResponse(response.text);

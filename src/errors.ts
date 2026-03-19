@@ -10,6 +10,7 @@ export type VisualAIErrorCode =
   | "PROVIDER_ERROR"
   | "IMAGE_INVALID"
   | "RESPONSE_PARSE_FAILED"
+  | "RESPONSE_TRUNCATED"
   | "CONFIG_INVALID"
   | "ASSERTION_FAILED";
 
@@ -136,6 +137,30 @@ export class VisualAIResponseParseError extends VisualAIError<"RESPONSE_PARSE_FA
 }
 
 /**
+ * Thrown when a provider response is truncated due to token budget exhaustion.
+ *
+ * Carries `partialResponse` and `maxTokens` so callers can inspect the output
+ * and adjust configuration.
+ *
+ * @example
+ * ```ts
+ * throw new VisualAITruncationError("Response truncated", partialText, 4096);
+ * ```
+ */
+export class VisualAITruncationError extends VisualAIError<"RESPONSE_TRUNCATED"> {
+  declare readonly code: "RESPONSE_TRUNCATED";
+  readonly partialResponse: string;
+  readonly maxTokens: number;
+
+  constructor(message: string, partialResponse: string, maxTokens: number) {
+    super(message, "RESPONSE_TRUNCATED");
+    this.name = "VisualAITruncationError";
+    this.partialResponse = partialResponse;
+    this.maxTokens = maxTokens;
+  }
+}
+
+/**
  * Thrown when library configuration is missing or invalid.
  *
  * @example
@@ -182,6 +207,7 @@ export type VisualAIKnownError =
   | VisualAIProviderError
   | VisualAIImageError
   | VisualAIResponseParseError
+  | VisualAITruncationError
   | VisualAIConfigError
   | VisualAIAssertionError;
 
@@ -217,6 +243,7 @@ export function isVisualAIKnownError(error: unknown): error is VisualAIKnownErro
     error instanceof VisualAIProviderError ||
     error instanceof VisualAIImageError ||
     error instanceof VisualAIResponseParseError ||
+    error instanceof VisualAITruncationError ||
     error instanceof VisualAIConfigError ||
     error instanceof VisualAIAssertionError
   );

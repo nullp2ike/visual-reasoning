@@ -1,4 +1,9 @@
-import { DEFAULT_MAX_TOKENS, DEFAULT_MODELS, MODEL_TO_PROVIDER } from "../constants.js";
+import {
+  DEFAULT_MAX_TOKENS,
+  DEFAULT_MODELS,
+  MODEL_TO_PROVIDER,
+  OPENAI_REASONING_MAX_TOKENS,
+} from "../constants.js";
 import { VisualAIConfigError } from "../errors.js";
 import type { ProviderName, VisualAIConfig } from "../types.js";
 
@@ -89,11 +94,28 @@ export function resolveConfig(config: VisualAIConfig): ResolvedConfig {
     );
   }
 
+  const userSetMaxTokens = config.maxTokens !== undefined;
+  let maxTokens = config.maxTokens ?? DEFAULT_MAX_TOKENS;
+
+  // OpenAI reasoning tokens share the output budget, so auto-increase for high/xhigh
+  if (
+    !userSetMaxTokens &&
+    provider === "openai" &&
+    (config.reasoningEffort === "high" || config.reasoningEffort === "xhigh")
+  ) {
+    maxTokens = OPENAI_REASONING_MAX_TOKENS;
+    if (debug) {
+      process.stderr.write(
+        `[visual-ai-assertions] Auto-increased maxTokens from ${DEFAULT_MAX_TOKENS} to ${OPENAI_REASONING_MAX_TOKENS} for OpenAI with reasoningEffort "${config.reasoningEffort}".\n`,
+      );
+    }
+  }
+
   return {
     provider,
     apiKey: config.apiKey,
     model,
-    maxTokens: config.maxTokens ?? DEFAULT_MAX_TOKENS,
+    maxTokens,
     reasoningEffort: config.reasoningEffort,
     debug,
     debugPrompt,

@@ -52,6 +52,13 @@ export const DEFAULT_MODELS = {
 
 export const DEFAULT_MAX_TOKENS = 4096;
 
+/**
+ * Increased token budget for OpenAI when reasoning effort is high/xhigh.
+ * Reasoning tokens share the output budget on OpenAI, so the default 4096
+ * is insufficient for higher reasoning levels.
+ */
+export const OPENAI_REASONING_MAX_TOKENS = 16384;
+
 // --- Reverse map: model → provider ---
 
 export const MODEL_TO_PROVIDER: ReadonlyMap<string, ProviderName> = new Map([

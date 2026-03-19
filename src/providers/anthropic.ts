@@ -1,12 +1,18 @@
-import { VisualAIAuthError, VisualAIConfigError } from "../errors.js";
+import { VisualAIAuthError, VisualAIConfigError, VisualAITruncationError } from "../errors.js";
 import { mapProviderError } from "./error-mapper.js";
 import type { NormalizedImage } from "../types.js";
-import type { ProviderConfig, ProviderDriver, RawProviderResponse } from "./types.js";
+import type {
+  ProviderConfig,
+  ProviderDriver,
+  RawProviderResponse,
+  SendMessageOptions,
+} from "./types.js";
 
 /** Minimal interface for the Anthropic SDK client used by this driver. */
 interface AnthropicMessage {
   content: Array<{ type: string; text?: string }>;
   usage: { input_tokens: number; output_tokens: number };
+  stop_reason?: string;
 }
 
 interface AnthropicClient {
@@ -54,7 +60,11 @@ export class AnthropicDriver implements ProviderDriver {
     return this.client;
   }
 
-  async sendMessage(images: NormalizedImage[], prompt: string): Promise<RawProviderResponse> {
+  async sendMessage(
+    images: NormalizedImage[],
+    prompt: string,
+    _options?: SendMessageOptions,
+  ): Promise<RawProviderResponse> {
     const client = await this.getClient();
 
     const imageBlocks = images.map((img) => ({
@@ -90,6 +100,14 @@ export class AnthropicDriver implements ProviderDriver {
       const textBlock = message.content.find((block) => block.type === "text");
       const text = textBlock?.text ?? "";
 
+      if (message.stop_reason === "max_tokens") {
+        throw new VisualAITruncationError(
+          `Response truncated: Anthropic stopped due to max_tokens limit (${this.maxTokens} tokens). Increase maxTokens in your config or lower reasoningEffort.`,
+          text,
+          this.maxTokens,
+        );
+      }
+
       return {
         text,
         usage: {
@@ -98,6 +116,7 @@ export class AnthropicDriver implements ProviderDriver {
         },
       };
     } catch (err) {
+      if (err instanceof VisualAITruncationError) throw err;
       throw mapProviderError(err);
     }
   }

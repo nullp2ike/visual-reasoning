@@ -1,5 +1,10 @@
 import { buildAiDiffCodeExecutionPrompt } from "../core/prompt.js";
-import { VisualAIAuthError, VisualAIConfigError, VisualAIProviderError } from "../errors.js";
+import {
+  VisualAIAuthError,
+  VisualAIConfigError,
+  VisualAIProviderError,
+  VisualAITruncationError,
+} from "../errors.js";
 import { mapProviderError } from "./error-mapper.js";
 import type { NormalizedImage, ReasoningEffort } from "../types.js";
 import type {
@@ -8,6 +13,7 @@ import type {
   ProviderConfig,
   ProviderDriver,
   RawProviderResponse,
+  SendMessageOptions,
 } from "./types.js";
 
 const DEFAULT_IMAGE_GEN_MODEL = "gemini-2.5-flash-image";
@@ -43,10 +49,12 @@ interface GoogleGenerateContentResponse {
     content?: {
       parts?: GeminiImagePart[];
     };
+    finishReason?: string;
   }>;
   usageMetadata?: {
     promptTokenCount?: number;
     candidatesTokenCount?: number;
+    thoughtsTokenCount?: number;
   };
 }
 
@@ -108,7 +116,11 @@ export class GoogleDriver implements ProviderDriver {
     return this.client;
   }
 
-  async sendMessage(images: NormalizedImage[], prompt: string): Promise<RawProviderResponse> {
+  async sendMessage(
+    images: NormalizedImage[],
+    prompt: string,
+    _options?: SendMessageOptions,
+  ): Promise<RawProviderResponse> {
     const client = await this.getClient();
 
     try {
@@ -126,7 +138,22 @@ export class GoogleDriver implements ProviderDriver {
         },
       });
 
+      const finishReason = response.candidates?.[0]?.finishReason;
+      if (finishReason === "MAX_TOKENS") {
+        throw new VisualAITruncationError(
+          `Response truncated: Google returned finishReason "MAX_TOKENS". The model exhausted the output token budget (${this.maxTokens} tokens). Increase maxTokens in your config or lower reasoningEffort.`,
+          response.text ?? "",
+          this.maxTokens,
+        );
+      }
+      if (finishReason && finishReason !== "STOP") {
+        throw new VisualAIProviderError(
+          `Response blocked: Google returned finishReason "${finishReason}".`,
+        );
+      }
+
       const text = response.text ?? "";
+      const thoughtsTokenCount = response.usageMetadata?.thoughtsTokenCount;
 
       return {
         text,
@@ -134,10 +161,12 @@ export class GoogleDriver implements ProviderDriver {
           ? {
               inputTokens: response.usageMetadata.promptTokenCount ?? 0,
               outputTokens: response.usageMetadata.candidatesTokenCount ?? 0,
+              ...(thoughtsTokenCount !== undefined && { reasoningTokens: thoughtsTokenCount }),
             }
           : undefined,
       };
     } catch (err) {
+      if (err instanceof VisualAITruncationError || err instanceof VisualAIProviderError) throw err;
       throw mapProviderError(err);
     }
   }

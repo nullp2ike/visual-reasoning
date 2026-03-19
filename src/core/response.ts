@@ -9,9 +9,9 @@ function stripCodeFences(text: string): string {
   return match?.[1] ?? trimmed;
 }
 
-const CheckResponseSchema = CheckResultSchema.omit({ usage: true });
-const AskResponseSchema = AskResultSchema.omit({ usage: true });
-const CompareResponseSchema = CompareResultSchema.omit({ usage: true });
+export const CheckResponseSchema = CheckResultSchema.omit({ usage: true });
+export const AskResponseSchema = AskResultSchema.omit({ usage: true });
+export const CompareResponseSchema = CompareResultSchema.omit({ usage: true });
 
 function parseResponse<T>(raw: string, schema: z.ZodType<T>): T {
   let parsed: unknown;

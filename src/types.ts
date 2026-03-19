@@ -55,6 +55,8 @@ export type StatementResult = z.infer<typeof StatementResultSchema>;
 export const UsageInfoSchema = z.object({
   inputTokens: z.number(),
   outputTokens: z.number(),
+  /** Reasoning/thinking tokens consumed by the model (informational, typically included within outputTokens). */
+  reasoningTokens: z.number().optional(),
   estimatedCost: z.number().optional(),
   durationSeconds: z.number().nonnegative().optional(),
 });

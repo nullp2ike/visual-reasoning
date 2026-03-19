@@ -8,6 +8,7 @@ import {
   VisualAIProviderError,
   VisualAIRateLimitError,
   VisualAIResponseParseError,
+  VisualAITruncationError,
 } from "../../src/index.js";
 
 export function describeKnownError(error: VisualAIKnownError): string {
@@ -22,6 +23,8 @@ export function describeKnownError(error: VisualAIKnownError): string {
       return error.message;
     case "RESPONSE_PARSE_FAILED":
       return error.rawResponse;
+    case "RESPONSE_TRUNCATED":
+      return error.partialResponse;
     case "CONFIG_INVALID":
       return error.message;
     case "ASSERTION_FAILED":
@@ -45,6 +48,8 @@ export function describeUnknownError(error: unknown): string {
       return error.message;
     case "RESPONSE_PARSE_FAILED":
       return error.rawResponse;
+    case "RESPONSE_TRUNCATED":
+      return error.partialResponse;
     case "CONFIG_INVALID":
       return error.message;
     case "ASSERTION_FAILED":
@@ -58,6 +63,7 @@ export const knownErrors: VisualAIKnownError[] = [
   new VisualAIProviderError("provider", 500),
   new VisualAIImageError("image"),
   new VisualAIResponseParseError("parse", "{}"),
+  new VisualAITruncationError("truncated", "{}", 4096),
   new VisualAIConfigError("config"),
   new VisualAIAssertionError("assertion", {
     pass: false,

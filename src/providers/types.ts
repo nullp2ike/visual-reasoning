@@ -12,6 +12,7 @@ export interface RawProviderResponse {
   usage?: {
     inputTokens: number;
     outputTokens: number;
+    reasoningTokens?: number;
   };
 }
 
@@ -29,8 +30,17 @@ export interface ImageGenerationOptions {
   promptKind?: "ai-diff";
 }
 
+export interface SendMessageOptions {
+  /** JSON Schema for structured output. Currently used by OpenAI only. */
+  responseSchema?: Record<string, unknown>;
+}
+
 export interface ProviderDriver {
-  sendMessage(images: NormalizedImage[], prompt: string): Promise<RawProviderResponse>;
+  sendMessage(
+    images: NormalizedImage[],
+    prompt: string,
+    options?: SendMessageOptions,
+  ): Promise<RawProviderResponse>;
   generateImage?(
     images: NormalizedImage[],
     prompt: string,

@@ -62,6 +62,7 @@ export {
   VisualAIProviderError,
   VisualAIImageError,
   VisualAIResponseParseError,
+  VisualAITruncationError,
   VisualAIConfigError,
   VisualAIAssertionError,
   isVisualAIKnownError,

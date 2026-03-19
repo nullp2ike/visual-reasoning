@@ -4,6 +4,7 @@ import {
   VisualAIAuthError,
   VisualAIRateLimitError,
   VisualAIProviderError,
+  VisualAITruncationError,
 } from "../../src/errors.js";
 import type { NormalizedImage } from "../../src/types.js";
 
@@ -219,5 +220,42 @@ describe("AnthropicDriver", () => {
     await expect(driver.sendMessage([makeImage()], "test")).rejects.toThrow(VisualAIAuthError);
 
     process.env.ANTHROPIC_API_KEY = originalEnv;
+  });
+
+  it("throws VisualAITruncationError when stop_reason is max_tokens", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: '{"pass": tr' }],
+      usage: { input_tokens: 100, output_tokens: 4096 },
+      stop_reason: "max_tokens",
+    });
+
+    const driver = new AnthropicDriver({
+      apiKey: "test-key",
+      model: "claude-sonnet-4-6",
+      maxTokens: 4096,
+    });
+
+    const err = await driver.sendMessage([makeImage()], "test").catch((e: unknown) => e);
+    expect(err).toBeInstanceOf(VisualAITruncationError);
+    const truncErr = err as VisualAITruncationError;
+    expect(truncErr.code).toBe("RESPONSE_TRUNCATED");
+    expect(truncErr.partialResponse).toBe('{"pass": tr');
+    expect(truncErr.maxTokens).toBe(4096);
+  });
+
+  it("does not throw on stop_reason end_turn", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: '{"pass": true}' }],
+      usage: { input_tokens: 100, output_tokens: 50 },
+      stop_reason: "end_turn",
+    });
+
+    const driver = new AnthropicDriver({
+      apiKey: "test-key",
+      model: "claude-sonnet-4-6",
+      maxTokens: 4096,
+    });
+    const result = await driver.sendMessage([makeImage()], "test");
+    expect(result.text).toBe('{"pass": true}');
   });
 });

@@ -1,12 +1,23 @@
-import { VisualAIAuthError, VisualAIConfigError } from "../errors.js";
+import { VisualAIAuthError, VisualAIConfigError, VisualAITruncationError } from "../errors.js";
 import { mapProviderError } from "./error-mapper.js";
 import type { NormalizedImage } from "../types.js";
-import type { ProviderConfig, ProviderDriver, RawProviderResponse } from "./types.js";
+import type {
+  ProviderConfig,
+  ProviderDriver,
+  RawProviderResponse,
+  SendMessageOptions,
+} from "./types.js";
 
 /** Minimal interface for the OpenAI SDK client used by this driver. */
 interface OpenAIResponseResult {
   output_text?: string;
-  usage?: { input_tokens: number; output_tokens: number };
+  usage?: {
+    input_tokens: number;
+    output_tokens: number;
+    output_tokens_details?: { reasoning_tokens?: number };
+  };
+  status?: string;
+  incomplete_details?: { reason?: string };
 }
 
 interface OpenAIClient {
@@ -52,7 +63,11 @@ export class OpenAIDriver implements ProviderDriver {
     return this.client;
   }
 
-  async sendMessage(images: NormalizedImage[], prompt: string): Promise<RawProviderResponse> {
+  async sendMessage(
+    images: NormalizedImage[],
+    prompt: string,
+    options?: SendMessageOptions,
+  ): Promise<RawProviderResponse> {
     const client = await this.getClient();
 
     const imageBlocks = images.map((img) => ({
@@ -61,10 +76,21 @@ export class OpenAIDriver implements ProviderDriver {
     }));
 
     try {
+      const format = options?.responseSchema
+        ? {
+            type: "json_schema" as const,
+            json_schema: {
+              name: "visual_ai_response",
+              strict: true,
+              schema: options.responseSchema,
+            },
+          }
+        : { type: "json_object" as const };
+
       const requestParams: Record<string, unknown> = {
         model: this.model,
         max_output_tokens: this.maxTokens,
-        text: { format: { type: "json_object" } },
+        text: { format },
         input: [
           {
             role: "user",
@@ -79,7 +105,19 @@ export class OpenAIDriver implements ProviderDriver {
 
       const response = await client.responses.create(requestParams);
 
+      if (response.status && response.status !== "completed") {
+        const detail = response.incomplete_details?.reason
+          ? ` (${response.incomplete_details.reason})`
+          : "";
+        throw new VisualAITruncationError(
+          `Response truncated: OpenAI returned status "${response.status}"${detail}. The model exhausted the output token budget (${this.maxTokens} tokens). This commonly happens with higher reasoning effort levels. Increase maxTokens in your config (e.g., maxTokens: 16384) or lower reasoningEffort.`,
+          response.output_text ?? "",
+          this.maxTokens,
+        );
+      }
+
       const text = response.output_text ?? "";
+      const reasoningTokens = response.usage?.output_tokens_details?.reasoning_tokens;
 
       return {
         text,
@@ -87,10 +125,12 @@ export class OpenAIDriver implements ProviderDriver {
           ? {
               inputTokens: response.usage.input_tokens,
               outputTokens: response.usage.output_tokens,
+              ...(reasoningTokens !== undefined && { reasoningTokens }),
             }
           : undefined,
       };
     } catch (err) {
+      if (err instanceof VisualAITruncationError) throw err;
       throw mapProviderError(err);
     }
   }

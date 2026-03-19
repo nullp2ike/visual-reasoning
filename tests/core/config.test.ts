@@ -1,5 +1,9 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { DEFAULT_MAX_TOKENS, DEFAULT_MODELS } from "../../src/constants.js";
+import {
+  DEFAULT_MAX_TOKENS,
+  DEFAULT_MODELS,
+  OPENAI_REASONING_MAX_TOKENS,
+} from "../../src/constants.js";
 import { resetDebugDeprecationWarning, resolveConfig } from "../../src/core/config.js";
 import { VisualAIConfigError } from "../../src/errors.js";
 
@@ -118,6 +122,88 @@ describe("resolveConfig", () => {
     process.env.OPENAI_API_KEY = "test-key";
 
     expect(() => resolveConfig({})).toThrow(VisualAIConfigError);
+  });
+
+  describe("OpenAI auto-increase maxTokens for high reasoning", () => {
+    it("increases maxTokens for OpenAI + high effort when user did not set maxTokens", () => {
+      const resolved = resolveConfig({
+        model: "gpt-5-mini",
+        apiKey: "k",
+        reasoningEffort: "high",
+      });
+      expect(resolved.maxTokens).toBe(OPENAI_REASONING_MAX_TOKENS);
+    });
+
+    it("increases maxTokens for OpenAI + xhigh effort when user did not set maxTokens", () => {
+      const resolved = resolveConfig({
+        model: "gpt-5-mini",
+        apiKey: "k",
+        reasoningEffort: "xhigh",
+      });
+      expect(resolved.maxTokens).toBe(OPENAI_REASONING_MAX_TOKENS);
+    });
+
+    it("preserves user-specified maxTokens even with high reasoning", () => {
+      const resolved = resolveConfig({
+        model: "gpt-5-mini",
+        apiKey: "k",
+        reasoningEffort: "high",
+        maxTokens: 8192,
+      });
+      expect(resolved.maxTokens).toBe(8192);
+    });
+
+    it("does not increase maxTokens for medium reasoning", () => {
+      const resolved = resolveConfig({
+        model: "gpt-5-mini",
+        apiKey: "k",
+        reasoningEffort: "medium",
+      });
+      expect(resolved.maxTokens).toBe(DEFAULT_MAX_TOKENS);
+    });
+
+    it("does not increase maxTokens for Anthropic + high reasoning", () => {
+      const resolved = resolveConfig({
+        model: "claude-sonnet-4-6",
+        apiKey: "k",
+        reasoningEffort: "high",
+      });
+      expect(resolved.maxTokens).toBe(DEFAULT_MAX_TOKENS);
+    });
+
+    it("does not increase maxTokens for Google + high reasoning", () => {
+      const resolved = resolveConfig({
+        model: "gemini-3-flash-preview",
+        apiKey: "k",
+        reasoningEffort: "high",
+      });
+      expect(resolved.maxTokens).toBe(DEFAULT_MAX_TOKENS);
+    });
+
+    it("emits debug log when auto-increase triggers", () => {
+      const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
+      resolveConfig({
+        model: "gpt-5-mini",
+        apiKey: "k",
+        reasoningEffort: "high",
+        debug: true,
+      });
+      const calls = stderrSpy.mock.calls.map((c) => String(c[0]));
+      expect(calls.some((c) => c.includes("Auto-increased maxTokens"))).toBe(true);
+      stderrSpy.mockRestore();
+    });
+
+    it("does not emit debug log when debug is false", () => {
+      const stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
+      resolveConfig({
+        model: "gpt-5-mini",
+        apiKey: "k",
+        reasoningEffort: "high",
+      });
+      const calls = stderrSpy.mock.calls.map((c) => String(c[0]));
+      expect(calls.some((c) => c.includes("Auto-increased maxTokens"))).toBe(false);
+      stderrSpy.mockRestore();
+    });
   });
 
   describe("debugPrompt / debugResponse resolution", () => {

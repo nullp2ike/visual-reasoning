@@ -1,9 +1,13 @@
 import { PROVIDER_DEFAULT_REASONING } from "../constants.js";
 import { calculateCost } from "./pricing.js";
 import type { ResolvedConfig } from "./config.js";
-import type { ProviderDriver, RawProviderResponse } from "../providers/types.js";
+import type {
+  ProviderDriver,
+  RawProviderResponse,
+  SendMessageOptions,
+} from "../providers/types.js";
 import type { NormalizedImage, UsageInfo } from "../types.js";
-import { VisualAIError, VisualAIResponseParseError } from "../errors.js";
+import { VisualAIError, VisualAIResponseParseError, VisualAITruncationError } from "../errors.js";
 
 export type DebugLogKind = "prompt" | "response" | "error";
 
@@ -32,8 +36,10 @@ export function usageLog(config: ResolvedConfig, method: string, usage: UsageInf
   const reasoningStr = config.reasoningEffort
     ? `reasoning: ${config.reasoningEffort}`
     : `reasoning: ${PROVIDER_DEFAULT_REASONING[config.provider]} (provider default)`;
+  const reasoningTokenStr =
+    usage.reasoningTokens !== undefined ? ` (${usage.reasoningTokens} reasoning)` : "";
   process.stderr.write(
-    `[visual-ai-assertions] ${method} usage: ${usage.inputTokens} input + ${usage.outputTokens} output tokens (${costStr}) in ${usage.durationSeconds?.toFixed(3) ?? "0.000"}s [${config.model}, ${reasoningStr}]\n`,
+    `[visual-ai-assertions] ${method} usage: ${usage.inputTokens} input + ${usage.outputTokens} output${reasoningTokenStr} tokens (${costStr}) in ${usage.durationSeconds?.toFixed(3) ?? "0.000"}s [${config.model}, ${reasoningStr}]\n`,
   );
 }
 
@@ -48,6 +54,7 @@ export function processUsage(
   const usage: UsageInfo = {
     inputTokens,
     outputTokens,
+    ...(rawUsage?.reasoningTokens !== undefined && { reasoningTokens: rawUsage.reasoningTokens }),
     estimatedCost: calculateCost(config.provider, config.model, inputTokens, outputTokens),
     durationSeconds,
   };
@@ -58,6 +65,13 @@ export function processUsage(
 const MAX_RAW_RESPONSE_PREVIEW = 500;
 
 export function formatError(error: unknown): string {
+  if (error instanceof VisualAITruncationError) {
+    const preview =
+      error.partialResponse.length > MAX_RAW_RESPONSE_PREVIEW
+        ? error.partialResponse.slice(0, MAX_RAW_RESPONSE_PREVIEW) + "..."
+        : error.partialResponse;
+    return `${error.name} (${error.code}): ${error.message}. Partial response: ${preview}`;
+  }
   if (error instanceof VisualAIResponseParseError) {
     const truncated =
       error.rawResponse.length > MAX_RAW_RESPONSE_PREVIEW
@@ -91,9 +105,10 @@ export async function timedSendMessage(
   driver: ProviderDriver,
   images: NormalizedImage[],
   prompt: string,
+  options?: SendMessageOptions,
 ): Promise<RawProviderResponse & { durationSeconds: number }> {
   const start = performance.now();
-  const response = await driver.sendMessage(images, prompt);
+  const response = await driver.sendMessage(images, prompt, options);
   const durationSeconds = (performance.now() - start) / 1000;
   return { ...response, durationSeconds };
 }
