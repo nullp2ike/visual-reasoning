@@ -76,7 +76,7 @@ it("calculates cost for google gemini-3.1-flash-lite-preview", () => {
 
 - `needsCodeExecution()` regex `/^gemini-(\d+)/` captures major version — verify new models parse correctly
 - AI diff image generation is hardcoded to `gemini-3-flash-preview` only; lite/preview models should NOT be added to the diff allowlist
-- Thinking/reasoning budget (`GOOGLE_THINKING_BUDGET`) applies to all Google models — verify the new model supports `thinkingConfig` before relying on reasoning effort
+- Thinking/reasoning level (`GOOGLE_THINKING_LEVEL`) applies to all Google models — verify the new model supports `thinkingConfig` before relying on reasoning effort
 
 **OpenAI:**
 

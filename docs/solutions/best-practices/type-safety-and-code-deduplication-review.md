@@ -48,7 +48,7 @@ These issues stemmed from incremental development: features were added one provi
 
 ### 1. Type-safe provider maps
 
-Changed `Record<string, string>` to `Record<ProviderName, string>` for `DEFAULT_MODELS`, `Record<string, number>` to `Record<ReasoningEffort, number>` for `GOOGLE_THINKING_BUDGET`, and typed `calculateCost`'s provider param as `ProviderName`.
+Changed `Record<string, string>` to `Record<ProviderName, string>` for `DEFAULT_MODELS`, `Record<string, number>` to `Record<ReasoningEffort, string>` for `GOOGLE_THINKING_LEVEL`, and typed `calculateCost`'s provider param as `ProviderName`.
 
 ```typescript
 // src/core/client.ts
@@ -59,12 +59,12 @@ const DEFAULT_MODELS: Record<ProviderName, string> = {
 };
 
 // src/providers/google.ts
-const GOOGLE_THINKING_BUDGET: Record<ReasoningEffort, number> = {
-  low: 1024,
-  medium: 8192,
-  high: 24576,
-  xhigh: 24576,
-};
+const GOOGLE_THINKING_LEVEL = {
+  low: "minimal",
+  medium: "low",
+  high: "medium",
+  xhigh: "high",
+} as const satisfies Record<ReasoningEffort, string>;
 
 // src/core/pricing.ts
 export function calculateCost(
@@ -149,11 +149,11 @@ return pipeline.resize({ ... }).toBuffer();
 
 Confirmed against official docs that reasoning effort params are correct:
 
-| Provider  | API Parameter                                                  | `"xhigh"` maps to      |
-| --------- | -------------------------------------------------------------- | ---------------------- |
-| Anthropic | `thinking: { type: "adaptive" }` + `output_config: { effort }` | `"max"`                |
-| OpenAI    | `reasoning: { effort }` (Responses API)                        | `"xhigh"` (native)     |
-| Google    | `thinkingConfig: { thinkingBudget }`                           | `24576` (same as high) |
+| Provider  | API Parameter                                                  | `"xhigh"` maps to       |
+| --------- | -------------------------------------------------------------- | ----------------------- |
+| Anthropic | `thinking: { type: "adaptive" }` + `output_config: { effort }` | `"max"`                 |
+| OpenAI    | `reasoning: { effort }` (Responses API)                        | `"xhigh"` (native)      |
+| Google    | `thinkingConfig: { thinkingLevel }`                            | `"high"` (same as high) |
 
 ## Prevention Strategies
 
@@ -188,5 +188,5 @@ Confirmed against official docs that reasoning effort params are correct:
 | `src/providers/error-mapper.ts` | New: shared `mapProviderError` + `parseRetryAfter`                         |
 | `src/providers/anthropic.ts`    | Uses shared `mapProviderError`, removed local `mapError`/`parseRetryAfter` |
 | `src/providers/openai.ts`       | Uses shared `mapProviderError`, removed local `mapError`/`parseRetryAfter` |
-| `src/providers/google.ts`       | Uses shared `mapProviderError`, typed `GOOGLE_THINKING_BUDGET`             |
+| `src/providers/google.ts`       | Uses shared `mapProviderError`, typed `GOOGLE_THINKING_LEVEL`              |
 | `.gitignore`                    | Added `.history/`                                                          |
