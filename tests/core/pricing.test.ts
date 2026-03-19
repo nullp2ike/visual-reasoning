@@ -27,9 +27,9 @@ describe("calculateCost", () => {
   });
 
   it("calculates cost for google gemini-3.1-flash-lite-preview", () => {
-    const cost = calculateCost("google", "gemini-3.1-flash-lite-preview", 1_000_000, 1_000_000);
-    // 1M * (0.25/1M) + 1M * (1.5/1M) = 0.25 + 1.5 = 1.75
-    expect(cost).toBeCloseTo(1.75, 10);
+    const cost = calculateCost("google", "gemini-3.1-flash-lite-preview", 1000, 500);
+    // 1000 * (0.25/1M) + 500 * (1.5/1M) = 0.00025 + 0.00075 = 0.001
+    expect(cost).toBeCloseTo(0.001, 10);
   });
 
   it("calculates cost for google gemini-3-flash-preview", () => {

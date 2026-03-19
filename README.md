@@ -468,19 +468,22 @@ All listed models support image/vision input. Pass any model ID to the `model` c
 
 ### OpenAI
 
-| Model       | Model ID      | Input $/MTok | Output $/MTok | Notes                          |
-| ----------- | ------------- | ------------ | ------------- | ------------------------------ |
-| GPT-5.4 Pro | `gpt-5.4-pro` | $30          | $180          | Most capable, extended context |
-| GPT-5.4     | `gpt-5.4`     | $2.50        | $15           | Best vision quality            |
-| GPT-5.2     | `gpt-5.2`     | $1.75        | $14           | Balanced quality and cost      |
-| GPT-5 mini  | `gpt-5-mini`  | $0.25        | $2            | **Default** — fast and cheap   |
+| Model        | Model ID       | Input $/MTok | Output $/MTok | Notes                          |
+| ------------ | -------------- | ------------ | ------------- | ------------------------------ |
+| GPT-5.4 Pro  | `gpt-5.4-pro`  | $30          | $180          | Most capable, extended context |
+| GPT-5.4      | `gpt-5.4`      | $2.50        | $15           | Best vision quality            |
+| GPT-5.2      | `gpt-5.2`      | $1.75        | $14           | Balanced quality and cost      |
+| GPT-5.4 mini | `gpt-5.4-mini` | $0.75        | $4.50         | Fast and affordable            |
+| GPT-5.4 nano | `gpt-5.4-nano` | $0.20        | $1.25         | Cheapest OpenAI option         |
+| GPT-5 mini   | `gpt-5-mini`   | $0.25        | $2            | **Default** — fast and cheap   |
 
 ### Google
 
-| Model          | Model ID                 | Input $/MTok | Output $/MTok | Notes                             |
-| -------------- | ------------------------ | ------------ | ------------- | --------------------------------- |
-| Gemini 3.1 Pro | `gemini-3.1-pro-preview` | $2           | $12           | Preview — most advanced reasoning |
-| Gemini 3 Flash | `gemini-3-flash-preview` | $0.50        | $3            | **Default** — fast and capable    |
+| Model                 | Model ID                        | Input $/MTok | Output $/MTok | Notes                             |
+| --------------------- | ------------------------------- | ------------ | ------------- | --------------------------------- |
+| Gemini 3.1 Pro        | `gemini-3.1-pro-preview`        | $2           | $12           | Preview — most advanced reasoning |
+| Gemini 3.1 Flash Lite | `gemini-3.1-flash-lite-preview` | $0.25        | $1.50         | Preview — lightweight and cheap   |
+| Gemini 3 Flash        | `gemini-3-flash-preview`        | $0.50        | $3            | **Default** — fast and capable    |
 
 ## License
 
