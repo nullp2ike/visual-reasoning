@@ -1,3 +1,4 @@
+import { PROVIDER_DEFAULT_REASONING } from "../constants.js";
 import { calculateCost } from "./pricing.js";
 import type { ResolvedConfig } from "./config.js";
 import type { ProviderDriver, RawProviderResponse } from "../providers/types.js";
@@ -28,8 +29,11 @@ export function usageLog(config: ResolvedConfig, method: string, usage: UsageInf
   if (!config.trackUsage) return;
   const costStr =
     usage.estimatedCost !== undefined ? `$${usage.estimatedCost.toFixed(6)}` : "unknown";
+  const reasoningStr = config.reasoningEffort
+    ? `reasoning: ${config.reasoningEffort}`
+    : `reasoning: ${PROVIDER_DEFAULT_REASONING[config.provider]} (provider default)`;
   process.stderr.write(
-    `[visual-ai-assertions] ${method} usage: ${usage.inputTokens} input + ${usage.outputTokens} output tokens (${costStr}) in ${usage.durationSeconds?.toFixed(3) ?? "0.000"}s [${config.model}]\n`,
+    `[visual-ai-assertions] ${method} usage: ${usage.inputTokens} input + ${usage.outputTokens} output tokens (${costStr}) in ${usage.durationSeconds?.toFixed(3) ?? "0.000"}s [${config.model}, ${reasoningStr}]\n`,
   );
 }
 

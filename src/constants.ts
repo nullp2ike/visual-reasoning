@@ -64,6 +64,18 @@ export const MODEL_TO_PROVIDER: ReadonlyMap<string, ProviderName> = new Map([
 /** List of accepted provider names for validation and public consumption. */
 export const VALID_PROVIDERS: readonly ProviderName[] = Object.values(Provider);
 
+// --- Provider default reasoning ---
+
+/**
+ * What each provider uses when no reasoning effort is explicitly requested.
+ * These are informational only — displayed in usage logs, not sent to providers.
+ */
+export const PROVIDER_DEFAULT_REASONING: Record<ProviderName, string> = {
+  openai: "medium",
+  anthropic: "off",
+  google: "off",
+};
+
 // --- Check name constants ---
 
 /** Built-in content checks available through `client.content()`. */

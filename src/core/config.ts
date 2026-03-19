@@ -1,6 +1,6 @@
 import { DEFAULT_MAX_TOKENS, DEFAULT_MODELS, MODEL_TO_PROVIDER } from "../constants.js";
 import { VisualAIConfigError } from "../errors.js";
-import type { ProviderName, VisualAIConfig } from "../types.js";
+import type { ProviderName, ReasoningEffort, VisualAIConfig } from "../types.js";
 
 export interface ResolvedConfig {
   provider: ProviderName;
@@ -61,6 +61,20 @@ function parseBooleanEnv(envName: string, value: string | undefined): boolean | 
   );
 }
 
+const VALID_REASONING_EFFORTS: readonly string[] = ["low", "medium", "high", "xhigh"];
+
+function parseReasoningEffortEnv(
+  envName: string,
+  value: string | undefined,
+): ReasoningEffort | undefined {
+  if (value === undefined || value === "") return undefined;
+  const lower = value.toLowerCase();
+  if (VALID_REASONING_EFFORTS.includes(lower)) return lower as ReasoningEffort;
+  throw new VisualAIConfigError(
+    `Invalid ${envName} value: "${value}". Use "low", "medium", "high", or "xhigh".`,
+  );
+}
+
 let debugDeprecationWarned = false;
 
 /** @internal Reset the deprecation warning guard. For testing only. */
@@ -94,7 +108,9 @@ export function resolveConfig(config: VisualAIConfig): ResolvedConfig {
     apiKey: config.apiKey,
     model,
     maxTokens: config.maxTokens ?? DEFAULT_MAX_TOKENS,
-    reasoningEffort: config.reasoningEffort,
+    reasoningEffort:
+      config.reasoningEffort ??
+      parseReasoningEffortEnv("VISUAL_AI_REASONING_EFFORT", process.env.VISUAL_AI_REASONING_EFFORT),
     debug,
     debugPrompt,
     debugResponse,

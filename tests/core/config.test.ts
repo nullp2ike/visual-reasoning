@@ -9,6 +9,7 @@ const ORIGINAL_ENV = {
   VISUAL_AI_DEBUG_PROMPT: process.env.VISUAL_AI_DEBUG_PROMPT,
   VISUAL_AI_DEBUG_RESPONSE: process.env.VISUAL_AI_DEBUG_RESPONSE,
   VISUAL_AI_TRACK_USAGE: process.env.VISUAL_AI_TRACK_USAGE,
+  VISUAL_AI_REASONING_EFFORT: process.env.VISUAL_AI_REASONING_EFFORT,
   ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY,
   OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
@@ -30,6 +31,10 @@ function restoreEnv(): void {
 
   if (ORIGINAL_ENV.VISUAL_AI_TRACK_USAGE === undefined) delete process.env.VISUAL_AI_TRACK_USAGE;
   else process.env.VISUAL_AI_TRACK_USAGE = ORIGINAL_ENV.VISUAL_AI_TRACK_USAGE;
+
+  if (ORIGINAL_ENV.VISUAL_AI_REASONING_EFFORT === undefined)
+    delete process.env.VISUAL_AI_REASONING_EFFORT;
+  else process.env.VISUAL_AI_REASONING_EFFORT = ORIGINAL_ENV.VISUAL_AI_REASONING_EFFORT;
 
   if (ORIGINAL_ENV.ANTHROPIC_API_KEY === undefined) delete process.env.ANTHROPIC_API_KEY;
   else process.env.ANTHROPIC_API_KEY = ORIGINAL_ENV.ANTHROPIC_API_KEY;
@@ -260,6 +265,47 @@ describe("resolveConfig", () => {
         calls.some((c) => c.includes("VISUAL_AI_DEBUG no longer enables prompt/response")),
       ).toBe(false);
       stderrSpy.mockRestore();
+    });
+  });
+
+  describe("VISUAL_AI_REASONING_EFFORT", () => {
+    it("defaults to undefined when config and env are omitted", () => {
+      const resolved = resolveConfig({ model: "gpt-5-mini", apiKey: "k" });
+      expect(resolved.reasoningEffort).toBeUndefined();
+    });
+
+    it("env var sets reasoning effort when config omits it", () => {
+      process.env.VISUAL_AI_REASONING_EFFORT = "high";
+      const resolved = resolveConfig({ model: "gpt-5-mini", apiKey: "k" });
+      expect(resolved.reasoningEffort).toBe("high");
+    });
+
+    it("config overrides env var", () => {
+      process.env.VISUAL_AI_REASONING_EFFORT = "low";
+      const resolved = resolveConfig({
+        model: "gpt-5-mini",
+        apiKey: "k",
+        reasoningEffort: "xhigh",
+      });
+      expect(resolved.reasoningEffort).toBe("xhigh");
+    });
+
+    it("throws VisualAIConfigError for invalid value", () => {
+      process.env.VISUAL_AI_REASONING_EFFORT = "banana";
+      process.env.OPENAI_API_KEY = "test-key";
+      expect(() => resolveConfig({})).toThrow(/Invalid VISUAL_AI_REASONING_EFFORT value: "banana"/);
+    });
+
+    it("treats empty string as unset", () => {
+      process.env.VISUAL_AI_REASONING_EFFORT = "";
+      const resolved = resolveConfig({ model: "gpt-5-mini", apiKey: "k" });
+      expect(resolved.reasoningEffort).toBeUndefined();
+    });
+
+    it("is case-insensitive", () => {
+      process.env.VISUAL_AI_REASONING_EFFORT = "HIGH";
+      const resolved = resolveConfig({ model: "gpt-5-mini", apiKey: "k" });
+      expect(resolved.reasoningEffort).toBe("high");
     });
   });
 });
