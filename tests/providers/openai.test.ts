@@ -84,7 +84,9 @@ describe("OpenAIDriver", () => {
     await driver.sendMessage([makeImage()], "test");
 
     const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
-    expect(callArgs).toHaveProperty("text", { format: { type: "json_object" } });
+    expect(callArgs).toHaveProperty("text", {
+      format: { type: "json_object", name: "visual_ai_response" },
+    });
   });
 
   it("uses max_output_tokens", async () => {
@@ -302,6 +304,8 @@ describe("OpenAIDriver", () => {
     await driver.sendMessage([makeImage()], "test");
 
     const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
-    expect(callArgs).toHaveProperty("text", { format: { type: "json_object" } });
+    expect(callArgs).toHaveProperty("text", {
+      format: { type: "json_object", name: "visual_ai_response" },
+    });
   });
 });

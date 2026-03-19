@@ -85,7 +85,7 @@ export class OpenAIDriver implements ProviderDriver {
               schema: options.responseSchema,
             },
           }
-        : { type: "json_object" as const };
+        : { type: "json_object" as const, name: "visual_ai_response" };
 
       const requestParams: Record<string, unknown> = {
         model: this.model,
