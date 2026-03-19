@@ -2,12 +2,21 @@
 export { visualAI } from "./core/client.js";
 
 // Constants
-export { Provider, Model, Content, Layout, Accessibility, DEFAULT_MODELS } from "./constants.js";
+export {
+  Provider,
+  Model,
+  Content,
+  Layout,
+  Accessibility,
+  ReasoningEffort,
+  DEFAULT_MODELS,
+} from "./constants.js";
 export type {
   KnownModelName,
   ContentCheckName,
   LayoutCheckName,
   AccessibilityCheckName,
+  ReasoningEffortLevel,
 } from "./constants.js";
 export type { VisualAIClient } from "./core/client.js";
 
@@ -29,7 +38,6 @@ export type {
   VisualAIConfig,
   ImageInput,
   ProviderName,
-  ReasoningEffort,
   ElementsVisibilityOptions,
   AccessibilityOptions,
   LayoutOptions,

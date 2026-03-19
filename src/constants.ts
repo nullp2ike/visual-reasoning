@@ -1,5 +1,18 @@
 import type { ProviderName } from "./types.js";
 
+// --- Reasoning effort constants ---
+
+/** Supported reasoning effort levels. */
+export const ReasoningEffort = {
+  LOW: "low",
+  MEDIUM: "medium",
+  HIGH: "high",
+  XHIGH: "xhigh",
+} as const;
+
+/** Union of valid reasoning effort values, derived from the ReasoningEffort constant. */
+export type ReasoningEffortLevel = (typeof ReasoningEffort)[keyof typeof ReasoningEffort];
+
 // --- Provider constants ---
 
 /** Supported provider identifiers used internally for pricing and provider selection. */
@@ -78,7 +91,7 @@ export const VALID_PROVIDERS: readonly ProviderName[] = Object.values(Provider);
  * What each provider uses when no reasoning effort is explicitly requested.
  * These are informational only — displayed in usage logs, not sent to providers.
  */
-export const PROVIDER_DEFAULT_REASONING: Record<ProviderName, string> = {
+export const PROVIDER_DEFAULT_REASONING: Readonly<Record<ProviderName, string>> = {
   openai: "medium",
   anthropic: "off",
   google: "off",

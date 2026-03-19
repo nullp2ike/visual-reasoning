@@ -1,5 +1,10 @@
 import { z } from "zod";
-import type { AccessibilityCheckName, ContentCheckName, LayoutCheckName } from "./constants.js";
+import type {
+  AccessibilityCheckName,
+  ContentCheckName,
+  LayoutCheckName,
+  ReasoningEffortLevel,
+} from "./constants.js";
 
 // --- Issue types ---
 
@@ -126,11 +131,6 @@ export type SupportedMimeType = "image/jpeg" | "image/png" | "image/webp" | "ima
 /** Supported provider identifiers. */
 export type ProviderName = "anthropic" | "openai" | "google";
 
-// --- Reasoning effort ---
-
-/** Optional reasoning depth requested from providers that support it. */
-export type ReasoningEffort = "low" | "medium" | "high" | "xhigh";
-
 // --- VisualAI config ---
 
 /**
@@ -154,7 +154,7 @@ export interface VisualAIConfig {
   /** Log responses to stderr. */
   debugResponse?: boolean;
   maxTokens?: number;
-  reasoningEffort?: ReasoningEffort;
+  reasoningEffort?: ReasoningEffortLevel;
   trackUsage?: boolean;
 }
 

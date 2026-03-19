@@ -6,7 +6,8 @@ import {
   VisualAITruncationError,
 } from "../errors.js";
 import { mapProviderError } from "./error-mapper.js";
-import type { NormalizedImage, ReasoningEffort } from "../types.js";
+import type { NormalizedImage } from "../types.js";
+import type { ReasoningEffortLevel } from "../constants.js";
 import type {
   ImageGenerationOptions,
   ImageGenerationResponse,
@@ -69,7 +70,7 @@ const GOOGLE_THINKING_LEVEL = {
   medium: "low",
   high: "medium",
   xhigh: "high",
-} as const satisfies Record<ReasoningEffort, string>;
+} as const satisfies Record<ReasoningEffortLevel, string>;
 
 export class GoogleDriver implements ProviderDriver {
   private client: GoogleClient | null;

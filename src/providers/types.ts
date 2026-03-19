@@ -1,10 +1,11 @@
-import type { NormalizedImage, ReasoningEffort } from "../types.js";
+import type { NormalizedImage } from "../types.js";
+import type { ReasoningEffortLevel } from "../constants.js";
 
 export interface ProviderConfig {
   apiKey: string | undefined;
   model: string;
   maxTokens: number;
-  reasoningEffort?: ReasoningEffort;
+  reasoningEffort?: ReasoningEffortLevel;
 }
 
 export interface RawProviderResponse {
