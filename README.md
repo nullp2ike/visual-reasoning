@@ -471,6 +471,7 @@ All listed models support image/vision input. Pass any model ID to the `model` c
 
 | Model        | Model ID       | Input $/MTok | Output $/MTok | Notes                          |
 | ------------ | -------------- | ------------ | ------------- | ------------------------------ |
+| GPT-5.5      | `gpt-5.5`      | $5           | $30           | Newest flagship, 1M context    |
 | GPT-5.4 Pro  | `gpt-5.4-pro`  | $30          | $180          | Most capable, extended context |
 | GPT-5.4      | `gpt-5.4`      | $2.50        | $15           | Best vision quality            |
 | GPT-5.2      | `gpt-5.2`      | $1.75        | $14           | Balanced quality and cost      |

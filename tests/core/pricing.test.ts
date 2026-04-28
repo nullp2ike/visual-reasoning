@@ -20,6 +20,12 @@ describe("calculateCost", () => {
     expect(cost).toBeCloseTo(0.00125, 10);
   });
 
+  it("calculates cost for openai gpt-5.5", () => {
+    const cost = calculateCost("openai", "gpt-5.5", 1000, 500);
+    // 1000 * (5/1M) + 500 * (30/1M) = 0.005 + 0.015 = 0.02
+    expect(cost).toBeCloseTo(0.02, 10);
+  });
+
   it("calculates cost for openai gpt-5.4-mini", () => {
     const cost = calculateCost("openai", "gpt-5.4-mini", 1000, 500);
     // 1000 * (0.75/1M) + 500 * (4.5/1M) = 0.00075 + 0.00225 = 0.003

@@ -25,6 +25,10 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
     inputPricePerToken: 1 / PER_MILLION,
     outputPricePerToken: 5 / PER_MILLION,
   },
+  [`${Provider.OPENAI}:${Model.OpenAI.GPT_5_5}`]: {
+    inputPricePerToken: 5 / PER_MILLION,
+    outputPricePerToken: 30 / PER_MILLION,
+  },
   [`${Provider.OPENAI}:${Model.OpenAI.GPT_5_4}`]: {
     inputPricePerToken: 2.5 / PER_MILLION,
     outputPricePerToken: 15 / PER_MILLION,

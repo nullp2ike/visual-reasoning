@@ -31,6 +31,7 @@ describe("Model", () => {
   });
 
   it("has correct OpenAI model values", () => {
+    expect(Model.OpenAI.GPT_5_5).toBe("gpt-5.5");
     expect(Model.OpenAI.GPT_5_4).toBe("gpt-5.4");
     expect(Model.OpenAI.GPT_5_4_PRO).toBe("gpt-5.4-pro");
     expect(Model.OpenAI.GPT_5_4_MINI).toBe("gpt-5.4-mini");

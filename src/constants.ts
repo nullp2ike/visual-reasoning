@@ -33,6 +33,7 @@ export const Model = {
     HAIKU_4_5: "claude-haiku-4-5",
   },
   OpenAI: {
+    GPT_5_5: "gpt-5.5",
     GPT_5_4: "gpt-5.4",
     GPT_5_4_PRO: "gpt-5.4-pro",
     GPT_5_4_MINI: "gpt-5.4-mini",
