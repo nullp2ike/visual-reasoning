@@ -1,3 +1,4 @@
+import { Model, type ReasoningEffortLevel } from "../constants.js";
 import { VisualAIAuthError, VisualAIConfigError, VisualAITruncationError } from "../errors.js";
 import { mapProviderError } from "./error-mapper.js";
 import type { NormalizedImage } from "../types.js";
@@ -7,6 +8,14 @@ import type {
   RawProviderResponse,
   SendMessageOptions,
 } from "./types.js";
+
+// Opus 4.7 introduced a dedicated "xhigh" effort tier. Older Anthropic models
+// (Opus 4.6, Sonnet 4.6) reject "xhigh" but accept "max", which is why our
+// xhigh has historically mapped to "max" everywhere.
+function mapEffort(level: ReasoningEffortLevel, model: string): string {
+  if (level !== "xhigh") return level;
+  return model === Model.Anthropic.OPUS_4_7 ? "xhigh" : "max";
+}
 
 /** Minimal interface for the Anthropic SDK client used by this driver. */
 interface AnthropicMessage {
@@ -91,7 +100,7 @@ export class AnthropicDriver implements ProviderDriver {
       if (this.reasoningEffort) {
         requestParams.thinking = { type: "adaptive" };
         requestParams.output_config = {
-          effort: this.reasoningEffort === "xhigh" ? "max" : this.reasoningEffort,
+          effort: mapEffort(this.reasoningEffort, this.model),
         };
       }
 

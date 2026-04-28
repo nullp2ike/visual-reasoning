@@ -171,7 +171,7 @@ describe("AnthropicDriver", () => {
     expect(callArgs).toHaveProperty("output_config", { effort: "high" });
   });
 
-  it("maps xhigh reasoning effort to max for Anthropic", async () => {
+  it("maps xhigh reasoning effort to max for Opus 4.6", async () => {
     mockCreate.mockResolvedValueOnce({
       content: [{ type: "text", text: "{}" }],
       usage: { input_tokens: 0, output_tokens: 0 },
@@ -179,7 +179,7 @@ describe("AnthropicDriver", () => {
 
     const driver = new AnthropicDriver({
       apiKey: "test-key",
-      model: "claude-sonnet-4-6",
+      model: "claude-opus-4-6",
       maxTokens: 4096,
       reasoningEffort: "xhigh",
     });
@@ -188,6 +188,43 @@ describe("AnthropicDriver", () => {
     const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
     expect(callArgs).toHaveProperty("thinking", { type: "adaptive" });
     expect(callArgs).toHaveProperty("output_config", { effort: "max" });
+  });
+
+  it("maps xhigh reasoning effort to xhigh for Opus 4.7", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: "{}" }],
+      usage: { input_tokens: 0, output_tokens: 0 },
+    });
+
+    const driver = new AnthropicDriver({
+      apiKey: "test-key",
+      model: "claude-opus-4-7",
+      maxTokens: 4096,
+      reasoningEffort: "xhigh",
+    });
+    await driver.sendMessage([makeImage()], "test");
+
+    const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
+    expect(callArgs).toHaveProperty("thinking", { type: "adaptive" });
+    expect(callArgs).toHaveProperty("output_config", { effort: "xhigh" });
+  });
+
+  it("passes high reasoning effort through unchanged on Opus 4.7", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: "{}" }],
+      usage: { input_tokens: 0, output_tokens: 0 },
+    });
+
+    const driver = new AnthropicDriver({
+      apiKey: "test-key",
+      model: "claude-opus-4-7",
+      maxTokens: 4096,
+      reasoningEffort: "high",
+    });
+    await driver.sendMessage([makeImage()], "test");
+
+    const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
+    expect(callArgs).toHaveProperty("output_config", { effort: "high" });
   });
 
   it("does not include thinking params when reasoningEffort is not set", async () => {

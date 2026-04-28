@@ -445,13 +445,14 @@ const ai = visualAI({
 });
 ```
 
-When omitted, each provider uses its default behavior. The `"xhigh"` level enables maximum reasoning depth (maps to Anthropic's `"max"` effort and OpenAI's `"xhigh"` via the Responses API).
+When omitted, each provider uses its default behavior. The `"xhigh"` level enables maximum reasoning depth.
 
-| Provider  | Native Parameter                                      | `"xhigh"` maps to    |
-| --------- | ----------------------------------------------------- | -------------------- |
-| Anthropic | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "max"`      |
-| OpenAI    | `reasoning.effort` (Responses API)                    | `effort: "xhigh"`    |
-| Google    | `thinkingConfig.thinkingBudget` (1024 / 8192 / 24576) | `24576` (max budget) |
+| Provider           | Native Parameter                                      | `"xhigh"` maps to    |
+| ------------------ | ----------------------------------------------------- | -------------------- |
+| Anthropic Opus 4.7 | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "xhigh"`    |
+| Anthropic (other)  | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "max"`      |
+| OpenAI             | `reasoning.effort` (Responses API)                    | `effort: "xhigh"`    |
+| Google             | `thinkingConfig.thinkingBudget` (1024 / 8192 / 24576) | `24576` (max budget) |
 
 ## Supported Models
 
@@ -459,11 +460,12 @@ All listed models support image/vision input. Pass any model ID to the `model` c
 
 ### Anthropic
 
-| Model             | Model ID            | Input $/MTok | Output $/MTok | Notes                         |
-| ----------------- | ------------------- | ------------ | ------------- | ----------------------------- |
-| Claude Opus 4.6   | `claude-opus-4-6`   | $5           | $25           | Most capable, 128K max output |
-| Claude Sonnet 4.6 | `claude-sonnet-4-6` | $3           | $15           | **Default** — best value      |
-| Claude Haiku 4.5  | `claude-haiku-4-5`  | $1           | $5            | Fastest, budget-friendly      |
+| Model             | Model ID            | Input $/MTok | Output $/MTok | Notes                                      |
+| ----------------- | ------------------- | ------------ | ------------- | ------------------------------------------ |
+| Claude Opus 4.7   | `claude-opus-4-7`   | $5           | $25           | Most capable; supports `xhigh` effort tier |
+| Claude Opus 4.6   | `claude-opus-4-6`   | $5           | $25           | Previous flagship, 128K max output         |
+| Claude Sonnet 4.6 | `claude-sonnet-4-6` | $3           | $15           | **Default** — best value                   |
+| Claude Haiku 4.5  | `claude-haiku-4-5`  | $1           | $5            | Fastest, budget-friendly                   |
 
 ### OpenAI
 

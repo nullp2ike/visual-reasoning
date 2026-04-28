@@ -24,6 +24,7 @@ describe("Provider", () => {
 
 describe("Model", () => {
   it("has correct Anthropic model values", () => {
+    expect(Model.Anthropic.OPUS_4_7).toBe("claude-opus-4-7");
     expect(Model.Anthropic.OPUS_4_6).toBe("claude-opus-4-6");
     expect(Model.Anthropic.SONNET_4_6).toBe("claude-sonnet-4-6");
     expect(Model.Anthropic.HAIKU_4_5).toBe("claude-haiku-4-5");

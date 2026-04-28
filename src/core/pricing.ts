@@ -9,6 +9,10 @@ interface ModelPricing {
 const PER_MILLION = 1_000_000;
 
 const PRICING_TABLE: Record<string, ModelPricing> = {
+  [`${Provider.ANTHROPIC}:${Model.Anthropic.OPUS_4_7}`]: {
+    inputPricePerToken: 5 / PER_MILLION,
+    outputPricePerToken: 25 / PER_MILLION,
+  },
   [`${Provider.ANTHROPIC}:${Model.Anthropic.OPUS_4_6}`]: {
     inputPricePerToken: 5 / PER_MILLION,
     outputPricePerToken: 25 / PER_MILLION,
