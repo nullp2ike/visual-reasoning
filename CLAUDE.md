@@ -22,7 +22,7 @@ Run all checks: `pnpm typecheck && pnpm lint && pnpm test && pnpm build`
 - **Zod for AI responses**: All AI model responses must be validated with Zod schemas before returning to users.
 - **No barrel re-exports in subdirectories**: Only `src/index.ts` serves as the public API barrel.
 - **Provider SDKs are optional peer deps**: Import them dynamically. Always check for availability at runtime with a clear error message.
-- **ffmpeg deps are optional peer deps**: `fluent-ffmpeg`, `@ffmpeg-installer/ffmpeg`, and `@ffprobe-installer/ffprobe` are loaded dynamically only when video input is used. Image-only flows must keep working without them installed.
+- **ffmpeg deps ship with the library**: `fluent-ffmpeg`, `@ffmpeg-installer/ffmpeg`, and `@ffprobe-installer/ffprobe` are regular `dependencies` so video input works out of the box. They are still loaded via dynamic `import()` at first use — image-only flows must not import them eagerly, and the loader must surface a `VisualAIVideoError` if a module fails to resolve (e.g., unsupported platform binary, pruned install).
 - **Image handling**: Always validate image input type and format before sending to providers. Auto-resize to provider limits.
 - **Video handling**: Auto-detect via magic bytes / extension / data URL. Probe duration before any provider call and reject videos exceeding `maxDurationSeconds`. Sampled frames are passed to providers as ordinary `NormalizedImage`s — drivers must stay format-agnostic.
 - **Errors over silent failures**: Throw typed errors (`VisualAIError` subclasses). Never swallow exceptions or return ambiguous results.

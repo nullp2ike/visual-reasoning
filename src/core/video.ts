@@ -211,8 +211,9 @@ async function loadFfmpegFactory(): Promise<FfmpegFactory> {
       const code = (err as NodeJS.ErrnoException | undefined)?.code;
       if (code === "ERR_MODULE_NOT_FOUND" || code === "MODULE_NOT_FOUND") {
         throw new VisualAIVideoError(
-          "Video support requires fluent-ffmpeg. Install it with: " +
-            "pnpm add -D fluent-ffmpeg @ffmpeg-installer/ffmpeg @ffprobe-installer/ffprobe @types/fluent-ffmpeg",
+          "Could not load fluent-ffmpeg. It ships as a dependency of visual-ai-assertions, " +
+            "so this usually means the install was pruned or the platform-specific binary is unavailable. " +
+            "Reinstall the package or run: pnpm add fluent-ffmpeg @ffmpeg-installer/ffmpeg @ffprobe-installer/ffprobe",
         );
       }
       throw new VisualAIVideoError(

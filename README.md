@@ -12,9 +12,6 @@ npm install visual-ai-assertions
 npm install @anthropic-ai/sdk    # for Claude
 npm install @google/genai        # for Gemini
 
-# Optional: install ffmpeg deps to enable video input
-npm install --save-dev fluent-ffmpeg @ffmpeg-installer/ffmpeg @ffprobe-installer/ffprobe
-
 # Zod is a peer dependency
 npm install zod
 ```
@@ -346,13 +343,7 @@ await ai.check("./long-clip.mp4", ["Loader disappears"], {
 
 How it works: the library samples frames with ffmpeg and sends them to the provider as an ordered timeline. A statement passes when it is true at any sampled frame, unless its wording specifies otherwise (e.g. "throughout"). Template helpers (`accessibility`, `layout`, `pageLoad`, `content`, `elementsVisible`, `elementsHidden`) are image-only — pass video to `check()` or `ask()` instead.
 
-**ffmpeg setup.** Video support is gated on three optional peer deps:
-
-```bash
-npm install --save-dev fluent-ffmpeg @ffmpeg-installer/ffmpeg @ffprobe-installer/ffprobe
-```
-
-Calling `check()` or `ask()` with a video input throws `VisualAIVideoError` (import from `visual-ai-assertions` to `instanceof`-narrow it) if these packages aren't installed. If you already have `ffmpeg`/`ffprobe` on `PATH`, only `fluent-ffmpeg` is required.
+**ffmpeg setup.** Video support works out of the box — `fluent-ffmpeg`, `@ffmpeg-installer/ffmpeg`, and `@ffprobe-installer/ffprobe` ship as regular dependencies and bundle platform-specific ffmpeg/ffprobe binaries. If you ran `npm install` you already have everything you need. On platforms where the prebuilt binary is unavailable (or if you've pruned dependencies), `check()` and `ask()` throw `VisualAIVideoError` (import from `visual-ai-assertions` to `instanceof`-narrow it) when called with video input.
 
 ### Formatting & Assertion Helpers
 
@@ -432,13 +423,15 @@ The `VisualAIKnownError` union and `isVisualAIKnownError()` helper are useful wh
 
 ### Optional Configuration
 
-| Variable                   | Description                                                                                                    |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `VISUAL_AI_MODEL`          | Default model when `model` is not set in config. Overrides the provider's default model.                       |
-| `VISUAL_AI_DEBUG`          | Enable error diagnostic logging to stderr. Does **not** enable prompt/response logging. Use `"true"` or `"1"`. |
-| `VISUAL_AI_DEBUG_PROMPT`   | Enable prompt-only debug logging to stderr. Use `"true"` or `"1"`.                                             |
-| `VISUAL_AI_DEBUG_RESPONSE` | Enable response-only debug logging to stderr. Use `"true"` or `"1"`.                                           |
-| `VISUAL_AI_TRACK_USAGE`    | Enable usage tracking (token counts and cost) to stderr. Use `"true"` or `"1"`.                                |
+| Variable                     | Description                                                                                                                                                                                                                        |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `VISUAL_AI_MODEL`            | Default model when `model` is not set in config. Overrides the provider's default model.                                                                                                                                           |
+| `VISUAL_AI_DEBUG`            | Enable error diagnostic logging to stderr. Does **not** enable prompt/response logging. Use `"true"` or `"1"`.                                                                                                                     |
+| `VISUAL_AI_DEBUG_PROMPT`     | Enable prompt-only debug logging to stderr. Use `"true"` or `"1"`.                                                                                                                                                                 |
+| `VISUAL_AI_DEBUG_RESPONSE`   | Enable response-only debug logging to stderr. Use `"true"` or `"1"`.                                                                                                                                                               |
+| `VISUAL_AI_DEBUG_FRAMES`     | Persist sampled video frames to disk for offline inspection. Use `"true"` or `"1"`. Frames are written to `./visual-ai-debug-frames/<timestamp>-<id>/` (override path with the next variable). Has no effect on image-only inputs. |
+| `VISUAL_AI_DEBUG_FRAMES_DIR` | Override the base directory for `VISUAL_AI_DEBUG_FRAMES`. Each call still gets its own timestamped subdirectory inside it.                                                                                                         |
+| `VISUAL_AI_TRACK_USAGE`      | Enable usage tracking (token counts and cost) to stderr. Use `"true"` or `"1"`.                                                                                                                                                    |
 
 ## Configuration
 

@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.10.0] - 2026-05-06
+
+### Added
+
+- **`VISUAL_AI_DEBUG_FRAMES` env flag** persists sampled video frames to disk for offline debugging. Set to `"true"` or `"1"` and the library writes each sampled JPEG (filename includes index and timestamp) to `./visual-ai-debug-frames/<timestamp>-<id>/`. Override the base directory with `VISUAL_AI_DEBUG_FRAMES_DIR=/some/path`. Best-effort: disk failures are warned to stderr and never break the actual provider call. No effect on image-only inputs.
+
+### Changed
+
+- **Video support installs out of the box.** `fluent-ffmpeg`, `@ffmpeg-installer/ffmpeg`, and `@ffprobe-installer/ffprobe` moved from optional peer dependencies to regular `dependencies`. No more separate `npm install --save-dev fluent-ffmpeg @ffmpeg-installer/ffmpeg @ffprobe-installer/ffprobe` step — `npm install visual-ai-assertions` is enough to use video input.
+
+### Notes for upgraders
+
+- **Install footprint grows by ~40–50 MB** because `@ffmpeg-installer/ffmpeg` and `@ffprobe-installer/ffprobe` bundle platform-specific ffmpeg/ffprobe binaries. Image-only consumers who care about install size can prune them with `npm prune` or your package manager's equivalent; runtime image flows do not import ffmpeg.
+- If you previously installed the three packages manually as devDependencies, you can remove them — they now come transitively from `visual-ai-assertions`.
+- `VisualAIVideoError` is still thrown when video input is passed but ffmpeg can't be loaded (e.g., unsupported platform binary, pruned install). The error path is unchanged.
+
 ## [0.9.0] - 2026-05-06
 
 ### Added

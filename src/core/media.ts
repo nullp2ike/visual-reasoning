@@ -1,4 +1,5 @@
 import type { Frame, MediaInput, NormalizedImage, VideoSamplingOptions } from "../types.js";
+import { saveDebugFrames } from "./debug-frames.js";
 import { normalizeImage } from "./image.js";
 import {
   decodeBase64,
@@ -73,6 +74,7 @@ export async function normalizeMedia(
     const { path, cleanup } = await resolveVideoToPath(input);
     try {
       const { frames, durationSeconds } = await extractFrames(path, videoOptions);
+      await saveDebugFrames(frames);
       return { kind: "video", frames, durationSeconds };
     } finally {
       try {
