@@ -42,3 +42,9 @@ Run all checks: `pnpm typecheck && pnpm lint && pnpm test && pnpm build`
 - Functions: camelCase (`visualAI`, `normalizeImage`)
 - Constants: UPPER_SNAKE_CASE (`DEFAULT_MAX_TOKENS`)
 - Test files: `*.test.ts` in `tests/` directory
+
+## Release notes
+
+- Every user-visible change must be recorded in [`CHANGELOG.md`](./CHANGELOG.md) under a new top-of-file `## [X.Y.Z]` heading **before** the version is tagged.
+- Group entries under `Added` / `Changed` / `Fixed` / `Notes for upgraders` (see prior versions for shape). Mention any `VisualAIErrorCode` widening or other type-level breaking change in the upgrade notes so downstream consumers can prepare.
+- Keep entries written from the consumer's perspective — what they can now do, what they need to change — not internal refactors.

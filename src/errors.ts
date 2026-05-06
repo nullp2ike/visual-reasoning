@@ -9,6 +9,7 @@ export type VisualAIErrorCode =
   | "RATE_LIMITED"
   | "PROVIDER_ERROR"
   | "IMAGE_INVALID"
+  | "VIDEO_INVALID"
   | "RESPONSE_PARSE_FAILED"
   | "RESPONSE_TRUNCATED"
   | "CONFIG_INVALID"
@@ -116,6 +117,25 @@ export class VisualAIImageError extends VisualAIError<"IMAGE_INVALID"> {
 }
 
 /**
+ * Thrown when a video input cannot be loaded, decoded, or sampled — including
+ * when the optional ffmpeg peer dependencies are missing, the source is corrupt,
+ * or the duration exceeds the configured cap.
+ *
+ * @example
+ * ```ts
+ * throw new VisualAIVideoError("Video duration 14.2s exceeds limit of 10s");
+ * ```
+ */
+export class VisualAIVideoError extends VisualAIError<"VIDEO_INVALID"> {
+  declare readonly code: "VIDEO_INVALID";
+
+  constructor(message: string) {
+    super(message, "VIDEO_INVALID");
+    this.name = "VisualAIVideoError";
+  }
+}
+
+/**
  * Thrown when a provider response cannot be parsed into the library result schema.
  *
  * Carries `rawResponse` so callers can inspect the original model output.
@@ -206,6 +226,7 @@ export type VisualAIKnownError =
   | VisualAIRateLimitError
   | VisualAIProviderError
   | VisualAIImageError
+  | VisualAIVideoError
   | VisualAIResponseParseError
   | VisualAITruncationError
   | VisualAIConfigError
@@ -242,6 +263,7 @@ export function isVisualAIKnownError(error: unknown): error is VisualAIKnownErro
     error instanceof VisualAIRateLimitError ||
     error instanceof VisualAIProviderError ||
     error instanceof VisualAIImageError ||
+    error instanceof VisualAIVideoError ||
     error instanceof VisualAIResponseParseError ||
     error instanceof VisualAITruncationError ||
     error instanceof VisualAIConfigError ||

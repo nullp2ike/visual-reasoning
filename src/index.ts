@@ -37,6 +37,7 @@ export type {
   UsageInfo,
   VisualAIConfig,
   ImageInput,
+  MediaInput,
   ProviderName,
   ElementsVisibilityOptions,
   AccessibilityOptions,
@@ -45,6 +46,10 @@ export type {
   ContentOptions,
   DiffImageResult,
   SupportedMimeType,
+  SupportedVideoMimeType,
+  Frame,
+  VideoFramesMetadata,
+  VideoSamplingOptions,
 } from "./types.js";
 export type { VisualAIErrorCode, VisualAIKnownError } from "./errors.js";
 
@@ -69,6 +74,7 @@ export {
   VisualAIRateLimitError,
   VisualAIProviderError,
   VisualAIImageError,
+  VisualAIVideoError,
   VisualAIResponseParseError,
   VisualAITruncationError,
   VisualAIConfigError,

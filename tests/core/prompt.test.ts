@@ -142,6 +142,63 @@ describe("buildComparePrompt", () => {
   });
 });
 
+describe("buildCheckPrompt with video media context", () => {
+  const videoContext = {
+    kind: "video" as const,
+    frameTimestamps: [0.5, 1.5, 2.5],
+    durationSeconds: 3.0,
+  };
+
+  it("uses the video role when media is a video", () => {
+    const prompt = buildCheckPrompt("A toast appears", { media: videoContext });
+    expect(prompt).toContain("sequence of video frames");
+    expect(prompt).toContain("chronological timeline");
+  });
+
+  it("includes the timeline section listing every frame timestamp", () => {
+    const prompt = buildCheckPrompt("A toast appears", { media: videoContext });
+    expect(prompt).toContain("Video timeline");
+    expect(prompt).toContain("Total duration: 3.00s");
+    expect(prompt).toContain("3 frames sampled");
+    expect(prompt).toContain("0: 0.50s");
+    expect(prompt).toContain("1: 1.50s");
+    expect(prompt).toContain("2: 2.50s");
+  });
+
+  it("documents the timestampSeconds output field", () => {
+    const prompt = buildCheckPrompt("A toast appears", { media: videoContext });
+    expect(prompt).toContain('"timestampSeconds"');
+    expect(prompt).toContain("seconds from the start");
+  });
+
+  it("falls back to the image role and schema when media kind is image", () => {
+    const prompt = buildCheckPrompt("Something is visible", { media: { kind: "image" } });
+    expect(prompt).not.toContain("Video timeline");
+    expect(prompt).toContain("Evaluate the provided image");
+  });
+});
+
+describe("buildAskPrompt with video media context", () => {
+  const videoContext = {
+    kind: "video" as const,
+    frameTimestamps: [0.5, 1.5],
+    durationSeconds: 2.0,
+  };
+
+  it("uses the video role and adds a frameReferences output field", () => {
+    const prompt = buildAskPrompt("What happened?", { media: videoContext });
+    expect(prompt).toContain("sequence of video frames");
+    expect(prompt).toContain('"frameReferences"');
+    expect(prompt).toContain("Video timeline");
+  });
+
+  it("falls back to the image schema when no video context is supplied", () => {
+    const prompt = buildAskPrompt("What's broken?");
+    expect(prompt).not.toContain("Video timeline");
+    expect(prompt).not.toContain("frameReferences");
+  });
+});
+
 describe("buildAiDiffCodeExecutionPrompt", () => {
   it("instructs model to write Python code with matplotlib", () => {
     const prompt = buildAiDiffCodeExecutionPrompt();

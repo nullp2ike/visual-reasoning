@@ -50,6 +50,12 @@ export const StatementResultSchema = z.object({
   pass: z.boolean(),
   reasoning: z.string(),
   confidence: ConfidenceSchema.optional(),
+  /**
+   * For video inputs, the approximate timestamp (in seconds, from the start of the clip)
+   * of the frame that most clearly demonstrates the statement. `null` when the statement
+   * fails or applies across the whole clip. Always omitted for image inputs.
+   */
+  timestampSeconds: z.number().nonnegative().nullable().optional(),
 });
 /** Outcome of a single statement evaluated by `check()`. */
 export type StatementResult = z.infer<typeof StatementResultSchema>;
@@ -78,13 +84,35 @@ const BaseResultSchema = z.object({
 
 // --- check() / template result ---
 
-/** Zod schema for results returned by `check()` and template helpers. */
+/**
+ * Zod schema for results returned by `check()` and template helpers.
+ *
+ * Note: the runtime `CheckResult` TypeScript type extends this schema with
+ * an optional `frames` field that is populated client-side for video inputs.
+ * Parsing a stored `CheckResult` through this schema will silently drop
+ * `frames` because the schema only describes what the model returns.
+ */
 export const CheckResultSchema = BaseResultSchema.extend({
   issues: z.array(IssueSchema),
   statements: z.array(StatementResultSchema),
 });
+/**
+ * Metadata describing the sampled-frame timeline used when the input was a video.
+ * Populated client-side; not part of the model's response.
+ */
+export interface VideoFramesMetadata {
+  /** Total number of frames sampled from the video. */
+  count: number;
+  /** Timestamp (seconds, from the start of the clip) of each sampled frame, in order. */
+  timestampsSeconds: number[];
+  /** Total duration of the source video in seconds. */
+  durationSeconds: number;
+}
 /** Result returned by `check()` and the template convenience methods. */
-export type CheckResult = z.infer<typeof CheckResultSchema>;
+export type CheckResult = z.infer<typeof CheckResultSchema> & {
+  /** Present only when the input was a video. Describes which frames the model saw. */
+  frames?: VideoFramesMetadata;
+};
 
 // --- compare() result ---
 
@@ -109,22 +137,51 @@ export type CompareResult = z.infer<typeof CompareResultSchema> & {
 
 // --- ask() result ---
 
-/** Zod schema for results returned by `ask()`. */
+/**
+ * Zod schema for results returned by `ask()`.
+ *
+ * Note: the runtime `AskResult` TypeScript type extends this schema with an
+ * optional `frames` field that is populated client-side for video inputs.
+ * Parsing a stored `AskResult` through this schema will silently drop
+ * `frames` because the schema only describes what the model returns.
+ */
 export const AskResultSchema = z.object({
   summary: z.string(),
   issues: z.array(IssueSchema),
+  /**
+   * For video inputs, the indices of frames the model relied on to answer.
+   * Indices are 0-based and refer to entries in `frames.timestampsSeconds`.
+   */
+  frameReferences: z.array(z.number().int().nonnegative()).optional(),
   usage: UsageInfoSchema.optional(),
 });
 /** Result returned by `ask()`. */
-export type AskResult = z.infer<typeof AskResultSchema>;
+export type AskResult = z.infer<typeof AskResultSchema> & {
+  /** Present only when the input was a video. Describes which frames the model saw. */
+  frames?: VideoFramesMetadata;
+};
 
-// --- Image input ---
+// --- Image / media input ---
 
 /** Supported input shapes for image arguments accepted by the client. */
 export type ImageInput = Buffer | Uint8Array | string;
 
+/**
+ * Supported input shapes for media arguments accepted by the client.
+ * Identical to `ImageInput` today — the client auto-detects whether the bytes are
+ * an image or a video.
+ */
+export type MediaInput = ImageInput;
+
 /** Supported image MIME types accepted by all providers. */
 export type SupportedMimeType = "image/jpeg" | "image/png" | "image/webp" | "image/gif";
+
+/** Supported video MIME types the client can accept and sample frames from. */
+export type SupportedVideoMimeType =
+  | "video/mp4"
+  | "video/webm"
+  | "video/quicktime"
+  | "video/x-matroska";
 
 // --- Provider names ---
 
@@ -163,11 +220,21 @@ export interface VisualAIConfig {
 /** Optional instructions for `check()`. */
 export interface CheckOptions {
   instructions?: readonly string[];
+  /**
+   * Frame-sampling configuration applied when the input is a video.
+   * Ignored for image inputs. See `VideoSamplingOptions` for defaults.
+   */
+  video?: VideoSamplingOptions;
 }
 
 /** Optional instructions for `ask()`. */
 export interface AskOptions {
   instructions?: readonly string[];
+  /**
+   * Frame-sampling configuration applied when the input is a video.
+   * Ignored for image inputs. See `VideoSamplingOptions` for defaults.
+   */
+  video?: VideoSamplingOptions;
 }
 
 // --- Diff image types ---
@@ -223,4 +290,38 @@ export interface NormalizedImage {
   readonly data: Buffer;
   readonly mimeType: SupportedMimeType;
   readonly base64: string;
+}
+
+// --- Video sampling ---
+
+/**
+ * Options for sampling frames from a video input. Defaults match the v1
+ * sampling strategy: 1 fps, capped at 10 frames, max duration 10 s.
+ */
+export interface VideoSamplingOptions {
+  /** Sampling rate in frames per second. Default `1`. */
+  fps?: number;
+  /**
+   * Maximum number of frames extracted regardless of duration. Default `10`.
+   * Hard-capped at `60` to keep memory bounded; values above the cap throw
+   * `VisualAIVideoError`.
+   */
+  maxFrames?: number;
+  /**
+   * Maximum video duration accepted, in seconds. Videos longer than this
+   * cause `VisualAIVideoError` to be thrown before any provider call.
+   * Default `10`.
+   */
+  maxDurationSeconds?: number;
+}
+
+/**
+ * A single frame extracted from a video input. Identical in shape to
+ * `NormalizedImage` so it can be passed transparently to provider drivers.
+ */
+export interface Frame extends NormalizedImage {
+  /** 0-based timestamp (seconds, from the start of the clip) of this frame. */
+  readonly timestampSeconds: number;
+  /** 0-based index of this frame within the sampled sequence. */
+  readonly index: number;
 }

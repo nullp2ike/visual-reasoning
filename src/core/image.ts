@@ -3,6 +3,15 @@ import { extname } from "node:path";
 import sharp from "sharp";
 import { VisualAIImageError } from "../errors.js";
 import type { NormalizedImage, SupportedMimeType } from "../types.js";
+import {
+  decodeBase64,
+  fetchToBuffer,
+  isDataUrl,
+  isFilePath,
+  isUrl,
+  looksLikeImageBase64,
+  parseDataUrl,
+} from "./input-detect.js";
 
 const SUPPORTED_FORMATS: ReadonlySet<SupportedMimeType> = new Set([
   "image/jpeg",
@@ -29,28 +38,6 @@ function isSupportedMimeType(value: string): value is SupportedMimeType {
 function getMimeFromExtension(filePath: string): SupportedMimeType | undefined {
   const ext = extname(filePath).toLowerCase();
   return EXTENSION_TO_MIME[ext];
-}
-
-function isFilePath(input: string): boolean {
-  return (
-    input.startsWith("/") ||
-    input.startsWith("./") ||
-    input.startsWith("../") ||
-    input.includes("\\")
-  );
-}
-
-function isUrl(input: string): boolean {
-  return input.startsWith("http://") || input.startsWith("https://");
-}
-
-function isBase64Image(input: string): boolean {
-  return (
-    input.startsWith("iVBOR") || // PNG  (0x89 0x50 0x4E 0x47)
-    input.startsWith("/9j/") || // JPEG (0xFF 0xD8 0xFF)
-    input.startsWith("R0lGOD") || // GIF  (0x47 0x49 0x46)
-    input.startsWith("UklGR") // WebP (0x52 0x49 0x46 0x46)
-  );
 }
 
 function detectMimeType(data: Buffer): SupportedMimeType {
@@ -131,26 +118,16 @@ async function loadFromFilePath(
 }
 
 async function loadFromUrl(url: string): Promise<{ data: Buffer; mimeType: SupportedMimeType }> {
-  let response: Response;
+  let result: { data: Buffer; contentType: string | null };
   try {
-    response = await fetch(url, {
-      signal: AbortSignal.timeout(URL_FETCH_TIMEOUT_MS),
-    });
+    result = await fetchToBuffer(url, URL_FETCH_TIMEOUT_MS);
   } catch (err) {
     throw new VisualAIImageError(
       `Failed to fetch image from URL: ${url} — ${err instanceof Error ? err.message : String(err)}`,
     );
   }
 
-  if (!response.ok) {
-    throw new VisualAIImageError(
-      `Failed to fetch image from URL: ${url} — HTTP ${response.status}`,
-    );
-  }
-
-  const arrayBuffer = await response.arrayBuffer();
-  const data = Buffer.from(arrayBuffer);
-  const contentType = response.headers.get("content-type")?.split(";")[0]?.trim() ?? null;
+  const { data, contentType } = result;
   const mimeType =
     contentType && isSupportedMimeType(contentType) ? contentType : detectMimeType(data);
 
@@ -162,24 +139,24 @@ function loadFromBase64(input: string): { data: Buffer; mimeType: SupportedMimeT
   let base64Data = input;
   let mimeType: SupportedMimeType | undefined;
 
-  if (input.startsWith("data:")) {
-    const match = /^data:(image\/[^;]+);base64,(.+)$/.exec(input);
-    if (!match?.[1] || !match[2]) {
+  if (isDataUrl(input)) {
+    const parsed = parseDataUrl(input);
+    if (!parsed) {
       throw new VisualAIImageError("Invalid data URL format");
     }
-    if (!isSupportedMimeType(match[1])) {
-      throw new VisualAIImageError(`Unsupported image format: ${match[1]}`);
+    if (!isSupportedMimeType(parsed.mimeType)) {
+      throw new VisualAIImageError(`Unsupported image format: ${parsed.mimeType}`);
     }
-    mimeType = match[1];
-    base64Data = match[2];
+    mimeType = parsed.mimeType;
+    base64Data = parsed.base64Payload;
   }
 
-  // Validate base64 characters
-  if (!/^[A-Za-z0-9+/\n\r]+=*$/.test(base64Data)) {
+  let data: Buffer;
+  try {
+    data = decodeBase64(base64Data);
+  } catch {
     throw new VisualAIImageError("Invalid base64 string");
   }
-
-  const data = Buffer.from(base64Data, "base64");
 
   if (data.length === 0) {
     throw new VisualAIImageError("Empty image data after base64 decode");
@@ -204,9 +181,9 @@ export async function normalizeImage(
   } else if (typeof input === "string") {
     if (isUrl(input)) {
       ({ data, mimeType } = await loadFromUrl(input));
-    } else if (input.startsWith("data:")) {
+    } else if (isDataUrl(input)) {
       ({ data, mimeType } = loadFromBase64(input));
-    } else if (isBase64Image(input)) {
+    } else if (looksLikeImageBase64(input)) {
       ({ data, mimeType } = loadFromBase64(input));
     } else if (isFilePath(input)) {
       ({ data, mimeType } = await loadFromFilePath(input));

@@ -10,7 +10,7 @@ Each issue must have:
 - "suggestion": how to fix or improve it
 `;
 
-const CHECK_OUTPUT_SCHEMA = `IMPORTANT: Follow this evaluation order:
+const CHECK_OUTPUT_SCHEMA_IMAGE = `IMPORTANT: Follow this evaluation order:
 1. First, evaluate EACH statement independently and populate the "statements" array
 2. Then, set "pass" to true ONLY if every statement passed (logical AND of all statement results)
 3. Write "reasoning" as a brief overall summary of the evaluation
@@ -51,7 +51,47 @@ Example for a failing check:
 }
 ${JSON_INSTRUCTIONS}`;
 
-const ASK_OUTPUT_SCHEMA = `Respond with a JSON object matching this exact structure:
+const CHECK_OUTPUT_SCHEMA_VIDEO = `IMPORTANT: Follow this evaluation order:
+1. First, evaluate EACH statement independently across the entire timeline and populate the "statements" array
+2. A statement passes if it is true at ANY frame of the timeline, unless the wording explicitly says otherwise (e.g. "throughout", "at all times")
+3. For each statement that passes, set "timestampSeconds" to the timestamp of the frame that most clearly demonstrates it (or where it first becomes true). Use null when the statement fails or applies across the whole clip.
+4. Then, set "pass" to true ONLY if every statement passed (logical AND of all statement results)
+5. Write "reasoning" as a brief overall summary of the evaluation
+6. Include "issues" only for statements that failed
+
+Respond with a JSON object matching this exact structure:
+{
+  "pass": boolean,          // true ONLY if ALL statements passed — derive from statements array
+  "reasoning": string,      // brief overall summary of the evaluation
+  "issues": [...],          // one issue per failing statement (empty if all pass)
+  "statements": [           // one entry per statement, in order — evaluate these FIRST
+    {
+      "statement": string,  // the original statement text
+      "pass": boolean,      // whether this statement is true at any point in the timeline
+      "reasoning": string,  // explanation for this statement, citing frame timestamps where relevant
+      "confidence": "high" | "medium" | "low",
+      "timestampSeconds": number | null
+        // seconds from the start of the clip where the statement is most clearly true,
+        // or null if it failed / applies across the whole clip
+    }
+  ]
+}
+${ISSUE_SCHEMA_INSTRUCTIONS}
+
+Only include issues for statements that fail. If all statements pass, issues should be an empty array.
+
+Example for a passing video check:
+{
+  "pass": true,
+  "reasoning": "The success toast appeared briefly around 3.5s.",
+  "issues": [],
+  "statements": [
+    { "statement": "A success toast with text 'Saved' appears", "pass": true, "reasoning": "A green toast labeled 'Saved' is visible in the bottom-right at the 3.5s frame", "confidence": "high", "timestampSeconds": 3.5 }
+  ]
+}
+${JSON_INSTRUCTIONS}`;
+
+const ASK_OUTPUT_SCHEMA_IMAGE = `Respond with a JSON object matching this exact structure:
 {
   "summary": string,        // high-level analysis summary
   "issues": [...]           // list of issues/findings, can be empty
@@ -71,6 +111,18 @@ Example:
     { "priority": "minor", "category": "content", "description": "Placeholder text 'Lorem ipsum' visible in sidebar", "suggestion": "Replace with actual content or remove the placeholder section" }
   ]
 }
+${JSON_INSTRUCTIONS}`;
+
+const ASK_OUTPUT_SCHEMA_VIDEO = `Respond with a JSON object matching this exact structure:
+{
+  "summary": string,            // high-level summary of what happens across the timeline
+  "issues": [...],              // list of issues/findings, can be empty
+  "frameReferences": number[]   // 0-based indices of frames the answer relies on (in order)
+}
+${ISSUE_SCHEMA_INSTRUCTIONS}
+
+Prioritize issues by severity (critical / major / minor) as for image input.
+Cite frame indices in "frameReferences" so the user can locate the moments you describe.
 ${JSON_INSTRUCTIONS}`;
 
 const COMPARE_OUTPUT_SCHEMA = `Respond with a JSON object matching this exact structure:
@@ -94,8 +146,36 @@ ${JSON_INSTRUCTIONS}`;
 const DEFAULT_CHECK_ROLE =
   "You are a visual QA assistant. Evaluate the provided image precisely and objectively.";
 
+const DEFAULT_CHECK_ROLE_VIDEO =
+  "You are a visual QA assistant. Evaluate the provided sequence of video frames precisely and objectively, treating them as a chronological timeline.";
+
 const DEFAULT_ASK_ROLE =
   "You are a visual QA assistant. Analyze the provided image based on the user's request.";
+
+const DEFAULT_ASK_ROLE_VIDEO =
+  "You are a visual QA assistant. Analyze the provided sequence of video frames as a chronological timeline based on the user's request.";
+
+/**
+ * Describes the media accompanying a prompt so the builders can adapt the
+ * role, schema, and timeline guidance accordingly.
+ */
+export type MediaContext =
+  | { kind: "image" }
+  | { kind: "video"; frameTimestamps: readonly number[]; durationSeconds: number };
+
+function buildVideoTimelineSection(
+  frameTimestamps: readonly number[],
+  durationSeconds: number,
+): string {
+  const formatted = frameTimestamps.map((t, i) => `  ${i}: ${t.toFixed(2)}s`).join("\n");
+  return `Video timeline:
+- Total duration: ${durationSeconds.toFixed(2)}s
+- ${frameTimestamps.length} frames sampled (in chronological order)
+- Frame index → timestamp:
+${formatted}
+
+Treat the attached images as a chronological timeline. The first image is the earliest frame, the last is the latest. Refer to frames by timestamp where helpful.`;
+}
 
 const COMPARE_ROLE =
   "You are performing a visual regression test. Compare the BEFORE image (baseline) to the AFTER image (current) and identify all visual differences. Flag changes that appear unintentional or problematic.";
@@ -109,6 +189,12 @@ const COMPARE_EDGE_RULES: readonly string[] = [
 export interface CheckPromptOptions {
   readonly role?: string;
   readonly instructions?: readonly string[];
+  readonly media?: MediaContext;
+}
+
+export interface AskPromptOptions {
+  readonly instructions?: readonly string[];
+  readonly media?: MediaContext;
 }
 
 export interface ComparePromptOptions {
@@ -128,31 +214,39 @@ export function buildCheckPrompt(
 ): string {
   const stmts = Array.isArray(statements) ? statements : [statements];
   const statementsBlock = stmts.map((s, i) => `${i + 1}. "${s}"`).join("\n");
+  const media = options?.media;
+  const defaultRole = media?.kind === "video" ? DEFAULT_CHECK_ROLE_VIDEO : DEFAULT_CHECK_ROLE;
 
-  const sections = [options?.role ?? DEFAULT_CHECK_ROLE];
+  const sections = [options?.role ?? defaultRole];
+
+  if (media?.kind === "video") {
+    sections.push(buildVideoTimelineSection(media.frameTimestamps, media.durationSeconds));
+  }
 
   if (options?.instructions && options.instructions.length > 0) {
     sections.push(buildInstructionsSection(options.instructions));
   }
 
   sections.push(`Statements to evaluate:\n${statementsBlock}`);
-  sections.push(CHECK_OUTPUT_SCHEMA);
+  sections.push(media?.kind === "video" ? CHECK_OUTPUT_SCHEMA_VIDEO : CHECK_OUTPUT_SCHEMA_IMAGE);
 
   return sections.join("\n\n");
 }
 
-export function buildAskPrompt(
-  userPrompt: string,
-  options?: { readonly instructions?: readonly string[] },
-): string {
-  const sections = [DEFAULT_ASK_ROLE];
+export function buildAskPrompt(userPrompt: string, options?: AskPromptOptions): string {
+  const media = options?.media;
+  const sections = [media?.kind === "video" ? DEFAULT_ASK_ROLE_VIDEO : DEFAULT_ASK_ROLE];
+
+  if (media?.kind === "video") {
+    sections.push(buildVideoTimelineSection(media.frameTimestamps, media.durationSeconds));
+  }
 
   if (options?.instructions && options.instructions.length > 0) {
     sections.push(buildInstructionsSection(options.instructions));
   }
 
   sections.push(`User request: ${userPrompt}`);
-  sections.push(ASK_OUTPUT_SCHEMA);
+  sections.push(media?.kind === "video" ? ASK_OUTPUT_SCHEMA_VIDEO : ASK_OUTPUT_SCHEMA_IMAGE);
 
   return sections.join("\n\n");
 }

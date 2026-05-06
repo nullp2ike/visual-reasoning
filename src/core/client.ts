@@ -19,8 +19,11 @@ import type {
   ElementsVisibilityOptions,
   ImageInput,
   LayoutOptions,
+  MediaInput,
+  NormalizedImage,
   PageLoadOptions,
   ProviderName,
+  VideoFramesMetadata,
   VisualAIConfig,
 } from "../types.js";
 import { AnthropicDriver } from "../providers/anthropic.js";
@@ -31,7 +34,13 @@ import { resolveConfig } from "./config.js";
 import { debugLog, processUsage, timedSendMessage, withErrorDebug } from "./debug.js";
 import { generateAiDiff } from "./diff.js";
 import { normalizeImage } from "./image.js";
-import { buildAskPrompt, buildCheckPrompt, buildComparePrompt } from "./prompt.js";
+import { normalizeMedia, type NormalizedMedia } from "./media.js";
+import {
+  buildAskPrompt,
+  buildCheckPrompt,
+  buildComparePrompt,
+  type MediaContext,
+} from "./prompt.js";
 import {
   AskResponseSchema,
   CheckResponseSchema,
@@ -60,14 +69,22 @@ function toSchemaOptions(schema: z.ZodType): SendMessageOptions {
  */
 export interface VisualAIClient {
   /**
-   * Verifies one or more statements against a single image.
+   * Verifies one or more statements against a single image or video.
    *
-   * @param image Image source as a buffer, URL, file path, or base64 string.
-   * @param statements One or more statements to validate against the image.
-   * @param options Optional additional instructions appended to the prompt.
+   * Pass an image (PNG/JPEG/WebP/GIF) for a single-frame check. Pass a video
+   * (MP4/WebM/MOV/MKV file path, URL, base64, Buffer) and the client samples
+   * frames automatically; statements pass if they are true at any sampled
+   * frame, and each statement result includes the timestamp where it
+   * matched. The `frames` metadata on the result reports which timestamps
+   * the model saw.
+   *
+   * @param input Image or video source as a buffer, URL, file path, or base64 string.
+   * @param statements One or more statements to validate against the input.
+   * @param options Optional additional instructions and video sampling overrides.
    * @returns A structured result describing pass/fail, issues, and statement reasoning.
    * @throws {VisualAIConfigError} When no statements are provided.
-   * @throws {VisualAIImageError} When the image cannot be loaded or decoded.
+   * @throws {VisualAIImageError} When an image input cannot be loaded or decoded.
+   * @throws {VisualAIVideoError} When a video input cannot be loaded, exceeds the duration cap, or ffmpeg is missing.
    * @throws {VisualAIError} When the provider rejects the request or returns invalid output.
    * @example
    * ```ts
@@ -76,27 +93,39 @@ export interface VisualAIClient {
    *   "There is no error banner",
    * ]);
    * ```
+   * @example
+   * ```ts
+   * const result = await client.check("./recording.webm", [
+   *   'A success toast with text "Saved" briefly appears',
+   * ]);
+   * console.log(result.statements[0].timestampSeconds); // e.g. 3.5
+   * ```
    */
   check(
-    image: ImageInput,
+    input: MediaInput,
     statements: string | string[],
     options?: CheckOptions,
   ): Promise<CheckResult>;
   /**
-   * Asks an open-ended question about an image and returns a structured summary.
+   * Asks an open-ended question about an image or video and returns a structured summary.
    *
-   * @param image Image source as a buffer, URL, file path, or base64 string.
-   * @param prompt Prompt describing what to inspect in the image.
-   * @param options Optional additional instructions appended to the prompt.
+   * Video inputs are sampled into frames and analyzed as a chronological
+   * timeline. The result's `frameReferences` array surfaces which frames the
+   * model relied on for its answer.
+   *
+   * @param input Image or video source as a buffer, URL, file path, or base64 string.
+   * @param prompt Prompt describing what to inspect in the input.
+   * @param options Optional additional instructions and video sampling overrides.
    * @returns A summary with any detected issues.
-   * @throws {VisualAIImageError} When the image cannot be loaded or decoded.
+   * @throws {VisualAIImageError} When an image input cannot be loaded or decoded.
+   * @throws {VisualAIVideoError} When a video input cannot be loaded, exceeds the duration cap, or ffmpeg is missing.
    * @throws {VisualAIError} When the provider rejects the request or returns invalid output.
    * @example
    * ```ts
    * const result = await client.ask(screenshot, "What looks visually broken on this page?");
    * ```
    */
-  ask(image: ImageInput, prompt: string, options?: AskOptions): Promise<AskResult>;
+  ask(input: MediaInput, prompt: string, options?: AskOptions): Promise<AskResult>;
   /**
    * Compares two images and reports meaningful visual differences.
    *
@@ -117,7 +146,8 @@ export interface VisualAIClient {
    */
   compare(imageA: ImageInput, imageB: ImageInput, options?: CompareOptions): Promise<CompareResult>;
   /**
-   * Checks that the listed elements are visible in an image.
+   * Checks that the listed elements are visible in an image. Image input only —
+   * template helpers do not accept video input; use `check()` for video.
    *
    * @param image Image source as a buffer, URL, file path, or base64 string.
    * @param elements Element descriptions that should be present and visible.
@@ -137,7 +167,8 @@ export interface VisualAIClient {
     options?: ElementsVisibilityOptions,
   ): Promise<CheckResult>;
   /**
-   * Checks that the listed elements are not visible in an image.
+   * Checks that the listed elements are not visible in an image. Image input
+   * only — template helpers do not accept video input; use `check()` for video.
    *
    * @param image Image source as a buffer, URL, file path, or base64 string.
    * @param elements Element descriptions that should be absent or hidden.
@@ -157,7 +188,8 @@ export interface VisualAIClient {
     options?: ElementsVisibilityOptions,
   ): Promise<CheckResult>;
   /**
-   * Runs the built-in accessibility template against an image.
+   * Runs the built-in accessibility template against an image. Image input
+   * only — template helpers do not accept video input.
    *
    * @param image Image source as a buffer, URL, file path, or base64 string.
    * @param options Optional checks and extra instructions for the accessibility prompt.
@@ -171,7 +203,8 @@ export interface VisualAIClient {
    */
   accessibility(image: ImageInput, options?: AccessibilityOptions): Promise<CheckResult>;
   /**
-   * Runs the built-in layout template against an image.
+   * Runs the built-in layout template against an image. Image input only —
+   * template helpers do not accept video input.
    *
    * @param image Image source as a buffer, URL, file path, or base64 string.
    * @param options Optional checks and extra instructions for the layout prompt.
@@ -185,7 +218,8 @@ export interface VisualAIClient {
    */
   layout(image: ImageInput, options?: LayoutOptions): Promise<CheckResult>;
   /**
-   * Runs the built-in page-load template against an image.
+   * Runs the built-in page-load template against an image. Image input only —
+   * template helpers do not accept video input.
    *
    * @param image Image source as a buffer, URL, file path, or base64 string.
    * @param options Optional page-load expectations and extra instructions.
@@ -199,7 +233,8 @@ export interface VisualAIClient {
    */
   pageLoad(image: ImageInput, options?: PageLoadOptions): Promise<CheckResult>;
   /**
-   * Runs the built-in content template against an image.
+   * Runs the built-in content template against an image. Image input only —
+   * template helpers do not accept video input.
    *
    * @param image Image source as a buffer, URL, file path, or base64 string.
    * @param options Optional content checks and extra instructions.
@@ -229,6 +264,34 @@ function createDriver(provider: ProviderName, config: ProviderConfig): ProviderD
 const checkSchemaOptions = toSchemaOptions(CheckResponseSchema);
 const askSchemaOptions = toSchemaOptions(AskResponseSchema);
 const compareSchemaOptions = toSchemaOptions(CompareResponseSchema);
+
+function mediaToProviderInputs(media: NormalizedMedia): {
+  images: NormalizedImage[];
+  mediaContext: MediaContext;
+  framesMetadata: VideoFramesMetadata | undefined;
+} {
+  if (media.kind === "image") {
+    return {
+      images: [media.image],
+      mediaContext: { kind: "image" },
+      framesMetadata: undefined,
+    };
+  }
+  const timestamps = media.frames.map((f) => f.timestampSeconds);
+  return {
+    images: media.frames,
+    mediaContext: {
+      kind: "video",
+      frameTimestamps: timestamps,
+      durationSeconds: media.durationSeconds,
+    },
+    framesMetadata: {
+      count: media.frames.length,
+      timestampsSeconds: timestamps,
+      durationSeconds: media.durationSeconds,
+    },
+  };
+}
 
 /**
  * Creates a configured visual AI client.
@@ -297,40 +360,50 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
   }
 
   return {
-    async check(image, statements, options) {
+    async check(input, statements, options) {
       const stmts = Array.isArray(statements) ? statements : [statements];
       if (stmts.length === 0) {
         throw new VisualAIConfigError("At least one statement is required for check()");
       }
 
       return withErrorDebug(resolvedConfig, "check", async () => {
-        const img = await normalizeImage(image);
-        const prompt = buildCheckPrompt(stmts, { instructions: options?.instructions });
+        const media = await normalizeMedia(input, options?.video);
+        const { images, mediaContext, framesMetadata } = mediaToProviderInputs(media);
+        const prompt = buildCheckPrompt(stmts, {
+          instructions: options?.instructions,
+          media: mediaContext,
+        });
         debugLog(resolvedConfig, "check prompt", prompt, "prompt");
 
-        const response = await timedSendMessage(driver, [img], prompt, checkSchemaOptions);
+        const response = await timedSendMessage(driver, images, prompt, checkSchemaOptions);
         debugLog(resolvedConfig, "check response", response.text, "response");
 
         const result = parseCheckResponse(response.text);
         return {
           ...result,
+          ...(framesMetadata ? { frames: framesMetadata } : {}),
           usage: processUsage("check", response.usage, response.durationSeconds, resolvedConfig),
         };
       });
     },
 
-    async ask(image, userPrompt, options) {
+    async ask(input, userPrompt, options) {
       return withErrorDebug(resolvedConfig, "ask", async () => {
-        const img = await normalizeImage(image);
-        const prompt = buildAskPrompt(userPrompt, { instructions: options?.instructions });
+        const media = await normalizeMedia(input, options?.video);
+        const { images, mediaContext, framesMetadata } = mediaToProviderInputs(media);
+        const prompt = buildAskPrompt(userPrompt, {
+          instructions: options?.instructions,
+          media: mediaContext,
+        });
         debugLog(resolvedConfig, "ask prompt", prompt, "prompt");
 
-        const response = await timedSendMessage(driver, [img], prompt, askSchemaOptions);
+        const response = await timedSendMessage(driver, images, prompt, askSchemaOptions);
         debugLog(resolvedConfig, "ask response", response.text, "response");
 
         const result = parseAskResponse(response.text);
         return {
           ...result,
+          ...(framesMetadata ? { frames: framesMetadata } : {}),
           usage: processUsage("ask", response.usage, response.durationSeconds, resolvedConfig),
         };
       });

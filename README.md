@@ -1,6 +1,6 @@
 # visual-ai-assertions
 
-AI-powered visual assertions for E2E tests. Send screenshots to Claude, GPT, or Gemini and get structured, typed results.
+AI-powered visual assertions for E2E tests. Send screenshots — or short video recordings — to Claude, GPT, or Gemini and get structured, typed results.
 
 ## Installation
 
@@ -11,6 +11,9 @@ npm install visual-ai-assertions
 # Optional: install additional provider SDKs
 npm install @anthropic-ai/sdk    # for Claude
 npm install @google/genai        # for Gemini
+
+# Optional: install ffmpeg deps to enable video input
+npm install --save-dev fluent-ffmpeg @ffmpeg-installer/ffmpeg @ffprobe-installer/ffprobe
 
 # Zod is a peer dependency
 npm install zod
@@ -112,9 +115,9 @@ const ai = visualAI({
 });
 ```
 
-### `ai.check(image, statements, options?)`
+### `ai.check(input, statements, options?)`
 
-Visual assertion. Returns `pass: true` only if ALL statements are true.
+Visual assertion against a screenshot or short video. Returns `pass: true` only if ALL statements are true. For video inputs, a statement passes when it is true at any sampled frame.
 
 ```typescript
 // Single statement
@@ -130,6 +133,12 @@ const result = await ai.check(screenshot, [
 const result = await ai.check(screenshot, ["The form is submitted"], {
   instructions: ["Ignore loading spinners that appear briefly"],
 });
+
+// Video input — statement is true if it ever happens during the clip
+const result = await ai.check("./recording.webm", [
+  'A success toast with text "Saved" briefly appears',
+]);
+console.log(result.statements[0].timestampSeconds); // e.g. 3.5
 ```
 
 **Returns:** `CheckResult`
@@ -149,9 +158,9 @@ const result = await ai.check(screenshot, ["The form is submitted"], {
 }
 ```
 
-### `ai.ask(image, prompt, options?)`
+### `ai.ask(input, prompt, options?)`
 
-Free-form analysis. Returns structured issues with priority and category.
+Free-form analysis of an image or video. Returns structured issues with priority and category. Video inputs are sampled into a frame timeline; the result includes `frameReferences` indicating which frames the model relied on.
 
 ```typescript
 const result = await ai.ask(screenshot, "Analyze this page for UI issues");
@@ -312,6 +321,39 @@ await ai.check("https://example.com/screenshot.png", "...");
 
 Oversized images are automatically resized to provider limits.
 
+### Video Input
+
+`ai.check()` and `ai.ask()` also accept short video recordings (`.mp4`, `.webm`, `.mov`, `.mkv`) — useful for asserting on transient UI like toast messages. Accepted shapes are file path, `data:video/...;base64,...` URL, raw base64 string, `Buffer`, and `Uint8Array`. HTTP/HTTPS URLs are not supported for video inputs — fetch the bytes yourself first.
+
+```typescript
+// Playwright recording on disk
+const result = await ai.check("./trace/video/recording.webm", [
+  'A success toast with text "Saved" briefly appears',
+]);
+
+// Result includes frame metadata + per-statement timestamps
+console.log(result.frames);
+// { count: 4, timestampsSeconds: [0.5, 1.5, 2.5, 3.5], durationSeconds: 4.0 }
+console.log(result.statements[0].timestampSeconds); // 3.5
+
+// Override sampling — defaults are 1 fps, max 10 frames, max 10 s of video
+await ai.check("./long-clip.mp4", ["Loader disappears"], {
+  video: { fps: 2, maxFrames: 20, maxDurationSeconds: 15 },
+});
+```
+
+`maxFrames` is hard-capped at 60 to keep memory bounded. Frames are downscaled so the longer edge fits within 1568 px before being sent to the provider.
+
+How it works: the library samples frames with ffmpeg and sends them to the provider as an ordered timeline. A statement passes when it is true at any sampled frame, unless its wording specifies otherwise (e.g. "throughout"). Template helpers (`accessibility`, `layout`, `pageLoad`, `content`, `elementsVisible`, `elementsHidden`) are image-only — pass video to `check()` or `ask()` instead.
+
+**ffmpeg setup.** Video support is gated on three optional peer deps:
+
+```bash
+npm install --save-dev fluent-ffmpeg @ffmpeg-installer/ffmpeg @ffprobe-installer/ffprobe
+```
+
+Calling `check()` or `ask()` with a video input throws `VisualAIVideoError` (import from `visual-ai-assertions` to `instanceof`-narrow it) if these packages aren't installed. If you already have `ffmpeg`/`ffprobe` on `PATH`, only `fluent-ffmpeg` is required.
+
 ### Formatting & Assertion Helpers
 
 ```typescript
@@ -355,6 +397,9 @@ try {
         break;
       case "IMAGE_INVALID":
         // Invalid image: corrupt, unsupported format, etc.
+        break;
+      case "VIDEO_INVALID":
+        // Invalid video: missing ffmpeg deps, oversized clip, decode failure, etc.
         break;
       case "RESPONSE_PARSE_FAILED":
         // AI returned unparseable response — error.rawResponse has raw text
@@ -415,7 +460,12 @@ import type {
   AskResult,
   CheckResult,
   CompareResult,
+  Frame,
+  MediaInput,
   SupportedMimeType,
+  SupportedVideoMimeType,
+  VideoFramesMetadata,
+  VideoSamplingOptions,
   VisualAIConfig,
   VisualAIErrorCode,
 } from "visual-ai-assertions";
