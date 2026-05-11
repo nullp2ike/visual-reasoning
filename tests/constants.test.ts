@@ -123,10 +123,12 @@ describe("Accessibility", () => {
     expect(Accessibility.CONTRAST).toBe("contrast");
     expect(Accessibility.READABILITY).toBe("readability");
     expect(Accessibility.INTERACTIVE_VISIBILITY).toBe("interactive-visibility");
+    expect(Accessibility.COLOR_BLINDNESS).toBe("color-blindness");
+    expect(Accessibility.COLOR_ALONE).toBe("color-alone");
   });
 
-  it("has exactly 3 checks", () => {
-    expect(Object.keys(Accessibility)).toHaveLength(3);
+  it("has exactly 5 checks", () => {
+    expect(Object.keys(Accessibility)).toHaveLength(5);
   });
 });
 

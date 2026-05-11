@@ -131,6 +131,10 @@ export const Accessibility = {
   READABILITY: "readability",
   /** Detects interactive elements that are not visually distinct */
   INTERACTIVE_VISIBILITY: "interactive-visibility",
+  /** Detects color choices likely to be indistinguishable to viewers with common color vision deficiencies */
+  COLOR_BLINDNESS: "color-blindness",
+  /** Detects information conveyed by color alone, without a non-color cue (icon, text, pattern, position) */
+  COLOR_ALONE: "color-alone",
 } as const;
 
 // --- Derived check-name union types ---

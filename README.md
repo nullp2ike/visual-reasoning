@@ -253,10 +253,10 @@ await ai.elementsVisible(screenshot, ["Submit button", "Nav bar", "Footer"]);
 // Check that UI elements are hidden
 await ai.elementsHidden(screenshot, ["Loading spinner", "Error modal"]);
 
-// Accessibility checks (contrast, readability, interactive visibility)
+// Accessibility checks (contrast, readability, interactive visibility, color blindness, color-alone meaning)
 await ai.accessibility(screenshot);
 await ai.accessibility(screenshot, {
-  checks: [Accessibility.CONTRAST, Accessibility.READABILITY],
+  checks: [Accessibility.CONTRAST, Accessibility.COLOR_BLINDNESS, Accessibility.COLOR_ALONE],
 });
 
 // Layout checks (overlap, overflow, alignment)

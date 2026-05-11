@@ -7,6 +7,8 @@ describe("buildAccessibilityPrompt", () => {
     expect(prompt).toContain("contrast");
     expect(prompt).toContain("readable");
     expect(prompt).toContain("interactive");
+    expect(prompt).toContain("color vision deficiencies");
+    expect(prompt).toContain("non-color cue");
   });
 
   it("filters to selected checks", () => {
@@ -14,6 +16,30 @@ describe("buildAccessibilityPrompt", () => {
     expect(prompt).toContain("contrast");
     expect(prompt).not.toContain("cut off");
     expect(prompt).not.toContain("interactive elements (buttons");
+    expect(prompt).not.toContain("color vision deficiencies");
+    expect(prompt).not.toContain("non-color cue");
+  });
+
+  it("filters to color-blindness only", () => {
+    const prompt = buildAccessibilityPrompt({ checks: ["color-blindness"] });
+    expect(prompt).toContain("color vision deficiencies");
+    expect(prompt).not.toContain("non-color cue");
+    expect(prompt).not.toContain("cut off");
+    expect(prompt).not.toContain("interactive elements (buttons");
+  });
+
+  it("filters to color-alone only", () => {
+    const prompt = buildAccessibilityPrompt({ checks: ["color-alone"] });
+    expect(prompt).toContain("non-color cue");
+    expect(prompt).not.toContain("color vision deficiencies");
+    expect(prompt).not.toContain("cut off");
+    expect(prompt).not.toContain("interactive elements (buttons");
+  });
+
+  it("includes new color-related edge rules", () => {
+    const prompt = buildAccessibilityPrompt();
+    expect(prompt).toContain("decorative color");
+    expect(prompt).toContain("hover/focus state colors");
   });
 
   it("generates check-format prompt", () => {

@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.11.0] - 2026-05-11
+
+### Added
+
+- **`Accessibility.COLOR_BLINDNESS`** check: flags color choices likely to be indistinguishable to viewers with common color vision deficiencies (e.g., red/green deuteranopia/protanopia, blue/purple confusion). Use it to catch charts, status indicators, and other meaningful color pairings that rely on commonly confused hues.
+- **`Accessibility.COLOR_ALONE`** check: flags information conveyed by color alone, without a non-color cue. Use it to catch required fields, error states, chart legends, link styling, and other meaning that's encoded only through hue (no icon, text, pattern, or position).
+- Two new default edge rules for the accessibility template: purely decorative color (branding, backgrounds, gradients) is exempt, and hover/focus state colors are not assumed if not visible in the screenshot.
+
+### Notes for upgraders
+
+- `ai.accessibility(screenshot)` (no options) now also evaluates the two new checks, so the default check set goes from 3 statements to 5. Passing screenshots that have meaningful color-only cues may start failing where they previously passed.
+- To preserve prior behavior, pass an explicit `checks` array: `{ checks: [Accessibility.CONTRAST, Accessibility.READABILITY, Accessibility.INTERACTIVE_VISIBILITY] }`.
+
 ## [0.10.0] - 2026-05-06
 
 ### Added
