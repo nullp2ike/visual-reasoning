@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- **Gemini 3.5 Flash (`gemini-3.5-flash`)** as a supported Google model. Pricing: $1.50 / $9.00 per MTok input/output. Positioned by Google as their strongest agentic and coding model. Opt-in only — `gemini-3-flash-preview` remains the Google default because validation showed `gemini-3.5-flash` interprets the annotated-diff prompt inconsistently (sometimes returns a binary pixel-difference mask instead of the requested overlay).
+- `gemini-3.5-flash` added to the annotated-diff allowlist so explicit `compare(..., { diffImage: true })` calls with this model don't throw. The compare auto-trigger remains restricted to `gemini-3-flash-preview` for predictable annotation quality.
+
+### Changed
+
+- `generateAiDiff()` allowlist error message now lists both supported diff models instead of naming only `gemini-3-flash-preview`.
+
 ## [0.11.0] - 2026-05-11
 
 ### Added

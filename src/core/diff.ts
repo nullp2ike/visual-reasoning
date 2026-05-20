@@ -4,6 +4,16 @@ import { VisualAIConfigError } from "../errors.js";
 import type { DiffImageResult, NormalizedImage } from "../types.js";
 import { buildAiDiffPrompt } from "./prompt.js";
 
+/**
+ * Models proven to return annotated diff images via Gemini code execution.
+ * `gemini-3-flash-preview` is the baseline; `gemini-3.5-flash` is opt-in
+ * (mechanism works but annotation quality has not been validated end-to-end).
+ */
+export const DIFF_ALLOWED_MODELS: ReadonlySet<string> = new Set([
+  Model.Google.GEMINI_3_FLASH_PREVIEW,
+  Model.Google.GEMINI_3_5_FLASH,
+]);
+
 interface ImageGenerationDriver {
   generateImage?: (
     images: NormalizedImage[],
@@ -27,9 +37,9 @@ export async function generateAiDiff(
     );
   }
 
-  if (model !== Model.Google.GEMINI_3_FLASH_PREVIEW) {
+  if (!DIFF_ALLOWED_MODELS.has(model)) {
     throw new VisualAIConfigError(
-      "Annotated diff images are only supported when visualAI is configured with the Google model gemini-3-flash-preview.",
+      `Annotated diff images are only supported with these Google models: ${[...DIFF_ALLOWED_MODELS].join(", ")}.`,
     );
   }
 

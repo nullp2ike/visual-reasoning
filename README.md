@@ -205,7 +205,8 @@ const result = await ai.compare(before, after, {
   instructions: ["Ignore date/time differences"],
 });
 
-// With AI-generated diff image (supported only by gemini-3-flash-preview)
+// With AI-generated diff image (supported by gemini-3-flash-preview and gemini-3.5-flash;
+// only gemini-3-flash-preview auto-enables it — pass diffImage: true explicitly for 3.5-flash)
 const result = await ai.compare(before, after, {
   diffImage: true,
 });
@@ -526,6 +527,7 @@ All listed models support image/vision input. Pass any model ID to the `model` c
 
 | Model                 | Model ID                        | Input $/MTok | Output $/MTok | Notes                             |
 | --------------------- | ------------------------------- | ------------ | ------------- | --------------------------------- |
+| Gemini 3.5 Flash      | `gemini-3.5-flash`              | $1.50        | $9            | Strongest agentic & coding model  |
 | Gemini 3.1 Pro        | `gemini-3.1-pro-preview`        | $2           | $12           | Preview — most advanced reasoning |
 | Gemini 3.1 Flash Lite | `gemini-3.1-flash-lite-preview` | $0.25        | $1.50         | Preview — lightweight and cheap   |
 | Gemini 3 Flash        | `gemini-3-flash-preview`        | $0.50        | $3            | **Default** — fast and capable    |
