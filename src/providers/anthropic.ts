@@ -9,12 +9,20 @@ import type {
   SendMessageOptions,
 } from "./types.js";
 
-// Opus 4.7 introduced a dedicated "xhigh" effort tier. Older Anthropic models
-// (Opus 4.6, Sonnet 4.6) reject "xhigh" but accept "max", which is why our
-// xhigh has historically mapped to "max" everywhere.
+// Opus 4.7 introduced a dedicated "xhigh" effort tier, carried forward by
+// Fable 5, Opus 4.8, and Sonnet 5. Older Anthropic models (Opus 4.6, Sonnet
+// 4.6) reject "xhigh" but accept "max", which is why our xhigh maps to "max"
+// on those models only.
+const XHIGH_CAPABLE_MODELS: ReadonlySet<string> = new Set([
+  Model.Anthropic.FABLE_5,
+  Model.Anthropic.OPUS_4_8,
+  Model.Anthropic.OPUS_4_7,
+  Model.Anthropic.SONNET_5,
+]);
+
 function mapEffort(level: ReasoningEffortLevel, model: string): string {
   if (level !== "xhigh") return level;
-  return model === Model.Anthropic.OPUS_4_7 ? "xhigh" : "max";
+  return XHIGH_CAPABLE_MODELS.has(model) ? "xhigh" : "max";
 }
 
 /** Minimal interface for the Anthropic SDK client used by this driver. */

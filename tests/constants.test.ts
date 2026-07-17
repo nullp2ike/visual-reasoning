@@ -24,13 +24,19 @@ describe("Provider", () => {
 
 describe("Model", () => {
   it("has correct Anthropic model values", () => {
+    expect(Model.Anthropic.FABLE_5).toBe("claude-fable-5");
+    expect(Model.Anthropic.OPUS_4_8).toBe("claude-opus-4-8");
     expect(Model.Anthropic.OPUS_4_7).toBe("claude-opus-4-7");
     expect(Model.Anthropic.OPUS_4_6).toBe("claude-opus-4-6");
+    expect(Model.Anthropic.SONNET_5).toBe("claude-sonnet-5");
     expect(Model.Anthropic.SONNET_4_6).toBe("claude-sonnet-4-6");
     expect(Model.Anthropic.HAIKU_4_5).toBe("claude-haiku-4-5");
   });
 
   it("has correct OpenAI model values", () => {
+    expect(Model.OpenAI.GPT_5_6_SOL).toBe("gpt-5.6-sol");
+    expect(Model.OpenAI.GPT_5_6_TERRA).toBe("gpt-5.6-terra");
+    expect(Model.OpenAI.GPT_5_6_LUNA).toBe("gpt-5.6-luna");
     expect(Model.OpenAI.GPT_5_5).toBe("gpt-5.5");
     expect(Model.OpenAI.GPT_5_4).toBe("gpt-5.4");
     expect(Model.OpenAI.GPT_5_4_PRO).toBe("gpt-5.4-pro");
@@ -43,7 +49,7 @@ describe("Model", () => {
   it("has correct Google model values", () => {
     expect(Model.Google.GEMINI_3_5_FLASH).toBe("gemini-3.5-flash");
     expect(Model.Google.GEMINI_3_1_PRO_PREVIEW).toBe("gemini-3.1-pro-preview");
-    expect(Model.Google.GEMINI_3_1_FLASH_LITE_PREVIEW).toBe("gemini-3.1-flash-lite-preview");
+    expect(Model.Google.GEMINI_3_1_FLASH_LITE).toBe("gemini-3.1-flash-lite");
     expect(Model.Google.GEMINI_3_FLASH_PREVIEW).toBe("gemini-3-flash-preview");
   });
 

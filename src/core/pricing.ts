@@ -9,6 +9,18 @@ interface ModelPricing {
 const PER_MILLION = 1_000_000;
 
 const PRICING_TABLE: Record<string, ModelPricing> = {
+  [`${Provider.ANTHROPIC}:${Model.Anthropic.FABLE_5}`]: {
+    inputPricePerToken: 10 / PER_MILLION,
+    outputPricePerToken: 50 / PER_MILLION,
+  },
+  [`${Provider.ANTHROPIC}:${Model.Anthropic.OPUS_4_8}`]: {
+    inputPricePerToken: 5 / PER_MILLION,
+    outputPricePerToken: 25 / PER_MILLION,
+  },
+  [`${Provider.ANTHROPIC}:${Model.Anthropic.SONNET_5}`]: {
+    inputPricePerToken: 3 / PER_MILLION,
+    outputPricePerToken: 15 / PER_MILLION,
+  },
   [`${Provider.ANTHROPIC}:${Model.Anthropic.OPUS_4_7}`]: {
     inputPricePerToken: 5 / PER_MILLION,
     outputPricePerToken: 25 / PER_MILLION,
@@ -24,6 +36,18 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
   [`${Provider.ANTHROPIC}:${Model.Anthropic.HAIKU_4_5}`]: {
     inputPricePerToken: 1 / PER_MILLION,
     outputPricePerToken: 5 / PER_MILLION,
+  },
+  [`${Provider.OPENAI}:${Model.OpenAI.GPT_5_6_SOL}`]: {
+    inputPricePerToken: 5 / PER_MILLION,
+    outputPricePerToken: 30 / PER_MILLION,
+  },
+  [`${Provider.OPENAI}:${Model.OpenAI.GPT_5_6_TERRA}`]: {
+    inputPricePerToken: 2.5 / PER_MILLION,
+    outputPricePerToken: 15 / PER_MILLION,
+  },
+  [`${Provider.OPENAI}:${Model.OpenAI.GPT_5_6_LUNA}`]: {
+    inputPricePerToken: 1 / PER_MILLION,
+    outputPricePerToken: 6 / PER_MILLION,
   },
   [`${Provider.OPENAI}:${Model.OpenAI.GPT_5_5}`]: {
     inputPricePerToken: 5 / PER_MILLION,
@@ -61,7 +85,7 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
     inputPricePerToken: 2 / PER_MILLION,
     outputPricePerToken: 12 / PER_MILLION,
   },
-  [`${Provider.GOOGLE}:${Model.Google.GEMINI_3_1_FLASH_LITE_PREVIEW}`]: {
+  [`${Provider.GOOGLE}:${Model.Google.GEMINI_3_1_FLASH_LITE}`]: {
     inputPricePerToken: 0.25 / PER_MILLION,
     outputPricePerToken: 1.5 / PER_MILLION,
   },

@@ -209,6 +209,60 @@ describe("AnthropicDriver", () => {
     expect(callArgs).toHaveProperty("output_config", { effort: "xhigh" });
   });
 
+  it("maps xhigh reasoning effort to xhigh for Opus 4.8", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: "{}" }],
+      usage: { input_tokens: 0, output_tokens: 0 },
+    });
+
+    const driver = new AnthropicDriver({
+      apiKey: "test-key",
+      model: "claude-opus-4-8",
+      maxTokens: 4096,
+      reasoningEffort: "xhigh",
+    });
+    await driver.sendMessage([makeImage()], "test");
+
+    const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
+    expect(callArgs).toHaveProperty("output_config", { effort: "xhigh" });
+  });
+
+  it("maps xhigh reasoning effort to xhigh for Sonnet 5", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: "{}" }],
+      usage: { input_tokens: 0, output_tokens: 0 },
+    });
+
+    const driver = new AnthropicDriver({
+      apiKey: "test-key",
+      model: "claude-sonnet-5",
+      maxTokens: 4096,
+      reasoningEffort: "xhigh",
+    });
+    await driver.sendMessage([makeImage()], "test");
+
+    const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
+    expect(callArgs).toHaveProperty("output_config", { effort: "xhigh" });
+  });
+
+  it("maps xhigh reasoning effort to xhigh for Fable 5", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: "{}" }],
+      usage: { input_tokens: 0, output_tokens: 0 },
+    });
+
+    const driver = new AnthropicDriver({
+      apiKey: "test-key",
+      model: "claude-fable-5",
+      maxTokens: 4096,
+      reasoningEffort: "xhigh",
+    });
+    await driver.sendMessage([makeImage()], "test");
+
+    const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
+    expect(callArgs).toHaveProperty("output_config", { effort: "xhigh" });
+  });
+
   it("passes high reasoning effort through unchanged on Opus 4.7", async () => {
     mockCreate.mockResolvedValueOnce({
       content: [{ type: "text", text: "{}" }],

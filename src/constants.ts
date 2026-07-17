@@ -27,12 +27,18 @@ export const Provider = {
 /** Known model names grouped by provider. */
 export const Model = {
   Anthropic: {
+    FABLE_5: "claude-fable-5",
+    OPUS_4_8: "claude-opus-4-8",
     OPUS_4_7: "claude-opus-4-7",
     OPUS_4_6: "claude-opus-4-6",
+    SONNET_5: "claude-sonnet-5",
     SONNET_4_6: "claude-sonnet-4-6",
     HAIKU_4_5: "claude-haiku-4-5",
   },
   OpenAI: {
+    GPT_5_6_SOL: "gpt-5.6-sol",
+    GPT_5_6_TERRA: "gpt-5.6-terra",
+    GPT_5_6_LUNA: "gpt-5.6-luna",
     GPT_5_5: "gpt-5.5",
     GPT_5_4: "gpt-5.4",
     GPT_5_4_PRO: "gpt-5.4-pro",
@@ -44,7 +50,7 @@ export const Model = {
   Google: {
     GEMINI_3_5_FLASH: "gemini-3.5-flash",
     GEMINI_3_1_PRO_PREVIEW: "gemini-3.1-pro-preview",
-    GEMINI_3_1_FLASH_LITE_PREVIEW: "gemini-3.1-flash-lite-preview",
+    GEMINI_3_1_FLASH_LITE: "gemini-3.1-flash-lite",
     GEMINI_3_FLASH_PREVIEW: "gemini-3-flash-preview",
   },
 } as const;

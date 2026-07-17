@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.13.0] - 2026-07-17
+
+### Added
+
+- **Claude Opus 4.8 (`claude-opus-4-8`)** and **Claude Sonnet 5 (`claude-sonnet-5`)** as supported Anthropic models. Opt-in only — `claude-sonnet-4-6` remains the Anthropic default.
+- **Claude Fable 5 (`claude-fable-5`)** as a supported Anthropic model — Anthropic's most capable widely released model, for the most demanding reasoning and long-horizon agentic work. Pricing: $10 / $50 per MTok input/output.
+- **GPT-5.6 family (`gpt-5.6-sol`, `gpt-5.6-terra`, `gpt-5.6-luna`)** as supported OpenAI models. Opt-in only — `gpt-5.4-mini` remains the OpenAI default.
+
+### Changed
+
+- `xhigh` reasoning effort now maps to the native `effort: "xhigh"` value on all models that support it (Claude Fable 5, Opus 4.8, Opus 4.7, Sonnet 5), not just Opus 4.7. Older models (Opus 4.6, Sonnet 4.6) continue to map `xhigh` to `effort: "max"`.
+
+### Fixed
+
+- **`gemini-3.1-flash-lite-preview` renamed to `gemini-3.1-flash-lite`.** Google shut down the `-preview` model ID on 2026-05-25; every call using the old ID was failing. The exported constant is renamed from `Model.Google.GEMINI_3_1_FLASH_LITE_PREVIEW` to `Model.Google.GEMINI_3_1_FLASH_LITE`.
+- README's OpenAI model table incorrectly marked `gpt-5-mini` as the default model; the actual default (`DEFAULT_MODELS`) has been `gpt-5.4-mini` since it was introduced. Corrected the table.
+
+### Notes for upgraders
+
+- If you referenced `Model.Google.GEMINI_3_1_FLASH_LITE_PREVIEW` or passed the literal string `"gemini-3.1-flash-lite-preview"` as `config.model`, update to `Model.Google.GEMINI_3_1_FLASH_LITE` / `"gemini-3.1-flash-lite"` — the old model ID no longer resolves on Google's side regardless of this library's version.
+
 ## [0.12.0] - 2026-05-20
 
 ### Added

@@ -491,12 +491,12 @@ const ai = visualAI({
 
 When omitted, each provider uses its default behavior. The `"xhigh"` level enables maximum reasoning depth.
 
-| Provider           | Native Parameter                                      | `"xhigh"` maps to    |
-| ------------------ | ----------------------------------------------------- | -------------------- |
-| Anthropic Opus 4.7 | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "xhigh"`    |
-| Anthropic (other)  | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "max"`      |
-| OpenAI             | `reasoning.effort` (Responses API)                    | `effort: "xhigh"`    |
-| Google             | `thinkingConfig.thinkingBudget` (1024 / 8192 / 24576) | `24576` (max budget) |
+| Provider                                  | Native Parameter                                      | `"xhigh"` maps to    |
+| ----------------------------------------- | ----------------------------------------------------- | -------------------- |
+| Anthropic (Fable 5/Opus 4.8/4.7/Sonnet 5) | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "xhigh"`    |
+| Anthropic (other)                         | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "max"`      |
+| OpenAI                                    | `reasoning.effort` (Responses API)                    | `effort: "xhigh"`    |
+| Google                                    | `thinkingConfig.thinkingBudget` (1024 / 8192 / 24576) | `24576` (max budget) |
 
 ## Supported Models
 
@@ -504,33 +504,39 @@ All listed models support image/vision input. Pass any model ID to the `model` c
 
 ### Anthropic
 
-| Model             | Model ID            | Input $/MTok | Output $/MTok | Notes                                      |
-| ----------------- | ------------------- | ------------ | ------------- | ------------------------------------------ |
-| Claude Opus 4.7   | `claude-opus-4-7`   | $5           | $25           | Most capable; supports `xhigh` effort tier |
-| Claude Opus 4.6   | `claude-opus-4-6`   | $5           | $25           | Previous flagship, 128K max output         |
-| Claude Sonnet 4.6 | `claude-sonnet-4-6` | $3           | $15           | **Default** — best value                   |
-| Claude Haiku 4.5  | `claude-haiku-4-5`  | $1           | $5            | Fastest, budget-friendly                   |
+| Model             | Model ID            | Input $/MTok | Output $/MTok | Notes                                       |
+| ----------------- | ------------------- | ------------ | ------------- | ------------------------------------------- |
+| Claude Fable 5    | `claude-fable-5`    | $10          | $50           | Most capable; long-horizon agentic work     |
+| Claude Opus 4.8   | `claude-opus-4-8`   | $5           | $25           | Most capable Opus tier; supports `xhigh`    |
+| Claude Opus 4.7   | `claude-opus-4-7`   | $5           | $25           | Previous Opus; supports `xhigh` effort tier |
+| Claude Opus 4.6   | `claude-opus-4-6`   | $5           | $25           | Previous flagship, 128K max output          |
+| Claude Sonnet 5   | `claude-sonnet-5`   | $3           | $15           | Near-Opus quality on coding/agentic work    |
+| Claude Sonnet 4.6 | `claude-sonnet-4-6` | $3           | $15           | **Default** — best value                    |
+| Claude Haiku 4.5  | `claude-haiku-4-5`  | $1           | $5            | Fastest, budget-friendly                    |
 
 ### OpenAI
 
-| Model        | Model ID       | Input $/MTok | Output $/MTok | Notes                          |
-| ------------ | -------------- | ------------ | ------------- | ------------------------------ |
-| GPT-5.5      | `gpt-5.5`      | $5           | $30           | Newest flagship, 1M context    |
-| GPT-5.4 Pro  | `gpt-5.4-pro`  | $30          | $180          | Most capable, extended context |
-| GPT-5.4      | `gpt-5.4`      | $2.50        | $15           | Best vision quality            |
-| GPT-5.2      | `gpt-5.2`      | $1.75        | $14           | Balanced quality and cost      |
-| GPT-5.4 mini | `gpt-5.4-mini` | $0.75        | $4.50         | Fast and affordable            |
-| GPT-5.4 nano | `gpt-5.4-nano` | $0.20        | $1.25         | Cheapest OpenAI option         |
-| GPT-5 mini   | `gpt-5-mini`   | $0.25        | $2            | **Default** — fast and cheap   |
+| Model         | Model ID        | Input $/MTok | Output $/MTok | Notes                             |
+| ------------- | --------------- | ------------ | ------------- | --------------------------------- |
+| GPT-5.6 Sol   | `gpt-5.6-sol`   | $5           | $30           | Newest flagship, frontier tier    |
+| GPT-5.6 Terra | `gpt-5.6-terra` | $2.50        | $15           | Newest balanced, everyday tier    |
+| GPT-5.6 Luna  | `gpt-5.6-luna`  | $1           | $6            | Newest, fastest/cheapest tier     |
+| GPT-5.5       | `gpt-5.5`       | $5           | $30           | Previous flagship, 1M context     |
+| GPT-5.4 Pro   | `gpt-5.4-pro`   | $30          | $180          | Most capable, extended context    |
+| GPT-5.4       | `gpt-5.4`       | $2.50        | $15           | Best vision quality               |
+| GPT-5.2       | `gpt-5.2`       | $1.75        | $14           | Balanced quality and cost         |
+| GPT-5.4 mini  | `gpt-5.4-mini`  | $0.75        | $4.50         | **Default** — fast and affordable |
+| GPT-5.4 nano  | `gpt-5.4-nano`  | $0.20        | $1.25         | Cheapest older-generation option  |
+| GPT-5 mini    | `gpt-5-mini`    | $0.25        | $2            | Fast and cheap                    |
 
 ### Google
 
-| Model                 | Model ID                        | Input $/MTok | Output $/MTok | Notes                             |
-| --------------------- | ------------------------------- | ------------ | ------------- | --------------------------------- |
-| Gemini 3.5 Flash      | `gemini-3.5-flash`              | $1.50        | $9            | Strongest agentic & coding model  |
-| Gemini 3.1 Pro        | `gemini-3.1-pro-preview`        | $2           | $12           | Preview — most advanced reasoning |
-| Gemini 3.1 Flash Lite | `gemini-3.1-flash-lite-preview` | $0.25        | $1.50         | Preview — lightweight and cheap   |
-| Gemini 3 Flash        | `gemini-3-flash-preview`        | $0.50        | $3            | **Default** — fast and capable    |
+| Model                 | Model ID                 | Input $/MTok | Output $/MTok | Notes                             |
+| --------------------- | ------------------------ | ------------ | ------------- | --------------------------------- |
+| Gemini 3.5 Flash      | `gemini-3.5-flash`       | $1.50        | $9            | Strongest agentic & coding model  |
+| Gemini 3.1 Pro        | `gemini-3.1-pro-preview` | $2           | $12           | Preview — most advanced reasoning |
+| Gemini 3.1 Flash Lite | `gemini-3.1-flash-lite`  | $0.25        | $1.50         | GA — lightweight and cheap        |
+| Gemini 3 Flash        | `gemini-3-flash-preview` | $0.50        | $3            | **Default** — fast and capable    |
 
 ## License
 
