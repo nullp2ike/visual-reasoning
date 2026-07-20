@@ -59,7 +59,11 @@ export function parseCheckResponse(raw: string): Omit<CheckResult, "usage"> {
 }
 
 export function parseAskResponse(raw: string): Omit<AskResult, "usage"> {
-  return parseResponse(raw, AskResponseSchema);
+  const result = parseResponse(raw, AskResponseSchema);
+  return {
+    ...result,
+    frameReferences: result.frameReferences ?? undefined,
+  };
 }
 
 export function parseCompareResponse(raw: string): Omit<CompareResult, "usage"> {

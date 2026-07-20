@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.13.1] - 2026-07-20
+
+### Fixed
+
+- `ask()` requests against the OpenAI provider failed for image (non-video) inputs with a schema validation error. OpenAI's strict structured-output mode requires every response field to be present, so it returned `frameReferences: null` for image inputs instead of omitting the key — but the Zod schema only accepted `undefined`. `frameReferences` is now nullable at the parsing boundary and normalized back to `undefined` on the returned `AskResult`, so the public shape (`number[] | undefined`, present only for video) is unchanged.
+
 ## [0.13.0] - 2026-07-17
 
 ### Added

@@ -357,4 +357,9 @@ describe("AskResultSchema", () => {
   it("rejects missing summary", () => {
     expect(() => AskResultSchema.parse({ issues: [] })).toThrow();
   });
+
+  it("accepts a null frameReferences", () => {
+    const result = { summary: "No issues found", issues: [], frameReferences: null };
+    expect(AskResultSchema.parse(result)).toEqual(result);
+  });
 });

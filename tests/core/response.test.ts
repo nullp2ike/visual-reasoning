@@ -242,6 +242,20 @@ describe("parseAskResponse", () => {
     expect(result.issues).toHaveLength(0);
   });
 
+  it("normalizes a null frameReferences to undefined", () => {
+    // OpenAI's strict structured-output mode requires every schema field to be
+    // present, so image (non-video) responses come back with `frameReferences: null`
+    // rather than omitting the key.
+    const json = JSON.stringify({
+      summary: "No issues found",
+      issues: [],
+      frameReferences: null,
+    });
+
+    const result = parseAskResponse(json);
+    expect(result.frameReferences).toBeUndefined();
+  });
+
   it("throws on invalid JSON", () => {
     expect(() => parseAskResponse("{invalid")).toThrow(VisualAIResponseParseError);
   });

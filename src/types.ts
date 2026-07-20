@@ -151,13 +151,18 @@ export const AskResultSchema = z.object({
   /**
    * For video inputs, the indices of frames the model relied on to answer.
    * Indices are 0-based and refer to entries in `frames.timestampsSeconds`.
+   *
+   * Nullable because providers with strict structured-output schemas (e.g. OpenAI)
+   * must mark every field required and represent "no value" as `null` rather than
+   * omitting the key, even for image inputs that were never asked to populate it.
    */
-  frameReferences: z.array(z.number().int().nonnegative()).optional(),
+  frameReferences: z.array(z.number().int().nonnegative()).nullable().optional(),
   usage: UsageInfoSchema.optional(),
 });
 /** Result returned by `ask()`. */
-export type AskResult = z.infer<typeof AskResultSchema> & {
+export type AskResult = Omit<z.infer<typeof AskResultSchema>, "frameReferences"> & {
   /** Present only when the input was a video. Describes which frames the model saw. */
+  frameReferences?: number[];
   frames?: VideoFramesMetadata;
 };
 
