@@ -178,6 +178,38 @@ export type ImageInput = Buffer | Uint8Array | string;
  */
 export type MediaInput = ImageInput;
 
+/**
+ * A single pre-sampled frame with an explicit timestamp. Use this shape when
+ * you want to control the timestamp the model sees; otherwise pass a bare
+ * `ImageInput` and the timestamp is derived from `fps` and the frame's position.
+ */
+export interface TimestampedFrameInput {
+  /** Image source for the frame (buffer, data URL, base64, file path, or URL). */
+  image: ImageInput;
+  /** Timestamp in seconds, from the start of the sequence. Derived from `fps` when omitted. */
+  timestampSeconds?: number;
+}
+
+/**
+ * Pre-sampled frames supplied directly instead of a video file. Useful when you
+ * already have an array of screenshots and cannot (or would rather not) pass a
+ * video — this path never loads ffmpeg. Passed to `check()` / `ask()` in place
+ * of a `MediaInput`; downstream handling is identical to a sampled video.
+ */
+export interface FramesInput {
+  /**
+   * Ordered frames, earliest first. Each entry is an image source or a
+   * `{ image, timestampSeconds }` pair. Must be non-empty and is capped at the
+   * same per-request frame limit as video sampling (60).
+   */
+  frames: ReadonlyArray<ImageInput | TimestampedFrameInput>;
+  /**
+   * Frame rate used to derive timestamps for frames that don't carry their own
+   * `timestampSeconds` (frame `i` maps to `i / fps` seconds). Default `1`.
+   */
+  fps?: number;
+}
+
 /** Supported image MIME types accepted by all providers. */
 export type SupportedMimeType = "image/jpeg" | "image/png" | "image/webp" | "image/gif";
 

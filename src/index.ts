@@ -38,6 +38,8 @@ export type {
   VisualAIConfig,
   ImageInput,
   MediaInput,
+  FramesInput,
+  TimestampedFrameInput,
   ProviderName,
   ElementsVisibilityOptions,
   AccessibilityOptions,

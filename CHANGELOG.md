@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.14.0] - 2026-07-21
+
+### Added
+
+- **Pre-sampled frames input for `check()` and `ask()`.** Both methods now accept a `FramesInput` (`{ frames, fps? }`) in place of a `MediaInput`, where each frame is an `ImageInput` or a `{ image, timestampSeconds }` pair. Use it when you already have an array of screenshots or otherwise can't pass a video file. Frames are handled identically to a sampled video — the same chronological-timeline prompt, `frames` metadata, per-statement `timestampSeconds`, and `frameReferences` all work unchanged — but **no ffmpeg is loaded on this path**. Timestamps for bare frames are derived as `index / fps` (default `fps` is `1`); a per-frame `timestampSeconds` overrides that. The frame count is subject to the same 60-frame hard cap as video sampling.
+- New exported types `FramesInput` and `TimestampedFrameInput`.
+
+### Notes for upgraders
+
+- Fully backward compatible. Existing image and video calls are unchanged; the new `FramesInput` shape is purely additive. Consumers that already have their own frames can now pass `{ frames }` directly and drop `@ffmpeg-installer/ffmpeg` if they never send video files.
+
 ## [0.13.1] - 2026-07-20
 
 ### Fixed

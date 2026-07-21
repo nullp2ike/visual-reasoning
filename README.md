@@ -346,6 +346,31 @@ How it works: the library samples frames with ffmpeg and sends them to the provi
 
 **ffmpeg setup.** Video support works out of the box — `fluent-ffmpeg`, `@ffmpeg-installer/ffmpeg`, and `@ffprobe-installer/ffprobe` ship as regular dependencies and bundle platform-specific ffmpeg/ffprobe binaries. If you ran `npm install` you already have everything you need. On platforms where the prebuilt binary is unavailable (or if you've pruned dependencies), `check()` and `ask()` throw `VisualAIVideoError` (import from `visual-ai-assertions` to `instanceof`-narrow it) when called with video input.
 
+### Pre-sampled Frames
+
+When you already have an array of screenshots — or can't pass a video file — hand `check()` and `ask()` a `FramesInput` (`{ frames, fps? }`) instead of a `MediaInput`. Each frame is a plain `ImageInput` (buffer, data URL, base64, file path, or URL) or a `{ image, timestampSeconds }` pair. Frames are treated as the same chronological timeline a sampled video produces — no ffmpeg is loaded on this path.
+
+```typescript
+const frames = [await page.screenshot(), await page.screenshot()];
+
+const result = await ai.check({ frames }, ['A success toast with text "Saved" appears']);
+console.log(result.frames);
+// { count: 2, timestampsSeconds: [0, 1], durationSeconds: 1 }
+
+// Control timestamps: give an explicit fps, or per-frame timestampSeconds
+await ai.ask(
+  {
+    frames: [
+      { image: before, timestampSeconds: 0 },
+      { image: after, timestampSeconds: 2.5 },
+    ],
+  },
+  "What changed between the frames?",
+);
+```
+
+Timestamps for bare frames are derived as `index / fps` (default `fps` is `1`); a per-frame `timestampSeconds` overrides that. The frame count is subject to the same 60-frame hard cap as video sampling, and the `video` sampling option is ignored for this path.
+
 ### Formatting & Assertion Helpers
 
 ```typescript

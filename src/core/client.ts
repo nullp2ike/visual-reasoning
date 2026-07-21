@@ -17,6 +17,7 @@ import type {
   CompareResult,
   ContentOptions,
   ElementsVisibilityOptions,
+  FramesInput,
   ImageInput,
   LayoutOptions,
   MediaInput,
@@ -76,9 +77,11 @@ export interface VisualAIClient {
    * frames automatically; statements pass if they are true at any sampled
    * frame, and each statement result includes the timestamp where it
    * matched. The `frames` metadata on the result reports which timestamps
-   * the model saw.
+   * the model saw. Pass a `FramesInput` (`{ frames, fps? }`) to supply
+   * pre-sampled frames directly — handled identically to a video timeline but
+   * without loading ffmpeg.
    *
-   * @param input Image or video source as a buffer, URL, file path, or base64 string.
+   * @param input Image or video source as a buffer, URL, file path, or base64 string, or a `FramesInput` of pre-sampled frames.
    * @param statements One or more statements to validate against the input.
    * @param options Optional additional instructions and video sampling overrides.
    * @returns A structured result describing pass/fail, issues, and statement reasoning.
@@ -102,7 +105,7 @@ export interface VisualAIClient {
    * ```
    */
   check(
-    input: MediaInput,
+    input: MediaInput | FramesInput,
     statements: string | string[],
     options?: CheckOptions,
   ): Promise<CheckResult>;
@@ -111,9 +114,11 @@ export interface VisualAIClient {
    *
    * Video inputs are sampled into frames and analyzed as a chronological
    * timeline. The result's `frameReferences` array surfaces which frames the
-   * model relied on for its answer.
+   * model relied on for its answer. Pass a `FramesInput` (`{ frames, fps? }`)
+   * to supply pre-sampled frames directly — handled identically to a video
+   * timeline but without loading ffmpeg.
    *
-   * @param input Image or video source as a buffer, URL, file path, or base64 string.
+   * @param input Image or video source as a buffer, URL, file path, or base64 string, or a `FramesInput` of pre-sampled frames.
    * @param prompt Prompt describing what to inspect in the input.
    * @param options Optional additional instructions and video sampling overrides.
    * @returns A summary with any detected issues.
@@ -125,7 +130,7 @@ export interface VisualAIClient {
    * const result = await client.ask(screenshot, "What looks visually broken on this page?");
    * ```
    */
-  ask(input: MediaInput, prompt: string, options?: AskOptions): Promise<AskResult>;
+  ask(input: MediaInput | FramesInput, prompt: string, options?: AskOptions): Promise<AskResult>;
   /**
    * Compares two images and reports meaningful visual differences.
    *

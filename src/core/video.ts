@@ -6,11 +6,12 @@ import type { Frame, SupportedVideoMimeType, VideoSamplingOptions } from "../typ
 import { decodeBase64, isDataUrl, isFilePath, parseDataUrl } from "./input-detect.js";
 
 const FRAME_MAX_DIMENSION = 1568;
-const DEFAULT_FPS = 1;
+/** Default frame-sampling rate, shared by video sampling and pre-sampled frame inputs. */
+export const DEFAULT_FPS = 1;
 const DEFAULT_MAX_FRAMES = 10;
 const DEFAULT_MAX_DURATION_SECONDS = 10;
-/** Hard upper bound on caller-overridable maxFrames to keep memory bounded. */
-const MAX_FRAMES_HARD_CAP = 60;
+/** Hard upper bound on caller-supplied frame counts to keep memory bounded. */
+export const MAX_FRAMES_HARD_CAP = 60;
 const FFPROBE_TIMEOUT_MS = 15_000;
 const FFMPEG_RUN_TIMEOUT_MS = 60_000;
 
