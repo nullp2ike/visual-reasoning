@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Visual reasoning benchmark</title>
+<style>
+  :root { --ok: #15803d; --bad: #b91c1c; --muted: #6b7280; --line: #e5e7eb; --accent: #1d4ed8; }
+  * { box-sizing: border-box; }
+  body { font: 14px/1.5 -apple-system, "Segoe UI", Roboto, sans-serif; margin: 0; color: #111827; background: #fafafa; }
+  main { max-width: 1200px; margin: 0 auto; padding: 24px; }
+  h1 { font-size: 22px; } h2 { font-size: 18px; margin-top: 32px; } h3 { font-size: 15px; }
+  .meta { color: var(--muted); font-size: 12px; margin-bottom: 16px; }
+  .meta code { background: #eef2ff; padding: 1px 4px; border-radius: 3px; }
+  table { border-collapse: collapse; width: 100%; background: #fff; }
+  th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: right; white-space: nowrap; }
+  th { background: #f3f4f6; cursor: pointer; user-select: none; position: sticky; top: 0; }
+  th:first-child, td:first-child { text-align: left; }
+  tbody tr { cursor: pointer; }
+  tbody tr:hover { background: #eff6ff; }
+  tbody tr.selected { background: #dbeafe; }
+  .imgcard { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin: 16px 0; }
+  .imgcard img { max-width: 320px; max-height: 220px; border: 1px solid var(--line); border-radius: 4px; float: right; margin: 0 0 12px 16px; }
+  .exp-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; flex-wrap: wrap; }
+  .exp-text { flex: 1 1 320px; }
+  .chip { display: inline-block; min-width: 34px; text-align: center; padding: 2px 6px; border-radius: 10px; font-size: 11px; cursor: pointer; border: 1px solid transparent; color: #fff; }
+  .chip.found { background: var(--ok); } .chip.missed { background: var(--bad); }
+  .chip.na { background: #d1d5db; color: #374151; cursor: default; }
+  .chip.overridden { border: 2px dashed #111827; }
+  .extras { margin-top: 10px; font-size: 13px; }
+  .extra-item { margin: 3px 0 3px 16px; }
+  .extra-item .chip { min-width: 60px; }
+  .extra-item .chip.extra { background: #b45309; } .extra-item .chip.not-extra { background: #4b5563; }
+  details { margin-top: 8px; } summary { cursor: pointer; color: var(--accent); font-size: 13px; }
+  .rawsum { background: #f9fafb; border: 1px solid var(--line); border-radius: 4px; padding: 8px; margin: 6px 0; font-size: 13px; }
+  .toolbar { position: sticky; bottom: 0; background: #fff; border-top: 1px solid var(--line); padding: 10px 24px; display: flex; gap: 12px; align-items: center; }
+  button { background: var(--accent); color: #fff; border: 0; border-radius: 6px; padding: 8px 14px; font-size: 14px; cursor: pointer; }
+  #override-count { color: var(--muted); font-size: 13px; }
+  .clearfix::after { content: ""; display: table; clear: both; }
+  .errcell { color: var(--bad); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Visual reasoning benchmark</h1>
+  <div class="meta" id="meta"></div>
+  <h2>Leaderboard</h2>
+  <p class="meta">Click a column header to sort; click a row to inspect a model. Recall = share of expected issues detected (mean of per-issue detection rates over reps).</p>
+  <div style="overflow-x:auto"><table id="leaderboard"><thead></thead><tbody></tbody></table></div>
+  <div id="detail"></div>
+</main>
+<div class="toolbar">
+  <button id="export">Export overrides.json</button>
+  <span id="override-count"></span>
+  <span class="meta">Click found/missed and extra chips to override judge verdicts, then export and save as bench/results/overrides.json and re-run pnpm bench:score &amp;&amp; pnpm bench:report.</span>
+</div>
+<script type="application/json" id="data">{"scores":{"schemaVersion":1,"generatedAt":"2026-07-22T13:15:35.906Z","prompt":"What looks visually broken on this page?","promptHash":"8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739","reasoningEffort":"medium","repeats":5,"judgeModel":"claude-haiku-4-5","judgePromptVersion":"v1","overrideCount":0,"models":[{"model":"claude-haiku-4-5","provider":"anthropic","okRuns":10,"failedRuns":0,"meanRecall":0,"anyRecall":0,"flakiness":0,"extrasPerRun":2,"noBugsCleanRate":0,"latencyMedianSeconds":8.308972437500003,"latencyP95Seconds":20.336986707999998,"meanCostPerRun":0.005600000000000001,"totalCost":0.05600000000000001,"meanInputTokens":1964,"meanOutputTokens":727.2,"meanReasoningTokens":null}],"cells":[{"model":"claude-haiku-4-5","imageId":"img_03","rep":1,"status":"ok","reportedIssues":[{"priority":"minor","category":"styling","description":"The navigation tab text 'Hot Gamm' appears truncated - it should likely read 'Hot Games' but the final letters are cut off","suggestion":"Ensure the tab container has sufficient width to display the full text, or implement proper text wrapping/ellipsis handling with a tooltip showing the complete text"}],"summary":"Found 1 issue: a minor text truncation in the navigation menu.","expected":[{"expectedIndex":0,"found":false,"matchedReportedIndexes":[],"reasoning":"The reported issue describes truncated text in a navigation tab ('Hot Gamm' instead of 'Hot Games'), which is a different element and different misspelling than 'Jacpots' vs 'Jackpots'.","overridden":false}],"extraReportedIndexes":[0],"overridden":false,"usage":{"inputTokens":1964,"outputTokens":678,"estimatedCost":0.005354,"durationSeconds":11.47975375}},{"model":"claude-haiku-4-5","imageId":"img_03","rep":2,"status":"ok","reportedIssues":[{"priority":"major","category":"layout","description":"Game tile titles are being truncated and cut off in both the 'BetRivers Exclusive Games' and 'Top Played New Games' sections. Examples include 'MAGNI...' (should be full game name), 'Hyperc...' (partially visible), and 'Dark...' (partially visible). This prevents users from reading complete game names.","suggestion":"Ensure game tile containers have proper text overflow handling. Either expand tile height to fit multi-line text, implement text wrapping, or use CSS ellipsis with full title in a tooltip on hover."},{"priority":"minor","category":"styling","description":"The 'Hot Game' navigation item in the top menu bar is truncated and displays as 'Hot Gam'.","suggestion":"Adjust the navigation item width or reduce padding/font size to accommodate the full text, or implement text wrapping for menu items on smaller viewports."}],"summary":"Found 2 issues: major text truncation in game tiles affecting usability, and minor header navigation text cutoff.","expected":[{"expectedIndex":0,"found":false,"matchedReportedIndexes":[],"reasoning":"No reported issue describes a misspelling of 'Jackpots' as 'Jacpots'; all reported issues concern text truncation/cutting off, not spelling errors.","overridden":false}],"extraReportedIndexes":[0,1],"overridden":false,"usage":{"inputTokens":1964,"outputTokens":983,"estimatedCost":0.006879,"durationSeconds":20.336986707999998}},{"model":"claude-haiku-4-5","imageId":"img_03","rep":3,"status":"ok","reportedIssues":[{"priority":"major","category":"layout","description":"Navigation tab text is truncated - 'Hot Gamm' appears cut off and incomplete, likely should be 'Hot Gaming' or similar","suggestion":"Increase the width of navigation tabs or reduce font size to prevent text overflow, or implement text wrapping for longer labels"},{"priority":"major","category":"layout","description":"Game cards on the right edge of both 'Exclusive Games' and 'Top Played New Games' sections are partially cut off, with titles like 'MAGNI' and 'HYPER' visible only as fragments","suggestion":"Adjust the horizontal scroll or overflow settings to ensure all game cards are fully visible, or use a carousel with proper padding to prevent edge clipping"},{"priority":"minor","category":"layout","description":"Left carousel navigation arrow in the banner section appears to be partially obscured or cut off","suggestion":"Add proper spacing/padding around carousel controls to ensure they are fully visible and clickable without being clipped by parent container"}],"summary":"Found 3 major visual issues: text truncation in navigation, game titles cut off on the right side of sections, and carousel arrow partially obscured.","expected":[{"expectedIndex":0,"found":false,"matchedReportedIndexes":[],"reasoning":"No reported issue mentions the word 'Jackpots' or any spelling error; all reported issues concern layout/truncation problems.","overridden":false}],"extraReportedIndexes":[0,1,2],"overridden":false,"usage":{"inputTokens":1964,"outputTokens":852,"estimatedCost":0.006224,"durationSeconds":10.823900457999999}},{"model":"claude-haiku-4-5","imageId":"img_03","rep":4,"status":"ok","reportedIssues":[{"priority":"major","category":"content","description":"The navigation tab displays 'Hot Garr' which appears to be truncated text. It should likely read 'Hot Games' or similar, but the full text is cut off and not visible.","suggestion":"Either reduce the font size of navigation tabs, adjust the container width, or use text truncation with an ellipsis (...) to handle long text gracefully. Ensure all navigation labels are fully visible."}],"summary":"Found 1 major issue: truncated text in the navigation menu that appears to be cut off.","expected":[{"expectedIndex":0,"found":false,"matchedReportedIndexes":[],"reasoning":"The reported issue describes truncated text in a navigation tab ('Hot Garr'), which is a different UI element and defect type than the misspelling of 'Jackpots' as 'Jacpots'.","overridden":false}],"extraReportedIndexes":[0],"overridden":false,"usage":{"inputTokens":1964,"outputTokens":616,"estimatedCost":0.005044,"durationSeconds":7.6965714589999985}},{"model":"claude-haiku-4-5","imageId":"img_03","rep":5,"status":"ok","reportedIssues":[{"priority":"major","category":"styling","description":"The 'Hot Garr' tab text in the top navigation appears truncated or incomplete, likely should display a full label like 'Hot Games' or similar","suggestion":"Check the CSS width constraints on the navigation tabs or adjust the text label to fit properly within its container. Consider using text overflow ellipsis or adjusting font size if needed."},{"priority":"minor","category":"layout","description":"The rightmost game card in both the 'BetRivers Exclusive Games' and 'Top Played New Games' sections appears to be partially cut off on the right edge","suggestion":"Verify the carousel/grid container width and padding to ensure all visible cards are fully displayed. Consider adjusting the number of cards shown per row or the card width for better responsiveness."}],"summary":"Found 2 issues: a major text truncation in the header navigation and a minor layout inconsistency with game card visibility.","expected":[{"expectedIndex":0,"found":false,"matchedReportedIndexes":[],"reasoning":"No reported issue mentions a misspelling of 'Jackpots' as 'Jacpots'; the reported issues describe truncated tab text and cut-off game cards instead.","overridden":false}],"extraReportedIndexes":[0,1],"overridden":false,"usage":{"inputTokens":1964,"outputTokens":713,"estimatedCost":0.005529000000000001,"durationSeconds":8.371466333}},{"model":"claude-haiku-4-5","imageId":"img_07","rep":1,"status":"ok","reportedIssues":[{"priority":"major","category":"styling","description":"Navigation tab text is truncated showing 'Hot Gam...' instead of the full label","suggestion":"Increase the tab width or reduce font size to accommodate the full text, or implement a responsive design that wraps or abbreviates text appropriately for smaller screens"}],"summary":"Found 1 major issue: truncated navigation text that impacts usability.","expected":[],"extraReportedIndexes":[0],"overridden":false,"usage":{"inputTokens":1964,"outputTokens":625,"estimatedCost":0.005089,"durationSeconds":8.123982292}},{"model":"claude-haiku-4-5","imageId":"img_07","rep":2,"status":"ok","reportedIssues":[{"priority":"major","category":"layout","description":"Navigation menu item 'Hot Gar' is truncated and appears incomplete","suggestion":"Expand the navigation area or use responsive design to prevent text cutoff. The full text should likely read 'Hot Games' based on context."}],"summary":"Found 1 major issue: truncated navigation text that affects usability and appearance.","expected":[],"extraReportedIndexes":[0],"overridden":false,"usage":{"inputTokens":1964,"outputTokens":560,"estimatedCost":0.004764000000000001,"durationSeconds":7.338886042000002}},{"model":"claude-haiku-4-5","imageId":"img_07","rep":3,"status":"ok","reportedIssues":[{"priority":"major","category":"layout","description":"Navigation tab text is truncated - 'Hot Game' displays as 'Hot Gam'","suggestion":"Adjust the navigation container width or font size to allow full text display without truncation, or implement text wrapping"},{"priority":"major","category":"styling","description":"Game card titles in the Exclusive Games section are truncated - visible text shows partial titles like 'MAGNI PHOI' instead of complete game names","suggestion":"Increase the height of game card titles or implement multi-line text with proper overflow handling to display full game names"},{"priority":"major","category":"layout","description":"Game cards appear to have insufficient space for text content, causing titles to be cut off across multiple exclusive and new game sections","suggestion":"Review the CSS constraints on game card containers and ensure adequate height/padding for text content, or reduce font size if space is limited"}],"summary":"Found 3 major issues: text truncation in navigation and game cards, affecting readability and content visibility.","expected":[],"extraReportedIndexes":[0,1,2],"overridden":false,"usage":{"inputTokens":1964,"outputTokens":690,"estimatedCost":0.005414,"durationSeconds":8.024399167}},{"model":"claude-haiku-4-5","imageId":"img_07","rep":4,"status":"ok","reportedIssues":[{"priority":"major","category":"layout","description":"Game cards in 'BetRivers Exclusive Games' section are cut off on the right edge - the rightmost cards ('MAGNI...' and partially visible game) are not fully visible within the viewport","suggestion":"Ensure game cards fit within the container width or implement proper responsive design. Reduce card width, spacing, or add horizontal scrolling indicators if cards exceed viewport width"},{"priority":"major","category":"layout","description":"Game cards in 'Top Played New Games' section are similarly cut off on the right edge, with the rightmost game card extending beyond the visible area","suggestion":"Apply same layout fix as above - adjust grid columns, card width, or gaps to ensure all cards are visible or properly scrollable with clear indicators"},{"priority":"minor","category":"styling","description":"Navigation tab text 'Hot Gam...' is truncated instead of displaying fully as 'Hot Games' or similar","suggestion":"Increase container width for navigation tabs, reduce font size, or use abbreviations that fit properly within the allocated space"}],"summary":"Found 3 issues: text truncation in navigation and game card grid overflow affecting content visibility","expected":[],"extraReportedIndexes":[0,1,2],"overridden":false,"usage":{"inputTokens":1964,"outputTokens":808,"estimatedCost":0.006004000000000001,"durationSeconds":9.842626875000002}},{"model":"claude-haiku-4-5","imageId":"img_07","rep":5,"status":"ok","reportedIssues":[{"priority":"major","category":"styling","description":"Navigation item 'Hot Gam' is truncated and should read 'Hot Games' - text is cut off on the right side","suggestion":"Adjust the navigation layout to accommodate full text labels, or implement horizontal scrolling if needed. Consider responsive design adjustments for smaller viewports."},{"priority":"major","category":"layout","description":"Game cards in 'BetRivers Exclusive Games' section are partially cut off on the right edge - only partial images and text are visible (e.g., 'MAGNI' card is incomplete)","suggestion":"Fix the carousel/grid container width and overflow properties. Ensure all game cards are fully visible within the viewport or properly implement a scrollable carousel with appropriate controls."},{"priority":"major","category":"layout","description":"Game cards in 'Top Played New Games' section also show partial content cut off on the right side","suggestion":"Apply consistent responsive layout fixes across all game sections. Test on different screen sizes to ensure content is not cut off and all cards are fully visible."}],"summary":"Found 3 major visual issues: truncated navigation text, partially visible game cards cut off on the right edge, and potential responsive layout problems affecting content visibility.","expected":[],"extraReportedIndexes":[0,1,2],"overridden":false,"usage":{"inputTokens":1964,"outputTokens":747,"estimatedCost":0.005699000000000001,"durationSeconds":8.246478542000004}}]},"manifest":[{"imageId":"img_01","filename":"bottom_nav_design_broken.png","sha256":"c1bcac7f75316a28327ddce630dd3c1acc8a498cb5f900a3e054a473b2b7712f","expectedIssues":["Casino icon design/layout is broken in the bottom nav bar"]},{"imageId":"img_02","filename":"bottom_nav_sports_icon_missing.png","sha256":"d2cbb29762eeab8dadcf18fe4e68d6111f265c87ec4647646bbbedc8440612da","expectedIssues":["Sports icon is missing the the bottom nav bar"]},{"imageId":"img_03","filename":"jackpots_typo.png","sha256":"84a5ffeb46bfabb84af592f31a26fd344633421d46b09d99b8fd8b1c57731a8b","expectedIssues":["The word Jackpots is misspelled Jacpots"]},{"imageId":"img_04","filename":"join_now_button_text_missing.png","sha256":"a851ca2d727cc93da263114ab83e0e27c44675f056a9cdde24ebf64b92662e4e","expectedIssues":["Top nav button is missing text"]},{"imageId":"img_05","filename":"jp_negative.png","sha256":"3af2fc4b8fe8f9e6bc56bf198085eea60d49a16e888f8a8d61a4170f4cf4554e","expectedIssues":["The jackpot value is negative"]},{"imageId":"img_06","filename":"jp_wrong_top_menu_active.png","sha256":"00e04831765c31ee486a06e47cf0eff412b42ca633b6fffb8f84860c771bd0bb","expectedIssues":["Wrong Jackpots category is highlighted"]},{"imageId":"img_07","filename":"no_bugs.png","sha256":"580f8439b041a5853cb0fbb6966e8725dc0a396b7f571407ec1c269812fdaafb","expectedIssues":[]},{"imageId":"img_08","filename":"rg_icon_missing.png","sha256":"3ec191cb01c20e7ffbe0ccb07d2cb43a522d069cf4ac479f827f8702e4f75773","expectedIssues":["Responsible gaming icon is missing from the top nav bar"]},{"imageId":"img_09","filename":"wrong_item_bottom_nav_highlighted.png","sha256":"f3b571624f3995dcad54a6b8e70946a5449a098f14eceb0d7d54d46ee501368d","expectedIssues":["Wrong Poker item is highlighted in the bottom nav bar"]},{"imageId":"img_10","filename":"zero_games.png","sha256":"9cc06ea3409cb55c5ff55eee37421302954c04a9dc49e1a7519a27222690cb4f","expectedIssues":["BetRivers Exclusive Games badge shows 0 games"]}],"overrides":{}}</script>
+<script>
+"use strict";
+const DATA = JSON.parse(document.getElementById("data").textContent);
+const scores = DATA.scores;
+const manifestByImage = Object.fromEntries(DATA.manifest.map(e => [e.imageId, e]));
+// Forced verdict states accumulated in this page session, seeded from committed overrides.
+const overrides = structuredClone(DATA.overrides || {});
+
+const fmt = (v, digits = 2, suffix = "") => (v === null || v === undefined) ? "–" : v.toFixed(digits) + suffix;
+const pct = v => (v === null || v === undefined) ? "–" : (100 * v).toFixed(0) + "%";
+
+document.getElementById("meta").innerHTML =
+  "Generated " + scores.generatedAt + " · prompt <code>" + scores.prompt + "</code> (sha256 " + scores.promptHash.slice(0, 12) + "…)" +
+  " · reasoning effort <code>" + scores.reasoningEffort + "</code> · " + scores.repeats + " reps" +
+  " · judge <code>" + scores.judgeModel + " " + scores.judgePromptVersion + "</code>" +
+  " · " + scores.overrideCount + " committed override cell(s)";
+
+const COLUMNS = [
+  ["model", "Model", m => m.model, v => v],
+  ["provider", "Provider", m => m.provider, v => v],
+  ["meanRecall", "Recall", m => m.meanRecall, pct],
+  ["anyRecall", "Recall (any rep)", m => m.anyRecall, pct],
+  ["flakiness", "Flakiness", m => m.flakiness, pct],
+  ["extrasPerRun", "Extras/run", m => m.extrasPerRun, v => fmt(v, 1)],
+  ["noBugsCleanRate", "No-bugs clean", m => m.noBugsCleanRate, pct],
+  ["latencyMedianSeconds", "Latency med", m => m.latencyMedianSeconds, v => fmt(v, 1, "s")],
+  ["latencyP95Seconds", "Latency p95", m => m.latencyP95Seconds, v => fmt(v, 1, "s")],
+  ["meanCostPerRun", "Cost/run", m => m.meanCostPerRun, v => v == null ? "–" : "$" + v.toFixed(4)],
+  ["failedRuns", "Failed", m => m.failedRuns, v => v || ""],
+];
+let sortKey = "meanRecall", sortDir = -1, selectedModel = null;
+
+function renderLeaderboard() {
+  const thead = document.querySelector("#leaderboard thead");
+  thead.innerHTML = "<tr>" + COLUMNS.map(([key, label]) =>
+    '<th data-key="' + key + '">' + label + (key === sortKey ? (sortDir < 0 ? " ▼" : " ▲") : "") + "</th>").join("") + "</tr>";
+  thead.querySelectorAll("th").forEach(th => th.onclick = () => {
+    const key = th.dataset.key;
+    if (sortKey === key) sortDir = -sortDir; else { sortKey = key; sortDir = key === "model" || key === "provider" ? 1 : -1; }
+    renderLeaderboard();
+  });
+  const col = COLUMNS.find(c => c[0] === sortKey);
+  const rows = [...scores.models].sort((a, b) => {
+    const va = col[2](a), vb = col[2](b);
+    if (va === null || va === undefined) return 1;
+    if (vb === null || vb === undefined) return -1;
+    return (typeof va === "string" ? va.localeCompare(vb) : va - vb) * sortDir;
+  });
+  const tbody = document.querySelector("#leaderboard tbody");
+  tbody.innerHTML = rows.map(m => '<tr data-model="' + m.model + '"' + (m.model === selectedModel ? ' class="selected"' : "") + ">" +
+    COLUMNS.map(([key, , get, render]) => "<td" + (key === "failedRuns" && m.failedRuns ? ' class="errcell"' : "") + ">" + render(get(m)) + "</td>").join("") + "</tr>").join("");
+  tbody.querySelectorAll("tr").forEach(tr => tr.onclick = () => { selectedModel = tr.dataset.model; renderLeaderboard(); renderDetail(); });
+}
+
+function cellFor(model, imageId, rep) {
+  return scores.cells.find(c => c.model === model && c.imageId === imageId && c.rep === rep);
+}
+function overrideEntry(key) {
+  return overrides[key] || (overrides[key] = {});
+}
+function effectiveFound(cell, expIndex, key) {
+  const forced = overrides[key] && overrides[key].expected && overrides[key].expected[String(expIndex)];
+  if (forced) return forced === "found";
+  const entry = cell.expected.find(e => e.expectedIndex === expIndex);
+  return entry ? entry.found : false;
+}
+function effectiveExtra(cell, repIndex, key) {
+  const forced = overrides[key] && overrides[key].extras && overrides[key].extras[String(repIndex)];
+  if (forced) return forced === "extra";
+  return cell.extraReportedIndexes.includes(repIndex);
+}
+function countOverrides() {
+  let n = 0;
+  for (const entry of Object.values(overrides)) {
+    n += Object.keys(entry.expected || {}).length + Object.keys(entry.extras || {}).length;
+  }
+  document.getElementById("override-count").textContent = n + " override state(s) staged";
+}
+
+function renderDetail() {
+  const container = document.getElementById("detail");
+  if (!selectedModel) { container.innerHTML = ""; return; }
+  const reps = Array.from({ length: scores.repeats }, (_, i) => i + 1);
+  let html = "<h2>" + selectedModel + "</h2>";
+  for (const entry of DATA.manifest) {
+    const cells = reps.map(rep => cellFor(selectedModel, entry.imageId, rep));
+    if (cells.every(c => !c)) continue;
+    html += '<div class="imgcard clearfix"><img src="../../golden_data_set/' + entry.filename + '" alt="' + entry.imageId + '" loading="lazy">';
+    html += "<h3>" + entry.imageId + " · " + entry.filename + "</h3>";
+    if (entry.expectedIssues.length === 0) html += '<p class="meta">Negative control — no expected issues; anything reported counts as an extra.</p>';
+    entry.expectedIssues.forEach((text, expIndex) => {
+      html += '<div class="exp-row"><span class="exp-text">' + text + "</span>";
+      reps.forEach(rep => {
+        const cell = cells[rep - 1];
+        if (!cell || cell.status !== "ok") { html += '<span class="chip na" title="no successful run">r' + rep + "</span>"; return; }
+        const key = selectedModel + "/" + entry.imageId + "/rep_" + rep;
+        const found = effectiveFound(cell, expIndex, key);
+        const judgeEntry = cell.expected.find(e => e.expectedIndex === expIndex);
+        const forced = overrides[key] && overrides[key].expected && overrides[key].expected[String(expIndex)];
+        html += '<span class="chip ' + (found ? "found" : "missed") + (forced || (judgeEntry && judgeEntry.overridden) ? " overridden" : "") + '"' +
+          ' data-kind="expected" data-key="' + key + '" data-index="' + expIndex + '"' +
+          ' title="' + (judgeEntry ? judgeEntry.reasoning.replace(/"/g, "&quot;") : "") + '">r' + rep + " " + (found ? "✓" : "✗") + "</span>";
+      });
+      html += "</div>";
+    });
+    html += '<div class="extras"><strong>Extra reported issues</strong>';
+    let anyExtras = false;
+    reps.forEach(rep => {
+      const cell = cells[rep - 1];
+      if (!cell || cell.status !== "ok") return;
+      const key = selectedModel + "/" + entry.imageId + "/rep_" + rep;
+      cell.reportedIssues.forEach((issue, repIndex) => {
+        const matchedSomewhere = cell.expected.some(e => e.matchedReportedIndexes.includes(repIndex));
+        const isExtra = effectiveExtra(cell, repIndex, key);
+        if (!isExtra && !matchedSomewhere) return; // matched-by-override leftovers stay visible via chips above
+        if (!isExtra) return;
+        anyExtras = true;
+        const forced = overrides[key] && overrides[key].extras && overrides[key].extras[String(repIndex)];
+        html += '<div class="extra-item">rep ' + rep + ": [" + issue.priority + "/" + issue.category + "] " + issue.description +
+          ' <span class="chip extra' + (forced ? " overridden" : "") + '" data-kind="extra" data-key="' + key + '" data-index="' + repIndex + '">extra</span></div>';
+      });
+    });
+    if (!anyExtras) html += '<div class="meta" style="margin-left:16px">none</div>';
+    html += "</div><details><summary>Raw model summaries</summary>";
+    reps.forEach(rep => {
+      const cell = cells[rep - 1];
+      if (!cell) return;
+      html += '<div class="rawsum"><strong>rep ' + rep + (cell.status === "error" ? " (FAILED: " + (cell.error ? cell.error.message : "") + ")" : "") + ":</strong> " + (cell.summary || "") + "</div>";
+    });
+    html += "</details></div>";
+  }
+  container.innerHTML = html;
+  container.querySelectorAll(".chip[data-kind]").forEach(chip => chip.onclick = () => {
+    const { kind, key, index } = chip.dataset;
+    const entry = overrideEntry(key);
+    if (kind === "expected") {
+      entry.expected = entry.expected || {};
+      const cell = scores.cells.find(c => key === c.model + "/" + c.imageId + "/rep_" + c.rep);
+      const current = effectiveFound(cell, Number(index), key);
+      entry.expected[index] = current ? "missed" : "found";
+    } else {
+      entry.extras = entry.extras || {};
+      const cell = scores.cells.find(c => key === c.model + "/" + c.imageId + "/rep_" + c.rep);
+      const current = effectiveExtra(cell, Number(index), key);
+      entry.extras[index] = current ? "not-extra" : "extra";
+    }
+    countOverrides();
+    renderDetail();
+  });
+}
+
+document.getElementById("export").onclick = () => {
+  const cleaned = {};
+  for (const [key, entry] of Object.entries(overrides)) {
+    const out = {};
+    if (entry.expected && Object.keys(entry.expected).length) out.expected = entry.expected;
+    if (entry.extras && Object.keys(entry.extras).length) out.extras = entry.extras;
+    if (entry.note) out.note = entry.note;
+    if (Object.keys(out).length) cleaned[key] = out;
+  }
+  const blob = new Blob([JSON.stringify(cleaned, null, 2) + "\n"], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "overrides.json";
+  a.click();
+  URL.revokeObjectURL(a.href);
+};
+
+renderLeaderboard();
+countOverrides();
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_01",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "reasoningEffort": "medium",
+  "timestamp": "2026-07-22T13:18:48.366Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several visual issues, mainly content being clipped/obscured by fixed navigation and horizontally truncated items that may reduce usability on mobile.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlaps the game grid content. The lower game cards are partially hidden behind the bottom tab bar.",
+        "suggestion": "Add sufficient bottom padding or safe-area spacing to the scrollable content so cards are not covered by the fixed navigation."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Several game cards on the right side are cut off, showing only partial thumbnails and labels. This makes the grid feel horizontally overflowing or misaligned.",
+        "suggestion": "Ensure the game carousel/grid is intentionally scrollable with proper snap behavior, or adjust card widths/gutters so visible cards fit cleanly within the viewport."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The top category navigation is horizontally clipped, with the 'Hot Games' tab only partially visible.",
+        "suggestion": "If this is a horizontal carousel, add clearer scroll affordance or spacing. Otherwise, resize tabs so labels are not cut off on the initial viewport."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The hero carousel arrows sit very close to the screen edges and partially overlap the banner content, which looks cramped.",
+        "suggestion": "Increase horizontal padding for carousel controls or position them within a dedicated safe area over the banner."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2046,
+    "outputTokens": 817,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.03474,
+    "durationSeconds": 18.664675624999997
+  }
+}

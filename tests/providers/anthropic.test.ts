@@ -281,6 +281,64 @@ describe("AnthropicDriver", () => {
     expect(callArgs).toHaveProperty("output_config", { effort: "high" });
   });
 
+  it("uses budget-based thinking for Haiku 4.5, which rejects adaptive thinking", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: "{}" }],
+      usage: { input_tokens: 0, output_tokens: 0 },
+    });
+
+    const driver = new AnthropicDriver({
+      apiKey: "test-key",
+      model: "claude-haiku-4-5",
+      maxTokens: 4096,
+      reasoningEffort: "medium",
+    });
+    await driver.sendMessage([makeImage()], "test");
+
+    const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
+    expect(callArgs).toHaveProperty("thinking", { type: "enabled", budget_tokens: 4096 });
+    expect(callArgs).not.toHaveProperty("output_config");
+  });
+
+  it("raises max_tokens above the thinking budget for budget-based models", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: "{}" }],
+      usage: { input_tokens: 0, output_tokens: 0 },
+    });
+
+    const driver = new AnthropicDriver({
+      apiKey: "test-key",
+      model: "claude-haiku-4-5",
+      maxTokens: 4096,
+      reasoningEffort: "xhigh",
+    });
+    await driver.sendMessage([makeImage()], "test");
+
+    const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
+    expect(callArgs).toHaveProperty("thinking", { type: "enabled", budget_tokens: 16384 });
+    // Budget tokens share the max_tokens budget, so the cap must exceed the budget.
+    expect(callArgs.max_tokens).toBe(16384 + 4096);
+  });
+
+  it("keeps a user-set max_tokens when it already exceeds the thinking budget", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: "{}" }],
+      usage: { input_tokens: 0, output_tokens: 0 },
+    });
+
+    const driver = new AnthropicDriver({
+      apiKey: "test-key",
+      model: "claude-haiku-4-5",
+      maxTokens: 32768,
+      reasoningEffort: "low",
+    });
+    await driver.sendMessage([makeImage()], "test");
+
+    const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
+    expect(callArgs).toHaveProperty("thinking", { type: "enabled", budget_tokens: 1024 });
+    expect(callArgs.max_tokens).toBe(32768);
+  });
+
   it("does not include thinking params when reasoningEffort is not set", async () => {
     mockCreate.mockResolvedValueOnce({
       content: [{ type: "text", text: "{}" }],

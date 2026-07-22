@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_06",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "reasoningEffort": "medium",
+  "timestamp": "2026-07-22T13:21:39.272Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely intact, but several elements are clipped at the right edge of the viewport, suggesting horizontal overflow or carousel items not properly indicating scrollability. A few minor visual issues were also found.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Hot Games' navigation tab is cut off at the right edge, displaying only 'Hot Gar' with truncated text.",
+        "suggestion": "Ensure the horizontal nav scroller sizes tabs fully within view or adds a fade/scroll affordance so labels are not truncated mid-word."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Game tiles in the 'BetRivers Exclusive Games' and 'Top Played New Games' sections are abruptly clipped at the right viewport edge (e.g., 'MAGNI... PHO...', 'MUNC... MI...'), with no visual affordance indicating more content is scrollable.",
+        "suggestion": "Add partial-tile peek styling with a gradient fade or scroll arrows to signal horizontal scrolling, and ensure tile widths align with the container grid."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The promotional banner carousel arrows (left chevron) overlap the banner content and are low-contrast against the yellow background.",
+        "suggestion": "Give carousel arrows a semi-opaque background or reposition them so they remain visible and don't obscure banner text."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom row of game tiles ('Who Wants to Be a Millionaire', 'Rakin' Bacon', 'Dark Waters') is vertically cut off by the fixed bottom navigation bar.",
+        "suggestion": "Add bottom padding to the scrollable content area equal to the bottom nav height so tiles are not obscured."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Jackpot amounts (e.g., '$6,268.60', '$13,015.68') are overlaid on busy game artwork with only a light shadow, risking poor readability.",
+        "suggestion": "Place jackpot values on a solid or semi-transparent dark strip to guarantee sufficient contrast."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2198,
+    "outputTokens": 895,
+    "estimatedCost": 0.06673000000000001,
+    "durationSeconds": 16.281142332999995
+  }
+}

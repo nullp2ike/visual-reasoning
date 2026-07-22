@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_10",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "reasoningEffort": "medium",
+  "timestamp": "2026-07-22T13:25:05.334Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly functional visually, but several elements appear clipped or inconsistent, especially on the right edge and near the fixed bottom navigation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Several horizontal sections are clipped at the right edge, including the top category tabs and the game tiles. The 'Hot Games' tab and multiple game cards are only partially visible, which can look broken if this is not an intentional carousel behavior.",
+        "suggestion": "Ensure horizontal carousels have clear scroll behavior and proper spacing, or adjust the layout to fit the viewport without cutting off content unexpectedly."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation appears to overlap the game content. The lower game tiles are partially hidden behind the bottom nav bar.",
+        "suggestion": "Add sufficient bottom padding or safe-area spacing to the scrollable content so no cards are covered by the fixed footer navigation."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'BetRivers Exclusive Games' section shows a badge reading '0 Games' even though multiple game tiles are displayed underneath it.",
+        "suggestion": "Update the game count to match the actual number of visible/available games, or hide the count if it is not reliable."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Some game thumbnails and labels on the right side are cut off, making titles like 'Magnificent Phoenix' and other right-column games unreadable.",
+        "suggestion": "Improve card sizing, carousel snap points, or viewport padding so partially visible cards are intentionally presented and do not obscure important text."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Some header partner logos are very small and difficult to read on mobile.",
+        "suggestion": "Increase logo size or simplify the header branding so the text remains legible on small screens."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2046,
+    "outputTokens": 899,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.037200000000000004,
+    "durationSeconds": 18.399851125000044
+  }
+}

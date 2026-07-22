@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "reasoningEffort": "medium",
+  "timestamp": "2026-07-22T13:18:46.800Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page has several visual clipping/truncation problems: game tiles and navigation labels are cut off at the right edge of the viewport, and a row of game tiles at the bottom is partially obscured by the fixed bottom navigation bar. Overall branding and layout are otherwise intact.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third column of game tiles in both the 'BetRivers Exclusive Games' and 'Top Played New Games' sections is cut off at the right edge of the screen (e.g., 'MAGNI... PHO...', 'MUN... MI...', 'HYPERC...'). If these are static grids rather than scrollable carousels, content is inaccessible.",
+        "suggestion": "Ensure the grid uses a responsive 2-column layout on this viewport width, or add clear horizontal-scroll affordances (partial peek with scroll indicator) if a carousel is intended."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom row of game tiles ('Who Wants to Be a Millionaire', the pig-themed slot, 'DARK WATER: The Curse...') is partially covered by the fixed bottom navigation bar, obscuring tile artwork and titles.",
+        "suggestion": "Add bottom padding to the scrollable content area equal to the height of the fixed bottom nav so content is never hidden behind it."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The top navigation tab label 'Hot Gar' is truncated at the right edge (presumably 'Hot Games'), which looks broken and unclear.",
+        "suggestion": "Allow the tab bar to visibly indicate horizontal scrolling (fade/peek), or shorten labels so they are not truncated mid-word at the viewport edge."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "In the promo banner, the phones on the right are clipped at the top and right edges of the banner, making the composition look cropped rather than intentionally designed.",
+        "suggestion": "Adjust the banner image scaling/positioning for this breakpoint so key imagery fits within the banner bounds."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Jackpot amounts overlaid on tile images (e.g., '$6,265.28', '$13,015.14') sit on busy artwork with only partial shading, risking poor contrast and readability.",
+        "suggestion": "Place jackpot values on a consistent semi-opaque dark strip or badge to guarantee sufficient text contrast against any artwork."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2198,
+    "outputTokens": 1030,
+    "estimatedCost": 0.07348,
+    "durationSeconds": 18.151020541999998
+  }
+}

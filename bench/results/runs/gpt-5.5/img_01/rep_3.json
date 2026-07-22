@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_01",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "reasoningEffort": "medium",
+  "timestamp": "2026-07-22T13:18:31.050Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly usable, but several areas look clipped or obscured, especially around horizontally scrolling content and the fixed bottom navigation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Several right-side items are visibly cut off, including the “Hot Games” tab and the third game card in each row. This may be intended as a horizontal carousel, but visually it looks like content is overflowing the viewport without a clear cue.",
+        "suggestion": "If these are carousels, add clearer horizontal-scroll affordances, spacing, or snap behavior. If not intended, constrain the layout to the viewport and avoid partial clipping."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlaps the game grid content. The lower game cards are partially hidden behind the nav bar.",
+        "suggestion": "Add enough bottom padding/margin to the scrollable content so the final rows can clear the fixed bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The carousel/banner navigation arrows sit very close to the screen edges and the right arrow appears partially clipped.",
+        "suggestion": "Move carousel controls inward slightly or increase the banner’s horizontal padding so controls are fully visible and easier to tap."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Some labels are truncated by clipping, such as the top tab text beginning “Hot Ga…”.",
+        "suggestion": "Ensure tab labels either fit within their pill, use a proper ellipsis, or remain fully readable when horizontally scrolled into view."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2046,
+    "outputTokens": 837,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.03534,
+    "durationSeconds": 17.313463209
+  }
+}

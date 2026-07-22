@@ -43,7 +43,10 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.typecheck.json",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.typecheck.json && tsc --noEmit -p tsconfig.bench.json",
+    "bench:run": "tsx bench/src/run.ts",
+    "bench:score": "tsx bench/src/score.ts",
+    "bench:report": "tsx bench/src/report.ts",
     "prepare": "husky"
   },
   "peerDependencies": {
@@ -71,6 +74,7 @@
     "lint-staged": "^15.0.0",
     "prettier": "^3.0.0",
     "tsup": "^8.0.0",
+    "tsx": "^4.23.1",
     "typescript": "^5.7.0",
     "typescript-eslint": "^8.0.0",
     "vitest": "^3.0.0",

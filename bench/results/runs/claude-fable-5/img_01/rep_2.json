@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "reasoningEffort": "medium",
+  "timestamp": "2026-07-22T13:18:11.625Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely functional-looking, but several elements appear clipped or truncated at the viewport edges, and the bottom game row is partially obscured by the fixed navigation bar. Found 5 issues: 3 major layout problems and 2 minor concerns.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last row of game tiles ('Who Wants to Be a Millionaire', pig-themed slot, 'Dark Waters') is partially covered/cut off by the fixed bottom navigation bar, making the tiles unreadable and possibly untappable.",
+        "suggestion": "Add bottom padding to the scrollable content area equal to the height of the fixed bottom nav so content is never hidden behind it."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Game tiles in the third column are clipped at the right edge of the screen (e.g., 'MAGNI... PHO...', 'MUNC... MI...', 'HYPERC...'), with titles and jackpot info truncated.",
+        "suggestion": "If horizontal scrolling is intended, add a clearer visual affordance (partial tile peek with gradient fade or scroll indicator); otherwise adjust tile widths/grid to fit whole tiles within the viewport."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The top navigation label 'Hot Gar...' (likely 'Hot Games') is truncated at the right edge of the category carousel.",
+        "suggestion": "Ensure category pills are not clipped mid-word; show a partial next pill as a scroll hint or allow the label to wrap/shrink so it remains legible."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The hero banner's phone imagery is cut off at the right edge and the left carousel arrow overlaps the banner content with low contrast against the yellow background.",
+        "suggestion": "Constrain banner artwork to safe margins and increase contrast of the carousel navigation arrows (e.g., darker chevron or semi-opaque background)."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Bottom navigation labels appear inconsistently styled: 'Casino' is large, underlined, and serif-like while other tabs use small uppercase labels, which looks visually broken rather than like an active state.",
+        "suggestion": "Use a consistent label style across tabs and indicate the active tab with a color/weight change or indicator bar instead of a mismatched font treatment."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2198,
+    "outputTokens": 1017,
+    "estimatedCost": 0.07283,
+    "durationSeconds": 19.912660582999997
+  }
+}

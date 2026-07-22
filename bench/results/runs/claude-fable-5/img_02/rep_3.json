@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_02",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "reasoningEffort": "medium",
+  "timestamp": "2026-07-22T13:19:04.953Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly intact, but there is a significant overlap issue where the 'SCROLL DOWN' indicator sits on top of the legal disclaimer text, plus a missing icon in the bottom navigation and readability concerns with the fine print.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'SCROLL DOWN' overlay (with chevron arrows) is rendered directly on top of the legal terms & conditions paragraph, obscuring several lines of the disclaimer text and making it impossible to read.",
+        "suggestion": "Reposition the 'SCROLL DOWN' indicator below the legal text or add spacing/margin so it does not overlap the disclaimer content."
+      },
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The 'SPORTS' item in the bottom navigation bar has a text label but no icon, while all other nav items (Casino, Live Casino, Poker, Promos, Support) display icons. The label is also vertically misaligned compared to its neighbors.",
+        "suggestion": "Add the missing sports icon asset (or fix the broken image reference) and align the label consistently with the other navigation items."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The legal disclaimer text is extremely small and set in dark blue on a bright yellow/orange background, resulting in poor readability, especially where the background gradient changes.",
+        "suggestion": "Increase the font size of the legal text and ensure sufficient color contrast, or place it on a solid, uniform background."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Promotional graphics (slot machine phone, coins, baseball) are cropped at the left and right edges of the hero image, which can look unintentional on this viewport width.",
+        "suggestion": "Adjust the hero artwork's responsive scaling or safe margins so key decorative elements are not awkwardly clipped at the screen edges."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2198,
+    "outputTokens": 773,
+    "estimatedCost": 0.06063,
+    "durationSeconds": 13.110929292000009
+  }
+}

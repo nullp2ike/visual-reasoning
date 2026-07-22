@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_10",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "reasoningEffort": "medium",
+  "timestamp": "2026-07-22T13:24:57.841Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several elements appear clipped or inconsistent on the mobile page, mainly due to horizontal overflow and fixed navigation overlap.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Game tiles in the rightmost column are cut off on multiple sections, suggesting the page or carousel content is overflowing horizontally.",
+        "suggestion": "Ensure the game grid fits the viewport on mobile, or make the row clearly horizontally scrollable with proper spacing and clipping behavior."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The “BetRivers Exclusive Games” section shows a “0 Games” badge even though multiple game tiles are visible below it.",
+        "suggestion": "Update the count to match the displayed games, or hide the badge if the count is unavailable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The top category navigation item on the far right is partially clipped, showing only part of “Hot Games.”",
+        "suggestion": "Adjust tab widths, add horizontal scroll affordance, or ensure the active viewport does not cut labels awkwardly."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlaps the lower game content, with cards partially hidden behind the nav bar.",
+        "suggestion": "Add sufficient bottom padding to the page content so the final rows remain fully visible above the fixed navigation."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2046,
+    "outputTokens": 724,
+    "reasoningTokens": 447,
+    "estimatedCost": 0.03195,
+    "durationSeconds": 16.901752834000042
+  }
+}

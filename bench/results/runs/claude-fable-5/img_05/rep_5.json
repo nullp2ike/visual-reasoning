@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_05",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "reasoningEffort": "medium",
+  "timestamp": "2026-07-22T13:21:20.401Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly intact, but there is one clear data/content bug (a negative jackpot amount) plus several layout truncation issues where tiles and navigation labels are cut off at screen edges, which may confuse users.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Cop The Lot Megaways' game tile displays a negative jackpot value of '-$6,266.13', which is not a valid jackpot amount and suggests a data or calculation error.",
+        "suggestion": "Fix the jackpot feed/calculation so negative values are never displayed; add validation to hide or fall back to a default label if the value is invalid."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The top navigation tab label 'Hot Gam...' is truncated at the right edge of the screen, making the category name unreadable.",
+        "suggestion": "If this is a scrollable carousel, add a visual affordance (gradient fade or partial-peek styling) or adjust tab widths so labels are not awkwardly cut mid-word."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Game tiles in the right column ('Magnificent Phoenix', 'Munchie Millions', 'Hyperclusters', 'Dark Waters') are clipped by the viewport edge, showing only partial artwork and titles.",
+        "suggestion": "If these are horizontal carousels, ensure the peek amount is consistent and intentional; otherwise adjust the grid so full tiles fit or scroll indicators are shown."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom row of game tiles ('Who Wants To Be A Millionaire', pig-themed game) is partially obscured by the fixed bottom navigation bar.",
+        "suggestion": "Add bottom padding equal to the height of the fixed nav bar to the content container so the last row of tiles is fully visible when scrolled."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Casino' item in the bottom navigation is styled differently from the others (larger, underlined, lowercase serif-like styling) which looks inconsistent with the uniform uppercase labels of the other nav items.",
+        "suggestion": "Use a consistent active-state style (e.g., color highlight matching the other items' typography) rather than a different font size/case treatment."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2198,
+    "outputTokens": 939,
+    "estimatedCost": 0.06893,
+    "durationSeconds": 16.52020970899999
+  }
+}

@@ -1,4 +1,4 @@
-import { Model, type ReasoningEffortLevel } from "../constants.js";
+import { DEFAULT_MAX_TOKENS, Model, type ReasoningEffortLevel } from "../constants.js";
 import { VisualAIAuthError, VisualAIConfigError, VisualAITruncationError } from "../errors.js";
 import { mapProviderError } from "./error-mapper.js";
 import type { NormalizedImage } from "../types.js";
@@ -24,6 +24,17 @@ function mapEffort(level: ReasoningEffortLevel, model: string): string {
   if (level !== "xhigh") return level;
   return XHIGH_CAPABLE_MODELS.has(model) ? "xhigh" : "max";
 }
+
+// Haiku 4.5 rejects `thinking: {type: "adaptive"}` — it only supports the older
+// budget-based extended thinking API, so effort maps to a token budget instead.
+const BUDGET_THINKING_MODELS: ReadonlySet<string> = new Set([Model.Anthropic.HAIKU_4_5]);
+
+const EFFORT_TO_BUDGET_TOKENS: Readonly<Record<ReasoningEffortLevel, number>> = {
+  low: 1024,
+  medium: 4096,
+  high: 8192,
+  xhigh: 16384,
+};
 
 /** Minimal interface for the Anthropic SDK client used by this driver. */
 interface AnthropicMessage {
@@ -106,10 +117,18 @@ export class AnthropicDriver implements ProviderDriver {
       };
 
       if (this.reasoningEffort) {
-        requestParams.thinking = { type: "adaptive" };
-        requestParams.output_config = {
-          effort: mapEffort(this.reasoningEffort, this.model),
-        };
+        if (BUDGET_THINKING_MODELS.has(this.model)) {
+          const budgetTokens = EFFORT_TO_BUDGET_TOKENS[this.reasoningEffort];
+          requestParams.thinking = { type: "enabled", budget_tokens: budgetTokens };
+          // Thinking tokens share the max_tokens budget and the API requires
+          // budget_tokens < max_tokens, so leave room for the actual response.
+          requestParams.max_tokens = Math.max(this.maxTokens, budgetTokens + DEFAULT_MAX_TOKENS);
+        } else {
+          requestParams.thinking = { type: "adaptive" };
+          requestParams.output_config = {
+            effort: mapEffort(this.reasoningEffort, this.model),
+          };
+        }
       }
 
       const message = await client.messages.create(requestParams);

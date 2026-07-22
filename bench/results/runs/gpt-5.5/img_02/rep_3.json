@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_02",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "reasoningEffort": "medium",
+  "timestamp": "2026-07-22T13:19:07.032Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several visual issues, mostly related to overlapping elements, clipped content, and readability problems in the promotional page.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The large BetRivers logo card at the top of the hero appears clipped by the sticky header. Its top edge is cut off/hidden, making the badge look broken.",
+        "suggestion": "Add top spacing below the header or adjust the hero/logo positioning so the full rounded logo card is visible."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'SCROLL DOWN' overlay sits on top of the fine-print legal text, making part of the disclaimer unreadable.",
+        "suggestion": "Move the scroll prompt higher, place it in its own dedicated area, or hide it once the user reaches this section."
+      },
+      {
+        "priority": "major",
+        "category": "accessibility",
+        "description": "The legal disclaimer text is extremely small and low contrast against the yellow background, making it difficult to read on mobile.",
+        "suggestion": "Increase the font size, improve contrast, and provide more spacing so the legal copy remains legible."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The fixed bottom navigation visually crowds the lower content area and may obscure content near the bottom of the page.",
+        "suggestion": "Add bottom padding to the page content equal to the height of the fixed nav, or ensure overlays and disclaimers are positioned above it."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The top header is crowded with multiple logos, the hamburger icon, state label, and CTA button, which makes the area feel visually cramped on mobile.",
+        "suggestion": "Simplify the header layout for mobile, reduce logo count/size, or move secondary branding into the menu."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2046,
+    "outputTokens": 822,
+    "reasoningTokens": 457,
+    "estimatedCost": 0.034890000000000004,
+    "durationSeconds": 16.454144999999997
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_10",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "reasoningEffort": "medium",
+  "timestamp": "2026-07-22T13:24:39.748Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several visual issues, mostly around horizontal clipping/overflow and inconsistent section counts. The most noticeable problem is that the page says there are 0 exclusive games while multiple exclusive game tiles are visible.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The “BetRivers Exclusive Games” section shows a badge reading “0 Games,” but multiple game cards are displayed directly below it.",
+        "suggestion": "Update the count to match the visible games, or hide the count if it is not available or not meant to represent this section."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Several horizontally arranged elements are cut off at the right edge, including the “Hot Games” navigation chip and the third game card in multiple rows. The clipping looks abrupt and makes some text/images partially unreadable.",
+        "suggestion": "Add proper horizontal scrolling behavior, padding, or a visible carousel affordance so partially visible items look intentional and remain accessible."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The selected “Home” category pill has an odd orange/blue glow or underline protruding from the bottom, which looks like a rendering artifact.",
+        "suggestion": "Adjust the active-state shadow/gradient so it stays within the rounded chip or appears as a deliberate indicator."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The hero carousel arrows sit very close to the screen edges, and the right arrow appears partially clipped/overlapping the banner area.",
+        "suggestion": "Inset the carousel controls slightly and ensure they have enough touch target space without being clipped."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlaps the lower game grid area, cutting off part of the visible content at the bottom of the screen.",
+        "suggestion": "Add bottom padding to the scrollable content equal to the height of the fixed navigation bar so the last row is not hidden underneath it."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2046,
+    "outputTokens": 913,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.03762,
+    "durationSeconds": 18.090587292000013
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "imageId": "img_10",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "reasoningEffort": "medium",
+  "timestamp": "2026-07-22T13:28:08.335Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visually broken issues: one major layout overflow problem causing content to be clipped on the right, and one major content mismatch where the Exclusive Games section shows an incorrect game count.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Several horizontal rows are cut off at the right edge, including the top category pills and the game tiles in the carousel sections. Text like \"Hot Ga...\" and partial game cards are visibly clipped.",
+        "suggestion": "Fix the horizontal container sizing/overflow so items fit the viewport cleanly, or make the row an intentionally scrollable carousel with proper padding and visible edge controls."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The \"BetRivers Exclusive Games\" header shows \"0 Games\" even though multiple game tiles are displayed below it.",
+        "suggestion": "Correct the game count data source or label so it matches the actual number of available exclusive games."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2046,
+    "outputTokens": 719,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.00477,
+    "durationSeconds": 8.216285374999977
+  }
+}

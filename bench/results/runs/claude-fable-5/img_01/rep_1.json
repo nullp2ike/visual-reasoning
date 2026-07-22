@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "reasoningEffort": "medium",
+  "timestamp": "2026-07-22T13:18:11.624Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is a mobile casino homepage that mostly renders well, but several elements are clipped or truncated at the viewport edges, and the bottom navigation bar overlaps content. Found 6 issues: 3 major layout/content problems and 3 minor cosmetic concerns.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third column of game tiles in both 'BetRivers Exclusive Games' and 'Top Played New Games' sections is cut off at the right edge of the viewport (e.g., 'MAGNI... PHO...', 'MUNC... MIL...', 'HYPERC...', 'DAR... WATER'), with no visible scroll affordance indicating more content.",
+        "suggestion": "Either size tiles so a partial tile clearly indicates horizontal scrollability (peek pattern), add scroll indicators/arrows, or use a responsive grid that fits tiles fully within the viewport."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom row of game tiles ('Who Wants To Be A Millionaire', 'Rakin Bacon', 'Dark Waters') is abruptly cut off and partially obscured by the fixed bottom navigation bar.",
+        "suggestion": "Add bottom padding to the scrollable content area equal to the height of the fixed bottom navigation so tiles are not hidden behind it."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Hot Games' tab label in the top navigation is truncated to 'Hot Gar', cutting off text mid-word at the viewport edge.",
+        "suggestion": "Ensure the horizontal nav scroll shows a clear partial-item peek or fade indicator, or reduce tab padding/font size so labels are not truncated mid-word."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The promotional banner's phone images are clipped at the right edge and the carousel next-arrow overlaps the banner imagery, making it hard to see.",
+        "suggestion": "Adjust banner artwork safe zones for mobile widths and give carousel arrows a contrasting background or repositioned placement."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The carousel navigation arrows (left/right chevrons) have very low contrast against the yellow banner background and are barely visible.",
+        "suggestion": "Add a semi-opaque dark circular background behind the arrows or increase their color contrast to meet WCAG guidelines."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Jackpot amounts overlaid on tiles ('$6,265.28', '$13,015.14') sit directly on busy artwork with no consistent background, risking low legibility on some tiles.",
+        "suggestion": "Place jackpot values in a consistent pill/badge with a semi-transparent dark background to ensure readability across all game artwork."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2198,
+    "outputTokens": 1159,
+    "estimatedCost": 0.07993,
+    "durationSeconds": 18.886792083
+  }
+}

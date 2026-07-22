@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_06",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "reasoningEffort": "medium",
+  "timestamp": "2026-07-22T13:21:36.923Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely intact, but several elements are truncated at the right edge of the viewport, and some carousel/game tiles are cut off in ways that may confuse users. Found 4 issues total: 2 major layout problems and 2 minor items.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Hot Games' navigation pill in the category bar is cut off at the right edge, showing only 'Hot Gar' with the label truncated mid-word.",
+        "suggestion": "Ensure the horizontal nav scroller shows a clear affordance (partial fade or scroll indicator) and that labels are not clipped mid-character; consider reducing padding or adjusting the visible tile snap points."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Game tiles in the 'BetRivers Exclusive Games' and 'Top Played New Games' sections are abruptly clipped at the right viewport edge (e.g., 'Magnif...', 'Munch... Mi...', 'Hyperc...'), with no visual fade or scroll hint to indicate more content.",
+        "suggestion": "Add a gradient fade, peek spacing, or scroll arrows to signal horizontally scrollable carousels, and align tile snapping so partially visible tiles look intentional rather than broken."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom row of game tiles ('Who Wants to Be a Millionaire', 'Rakin' Bacon', 'Dark Waters') is vertically cut off by the fixed bottom navigation bar, hiding parts of the artwork and any info/jackpot labels.",
+        "suggestion": "Add bottom padding to the scrollable content area equal to the bottom nav height so the last row of tiles is fully visible when scrolled."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Small 'i' info buttons overlaid on game tiles are low-contrast dark squares on busy artwork and are quite small, making them hard to see and tap.",
+        "suggestion": "Increase the info button size to at least 44x44px touch target and use a consistent higher-contrast background."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2198,
+    "outputTokens": 886,
+    "estimatedCost": 0.06628,
+    "durationSeconds": 16.31016816599999
+  }
+}

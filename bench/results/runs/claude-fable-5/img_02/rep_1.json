@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_02",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "reasoningEffort": "medium",
+  "timestamp": "2026-07-22T13:18:49.183Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly intact, but there is one significant visual break: a 'SCROLL DOWN' overlay directly overlaps the legal terms & conditions fine print, obscuring critical disclosure text. Additional issues include unreadable fine print due to size/contrast and a missing icon in the bottom navigation for 'Sports'.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'SCROLL DOWN' button/overlay is rendered on top of the legal disclaimer paragraph at the bottom of the promo section, cutting through and obscuring several lines of the terms text (e.g., 'Second... token', 'Token and Bonus Bet expire in 7 days...').",
+        "suggestion": "Reposition the 'SCROLL DOWN' element below the disclaimer text or add spacing/margin so it does not overlap the legal copy, which is required to be fully readable for gambling promotions."
+      },
+      {
+        "priority": "major",
+        "category": "accessibility",
+        "description": "The legal fine print is rendered in very small dark blue text on a saturated yellow background, and portions appear to blend with the overlay behind it, making the compliance text extremely difficult to read.",
+        "suggestion": "Increase the font size, improve contrast (e.g., darker text or a neutral background panel), and ensure no elements overlap the terms text."
+      },
+      {
+        "priority": "minor",
+        "category": "missing-element",
+        "description": "In the bottom navigation bar, the 'SPORTS' item has no icon while all other items (Casino, Live Casino, Poker, Promos, Support) display icons, and its label is vertically misaligned compared to the others.",
+        "suggestion": "Add the missing sports icon (or fix the asset that failed to load) and align the 'SPORTS' label consistently with the other nav items."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The two chevron arrows flanking the 'SCROLL DOWN' text appear detached and floating over the disclaimer text rather than contained within the button element.",
+        "suggestion": "Group the chevrons inside the scroll-down control with proper padding so the component reads as a single, cleanly separated element."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2198,
+    "outputTokens": 840,
+    "estimatedCost": 0.06398000000000001,
+    "durationSeconds": 14.469296292
+  }
+}

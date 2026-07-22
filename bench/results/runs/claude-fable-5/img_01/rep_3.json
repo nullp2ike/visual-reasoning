@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "reasoningEffort": "medium",
+  "timestamp": "2026-07-22T13:18:30.514Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly functional but shows several visual clipping problems: navigation tab text and game tiles are cut off at the right edge of the viewport, suggesting horizontal overflow or missing scroll affordances. There are also minor contrast and overlap concerns.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Hot Games' navigation tab is truncated to 'Hot Gar' at the right edge of the screen with no visible scroll indicator, making it unclear that more categories exist.",
+        "suggestion": "Add a visible scroll affordance (fade gradient, arrow, or partial peek styling) and ensure tab labels are not abruptly clipped mid-character."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Game tiles in the third column of every carousel row (e.g., 'Magni...', 'Mun... Mi...', 'Hyperc...', 'Dar... Water') are hard-clipped by the viewport edge, cutting off game titles and artwork.",
+        "suggestion": "Adjust the horizontal carousel so tiles are either fully visible or intentionally peeking with a consistent partial-tile treatment, and add scroll indicators."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The carousel navigation arrows on the hero banner (left arrow on yellow, right arrow on light background) have very low contrast and are barely visible.",
+        "suggestion": "Increase arrow contrast with a solid background chip or darker icon color to meet WCAG contrast guidelines for interactive controls."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom row of game tiles ('Millionaire', 'Bacon' pigs game) is cut off by the fixed bottom navigation bar, partially obscuring content.",
+        "suggestion": "Add bottom padding to the scrollable content area equal to the height of the fixed nav bar so content isn't hidden behind it."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Jackpot amount overlays ('$6,265.14', '$13,015.14') sit directly on busy game artwork with only partial darkening, reducing readability.",
+        "suggestion": "Apply a stronger semi-transparent dark strip or text shadow behind jackpot amounts to improve legibility across all thumbnails."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2198,
+    "outputTokens": 945,
+    "estimatedCost": 0.06923,
+    "durationSeconds": 16.285100625
+  }
+}

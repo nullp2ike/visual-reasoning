@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_02",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "reasoningEffort": "medium",
+  "timestamp": "2026-07-22T13:19:18.082Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly intact visually, but there are several notable problems: the 'SCROLL DOWN' indicator overlaps and obscures the legal terms & conditions text, the fine-print disclaimer is nearly illegible, and the 'SPORTS' item in the bottom navigation is missing its icon while all other nav items have one.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'SCROLL DOWN' banner with chevron arrows is rendered directly on top of the legal terms and conditions fine print, obscuring several lines of required disclosure text (e.g., text about tokens, bonus bets, and expiration is partially hidden behind the overlay).",
+        "suggestion": "Reposition the 'SCROLL DOWN' indicator below the legal copy or add spacing/margin so it doesn't overlap the T&C text, or make the overlay dismiss/fade so the legal text remains readable."
+      },
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "In the bottom navigation bar, the 'SPORTS' item has a text label but no icon, while all other items (Casino, Live Casino, Poker, Promos, Support) display icons. This makes the nav look broken/inconsistent and the SPORTS label is misaligned vertically compared to the other labels.",
+        "suggestion": "Add the missing sports icon (or fix the failed image load) and align the label baseline with the other navigation items."
+      },
+      {
+        "priority": "major",
+        "category": "accessibility",
+        "description": "The legal disclaimer text at the bottom of the hero section is extremely small dark-blue text on a bright yellow/orange background with tight line spacing, making it very hard to read even where it isn't covered by the overlay.",
+        "suggestion": "Increase the font size and line height of the legal copy, and ensure sufficient color contrast between the text and the yellow background."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The chevron/arrow icons flanking the 'SCROLL DOWN' text sit partially outside the white pill background, clipping into the surrounding legal text area.",
+        "suggestion": "Contain the chevrons within the pill container or restyle the scroll indicator so all its elements are visually grouped."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2198,
+    "outputTokens": 829,
+    "estimatedCost": 0.06343,
+    "durationSeconds": 15.661754541999995
+  }
+}
