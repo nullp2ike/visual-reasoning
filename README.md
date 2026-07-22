@@ -1,6 +1,6 @@
 # visual-ai-assertions
 
-AI-powered visual assertions for E2E tests. Send screenshots — or short video recordings — to Claude, GPT, or Gemini and get structured, typed results.
+AI-powered visual assertions for E2E tests. Send screenshots — or short video recordings — to Claude, GPT, Gemini — or Grok, Kimi, and Qwen via OpenRouter — and get structured, typed results.
 
 ## Installation
 
@@ -11,6 +11,7 @@ npm install visual-ai-assertions
 # Optional: install additional provider SDKs
 npm install @anthropic-ai/sdk    # for Claude
 npm install @google/genai        # for Gemini
+# OpenRouter (Grok, Kimi, Qwen, ...) uses the OpenAI SDK — no extra install
 
 # Zod is a peer dependency
 npm install zod
@@ -441,11 +442,12 @@ The `VisualAIKnownError` union and `isVisualAIKnownError()` helper are useful wh
 
 ### API Keys
 
-| Provider  | Environment Variable |
-| --------- | -------------------- |
-| Anthropic | `ANTHROPIC_API_KEY`  |
-| OpenAI    | `OPENAI_API_KEY`     |
-| Google    | `GOOGLE_API_KEY`     |
+| Provider   | Environment Variable |
+| ---------- | -------------------- |
+| Anthropic  | `ANTHROPIC_API_KEY`  |
+| OpenAI     | `OPENAI_API_KEY`     |
+| Google     | `GOOGLE_API_KEY`     |
+| OpenRouter | `OPENROUTER_API_KEY` |
 
 ### Optional Configuration
 
@@ -498,11 +500,12 @@ type SupportedMimeType = "image/jpeg" | "image/png" | "image/webp" | "image/gif"
 
 **Default models:**
 
-| Provider  | Default Model            |
-| --------- | ------------------------ |
-| Anthropic | `claude-sonnet-4-6`      |
-| OpenAI    | `gpt-5.4-mini`           |
-| Google    | `gemini-3-flash-preview` |
+| Provider   | Default Model            |
+| ---------- | ------------------------ |
+| Anthropic  | `claude-sonnet-4-6`      |
+| OpenAI     | `gpt-5.4-mini`           |
+| Google     | `gemini-3-flash-preview` |
+| OpenRouter | `qwen/qwen3.6-flash`     |
 
 ## Reasoning Effort
 
@@ -522,6 +525,7 @@ When omitted, each provider uses its default behavior. The `"xhigh"` level enabl
 | Anthropic (other)                         | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "max"`      |
 | OpenAI                                    | `reasoning.effort` (Responses API)                    | `effort: "xhigh"`    |
 | Google                                    | `thinkingConfig.thinkingBudget` (1024 / 8192 / 24576) | `24576` (max budget) |
+| OpenRouter                                | `reasoning.effort` (normalized low/medium/high)       | `effort: "high"`     |
 
 ## Supported Models
 
@@ -564,6 +568,20 @@ All listed models support image/vision input. Pass any model ID to the `model` c
 | Gemini 3.1 Pro        | `gemini-3.1-pro-preview` | $2           | $12           | Preview — most advanced reasoning |
 | Gemini 3.1 Flash Lite | `gemini-3.1-flash-lite`  | $0.25        | $1.50         | GA — lightweight and cheap        |
 | Gemini 3 Flash        | `gemini-3-flash-preview` | $0.50        | $3            | **Default** — fast and capable    |
+
+### OpenRouter
+
+Any [OpenRouter](https://openrouter.ai/models) model slug (always `vendor/model`) is accepted — the vendor prefix is how the library recognizes an OpenRouter model. The models below are tested and have pricing built in. Note that OpenRouter may route a request to different upstream hosts with different quantizations; keep that in mind when comparing benchmark numbers.
+
+| Model          | Model ID                    | Input $/MTok | Output $/MTok | Notes                                 |
+| -------------- | --------------------------- | ------------ | ------------- | ------------------------------------- |
+| Grok 4.5       | `x-ai/grok-4.5`             | $2           | $6            | xAI flagship, 500K context            |
+| Kimi K3        | `moonshotai/kimi-k3`        | $3           | $15           | Moonshot flagship, 1M context         |
+| Kimi K2.7 Code | `moonshotai/kimi-k2.7-code` | $0.82        | $3.75         | Agentic/coding tier with vision       |
+| Qwen3.7 Plus   | `qwen/qwen3.7-plus`         | $0.32        | $1.28         | Cost-effective, GUI/screen-reading    |
+| Qwen3.6 Flash  | `qwen/qwen3.6-flash`        | $0.19        | $1.13         | **Default** — cheap flash vision tier |
+
+`qwen/qwen3.7-max` is not listed because it accepts no image input on OpenRouter.
 
 ## License
 

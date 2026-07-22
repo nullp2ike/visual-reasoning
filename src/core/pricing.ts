@@ -101,6 +101,28 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
     inputPricePerToken: 0.5 / PER_MILLION,
     outputPricePerToken: 3 / PER_MILLION,
   },
+  // OpenRouter passes through upstream per-model pricing (verified 2026-07-22
+  // against https://openrouter.ai/api/v1/models).
+  [`${Provider.OPENROUTER}:${Model.OpenRouter.GROK_4_5}`]: {
+    inputPricePerToken: 2 / PER_MILLION,
+    outputPricePerToken: 6 / PER_MILLION,
+  },
+  [`${Provider.OPENROUTER}:${Model.OpenRouter.KIMI_K3}`]: {
+    inputPricePerToken: 3 / PER_MILLION,
+    outputPricePerToken: 15 / PER_MILLION,
+  },
+  [`${Provider.OPENROUTER}:${Model.OpenRouter.KIMI_K2_7_CODE}`]: {
+    inputPricePerToken: 0.82 / PER_MILLION,
+    outputPricePerToken: 3.75 / PER_MILLION,
+  },
+  [`${Provider.OPENROUTER}:${Model.OpenRouter.QWEN_3_7_PLUS}`]: {
+    inputPricePerToken: 0.32 / PER_MILLION,
+    outputPricePerToken: 1.28 / PER_MILLION,
+  },
+  [`${Provider.OPENROUTER}:${Model.OpenRouter.QWEN_3_6_FLASH}`]: {
+    inputPricePerToken: 0.1875 / PER_MILLION,
+    outputPricePerToken: 1.125 / PER_MILLION,
+  },
 };
 
 export function calculateCost(

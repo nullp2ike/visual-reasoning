@@ -30,6 +30,7 @@ import type {
 import { AnthropicDriver } from "../providers/anthropic.js";
 import { GoogleDriver } from "../providers/google.js";
 import { OpenAIDriver } from "../providers/openai.js";
+import { OpenRouterDriver } from "../providers/openrouter.js";
 import type { ProviderConfig, ProviderDriver, SendMessageOptions } from "../providers/types.js";
 import { resolveConfig } from "./config.js";
 import { debugLog, processUsage, timedSendMessage, withErrorDebug } from "./debug.js";
@@ -260,6 +261,7 @@ const PROVIDER_REGISTRY = {
   anthropic: (config) => new AnthropicDriver(config),
   openai: (config) => new OpenAIDriver(config),
   google: (config) => new GoogleDriver(config),
+  openrouter: (config) => new OpenRouterDriver(config),
 } as const satisfies Record<ProviderName, ProviderFactory>;
 
 function createDriver(provider: ProviderName, config: ProviderConfig): ProviderDriver {

@@ -16,6 +16,7 @@ const ORIGINAL_ENV = {
   ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY,
   OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
+  OPENROUTER_API_KEY: process.env.OPENROUTER_API_KEY,
 };
 
 function restoreEnv(): void {
@@ -43,6 +44,9 @@ function restoreEnv(): void {
 
   if (ORIGINAL_ENV.GOOGLE_API_KEY === undefined) delete process.env.GOOGLE_API_KEY;
   else process.env.GOOGLE_API_KEY = ORIGINAL_ENV.GOOGLE_API_KEY;
+
+  if (ORIGINAL_ENV.OPENROUTER_API_KEY === undefined) delete process.env.OPENROUTER_API_KEY;
+  else process.env.OPENROUTER_API_KEY = ORIGINAL_ENV.OPENROUTER_API_KEY;
 }
 
 describe("resolveConfig", () => {
@@ -117,6 +121,26 @@ describe("resolveConfig", () => {
     expect(resolved.model).toBe(DEFAULT_MODELS.google);
   });
 
+  it("infers openrouter provider from vendor-prefixed model slugs", () => {
+    for (const model of ["x-ai/grok-4.5", "moonshotai/kimi-k3", "somevendor/future-model"]) {
+      const resolved = resolveConfig({ model, apiKey: "test-key" });
+      expect(resolved.provider).toBe("openrouter");
+      expect(resolved.model).toBe(model);
+    }
+  });
+
+  it("falls back to OPENROUTER_API_KEY detection when model is omitted", () => {
+    delete process.env.ANTHROPIC_API_KEY;
+    delete process.env.OPENAI_API_KEY;
+    delete process.env.GOOGLE_API_KEY;
+    process.env.OPENROUTER_API_KEY = "env-openrouter-key";
+
+    const resolved = resolveConfig({});
+
+    expect(resolved.provider).toBe("openrouter");
+    expect(resolved.model).toBe(DEFAULT_MODELS.openrouter);
+  });
+
   it("throws on invalid VISUAL_AI_DEBUG values", () => {
     process.env.VISUAL_AI_DEBUG = "definitely";
     process.env.OPENAI_API_KEY = "test-key";
@@ -178,6 +202,15 @@ describe("resolveConfig", () => {
         reasoningEffort: "high",
       });
       expect(resolved.maxTokens).toBe(DEFAULT_MAX_TOKENS);
+    });
+
+    it("increases maxTokens for OpenRouter + high effort when user did not set maxTokens", () => {
+      const resolved = resolveConfig({
+        model: "x-ai/grok-4.5",
+        apiKey: "k",
+        reasoningEffort: "high",
+      });
+      expect(resolved.maxTokens).toBe(OPENAI_REASONING_MAX_TOKENS);
     });
 
     it("emits debug log when auto-increase triggers", () => {

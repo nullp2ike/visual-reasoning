@@ -15,10 +15,11 @@ describe("Provider", () => {
     expect(Provider.ANTHROPIC).toBe("anthropic");
     expect(Provider.OPENAI).toBe("openai");
     expect(Provider.GOOGLE).toBe("google");
+    expect(Provider.OPENROUTER).toBe("openrouter");
   });
 
-  it("has exactly 3 providers", () => {
-    expect(Object.keys(Provider)).toHaveLength(3);
+  it("has exactly 4 providers", () => {
+    expect(Object.keys(Provider)).toHaveLength(4);
   });
 });
 
@@ -55,11 +56,26 @@ describe("Model", () => {
     expect(Model.Google.GEMINI_3_FLASH_PREVIEW).toBe("gemini-3-flash-preview");
   });
 
+  it("has correct OpenRouter model values", () => {
+    expect(Model.OpenRouter.GROK_4_5).toBe("x-ai/grok-4.5");
+    expect(Model.OpenRouter.KIMI_K3).toBe("moonshotai/kimi-k3");
+    expect(Model.OpenRouter.KIMI_K2_7_CODE).toBe("moonshotai/kimi-k2.7-code");
+    expect(Model.OpenRouter.QWEN_3_7_PLUS).toBe("qwen/qwen3.7-plus");
+    expect(Model.OpenRouter.QWEN_3_6_FLASH).toBe("qwen/qwen3.6-flash");
+  });
+
+  it("uses vendor-prefixed slugs for all OpenRouter models", () => {
+    for (const model of Object.values(Model.OpenRouter)) {
+      expect(model).toMatch(/^[^/]+\/[^/]+$/);
+    }
+  });
+
   it("has no duplicate model values across providers", () => {
     const allModels = [
       ...Object.values(Model.Anthropic),
       ...Object.values(Model.OpenAI),
       ...Object.values(Model.Google),
+      ...Object.values(Model.OpenRouter),
     ];
     expect(new Set(allModels).size).toBe(allModels.length);
   });
@@ -70,6 +86,7 @@ describe("DEFAULT_MODELS", () => {
     expect(DEFAULT_MODELS[Provider.ANTHROPIC]).toBe(Model.Anthropic.SONNET_4_6);
     expect(DEFAULT_MODELS[Provider.OPENAI]).toBe(Model.OpenAI.GPT_5_4_MINI);
     expect(DEFAULT_MODELS[Provider.GOOGLE]).toBe(Model.Google.GEMINI_3_FLASH_PREVIEW);
+    expect(DEFAULT_MODELS[Provider.OPENROUTER]).toBe(Model.OpenRouter.QWEN_3_6_FLASH);
   });
 
   it("has an entry for every provider", () => {
@@ -90,6 +107,9 @@ describe("MODEL_TO_PROVIDER", () => {
     for (const model of Object.values(Model.Google)) {
       expect(MODEL_TO_PROVIDER.get(model)).toBe(Provider.GOOGLE);
     }
+    for (const model of Object.values(Model.OpenRouter)) {
+      expect(MODEL_TO_PROVIDER.get(model)).toBe(Provider.OPENROUTER);
+    }
   });
 
   it("has an entry for every known model", () => {
@@ -97,6 +117,7 @@ describe("MODEL_TO_PROVIDER", () => {
       ...Object.values(Model.Anthropic),
       ...Object.values(Model.OpenAI),
       ...Object.values(Model.Google),
+      ...Object.values(Model.OpenRouter),
     ];
     expect(MODEL_TO_PROVIDER.size).toBe(allModels.length);
   });

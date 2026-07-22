@@ -20,6 +20,7 @@ export const Provider = {
   ANTHROPIC: "anthropic",
   OPENAI: "openai",
   GOOGLE: "google",
+  OPENROUTER: "openrouter",
 } as const satisfies Record<string, ProviderName>;
 
 // --- Model constants (grouped by provider) ---
@@ -55,6 +56,18 @@ export const Model = {
     GEMINI_3_1_FLASH_LITE: "gemini-3.1-flash-lite",
     GEMINI_3_FLASH_PREVIEW: "gemini-3-flash-preview",
   },
+  /**
+   * Models routed through OpenRouter (https://openrouter.ai). Slugs always
+   * carry a vendor prefix (`vendor/model`), which is how provider inference
+   * recognizes them. All listed models accept image input.
+   */
+  OpenRouter: {
+    GROK_4_5: "x-ai/grok-4.5",
+    KIMI_K3: "moonshotai/kimi-k3",
+    KIMI_K2_7_CODE: "moonshotai/kimi-k2.7-code",
+    QWEN_3_7_PLUS: "qwen/qwen3.7-plus",
+    QWEN_3_6_FLASH: "qwen/qwen3.6-flash",
+  },
 } as const;
 
 // --- Derived utility types ---
@@ -63,7 +76,8 @@ export const Model = {
 export type KnownModelName =
   | (typeof Model.Anthropic)[keyof typeof Model.Anthropic]
   | (typeof Model.OpenAI)[keyof typeof Model.OpenAI]
-  | (typeof Model.Google)[keyof typeof Model.Google];
+  | (typeof Model.Google)[keyof typeof Model.Google]
+  | (typeof Model.OpenRouter)[keyof typeof Model.OpenRouter];
 
 // --- Default model per provider ---
 
@@ -72,6 +86,7 @@ export const DEFAULT_MODELS = {
   [Provider.ANTHROPIC]: Model.Anthropic.SONNET_4_6,
   [Provider.OPENAI]: Model.OpenAI.GPT_5_4_MINI,
   [Provider.GOOGLE]: Model.Google.GEMINI_3_FLASH_PREVIEW,
+  [Provider.OPENROUTER]: Model.OpenRouter.QWEN_3_6_FLASH,
 } as const satisfies Record<ProviderName, KnownModelName>;
 
 export const DEFAULT_MAX_TOKENS = 4096;
@@ -89,6 +104,7 @@ export const MODEL_TO_PROVIDER: ReadonlyMap<string, ProviderName> = new Map([
   ...Object.values(Model.Anthropic).map((m) => [m, Provider.ANTHROPIC] as const),
   ...Object.values(Model.OpenAI).map((m) => [m, Provider.OPENAI] as const),
   ...Object.values(Model.Google).map((m) => [m, Provider.GOOGLE] as const),
+  ...Object.values(Model.OpenRouter).map((m) => [m, Provider.OPENROUTER] as const),
 ]);
 
 // --- Valid providers array ---
@@ -106,6 +122,8 @@ export const PROVIDER_DEFAULT_REASONING: Readonly<Record<ProviderName, string>> 
   openai: "medium",
   anthropic: "off",
   google: "off",
+  // Varies by upstream model; the driver sends no reasoning field unless configured.
+  openrouter: "off",
 };
 
 // --- Check name constants ---

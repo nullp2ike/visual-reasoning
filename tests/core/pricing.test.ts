@@ -104,6 +104,36 @@ describe("calculateCost", () => {
     expect(cost).toBeCloseTo(0.002, 10);
   });
 
+  it("calculates cost for openrouter x-ai/grok-4.5", () => {
+    const cost = calculateCost("openrouter", "x-ai/grok-4.5", 1000, 500);
+    // 1000 * (2/1M) + 500 * (6/1M) = 0.002 + 0.003 = 0.005
+    expect(cost).toBeCloseTo(0.005, 10);
+  });
+
+  it("calculates cost for openrouter moonshotai/kimi-k3", () => {
+    const cost = calculateCost("openrouter", "moonshotai/kimi-k3", 1000, 500);
+    // 1000 * (3/1M) + 500 * (15/1M) = 0.003 + 0.0075 = 0.0105
+    expect(cost).toBeCloseTo(0.0105, 10);
+  });
+
+  it("calculates cost for openrouter moonshotai/kimi-k2.7-code", () => {
+    const cost = calculateCost("openrouter", "moonshotai/kimi-k2.7-code", 1000, 500);
+    // 1000 * (0.82/1M) + 500 * (3.75/1M) = 0.00082 + 0.001875 = 0.002695
+    expect(cost).toBeCloseTo(0.002695, 10);
+  });
+
+  it("calculates cost for openrouter qwen/qwen3.7-plus", () => {
+    const cost = calculateCost("openrouter", "qwen/qwen3.7-plus", 1000, 500);
+    // 1000 * (0.32/1M) + 500 * (1.28/1M) = 0.00032 + 0.00064 = 0.00096
+    expect(cost).toBeCloseTo(0.00096, 10);
+  });
+
+  it("calculates cost for openrouter qwen/qwen3.6-flash", () => {
+    const cost = calculateCost("openrouter", "qwen/qwen3.6-flash", 1000, 500);
+    // 1000 * (0.1875/1M) + 500 * (1.125/1M) = 0.0001875 + 0.0005625 = 0.00075
+    expect(cost).toBeCloseTo(0.00075, 10);
+  });
+
   it("returns undefined for unknown model", () => {
     expect(calculateCost("anthropic", "unknown-model", 100, 50)).toBeUndefined();
   });

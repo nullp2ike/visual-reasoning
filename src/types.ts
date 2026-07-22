@@ -223,7 +223,7 @@ export type SupportedVideoMimeType =
 // --- Provider names ---
 
 /** Supported provider identifiers. */
-export type ProviderName = "anthropic" | "openai" | "google";
+export type ProviderName = "anthropic" | "openai" | "google" | "openrouter";
 
 // --- VisualAI config ---
 
