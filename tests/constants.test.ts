@@ -47,7 +47,9 @@ describe("Model", () => {
   });
 
   it("has correct Google model values", () => {
+    expect(Model.Google.GEMINI_3_6_FLASH).toBe("gemini-3.6-flash");
     expect(Model.Google.GEMINI_3_5_FLASH).toBe("gemini-3.5-flash");
+    expect(Model.Google.GEMINI_3_5_FLASH_LITE).toBe("gemini-3.5-flash-lite");
     expect(Model.Google.GEMINI_3_1_PRO_PREVIEW).toBe("gemini-3.1-pro-preview");
     expect(Model.Google.GEMINI_3_1_FLASH_LITE).toBe("gemini-3.1-flash-lite");
     expect(Model.Google.GEMINI_3_FLASH_PREVIEW).toBe("gemini-3-flash-preview");

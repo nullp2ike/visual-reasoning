@@ -131,6 +131,8 @@ describe("generateAiDiff", () => {
     ).rejects.toThrow(VisualAIConfigError);
     await expect(
       generateAiDiff(img, img, Model.Google.GEMINI_3_1_PRO_PREVIEW, driver),
-    ).rejects.toThrow(/only supported.*gemini-3-flash-preview.*gemini-3\.5-flash/i);
+    ).rejects.toThrow(
+      /only supported.*gemini-3-flash-preview.*gemini-3\.5-flash.*gemini-3\.6-flash/i,
+    );
   });
 });

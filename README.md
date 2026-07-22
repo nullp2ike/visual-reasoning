@@ -501,7 +501,7 @@ type SupportedMimeType = "image/jpeg" | "image/png" | "image/webp" | "image/gif"
 | Provider  | Default Model            |
 | --------- | ------------------------ |
 | Anthropic | `claude-sonnet-4-6`      |
-| OpenAI    | `gpt-5-mini`             |
+| OpenAI    | `gpt-5.4-mini`           |
 | Google    | `gemini-3-flash-preview` |
 
 ## Reasoning Effort
@@ -558,7 +558,9 @@ All listed models support image/vision input. Pass any model ID to the `model` c
 
 | Model                 | Model ID                 | Input $/MTok | Output $/MTok | Notes                             |
 | --------------------- | ------------------------ | ------------ | ------------- | --------------------------------- |
+| Gemini 3.6 Flash      | `gemini-3.6-flash`       | $1.50        | $7.50         | Newest GA flash; fewer out-tokens |
 | Gemini 3.5 Flash      | `gemini-3.5-flash`       | $1.50        | $9            | Strongest agentic & coding model  |
+| Gemini 3.5 Flash Lite | `gemini-3.5-flash-lite`  | $0.30        | $2.50         | GA — fast, cheap, agentic tier    |
 | Gemini 3.1 Pro        | `gemini-3.1-pro-preview` | $2           | $12           | Preview — most advanced reasoning |
 | Gemini 3.1 Flash Lite | `gemini-3.1-flash-lite`  | $0.25        | $1.50         | GA — lightweight and cheap        |
 | Gemini 3 Flash        | `gemini-3-flash-preview` | $0.50        | $3            | **Default** — fast and capable    |

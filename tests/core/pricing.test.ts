@@ -74,10 +74,22 @@ describe("calculateCost", () => {
     expect(cost).toBeCloseTo(0.000825, 10);
   });
 
+  it("calculates cost for google gemini-3.6-flash", () => {
+    const cost = calculateCost("google", "gemini-3.6-flash", 1000, 500);
+    // 1000 * (1.5/1M) + 500 * (7.5/1M) = 0.0015 + 0.00375 = 0.00525
+    expect(cost).toBeCloseTo(0.00525, 10);
+  });
+
   it("calculates cost for google gemini-3.5-flash", () => {
     const cost = calculateCost("google", "gemini-3.5-flash", 1000, 500);
     // 1000 * (1.5/1M) + 500 * (9/1M) = 0.0015 + 0.0045 = 0.006
     expect(cost).toBeCloseTo(0.006, 10);
+  });
+
+  it("calculates cost for google gemini-3.5-flash-lite", () => {
+    const cost = calculateCost("google", "gemini-3.5-flash-lite", 1000, 500);
+    // 1000 * (0.3/1M) + 500 * (2.5/1M) = 0.0003 + 0.00125 = 0.00155
+    expect(cost).toBeCloseTo(0.00155, 10);
   });
 
   it("calculates cost for google gemini-3.1-flash-lite", () => {
