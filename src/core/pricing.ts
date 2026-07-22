@@ -77,9 +77,17 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
     inputPricePerToken: 0.25 / PER_MILLION,
     outputPricePerToken: 2 / PER_MILLION,
   },
+  [`${Provider.GOOGLE}:${Model.Google.GEMINI_3_6_FLASH}`]: {
+    inputPricePerToken: 1.5 / PER_MILLION,
+    outputPricePerToken: 7.5 / PER_MILLION,
+  },
   [`${Provider.GOOGLE}:${Model.Google.GEMINI_3_5_FLASH}`]: {
     inputPricePerToken: 1.5 / PER_MILLION,
     outputPricePerToken: 9 / PER_MILLION,
+  },
+  [`${Provider.GOOGLE}:${Model.Google.GEMINI_3_5_FLASH_LITE}`]: {
+    inputPricePerToken: 0.3 / PER_MILLION,
+    outputPricePerToken: 2.5 / PER_MILLION,
   },
   [`${Provider.GOOGLE}:${Model.Google.GEMINI_3_1_PRO_PREVIEW}`]: {
     inputPricePerToken: 2 / PER_MILLION,

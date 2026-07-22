@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.15.0] - 2026-07-22
+
+### Added
+
+- **Gemini 3.6 Flash (`gemini-3.6-flash`)** as a supported Google model — newest GA flash tier with improved coding/knowledge-work performance and ~17% fewer output tokens than 3.5 Flash. Pricing: $1.50 / $7.50 per MTok input/output.
+- **Gemini 3.5 Flash-Lite (`gemini-3.5-flash-lite`)** as a supported Google model — GA budget/agentic tier. Pricing: $0.30 / $2.50 per MTok input/output.
+- `gemini-3.6-flash` added to the annotated-diff allowlist (`DIFF_ALLOWED_MODELS`), alongside `gemini-3-flash-preview` and `gemini-3.5-flash`. Lite models remain excluded.
+- Both new models added to the `bench/` sweep roster.
+
+### Fixed
+
+- README's default-models table still listed `gpt-5-mini` as the OpenAI default; corrected to `gpt-5.4-mini` (the supported-models table was already fixed in 0.13.0).
+
+### Notes for upgraders
+
+- Fully backward compatible. Defaults are unchanged — `gemini-3-flash-preview` remains the Google default; the new models are opt-in via `config.model`.
+
 ## [0.14.0] - 2026-07-21
 
 ### Added

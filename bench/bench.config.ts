@@ -30,9 +30,11 @@ export const benchConfig: BenchConfig = {
     // OpenAI: flagship / mini
     "gpt-5.5",
     "gpt-5.4-mini",
-    // Google: pro / flash
+    // Google: pro / flash / flash-lite
     "gemini-3.1-pro-preview",
     "gemini-3.5-flash",
+    "gemini-3.6-flash",
+    "gemini-3.5-flash-lite",
   ],
   repeats: 5,
   reasoningEffort: "medium",

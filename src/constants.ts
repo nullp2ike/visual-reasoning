@@ -48,7 +48,9 @@ export const Model = {
     GPT_5_MINI: "gpt-5-mini",
   },
   Google: {
+    GEMINI_3_6_FLASH: "gemini-3.6-flash",
     GEMINI_3_5_FLASH: "gemini-3.5-flash",
+    GEMINI_3_5_FLASH_LITE: "gemini-3.5-flash-lite",
     GEMINI_3_1_PRO_PREVIEW: "gemini-3.1-pro-preview",
     GEMINI_3_1_FLASH_LITE: "gemini-3.1-flash-lite",
     GEMINI_3_FLASH_PREVIEW: "gemini-3-flash-preview",

@@ -6,12 +6,14 @@ import { buildAiDiffPrompt } from "./prompt.js";
 
 /**
  * Models proven to return annotated diff images via Gemini code execution.
- * `gemini-3-flash-preview` is the baseline; `gemini-3.5-flash` is opt-in
- * (mechanism works but annotation quality has not been validated end-to-end).
+ * `gemini-3-flash-preview` is the baseline; `gemini-3.5-flash` and
+ * `gemini-3.6-flash` are opt-in (mechanism works but annotation quality has
+ * not been validated end-to-end).
  */
 export const DIFF_ALLOWED_MODELS: ReadonlySet<string> = new Set([
   Model.Google.GEMINI_3_FLASH_PREVIEW,
   Model.Google.GEMINI_3_5_FLASH,
+  Model.Google.GEMINI_3_6_FLASH,
 ]);
 
 interface ImageGenerationDriver {
