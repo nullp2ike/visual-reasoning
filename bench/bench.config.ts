@@ -15,7 +15,11 @@ export interface BenchConfig {
   readonly reasoningEffort: ReasoningEffortLevel;
   /** Text-only judge that matches reported issues against expected issues. */
   readonly judgeModel: string;
-  /** Concurrent in-flight requests per provider during a sweep. */
+  /**
+   * Concurrent in-flight requests per provider during a sweep.
+   * Note: all OpenRouter-routed models (xAI, Moonshot, Qwen) share a single
+   * "openrouter" pool since rate limits apply per API key.
+   */
   readonly concurrencyPerProvider: number;
   /** Max attempts per run cell (1 initial + retries) on transient provider errors. */
   readonly maxAttempts: number;
@@ -39,6 +43,15 @@ export const benchConfig: BenchConfig = {
     "gemini-3.5-flash",
     "gemini-3.6-flash",
     "gemini-3.5-flash-lite",
+    // OpenRouter: xAI, Moonshot, Qwen (all vision-capable; slugs are
+    // vendor-prefixed and routed through the openrouter provider).
+    // Note: qwen3.7-max is text-only on OpenRouter and qwen "3.7 Omni-Flash"
+    // does not exist; qwen3.6-flash is the flash-tier vision substitute.
+    "x-ai/grok-4.5",
+    "moonshotai/kimi-k3",
+    "moonshotai/kimi-k2.7-code",
+    "qwen/qwen3.7-plus",
+    "qwen/qwen3.6-flash",
   ],
   repeats: 5,
   reasoningEffort: "medium",

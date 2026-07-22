@@ -4,6 +4,28 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.16.0] - 2026-07-22
+
+### Added
+
+- **OpenRouter provider** (`openrouter`) — run xAI, Moonshot, and Qwen vision models through a single [OpenRouter](https://openrouter.ai) API key. Any vendor-prefixed model slug (`vendor/model`, e.g. `x-ai/grok-4.5`) is automatically routed to the new provider; `OPENROUTER_API_KEY` is also detected when no model is configured. The driver speaks the OpenAI chat-completions protocol via the already-optional `openai` SDK pointed at the OpenRouter base URL — no new dependency.
+- Built-in model constants and pricing for five vision-capable OpenRouter models: Grok 4.5 (`x-ai/grok-4.5`, $2/$6 per MTok), Kimi K3 (`moonshotai/kimi-k3`, $3/$15), Kimi K2.7 Code (`moonshotai/kimi-k2.7-code`, $0.82/$3.75), Qwen3.7 Plus (`qwen/qwen3.7-plus`, $0.32/$1.28), and Qwen3.6 Flash (`qwen/qwen3.6-flash`, $0.19/$1.13 — the provider default).
+- All five models added to the `bench/` sweep roster. They share one "openrouter" concurrency pool since rate limits apply per API key.
+- `reasoningEffort` support on OpenRouter via its normalized `reasoning.effort` field; `"xhigh"` clamps to `"high"` (OpenRouter's maximum). The high/xhigh automatic `maxTokens` increase (16384) now also applies to the OpenRouter provider, since reasoning tokens share the output budget there too.
+
+### Changed
+
+- Bench run records for models with `/` in the slug are stored under a sanitized directory name (`x-ai__grok-4.5`); records still carry the true model name and scoring is unaffected.
+
+### Fixed
+
+- Smoke tests asserted `issues`/`statements` on `compare()` results, but `CompareResult` carries `changes` instead — every provider's compare smoke test would have failed on its next run. All four smoke suites (including the new OpenRouter one) now assert the correct shape.
+
+### Notes for upgraders
+
+- Fully backward compatible. `ProviderName` gains the `"openrouter"` member; exhaustive switches over it in consumer code need a new arm.
+- `qwen/qwen3.7-max` was deliberately excluded: it accepts no image input on OpenRouter. There is no Qwen 3.7 Omni-Flash; `qwen/qwen3.6-flash` is the flash-tier vision substitute.
+
 ## [0.15.0] - 2026-07-22
 
 ### Added

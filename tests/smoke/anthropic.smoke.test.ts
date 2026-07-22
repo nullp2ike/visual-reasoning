@@ -7,7 +7,7 @@ import { describe, it, expect, beforeAll } from "vitest";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { visualAI } from "../../src/core/client.js";
-import type { CheckResult, AskResult } from "../../src/types.js";
+import type { CheckResult, AskResult, CompareResult } from "../../src/types.js";
 
 const FIXTURES_DIR = join(import.meta.dirname, "fixtures");
 const COST_LIMIT = 0.05;
@@ -26,13 +26,20 @@ function assertCheckStructure(result: CheckResult): void {
   expect(Array.isArray(result.statements)).toBe(true);
 }
 
+function assertCompareStructure(result: CompareResult): void {
+  expect(result.pass).toBeTypeOf("boolean");
+  expect(result.reasoning).toBeTypeOf("string");
+  expect(result.reasoning.length).toBeGreaterThan(0);
+  expect(Array.isArray(result.changes)).toBe(true);
+}
+
 function assertAskStructure(result: AskResult): void {
   expect(result.summary).toBeTypeOf("string");
   expect(result.summary.length).toBeGreaterThan(0);
   expect(Array.isArray(result.issues)).toBe(true);
 }
 
-function assertUsageTracked(result: CheckResult | AskResult): void {
+function assertUsageTracked(result: CheckResult | AskResult | CompareResult): void {
   expect(result.usage).toBeDefined();
   expect(result.usage!.inputTokens).toBeGreaterThan(0);
   expect(result.usage!.outputTokens).toBeGreaterThan(0);
@@ -95,7 +102,7 @@ describe("smoke: Anthropic provider", () => {
       prompt: "Are these two screenshots identical?",
     });
 
-    assertCheckStructure(result);
+    assertCompareStructure(result);
     assertUsageTracked(result);
     expect(result.pass).toBe(true);
   });

@@ -11,6 +11,16 @@ export function sha256(data: string | Buffer): string {
   return createHash("sha256").update(data).digest("hex");
 }
 
+/**
+ * Directory-safe name for a model. OpenRouter slugs contain "/"
+ * ("x-ai/grok-4.5"), which would otherwise nest an extra path level under
+ * results/runs/ and break record discovery. Records still store the true
+ * model name; only the on-disk directory uses this form.
+ */
+export function modelDirName(model: string): string {
+  return model.replaceAll("/", "__");
+}
+
 /** Write JSON atomically (tmp file + rename) so interrupted sweeps never leave partial records. */
 export async function atomicWriteJson(filePath: string, value: unknown): Promise<void> {
   await mkdir(dirname(filePath), { recursive: true });

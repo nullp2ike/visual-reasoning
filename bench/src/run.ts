@@ -21,6 +21,7 @@ import {
   GOLDEN_DIR,
   RESULTS_DIR,
   atomicWriteJson,
+  modelDirName,
   readJsonIfExists,
   retryWithBackoff,
   runPool,
@@ -43,11 +44,13 @@ export function inferProvider(model: string): ProviderName {
   if (model.startsWith("claude-")) return "anthropic";
   if (/^(gpt-|o\d)/.test(model)) return "openai";
   if (model.startsWith("gemini-")) return "google";
+  // Vendor-prefixed slugs ("x-ai/grok-4.5") route through OpenRouter.
+  if (model.includes("/")) return "openrouter";
   throw new Error(`Cannot infer provider for model "${model}"`);
 }
 
 function recordPath(cell: Pick<RunCell, "model" | "imageId" | "rep">): string {
-  return join(RUNS_DIR, cell.model, cell.imageId, `rep_${cell.rep}.json`);
+  return join(RUNS_DIR, modelDirName(cell.model), cell.imageId, `rep_${cell.rep}.json`);
 }
 
 /** A cell is complete when its record exists, parses, succeeded, and matches the frozen prompt. */
@@ -70,6 +73,7 @@ const API_KEY_ENV: Record<ProviderName, string> = {
   anthropic: "ANTHROPIC_API_KEY",
   openai: "OPENAI_API_KEY",
   google: "GOOGLE_API_KEY",
+  openrouter: "OPENROUTER_API_KEY",
 };
 
 // Rough per-call token guess for the pre-sweep cost estimate only.

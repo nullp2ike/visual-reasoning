@@ -32,6 +32,10 @@ function inferProviderFromModel(model: string): ProviderName | undefined {
   const known = MODEL_TO_PROVIDER.get(model);
   if (known) return known;
 
+  // OpenRouter slugs are always vendor-prefixed ("x-ai/grok-4.5"); no
+  // first-party model name contains a slash.
+  if (model.includes("/")) return "openrouter";
+
   const prefixMatch = MODEL_PREFIX_TO_PROVIDER.find(([prefix]) => model.startsWith(prefix));
   return prefixMatch?.[1];
 }
@@ -47,12 +51,13 @@ function resolveProvider(config: VisualAIConfig): ProviderName {
     ["ANTHROPIC_API_KEY", "anthropic"],
     ["OPENAI_API_KEY", "openai"],
     ["GOOGLE_API_KEY", "google"],
+    ["OPENROUTER_API_KEY", "openrouter"],
   ];
   const detected = apiKeyProviderMap.find(([key]) => process.env[key]);
   if (detected) return detected[1];
 
   throw new VisualAIConfigError(
-    "Cannot determine provider. Set a model name (config or VISUAL_AI_MODEL) or an API key env variable (ANTHROPIC_API_KEY, OPENAI_API_KEY, GOOGLE_API_KEY).",
+    "Cannot determine provider. Set a model name (config or VISUAL_AI_MODEL) or an API key env variable (ANTHROPIC_API_KEY, OPENAI_API_KEY, GOOGLE_API_KEY, OPENROUTER_API_KEY).",
   );
 }
 
@@ -97,16 +102,16 @@ export function resolveConfig(config: VisualAIConfig): ResolvedConfig {
   const userSetMaxTokens = config.maxTokens !== undefined;
   let maxTokens = config.maxTokens ?? DEFAULT_MAX_TOKENS;
 
-  // OpenAI reasoning tokens share the output budget, so auto-increase for high/xhigh
+  // OpenAI and OpenRouter reasoning tokens share the output budget, so auto-increase for high/xhigh
   if (
     !userSetMaxTokens &&
-    provider === "openai" &&
+    (provider === "openai" || provider === "openrouter") &&
     (config.reasoningEffort === "high" || config.reasoningEffort === "xhigh")
   ) {
     maxTokens = OPENAI_REASONING_MAX_TOKENS;
     if (debug) {
       process.stderr.write(
-        `[visual-ai-assertions] Auto-increased maxTokens from ${DEFAULT_MAX_TOKENS} to ${OPENAI_REASONING_MAX_TOKENS} for OpenAI with reasoningEffort "${config.reasoningEffort}".\n`,
+        `[visual-ai-assertions] Auto-increased maxTokens from ${DEFAULT_MAX_TOKENS} to ${OPENAI_REASONING_MAX_TOKENS} for provider "${provider}" with reasoningEffort "${config.reasoningEffort}".\n`,
       );
     }
   }
