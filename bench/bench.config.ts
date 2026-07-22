@@ -23,13 +23,17 @@ export interface BenchConfig {
 
 export const benchConfig: BenchConfig = {
   models: [
-    // Anthropic: mid / small (claude-fable-5 currently excluded from the roster;
-    // its partial run records remain in results/runs/ and are ignored by scoring)
+    // Anthropic: flagship / mid / small (claude-fable-5 currently excluded from the
+    // roster; its partial run records remain in results/runs/ and are ignored by scoring)
+    "claude-opus-4-8",
     "claude-sonnet-4-6",
     "claude-haiku-4-5",
-    // OpenAI: flagship / mini
+    // OpenAI: flagship / mini + 5.6 variants
     "gpt-5.5",
     "gpt-5.4-mini",
+    "gpt-5.6-sol",
+    "gpt-5.6-terra",
+    "gpt-5.6-luna",
     // Google: pro / flash / flash-lite
     "gemini-3.1-pro-preview",
     "gemini-3.5-flash",
