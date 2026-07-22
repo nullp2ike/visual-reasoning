@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Wrong Poker item is highlighted in the bottom nav bar"],
+  "reportedIssues": [
+    "Several horizontally scrollable sections are clipped at the right edge. The top category tab shows only part of “Hot Ga…”, and the game rows show partially cut-off cards in the third column.",
+    "The bottom navigation appears to highlight “POKER” as the active section, while the visible page content is casino/home game content.",
+    "The fixed bottom navigation overlaps the lower game cards, partially hiding content at the bottom of the screen.",
+    "Some labels on partially visible cards, such as “EXCLUSIVE,” are cut off at the edge, making the section look unfinished."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Issue 1 directly describes the bottom navigation highlighting 'POKER' while the actual page content is different, matching the expected defect of wrong Poker item being highlighted in bottom nav."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3]
+  }
+}

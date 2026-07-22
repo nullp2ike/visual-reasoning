@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Wrong Poker item is highlighted in the bottom nav bar"],
+  "reportedIssues": [
+    "Several elements are clipped off the right edge of the viewport, including the 'Hot Games' category tab and the rightmost game tiles in each row. This makes the page look horizontally overflowing or improperly sized for mobile.",
+    "The bottom navigation highlights 'POKER' as the active tab, while the visible page content appears to be the Casino/Home game lobby and the top navigation highlights 'Home'. This creates a confusing mismatch in navigation state.",
+    "The bottom fixed navigation overlaps the lower game grid area, with the last visible row partially hidden behind the nav bar.",
+    "The carousel/banner arrow controls sit very close to the screen edges and appear partially clipped, especially the left arrow."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Issue 1 directly describes the Poker tab being highlighted in the bottom navigation while the page content shows something else (Casino/Home), creating a mismatch in which nav item is active."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3]
+  }
+}

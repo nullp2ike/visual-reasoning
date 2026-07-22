@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Casino icon design/layout is broken in the bottom nav bar"],
+  "reportedIssues": [
+    "Right-column game cards are visually clipped/cropped, cutting off game titles mid-word (e.g., 'MAGNI PHO...', 'MUNC MI...', 'HYPERO PYRAMIO...', 'DAR WATE THE CURS...'). The partial images and unreadable titles degrade the user experience significantly.",
+    "The top navigation tab bar clips the last tab label, showing 'Hot Ga...' instead of the full label (likely 'Hot Games'). This makes the navigation option unrecognizable and harder to tap accurately.",
+    "The promotional banner text 'BET IT ON BLACK AND GOLD!' references Pittsburgh Penguins branding but the visual context (casino games on phones) doesn't strongly reinforce the sports tie-in, making the message feel disconnected.",
+    "The bottom navigation bar 'Casino' item appears underlined and uses a different icon style compared to other nav items, which may cause visual inconsistency in the active state styling."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "Issue 3 directly describes the Casino item in the bottom navigation bar having styling problems (underlined, different icon style), matching the expected defect about Casino icon design/layout being broken in the bottom nav bar."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

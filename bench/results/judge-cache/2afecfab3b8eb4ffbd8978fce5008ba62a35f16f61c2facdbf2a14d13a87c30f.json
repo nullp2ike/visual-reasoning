@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The jackpot value is negative"],
+  "reportedIssues": [
+    "The 'Cop the Lot' game card displays a jackpot value of '-$6,266.13' — a negative dollar amount, which is likely a data or rendering error for what should be a positive jackpot figure.",
+    "Game cards in the rightmost column of both 'BetRivers Exclusive Games' and 'Top Played New Games' sections are visually clipped/cut off at the right edge of the screen, showing partial titles and images (e.g., 'MAGNI PHO...', 'MUNC MI...', 'HYPERA...').",
+    "The horizontal navigation pill bar at the top truncates the last visible item as 'Hot Ga...' without any indication of additional items or a scroll affordance.",
+    "The fixed bottom navigation bar overlaps the bottom of the scrollable content area, potentially obscuring game cards or content near the bottom of the page."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 explicitly describes the 'Cop the Lot' game card displaying a negative jackpot value of '-$6,266.13', which directly matches the expected defect of a negative jackpot value."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

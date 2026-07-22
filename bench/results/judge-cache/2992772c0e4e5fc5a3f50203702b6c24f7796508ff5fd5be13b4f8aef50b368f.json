@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Wrong Poker item is highlighted in the bottom nav bar"],
+  "reportedIssues": [
+    "Game cards in the right column are cut off by the edge of the viewport, making titles and artwork partially hidden.",
+    "The fixed bottom navigation bar overlaps the lower game tiles, cutting off part of the content near the bottom of the screen.",
+    "The bottom navigation shows “POKER” as the active tab, while the visible page content is casino/home game content. This makes the current location unclear.",
+    "The top category navigation item on the right is partially clipped, showing only “Hot Ga…”.",
+    "Some game tile overlays and labels are very close to card edges, especially on partially clipped cards, which makes the layout feel cramped."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Issue 2 directly describes the bottom nav bar showing 'POKER' as active while displaying different page content, which is the wrong item being highlighted."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3, 4]
+  }
+}

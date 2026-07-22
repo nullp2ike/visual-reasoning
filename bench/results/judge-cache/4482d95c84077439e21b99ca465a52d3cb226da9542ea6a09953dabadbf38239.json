@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Casino icon design/layout is broken in the bottom nav bar"],
+  "reportedIssues": [
+    "The top navigation tab bar clips the last visible item mid-text ('Hot Ga...' instead of 'Hot Games'), with no visual affordance like a fade or arrow indicating it is horizontally scrollable.",
+    "Game card thumbnails on the right side of both the 'BetRivers Exclusive Games' and 'Top Played New Games' rows are cut off mid-image and mid-title (e.g., 'MAGNI PHO...', 'MUN MI...', 'HYPERA PYRAMID...', 'DAR WATE THE CURS...'), making them look broken rather than intentionally hinting at scrollable content.",
+    "The jackpot amount displayed on 'Cop the Lot Megaways' ($6,265.28) and '3 Fiend Pots' ($13,015.14) overlap the card visuals but may not update in real-time visually, potentially showing stale data if not live-synced.",
+    "The bottom navigation bar icons appear slightly inconsistent in size and weight compared to each other (e.g., the Casino slot icon vs. the Sports basketball icon), reducing visual cohesion."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "Report 3 describes inconsistent icon sizing and weight in the bottom navigation bar, which matches the expected defect about Casino icon design/layout being broken in that same location."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

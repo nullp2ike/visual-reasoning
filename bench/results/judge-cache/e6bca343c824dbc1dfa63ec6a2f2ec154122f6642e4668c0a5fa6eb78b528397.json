@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["BetRivers Exclusive Games badge shows 0 games"],
+  "reportedIssues": [
+    "The 'BetRivers Exclusive Games' section displays a badge reading '0 Games', yet multiple exclusive game tiles are clearly rendered below it. This is a data/rendering mismatch that could confuse users or indicate a failed API call for the count.",
+    "The third column of game tiles in both the 'BetRivers Exclusive Games' and 'Top Played New Games' sections is clipped/cut off at the right edge. Game titles like 'MAGNI PHO...' and 'MUNC MI...' are partially visible, indicating horizontal overflow without proper containment.",
+    "The horizontal navigation tab bar at the top clips the last visible tab label to 'Hot Ga...' without any scroll indicator or affordance, making it unclear to the user that more tabs exist."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 directly describes the BetRivers Exclusive Games badge showing '0 Games' while games are actually displayed below it."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

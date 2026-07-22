@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The jackpot value is negative"],
+  "reportedIssues": [
+    "The sticky bottom navigation bar overlaps the lower game row, cutting off the bottoms of the tiles and hiding part of the content.",
+    "One game tile displays a negative amount, \"-$6,266.13\", which looks like broken or incorrectly formatted data for a casino jackpot/value label.",
+    "Several cards and labels are partially clipped on the right side of the screen, leaving the last item in each row only partly visible."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 describes a game tile displaying a negative jackpot value (-$6,266.13), which directly matches the expected defect of a negative jackpot value."
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

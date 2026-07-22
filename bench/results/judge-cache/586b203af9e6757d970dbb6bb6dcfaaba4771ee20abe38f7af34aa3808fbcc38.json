@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The jackpot value is negative"],
+  "reportedIssues": [
+    "The 'Cop the Lot Megaways' game card displays a negative jackpot value of '-$6,266.13'. A jackpot amount should never be negative, indicating a data rendering or calculation bug.",
+    "Multiple game cards in the right column of the 'BetRivers Exclusive Games' section are visually cut off, showing only partial game title text (e.g., 'MAGNI PHO...', 'MUNC MI...'). This makes the content unreadable and appears broken rather than a deliberate scroll indicator.",
+    "The top navigation category bar is cut off on the right side, showing 'Hot Ga' instead of the full label (likely 'Hot Games'). This truncation makes the navigation item unreadable.",
+    "The bottom fixed navigation bar overlaps the bottom portion of the page content, potentially obscuring game tiles and interactive elements in the lower section of the scroll."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 directly describes a negative jackpot value (-$6,266.13) on a game card, matching the expected defect of a negative jackpot value."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

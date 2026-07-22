@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The jackpot value is negative"],
+  "reportedIssues": [
+    "The 'Cop the Lot' game card displays a negative jackpot value of '-$6,266.13', which is likely a data rendering error. Jackpot values should never display as negative numbers.",
+    "Multiple game card titles on the right edge of the horizontal carousels are visually clipped and unreadable (e.g., 'MAGNI PHO...' and 'MUNC MI...'). While partial cards are expected in carousels, the title text is cropped mid-word making them illegible.",
+    "The top navigation tab 'Hot Ga...' is cut off at the right edge of the screen, making the label unreadable.",
+    "The 'Top Played New Games' section has a third column of game cards that are partially visible and cut off on the right side (e.g., 'HYPERAC...' and 'DARK WATER...'), providing a broken visual experience."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the exact same defect: the 'Cop the Lot' game card displaying a negative jackpot value of '-$6,266.13', matching the expected defect about negative jackpot values."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

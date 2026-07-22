@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Casino icon design/layout is broken in the bottom nav bar"],
+  "reportedIssues": [
+    "Multiple game cards in both the 'BetRivers Exclusive Games' and 'Top Played New Games' sections are cut off on the right edge of the screen with no visible scroll indicator, carousel dots, or affordance cues to inform users they can scroll horizontally.",
+    "The top navigation category label 'Hot Ga...' is truncated and unreadable. The full label (likely 'Hot Games') is cut off without an ellipsis or tooltip, making it unclear to users.",
+    "The 'Casino' bottom navigation tab appears visually misaligned — it sits at a lower vertical position and outside the standard tab bar boundary compared to the other bottom nav items (Live Casino, Sports, Poker, Promos, Support).",
+    "Game title text on the partially visible third exclusive game card is unreadable ('MAGNI PHO...'), providing no usable information to users browsing the section."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Report 2 describes the Casino bottom nav tab as visually misaligned and positioned outside the standard tab bar boundary, which matches the broken design/layout issue with the Casino icon in the bottom nav."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

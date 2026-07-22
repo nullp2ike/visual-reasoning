@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Wrong Poker item is highlighted in the bottom nav bar"],
+  "reportedIssues": [
+    "Game tiles in the content sections are clipped on the right edge of the screen. The third column is only partially visible, making the grid look wider than the viewport or like unintended horizontal overflow.",
+    "The fixed bottom navigation overlaps the game content. The lower row of game cards is partially hidden behind the bottom nav bar.",
+    "The bottom navigation highlights “POKER” as the active tab, but the visible page content is casino game content such as BetRivers Exclusive Games and Top Played New Games. This makes the selected state look incorrect.",
+    "The top category navigation is clipped on the right, cutting off the “Hot Games” item. If this is intended to be horizontally scrollable, the visual affordance is unclear."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Issue 2 directly describes the bottom nav highlighting 'POKER' when the page content shows casino games, which is the wrong item being highlighted in the bottom nav bar."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

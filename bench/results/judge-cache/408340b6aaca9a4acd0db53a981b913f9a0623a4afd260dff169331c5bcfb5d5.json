@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Wrong Poker item is highlighted in the bottom nav bar"],
+  "reportedIssues": [
+    "Game cards in the 'BetRivers Exclusive Games' section are being clipped/cut off on the right side. The third column shows partial game titles like 'MAGNI...' and 'MUNC...' and 'MI...' indicating the grid overflows the viewport without proper containment or padding.",
+    "The horizontal navigation bar at the top is clipping the 'Hot Ga...' tab — it is visibly cut off on the right edge, indicating the scrollable row is not signaling clearly that more items exist.",
+    "The 'Top Played New Games' section also has the third column of game thumbnails cut off on the right side (e.g., 'HYPERO...' and 'DAR WATE...'), consistent with the same overflow issue affecting the entire page grid layout.",
+    "The jackpot dollar amount '$6,264.35' is displayed over the 'Cop The Lot' game card in the bottom-left area of the exclusive games grid, but no similar indicator is shown consistently across all jackpot-eligible games, creating visual inconsistency."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "No reported issue mentions the bottom navigation bar or incorrect highlighting of a Poker item; all reported issues concern game card clipping and layout overflow problems."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

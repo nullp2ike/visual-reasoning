@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Wrong Poker item is highlighted in the bottom nav bar"],
+  "reportedIssues": [
+    "Game cards in the right column are clipped/cut off across both 'BetRivers Exclusive Games' and 'Top Played New Games' sections. Game titles like 'Magni Pho...', 'Munc Mi...', and 'Hypero...' are partially visible, indicating a 3-column grid is being forced into a viewport that only fits ~2.5 columns.",
+    "The 'Hot Ga...' navigation tab in the horizontal tab bar is truncated, cutting off the label text mid-word.",
+    "The bottom navigation bar shows 'POKER' as the active/selected tab (highlighted in gold with underline), but the page content displayed is clearly the Casino home page, not a Poker section. This is a misleading active state.",
+    "The 'Hot Ga...' tab label is cut off and unreadable, likely 'Hot Games'. This is both a content readability and layout issue."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Reported issue 2 directly describes the Poker item being highlighted in the bottom nav bar when it shouldn't be, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

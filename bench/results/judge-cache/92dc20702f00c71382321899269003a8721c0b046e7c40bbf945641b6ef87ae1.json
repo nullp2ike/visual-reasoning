@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The jackpot value is negative"],
+  "reportedIssues": [
+    "Multiple items are clipped at the right edge of the viewport, including the top category pill labeled “Hot Ga...” and the third game cards in each row. This makes the page look horizontally overflowed or improperly sized.",
+    "The fixed bottom navigation overlaps the game content near the bottom of the screen. The lower game cards are partially hidden behind the tab bar.",
+    "The active “Casino” tab in the bottom navigation appears as a default underlined text link, which looks inconsistent with the other nav items and slightly unfinished.",
+    "One game tile displays a negative jackpot/value: “-$6,266.13”. This looks suspicious and may be a data or formatting error."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "Reported issue 3 directly describes a game tile displaying a negative jackpot value (-$6,266.13), which matches the expected defect of a negative jackpot value."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

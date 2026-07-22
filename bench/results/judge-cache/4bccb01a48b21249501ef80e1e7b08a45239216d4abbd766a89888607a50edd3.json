@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Casino icon design/layout is broken in the bottom nav bar"],
+  "reportedIssues": [
+    "Game card titles on the right side of both carousels are abruptly cut off mid-word (e.g., 'MAGNI PHO...' and 'MUNC MI...'). These truncations are jarring and make game names unreadable.",
+    "The top navigation tab 'Hot Ga...' is cut off at the right edge, hiding the full label ('Hot Games' presumably). Users cannot read the full category name.",
+    "The right-edge game thumbnails in the 'Top Played New Games' section (e.g., 'Hypero...' and 'Dark Wate...') are cut off with no visual affordance like a scroll indicator or arrow to inform users they can scroll horizontally.",
+    "The bottom navigation bar 'Casino' item uses a different visual style (underlined text, colored icon) compared to other nav items, but this active-state differentiation is subtle and inconsistent with the other icon styles.",
+    "The promotional banner 'BET IT ON BLACK AND GOLD!' references Pittsburgh Penguins branding (black and gold), but the context may be confusing to users who don't associate it with a sports promotion versus a casino game."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "Issue 3 directly describes the Casino icon in the bottom navigation bar having inconsistent visual styling compared to other nav items."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 4]
+  }
+}

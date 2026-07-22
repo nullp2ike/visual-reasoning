@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Wrong Poker item is highlighted in the bottom nav bar"],
+  "reportedIssues": [
+    "Multiple game card thumbnails in both 'BetRivers Exclusive Games' and 'Top Played New Games' sections are clipped on the right edge of the screen. Game titles like 'Magni Pho...' and 'Munc Mi...' are unreadable due to being cut off.",
+    "The 'Hot Games' navigation tab label is truncated to 'Hot Ga...' in the horizontal navigation bar, making it incomplete and unprofessional.",
+    "The third column of game cards across all game sections is only partially visible, providing no clear visual affordance that the rows are horizontally scrollable.",
+    "The bottom navigation bar shows 'POKER' as the active/highlighted tab in orange, but the page content displayed appears to be the Casino home section, creating a mismatch between the active nav state and the visible content."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "Issue 3 directly describes the Poker item being highlighted in the bottom nav bar while displaying mismatched content (Casino section), which is the wrong item highlighted."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

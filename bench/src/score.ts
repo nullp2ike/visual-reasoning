@@ -122,7 +122,16 @@ async function main(): Promise<void> {
   });
 
   const manifest: Manifest = await ensureManifest();
-  const records = await loadRunRecords();
+  // Only the configured roster is scored; records of models removed from the
+  // config stay on disk but are excluded from scores and reports.
+  const allRecords = await loadRunRecords();
+  const records = allRecords.filter((r) => benchConfig.models.includes(r.model));
+  const skippedModels = new Set(
+    allRecords.filter((r) => !benchConfig.models.includes(r.model)).map((r) => r.model),
+  );
+  for (const model of skippedModels) {
+    console.log(`Skipping records for "${model}" (not in benchConfig.models)`);
+  }
   if (records.length === 0) {
     throw new Error(`No run records found in ${RUNS_DIR}. Run "pnpm bench:run" first.`);
   }

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Wrong Poker item is highlighted in the bottom nav bar"],
+  "reportedIssues": [
+    "Multiple game cards on the right side are visually cut off/truncated. The third column of game tiles (e.g., 'Magni Pho...' and 'Munc Mi...') are clipped at the right edge, making titles and imagery incomplete.",
+    "The 'Hot Ga...' navigation tab label in the top navigation bar is cut off, making the tab label unreadable.",
+    "The bottom navigation bar icons appear to have inconsistent visual weight — the 'Poker' icon is highlighted in gold/yellow while others are muted, but the active state styling could be clearer for the currently selected section.",
+    "The third game card in the 'Top Played New Games' bottom row appears mostly dark/black with very little visible content, suggesting an image may have failed to load or is very dark."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Issue 2 describes the Poker icon in the bottom navigation bar being highlighted in gold/yellow with unclear active state styling, matching the expectation of wrong item highlighting."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

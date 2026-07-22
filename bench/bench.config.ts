@@ -23,8 +23,8 @@ export interface BenchConfig {
 
 export const benchConfig: BenchConfig = {
   models: [
-    // Anthropic: flagship / mid / small
-    "claude-fable-5",
+    // Anthropic: mid / small (claude-fable-5 currently excluded from the roster;
+    // its partial run records remain in results/runs/ and are ignored by scoring)
     "claude-sonnet-4-6",
     "claude-haiku-4-5",
     // OpenAI: flagship / mini
