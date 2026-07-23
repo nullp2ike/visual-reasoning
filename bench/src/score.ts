@@ -3,7 +3,7 @@ import { readdir } from "node:fs/promises";
 import { join } from "node:path";
 import { parseArgs } from "node:util";
 import { BENCH_PROMPT, benchConfig } from "../bench.config.js";
-import { JUDGE_PROMPT_VERSION, judgeRun } from "./judge.js";
+import { JUDGE_PROMPT_VERSION, createJudgeCompletion, judgeRun } from "./judge.js";
 import { ensureManifest } from "./manifest.js";
 import { computeModelMetrics, sortLeaderboard } from "./metrics.js";
 import {
@@ -16,11 +16,57 @@ import {
   type RunRecord,
   type Scores,
 } from "./types.js";
-import { RESULTS_DIR, atomicWriteJson, readJsonIfExists, runPool, sha256 } from "./util.js";
+import {
+  RESULTS_DIR,
+  atomicWriteJson,
+  modelDirName,
+  readJsonIfExists,
+  runPool,
+  sha256,
+} from "./util.js";
 
 const RUNS_DIR = join(RESULTS_DIR, "runs");
-export const SCORES_PATH = join(RESULTS_DIR, "scores.json");
 export const OVERRIDES_PATH = join(RESULTS_DIR, "overrides.json");
+
+/** Per-judge scores file, so multiple judges' scorings coexist side by side. */
+export function scoresPathForJudge(judgeModel: string): string {
+  return join(RESULTS_DIR, `scores.${modelDirName(judgeModel)}.json`);
+}
+
+export interface ScorableRecords {
+  records: RunRecord[];
+  /** Models with on-disk records that are not in the current roster. */
+  skippedModels: Set<string>;
+  /** Image IDs with on-disk records that are retired or unknown in the manifest. */
+  skippedImages: Set<string>;
+}
+
+/**
+ * Keep only records for roster models and active manifest images. Records for
+ * retired images or de-rostered models stay on disk but are excluded here.
+ */
+export function filterScorableRecords(
+  allRecords: readonly RunRecord[],
+  manifest: Manifest,
+  models: readonly string[],
+): ScorableRecords {
+  const activeImages = new Set(manifest.entries.map((e) => e.imageId));
+  const records: RunRecord[] = [];
+  const skippedModels = new Set<string>();
+  const skippedImages = new Set<string>();
+  for (const record of allRecords) {
+    if (!models.includes(record.model)) {
+      skippedModels.add(record.model);
+      continue;
+    }
+    if (!activeImages.has(record.imageId)) {
+      skippedImages.add(record.imageId);
+      continue;
+    }
+    records.push(record);
+  }
+  return { records, skippedModels, skippedImages };
+}
 
 async function loadRunRecords(): Promise<RunRecord[]> {
   const records: RunRecord[] = [];
@@ -118,19 +164,28 @@ export function resolveCell(
 
 async function main(): Promise<void> {
   const { values } = parseArgs({
-    options: { concurrency: { type: "string", default: "4" } },
+    options: {
+      // Judge calls are cheap text-only requests; cached verdicts never hit the API.
+      concurrency: { type: "string", default: "8" },
+      judge: { type: "string" },
+    },
   });
+  const judgeModel = values.judge ?? benchConfig.judgeModel;
 
   const manifest: Manifest = await ensureManifest();
-  // Only the configured roster is scored; records of models removed from the
-  // config stay on disk but are excluded from scores and reports.
+  // Only the configured roster and active (non-retired) images are scored;
+  // other records stay on disk but are excluded from scores and reports.
   const allRecords = await loadRunRecords();
-  const records = allRecords.filter((r) => benchConfig.models.includes(r.model));
-  const skippedModels = new Set(
-    allRecords.filter((r) => !benchConfig.models.includes(r.model)).map((r) => r.model),
+  const { records, skippedModels, skippedImages } = filterScorableRecords(
+    allRecords,
+    manifest,
+    benchConfig.models,
   );
   for (const model of skippedModels) {
     console.log(`Skipping records for "${model}" (not in benchConfig.models)`);
+  }
+  for (const imageId of skippedImages) {
+    console.log(`Skipping records for retired image ${imageId}`);
   }
   if (records.length === 0) {
     throw new Error(`No run records found in ${RUNS_DIR}. Run "pnpm bench:run" first.`);
@@ -146,6 +201,8 @@ async function main(): Promise<void> {
 
   const expectedByImage = new Map(manifest.entries.map((e) => [e.imageId, e.expectedIssues]));
 
+  console.log(`Judging with ${judgeModel} (cached verdicts are reused).`);
+  const completion = createJudgeCompletion(judgeModel);
   let judged = 0;
   const tasks = records.map((record) => async (): Promise<ResolvedCell> => {
     if (record.status !== "ok" || !record.result) {
@@ -153,7 +210,10 @@ async function main(): Promise<void> {
     }
     const expectedIssues = expectedByImage.get(record.imageId);
     if (!expectedIssues) throw new Error(`Run record references unknown image ${record.imageId}`);
-    const verdict = await judgeRun({ expectedIssues, reportedIssues: record.result.issues });
+    const verdict = await judgeRun(
+      { expectedIssues, reportedIssues: record.result.issues },
+      { judgeModel, completion },
+    );
     judged++;
     if (judged % 25 === 0) console.log(`  judged ${judged} runs...`);
     return resolveCell(record, verdict, overrides);
@@ -187,14 +247,15 @@ async function main(): Promise<void> {
     promptHash: sha256(BENCH_PROMPT),
     reasoningEffort: benchConfig.reasoningEffort,
     repeats: benchConfig.repeats,
-    judgeModel: benchConfig.judgeModel,
+    judgeModel,
     judgePromptVersion: JUDGE_PROMPT_VERSION,
     overrideCount: Object.keys(overrides).length,
     models: sortLeaderboard(models),
     cells,
   };
-  await atomicWriteJson(SCORES_PATH, scores);
-  console.log(`Scored ${cells.length} runs across ${models.length} models -> ${SCORES_PATH}`);
+  const scoresPath = scoresPathForJudge(judgeModel);
+  await atomicWriteJson(scoresPath, scores);
+  console.log(`Scored ${cells.length} runs across ${models.length} models -> ${scoresPath}`);
   console.log(`Next: pnpm bench:report`);
 }
 

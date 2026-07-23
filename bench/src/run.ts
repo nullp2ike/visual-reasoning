@@ -11,7 +11,6 @@ import {
   VisualAIProviderError,
   VisualAIRateLimitError,
 } from "../../src/errors.js";
-import { MODEL_TO_PROVIDER } from "../../src/constants.js";
 import { calculateCost } from "../../src/core/pricing.js";
 import type { ProviderName } from "../../src/types.js";
 import { BENCH_PROMPT, benchConfig } from "../bench.config.js";
@@ -21,6 +20,7 @@ import {
   GOLDEN_DIR,
   RESULTS_DIR,
   atomicWriteJson,
+  inferProvider,
   modelDirName,
   readJsonIfExists,
   retryWithBackoff,
@@ -36,17 +36,6 @@ interface RunCell {
   imageId: string;
   filename: string;
   rep: number;
-}
-
-export function inferProvider(model: string): ProviderName {
-  const known = MODEL_TO_PROVIDER.get(model);
-  if (known) return known;
-  if (model.startsWith("claude-")) return "anthropic";
-  if (/^(gpt-|o\d)/.test(model)) return "openai";
-  if (model.startsWith("gemini-")) return "google";
-  // Vendor-prefixed slugs ("x-ai/grok-4.5") route through OpenRouter.
-  if (model.includes("/")) return "openrouter";
-  throw new Error(`Cannot infer provider for model "${model}"`);
 }
 
 function recordPath(cell: Pick<RunCell, "model" | "imageId" | "rep">): string {
@@ -161,8 +150,15 @@ async function main(): Promise<void> {
       images: { type: "string" },
       force: { type: "boolean", default: false },
       yes: { type: "boolean", default: false },
+      concurrency: { type: "string" },
     },
   });
+  const concurrencyPerProvider = values.concurrency
+    ? Number(values.concurrency)
+    : benchConfig.concurrencyPerProvider;
+  if (!Number.isInteger(concurrencyPerProvider) || concurrencyPerProvider < 1) {
+    throw new Error(`Invalid --concurrency "${values.concurrency ?? ""}" (positive integer)`);
+  }
 
   const manifest: Manifest = await ensureManifest(values.force);
   const promptHash = sha256(BENCH_PROMPT);
@@ -262,7 +258,7 @@ async function main(): Promise<void> {
         );
       }
     });
-    return runPool(tasks, benchConfig.concurrencyPerProvider).then((results) => ({
+    return runPool(tasks, concurrencyPerProvider).then((results) => ({
       provider,
       results,
     }));

@@ -2,6 +2,8 @@ import { createHash } from "node:crypto";
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { MODEL_TO_PROVIDER } from "../../src/constants.js";
+import type { ProviderName } from "../../src/types.js";
 
 export const BENCH_DIR = join(dirname(fileURLToPath(import.meta.url)), "..");
 export const RESULTS_DIR = join(BENCH_DIR, "results");
@@ -19,6 +21,21 @@ export function sha256(data: string | Buffer): string {
  */
 export function modelDirName(model: string): string {
   return model.replaceAll("/", "__");
+}
+
+/**
+ * Map a model name to its provider. Lives here (not run.ts) because run.ts
+ * executes a sweep on import and must never be imported by other modules.
+ */
+export function inferProvider(model: string): ProviderName {
+  const known = MODEL_TO_PROVIDER.get(model);
+  if (known) return known;
+  if (model.startsWith("claude-")) return "anthropic";
+  if (/^(gpt-|o\d)/.test(model)) return "openai";
+  if (model.startsWith("gemini-")) return "google";
+  // Vendor-prefixed slugs ("x-ai/grok-4.5") route through OpenRouter.
+  if (model.includes("/")) return "openrouter";
+  throw new Error(`Cannot infer provider for model "${model}"`);
 }
 
 /** Write JSON atomically (tmp file + rename) so interrupted sweeps never leave partial records. */

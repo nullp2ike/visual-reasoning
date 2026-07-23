@@ -30,6 +30,7 @@ export const benchConfig: BenchConfig = {
     // Anthropic: flagship / mid / small (claude-fable-5 currently excluded from the
     // roster; its partial run records remain in results/runs/ and are ignored by scoring)
     "claude-opus-4-8",
+    "claude-sonnet-5",
     "claude-sonnet-4-6",
     "claude-haiku-4-5",
     // OpenAI: flagship / mini + 5.6 variants
@@ -43,6 +44,8 @@ export const benchConfig: BenchConfig = {
     "gemini-3.5-flash",
     "gemini-3.6-flash",
     "gemini-3.5-flash-lite",
+    "gemini-3-flash-preview",
+    "gemini-3.1-flash-lite",
     // OpenRouter: xAI, Moonshot, Qwen (all vision-capable; slugs are
     // vendor-prefixed and routed through the openrouter provider).
     // Note: qwen3.7-max is text-only on OpenRouter and qwen "3.7 Omni-Flash"
@@ -56,6 +59,8 @@ export const benchConfig: BenchConfig = {
   repeats: 5,
   reasoningEffort: "medium",
   judgeModel: "claude-haiku-4-5",
-  concurrencyPerProvider: 2,
+  // Rate-limit errors retry with backoff and failed cells resume on the next
+  // run, so this can be raised safely; override per-run with --concurrency.
+  concurrencyPerProvider: 6,
   maxAttempts: 3,
 };

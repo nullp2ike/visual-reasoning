@@ -16,6 +16,7 @@ const manifest: Manifest = {
     },
     { imageId: "img_02", filename: "clean.png", sha256: "s2", expectedIssues: [] },
   ],
+  retired: [],
 };
 
 function makeCell(

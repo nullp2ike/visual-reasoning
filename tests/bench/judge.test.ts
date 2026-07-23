@@ -1,4 +1,4 @@
-import { mkdtemp, readdir } from "node:fs/promises";
+import { mkdtemp, readdir, readFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it, vi } from "vitest";
@@ -70,16 +70,42 @@ describe("judgeRun", () => {
     expect(completion).toHaveBeenCalledTimes(1);
   });
 
-  it("retries once with a nudge on malformed output", async () => {
+  it("accepts JSON containing raw control characters inside strings", async () => {
+    // Some judges (e.g. Kimi via OpenRouter) emit literal newlines/tabs inside
+    // string literals, which strict JSON.parse rejects.
+    const cacheDir = await tempCacheDir();
+    const dirty = JSON.stringify(validVerdict).replace('"Same typo."', '"Same\ntypo:\tmatch."');
+    const completion = vi.fn().mockResolvedValue(dirty);
+    const verdict = await judgeRun(request, { completion, cacheDir });
+    expect(verdict.expected[0]?.found).toBe(true);
+    expect(verdict.expected[0]?.reasoning).toBe("Same typo: match.");
+    expect(completion).toHaveBeenCalledTimes(1);
+  });
+
+  it("retries with a nudge carrying the validation error on malformed output", async () => {
     const cacheDir = await tempCacheDir();
     const completion = vi
       .fn()
-      .mockResolvedValueOnce("I think the typo matches expected issue 0.")
+      .mockResolvedValueOnce('{"expected": "the typo matches", "extraReportedIndexes": []}')
       .mockResolvedValueOnce(JSON.stringify(validVerdict));
     const verdict = await judgeRun(request, { completion, cacheDir });
     expect(verdict).toEqual(validVerdict);
     expect(completion).toHaveBeenCalledTimes(2);
-    expect(completion.mock.calls[1]?.[1]).toContain("previous response was invalid");
+    const nudge = completion.mock.calls[1]?.[1] as string;
+    expect(nudge).toContain("previous response was invalid");
+    expect(nudge).toContain("expected"); // the specific validation error is echoed back
+  });
+
+  it("recovers on the second nudge", async () => {
+    const cacheDir = await tempCacheDir();
+    const completion = vi
+      .fn()
+      .mockResolvedValueOnce("no json at all")
+      .mockResolvedValueOnce("still no json")
+      .mockResolvedValueOnce(JSON.stringify(validVerdict));
+    const verdict = await judgeRun(request, { completion, cacheDir });
+    expect(verdict).toEqual(validVerdict);
+    expect(completion).toHaveBeenCalledTimes(3);
   });
 
   it("rejects verdicts referencing out-of-range reported indexes", async () => {
@@ -90,7 +116,7 @@ describe("judgeRun", () => {
     };
     const completion = vi.fn().mockResolvedValue(JSON.stringify(badVerdict));
     await expect(judgeRun(request, { completion, cacheDir })).rejects.toThrow(/out of range/);
-    expect(completion).toHaveBeenCalledTimes(2); // initial + nudge, both invalid
+    expect(completion).toHaveBeenCalledTimes(3); // initial + two nudges, all invalid
   });
 
   it("short-circuits without an API call when nothing was reported", async () => {
@@ -108,6 +134,36 @@ describe("judgeRun", () => {
     const keyA = judgeCacheKey(request, "judge-model");
     const keyB = judgeCacheKey({ ...request, expectedIssues: ["other"] }, "judge-model");
     expect(keyA).not.toBe(keyB);
+  });
+
+  it("uses distinct cache keys for distinct judge models", () => {
+    expect(judgeCacheKey(request, "claude-haiku-4-5")).not.toBe(
+      judgeCacheKey(request, "gpt-5.4-mini"),
+    );
+  });
+
+  it("caches per judge model and records the judge in the cache entry", async () => {
+    const cacheDir = await tempCacheDir();
+    const completion = vi.fn().mockResolvedValue(JSON.stringify(validVerdict));
+
+    await judgeRun(request, { completion, cacheDir, judgeModel: "judge-a" });
+    await judgeRun(request, { completion, cacheDir, judgeModel: "judge-b" });
+    // Same request under a different judge is a cache miss -> second call.
+    expect(completion).toHaveBeenCalledTimes(2);
+
+    const files = await readdir(cacheDir);
+    expect(files).toHaveLength(2);
+    const entries = await Promise.all(
+      files.map(async (f) => JSON.parse(await readFile(join(cacheDir, f), "utf8")) as unknown),
+    );
+    const judgeModels = entries
+      .map((e) => (e as { judgeModel: string }).judgeModel)
+      .sort((a, b) => a.localeCompare(b));
+    expect(judgeModels).toEqual(["judge-a", "judge-b"]);
+
+    // Re-running either judge hits its own cache.
+    await judgeRun(request, { completion, cacheDir, judgeModel: "judge-a" });
+    expect(completion).toHaveBeenCalledTimes(2);
   });
 
   it("numbers issues in the user prompt", () => {

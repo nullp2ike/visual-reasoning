@@ -1,12 +1,23 @@
 import { join } from "node:path";
+import { zodToJsonSchema } from "zod-to-json-schema";
+import { AnthropicDriver } from "../../src/providers/anthropic.js";
+import { GoogleDriver } from "../../src/providers/google.js";
+import { OpenAIDriver } from "../../src/providers/openai.js";
+import { OpenRouterDriver } from "../../src/providers/openrouter.js";
+import type { ProviderDriver, SendMessageOptions } from "../../src/providers/types.js";
 import type { Issue } from "../../src/types.js";
 import { benchConfig } from "../bench.config.js";
 import { JudgeCacheEntrySchema, JudgeVerdictSchema, type JudgeVerdict } from "./types.js";
-import { RESULTS_DIR, atomicWriteJson, readJsonIfExists, sha256 } from "./util.js";
+import { RESULTS_DIR, atomicWriteJson, inferProvider, readJsonIfExists, sha256 } from "./util.js";
 
 export const JUDGE_CACHE_DIR = join(RESULTS_DIR, "judge-cache");
 
-/** Bump when the judge prompt changes — invalidates the cache. */
+/**
+ * Bump when the judge prompt changes — invalidates the cache.
+ * Note: v1 verdicts were produced with the system/user split of the Anthropic-only
+ * judge; the provider-agnostic judge concatenates the identical text into one user
+ * message. Kept at v1 deliberately to preserve the existing paid cache.
+ */
 export const JUDGE_PROMPT_VERSION = "v1";
 
 const JUDGE_SYSTEM_PROMPT = `You compare QA bug reports for the same app screenshot. You never see the screenshot itself — judge purely from the issue descriptions.
@@ -29,7 +40,7 @@ export interface JudgeRequest {
   reportedIssues: readonly Issue[];
 }
 
-/** Minimal completion interface so tests can mock the Anthropic call. */
+/** Minimal completion interface so tests can mock the judge model call. */
 export type JudgeCompletion = (system: string, user: string) => Promise<string>;
 
 export function buildJudgeUserPrompt(request: JudgeRequest): string {
@@ -56,7 +67,17 @@ function extractJson(text: string): unknown {
   const end = text.lastIndexOf("}");
   if (start === -1 || end <= start)
     throw new Error(`Judge returned no JSON object: ${text.slice(0, 200)}`);
-  return JSON.parse(text.slice(start, end + 1)) as unknown;
+  const slice = text.slice(start, end + 1);
+  try {
+    return JSON.parse(slice) as unknown;
+  } catch {
+    // Some judges (e.g. Kimi via OpenRouter) emit raw control characters inside
+    // string literals, which strict JSON.parse rejects. Replacing every control
+    // character with a space is safe: between tokens it is plain whitespace, and
+    // inside strings it preserves the readable text.
+    // eslint-disable-next-line no-control-regex
+    return JSON.parse(slice.replace(/[\u0000-\u001f]/g, " ")) as unknown;
+  }
 }
 
 function validateVerdict(raw: unknown, request: JudgeRequest): JudgeVerdict {
@@ -104,26 +125,51 @@ export function trivialVerdict(request: JudgeRequest): JudgeVerdict | undefined 
   return undefined;
 }
 
-async function createAnthropicCompletion(): Promise<JudgeCompletion> {
-  const { default: Anthropic } = await import("@anthropic-ai/sdk");
-  const client = new Anthropic();
+// Generous budget: thinking judges (e.g. Kimi K2.7) spend reasoning tokens from
+// the same output allowance; 8192 still truncated when judging verbose reports.
+const JUDGE_MAX_TOKENS = 16384;
+
+/**
+ * Build a text-only completion for any supported judge model by reusing the
+ * library's provider drivers with an empty image list. Drivers lazy-load their
+ * SDKs and throw typed auth errors, so misconfiguration fails loudly per call.
+ */
+export function createJudgeCompletion(judgeModel: string): JudgeCompletion {
+  const provider = inferProvider(judgeModel);
+  const config = { apiKey: undefined, model: judgeModel, maxTokens: JUDGE_MAX_TOKENS };
+  const driver: ProviderDriver =
+    provider === "anthropic"
+      ? new AnthropicDriver(config)
+      : provider === "openai"
+        ? new OpenAIDriver(config)
+        : provider === "google"
+          ? new GoogleDriver(config)
+          : new OpenRouterDriver(config);
+
+  // Strict schema only where natively supported (OpenAI Responses API). OpenRouter
+  // upstream support varies per routed model and a rejection is a hard 400, so it
+  // relies on the JSON-only prompt plus the parse-retry nudge like Anthropic/Google.
+  const options: SendMessageOptions | undefined =
+    provider === "openai"
+      ? {
+          responseSchema: zodToJsonSchema(JudgeVerdictSchema, { target: "openAi" }) as Record<
+            string,
+            unknown
+          >,
+        }
+      : undefined;
+
   return async (system, user) => {
-    const response = await client.messages.create({
-      model: benchConfig.judgeModel,
-      max_tokens: 1024,
-      system,
-      messages: [{ role: "user", content: user }],
-    });
-    return response.content
-      .filter((block) => block.type === "text")
-      .map((block) => block.text)
-      .join("");
+    const response = await driver.sendMessage([], `${system}\n\n${user}`, options);
+    return response.text;
   };
 }
 
 export interface JudgeOptions {
   completion?: JudgeCompletion;
   cacheDir?: string;
+  /** Judge model to attribute (and cache) verdicts under. Defaults to benchConfig.judgeModel. */
+  judgeModel?: string;
 }
 
 /**
@@ -138,8 +184,9 @@ export async function judgeRun(
   const trivial = trivialVerdict(request);
   if (trivial) return trivial;
 
+  const judgeModel = options.judgeModel ?? benchConfig.judgeModel;
   const cacheDir = options.cacheDir ?? JUDGE_CACHE_DIR;
-  const key = judgeCacheKey(request, benchConfig.judgeModel);
+  const key = judgeCacheKey(request, judgeModel);
   const cachePath = join(cacheDir, `${key}.json`);
   const cachedRaw = await readJsonIfExists(cachePath);
   if (cachedRaw !== undefined) {
@@ -147,25 +194,31 @@ export async function judgeRun(
     if (cached.success) return cached.data.verdict;
   }
 
-  const completion = options.completion ?? (await createAnthropicCompletion());
+  const completion = options.completion ?? createJudgeCompletion(judgeModel);
   const userPrompt = buildJudgeUserPrompt(request);
 
-  let verdict: JudgeVerdict;
-  try {
-    verdict = validateVerdict(
-      extractJson(await completion(JUDGE_SYSTEM_PROMPT, userPrompt)),
-      request,
-    );
-  } catch {
-    const nudged = await completion(
-      JUDGE_SYSTEM_PROMPT,
-      `${userPrompt}\n\nYour previous response was invalid. Respond with ONLY the JSON object in the required shape.`,
-    );
-    verdict = validateVerdict(extractJson(nudged), request);
+  // Initial attempt plus two nudges; each nudge echoes the concrete validation
+  // error so weaker JSON emitters (e.g. Kimi) know exactly what to fix.
+  const maxAttempts = 3;
+  let verdict: JudgeVerdict | undefined;
+  let prompt = userPrompt;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      verdict = validateVerdict(
+        extractJson(await completion(JUDGE_SYSTEM_PROMPT, prompt)),
+        request,
+      );
+      break;
+    } catch (err) {
+      if (attempt === maxAttempts) throw err;
+      const detail = err instanceof Error ? err.message.slice(0, 500) : String(err);
+      prompt = `${userPrompt}\n\nYour previous response was invalid: ${detail}\nRespond with ONLY the JSON object in the required shape.`;
+    }
   }
+  if (!verdict) throw new Error("Internal: judge retry loop exited without a verdict");
 
   await atomicWriteJson(cachePath, {
-    judgeModel: benchConfig.judgeModel,
+    judgeModel,
     judgePromptVersion: JUDGE_PROMPT_VERSION,
     expectedIssues: request.expectedIssues,
     reportedIssues: request.reportedIssues.map((i) => i.description),

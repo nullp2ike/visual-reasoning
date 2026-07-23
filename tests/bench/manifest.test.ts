@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { manifestMismatch, parseIssuesMarkdown } from "../../bench/src/manifest.js";
+import { assignImageIds, diffManifests, parseIssuesMarkdown } from "../../bench/src/manifest.js";
 import type { Manifest } from "../../bench/src/types.js";
 
 const SAMPLE_MD = `# Issues per file
@@ -56,46 +56,110 @@ function makeManifest(overrides?: Partial<Manifest>): Manifest {
       { imageId: "img_01", filename: "a.png", sha256: "sha-a", expectedIssues: ["issue A"] },
       { imageId: "img_02", filename: "b.png", sha256: "sha-b", expectedIssues: [] },
     ],
+    retired: [],
     ...overrides,
   };
 }
 
-describe("manifestMismatch", () => {
-  it("returns undefined for identical manifests", () => {
-    expect(manifestMismatch(makeManifest(), makeManifest())).toBeUndefined();
+describe("assignImageIds", () => {
+  it("assigns sequential sorted IDs when there is no previous manifest", () => {
+    const ids = assignImageIds(["b.png", "a.png"], undefined);
+    expect(ids.get("a.png")).toBe("img_01");
+    expect(ids.get("b.png")).toBe("img_02");
   });
 
-  it("detects a changed prompt hash", () => {
-    const fresh = makeManifest({ promptHash: "hash-b" });
-    expect(manifestMismatch(makeManifest(), fresh)).toContain("prompt hash");
+  it("keeps existing IDs for surviving filenames and does not renumber on removal", () => {
+    const previous = makeManifest({
+      entries: [
+        { imageId: "img_01", filename: "a.png", sha256: "s", expectedIssues: [] },
+        { imageId: "img_07", filename: "clean.png", sha256: "s", expectedIssues: [] },
+        { imageId: "img_08", filename: "icon_missing.png", sha256: "s", expectedIssues: [] },
+        { imageId: "img_09", filename: "y.png", sha256: "s", expectedIssues: [] },
+        { imageId: "img_10", filename: "z.png", sha256: "s", expectedIssues: [] },
+      ],
+    });
+    const ids = assignImageIds(["a.png", "y.png", "z.png"], previous);
+    expect(ids.get("a.png")).toBe("img_01");
+    expect(ids.get("y.png")).toBe("img_09");
+    expect(ids.get("z.png")).toBe("img_10");
   });
 
-  it("detects added or removed images", () => {
-    const fresh = makeManifest();
-    fresh.entries = fresh.entries.slice(0, 1);
-    expect(manifestMismatch(makeManifest(), fresh)).toContain("image count");
+  it("gives new filenames the next unused ID, never reusing retired IDs", () => {
+    const previous = makeManifest({
+      entries: [{ imageId: "img_02", filename: "b.png", sha256: "s", expectedIssues: [] }],
+      retired: [{ imageId: "img_05", filename: "gone.png", sha256: "s" }],
+    });
+    const ids = assignImageIds(["b.png", "new.png"], previous);
+    expect(ids.get("b.png")).toBe("img_02");
+    expect(ids.get("new.png")).toBe("img_06");
   });
 
-  it("detects changed image bytes", () => {
+  it("reclaims a retired ID when the same filename returns", () => {
+    const previous = makeManifest({
+      entries: [{ imageId: "img_01", filename: "a.png", sha256: "s", expectedIssues: [] }],
+      retired: [{ imageId: "img_07", filename: "clean.png", sha256: "s" }],
+    });
+    const ids = assignImageIds(["a.png", "clean.png"], previous);
+    expect(ids.get("clean.png")).toBe("img_07");
+  });
+});
+
+describe("diffManifests", () => {
+  it("classifies identical manifests as identical", () => {
+    expect(diffManifests(makeManifest(), makeManifest()).kind).toBe("identical");
+  });
+
+  it("classifies a changed prompt hash as breaking", () => {
+    const diff = diffManifests(makeManifest(), makeManifest({ promptHash: "hash-b" }));
+    expect(diff.kind).toBe("breaking");
+    expect(diff.details.join()).toContain("prompt hash");
+  });
+
+  it("classifies changed image bytes of a surviving image as breaking", () => {
     const fresh = makeManifest();
     fresh.entries = fresh.entries.map((e, i) => (i === 0 ? { ...e, sha256: "sha-changed" } : e));
-    expect(manifestMismatch(makeManifest(), fresh)).toContain("image bytes changed");
+    const diff = diffManifests(makeManifest(), fresh);
+    expect(diff.kind).toBe("breaking");
+    expect(diff.details.join()).toContain("image bytes changed");
   });
 
-  it("detects changed expected issues", () => {
+  it("classifies changed expected issues of a surviving image as breaking", () => {
     const fresh = makeManifest();
     fresh.entries = fresh.entries.map((e, i) =>
       i === 0 ? { ...e, expectedIssues: ["reworded"] } : e,
     );
-    expect(manifestMismatch(makeManifest(), fresh)).toContain("expected issues changed");
+    const diff = diffManifests(makeManifest(), fresh);
+    expect(diff.kind).toBe("breaking");
+    expect(diff.details.join()).toContain("expected issues changed");
   });
 
-  it("detects re-assigned image IDs", () => {
-    const fresh = makeManifest();
-    fresh.entries = [
-      { ...fresh.entries[0]!, filename: "b.png" },
-      { ...fresh.entries[1]!, filename: "a.png" },
-    ];
-    expect(manifestMismatch(makeManifest(), fresh)).toContain("assignment changed");
+  it("classifies pure removals as membership with retirement details", () => {
+    const fresh = makeManifest({
+      entries: [makeManifest().entries[0]!],
+      retired: [{ imageId: "img_02", filename: "b.png", sha256: "sha-b" }],
+    });
+    const diff = diffManifests(makeManifest(), fresh);
+    expect(diff.kind).toBe("membership");
+    expect(diff.details.join()).toContain("retired img_02 (b.png)");
+  });
+
+  it("classifies pure additions as membership", () => {
+    const fresh = makeManifest({
+      entries: [
+        ...makeManifest().entries,
+        { imageId: "img_03", filename: "c.png", sha256: "sha-c", expectedIssues: ["x"] },
+      ],
+    });
+    const diff = diffManifests(makeManifest(), fresh);
+    expect(diff.kind).toBe("membership");
+    expect(diff.details.join()).toContain("added img_03 (c.png)");
+  });
+
+  it("classifies mixed membership + content change as breaking", () => {
+    const fresh = makeManifest({
+      entries: [{ ...makeManifest().entries[0]!, sha256: "sha-changed" }],
+      retired: [{ imageId: "img_02", filename: "b.png", sha256: "sha-b" }],
+    });
+    expect(diffManifests(makeManifest(), fresh).kind).toBe("breaking");
   });
 });
