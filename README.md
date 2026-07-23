@@ -524,7 +524,7 @@ When omitted, each provider uses its default behavior. The `"xhigh"` level enabl
 | Anthropic (Fable 5/Opus 4.8/4.7/Sonnet 5) | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "xhigh"`    |
 | Anthropic (other)                         | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "max"`      |
 | OpenAI                                    | `reasoning.effort` (Responses API)                    | `effort: "xhigh"`    |
-| Google                                    | `thinkingConfig.thinkingBudget` (1024 / 8192 / 24576) | `24576` (max budget) |
+| Google                                    | `thinkingConfig.thinkingLevel` (1:1: low/medium/high) | `"high"` (max level) |
 | OpenRouter                                | `reasoning.effort` (normalized low/medium/high)       | `effort: "high"`     |
 
 ## Supported Models

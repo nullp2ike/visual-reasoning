@@ -96,14 +96,14 @@ describe("GoogleDriver", () => {
 
     const callArgs = mockGenerateContent.mock.calls[0]![0] as Record<string, unknown>;
     const config = callArgs.config as Record<string, unknown>;
-    expect(config).toHaveProperty("thinkingConfig", { thinkingLevel: "low" });
+    expect(config).toHaveProperty("thinkingConfig", { thinkingLevel: "medium" });
   });
 
-  it("maps reasoning effort levels to correct thinking levels", async () => {
+  it("maps reasoning effort levels 1:1 to Google thinking levels (xhigh clamps to high)", async () => {
     const expectedLevels: Record<string, string> = {
-      low: "minimal",
-      medium: "low",
-      high: "medium",
+      low: "low",
+      medium: "medium",
+      high: "high",
       xhigh: "high",
     };
 

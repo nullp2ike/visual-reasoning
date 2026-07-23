@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- **Google `reasoningEffort` now maps 1:1 to `thinkingLevel`** (`low`→`"low"`, `medium`→`"medium"`, `high`→`"high"`, `xhigh`→`"high"`). Previously the map was shifted one level down (`medium`→`"low"`, `low`→`"minimal"`), leaving Gemini models with far less thinking than other providers at the same configured effort — benchmarking showed this cost Gemini 3.6 Flash ~17 recall points on visual bug detection. `"minimal"` is no longer used, which also avoids models that reject it (Gemini 3.1 Pro).
+
+### Notes for upgraders
+
+- Gemini calls with an explicit `reasoningEffort` will think more (better results, slightly higher output-token cost and latency). Calls without `reasoningEffort` are unchanged.
+
 ## [0.16.0] - 2026-07-22
 
 ### Added

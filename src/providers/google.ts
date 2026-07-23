@@ -65,10 +65,17 @@ interface GoogleClient {
   };
 }
 
+/**
+ * 1:1 mapping so "medium" means native medium, matching the other providers.
+ * (Until v0.17 this was shifted one level down — medium -> "low" — which left
+ * Gemini models thinking far less than peers at the same configured effort.)
+ * Google has no level above "high", so xhigh clamps; "minimal" is unused,
+ * which also sidesteps models that reject it (e.g. Gemini 3.1 Pro).
+ */
 const GOOGLE_THINKING_LEVEL = {
-  low: "minimal",
-  medium: "low",
-  high: "medium",
+  low: "low",
+  medium: "medium",
+  high: "high",
   xhigh: "high",
 } as const satisfies Record<ReasoningEffortLevel, string>;
 
