@@ -13,6 +13,35 @@ export const ReasoningEffort = {
 /** Union of valid reasoning effort values, derived from the ReasoningEffort constant. */
 export type ReasoningEffortLevel = (typeof ReasoningEffort)[keyof typeof ReasoningEffort];
 
+// --- Image fidelity constants ---
+
+/**
+ * Abstract image-detail hint. Each provider driver maps it to its native
+ * mechanism (OpenAI/OpenRouter `detail`, Google `mediaResolution`); Anthropic
+ * has no equivalent (Claude auto-downscales to ~1568px / 1.15MP regardless).
+ * `"auto"` sends no detail field, preserving each provider's default.
+ */
+export const ImageDetail = {
+  AUTO: "auto",
+  LOW: "low",
+  HIGH: "high",
+} as const;
+
+/** Union of valid image-detail values, derived from the ImageDetail constant. */
+export type ImageDetailLevel = (typeof ImageDetail)[keyof typeof ImageDetail];
+
+/** Default image-detail hint: `"auto"` leaves each provider's own default in place. */
+export const DEFAULT_IMAGE_DETAIL: ImageDetailLevel = ImageDetail.AUTO;
+
+/**
+ * Longest-edge pixel cap applied when normalizing images before they reach a
+ * provider. 1568 matches Anthropic's recommended max edge (images within a
+ * 1568px box stay under Claude's ~1.15MP limit). Raising it only affects
+ * providers that also accept a higher-resolution request (e.g. OpenAI at
+ * `detail:"high"`, which scales into a 2048px box); Anthropic re-downscales.
+ */
+export const DEFAULT_MAX_IMAGE_DIMENSION = 1568;
+
 // --- Provider constants ---
 
 /** Supported provider identifiers used internally for pricing and provider selection. */
@@ -29,6 +58,7 @@ export const Provider = {
 export const Model = {
   Anthropic: {
     FABLE_5: "claude-fable-5",
+    OPUS_5: "claude-opus-5",
     OPUS_4_8: "claude-opus-4-8",
     OPUS_4_7: "claude-opus-4-7",
     OPUS_4_6: "claude-opus-4-6",

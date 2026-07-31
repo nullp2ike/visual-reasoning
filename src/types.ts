@@ -2,6 +2,7 @@ import { z } from "zod";
 import type {
   AccessibilityCheckName,
   ContentCheckName,
+  ImageDetailLevel,
   LayoutCheckName,
   ReasoningEffortLevel,
 } from "./constants.js";
@@ -68,7 +69,10 @@ export const UsageInfoSchema = z.object({
   outputTokens: z.number(),
   /** Reasoning/thinking tokens consumed by the model (informational, typically included within outputTokens). */
   reasoningTokens: z.number().optional(),
+  /** Cost in USD from the library's local pricing table (inputTokens/outputTokens × per-model rates). */
   estimatedCost: z.number().optional(),
+  /** Actual cost in USD reported by the provider itself, when available (OpenRouter). Authoritative over `estimatedCost`. */
+  reportedCost: z.number().optional(),
   durationSeconds: z.number().nonnegative().optional(),
 });
 /** Token usage and optional cost/latency metadata for a provider call. */
@@ -249,6 +253,19 @@ export interface VisualAIConfig {
   debugResponse?: boolean;
   maxTokens?: number;
   reasoningEffort?: ReasoningEffortLevel;
+  /**
+   * Longest-edge pixel cap for image inputs before they are sent to the
+   * provider. Defaults to 1568. Raising it only helps providers that accept
+   * higher-resolution requests (OpenAI with `imageDetail: "high"` scales into a
+   * 2048px box); Anthropic re-downscales to ~1568px regardless.
+   */
+  maxImageDimension?: number;
+  /**
+   * Image-detail hint mapped per provider: OpenAI/OpenRouter `detail`, Google
+   * `mediaResolution`. `"auto"` (default) sends no detail field. No effect on
+   * Anthropic (Claude auto-downscales images).
+   */
+  imageDetail?: ImageDetailLevel;
   trackUsage?: boolean;
 }
 

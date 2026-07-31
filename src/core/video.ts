@@ -325,6 +325,7 @@ export async function probeDurationSeconds(videoPath: string): Promise<number> {
 export async function extractFrames(
   videoPath: string,
   options: VideoSamplingOptions = {},
+  maxDimension: number = FRAME_MAX_DIMENSION,
 ): Promise<{ frames: Frame[]; durationSeconds: number }> {
   const fps = options.fps ?? DEFAULT_FPS;
   const maxFrames = options.maxFrames ?? DEFAULT_MAX_FRAMES;
@@ -360,11 +361,11 @@ export async function extractFrames(
 
   const outputDir = await mkdtemp(join(tmpdir(), "visual-ai-frames-"));
   try {
-    // Constrain the longer edge to FRAME_MAX_DIMENSION for both portrait and landscape inputs.
+    // Constrain the longer edge to maxDimension for both portrait and landscape inputs.
     const filter =
       `fps=${fps},` +
-      `scale='if(gt(iw,ih),min(${FRAME_MAX_DIMENSION},iw),-2)':` +
-      `'if(gt(iw,ih),-2,min(${FRAME_MAX_DIMENSION},ih))':flags=area`;
+      `scale='if(gt(iw,ih),min(${maxDimension},iw),-2)':` +
+      `'if(gt(iw,ih),-2,min(${maxDimension},ih))':flags=area`;
     await new Promise<void>((resolve, reject) => {
       let settled = false;
       const cmd = ffmpeg(videoPath);

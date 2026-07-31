@@ -32,6 +32,7 @@ export class OpenAIDriver implements ProviderDriver {
   private maxTokens: number;
   private apiKeyOrEnv: string | undefined;
   private reasoningEffort: ProviderConfig["reasoningEffort"];
+  private imageDetail: ProviderConfig["imageDetail"];
 
   constructor(config: ProviderConfig) {
     this.model = config.model;
@@ -39,6 +40,7 @@ export class OpenAIDriver implements ProviderDriver {
     this.client = null;
     this.apiKeyOrEnv = config.apiKey;
     this.reasoningEffort = config.reasoningEffort;
+    this.imageDetail = config.imageDetail;
   }
 
   private async getClient(): Promise<OpenAIClient> {
@@ -70,9 +72,13 @@ export class OpenAIDriver implements ProviderDriver {
   ): Promise<RawProviderResponse> {
     const client = await this.getClient();
 
+    // OpenAI `detail` scales high→2048px box (shortest side 768), low→512px.
+    // Omitted for "auto" so the default request shape is unchanged.
+    const detail = this.imageDetail && this.imageDetail !== "auto" ? this.imageDetail : undefined;
     const imageBlocks = images.map((img) => ({
       type: "input_image" as const,
       image_url: `data:${img.mimeType};base64,${img.base64}`,
+      ...(detail ? { detail } : {}),
     }));
 
     try {

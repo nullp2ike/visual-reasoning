@@ -8,6 +8,12 @@ describe("calculateCost", () => {
     expect(cost).toBeCloseTo(0.035, 10);
   });
 
+  it("calculates cost for anthropic claude-opus-5", () => {
+    const cost = calculateCost("anthropic", "claude-opus-5", 1000, 500);
+    // 1000 * (5/1M) + 500 * (25/1M) = 0.005 + 0.0125 = 0.0175
+    expect(cost).toBeCloseTo(0.0175, 10);
+  });
+
   it("calculates cost for anthropic claude-opus-4-8", () => {
     const cost = calculateCost("anthropic", "claude-opus-4-8", 1000, 500);
     // 1000 * (5/1M) + 500 * (25/1M) = 0.005 + 0.0125 = 0.0175
@@ -46,14 +52,14 @@ describe("calculateCost", () => {
 
   it("calculates cost for openai gpt-5.6-terra", () => {
     const cost = calculateCost("openai", "gpt-5.6-terra", 1000, 500);
-    // 1000 * (2.5/1M) + 500 * (15/1M) = 0.0025 + 0.0075 = 0.01
-    expect(cost).toBeCloseTo(0.01, 10);
+    // 1000 * (2/1M) + 500 * (12/1M) = 0.002 + 0.006 = 0.008
+    expect(cost).toBeCloseTo(0.008, 10);
   });
 
   it("calculates cost for openai gpt-5.6-luna", () => {
     const cost = calculateCost("openai", "gpt-5.6-luna", 1000, 500);
-    // 1000 * (1/1M) + 500 * (6/1M) = 0.001 + 0.003 = 0.004
-    expect(cost).toBeCloseTo(0.004, 10);
+    // 1000 * (0.2/1M) + 500 * (1.2/1M) = 0.0002 + 0.0006 = 0.0008
+    expect(cost).toBeCloseTo(0.0008, 10);
   });
 
   it("calculates cost for openai gpt-5.5", () => {

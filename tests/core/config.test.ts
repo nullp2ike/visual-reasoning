@@ -64,6 +64,8 @@ describe("resolveConfig", () => {
       model: "gpt-5-mini",
       maxTokens: DEFAULT_MAX_TOKENS,
       reasoningEffort: undefined,
+      maxImageDimension: 1568,
+      imageDetail: "auto",
       debug: false,
       debugPrompt: false,
       debugResponse: false,

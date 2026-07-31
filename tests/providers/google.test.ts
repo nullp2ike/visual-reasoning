@@ -67,6 +67,22 @@ describe("GoogleDriver", () => {
     });
   });
 
+  it("sets mediaResolution for high fidelity and omits it for auto/default", async () => {
+    mockGenerateContent.mockResolvedValue({ text: "{}" });
+
+    await makeDriver({ imageDetail: "high" }).sendMessage([makeImage()], "test");
+    let config = (mockGenerateContent.mock.calls.at(-1)![0] as { config: Record<string, unknown> })
+      .config;
+    expect(config.mediaResolution).toBe("MEDIA_RESOLUTION_HIGH");
+
+    for (const imageDetail of [undefined, "auto" as const]) {
+      await makeDriver({ imageDetail }).sendMessage([makeImage()], "test");
+      config = (mockGenerateContent.mock.calls.at(-1)![0] as { config: Record<string, unknown> })
+        .config;
+      expect(config).not.toHaveProperty("mediaResolution");
+    }
+  });
+
   it("requests JSON response format", async () => {
     mockGenerateContent.mockResolvedValueOnce({ text: "{}" });
 
@@ -212,7 +228,7 @@ describe("GoogleDriver", () => {
     expect(result.text).toBe('{"pass": true}');
   });
 
-  it("extracts reasoning tokens from usageMetadata", async () => {
+  it("folds thinking tokens into outputTokens and reports them as reasoningTokens", async () => {
     mockGenerateContent.mockResolvedValueOnce({
       text: "{}",
       candidates: [{ finishReason: "STOP" }],
@@ -225,9 +241,12 @@ describe("GoogleDriver", () => {
 
     const driver = makeDriver();
     const result = await driver.sendMessage([makeImage()], "test");
+    // Gemini bills thinking at the output rate, so outputTokens = visible (200) +
+    // thinking (150); reasoningTokens carries the breakdown. This keeps
+    // calculateCost correct and matches OpenAI/OpenRouter semantics.
     expect(result.usage).toEqual({
       inputTokens: 100,
-      outputTokens: 200,
+      outputTokens: 350,
       reasoningTokens: 150,
     });
   });

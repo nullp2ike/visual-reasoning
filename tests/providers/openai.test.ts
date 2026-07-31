@@ -73,6 +73,40 @@ describe("OpenAIDriver", () => {
     expect(imageBlock.image_url).toBe("data:image/png;base64,ZmFrZQ==");
   });
 
+  it("omits image detail by default and for 'auto'", async () => {
+    mockCreate.mockResolvedValue(makeResponse());
+
+    for (const imageDetail of [undefined, "auto" as const]) {
+      const driver = new OpenAIDriver({
+        apiKey: "test-key",
+        model: "gpt-5-mini",
+        maxTokens: 4096,
+        imageDetail,
+      });
+      await driver.sendMessage([makeImage()], "test");
+      const callArgs = mockCreate.mock.calls.at(-1)![0] as Record<string, unknown>;
+      const input = callArgs.input as { content: Record<string, unknown>[] }[];
+      expect(input[0]!.content[0]).not.toHaveProperty("detail");
+    }
+  });
+
+  it("sets image detail when configured high/low", async () => {
+    mockCreate.mockResolvedValue(makeResponse());
+
+    for (const imageDetail of ["high", "low"] as const) {
+      const driver = new OpenAIDriver({
+        apiKey: "test-key",
+        model: "gpt-5-mini",
+        maxTokens: 4096,
+        imageDetail,
+      });
+      await driver.sendMessage([makeImage()], "test");
+      const callArgs = mockCreate.mock.calls.at(-1)![0] as Record<string, unknown>;
+      const input = callArgs.input as { content: Record<string, unknown>[] }[];
+      expect(input[0]!.content[0]).toMatchObject({ type: "input_image", detail: imageDetail });
+    }
+  });
+
   it("uses json_object text format", async () => {
     mockCreate.mockResolvedValueOnce(makeResponse());
 

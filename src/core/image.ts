@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { extname } from "node:path";
 import sharp from "sharp";
+import { DEFAULT_MAX_IMAGE_DIMENSION } from "../constants.js";
 import { VisualAIImageError } from "../errors.js";
 import type { NormalizedImage, SupportedMimeType } from "../types.js";
 import {
@@ -28,7 +29,6 @@ const EXTENSION_TO_MIME: Record<string, SupportedMimeType> = {
   ".gif": "image/gif",
 };
 
-const MAX_DIMENSION = 1568;
 const URL_FETCH_TIMEOUT_MS = 10_000;
 
 function isSupportedMimeType(value: string): value is SupportedMimeType {
@@ -67,7 +67,11 @@ function detectMimeType(data: Buffer): SupportedMimeType {
   throw new VisualAIImageError("Unable to detect image format from file content");
 }
 
-async function resizeIfNeeded(data: Buffer, mimeType: SupportedMimeType): Promise<Buffer> {
+async function resizeIfNeeded(
+  data: Buffer,
+  mimeType: SupportedMimeType,
+  maxDimension: number,
+): Promise<Buffer> {
   if (mimeType === "image/gif") {
     return data;
   }
@@ -76,7 +80,7 @@ async function resizeIfNeeded(data: Buffer, mimeType: SupportedMimeType): Promis
   if (mimeType === "image/png" && data.length >= 24) {
     const width = data.readUInt32BE(16);
     const height = data.readUInt32BE(20);
-    if (width <= MAX_DIMENSION && height <= MAX_DIMENSION) {
+    if (width <= maxDimension && height <= maxDimension) {
       return data;
     }
   }
@@ -87,14 +91,14 @@ async function resizeIfNeeded(data: Buffer, mimeType: SupportedMimeType): Promis
   const width = metadata.width ?? 0;
   const height = metadata.height ?? 0;
 
-  if (width <= MAX_DIMENSION && height <= MAX_DIMENSION) {
+  if (width <= maxDimension && height <= maxDimension) {
     return data;
   }
 
   return pipeline
     .resize({
-      width: MAX_DIMENSION,
-      height: MAX_DIMENSION,
+      width: maxDimension,
+      height: maxDimension,
       fit: "inside",
       withoutEnlargement: true,
     })
@@ -167,6 +171,7 @@ function loadFromBase64(input: string): { data: Buffer; mimeType: SupportedMimeT
 
 export async function normalizeImage(
   input: Buffer | Uint8Array | string,
+  maxDimension: number = DEFAULT_MAX_IMAGE_DIMENSION,
 ): Promise<NormalizedImage> {
   let data: Buffer;
   let mimeType: SupportedMimeType;
@@ -199,7 +204,7 @@ export async function normalizeImage(
     );
   }
 
-  data = await resizeIfNeeded(data, mimeType);
+  data = await resizeIfNeeded(data, mimeType, maxDimension);
 
   let cachedBase64: string | undefined;
   return {
