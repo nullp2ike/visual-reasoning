@@ -548,8 +548,8 @@ All listed models support image/vision input. Pass any model ID to the `model` c
 | Model         | Model ID        | Input $/MTok | Output $/MTok | Notes                             |
 | ------------- | --------------- | ------------ | ------------- | --------------------------------- |
 | GPT-5.6 Sol   | `gpt-5.6-sol`   | $5           | $30           | Newest flagship, frontier tier    |
-| GPT-5.6 Terra | `gpt-5.6-terra` | $2.50        | $15           | Newest balanced, everyday tier    |
-| GPT-5.6 Luna  | `gpt-5.6-luna`  | $1           | $6            | Newest, fastest/cheapest tier     |
+| GPT-5.6 Terra | `gpt-5.6-terra` | $2           | $12           | Newest balanced, everyday tier    |
+| GPT-5.6 Luna  | `gpt-5.6-luna`  | $0.20        | $1.20         | Newest, fastest/cheapest tier     |
 | GPT-5.5       | `gpt-5.5`       | $5           | $30           | Previous flagship, 1M context     |
 | GPT-5.4 Pro   | `gpt-5.4-pro`   | $30          | $180          | Most capable, extended context    |
 | GPT-5.4       | `gpt-5.4`       | $2.50        | $15           | Best vision quality               |
