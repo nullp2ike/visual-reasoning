@@ -6,7 +6,7 @@ import { IssueSchema, UsageInfoSchema } from "../../src/types.js";
 export const ManifestEntrySchema = z.object({
   /** Anonymous stable ID (img_01…). The only identifier the run pipeline uses. */
   imageId: z.string().regex(/^img_\d{2,}$/),
-  /** Real filename in golden_data_set/. Never sent to a model. */
+  /** Real filename in the dataset directory. Never sent to a model. */
   filename: z.string(),
   sha256: z.string(),
   expectedIssues: z.array(z.string()),
