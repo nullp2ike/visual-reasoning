@@ -1,6 +1,6 @@
 {
   "name": "visual-ai-assertions",
-  "version": "0.16.0",
+  "version": "0.17.0",
   "description": "AI-powered visual assertions for E2E tests — send screenshots to Claude, GPT, or Gemini and get structured results",
   "author": "Risko Ruus",
   "repository": {
@@ -47,6 +47,7 @@
     "bench:run": "tsx bench/src/run.ts",
     "bench:score": "tsx bench/src/score.ts",
     "bench:report": "tsx bench/src/report.ts",
+    "bench:calibrate-embed": "tsx bench/src/calibrate-embed.ts",
     "prepare": "husky"
   },
   "peerDependencies": {
@@ -64,6 +65,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
+    "@huggingface/transformers": "^4.2.0",
     "@types/fluent-ffmpeg": "^2.1.27",
     "@types/node": "^25.5.0",
     "@vitest/coverage-v8": "^3.0.0",
@@ -121,6 +123,7 @@
       "@ffprobe-installer/win32-ia32",
       "@ffprobe-installer/win32-x64",
       "esbuild",
+      "onnxruntime-node",
       "sharp"
     ]
   }
