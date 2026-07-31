@@ -81,7 +81,10 @@ describe("embeddingVerdict", () => {
     const verdict = await embeddingVerdict(
       {
         expectedIssues: ["The balance shows a negative value"],
-        reportedIssues: [issue("Header balance is negative"), issue("The account balance went below zero")],
+        reportedIssues: [
+          issue("Header balance is negative"),
+          issue("The account balance went below zero"),
+        ],
       },
       fakeEmbed,
       0.75,
