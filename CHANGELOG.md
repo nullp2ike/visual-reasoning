@@ -6,8 +6,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+- **Gemini cost was undercounted — thinking tokens are now billed.** The Google driver reported only the visible answer (`candidatesTokenCount`) in `outputTokens` and split the thinking trace (`thoughtsTokenCount`) into a separate `reasoningTokens` field that `calculateCost` ignored — even though Google bills thinking at the output-token rate. `outputTokens` now includes thinking (matching OpenAI/OpenRouter, whose output counts already subsume reasoning), with `reasoningTokens` kept as the breakdown. Estimated Gemini cost rises accordingly (e.g. `gemini-3.5-flash` at medium effort ≈ $0.0035 → $0.0129 per run in the `bench/` set — the visible answer is tiny, so thinking dominates). OpenAI, Anthropic, and OpenRouter were already correct. Verified against OpenRouter's own `usage.cost` field for the same model (`google/gemini-3.5-flash`), which matched our recomputed cost to the last digit.
+
+### Added
+
+- **Provider-reported actual cost.** `UsageInfo` gains `reportedCost` — the real USD cost a provider returns for a call, distinct from the local-pricing `estimatedCost`. The OpenRouter driver now surfaces the `usage.cost` it already requests (`usage: { include: true }`); other providers don't return a cost, so it's absent there. The `bench/` cost columns prefer `reportedCost` when present, falling back to `estimatedCost`. (Verified OpenRouter's `cost` equals our token×price estimate exactly for `google/gemini-3.5-flash`, i.e. no markup on tokens.)
+- **Configurable image fidelity.** Two new `visualAI()` options let callers trade image resolution/detail against cost and latency: `maxImageDimension` (longest-edge pixel cap applied during normalization, default 1568) and `imageDetail` (`"auto"` | `"low"` | `"high"`, default `"auto"`). `imageDetail` maps per provider — OpenAI/OpenRouter `detail`, Google `mediaResolution` (LOW/HIGH); it is a **no-op on Anthropic**, which auto-downscales images to ~1568px/1.15MP regardless. `"auto"` sends no detail field, so default behavior is unchanged. `ImageDetail` / `ImageDetailLevel` are exported from the package root.
+
 ### Changed
 
+- **Reasoning effort and image fidelity are first-class axes in the benchmark harness (`bench/`).** A model can be swept at several efforts/fidelities and each appears as its own row/column: the `(model, reasoning-effort, image-fidelity)` tuple is a "series" (see `seriesId()`), and scoring, the leaderboard, the matrix, `scores.cells`, judge comparison, and the overrides key are all keyed by series instead of the bare model. `pnpm bench:run` takes `--effort <low|medium|high|xhigh>` and `--fidelity <auto|low|high>`; non-default values are stored under `runs/<variant>/<model>@<effort>[@fid-<fidelity>]/…` so existing sweeps need no migration. The HTML report gains a **reasoning-effort filter** and shows the full series id (model + non-default tags) in the leaderboard and matrix. Added `gpt-5.6-luna` at `xhigh` to the sweep alongside its `medium` baseline.
+- **Updated OpenAI GPT-5.6 Terra and Luna pricing** to match OpenAI's 2026-07-30 price cut ([announcement](https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/)). Terra drops from $2.50/$15 to $2/$12 per MTok (−20%); Luna drops from $1/$6 to $0.20/$1.20 per MTok (−80%). Affects the estimated cost reported by `calculateCost` and the `bench/` cost columns.
+
+### Notes for upgraders
+
+- `imageDetail` and `maxImageDimension` only change what a model receives when the source image exceeds the cap. Images already within the cap (e.g. the `bench/` golden set at 834×1564) are sent at native resolution, and providers already process them at their high-detail default — so `imageDetail: "high"` yields byte-identical input tokens there. To gain resolution you need images larger than the cap plus a higher `maxImageDimension` (OpenAI uses up to a 2048px box at `detail:"high"`; Anthropic re-downscales regardless; Gemini is bounded by its `mediaResolution` token tier).
+- **Reasoning effort is now a first-class axis in the benchmark harness (`bench/`).** A model can be swept at several efforts and each appears as its own row/column: the `(model, reasoning-effort)` pair is a "series" (see `seriesId()`), and scoring, the leaderboard, the matrix, `scores.cells`, judge comparison, and the overrides key are all keyed by series instead of the bare model. `pnpm bench:run` takes `--effort <low|medium|high|xhigh>` (default `medium`); non-default efforts are stored under `runs/<variant>/<model>@<effort>/…` so the existing `medium` sweep needs no migration. The HTML report gains a **reasoning-effort filter** (checkbox per effort present) to show/hide series in the matrix and leaderboard. Added `gpt-5.6-luna` at `xhigh` to the sweep alongside its `medium` baseline.
+
+## [0.17.0] - 2026-07-27
+
+### Added
+
+- **Anthropic Claude Opus 5** (`claude-opus-5`) — added as a built-in model constant (`Model.Anthropic.OPUS_5`) with pricing ($5/$25 per MTok, matching Opus 4.8) and full `reasoningEffort` support. Like Fable 5, Opus 4.8, Opus 4.7, and Sonnet 5, it accepts the dedicated `"xhigh"` effort tier (mapped 1:1 rather than down to `"max"`). Added to the `bench/` sweep roster as the Anthropic flagship.
+
+### Changed
+
+- **Benchmark harness gained a prompt-variant axis (`bench/`).** The frozen `BENCH_PROMPT` is now one of several named variants in `bench/bench.config.ts` (`baseline` = the original `"What looks visually broken on this page?"`, `excluded` = the same question plus an explicit "out of scope" list for the five noise themes models most often over-report: clipping/overflow, low-contrast legal text, sticky-nav/overlay occlusion, the "SCROLL DOWN" indicator, and cramped spacing). `pnpm bench:run` and `pnpm bench:score` take `--prompt <variant>` (default `baseline`); runs are namespaced under `bench/results/runs/<variant>/…` and scores are written to `scores.<variant>.<judge>.json`. `pnpm bench:report` emits one `report.<judge>.html` per judge that **toggles between prompt variants in-page** (matrix, leaderboard, and prompt hero all swap), plus one `RESULTS.<variant>.<judge>.md` per variant. Existing baseline runs were migrated into `runs/baseline/`; baseline prompt wording is unchanged, so the manifest promptHash guard is unaffected.
 - **Google `reasoningEffort` now maps 1:1 to `thinkingLevel`** (`low`→`"low"`, `medium`→`"medium"`, `high`→`"high"`, `xhigh`→`"high"`). Previously the map was shifted one level down (`medium`→`"low"`, `low`→`"minimal"`), leaving Gemini models with far less thinking than other providers at the same configured effort — benchmarking showed this cost Gemini 3.6 Flash ~17 recall points on visual bug detection. `"minimal"` is no longer used, which also avoids models that reject it (Gemini 3.1 Pro).
 
 ### Notes for upgraders
