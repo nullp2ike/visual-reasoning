@@ -12,23 +12,46 @@ import {
   VisualAIRateLimitError,
 } from "../../src/errors.js";
 import { calculateCost } from "../../src/core/pricing.js";
+import {
+  ImageDetail,
+  type ImageDetailLevel,
+  ReasoningEffort,
+  type ReasoningEffortLevel,
+} from "../../src/constants.js";
 import type { ProviderName } from "../../src/types.js";
-import { BENCH_PROMPT, benchConfig } from "../bench.config.js";
+import {
+  BENCH_PROMPT_VARIANTS,
+  DEFAULT_PROMPT_VARIANT,
+  PROMPT_VARIANT_IDS,
+  benchConfig,
+  isPromptVariantId,
+  type PromptVariantId,
+} from "../bench.config.js";
 import { ensureManifest } from "./manifest.js";
 import { RunRecordSchema, type Manifest, type RunRecord } from "./types.js";
 import {
   GOLDEN_DIR,
-  RESULTS_DIR,
   atomicWriteJson,
   inferProvider,
-  modelDirName,
   readJsonIfExists,
   retryWithBackoff,
+  runModelDir,
   runPool,
+  runsDirForVariant,
   sha256,
 } from "./util.js";
 
-const RUNS_DIR = join(RESULTS_DIR, "runs");
+const REASONING_EFFORTS = Object.values(ReasoningEffort);
+
+function isReasoningEffort(value: string): value is ReasoningEffortLevel {
+  return (REASONING_EFFORTS as readonly string[]).includes(value);
+}
+
+const IMAGE_FIDELITIES = Object.values(ImageDetail);
+
+function isImageFidelity(value: string): value is ImageDetailLevel {
+  return (IMAGE_FIDELITIES as readonly string[]).includes(value);
+}
 
 interface RunCell {
   model: string;
@@ -38,13 +61,29 @@ interface RunCell {
   rep: number;
 }
 
-function recordPath(cell: Pick<RunCell, "model" | "imageId" | "rep">): string {
-  return join(RUNS_DIR, modelDirName(cell.model), cell.imageId, `rep_${cell.rep}.json`);
+function recordPath(
+  cell: Pick<RunCell, "model" | "imageId" | "rep">,
+  variant: PromptVariantId,
+  effort: string,
+  fidelity: string,
+): string {
+  return join(
+    runsDirForVariant(variant),
+    runModelDir(cell.model, effort, fidelity),
+    cell.imageId,
+    `rep_${cell.rep}.json`,
+  );
 }
 
 /** A cell is complete when its record exists, parses, succeeded, and matches the frozen prompt. */
-async function isCellComplete(cell: RunCell, promptHash: string): Promise<boolean> {
-  const raw = await readJsonIfExists(recordPath(cell));
+async function isCellComplete(
+  cell: RunCell,
+  variant: PromptVariantId,
+  effort: string,
+  fidelity: string,
+  promptHash: string,
+): Promise<boolean> {
+  const raw = await readJsonIfExists(recordPath(cell, variant, effort, fidelity));
   if (raw === undefined) return false;
   const parsed = RunRecordSchema.safeParse(raw);
   return parsed.success && parsed.data.status === "ok" && parsed.data.promptHash === promptHash;
@@ -91,6 +130,10 @@ async function executeCell(
   cell: RunCell,
   client: VisualAIClient,
   imageBytes: Buffer,
+  variant: PromptVariantId,
+  effort: string,
+  fidelity: string,
+  promptText: string,
   promptHash: string,
 ): Promise<RunRecord> {
   const base = {
@@ -100,11 +143,14 @@ async function executeCell(
     imageId: cell.imageId,
     rep: cell.rep,
     promptHash,
-    reasoningEffort: benchConfig.reasoningEffort,
+    promptVariant: variant,
+    reasoningEffort: effort,
+    imageFidelity: fidelity,
+    maxTokens: benchConfig.maxTokens,
     timestamp: new Date().toISOString(),
   };
   try {
-    const result = await retryWithBackoff(() => client.ask(imageBytes, BENCH_PROMPT), {
+    const result = await retryWithBackoff(() => client.ask(imageBytes, promptText), {
       maxAttempts: benchConfig.maxAttempts,
       isRetryable: isTransient,
       onRetry: (error, attempt, delayMs) => {
@@ -148,11 +194,29 @@ async function main(): Promise<void> {
     options: {
       models: { type: "string" },
       images: { type: "string" },
+      prompt: { type: "string" },
       force: { type: "boolean", default: false },
       yes: { type: "boolean", default: false },
       concurrency: { type: "string" },
+      effort: { type: "string" },
+      fidelity: { type: "string" },
     },
   });
+  // Reasoning effort and image fidelity are first-class run axes: runs at a
+  // non-primary effort/fidelity are stored under a suffixed directory
+  // (runModelDir) so they coexist with the default sweep instead of overwriting it.
+  const effort = values.effort ?? benchConfig.reasoningEffort;
+  if (!isReasoningEffort(effort)) {
+    throw new Error(
+      `Invalid --effort "${effort}". Valid efforts: ${REASONING_EFFORTS.join(", ")}.`,
+    );
+  }
+  const fidelity = values.fidelity ?? benchConfig.imageFidelity;
+  if (!isImageFidelity(fidelity)) {
+    throw new Error(
+      `Invalid --fidelity "${fidelity}". Valid fidelities: ${IMAGE_FIDELITIES.join(", ")}.`,
+    );
+  }
   const concurrencyPerProvider = values.concurrency
     ? Number(values.concurrency)
     : benchConfig.concurrencyPerProvider;
@@ -160,8 +224,19 @@ async function main(): Promise<void> {
     throw new Error(`Invalid --concurrency "${values.concurrency ?? ""}" (positive integer)`);
   }
 
+  const variant = values.prompt ?? DEFAULT_PROMPT_VARIANT;
+  if (!isPromptVariantId(variant)) {
+    throw new Error(
+      `Invalid --prompt "${variant}". Valid variants: ${PROMPT_VARIANT_IDS.join(", ")}.`,
+    );
+  }
+  const promptText = BENCH_PROMPT_VARIANTS[variant];
+
   const manifest: Manifest = await ensureManifest(values.force);
-  const promptHash = sha256(BENCH_PROMPT);
+  const promptHash = sha256(promptText);
+  console.log(`Prompt variant: ${variant} (sha256 ${promptHash.slice(0, 12)}…)`);
+  console.log(`Reasoning effort: ${effort}`);
+  console.log(`Image fidelity: ${fidelity}`);
 
   const modelFilter = values.models?.split(",").map((m) => m.trim());
   const imageFilter = values.images?.split(",").map((i) => i.trim());
@@ -185,7 +260,8 @@ async function main(): Promise<void> {
 
   const pending: RunCell[] = [];
   for (const cell of allCells) {
-    if (values.force || !(await isCellComplete(cell, promptHash))) pending.push(cell);
+    if (values.force || !(await isCellComplete(cell, variant, effort, fidelity, promptHash)))
+      pending.push(cell);
   }
   console.log(
     `${allCells.length} cells total, ${allCells.length - pending.length} already complete, ${pending.length} to run.`,
@@ -214,7 +290,15 @@ async function main(): Promise<void> {
 
   const clients = new Map<string, VisualAIClient>();
   for (const model of models) {
-    clients.set(model, visualAI({ model, reasoningEffort: benchConfig.reasoningEffort }));
+    clients.set(
+      model,
+      visualAI({
+        model,
+        reasoningEffort: effort,
+        imageDetail: fidelity,
+        maxTokens: benchConfig.maxTokens,
+      }),
+    );
   }
 
   let completed = 0;
@@ -236,16 +320,25 @@ async function main(): Promise<void> {
         throw new Error(`Internal: missing client or image for ${cell.model}/${cell.imageId}`);
       let record: RunRecord;
       try {
-        record = await executeCell(cell, client, bytes, promptHash);
+        record = await executeCell(
+          cell,
+          client,
+          bytes,
+          variant,
+          effort,
+          fidelity,
+          promptText,
+          promptHash,
+        );
       } catch (error) {
         // Auth/config errors doom every remaining cell for this provider — stop early.
         abortedProviders.add(provider);
         throw error;
       }
-      await atomicWriteJson(recordPath(cell), record);
+      await atomicWriteJson(recordPath(cell, variant, effort, fidelity), record);
       completed++;
       if (record.status === "ok") {
-        const cost = record.usage?.estimatedCost;
+        const cost = record.usage?.reportedCost ?? record.usage?.estimatedCost;
         const duration = record.usage?.durationSeconds;
         console.log(
           `[${completed}/${pending.length}] ${cell.model} ${cell.imageId} rep ${cell.rep} ok` +
@@ -274,7 +367,9 @@ async function main(): Promise<void> {
     }
   }
 
-  console.log(`Done. ${completed - failed} ok, ${failed} failed. Records in ${RUNS_DIR}`);
+  console.log(
+    `Done. ${completed - failed} ok, ${failed} failed. Records in ${runsDirForVariant(variant)}`,
+  );
   if (failed > 0) {
     console.log(
       'Failed cells wrote status:"error" records and will be retried on the next bench:run.',

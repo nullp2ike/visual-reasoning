@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { buildMatrix, buildMatrixMarkdown, formatMatrixCell } from "../../bench/src/matrix.js";
+import {
+  buildMatrix,
+  buildMatrixMarkdown,
+  formatMatrixCell,
+  modelBrand,
+} from "../../bench/src/matrix.js";
 import type { Manifest, ResolvedCell, Scores } from "../../bench/src/types.js";
 
 const manifest: Manifest = {
@@ -16,6 +21,7 @@ const manifest: Manifest = {
 function cell(overrides: Partial<ResolvedCell>): ResolvedCell {
   return {
     model: "model-a",
+    series: "model-a",
     imageId: "img_01",
     rep: 1,
     status: "ok",
@@ -37,11 +43,14 @@ function cell(overrides: Partial<ResolvedCell>): ResolvedCell {
 
 function scores(
   cells: ResolvedCell[],
-  models: (string | { model: string; provider: string })[] = ["model-a"],
+  models: (string | { model: string; provider: string; meanRecall?: number | null })[] = [
+    "model-a",
+  ],
 ): Scores {
   return {
     schemaVersion: 1,
     generatedAt: "2026-07-23T00:00:00.000Z",
+    promptVariant: "baseline",
     prompt: "What looks broken?",
     promptHash: "hash",
     reasoningEffort: "medium",
@@ -50,11 +59,13 @@ function scores(
     judgePromptVersion: "v1",
     overrideCount: 0,
     models: models.map((entry) => ({
+      series: typeof entry === "string" ? entry : entry.model,
       model: typeof entry === "string" ? entry : entry.model,
       provider: typeof entry === "string" ? "anthropic" : entry.provider,
+      reasoningEffort: "medium",
       okRuns: 1,
       failedRuns: 0,
-      meanRecall: null,
+      meanRecall: typeof entry === "string" ? null : (entry.meanRecall ?? null),
       anyRecall: null,
       flakiness: null,
       extrasPerRun: null,
@@ -160,41 +171,72 @@ describe("buildMatrix", () => {
     expect(c.hasOverride).toBe(true);
   });
 
-  it("groups columns by provider (openai, anthropic, google, openrouter)", () => {
+  it("groups columns by brand, weakest brand first", () => {
     const matrix = buildMatrix(
       scores(
         [cell({})],
         [
-          { model: "moonshotai/kimi-k2.7-code", provider: "openrouter" },
-          { model: "claude-sonnet-4-6", provider: "anthropic" },
-          { model: "gemini-3.5-flash", provider: "google" },
-          { model: "gpt-5.6-sol", provider: "openai" },
+          { model: "gemini-3.5-flash", provider: "google", meanRecall: 0.7 },
+          { model: "moonshotai/kimi-k2.7-code", provider: "openrouter", meanRecall: 0.68 },
+          { model: "claude-sonnet-4-6", provider: "anthropic", meanRecall: 0.5 },
+          { model: "gpt-5.6-sol", provider: "openai", meanRecall: 0.45 },
         ],
       ),
       manifest,
     );
+    // Brand strength ascending: openai(.45) < anthropic(.50) < moonshotai(.68) < google(.70).
     expect(matrix.models).toEqual([
       "gpt-5.6-sol",
       "claude-sonnet-4-6",
-      "gemini-3.5-flash",
       "moonshotai/kimi-k2.7-code",
+      "gemini-3.5-flash",
     ]);
   });
 
-  it("keeps leaderboard order (stronger first) within a provider group", () => {
+  it("orders models weakest-first within a brand group", () => {
     const matrix = buildMatrix(
       scores(
         [cell({})],
         [
-          // Leaderboard order: luna outranks terra.
-          { model: "gpt-5.6-luna", provider: "openai" },
-          { model: "claude-sonnet-4-6", provider: "anthropic" },
-          { model: "gpt-5.6-terra", provider: "openai" },
+          { model: "gpt-5.6-luna", provider: "openai", meanRecall: 0.43 },
+          { model: "claude-sonnet-4-6", provider: "anthropic", meanRecall: 0.5 },
+          { model: "gpt-5.6-terra", provider: "openai", meanRecall: 0.28 },
         ],
       ),
       manifest,
     );
-    expect(matrix.models).toEqual(["gpt-5.6-luna", "gpt-5.6-terra", "claude-sonnet-4-6"]);
+    // openai mean (.355) < anthropic (.50); within openai, terra (.28) before luna (.43).
+    expect(matrix.models).toEqual(["gpt-5.6-terra", "gpt-5.6-luna", "claude-sonnet-4-6"]);
+  });
+
+  it("splits OpenRouter into separate vendor-brand groups", () => {
+    const matrix = buildMatrix(
+      scores(
+        [cell({})],
+        [
+          { model: "moonshotai/kimi-k3", provider: "openrouter", meanRecall: 0.6 },
+          { model: "qwen/qwen3.6-flash", provider: "openrouter", meanRecall: 0.2 },
+          { model: "x-ai/grok-4.5", provider: "openrouter", meanRecall: 0.63 },
+        ],
+      ),
+      manifest,
+    );
+    // Each vendor is its own group; ascending by recall: qwen(.20) < moonshotai(.60) < x-ai(.63).
+    expect(matrix.models).toEqual(["qwen/qwen3.6-flash", "moonshotai/kimi-k3", "x-ai/grok-4.5"]);
+  });
+});
+
+describe("modelBrand", () => {
+  it("returns the provider for first-party models", () => {
+    expect(modelBrand("anthropic", "claude-opus-5")).toBe("anthropic");
+    expect(modelBrand("openai", "gpt-5.6-sol")).toBe("openai");
+    expect(modelBrand("google", "gemini-3.5-flash")).toBe("google");
+  });
+
+  it("returns the vendor prefix for OpenRouter slugs", () => {
+    expect(modelBrand("openrouter", "moonshotai/kimi-k3")).toBe("moonshotai");
+    expect(modelBrand("openrouter", "x-ai/grok-4.5")).toBe("x-ai");
+    expect(modelBrand("openrouter", "qwen/qwen3.6-flash")).toBe("qwen");
   });
 });
 
@@ -202,7 +244,7 @@ describe("formatMatrixCell", () => {
   it("renders found counts, dagger for failed reps, clean cells, and empties", () => {
     expect(
       formatMatrixCell({
-        model: "m",
+        series: "m",
         imageId: "i",
         okReps: 3,
         totalReps: 3,
@@ -214,7 +256,7 @@ describe("formatMatrixCell", () => {
     ).toBe("2/3");
     expect(
       formatMatrixCell({
-        model: "m",
+        series: "m",
         imageId: "i",
         okReps: 2,
         totalReps: 3,
@@ -226,7 +268,7 @@ describe("formatMatrixCell", () => {
     ).toBe("1/2†");
     expect(
       formatMatrixCell({
-        model: "m",
+        series: "m",
         imageId: "i",
         okReps: 2,
         totalReps: 2,
@@ -238,7 +280,7 @@ describe("formatMatrixCell", () => {
     ).toBe("clean 2/2");
     expect(
       formatMatrixCell({
-        model: "m",
+        series: "m",
         imageId: "i",
         okReps: 0,
         totalReps: 0,

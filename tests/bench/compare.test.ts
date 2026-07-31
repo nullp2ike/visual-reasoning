@@ -13,6 +13,7 @@ const manifest: Manifest = {
 function cell(found: boolean, overrides: Partial<ResolvedCell> = {}): ResolvedCell {
   return {
     model: "model-a",
+    series: "model-a",
     imageId: "img_01",
     rep: 1,
     status: "ok",
@@ -36,6 +37,7 @@ function scores(judgeModel: string, cells: ResolvedCell[], meanRecall: number): 
   return {
     schemaVersion: 1,
     generatedAt: "2026-07-23T00:00:00.000Z",
+    promptVariant: "baseline",
     prompt: "What looks broken?",
     promptHash: "hash",
     reasoningEffort: "medium",
@@ -45,8 +47,10 @@ function scores(judgeModel: string, cells: ResolvedCell[], meanRecall: number): 
     overrideCount: 0,
     models: [
       {
+        series: "model-a",
         model: "model-a",
         provider: "anthropic",
+        reasoningEffort: "medium",
         okRuns: cells.length,
         failedRuns: 0,
         meanRecall,

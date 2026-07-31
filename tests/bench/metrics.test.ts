@@ -24,6 +24,7 @@ function makeCell(
 ): ResolvedCell {
   return {
     model: "model-x",
+    series: "model-x",
     status: "ok",
     reportedIssues: [],
     expected: [],
@@ -71,7 +72,15 @@ describe("computeModelMetrics", () => {
       makeCell({ imageId: "img_02", rep: 2, reportedIssues: [issue], extraReportedIndexes: [0] }),
     ];
 
-    const metrics = computeModelMetrics("model-x", "anthropic", cells, manifest);
+    const metrics = computeModelMetrics(
+      "model-x",
+      "model-x",
+      "anthropic",
+      "medium",
+      cells,
+      manifest,
+    );
+    expect(metrics.reasoningEffort).toBe("medium");
     expect(metrics.okRuns).toBe(4);
     expect(metrics.failedRuns).toBe(0);
     expect(metrics.meanRecall).toBeCloseTo((1 + 0.5) / 2);
@@ -82,6 +91,27 @@ describe("computeModelMetrics", () => {
     expect(metrics.latencyMedianSeconds).toBe(2);
     expect(metrics.meanCostPerRun).toBeCloseTo(0.01);
     expect(metrics.totalCost).toBeCloseTo(0.01);
+  });
+
+  it("prefers the provider's reportedCost over the local estimate", () => {
+    const cells: ResolvedCell[] = [
+      makeCell({
+        imageId: "img_01",
+        rep: 1,
+        expected: [expectedEntry(0, true), expectedEntry(1, true)],
+        usage: { inputTokens: 100, outputTokens: 50, estimatedCost: 0.01, reportedCost: 0.006213 },
+      }),
+    ];
+    const metrics = computeModelMetrics(
+      "model-x",
+      "model-x",
+      "openrouter",
+      "medium",
+      cells,
+      manifest,
+    );
+    expect(metrics.meanCostPerRun).toBeCloseTo(0.006213);
+    expect(metrics.totalCost).toBeCloseTo(0.006213);
   });
 
   it("excludes failed reps from detection denominators and counts them", () => {
@@ -98,7 +128,14 @@ describe("computeModelMetrics", () => {
         error: { name: "E", message: "boom" },
       }),
     ];
-    const metrics = computeModelMetrics("model-x", "anthropic", cells, manifest);
+    const metrics = computeModelMetrics(
+      "model-x",
+      "model-x",
+      "anthropic",
+      "medium",
+      cells,
+      manifest,
+    );
     expect(metrics.failedRuns).toBe(1);
     expect(metrics.okRuns).toBe(1);
     // Denominator is the single ok rep: p = 1 and p = 0
@@ -115,7 +152,14 @@ describe("computeModelMetrics", () => {
         error: { name: "E", message: "boom" },
       }),
     ];
-    const metrics = computeModelMetrics("model-x", "anthropic", cells, manifest);
+    const metrics = computeModelMetrics(
+      "model-x",
+      "model-x",
+      "anthropic",
+      "medium",
+      cells,
+      manifest,
+    );
     expect(metrics.meanRecall).toBeNull();
     expect(metrics.extrasPerRun).toBeNull();
     expect(metrics.noBugsCleanRate).toBeNull();
@@ -131,13 +175,59 @@ describe("computeModelMetrics", () => {
       }),
       makeCell({
         model: "other-model",
+        series: "other-model",
         imageId: "img_01",
         rep: 1,
         expected: [expectedEntry(0, false), expectedEntry(1, false)],
       }),
     ];
-    const metrics = computeModelMetrics("model-x", "anthropic", cells, manifest);
+    const metrics = computeModelMetrics(
+      "model-x",
+      "model-x",
+      "anthropic",
+      "medium",
+      cells,
+      manifest,
+    );
     expect(metrics.meanRecall).toBe(1);
+  });
+
+  it("scores each (model, effort) series independently from shared cells", () => {
+    const cells: ResolvedCell[] = [
+      // Same model, two efforts → two series. Medium finds the issue; xhigh misses.
+      makeCell({
+        series: "model-x",
+        imageId: "img_01",
+        rep: 1,
+        expected: [expectedEntry(0, true), expectedEntry(1, true)],
+      }),
+      makeCell({
+        series: "model-x (xhigh)",
+        imageId: "img_01",
+        rep: 1,
+        expected: [expectedEntry(0, false), expectedEntry(1, false)],
+      }),
+    ];
+    const medium = computeModelMetrics(
+      "model-x",
+      "model-x",
+      "anthropic",
+      "medium",
+      cells,
+      manifest,
+    );
+    const xhigh = computeModelMetrics(
+      "model-x (xhigh)",
+      "model-x",
+      "anthropic",
+      "xhigh",
+      cells,
+      manifest,
+    );
+    expect(medium.meanRecall).toBe(1);
+    expect(xhigh.meanRecall).toBe(0);
+    expect(medium.okRuns).toBe(1);
+    expect(xhigh.okRuns).toBe(1);
   });
 });
 
@@ -148,8 +238,10 @@ describe("sortLeaderboard", () => {
     extrasPerRun: number | null,
   ): ModelMetrics {
     return {
+      series: model,
       model,
       provider: "anthropic",
+      reasoningEffort: "medium",
       okRuns: 1,
       failedRuns: 0,
       meanRecall,

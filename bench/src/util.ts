@@ -9,18 +9,90 @@ export const BENCH_DIR = join(dirname(fileURLToPath(import.meta.url)), "..");
 export const RESULTS_DIR = join(BENCH_DIR, "results");
 export const GOLDEN_DIR = join(BENCH_DIR, "..", "golden_data_set");
 
+/**
+ * Run records live under a per-prompt-variant subdirectory so runs from
+ * different prompts coexist: results/runs/<variant>/<model>/<imageId>/rep_N.json.
+ */
+export function runsDirForVariant(variant: string): string {
+  return join(RESULTS_DIR, "runs", variant);
+}
+
+/**
+ * Per-(variant, judge) scores file. The variant is the dot-free first segment;
+ * the judge slug follows and may itself contain dots ("gpt-5.4-mini").
+ */
+export function scoresPathForVariantJudge(variant: string, judgeModel: string): string {
+  return join(RESULTS_DIR, `scores.${variant}.${modelDirName(judgeModel)}.json`);
+}
+
 export function sha256(data: string | Buffer): string {
   return createHash("sha256").update(data).digest("hex");
 }
 
 /**
- * Directory-safe name for a model. OpenRouter slugs contain "/"
- * ("x-ai/grok-4.5"), which would otherwise nest an extra path level under
- * results/runs/ and break record discovery. Records still store the true
- * model name; only the on-disk directory uses this form.
+ * Directory- and URL-safe name for a model or judge id. OpenRouter slugs contain
+ * "/" ("x-ai/grok-4.5"), which would otherwise nest an extra path level under
+ * results/runs/ and break record discovery; embedding judge ids contain ":"
+ * ("embed:bge-small"), which a browser parses as a URL scheme and so breaks
+ * report links. Records/scores still store the true name; only on-disk names and
+ * hrefs use this form.
  */
 export function modelDirName(model: string): string {
-  return model.replaceAll("/", "__");
+  return model.replaceAll("/", "__").replaceAll(":", "__");
+}
+
+/**
+ * The reasoning effort whose runs keep the bare model directory and bare series
+ * id. It anchors the existing sweep: all runs recorded before effort became a
+ * first-class axis used "medium", so keeping medium unsuffixed means those 1800+
+ * records need no migration. Other efforts are suffixed so they coexist.
+ */
+export const PRIMARY_EFFORT = "medium";
+
+/**
+ * Image-fidelity value whose runs keep the bare model dir / bare series id.
+ * "auto" is the library default (no detail field sent), so treating it as
+ * primary means all runs recorded before fidelity became an axis need no
+ * migration and keep their existing series ids.
+ */
+export const PRIMARY_FIDELITY = "auto";
+
+/**
+ * Stable identity for a (model, reasoning-effort, image-fidelity) run
+ * configuration across scoring and reporting — the "series". Everywhere the
+ * pipeline used to key on the bare model, it now keys on this so one model can
+ * hold several efforts/fidelities at once. Primary values (medium effort, auto
+ * fidelity) add no suffix, so prior scores/series stay byte-identical; other
+ * values are appended as parenthetical tags, e.g. `gpt-5.6-luna (xhigh, high-res)`.
+ */
+export function seriesId(
+  model: string,
+  reasoningEffort: string,
+  imageFidelity: string = PRIMARY_FIDELITY,
+): string {
+  const tags: string[] = [];
+  if (reasoningEffort !== PRIMARY_EFFORT) tags.push(reasoningEffort);
+  if (imageFidelity !== PRIMARY_FIDELITY) tags.push(`${imageFidelity}-res`);
+  return tags.length > 0 ? `${model} (${tags.join(", ")})` : model;
+}
+
+/**
+ * On-disk run directory for a (model, effort, fidelity) configuration, under
+ * results/runs/<variant>/. Primary values keep the bare model dir (no migration
+ * of existing runs); non-primary effort gets an "@<effort>" suffix and
+ * non-primary fidelity a distinct "@fid-<fidelity>" suffix so the two axes never
+ * collide. The record's own fields remain the source of truth — the directory
+ * name is storage only.
+ */
+export function runModelDir(
+  model: string,
+  reasoningEffort: string,
+  imageFidelity: string = PRIMARY_FIDELITY,
+): string {
+  let dir = modelDirName(model);
+  if (reasoningEffort !== PRIMARY_EFFORT) dir += `@${reasoningEffort}`;
+  if (imageFidelity !== PRIMARY_FIDELITY) dir += `@fid-${imageFidelity}`;
+  return dir;
 }
 
 /**
