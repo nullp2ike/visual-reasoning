@@ -36,13 +36,13 @@ export interface JudgeComparison {
   overriddenExcluded: number;
 }
 
-function repKey(cell: Pick<ResolvedCell, "model" | "imageId" | "rep">): string {
-  return `${cell.model} ${cell.imageId} ${cell.rep}`;
+function repKey(cell: Pick<ResolvedCell, "series" | "imageId" | "rep">): string {
+  return `${cell.series} ${cell.imageId} ${cell.rep}`;
 }
 
 function verdictVector(
   cells: readonly ResolvedCell[],
-  model: string,
+  series: string,
   imageId: string,
   expectedIndex: number,
   excludedReps: ReadonlySet<string>,
@@ -50,7 +50,7 @@ function verdictVector(
   return cells
     .filter(
       (c) =>
-        c.model === model &&
+        c.series === series &&
         c.imageId === imageId &&
         c.status === "ok" &&
         !excludedReps.has(repKey(c)),
@@ -73,14 +73,14 @@ export function buildJudgeComparison(
   }
   const judges = scoresList.map((s) => s.judgeModel);
 
-  // Per-model metric table across judges.
-  const modelNames = [...new Set(scoresList.flatMap((s) => s.models.map((m) => m.model)))].sort(
+  // Per-series metric table across judges (one row per model × effort).
+  const seriesNames = [...new Set(scoresList.flatMap((s) => s.models.map((m) => m.series)))].sort(
     (a, b) => a.localeCompare(b),
   );
-  const perModel: ComparisonModelRow[] = modelNames.map((model) => {
+  const perModel: ComparisonModelRow[] = seriesNames.map((series) => {
     const byJudge: Record<string, JudgeModelStats> = {};
     for (const scores of scoresList) {
-      const metrics = scores.models.find((m) => m.model === model);
+      const metrics = scores.models.find((m) => m.series === series);
       byJudge[scores.judgeModel] = {
         meanRecall: metrics?.meanRecall ?? null,
         extrasPerRun: metrics?.extrasPerRun ?? null,
@@ -90,7 +90,7 @@ export function buildJudgeComparison(
     const recallDelta = recalls.some((r) => r === null)
       ? null
       : Math.max(...(recalls as number[])) - Math.min(...(recalls as number[]));
-    return { model, byJudge, recallDelta };
+    return { model: series, byJudge, recallDelta };
   });
 
   // Disagreements: per (model, image, expectedIndex) where found vectors differ.
@@ -105,17 +105,17 @@ export function buildJudgeComparison(
   }
   const overriddenExcluded = overriddenKeys.size;
 
-  const models = [...new Set(scoresList.flatMap((s) => s.cells.map((c) => c.model)))].sort((a, b) =>
-    a.localeCompare(b),
+  const seriesList = [...new Set(scoresList.flatMap((s) => s.cells.map((c) => c.series)))].sort(
+    (a, b) => a.localeCompare(b),
   );
   for (const entry of manifest.entries) {
-    for (const model of models) {
+    for (const series of seriesList) {
       for (let expectedIndex = 0; expectedIndex < entry.expectedIssues.length; expectedIndex++) {
         const perJudge: Record<string, RepVerdict[]> = {};
         for (const scores of scoresList) {
           perJudge[scores.judgeModel] = verdictVector(
             scores.cells,
-            model,
+            series,
             entry.imageId,
             expectedIndex,
             overriddenKeys,
@@ -126,7 +126,7 @@ export function buildJudgeComparison(
         );
         if (new Set(vectors).size > 1) {
           disagreements.push({
-            model,
+            model: series,
             imageId: entry.imageId,
             filename: entry.filename,
             expectedIndex,

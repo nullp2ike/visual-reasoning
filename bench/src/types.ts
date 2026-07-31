@@ -40,7 +40,13 @@ export const RunRecordSchema = z.object({
   imageId: z.string(),
   rep: z.number().int().positive(),
   promptHash: z.string(),
+  /** Prompt variant this run used. Optional for records written before variants existed. */
+  promptVariant: z.string().optional(),
   reasoningEffort: z.string(),
+  /** Image-fidelity hint used for this run (optional; absent → "auto" on pre-fidelity records). */
+  imageFidelity: z.string().optional(),
+  /** Output token budget used for this run (optional; absent on pre-budget records). */
+  maxTokens: z.number().int().positive().optional(),
   timestamp: z.string(),
   status: z.enum(["ok", "error"]),
   result: z
@@ -111,6 +117,8 @@ export const ResolvedExpectedSchema = z.object({
 
 export const ResolvedCellSchema = z.object({
   model: z.string(),
+  /** (model, reasoningEffort) identity — see seriesId(). Cells with the same model but different effort stay distinct. */
+  series: z.string(),
   imageId: z.string(),
   rep: z.number().int().positive(),
   status: z.enum(["ok", "error"]),
@@ -129,8 +137,16 @@ export type ResolvedCell = z.infer<typeof ResolvedCellSchema>;
 // --- Per-model metrics ---
 
 export const ModelMetricsSchema = z.object({
+  /** (model, reasoningEffort) identity — the leaderboard/matrix row key. See seriesId(). */
+  series: z.string(),
   model: z.string(),
   provider: z.string(),
+  /**
+   * Reasoning/thinking effort these runs used (from the run records). Each series
+   * pins exactly one effort — the (model, effort) pair is the row identity, so a
+   * model benchmarked at several efforts appears as several rows.
+   */
+  reasoningEffort: z.string(),
   okRuns: z.number().int(),
   failedRuns: z.number().int(),
   /** Mean per-expected-issue detection rate across reps (primary ranking column). */
@@ -158,6 +174,8 @@ export type ModelMetrics = z.infer<typeof ModelMetricsSchema>;
 export const ScoresSchema = z.object({
   schemaVersion: z.literal(1),
   generatedAt: z.string(),
+  /** Prompt variant these scores were computed for (e.g. "baseline", "excluded"). */
+  promptVariant: z.string(),
   prompt: z.string(),
   promptHash: z.string(),
   reasoningEffort: z.string(),

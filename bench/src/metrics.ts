@@ -7,12 +7,14 @@ import { mean, median, percentile } from "./util.js";
  * instead of counting as a miss.
  */
 export function computeModelMetrics(
+  series: string,
   model: string,
   provider: string,
+  reasoningEffort: string,
   cells: readonly ResolvedCell[],
   manifest: Manifest,
 ): ModelMetrics {
-  const modelCells = cells.filter((c) => c.model === model);
+  const modelCells = cells.filter((c) => c.series === series);
   const okCells = modelCells.filter((c) => c.status === "ok");
   const failedRuns = modelCells.length - okCells.length;
 
@@ -38,13 +40,16 @@ export function computeModelMetrics(
   const durations = okCells
     .map((c) => c.usage?.durationSeconds)
     .filter((d): d is number => d !== undefined);
+  // Prefer the provider's actual reported cost (OpenRouter) over our local estimate.
   const costs = okCells
-    .map((c) => c.usage?.estimatedCost)
+    .map((c) => c.usage?.reportedCost ?? c.usage?.estimatedCost)
     .filter((c): c is number => c !== undefined);
 
   return {
+    series,
     model,
     provider,
+    reasoningEffort,
     okRuns: okCells.length,
     failedRuns,
     meanRecall: mean(detectionRates),
@@ -83,6 +88,6 @@ export function sortLeaderboard(models: readonly ModelMetrics[]): ModelMetrics[]
     const extrasA = a.extrasPerRun ?? Number.POSITIVE_INFINITY;
     const extrasB = b.extrasPerRun ?? Number.POSITIVE_INFINITY;
     if (extrasA !== extrasB) return extrasA - extrasB;
-    return a.model.localeCompare(b.model);
+    return a.series.localeCompare(b.series);
   });
 }

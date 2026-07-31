@@ -7,6 +7,14 @@ import { OpenRouterDriver } from "../../src/providers/openrouter.js";
 import type { ProviderDriver, SendMessageOptions } from "../../src/providers/types.js";
 import type { Issue } from "../../src/types.js";
 import { benchConfig } from "../bench.config.js";
+import {
+  EMBED_DEFAULT_THRESHOLD,
+  type EmbedFn,
+  embedModelRepo,
+  embeddingVerdict,
+  isEmbeddingJudge,
+  loadEmbedder,
+} from "./embed.js";
 import { JudgeCacheEntrySchema, JudgeVerdictSchema, type JudgeVerdict } from "./types.js";
 import { RESULTS_DIR, atomicWriteJson, inferProvider, readJsonIfExists, sha256 } from "./util.js";
 
@@ -167,9 +175,62 @@ export function createJudgeCompletion(judgeModel: string): JudgeCompletion {
 
 export interface JudgeOptions {
   completion?: JudgeCompletion;
+  /** Embedding function for `embed:<id>` judges. Injectable so tests avoid loading a model. */
+  embed?: EmbedFn;
+  /** Cosine threshold for embedding judges. Defaults to EMBED_DEFAULT_THRESHOLD. */
+  threshold?: number;
   cacheDir?: string;
   /** Judge model to attribute (and cache) verdicts under. Defaults to benchConfig.judgeModel. */
   judgeModel?: string;
+}
+
+/**
+ * Resolve a verdict from a local embedding judge: match reported issues to
+ * expected ones by cosine similarity. No API call, no retry loop — embeddings are
+ * deterministic, so the JSON-repair machinery the LLM path needs does not apply.
+ */
+async function embeddingJudge(
+  request: JudgeRequest,
+  judgeModel: string,
+  options: JudgeOptions,
+): Promise<JudgeVerdict> {
+  const embed = options.embed ?? (await loadEmbedder(embedModelRepo(judgeModel)));
+  const threshold = options.threshold ?? EMBED_DEFAULT_THRESHOLD;
+  return embeddingVerdict(request, embed, threshold);
+}
+
+/**
+ * Resolve a verdict from an LLM judge: call the model (JSON-only prompt), parse,
+ * validate, and retry with an error-echoing nudge on malformed output.
+ */
+async function llmJudge(
+  request: JudgeRequest,
+  judgeModel: string,
+  options: JudgeOptions,
+): Promise<JudgeVerdict> {
+  const completion = options.completion ?? createJudgeCompletion(judgeModel);
+  const userPrompt = buildJudgeUserPrompt(request);
+
+  // Initial attempt plus two nudges; each nudge echoes the concrete validation
+  // error so weaker JSON emitters (e.g. Kimi) know exactly what to fix.
+  const maxAttempts = 3;
+  let verdict: JudgeVerdict | undefined;
+  let prompt = userPrompt;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      verdict = validateVerdict(
+        extractJson(await completion(JUDGE_SYSTEM_PROMPT, prompt)),
+        request,
+      );
+      break;
+    } catch (err) {
+      if (attempt === maxAttempts) throw err;
+      const detail = err instanceof Error ? err.message.slice(0, 500) : String(err);
+      prompt = `${userPrompt}\n\nYour previous response was invalid: ${detail}\nRespond with ONLY the JSON object in the required shape.`;
+    }
+  }
+  if (!verdict) throw new Error("Internal: judge retry loop exited without a verdict");
+  return verdict;
 }
 
 /**
@@ -194,28 +255,9 @@ export async function judgeRun(
     if (cached.success) return cached.data.verdict;
   }
 
-  const completion = options.completion ?? createJudgeCompletion(judgeModel);
-  const userPrompt = buildJudgeUserPrompt(request);
-
-  // Initial attempt plus two nudges; each nudge echoes the concrete validation
-  // error so weaker JSON emitters (e.g. Kimi) know exactly what to fix.
-  const maxAttempts = 3;
-  let verdict: JudgeVerdict | undefined;
-  let prompt = userPrompt;
-  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
-    try {
-      verdict = validateVerdict(
-        extractJson(await completion(JUDGE_SYSTEM_PROMPT, prompt)),
-        request,
-      );
-      break;
-    } catch (err) {
-      if (attempt === maxAttempts) throw err;
-      const detail = err instanceof Error ? err.message.slice(0, 500) : String(err);
-      prompt = `${userPrompt}\n\nYour previous response was invalid: ${detail}\nRespond with ONLY the JSON object in the required shape.`;
-    }
-  }
-  if (!verdict) throw new Error("Internal: judge retry loop exited without a verdict");
+  const verdict = isEmbeddingJudge(judgeModel)
+    ? await embeddingJudge(request, judgeModel, options)
+    : await llmJudge(request, judgeModel, options);
 
   await atomicWriteJson(cachePath, {
     judgeModel,

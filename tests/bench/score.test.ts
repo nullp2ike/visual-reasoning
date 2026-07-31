@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { filterScorableRecords, scoresPathForJudge } from "../../bench/src/score.js";
+import { filterScorableRecords } from "../../bench/src/score.js";
+import { scoresPathForVariantJudge } from "../../bench/src/util.js";
 import type { Manifest, RunRecord } from "../../bench/src/types.js";
 
 function record(model: string, imageId: string): RunRecord {
@@ -58,12 +59,19 @@ describe("filterScorableRecords", () => {
   });
 });
 
-describe("scoresPathForJudge", () => {
-  it("embeds the judge model in the filename", () => {
-    expect(scoresPathForJudge("claude-haiku-4-5")).toMatch(/scores\.claude-haiku-4-5\.json$/);
+describe("scoresPathForVariantJudge", () => {
+  it("embeds the variant and judge model in the filename", () => {
+    expect(scoresPathForVariantJudge("baseline", "claude-haiku-4-5")).toMatch(
+      /scores\.baseline\.claude-haiku-4-5\.json$/,
+    );
+    expect(scoresPathForVariantJudge("excluded", "claude-haiku-4-5")).toMatch(
+      /scores\.excluded\.claude-haiku-4-5\.json$/,
+    );
   });
 
   it("sanitizes slash-slug judges", () => {
-    expect(scoresPathForJudge("x-ai/grok-4.5")).toMatch(/scores\.x-ai__grok-4\.5\.json$/);
+    expect(scoresPathForVariantJudge("baseline", "x-ai/grok-4.5")).toMatch(
+      /scores\.baseline\.x-ai__grok-4\.5\.json$/,
+    );
   });
 });
