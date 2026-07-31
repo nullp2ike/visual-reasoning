@@ -44,6 +44,16 @@ export function isPromptVariantId(value: string): value is PromptVariantId {
 export const BENCH_PROMPT = BENCH_PROMPT_VARIANTS[DEFAULT_PROMPT_VARIANT];
 
 export interface BenchConfig {
+  /**
+   * Default dataset: a directory name under `bench/datasets/`, or a path to a
+   * dataset directory anywhere on disk. Override per run with `--dataset`, or
+   * for good with `BENCH_DATASET` in `.env`. Results are namespaced by dataset,
+   * so switching datasets never mixes manifests, runs, or reports.
+   *
+   * Ships as `example` (the committed synthetic dataset) so a fresh clone can
+   * run the pipeline; real datasets are gitignored — see bench/datasets/README.md.
+   */
+  readonly dataset: string;
   /** Models under test. Provider is inferred from the model name by the library. */
   readonly models: readonly string[];
   /** Repeat runs per model x image, for consistency measurement. */
@@ -79,6 +89,7 @@ export interface BenchConfig {
 }
 
 export const benchConfig: BenchConfig = {
+  dataset: "example",
   models: [
     // Anthropic: flagship / mid / small
     "claude-fable-5",

@@ -3,12 +3,15 @@ import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { parseArgs } from "node:util";
 import { PROMPT_VARIANT_IDS } from "../bench.config.js";
+import { selectDataset } from "./dataset.js";
 import { EMBED_JUDGE_PREFIX, cosine, embedModelRepo, loadEmbedder } from "./embed.js";
 import { ensureManifest } from "./manifest.js";
 import { ScoresSchema, type Scores } from "./types.js";
-import { RESULTS_DIR, readJsonIfExists, scoresPathForVariantJudge } from "./util.js";
+import { resultsDir, readJsonIfExists, scoresPathForVariantJudge } from "./util.js";
 
-export const CALIBRATION_MD_PATH = join(RESULTS_DIR, "EMBED_CALIBRATION.md");
+export function calibrationMdPath(): string {
+  return join(resultsDir(), "EMBED_CALIBRATION.md");
+}
 
 /** One expected-issue example: its max cosine to any reported issue, and the LLM label. */
 interface Example {
@@ -161,8 +164,11 @@ async function main(): Promise<void> {
     options: {
       judge: { type: "string" },
       model: { type: "string" },
+      dataset: { type: "string" },
     },
   });
+  const dataset = selectDataset(values.dataset);
+  console.log(`Dataset: ${dataset.id} (${dataset.dir})`);
   const groundTruthJudge = values.judge ?? "gpt-5.6-terra";
   const embedId = values.model ?? "bge-small";
   const embedJudge = `${EMBED_JUDGE_PREFIX}${embedId}`;
@@ -196,13 +202,13 @@ async function main(): Promise<void> {
 
   const { rows, best } = sweepThresholds(examples);
   const markdown = buildMarkdown(groundTruthJudge, embedJudge, variants, examples, rows, best);
-  await writeFile(CALIBRATION_MD_PATH, markdown, "utf8");
+  await writeFile(calibrationMdPath(), markdown, "utf8");
 
   console.log(markdown);
   console.log(
     `Best F1 threshold ${best.threshold.toFixed(2)} -> set EMBED_DEFAULT_THRESHOLD in bench/src/embed.ts`,
   );
-  console.log(`Wrote ${CALIBRATION_MD_PATH}`);
+  console.log(`Wrote ${calibrationMdPath()}`);
 }
 
 const isDirectRun = process.argv[1]?.endsWith("calibrate-embed.ts") ?? false;

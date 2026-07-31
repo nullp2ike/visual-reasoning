@@ -9,9 +9,9 @@ export interface VariantScores {
 
 /**
  * Build the self-contained report page. All data is inlined as JSON; the only
- * external references are the golden screenshots, loaded via relative paths
- * (the report lives in bench/results/, so ../../golden_data_set/<file> works
- * when viewed from the repo).
+ * external references are the dataset screenshots, loaded via `imageBase` —
+ * a path relative to the report's own location, which the caller computes from
+ * the report directory to the dataset directory (e.g. `../../datasets/<id>`).
  *
  * The client-side computeMatrixCell mirrors bench/src/matrix.ts semantics but
  * uses the page's staged override state so matrix counts update live; the TS
@@ -30,6 +30,7 @@ export function buildReportHtml(
   manifest: Manifest,
   overrides: Overrides,
   siblingJudges: readonly string[] = [],
+  imageBase = "../../datasets/example",
 ): string {
   if (variants.length === 0) throw new Error("buildReportHtml: at least one variant is required");
   const variantOrder = variants.map((v) => v.variant);
@@ -45,6 +46,9 @@ export function buildReportHtml(
     defaultVariant,
     manifest: manifest.entries,
     overrides,
+    // Screenshots are not inlined; the page links them relative to its own
+    // location so the report stays small and the dataset stays out of it.
+    imageBase: imageBase.replace(/\/+$/, ""),
   };
   // </script> inside JSON would terminate the script block early.
   const json = JSON.stringify(payload).replace(/</g, "\\u003c");
@@ -221,6 +225,8 @@ export function buildReportHtml(
 <script>
 "use strict";
 const DATA = JSON.parse(document.getElementById("data").textContent);
+// Path prefix for screenshot <img> hrefs, relative to this report's own file.
+const IMAGE_BASE = DATA.imageBase;
 // Current prompt variant. The switcher swaps \`scores\` and re-renders everything.
 // Honor #variant=<v> from the URL so cross-judge links keep the reader on the
 // same prompt variant; fall back to the report default if it's absent/unknown.
@@ -367,7 +373,7 @@ function cellShadeClass(m) {
 
 function expansionHtml(series, entry) {
   const shot = '<aside class="matrix-exp-shot">' +
-    '<img src="../../golden_data_set/' + esc(entry.filename) + '" alt="' + esc(entry.imageId) + '" loading="lazy">' +
+    '<img src="' + IMAGE_BASE + '/' + esc(entry.filename) + '" alt="' + esc(entry.imageId) + '" loading="lazy">' +
     '<div class="shot-cap">' + esc(entry.imageId) + " · " + esc(entry.filename) + "</div></aside>";
   let html = '<div class="matrix-exp-main">';
   html += '<div><strong>' + esc(series) + "</strong> on " + esc(entry.imageId) + " · " + esc(entry.filename) + "</div>";
@@ -613,7 +619,7 @@ function renderDetail() {
   for (const entry of DATA.manifest) {
     const cells = REPS.map(rep => cellFor(selectedModel, entry.imageId, rep));
     if (cells.every(c => !c)) continue;
-    html += '<div class="imgcard clearfix"><img src="../../golden_data_set/' + entry.filename + '" alt="' + entry.imageId + '" loading="lazy">';
+    html += '<div class="imgcard clearfix"><img src="' + IMAGE_BASE + '/' + entry.filename + '" alt="' + entry.imageId + '" loading="lazy">';
     html += "<h3>" + entry.imageId + " · " + entry.filename + "</h3>";
     if (entry.expectedIssues.length === 0) html += '<p class="meta">Negative control — no expected issues; anything reported counts as an extra.</p>';
     entry.expectedIssues.forEach((text, expIndex) => {

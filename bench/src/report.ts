@@ -1,5 +1,6 @@
+import "dotenv/config";
 import { readdir, writeFile } from "node:fs/promises";
-import { join } from "node:path";
+import { join, relative, sep } from "node:path";
 import { parseArgs } from "node:util";
 import {
   DEFAULT_PROMPT_VARIANT,
@@ -8,10 +9,11 @@ import {
   isPromptVariantId,
 } from "../bench.config.js";
 import { buildComparisonMarkdown, buildJudgeComparison } from "./compare.js";
+import { selectDataset, type Dataset } from "./dataset.js";
 import { buildReportHtml, type VariantScores } from "./html.js";
 import { ensureManifest } from "./manifest.js";
 import { buildMatrix, buildMatrixMarkdown } from "./matrix.js";
-import { OVERRIDES_PATH } from "./score.js";
+import { overridesPath } from "./score.js";
 import {
   OverridesSchema,
   ScoresSchema,
@@ -20,9 +22,11 @@ import {
   type Overrides,
   type Scores,
 } from "./types.js";
-import { RESULTS_DIR, modelDirName, readJsonIfExists } from "./util.js";
+import { resultsDir, modelDirName, readJsonIfExists } from "./util.js";
 
-export const COMPARISON_MD_PATH = join(RESULTS_DIR, "JUDGE_COMPARISON.md");
+export function comparisonMdPath(): string {
+  return join(resultsDir(), "JUDGE_COMPARISON.md");
+}
 
 /**
  * Per-(variant, judge) scores files (`scores.<variant>.<judge-slug>.json`). The
@@ -39,11 +43,11 @@ export function orderVariants(variants: Iterable<string>): string[] {
 }
 
 export function resultsMdPathForVariantJudge(variant: string, judgeModel: string): string {
-  return join(RESULTS_DIR, `RESULTS.${variant}.${modelDirName(judgeModel)}.md`);
+  return join(resultsDir(), `RESULTS.${variant}.${modelDirName(judgeModel)}.md`);
 }
 
 export function reportHtmlPathForJudge(judgeModel: string): string {
-  return join(RESULTS_DIR, `report.${modelDirName(judgeModel)}.html`);
+  return join(resultsDir(), `report.${modelDirName(judgeModel)}.html`);
 }
 
 /**
@@ -54,7 +58,7 @@ export function reportHtmlPathForJudge(judgeModel: string): string {
 export async function discoverScores(): Promise<Scores[]> {
   let files: string[];
   try {
-    files = await readdir(RESULTS_DIR);
+    files = await readdir(resultsDir());
   } catch {
     return [];
   }
@@ -62,7 +66,7 @@ export async function discoverScores(): Promise<Scores[]> {
   for (const file of files.sort()) {
     const match = SCORES_FILE_RE.exec(file);
     if (!match || !isPromptVariantId(match[1] ?? "")) continue;
-    const raw = await readJsonIfExists(join(RESULTS_DIR, file));
+    const raw = await readJsonIfExists(join(resultsDir(), file));
     scoresList.push(ScoresSchema.parse(raw));
   }
   return scoresList;
@@ -130,8 +134,21 @@ export function buildResultsMarkdown(scores: Scores, manifest: Manifest): string
   return lines.join("\n");
 }
 
+/**
+ * Path from the report file to the dataset directory, for screenshot hrefs.
+ * Computed rather than hardcoded so a dataset living outside `bench/datasets/`
+ * still resolves when the report is opened from disk.
+ */
+function imageBaseForReport(dataset: Dataset): string {
+  return relative(dataset.resultsDir, dataset.dir).split(sep).join("/");
+}
+
 async function main(): Promise<void> {
-  const { values } = parseArgs({ options: { judge: { type: "string" } } });
+  const { values } = parseArgs({
+    options: { judge: { type: "string" }, dataset: { type: "string" } },
+  });
+  const dataset = selectDataset(values.dataset);
+  console.log(`Dataset: ${dataset.id} (${dataset.dir})`);
 
   const manifest = await ensureManifest();
   let scoresList = await discoverScores();
@@ -140,12 +157,12 @@ async function main(): Promise<void> {
   }
   if (scoresList.length === 0) {
     throw new Error(
-      `No scores.<judge>.json files found in ${RESULTS_DIR}` +
+      `No scores.<judge>.json files found in ${resultsDir()}` +
         `${values.judge ? ` for judge "${values.judge}"` : ""}. Run "pnpm bench:score" first.`,
     );
   }
 
-  const overridesRaw = await readJsonIfExists(OVERRIDES_PATH);
+  const overridesRaw = await readJsonIfExists(overridesPath());
   const overrides: Overrides =
     overridesRaw === undefined ? {} : OverridesSchema.parse(overridesRaw);
 
@@ -168,7 +185,13 @@ async function main(): Promise<void> {
       return { variant, scores };
     });
 
-    const html = buildReportHtml(variantScores, manifest, overrides, siblingJudges);
+    const html = buildReportHtml(
+      variantScores,
+      manifest,
+      overrides,
+      siblingJudges,
+      imageBaseForReport(dataset),
+    );
     const htmlPath = reportHtmlPathForJudge(judge);
     await writeFile(htmlPath, html, "utf8");
     console.log(`Wrote ${htmlPath}`);
@@ -183,10 +206,10 @@ async function main(): Promise<void> {
     // report.html carries the full variant toggle; RESULTS.md shows the default variant.
     if (judge === benchConfig.judgeModel) {
       const defaultScores = vmap.get(DEFAULT_PROMPT_VARIANT) ?? variantScores[0]?.scores;
-      await writeFile(join(RESULTS_DIR, "report.html"), html, "utf8");
+      await writeFile(join(resultsDir(), "report.html"), html, "utf8");
       if (defaultScores) {
         await writeFile(
-          join(RESULTS_DIR, "RESULTS.md"),
+          join(resultsDir(), "RESULTS.md"),
           buildResultsMarkdown(defaultScores, manifest),
           "utf8",
         );
@@ -203,9 +226,9 @@ async function main(): Promise<void> {
   if (comparisonVariant) {
     const variantJudges = scoresList.filter((s) => s.promptVariant === comparisonVariant);
     const comparison = buildJudgeComparison(variantJudges, manifest);
-    await writeFile(COMPARISON_MD_PATH, buildComparisonMarkdown(comparison), "utf8");
+    await writeFile(comparisonMdPath(), buildComparisonMarkdown(comparison), "utf8");
     console.log(
-      `Wrote ${COMPARISON_MD_PATH} (variant ${comparisonVariant}, ${comparison.disagreements.length} disagreement(s))`,
+      `Wrote ${comparisonMdPath()} (variant ${comparisonVariant}, ${comparison.disagreements.length} disagreement(s))`,
     );
   }
 }
