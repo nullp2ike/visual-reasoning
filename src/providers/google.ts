@@ -7,7 +7,7 @@ import {
 } from "../errors.js";
 import { mapProviderError } from "./error-mapper.js";
 import type { NormalizedImage } from "../types.js";
-import type { ReasoningEffortLevel } from "../constants.js";
+import type { ImageDetailLevel, ReasoningEffortLevel } from "../constants.js";
 import type {
   ImageGenerationOptions,
   ImageGenerationResponse,
@@ -79,12 +79,48 @@ const GOOGLE_THINKING_LEVEL = {
   xhigh: "high",
 } as const satisfies Record<ReasoningEffortLevel, string>;
 
+/**
+ * Maps the abstract image-detail hint to Gemini's `mediaResolution` token-budget
+ * tier (LOW 280 → HIGH 1120 tokens/image). "auto" is omitted so Gemini's own
+ * default resolution applies. Gemini 3 also offers MEDIA_RESOLUTION_ULTRA_HIGH
+ * (2240 tokens) if an even higher tier is ever wanted.
+ */
+const GOOGLE_MEDIA_RESOLUTION: Partial<Record<ImageDetailLevel, string>> = {
+  low: "MEDIA_RESOLUTION_LOW",
+  high: "MEDIA_RESOLUTION_HIGH",
+};
+
+interface GeminiUsageMetadata {
+  promptTokenCount?: number;
+  candidatesTokenCount?: number;
+  thoughtsTokenCount?: number;
+}
+
+/**
+ * Normalize Gemini usage. Gemini reports the visible answer
+ * (`candidatesTokenCount`) and the thinking trace (`thoughtsTokenCount`)
+ * separately, but bills thinking at the output-token rate. We fold thinking into
+ * `outputTokens` so the count matches what's billed (and matches OpenAI/OpenRouter,
+ * whose output counts already include reasoning), and expose `reasoningTokens` as
+ * the breakdown. Without this, cost estimates omit Gemini's thinking entirely.
+ */
+function toGeminiUsage(um: GeminiUsageMetadata | undefined) {
+  if (!um) return undefined;
+  const thoughts = um.thoughtsTokenCount ?? 0;
+  return {
+    inputTokens: um.promptTokenCount ?? 0,
+    outputTokens: (um.candidatesTokenCount ?? 0) + thoughts,
+    ...(um.thoughtsTokenCount !== undefined && { reasoningTokens: um.thoughtsTokenCount }),
+  };
+}
+
 export class GoogleDriver implements ProviderDriver {
   private client: GoogleClient | null;
   private model: string;
   private maxTokens: number;
   private apiKeyOrEnv: string | undefined;
   private reasoningEffort: ProviderConfig["reasoningEffort"];
+  private imageDetail: ProviderConfig["imageDetail"];
 
   constructor(config: ProviderConfig) {
     this.model = config.model;
@@ -92,6 +128,7 @@ export class GoogleDriver implements ProviderDriver {
     this.client = null;
     this.apiKeyOrEnv = config.apiKey;
     this.reasoningEffort = config.reasoningEffort;
+    this.imageDetail = config.imageDetail;
   }
 
   private toGeminiParts(images: NormalizedImage[]) {
@@ -143,6 +180,10 @@ export class GoogleDriver implements ProviderDriver {
               thinkingLevel: GOOGLE_THINKING_LEVEL[this.reasoningEffort],
             },
           }),
+          ...(this.imageDetail &&
+            GOOGLE_MEDIA_RESOLUTION[this.imageDetail] && {
+              mediaResolution: GOOGLE_MEDIA_RESOLUTION[this.imageDetail],
+            }),
         },
       });
 
@@ -161,17 +202,10 @@ export class GoogleDriver implements ProviderDriver {
       }
 
       const text = response.text ?? "";
-      const thoughtsTokenCount = response.usageMetadata?.thoughtsTokenCount;
 
       return {
         text,
-        usage: response.usageMetadata
-          ? {
-              inputTokens: response.usageMetadata.promptTokenCount ?? 0,
-              outputTokens: response.usageMetadata.candidatesTokenCount ?? 0,
-              ...(thoughtsTokenCount !== undefined && { reasoningTokens: thoughtsTokenCount }),
-            }
-          : undefined,
+        usage: toGeminiUsage(response.usageMetadata),
       };
     } catch (err) {
       if (err instanceof VisualAITruncationError || err instanceof VisualAIProviderError) throw err;
@@ -219,12 +253,7 @@ export class GoogleDriver implements ProviderDriver {
       return {
         imageData: Buffer.from(imagePart.inlineData.data, "base64"),
         mimeType: imagePart.inlineData.mimeType,
-        usage: response.usageMetadata
-          ? {
-              inputTokens: response.usageMetadata.promptTokenCount ?? 0,
-              outputTokens: response.usageMetadata.candidatesTokenCount ?? 0,
-            }
-          : undefined,
+        usage: toGeminiUsage(response.usageMetadata),
       };
     } catch (err) {
       if (err instanceof VisualAIProviderError) throw err;

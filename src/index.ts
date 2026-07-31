@@ -9,6 +9,7 @@ export {
   Layout,
   Accessibility,
   ReasoningEffort,
+  ImageDetail,
   DEFAULT_MODELS,
 } from "./constants.js";
 export type {
@@ -17,6 +18,7 @@ export type {
   LayoutCheckName,
   AccessibilityCheckName,
   ReasoningEffortLevel,
+  ImageDetailLevel,
 } from "./constants.js";
 export type { VisualAIClient } from "./core/client.js";
 

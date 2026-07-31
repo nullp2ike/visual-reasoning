@@ -86,6 +86,26 @@ describe("OpenRouterDriver", () => {
     expect(textPart).toEqual({ type: "text", text: "test" });
   });
 
+  it("adds image_url.detail when fidelity is high, omits it for auto", async () => {
+    mockCreate.mockResolvedValue(makeResponse());
+
+    await makeDriver({ imageDetail: "high" }).sendMessage([makeImage()], "test");
+    let content = (mockCreate.mock.calls.at(-1)![0] as { messages: { content: unknown[] }[] })
+      .messages[0]!.content;
+    expect(content[0]).toEqual({
+      type: "image_url",
+      image_url: { url: "data:image/png;base64,ZmFrZQ==", detail: "high" },
+    });
+
+    await makeDriver({ imageDetail: "auto" }).sendMessage([makeImage()], "test");
+    content = (mockCreate.mock.calls.at(-1)![0] as { messages: { content: unknown[] }[] })
+      .messages[0]!.content;
+    expect(content[0]).toEqual({
+      type: "image_url",
+      image_url: { url: "data:image/png;base64,ZmFrZQ==" },
+    });
+  });
+
   it("uses max_tokens and model", async () => {
     mockCreate.mockResolvedValueOnce(makeResponse());
 
@@ -228,6 +248,24 @@ describe("OpenRouterDriver", () => {
     const result = await makeDriver().sendMessage([makeImage()], "test");
     expect(result.usage).toEqual({ inputTokens: 100, outputTokens: 50 });
     expect(result.usage).not.toHaveProperty("reasoningTokens");
+  });
+
+  it("surfaces OpenRouter's actual cost from usage.cost", async () => {
+    mockCreate.mockResolvedValueOnce(
+      makeResponse("{}", {
+        usage: { prompt_tokens: 100, completion_tokens: 500, cost: 0.006213 },
+      }),
+    );
+
+    const result = await makeDriver().sendMessage([makeImage()], "test");
+    expect(result.usage).toMatchObject({ inputTokens: 100, outputTokens: 500, cost: 0.006213 });
+  });
+
+  it("omits cost when OpenRouter does not report one", async () => {
+    mockCreate.mockResolvedValueOnce(makeResponse());
+
+    const result = await makeDriver().sendMessage([makeImage()], "test");
+    expect(result.usage).not.toHaveProperty("cost");
   });
 
   it("throws VisualAIAuthError when no API key is available", async () => {

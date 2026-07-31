@@ -77,6 +77,30 @@ describe("AnthropicDriver", () => {
     });
   });
 
+  it("ignores imageDetail — Claude has no detail parameter", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: "{}" }],
+      usage: { input_tokens: 0, output_tokens: 0 },
+    });
+
+    const driver = new AnthropicDriver({
+      apiKey: "test-key",
+      model: "claude-sonnet-4-6",
+      maxTokens: 4096,
+      imageDetail: "high",
+    });
+    await driver.sendMessage([makeImage()], "test");
+
+    const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
+    const messages = callArgs.messages as { content: Record<string, unknown>[] }[];
+    // Image block is unchanged (no detail field) and no top-level resolution knob is sent.
+    expect(messages[0]!.content[0]).toEqual({
+      type: "image",
+      source: { type: "base64", media_type: "image/png", data: "ZmFrZQ==" },
+    });
+    expect(callArgs).not.toHaveProperty("mediaResolution");
+  });
+
   it("sends multiple images", async () => {
     mockCreate.mockResolvedValueOnce({
       content: [{ type: "text", text: "{}" }],
@@ -236,6 +260,24 @@ describe("AnthropicDriver", () => {
     const driver = new AnthropicDriver({
       apiKey: "test-key",
       model: "claude-sonnet-5",
+      maxTokens: 4096,
+      reasoningEffort: "xhigh",
+    });
+    await driver.sendMessage([makeImage()], "test");
+
+    const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
+    expect(callArgs).toHaveProperty("output_config", { effort: "xhigh" });
+  });
+
+  it("maps xhigh reasoning effort to xhigh for Opus 5", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: "{}" }],
+      usage: { input_tokens: 0, output_tokens: 0 },
+    });
+
+    const driver = new AnthropicDriver({
+      apiKey: "test-key",
+      model: "claude-opus-5",
       maxTokens: 4096,
       reasoningEffort: "xhigh",
     });

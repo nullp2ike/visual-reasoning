@@ -1,6 +1,9 @@
 import {
+  DEFAULT_IMAGE_DETAIL,
+  DEFAULT_MAX_IMAGE_DIMENSION,
   DEFAULT_MAX_TOKENS,
   DEFAULT_MODELS,
+  type ImageDetailLevel,
   MODEL_TO_PROVIDER,
   OPENAI_REASONING_MAX_TOKENS,
 } from "../constants.js";
@@ -13,6 +16,8 @@ export interface ResolvedConfig {
   model: string;
   maxTokens: number;
   reasoningEffort: VisualAIConfig["reasoningEffort"];
+  maxImageDimension: number;
+  imageDetail: ImageDetailLevel;
   debug: boolean;
   debugPrompt: boolean;
   debugResponse: boolean;
@@ -122,6 +127,8 @@ export function resolveConfig(config: VisualAIConfig): ResolvedConfig {
     model,
     maxTokens,
     reasoningEffort: config.reasoningEffort,
+    maxImageDimension: config.maxImageDimension ?? DEFAULT_MAX_IMAGE_DIMENSION,
+    imageDetail: config.imageDetail ?? DEFAULT_IMAGE_DETAIL,
     debug,
     debugPrompt,
     debugResponse,

@@ -13,6 +13,10 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
     inputPricePerToken: 10 / PER_MILLION,
     outputPricePerToken: 50 / PER_MILLION,
   },
+  [`${Provider.ANTHROPIC}:${Model.Anthropic.OPUS_5}`]: {
+    inputPricePerToken: 5 / PER_MILLION,
+    outputPricePerToken: 25 / PER_MILLION,
+  },
   [`${Provider.ANTHROPIC}:${Model.Anthropic.OPUS_4_8}`]: {
     inputPricePerToken: 5 / PER_MILLION,
     outputPricePerToken: 25 / PER_MILLION,
@@ -42,12 +46,12 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
     outputPricePerToken: 30 / PER_MILLION,
   },
   [`${Provider.OPENAI}:${Model.OpenAI.GPT_5_6_TERRA}`]: {
-    inputPricePerToken: 2.5 / PER_MILLION,
-    outputPricePerToken: 15 / PER_MILLION,
+    inputPricePerToken: 2 / PER_MILLION,
+    outputPricePerToken: 12 / PER_MILLION,
   },
   [`${Provider.OPENAI}:${Model.OpenAI.GPT_5_6_LUNA}`]: {
-    inputPricePerToken: 1 / PER_MILLION,
-    outputPricePerToken: 6 / PER_MILLION,
+    inputPricePerToken: 0.2 / PER_MILLION,
+    outputPricePerToken: 1.2 / PER_MILLION,
   },
   [`${Provider.OPENAI}:${Model.OpenAI.GPT_5_5}`]: {
     inputPricePerToken: 5 / PER_MILLION,

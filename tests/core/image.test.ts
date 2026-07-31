@@ -234,5 +234,25 @@ describe("normalizeImage", () => {
       const result = await normalizeImage(path);
       expect(result.data.length).toBe(original.length);
     });
+
+    it("honors a custom maxDimension below the default", async () => {
+      const path = join(FIXTURES_DIR, "oversized.png"); // 2000x2000
+      const result = await normalizeImage(path, 512);
+      const sharp = (await import("sharp")).default;
+      const meta = await sharp(result.data).metadata();
+      expect(meta.width).toBeLessThanOrEqual(512);
+      expect(meta.height).toBeLessThanOrEqual(512);
+    });
+
+    it("honors a custom maxDimension above the default without upscaling", async () => {
+      const path = join(FIXTURES_DIR, "oversized.png"); // 2000x2000
+      const result = await normalizeImage(path, 3000);
+      const sharp = (await import("sharp")).default;
+      const meta = await sharp(result.data).metadata();
+      // A cap above the source keeps full resolution (never enlarges past 2000)
+      // — and notably larger than the 1568 default would have produced.
+      expect(meta.width).toBe(2000);
+      expect(meta.height).toBe(2000);
+    });
   });
 });

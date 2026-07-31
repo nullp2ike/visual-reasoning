@@ -1,3 +1,4 @@
+import { DEFAULT_MAX_IMAGE_DIMENSION } from "../constants.js";
 import { VisualAIVideoError } from "../errors.js";
 import type {
   Frame,
@@ -105,7 +106,10 @@ function isTimestampedFrameInput(
  * downstream (provider call, timeline prompt, frame metadata, timestamps,
  * frame references) works unchanged. Never loads ffmpeg.
  */
-export async function normalizeFrames(input: FramesInput): Promise<NormalizedMedia> {
+export async function normalizeFrames(
+  input: FramesInput,
+  maxDimension: number = DEFAULT_MAX_IMAGE_DIMENSION,
+): Promise<NormalizedMedia> {
   const rawFrames = input.frames;
   const fps = input.fps ?? DEFAULT_FPS;
 
@@ -134,7 +138,7 @@ export async function normalizeFrames(input: FramesInput): Promise<NormalizedMed
             `Must be a finite number >= 0.`,
         );
       }
-      const image = await normalizeImage(imageInput);
+      const image = await normalizeImage(imageInput, maxDimension);
       return {
         data: image.data,
         mimeType: image.mimeType,
@@ -163,15 +167,16 @@ export async function normalizeFrames(input: FramesInput): Promise<NormalizedMed
 export async function normalizeMedia(
   input: MediaInput | FramesInput,
   videoOptions?: VideoSamplingOptions,
+  maxDimension: number = DEFAULT_MAX_IMAGE_DIMENSION,
 ): Promise<NormalizedMedia> {
   if (isFramesInput(input)) {
-    return normalizeFrames(input);
+    return normalizeFrames(input, maxDimension);
   }
 
   if (isVideoInput(input)) {
     const { path, cleanup } = await resolveVideoToPath(input);
     try {
-      const { frames, durationSeconds } = await extractFrames(path, videoOptions);
+      const { frames, durationSeconds } = await extractFrames(path, videoOptions, maxDimension);
       await saveDebugFrames(frames);
       return { kind: "video", frames, durationSeconds };
     } finally {
@@ -183,6 +188,6 @@ export async function normalizeMedia(
     }
   }
 
-  const image = await normalizeImage(input);
+  const image = await normalizeImage(input, maxDimension);
   return { kind: "image", image };
 }

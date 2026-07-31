@@ -37,6 +37,8 @@ interface OpenRouterCompletionResult {
     prompt_tokens: number;
     completion_tokens: number;
     completion_tokens_details?: { reasoning_tokens?: number };
+    /** Actual cost in USD, returned because the request sets `usage: { include: true }`. */
+    cost?: number;
   };
 }
 
@@ -59,6 +61,7 @@ export class OpenRouterDriver implements ProviderDriver {
   private maxTokens: number;
   private apiKeyOrEnv: string | undefined;
   private reasoningEffort: ProviderConfig["reasoningEffort"];
+  private imageDetail: ProviderConfig["imageDetail"];
 
   constructor(config: ProviderConfig) {
     this.model = config.model;
@@ -66,6 +69,7 @@ export class OpenRouterDriver implements ProviderDriver {
     this.client = null;
     this.apiKeyOrEnv = config.apiKey;
     this.reasoningEffort = config.reasoningEffort;
+    this.imageDetail = config.imageDetail;
   }
 
   private async getClient(): Promise<OpenRouterClient> {
@@ -102,9 +106,15 @@ export class OpenRouterDriver implements ProviderDriver {
   ): Promise<RawProviderResponse> {
     const client = await this.getClient();
 
+    // OpenAI-chat-completions `detail`, passed through to the upstream model.
+    // Omitted for "auto" so the default request shape is unchanged.
+    const detail = this.imageDetail && this.imageDetail !== "auto" ? this.imageDetail : undefined;
     const imageParts = images.map((img) => ({
       type: "image_url" as const,
-      image_url: { url: `data:${img.mimeType};base64,${img.base64}` },
+      image_url: {
+        url: `data:${img.mimeType};base64,${img.base64}`,
+        ...(detail ? { detail } : {}),
+      },
     }));
 
     try {
@@ -155,6 +165,7 @@ export class OpenRouterDriver implements ProviderDriver {
       }
 
       const reasoningTokens = response.usage?.completion_tokens_details?.reasoning_tokens;
+      const cost = response.usage?.cost;
 
       return {
         text,
@@ -163,6 +174,7 @@ export class OpenRouterDriver implements ProviderDriver {
               inputTokens: response.usage.prompt_tokens,
               outputTokens: response.usage.completion_tokens,
               ...(reasoningTokens !== undefined && { reasoningTokens }),
+              ...(cost !== undefined && { cost }),
             }
           : undefined,
       };

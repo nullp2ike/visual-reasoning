@@ -10,11 +10,12 @@ import type {
 } from "./types.js";
 
 // Opus 4.7 introduced a dedicated "xhigh" effort tier, carried forward by
-// Fable 5, Opus 4.8, and Sonnet 5. Older Anthropic models (Opus 4.6, Sonnet
-// 4.6) reject "xhigh" but accept "max", which is why our xhigh maps to "max"
-// on those models only.
+// Fable 5, Opus 4.8, Opus 5, and Sonnet 5. Older Anthropic models (Opus 4.6,
+// Sonnet 4.6) reject "xhigh" but accept "max", which is why our xhigh maps to
+// "max" on those models only.
 const XHIGH_CAPABLE_MODELS: ReadonlySet<string> = new Set([
   Model.Anthropic.FABLE_5,
+  Model.Anthropic.OPUS_5,
   Model.Anthropic.OPUS_4_8,
   Model.Anthropic.OPUS_4_7,
   Model.Anthropic.SONNET_5,
@@ -95,6 +96,9 @@ export class AnthropicDriver implements ProviderDriver {
   ): Promise<RawProviderResponse> {
     const client = await this.getClient();
 
+    // Note: `imageDetail` (ProviderConfig) is intentionally not used here. Claude
+    // has no detail/resolution parameter and auto-downscales images to ~1568px /
+    // 1.15MP, so a higher-fidelity request would give no additional performance.
     const imageBlocks = images.map((img) => ({
       type: "image" as const,
       source: {

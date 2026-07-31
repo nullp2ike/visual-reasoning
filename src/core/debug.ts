@@ -56,6 +56,7 @@ export function processUsage(
     outputTokens,
     ...(rawUsage?.reasoningTokens !== undefined && { reasoningTokens: rawUsage.reasoningTokens }),
     estimatedCost: calculateCost(config.provider, config.model, inputTokens, outputTokens),
+    ...(rawUsage?.cost !== undefined && { reportedCost: rawUsage.cost }),
     durationSeconds,
   };
   usageLog(config, method, usage);

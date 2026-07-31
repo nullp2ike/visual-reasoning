@@ -336,8 +336,11 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
     model: resolvedConfig.model,
     maxTokens: resolvedConfig.maxTokens,
     reasoningEffort: resolvedConfig.reasoningEffort,
+    imageDetail: resolvedConfig.imageDetail,
   };
   const driver = createDriver(resolvedConfig.provider, driverConfig);
+  // Longest-edge pixel cap applied to every image/frame before it reaches a driver.
+  const maxImageDimension = resolvedConfig.maxImageDimension;
 
   async function checkElementsVisibility(
     image: ImageInput,
@@ -351,7 +354,7 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
     }
 
     return withErrorDebug(resolvedConfig, methodName, async () => {
-      const img = await normalizeImage(image);
+      const img = await normalizeImage(image, maxImageDimension);
       const prompt = buildElementsVisibilityPrompt(elements, visible, options);
       debugLog(resolvedConfig, `${methodName} prompt`, prompt, "prompt");
 
@@ -374,7 +377,7 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
       }
 
       return withErrorDebug(resolvedConfig, "check", async () => {
-        const media = await normalizeMedia(input, options?.video);
+        const media = await normalizeMedia(input, options?.video, maxImageDimension);
         const { images, mediaContext, framesMetadata } = mediaToProviderInputs(media);
         const prompt = buildCheckPrompt(stmts, {
           instructions: options?.instructions,
@@ -396,7 +399,7 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
 
     async ask(input, userPrompt, options) {
       return withErrorDebug(resolvedConfig, "ask", async () => {
-        const media = await normalizeMedia(input, options?.video);
+        const media = await normalizeMedia(input, options?.video, maxImageDimension);
         const { images, mediaContext, framesMetadata } = mediaToProviderInputs(media);
         const prompt = buildAskPrompt(userPrompt, {
           instructions: options?.instructions,
@@ -418,7 +421,10 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
 
     async compare(imageA, imageB, options) {
       return withErrorDebug(resolvedConfig, "compare", async () => {
-        const [imgA, imgB] = await Promise.all([normalizeImage(imageA), normalizeImage(imageB)]);
+        const [imgA, imgB] = await Promise.all([
+          normalizeImage(imageA, maxImageDimension),
+          normalizeImage(imageB, maxImageDimension),
+        ]);
         const prompt = buildComparePrompt({
           userPrompt: options?.prompt,
           instructions: options?.instructions,
@@ -464,7 +470,7 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
 
     async accessibility(image, options) {
       return withErrorDebug(resolvedConfig, "accessibility", async () => {
-        const img = await normalizeImage(image);
+        const img = await normalizeImage(image, maxImageDimension);
         const prompt = buildAccessibilityPrompt(options);
         debugLog(resolvedConfig, "accessibility prompt", prompt, "prompt");
 
@@ -486,7 +492,7 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
 
     async layout(image, options) {
       return withErrorDebug(resolvedConfig, "layout", async () => {
-        const img = await normalizeImage(image);
+        const img = await normalizeImage(image, maxImageDimension);
         const prompt = buildLayoutPrompt(options);
         debugLog(resolvedConfig, "layout prompt", prompt, "prompt");
 
@@ -503,7 +509,7 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
 
     async pageLoad(image, options) {
       return withErrorDebug(resolvedConfig, "pageLoad", async () => {
-        const img = await normalizeImage(image);
+        const img = await normalizeImage(image, maxImageDimension);
         const prompt = buildPageLoadPrompt(options);
         debugLog(resolvedConfig, "pageLoad prompt", prompt, "prompt");
 
@@ -520,7 +526,7 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
 
     async content(image, options) {
       return withErrorDebug(resolvedConfig, "content", async () => {
-        const img = await normalizeImage(image);
+        const img = await normalizeImage(image, maxImageDimension);
         const prompt = buildContentPrompt(options);
         debugLog(resolvedConfig, "content prompt", prompt, "prompt");
 
