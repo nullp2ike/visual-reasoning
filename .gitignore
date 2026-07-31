@@ -6,3 +6,13 @@ coverage/
 *.tsbuildinfo
 .DS_Store
 .history/
+
+# Benchmark datasets and results are local-only. Screenshots under test are
+# usually private product UI, and run records quote model output about them
+# verbatim, so neither belongs in a shared repository. The `example` dataset is
+# the one exception: it is synthetic and committed so `pnpm bench:run` works on
+# a fresh clone.
+bench/datasets/*
+!bench/datasets/example/
+!bench/datasets/README.md
+bench/results/

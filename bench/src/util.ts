@@ -1,20 +1,27 @@
 import { createHash } from "node:crypto";
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
 import { MODEL_TO_PROVIDER } from "../../src/constants.js";
 import type { ProviderName } from "../../src/types.js";
+import { activeDataset } from "./dataset.js";
 
-export const BENCH_DIR = join(dirname(fileURLToPath(import.meta.url)), "..");
-export const RESULTS_DIR = join(BENCH_DIR, "results");
-export const GOLDEN_DIR = join(BENCH_DIR, "..", "golden_data_set");
+/** Directory of the screenshots under test, for the active dataset. */
+export function datasetDir(): string {
+  return activeDataset().dir;
+}
+
+/** Where every generated artifact for the active dataset lands. */
+export function resultsDir(): string {
+  return activeDataset().resultsDir;
+}
 
 /**
  * Run records live under a per-prompt-variant subdirectory so runs from
- * different prompts coexist: results/runs/<variant>/<model>/<imageId>/rep_N.json.
+ * different prompts coexist:
+ * results/<dataset>/runs/<variant>/<model>/<imageId>/rep_N.json.
  */
 export function runsDirForVariant(variant: string): string {
-  return join(RESULTS_DIR, "runs", variant);
+  return join(resultsDir(), "runs", variant);
 }
 
 /**
@@ -22,7 +29,7 @@ export function runsDirForVariant(variant: string): string {
  * the judge slug follows and may itself contain dots ("gpt-5.4-mini").
  */
 export function scoresPathForVariantJudge(variant: string, judgeModel: string): string {
-  return join(RESULTS_DIR, `scores.${variant}.${modelDirName(judgeModel)}.json`);
+  return join(resultsDir(), `scores.${variant}.${modelDirName(judgeModel)}.json`);
 }
 
 export function sha256(data: string | Buffer): string {

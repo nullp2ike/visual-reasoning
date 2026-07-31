@@ -10,6 +10,7 @@ import {
   isPromptVariantId,
   type PromptVariantId,
 } from "../bench.config.js";
+import { selectDataset } from "./dataset.js";
 import { isEmbeddingJudge } from "./embed.js";
 import { JUDGE_PROMPT_VERSION, createJudgeCompletion, judgeRun } from "./judge.js";
 import { ensureManifest } from "./manifest.js";
@@ -25,7 +26,7 @@ import {
   type Scores,
 } from "./types.js";
 import {
-  RESULTS_DIR,
+  resultsDir,
   atomicWriteJson,
   readJsonIfExists,
   runPool,
@@ -36,7 +37,9 @@ import {
   sha256,
 } from "./util.js";
 
-export const OVERRIDES_PATH = join(RESULTS_DIR, "overrides.json");
+export function overridesPath(): string {
+  return join(resultsDir(), "overrides.json");
+}
 
 export interface ScorableRecords {
   records: RunRecord[];
@@ -181,8 +184,11 @@ async function main(): Promise<void> {
       concurrency: { type: "string", default: "8" },
       judge: { type: "string" },
       prompt: { type: "string" },
+      dataset: { type: "string" },
     },
   });
+  const dataset = selectDataset(values.dataset);
+  console.log(`Dataset: ${dataset.id} (${dataset.dir})`);
   const judgeModel = values.judge ?? benchConfig.judgeModel;
   const variant = values.prompt ?? DEFAULT_PROMPT_VARIANT;
   if (!isPromptVariantId(variant)) {
@@ -214,7 +220,7 @@ async function main(): Promise<void> {
     );
   }
 
-  const overridesRaw = await readJsonIfExists(OVERRIDES_PATH);
+  const overridesRaw = await readJsonIfExists(overridesPath());
   const overrides: Overrides =
     overridesRaw === undefined ? {} : OverridesSchema.parse(overridesRaw);
   const knownKeys = new Set(

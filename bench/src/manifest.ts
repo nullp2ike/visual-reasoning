@@ -1,10 +1,14 @@
+import "dotenv/config";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { BENCH_PROMPT } from "../bench.config.js";
+import { ISSUES_FILE, selectDataset } from "./dataset.js";
 import { ManifestSchema, type Manifest, type ManifestEntry, type RetiredEntry } from "./types.js";
-import { GOLDEN_DIR, RESULTS_DIR, atomicWriteJson, readJsonIfExists, sha256 } from "./util.js";
+import { datasetDir, resultsDir, atomicWriteJson, readJsonIfExists, sha256 } from "./util.js";
 
-export const MANIFEST_PATH = join(RESULTS_DIR, "manifest.json");
+export function manifestPath(): string {
+  return join(resultsDir(), "manifest.json");
+}
 
 /**
  * Parse issues_per_file.md: `## <filename>` headings followed by `- <issue>` bullets.
@@ -67,12 +71,12 @@ export function assignImageIds(
   return ids;
 }
 
-/** Build a manifest from golden_data_set/, keeping IDs stable against `previous`. */
+/** Build a manifest from the dataset directory, keeping IDs stable against `previous`. */
 export async function generateManifest(
-  goldenDir: string = GOLDEN_DIR,
+  goldenDir: string = datasetDir(),
   previous?: Manifest,
 ): Promise<Manifest> {
-  const markdown = await readFile(join(goldenDir, "issues_per_file.md"), "utf8");
+  const markdown = await readFile(join(goldenDir, ISSUES_FILE), "utf8");
   const issuesByFile = parseIssuesMarkdown(markdown);
   const filenames = [...issuesByFile.keys()].sort();
   const ids = assignImageIds(filenames, previous);
@@ -116,8 +120,8 @@ export async function generateManifest(
   };
 }
 
-export async function loadCommittedManifest(): Promise<Manifest | undefined> {
-  const raw = await readJsonIfExists(MANIFEST_PATH);
+export async function loadStoredManifest(): Promise<Manifest | undefined> {
+  const raw = await readJsonIfExists(manifestPath());
   if (raw === undefined) return undefined;
   return ManifestSchema.parse(raw);
 }
@@ -128,46 +132,44 @@ export interface ManifestDiff {
 }
 
 /**
- * Classify the difference between the committed manifest and a freshly generated
- * one (built with stable IDs against the committed manifest):
+ * Classify the difference between the stored manifest and a freshly generated
+ * one (built with stable IDs against the stored manifest):
  * - `breaking`: prompt hash changed, or a surviving image's bytes/expected issues/ID
  *   changed — existing runs are invalid, regeneration must be deliberate (`--force`).
  * - `membership`: only additions and/or removals — safe to auto-regenerate; run
  *   records for retired images are simply ignored by scoring.
  * - `identical`: nothing changed.
  */
-export function diffManifests(committed: Manifest, fresh: Manifest): ManifestDiff {
+export function diffManifests(stored: Manifest, fresh: Manifest): ManifestDiff {
   const breaking: string[] = [];
   const membership: string[] = [];
 
-  if (committed.promptHash !== fresh.promptHash) {
+  if (stored.promptHash !== fresh.promptHash) {
     breaking.push("prompt hash changed (BENCH_PROMPT was edited)");
   }
 
-  const committedByFile = new Map(committed.entries.map((e) => [e.filename, e]));
+  const storedByFile = new Map(stored.entries.map((e) => [e.filename, e]));
   const freshByFile = new Map(fresh.entries.map((e) => [e.filename, e]));
 
   for (const [filename, freshEntry] of freshByFile) {
-    const committedEntry = committedByFile.get(filename);
-    if (!committedEntry) {
+    const storedEntry = storedByFile.get(filename);
+    if (!storedEntry) {
       membership.push(`added ${freshEntry.imageId} (${filename})`);
       continue;
     }
-    if (committedEntry.imageId !== freshEntry.imageId) {
+    if (storedEntry.imageId !== freshEntry.imageId) {
       breaking.push(`entry ${filename}: ID assignment changed`);
     }
-    if (committedEntry.sha256 !== freshEntry.sha256) {
+    if (storedEntry.sha256 !== freshEntry.sha256) {
       breaking.push(`entry ${freshEntry.imageId} (${filename}): image bytes changed`);
     }
-    if (
-      JSON.stringify(committedEntry.expectedIssues) !== JSON.stringify(freshEntry.expectedIssues)
-    ) {
+    if (JSON.stringify(storedEntry.expectedIssues) !== JSON.stringify(freshEntry.expectedIssues)) {
       breaking.push(`entry ${freshEntry.imageId} (${filename}): expected issues changed`);
     }
   }
-  for (const [filename, committedEntry] of committedByFile) {
+  for (const [filename, storedEntry] of storedByFile) {
     if (!freshByFile.has(filename)) {
-      membership.push(`retired ${committedEntry.imageId} (${filename})`);
+      membership.push(`retired ${storedEntry.imageId} (${filename})`);
     }
   }
 
@@ -177,22 +179,22 @@ export function diffManifests(committed: Manifest, fresh: Manifest): ManifestDif
 }
 
 /**
- * Load the committed manifest, verifying it still matches the dataset on disk.
+ * Load the stored manifest, verifying it still matches the dataset on disk.
  * Generates and writes it on first use. Pure additions/removals auto-regenerate
  * with stable IDs (removed images go to the retired ledger); content changes to
  * surviving images require `force`.
  */
 export async function ensureManifest(force = false): Promise<Manifest> {
-  const committed = await loadCommittedManifest();
-  const fresh = await generateManifest(GOLDEN_DIR, committed);
-  if (!committed || force) {
-    await atomicWriteJson(MANIFEST_PATH, fresh);
+  const stored = await loadStoredManifest();
+  const fresh = await generateManifest(datasetDir(), stored);
+  if (!stored || force) {
+    await atomicWriteJson(manifestPath(), fresh);
     return fresh;
   }
-  const diff = diffManifests(committed, fresh);
+  const diff = diffManifests(stored, fresh);
   if (diff.kind === "breaking") {
     throw new Error(
-      `Committed manifest disagrees with golden_data_set/: ${diff.details.join("; ")}. ` +
+      `Stored manifest disagrees with ${datasetDir()}: ${diff.details.join("; ")}. ` +
         `Existing runs may be invalid. Re-run with --force to regenerate the manifest deliberately. ` +
         `(Pure image additions/removals regenerate automatically and never need --force.)`,
     );
@@ -201,18 +203,24 @@ export async function ensureManifest(force = false): Promise<Manifest> {
     for (const detail of diff.details) {
       console.log(`Manifest updated: ${detail}`);
     }
-    await atomicWriteJson(MANIFEST_PATH, fresh);
+    await atomicWriteJson(manifestPath(), fresh);
     return fresh;
   }
-  return committed;
+  return stored;
 }
 
 const isDirectRun = process.argv[1]?.endsWith("manifest.ts") ?? false;
 if (isDirectRun) {
   const force = process.argv.includes("--force");
-  ensureManifest(force)
+  const datasetFlag = process.argv.indexOf("--dataset");
+  Promise.resolve()
+    .then(async () => {
+      const dataset = selectDataset(datasetFlag === -1 ? undefined : process.argv[datasetFlag + 1]);
+      console.log(`Dataset: ${dataset.id} (${dataset.dir})`);
+      return ensureManifest(force);
+    })
     .then((manifest) => {
-      console.log(`Manifest OK: ${manifest.entries.length} images -> ${MANIFEST_PATH}`);
+      console.log(`Manifest OK: ${manifest.entries.length} images -> ${manifestPath()}`);
     })
     .catch((error: unknown) => {
       console.error(error instanceof Error ? error.message : error);

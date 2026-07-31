@@ -31,6 +31,8 @@ export default tseslint.config(
     },
   },
   {
-    ignores: ["dist/", "coverage/", ".history/", "*.config.*", "*.mjs"],
+    // bench/datasets/ holds data, not source: images, ground-truth markdown, and
+    // the standalone generator script for the example set.
+    ignores: ["dist/", "coverage/", ".history/", "bench/datasets/", "*.config.*", "*.mjs"],
   },
 );

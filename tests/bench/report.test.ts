@@ -173,6 +173,19 @@ describe("buildReportHtml", () => {
     expect(html).toContain("Prompt variant: baseline");
   });
 
+  it("links screenshots through the caller-supplied image base, not a fixed path", () => {
+    const html = buildReportHtml([baseline], manifest, {}, [], "../../datasets/my-set");
+    expect(html).toContain('"imageBase":"../../datasets/my-set"');
+    // No dataset directory name may be baked into the page's markup.
+    expect(html).not.toContain("golden_data_set");
+    expect(html).toContain("const IMAGE_BASE = DATA.imageBase;");
+  });
+
+  it("strips a trailing slash from the image base so hrefs never double up", () => {
+    const html = buildReportHtml([baseline], manifest, {}, [], "../../datasets/my-set/");
+    expect(html).toContain('"imageBase":"../../datasets/my-set"');
+  });
+
   it("throws when given no variants", () => {
     expect(() => buildReportHtml([], manifest, {})).toThrow();
   });

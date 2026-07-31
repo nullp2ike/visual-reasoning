@@ -16,9 +16,11 @@ import {
   loadEmbedder,
 } from "./embed.js";
 import { JudgeCacheEntrySchema, JudgeVerdictSchema, type JudgeVerdict } from "./types.js";
-import { RESULTS_DIR, atomicWriteJson, inferProvider, readJsonIfExists, sha256 } from "./util.js";
+import { resultsDir, atomicWriteJson, inferProvider, readJsonIfExists, sha256 } from "./util.js";
 
-export const JUDGE_CACHE_DIR = join(RESULTS_DIR, "judge-cache");
+export function judgeCacheDir(): string {
+  return join(resultsDir(), "judge-cache");
+}
 
 /**
  * Bump when the judge prompt changes — invalidates the cache.
@@ -246,7 +248,7 @@ export async function judgeRun(
   if (trivial) return trivial;
 
   const judgeModel = options.judgeModel ?? benchConfig.judgeModel;
-  const cacheDir = options.cacheDir ?? JUDGE_CACHE_DIR;
+  const cacheDir = options.cacheDir ?? judgeCacheDir();
   const key = judgeCacheKey(request, judgeModel);
   const cachePath = join(cacheDir, `${key}.json`);
   const cachedRaw = await readJsonIfExists(cachePath);

@@ -27,10 +27,11 @@ import {
   isPromptVariantId,
   type PromptVariantId,
 } from "../bench.config.js";
+import { selectDataset } from "./dataset.js";
 import { ensureManifest } from "./manifest.js";
 import { RunRecordSchema, type Manifest, type RunRecord } from "./types.js";
 import {
-  GOLDEN_DIR,
+  datasetDir,
   atomicWriteJson,
   inferProvider,
   readJsonIfExists,
@@ -192,6 +193,7 @@ async function confirmSweep(cellCount: number, estimate: number | undefined): Pr
 async function main(): Promise<void> {
   const { values } = parseArgs({
     options: {
+      dataset: { type: "string" },
       models: { type: "string" },
       images: { type: "string" },
       prompt: { type: "string" },
@@ -202,6 +204,11 @@ async function main(): Promise<void> {
       fidelity: { type: "string" },
     },
   });
+  // Selected before anything reads a path: every results location is namespaced
+  // by dataset id, so this must be settled before ensureManifest() runs.
+  const dataset = selectDataset(values.dataset);
+  console.log(`Dataset: ${dataset.id} (${dataset.dir})`);
+
   // Reasoning effort and image fidelity are first-class run axes: runs at a
   // non-primary effort/fidelity are stored under a suffixed directory
   // (runModelDir) so they coexist with the default sweep instead of overwriting it.
@@ -285,7 +292,7 @@ async function main(): Promise<void> {
   // Image bytes are keyed by anonymous ID; only bytes ever reach the model.
   const imageBytes = new Map<string, Buffer>();
   for (const entry of entries) {
-    imageBytes.set(entry.imageId, await readFile(join(GOLDEN_DIR, entry.filename)));
+    imageBytes.set(entry.imageId, await readFile(join(datasetDir(), entry.filename)));
   }
 
   const clients = new Map<string, VisualAIClient>();
