@@ -65,6 +65,7 @@ function scores(judgeModel: string, cells: ResolvedCell[], meanRecall: number): 
         meanInputTokens: null,
         meanOutputTokens: null,
         meanReasoningTokens: null,
+        cacheHitRate: null,
       },
     ],
     cells,

@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.19.0] - 2026-08-14
+
+### Added
+
+- **Gemini 3.8 Flash (`gemini-3.8-flash`)** as a supported Google model — GA flash tier aimed at long-horizon software engineering, agentic tasks, and multi-step reasoning in specialized domains; 1M-token context, 64k max output, tunable thinking levels ([announcement](https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/)). Built-in pricing uses the introductory rate of **$0.75 / $3.75 per MTok** input/output, the same as 3.7 Flash and on the same schedule: in effect through 2026-12-31, reverting to $1.50 / $7.50 on 2027-01-01, after which `calculateCost` (and the `bench/` cost columns) will undercount until the pricing table is updated.
+- `gemini-3.8-flash` added to the annotated-diff allowlist (`DIFF_ALLOWED_MODELS`) and to the `bench/` model roster.
+- **Gemini 3.7 Flash (`gemini-3.7-flash`)** as a supported Google model — newest GA flash tier with gains over 3.6 Flash on coding, debugging, issue resolution, and document/business-workflow tasks ([announcement](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/)). Built-in pricing uses the introductory rate of **$0.75 / $3.75 per MTok** input/output, in effect through 2026-12-31; it reverts to $1.50 / $7.50 on 2027-01-01, so `calculateCost` (and the `bench/` cost columns) will undercount past that date until the pricing table is updated.
+- `gemini-3.7-flash` added to the annotated-diff allowlist (`DIFF_ALLOWED_MODELS`), alongside `gemini-3-flash-preview`, `gemini-3.5-flash`, and `gemini-3.6-flash`. Lite models remain excluded.
+- **Cached prompt tokens.** `UsageInfo` gains `cachedInputTokens` — prompt tokens a provider served from its cache, when it reports them (Anthropic, OpenAI, Google, OpenRouter). Informational only: `estimatedCost` applies no cache discount, because providers disagree on whether cached tokens are counted inside `inputTokens` (OpenAI, OpenRouter, Google) or billed as a separate bucket alongside it (Anthropic). Debug usage logs and the `bench/` leaderboard (new "Cache hit" column) surface it.
+- **Qwen3.8 Max (`qwen/qwen3.8-max`)** as a supported OpenRouter model — first Max tier to accept image input. Pricing: $2 / $6 per MTok input/output.
+- **Grok 4.6 (`x-ai/grok-4.6`)** as a supported OpenRouter model — newest xAI flagship with 500K context and image input ([announcement](https://x.ai/news/grok-4-6)). Pricing: $2 / $6 per MTok input/output, matching Grok 4.5 (verified 2026-08-14 against `openrouter.ai/api/v1/models`, `input_modalities` includes `image`).
+
+### Notes for upgraders
+
+- The Google default model is unchanged (`gemini-3-flash-preview`); pass `model: "gemini-3.8-flash"` / `"gemini-3.7-flash"` (or `Model.Google.GEMINI_3_8_FLASH` / `Model.Google.GEMINI_3_7_FLASH`) to opt in.
+
 ## [0.18.0] - 2026-07-31
 
 ### Added

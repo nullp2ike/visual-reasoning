@@ -56,6 +56,8 @@ interface GoogleGenerateContentResponse {
     promptTokenCount?: number;
     candidatesTokenCount?: number;
     thoughtsTokenCount?: number;
+    /** Cached subset of `promptTokenCount` (implicit or explicit context caching). */
+    cachedContentTokenCount?: number;
   };
 }
 
@@ -94,6 +96,8 @@ interface GeminiUsageMetadata {
   promptTokenCount?: number;
   candidatesTokenCount?: number;
   thoughtsTokenCount?: number;
+  /** Cached subset of `promptTokenCount` (implicit or explicit context caching). */
+  cachedContentTokenCount?: number;
 }
 
 /**
@@ -111,6 +115,9 @@ function toGeminiUsage(um: GeminiUsageMetadata | undefined) {
     inputTokens: um.promptTokenCount ?? 0,
     outputTokens: (um.candidatesTokenCount ?? 0) + thoughts,
     ...(um.thoughtsTokenCount !== undefined && { reasoningTokens: um.thoughtsTokenCount }),
+    ...(um.cachedContentTokenCount !== undefined && {
+      cachedInputTokens: um.cachedContentTokenCount,
+    }),
   };
 }
 

@@ -15,6 +15,9 @@ interface OpenAIResponseResult {
     input_tokens: number;
     output_tokens: number;
     output_tokens_details?: { reasoning_tokens?: number };
+    /** OpenAI caches prompt prefixes automatically above ~1024 tokens; this is
+     * the cached subset of `input_tokens`, already discounted in billing. */
+    input_tokens_details?: { cached_tokens?: number };
   };
   status?: string;
   incomplete_details?: { reason?: string };
@@ -122,6 +125,7 @@ export class OpenAIDriver implements ProviderDriver {
 
       const text = response.output_text ?? "";
       const reasoningTokens = response.usage?.output_tokens_details?.reasoning_tokens;
+      const cachedInputTokens = response.usage?.input_tokens_details?.cached_tokens;
 
       return {
         text,
@@ -130,6 +134,7 @@ export class OpenAIDriver implements ProviderDriver {
               inputTokens: response.usage.input_tokens,
               outputTokens: response.usage.output_tokens,
               ...(reasoningTokens !== undefined && { reasoningTokens }),
+              ...(cachedInputTokens !== undefined && { cachedInputTokens }),
             }
           : undefined,
       };

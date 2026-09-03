@@ -166,6 +166,15 @@ export const ModelMetricsSchema = z.object({
   meanInputTokens: z.number().nullable(),
   meanOutputTokens: z.number().nullable(),
   meanReasoningTokens: z.number().nullable(),
+  /**
+   * Share of input tokens served from the provider's prompt cache, token-weighted
+   * across runs. `null` when no run reported cached-token data at all, which is
+   * distinct from a reported 0 (cache exists but never hit).
+   *
+   * Defaulted so scores files written before this metric existed still parse —
+   * adding a metric must not force a re-score just to render a report.
+   */
+  cacheHitRate: z.number().nullable().default(null),
 });
 export type ModelMetrics = z.infer<typeof ModelMetricsSchema>;
 

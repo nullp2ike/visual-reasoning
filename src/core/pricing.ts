@@ -81,6 +81,18 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
     inputPricePerToken: 0.25 / PER_MILLION,
     outputPricePerToken: 2 / PER_MILLION,
   },
+  // Introductory pricing through 2026-12-31; reverts to $1.50/$7.50 per MTok
+  // on 2027-01-01 (https://blog.google/.../3-8-flash-and-3-8-flash-cyber/).
+  [`${Provider.GOOGLE}:${Model.Google.GEMINI_3_8_FLASH}`]: {
+    inputPricePerToken: 0.75 / PER_MILLION,
+    outputPricePerToken: 3.75 / PER_MILLION,
+  },
+  // Introductory pricing through 2026-12-31; reverts to $1.50/$7.50 per MTok
+  // on 2027-01-01 (https://blog.google/.../introducing-gemini-3-7-flash/).
+  [`${Provider.GOOGLE}:${Model.Google.GEMINI_3_7_FLASH}`]: {
+    inputPricePerToken: 0.75 / PER_MILLION,
+    outputPricePerToken: 3.75 / PER_MILLION,
+  },
   [`${Provider.GOOGLE}:${Model.Google.GEMINI_3_6_FLASH}`]: {
     inputPricePerToken: 1.5 / PER_MILLION,
     outputPricePerToken: 7.5 / PER_MILLION,
@@ -107,6 +119,10 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
   },
   // OpenRouter passes through upstream per-model pricing (verified 2026-07-22
   // against https://openrouter.ai/api/v1/models).
+  [`${Provider.OPENROUTER}:${Model.OpenRouter.GROK_4_6}`]: {
+    inputPricePerToken: 2 / PER_MILLION,
+    outputPricePerToken: 6 / PER_MILLION,
+  },
   [`${Provider.OPENROUTER}:${Model.OpenRouter.GROK_4_5}`]: {
     inputPricePerToken: 2 / PER_MILLION,
     outputPricePerToken: 6 / PER_MILLION,
@@ -118,6 +134,10 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
   [`${Provider.OPENROUTER}:${Model.OpenRouter.KIMI_K2_7_CODE}`]: {
     inputPricePerToken: 0.82 / PER_MILLION,
     outputPricePerToken: 3.75 / PER_MILLION,
+  },
+  [`${Provider.OPENROUTER}:${Model.OpenRouter.QWEN_3_8_MAX}`]: {
+    inputPricePerToken: 2 / PER_MILLION,
+    outputPricePerToken: 6 / PER_MILLION,
   },
   [`${Provider.OPENROUTER}:${Model.OpenRouter.QWEN_3_7_PLUS}`]: {
     inputPricePerToken: 0.32 / PER_MILLION,

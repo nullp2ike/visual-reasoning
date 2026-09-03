@@ -21,6 +21,8 @@ export interface RawProviderResponse {
     inputTokens: number;
     outputTokens: number;
     reasoningTokens?: number;
+    /** Prompt tokens served from the provider's cache, when the provider reports them. */
+    cachedInputTokens?: number;
     /** Actual cost in USD reported by the provider, when it returns one (OpenRouter). */
     cost?: number;
   };

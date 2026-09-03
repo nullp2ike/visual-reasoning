@@ -562,12 +562,16 @@ All listed models support image/vision input. Pass any model ID to the `model` c
 
 | Model                 | Model ID                 | Input $/MTok | Output $/MTok | Notes                             |
 | --------------------- | ------------------------ | ------------ | ------------- | --------------------------------- |
-| Gemini 3.6 Flash      | `gemini-3.6-flash`       | $1.50        | $7.50         | Newest GA flash; fewer out-tokens |
+| Gemini 3.8 Flash      | `gemini-3.8-flash`       | $0.75        | $3.75         | Newest GA flash; intro pricing¹   |
+| Gemini 3.7 Flash      | `gemini-3.7-flash`       | $0.75        | $3.75         | Prior GA flash; intro pricing¹    |
+| Gemini 3.6 Flash      | `gemini-3.6-flash`       | $1.50        | $7.50         | Prior GA flash; fewer out-tokens  |
 | Gemini 3.5 Flash      | `gemini-3.5-flash`       | $1.50        | $9            | Strongest agentic & coding model  |
 | Gemini 3.5 Flash Lite | `gemini-3.5-flash-lite`  | $0.30        | $2.50         | GA — fast, cheap, agentic tier    |
 | Gemini 3.1 Pro        | `gemini-3.1-pro-preview` | $2           | $12           | Preview — most advanced reasoning |
 | Gemini 3.1 Flash Lite | `gemini-3.1-flash-lite`  | $0.25        | $1.50         | GA — lightweight and cheap        |
 | Gemini 3 Flash        | `gemini-3-flash-preview` | $0.50        | $3            | **Default** — fast and capable    |
+
+¹ Gemini 3.8 Flash and 3.7 Flash introductory pricing runs through 2026-12-31; both revert to $1.50 / $7.50 per MTok on 2027-01-01.
 
 ### OpenRouter
 
@@ -575,13 +579,15 @@ Any [OpenRouter](https://openrouter.ai/models) model slug (always `vendor/model`
 
 | Model          | Model ID                    | Input $/MTok | Output $/MTok | Notes                                 |
 | -------------- | --------------------------- | ------------ | ------------- | ------------------------------------- |
-| Grok 4.5       | `x-ai/grok-4.5`             | $2           | $6            | xAI flagship, 500K context            |
+| Grok 4.6       | `x-ai/grok-4.6`             | $2           | $6            | Newest xAI flagship, 500K context     |
+| Grok 4.5       | `x-ai/grok-4.5`             | $2           | $6            | Prior xAI flagship, 500K context      |
 | Kimi K3        | `moonshotai/kimi-k3`        | $3           | $15           | Moonshot flagship, 1M context         |
 | Kimi K2.7 Code | `moonshotai/kimi-k2.7-code` | $0.82        | $3.75         | Agentic/coding tier with vision       |
+| Qwen3.8 Max    | `qwen/qwen3.8-max`          | $2           | $6            | First Max tier with image input       |
 | Qwen3.7 Plus   | `qwen/qwen3.7-plus`         | $0.32        | $1.28         | Cost-effective, GUI/screen-reading    |
 | Qwen3.6 Flash  | `qwen/qwen3.6-flash`        | $0.19        | $1.13         | **Default** — cheap flash vision tier |
 
-`qwen/qwen3.7-max` is not listed because it accepts no image input on OpenRouter.
+`qwen/qwen3.7-max` and the DeepSeek V4 family (`deepseek/deepseek-v4-pro`, `deepseek/deepseek-v4-flash`, and dated variants such as `deepseek/deepseek-v4-pro-0813`) are not listed because they accept no image input on OpenRouter.
 
 ## License
 

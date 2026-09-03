@@ -51,6 +51,64 @@ describe("AnthropicDriver", () => {
     expect(callArgs).toHaveProperty("model", "claude-sonnet-4-6");
   });
 
+  it("never sends cache_control (prompt caching is not requested)", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: "{}" }],
+      usage: { input_tokens: 100, output_tokens: 50 },
+    });
+
+    const driver = new AnthropicDriver({
+      apiKey: "test-key",
+      model: "claude-sonnet-4-6",
+      maxTokens: 4096,
+    });
+    await driver.sendMessage([makeImage()], "test");
+
+    const args = mockCreate.mock.calls[0]![0] as {
+      messages: { content: Record<string, unknown>[] }[];
+    };
+    for (const block of args.messages[0]!.content) {
+      expect(block).not.toHaveProperty("cache_control");
+    }
+  });
+
+  it("reports cache_read_input_tokens as cachedInputTokens", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: "{}" }],
+      // Anthropic reports cache reads in their own bucket, NOT inside
+      // input_tokens (unlike OpenAI, where cached_tokens is a subset). We
+      // surface the bucket verbatim and leave inputTokens untouched.
+      usage: { input_tokens: 100, output_tokens: 50, cache_read_input_tokens: 1800 },
+    });
+
+    const driver = new AnthropicDriver({
+      apiKey: "test-key",
+      model: "claude-sonnet-4-6",
+      maxTokens: 4096,
+    });
+    const result = await driver.sendMessage([makeImage()], "test");
+    expect(result.usage).toEqual({
+      inputTokens: 100,
+      outputTokens: 50,
+      cachedInputTokens: 1800,
+    });
+  });
+
+  it("omits cached input tokens when not present", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: "{}" }],
+      usage: { input_tokens: 100, output_tokens: 50 },
+    });
+
+    const driver = new AnthropicDriver({
+      apiKey: "test-key",
+      model: "claude-sonnet-4-6",
+      maxTokens: 4096,
+    });
+    const result = await driver.sendMessage([makeImage()], "test");
+    expect(result.usage).not.toHaveProperty("cachedInputTokens");
+  });
+
   it("formats image as base64 with media_type", async () => {
     mockCreate.mockResolvedValueOnce({
       content: [{ type: "text", text: "{}" }],

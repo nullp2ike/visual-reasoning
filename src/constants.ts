@@ -79,6 +79,8 @@ export const Model = {
     GPT_5_MINI: "gpt-5-mini",
   },
   Google: {
+    GEMINI_3_8_FLASH: "gemini-3.8-flash",
+    GEMINI_3_7_FLASH: "gemini-3.7-flash",
     GEMINI_3_6_FLASH: "gemini-3.6-flash",
     GEMINI_3_5_FLASH: "gemini-3.5-flash",
     GEMINI_3_5_FLASH_LITE: "gemini-3.5-flash-lite",
@@ -92,9 +94,11 @@ export const Model = {
    * recognizes them. All listed models accept image input.
    */
   OpenRouter: {
+    GROK_4_6: "x-ai/grok-4.6",
     GROK_4_5: "x-ai/grok-4.5",
     KIMI_K3: "moonshotai/kimi-k3",
     KIMI_K2_7_CODE: "moonshotai/kimi-k2.7-code",
+    QWEN_3_8_MAX: "qwen/qwen3.8-max",
     QWEN_3_7_PLUS: "qwen/qwen3.7-plus",
     QWEN_3_6_FLASH: "qwen/qwen3.6-flash",
   },

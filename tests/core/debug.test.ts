@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { formatError, usageLog } from "../../src/core/debug.js";
+import { formatError, processUsage, usageLog } from "../../src/core/debug.js";
 import {
   VisualAIImageError,
   VisualAIProviderError,
@@ -54,6 +54,41 @@ describe("formatError", () => {
     expect(formatError(42)).toBe("42");
     expect(formatError(null)).toBe("null");
     expect(formatError(undefined)).toBe("undefined");
+  });
+});
+
+describe("processUsage", () => {
+  const config: ResolvedConfig = {
+    provider: "openai",
+    apiKey: "k",
+    model: "gpt-5-mini",
+    maxTokens: 4096,
+    reasoningEffort: undefined,
+    debug: false,
+    debugPrompt: false,
+    debugResponse: false,
+    trackUsage: false,
+  };
+
+  it("threads cachedInputTokens from the raw provider usage", () => {
+    const usage = processUsage(
+      "ask",
+      { inputTokens: 2000, outputTokens: 50, cachedInputTokens: 1536 },
+      1.5,
+      config,
+    );
+    expect(usage.cachedInputTokens).toBe(1536);
+  });
+
+  it("omits cachedInputTokens when the provider does not report it", () => {
+    const usage = processUsage("ask", { inputTokens: 2000, outputTokens: 50 }, 1.5, config);
+    expect(usage).not.toHaveProperty("cachedInputTokens");
+  });
+
+  it("omits cachedInputTokens when usage is absent entirely", () => {
+    const usage = processUsage("ask", undefined, 1.5, config);
+    expect(usage).not.toHaveProperty("cachedInputTokens");
+    expect(usage.inputTokens).toBe(0);
   });
 });
 

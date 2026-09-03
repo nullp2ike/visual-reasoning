@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { computeModelMetrics, sortLeaderboard } from "../../bench/src/metrics.js";
+import { ModelMetricsSchema } from "../../bench/src/types.js";
 import type { Manifest, ModelMetrics, ResolvedCell } from "../../bench/src/types.js";
 import { mean, median, percentile } from "../../bench/src/util.js";
 
@@ -112,6 +113,79 @@ describe("computeModelMetrics", () => {
     );
     expect(metrics.meanCostPerRun).toBeCloseTo(0.006213);
     expect(metrics.totalCost).toBeCloseTo(0.006213);
+  });
+
+  it("parses scores files written before cacheHitRate existed", () => {
+    // Schema evolution: adding a metric must not invalidate stored artifacts,
+    // or every existing scores.*.json would need re-scoring to render a report.
+    const legacyRow = {
+      series: "model-x",
+      model: "model-x",
+      provider: "openai",
+      reasoningEffort: "medium",
+      okRuns: 1,
+      failedRuns: 0,
+      meanRecall: 1,
+      anyRecall: 1,
+      flakiness: 0,
+      extrasPerRun: 0,
+      noBugsCleanRate: null,
+      latencyMedianSeconds: null,
+      latencyP95Seconds: null,
+      meanCostPerRun: null,
+      totalCost: null,
+      meanInputTokens: null,
+      meanOutputTokens: null,
+      meanReasoningTokens: null,
+    };
+    const parsed = ModelMetricsSchema.parse(legacyRow);
+    expect(parsed.cacheHitRate).toBeNull();
+  });
+
+  it("computes cacheHitRate as cached tokens over total input tokens", () => {
+    const cells: ResolvedCell[] = [
+      makeCell({
+        imageId: "img_01",
+        rep: 1,
+        usage: { inputTokens: 1000, outputTokens: 50, cachedInputTokens: 800 },
+      }),
+      makeCell({
+        imageId: "img_01",
+        rep: 2,
+        usage: { inputTokens: 1000, outputTokens: 50, cachedInputTokens: 200 },
+      }),
+    ];
+    const metrics = computeModelMetrics("model-x", "model-x", "openai", "medium", cells, manifest);
+    // Token-weighted, not a mean of per-run rates: 1000 cached / 2000 input.
+    expect(metrics.cacheHitRate).toBeCloseTo(0.5);
+  });
+
+  it("reports cacheHitRate 0 when the provider reports cached tokens as zero", () => {
+    const cells: ResolvedCell[] = [
+      makeCell({
+        imageId: "img_01",
+        rep: 1,
+        usage: { inputTokens: 1000, outputTokens: 50, cachedInputTokens: 0 },
+      }),
+    ];
+    const metrics = computeModelMetrics(
+      "model-x",
+      "model-x",
+      "anthropic",
+      "medium",
+      cells,
+      manifest,
+    );
+    expect(metrics.cacheHitRate).toBe(0);
+  });
+
+  it("reports cacheHitRate null when no run carries cached-token data", () => {
+    const cells: ResolvedCell[] = [
+      makeCell({ imageId: "img_01", rep: 1, usage: { inputTokens: 1000, outputTokens: 50 } }),
+    ];
+    const metrics = computeModelMetrics("model-x", "model-x", "google", "medium", cells, manifest);
+    // Distinguishes "provider never reported it" from a genuine 0% hit rate.
+    expect(metrics.cacheHitRate).toBeNull();
   });
 
   it("excludes failed reps from detection denominators and counts them", () => {
@@ -256,6 +330,7 @@ describe("sortLeaderboard", () => {
       meanInputTokens: null,
       meanOutputTokens: null,
       meanReasoningTokens: null,
+      cacheHitRate: null,
     };
   }
 

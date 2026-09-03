@@ -80,6 +80,18 @@ describe("calculateCost", () => {
     expect(cost).toBeCloseTo(0.000825, 10);
   });
 
+  it("calculates cost for google gemini-3.8-flash", () => {
+    const cost = calculateCost("google", "gemini-3.8-flash", 1000, 500);
+    // 1000 * (0.75/1M) + 500 * (3.75/1M) = 0.00075 + 0.001875 = 0.002625
+    expect(cost).toBeCloseTo(0.002625, 10);
+  });
+
+  it("calculates cost for google gemini-3.7-flash", () => {
+    const cost = calculateCost("google", "gemini-3.7-flash", 1000, 500);
+    // 1000 * (0.75/1M) + 500 * (3.75/1M) = 0.00075 + 0.001875 = 0.002625
+    expect(cost).toBeCloseTo(0.002625, 10);
+  });
+
   it("calculates cost for google gemini-3.6-flash", () => {
     const cost = calculateCost("google", "gemini-3.6-flash", 1000, 500);
     // 1000 * (1.5/1M) + 500 * (7.5/1M) = 0.0015 + 0.00375 = 0.00525
@@ -108,6 +120,12 @@ describe("calculateCost", () => {
     const cost = calculateCost("google", "gemini-3-flash-preview", 1000, 500);
     // 1000 * (0.5/1M) + 500 * (3/1M) = 0.0005 + 0.0015 = 0.002
     expect(cost).toBeCloseTo(0.002, 10);
+  });
+
+  it("calculates cost for openrouter x-ai/grok-4.6", () => {
+    const cost = calculateCost("openrouter", "x-ai/grok-4.6", 1000, 500);
+    // 1000 * (2/1M) + 500 * (6/1M) = 0.002 + 0.003 = 0.005
+    expect(cost).toBeCloseTo(0.005, 10);
   });
 
   it("calculates cost for openrouter x-ai/grok-4.5", () => {

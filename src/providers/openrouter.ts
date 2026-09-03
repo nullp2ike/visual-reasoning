@@ -37,6 +37,8 @@ interface OpenRouterCompletionResult {
     prompt_tokens: number;
     completion_tokens: number;
     completion_tokens_details?: { reasoning_tokens?: number };
+    /** Cached subset of `prompt_tokens`, when the upstream provider reports one. */
+    prompt_tokens_details?: { cached_tokens?: number };
     /** Actual cost in USD, returned because the request sets `usage: { include: true }`. */
     cost?: number;
   };
@@ -165,6 +167,7 @@ export class OpenRouterDriver implements ProviderDriver {
       }
 
       const reasoningTokens = response.usage?.completion_tokens_details?.reasoning_tokens;
+      const cachedInputTokens = response.usage?.prompt_tokens_details?.cached_tokens;
       const cost = response.usage?.cost;
 
       return {
@@ -174,6 +177,7 @@ export class OpenRouterDriver implements ProviderDriver {
               inputTokens: response.usage.prompt_tokens,
               outputTokens: response.usage.completion_tokens,
               ...(reasoningTokens !== undefined && { reasoningTokens }),
+              ...(cachedInputTokens !== undefined && { cachedInputTokens }),
               ...(cost !== undefined && { cost }),
             }
           : undefined,

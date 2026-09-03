@@ -40,7 +40,15 @@ const EFFORT_TO_BUDGET_TOKENS: Readonly<Record<ReasoningEffortLevel, number>> = 
 /** Minimal interface for the Anthropic SDK client used by this driver. */
 interface AnthropicMessage {
   content: Array<{ type: string; text?: string }>;
-  usage: { input_tokens: number; output_tokens: number };
+  usage: {
+    input_tokens: number;
+    output_tokens: number;
+    /**
+     * Prompt tokens served from Anthropic's cache. Reported in its own bucket
+     * *alongside* `input_tokens` rather than inside it, unlike OpenAI/Google.
+     */
+    cache_read_input_tokens?: number;
+  };
   stop_reason?: string;
 }
 
@@ -153,6 +161,9 @@ export class AnthropicDriver implements ProviderDriver {
         usage: {
           inputTokens: message.usage.input_tokens,
           outputTokens: message.usage.output_tokens,
+          ...(message.usage.cache_read_input_tokens !== undefined && {
+            cachedInputTokens: message.usage.cache_read_input_tokens,
+          }),
         },
       };
     } catch (err) {

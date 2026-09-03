@@ -303,6 +303,45 @@ describe("OpenAIDriver", () => {
     expect(result.usage).not.toHaveProperty("reasoningTokens");
   });
 
+  it("extracts cached input tokens from usage", async () => {
+    mockCreate.mockResolvedValueOnce({
+      output_text: "{}",
+      usage: {
+        input_tokens: 2000,
+        output_tokens: 50,
+        input_tokens_details: { cached_tokens: 1536 },
+      },
+      status: "completed",
+    });
+
+    const driver = new OpenAIDriver({
+      apiKey: "test-key",
+      model: "gpt-5-mini",
+      maxTokens: 4096,
+    });
+    const result = await driver.sendMessage([makeImage()], "test");
+    // OpenAI caches automatically above ~1024 prompt tokens; cachedInputTokens is
+    // the subset of inputTokens that was served from cache (already discounted by
+    // the provider), so inputTokens itself is unchanged.
+    expect(result.usage).toEqual({
+      inputTokens: 2000,
+      outputTokens: 50,
+      cachedInputTokens: 1536,
+    });
+  });
+
+  it("omits cached input tokens when not present", async () => {
+    mockCreate.mockResolvedValueOnce(makeResponse());
+
+    const driver = new OpenAIDriver({
+      apiKey: "test-key",
+      model: "gpt-5-mini",
+      maxTokens: 4096,
+    });
+    const result = await driver.sendMessage([makeImage()], "test");
+    expect(result.usage).not.toHaveProperty("cachedInputTokens");
+  });
+
   it("uses json_schema format when responseSchema is provided", async () => {
     mockCreate.mockResolvedValueOnce(makeResponse());
 

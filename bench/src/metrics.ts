@@ -76,7 +76,29 @@ export function computeModelMetrics(
     meanReasoningTokens: mean(
       okCells.map((c) => c.usage?.reasoningTokens).filter((t): t is number => t !== undefined),
     ),
+    cacheHitRate: cacheHitRate(okCells),
   };
+}
+
+/**
+ * Share of input tokens served from the provider's prompt cache, weighted by
+ * tokens rather than averaged per run, so long and short prompts contribute
+ * proportionally. Only runs that actually reported cached-token data count
+ * toward the denominator; if none did, the provider never told us and the result
+ * is `null` rather than a misleading 0%.
+ */
+function cacheHitRate(okCells: readonly ResolvedCell[]): number | null {
+  let cached = 0;
+  let input = 0;
+  let reported = false;
+  for (const cell of okCells) {
+    if (cell.usage?.cachedInputTokens === undefined) continue;
+    reported = true;
+    cached += cell.usage.cachedInputTokens;
+    input += cell.usage.inputTokens;
+  }
+  if (!reported || input === 0) return null;
+  return cached / input;
 }
 
 /** Leaderboard order: meanRecall desc, then extrasPerRun asc, then model name. */

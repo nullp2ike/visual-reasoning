@@ -50,6 +50,7 @@ function makeScores(overrides: Partial<Scores> = {}): Scores {
         meanInputTokens: null,
         meanOutputTokens: null,
         meanReasoningTokens: null,
+        cacheHitRate: null,
       },
     ],
     cells: [],

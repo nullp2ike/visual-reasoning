@@ -38,8 +38,10 @@ export function usageLog(config: ResolvedConfig, method: string, usage: UsageInf
     : `reasoning: ${PROVIDER_DEFAULT_REASONING[config.provider]} (provider default)`;
   const reasoningTokenStr =
     usage.reasoningTokens !== undefined ? ` (${usage.reasoningTokens} reasoning)` : "";
+  const cachedTokenStr =
+    usage.cachedInputTokens !== undefined ? ` (${usage.cachedInputTokens} cached)` : "";
   process.stderr.write(
-    `[visual-ai-assertions] ${method} usage: ${usage.inputTokens} input + ${usage.outputTokens} output${reasoningTokenStr} tokens (${costStr}) in ${usage.durationSeconds?.toFixed(3) ?? "0.000"}s [${config.model}, ${reasoningStr}]\n`,
+    `[visual-ai-assertions] ${method} usage: ${usage.inputTokens} input${cachedTokenStr} + ${usage.outputTokens} output${reasoningTokenStr} tokens (${costStr}) in ${usage.durationSeconds?.toFixed(3) ?? "0.000"}s [${config.model}, ${reasoningStr}]\n`,
   );
 }
 
@@ -55,6 +57,9 @@ export function processUsage(
     inputTokens,
     outputTokens,
     ...(rawUsage?.reasoningTokens !== undefined && { reasoningTokens: rawUsage.reasoningTokens }),
+    ...(rawUsage?.cachedInputTokens !== undefined && {
+      cachedInputTokens: rawUsage.cachedInputTokens,
+    }),
     estimatedCost: calculateCost(config.provider, config.model, inputTokens, outputTokens),
     ...(rawUsage?.cost !== undefined && { reportedCost: rawUsage.cost }),
     durationSeconds,

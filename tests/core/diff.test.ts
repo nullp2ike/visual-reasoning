@@ -132,7 +132,7 @@ describe("generateAiDiff", () => {
     await expect(
       generateAiDiff(img, img, Model.Google.GEMINI_3_1_PRO_PREVIEW, driver),
     ).rejects.toThrow(
-      /only supported.*gemini-3-flash-preview.*gemini-3\.5-flash.*gemini-3\.6-flash/i,
+      /only supported.*gemini-3-flash-preview.*gemini-3\.5-flash.*gemini-3\.6-flash.*gemini-3\.7-flash.*gemini-3\.8-flash/i,
     );
   });
 });

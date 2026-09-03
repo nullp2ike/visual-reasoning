@@ -7,11 +7,38 @@ import type { ImageDetailLevel, ReasoningEffortLevel } from "../src/constants.js
  * (they become the first segment of `scores.<variant>.<judge>.json`).
  *
  * - `baseline` is the original frozen question. Its wording anchors the
- *   manifest promptHash, so it must not change without regenerating runs.
- * - `excluded` keeps the baseline question verbatim, then appends an explicit
- *   "out of scope" list for the five noise themes models most often reported
- *   that are not real defects (clipping/overflow, low-contrast legal text,
- *   sticky-nav/overlay occlusion, the "SCROLL DOWN" indicator, cramped spacing).
+ *   manifest promptHash, so it must not change without regenerating runs. It is
+ *   dataset-agnostic and is the anchor every exclusion variant is measured against.
+ *
+ * Exclusion variants are **dataset-specific** and are named `excluded-<dataset>`.
+ * A dataset's UI has its own recurring non-defects, so one shared list cannot
+ * serve two datasets: wording that suppresses noise in one will suppress real
+ * ground-truth defects in another. Derive each list from the false positives
+ * models report on that dataset's **negative control** — anything reported on a
+ * screenshot with no expected issues is by definition noise — and then check the
+ * candidate list against every expected issue before adopting it.
+ *
+ * - `excluded` is the list for the `primary` dataset (clipping/overflow,
+ *   low-contrast legal text, sticky-nav/overlay occlusion, the "SCROLL DOWN"
+ *   indicator, cramped spacing). It predates this naming convention and keeps
+ *   its bare id because `results/primary/runs/excluded/` already holds runs
+ *   under it. Do NOT reuse it for other datasets: against
+ *   `new_golden_dataset` it would suppress 4 of the 17 expected defects, because
+ *   there clipping, overlap, and alignment are real ground truth.
+ * - `excluded-golden` is the first list for `new_golden_dataset`, built from the
+ *   282 issues 22 models reported on its clean control. Measured against
+ *   `baseline` it cut mean extras/run 1.89 -> 0.28 but also dropped mean recall
+ *   66.8% -> 58.1%: naming four specific categories made models globally more
+ *   conservative rather than merely quieter. Its "duplicate fee badge" bullet
+ *   generalized onto the discount-badge defects (img_04 -10, img_11 -27) and the
+ *   duplicate-card defect (img_10 -16), and its "cut off mid-word inside its own
+ *   container" guard became a loophole 13 models used to keep reporting the
+ *   carousel clip (198 of 1397 reported issues). Kept for comparison; superseded.
+ * - `excluded-golden-v2` is the current list: the two scroll/viewport-edge
+ *   bullets only, which were ~84% of the control's noise on their own, framed as
+ *   "features, not defects". Everything narrower than that is deliberately
+ *   omitted -- v1 showed that the more categories the list names, the more the
+ *   model suppresses beyond them.
  */
 export const BENCH_PROMPT_VARIANTS = {
   baseline: "What looks visually broken on this page?",
@@ -23,6 +50,20 @@ Do not report the following (treat these as out of scope, not defects):
 - A fixed or sticky bottom navigation bar, or any overlay, covering or overlapping page content.
 - A "SCROLL DOWN" indicator or scroll-prompt overlay.
 - Inconsistent or tight spacing, padding, margins, or alignment, or a generally cramped layout.`,
+  "excluded-golden": `What looks visually broken on this page?
+
+Do not report the following (treat these as out of scope, not defects):
+- A horizontally scrollable row (restaurant carousels, category filter chips) whose last item is only partially visible at the right screen edge, including that item's title being clipped by the edge.
+- Content cut off by the bottom of the viewport, such as a partially visible card at the end of a vertical list.
+- Inconsistent thumbnail or illustration treatment between cards (different backgrounds, lighting, or art style).
+- A delivery fee or price appearing both as a badge on a card image and again in the text beneath it.
+
+Everything else is in scope. In particular, still report text that is cut off mid-word inside its own container, bottom navigation labels that are cut off, missing icons, images that failed to load, and overlapping text.`,
+  "excluded-golden-v2": `What looks visually broken on this page?
+
+Do not report the following (treat these as features, not defects):
+- A horizontally scrollable row (restaurant carousels, category filter chips) whose last item is only partially visible at the right screen edge, including that item's title being clipped by the edge.
+- Content cut off by the bottom of the viewport, such as a partially visible card at the end of a vertical list.`,
 } as const;
 
 export type PromptVariantId = keyof typeof BENCH_PROMPT_VARIANTS;
@@ -106,6 +147,8 @@ export const benchConfig: BenchConfig = {
     "gpt-5.6-luna",
     // Google: pro / flash / flash-lite
     "gemini-3.1-pro-preview",
+    "gemini-3.8-flash",
+    "gemini-3.7-flash",
     "gemini-3.5-flash",
     "gemini-3.6-flash",
     "gemini-3.5-flash-lite",
@@ -113,13 +156,34 @@ export const benchConfig: BenchConfig = {
     "gemini-3.1-flash-lite",
     // OpenRouter: xAI, Moonshot, Qwen (all vision-capable; slugs are
     // vendor-prefixed and routed through the openrouter provider).
-    // Note: qwen3.7-max is text-only on OpenRouter and qwen "3.7 Omni-Flash"
-    // does not exist; qwen3.6-flash is the flash-tier vision substitute.
+    // Note: qwen3.8-max is the first Max tier to accept image input (3.6-max
+    // and 3.7-max are text-only on OpenRouter).
+    //
+    // qwen3.8-max must be run with `--effort low`. OpenRouter maps effort
+    // medium/high onto a fixed thinking_budget of 32768 for this model, and
+    // upstream rejects the call unless max_completion_tokens exceeds it
+    // ("max_completion_tokens [8192] must be greater than thinking_budget
+    // [32768]"). Raising maxTokens past 32768 does make the call succeed
+    // (40960 returns finish_reason "stop" with valid JSON), but the result is
+    // not comparable: at medium this model burns ~7100 reasoning tokens per
+    // call at ~199s, against a board median of ~358 tokens and under 20s for
+    // every other model at medium. Effort low costs ~582 reasoning tokens at
+    // ~32s, which sits mid-pack among the medium-effort models -- so `low` is
+    // the closer analogue to what the rest of the roster is doing, not a
+    // handicap. Keep it at `--effort low`; it benches as its own `(low)` row.
+    //
+    // qwen3.6-flash is deliberately absent: with response_format json_schema
+    // it returns HTTP 200 and an empty content string, which surfaces as
+    // "Failed to parse AI response as JSON". It generates text normally
+    // without the schema, so it is incompatible with the library's
+    // structured-output contract rather than with image input. Re-add it only
+    // if that contract is relaxed.
+    "x-ai/grok-4.6",
     "x-ai/grok-4.5",
     "moonshotai/kimi-k3",
     "moonshotai/kimi-k2.7-code",
+    "qwen/qwen3.8-max",
     "qwen/qwen3.7-plus",
-    "qwen/qwen3.6-flash",
   ],
   repeats: 5,
   reasoningEffort: "medium",

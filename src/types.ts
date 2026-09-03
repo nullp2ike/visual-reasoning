@@ -69,6 +69,13 @@ export const UsageInfoSchema = z.object({
   outputTokens: z.number(),
   /** Reasoning/thinking tokens consumed by the model (informational, typically included within outputTokens). */
   reasoningTokens: z.number().optional(),
+  /**
+   * Prompt tokens served from the provider's cache, when reported. Informational
+   * only — `estimatedCost` does not apply a cache discount, because providers
+   * differ on whether these are counted inside `inputTokens` (OpenAI, OpenRouter,
+   * Google) or billed as a separate bucket alongside it (Anthropic).
+   */
+  cachedInputTokens: z.number().optional(),
   /** Cost in USD from the library's local pricing table (inputTokens/outputTokens × per-model rates). */
   estimatedCost: z.number().optional(),
   /** Actual cost in USD reported by the provider itself, when available (OpenRouter). Authoritative over `estimatedCost`. */

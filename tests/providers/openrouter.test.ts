@@ -242,6 +242,34 @@ describe("OpenRouterDriver", () => {
     });
   });
 
+  it("extracts cached input tokens from prompt_tokens_details", async () => {
+    mockCreate.mockResolvedValueOnce(
+      makeResponse("{}", {
+        usage: {
+          prompt_tokens: 2000,
+          completion_tokens: 50,
+          prompt_tokens_details: { cached_tokens: 1200 },
+        },
+      }),
+    );
+
+    const driver = makeDriver();
+    const result = await driver.sendMessage([makeImage()], "test");
+    expect(result.usage).toMatchObject({
+      inputTokens: 2000,
+      outputTokens: 50,
+      cachedInputTokens: 1200,
+    });
+  });
+
+  it("omits cached input tokens when not present", async () => {
+    mockCreate.mockResolvedValueOnce(makeResponse());
+
+    const driver = makeDriver();
+    const result = await driver.sendMessage([makeImage()], "test");
+    expect(result.usage).not.toHaveProperty("cachedInputTokens");
+  });
+
   it("omits reasoning tokens when not present", async () => {
     mockCreate.mockResolvedValueOnce(makeResponse());
 

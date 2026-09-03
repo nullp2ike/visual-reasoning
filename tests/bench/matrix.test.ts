@@ -77,6 +77,7 @@ function scores(
       meanInputTokens: null,
       meanOutputTokens: null,
       meanReasoningTokens: null,
+      cacheHitRate: null,
     })),
     cells,
   };

@@ -535,6 +535,10 @@ const COLUMNS = [
   ["latencyMedianSeconds", "Latency med", m => m.latencyMedianSeconds, v => fmt(v, 1, "s"), "Median response time per run"],
   ["latencyP95Seconds", "Latency p95", m => m.latencyP95Seconds, v => fmt(v, 1, "s"), "95th-percentile response time per run"],
   ["meanCostPerRun", "Cost/run", m => m.meanCostPerRun, v => v == null ? "–" : "$" + v.toFixed(4), "Mean estimated API cost per run"],
+  ["meanReasoningTokens", "Reasoning tok", m => m.meanReasoningTokens, v => fmt(v, 0),
+    "Mean reasoning/thinking tokens per run — the actual compute behind the Effort label. Efforts are not comparable across vendors: a model tagged (low) can spend more here than another model at medium. Anthropic reports no separate count, so its models show '–' despite thinking."],
+  ["cacheHitRate", "Cache hit", m => m.cacheHitRate, pct,
+    "Share of input tokens served from the provider's prompt cache, token-weighted. '–' means the provider reported no cache data; 0% means it reported a cache that never hit. Cost/run does not apply a cache discount."],
   ["failedRuns", "Failed", m => m.failedRuns, v => v || "", "Runs that errored after all retries"],
 ];
 let sortKey = "meanRecall", sortDir = -1, selectedModel = null;

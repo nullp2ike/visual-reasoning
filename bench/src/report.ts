@@ -85,7 +85,7 @@ function money(value: number | null): string {
 }
 
 function leaderboardRow(m: ModelMetrics): string {
-  return `| ${m.series} | ${m.provider} | ${m.reasoningEffort} | ${pct(m.meanRecall)} | ${pct(m.anyRecall)} | ${pct(m.flakiness)} | ${num(m.extrasPerRun, 1)} | ${num(m.latencyMedianSeconds, 1, "s")} / ${num(m.latencyP95Seconds, 1, "s")} | ${money(m.meanCostPerRun)} | ${money(m.totalCost)} | ${m.failedRuns || ""} |`;
+  return `| ${m.series} | ${m.provider} | ${m.reasoningEffort} | ${pct(m.meanRecall)} | ${pct(m.anyRecall)} | ${pct(m.flakiness)} | ${num(m.extrasPerRun, 1)} | ${num(m.latencyMedianSeconds, 1, "s")} / ${num(m.latencyP95Seconds, 1, "s")} | ${money(m.meanCostPerRun)} | ${money(m.totalCost)} | ${num(m.meanReasoningTokens, 0)} | ${pct(m.cacheHitRate)} | ${m.failedRuns || ""} |`;
 }
 
 export function buildResultsMarkdown(scores: Scores, manifest: Manifest): string {
@@ -115,12 +115,14 @@ export function buildResultsMarkdown(scores: Scores, manifest: Manifest): string
     "- **Recall (any rep)** — share of expected issues the model found in *at least one* rep. The gap to Recall shows how much repetition helps.",
     "- **Flakiness** — share of expected issues the model detects *inconsistently*: found in some reps but not others of the same screenshot (per-issue detection rate strictly between 0% and 100%). High flakiness means the same screenshot gets different answers run to run.",
     "- **Extras/run** — mean number of reported issues per successful run that the judge could not match to any expected issue: false positives / noise. Lower is better.",
+    "- **Reasoning tok** — mean reasoning/thinking tokens per run: the actual compute behind the **Effort** label. Effort levels are *not* comparable across vendors — each provider maps them differently — so a row tagged `(low)` can spend more here than another model at `medium`. Read this column, not the tag, when comparing how hard two models thought. Anthropic exposes no separate thinking-token count, so its models show `–` even though they do think.",
+    "- **Cache hit** — share of input tokens served from the provider's prompt cache, token-weighted. `–` means the provider reported no cache data at all; `0%` means it reported a cache that never hit. Cost/run applies no cache discount, so a high hit rate means real spend is below the figure shown.",
     "",
     "No composite score: with a small issue set, rank by the columns that matter to you",
     "(default sort: recall desc, extras asc).",
     "",
-    "| Model | Provider | Effort | Recall | Recall (any rep) | Flakiness | Extras/run | Latency med/p95 | Cost/run | Total cost | Failed |",
-    "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
+    "| Model | Provider | Effort | Recall | Recall (any rep) | Flakiness | Extras/run | Latency med/p95 | Cost/run | Total cost | Reasoning tok | Cache hit | Failed |",
+    "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ...scores.models.map(leaderboardRow),
     "",
     `- **Generated:** ${scores.generatedAt}`,

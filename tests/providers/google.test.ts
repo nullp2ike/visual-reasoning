@@ -251,6 +251,38 @@ describe("GoogleDriver", () => {
     });
   });
 
+  it("reports cachedContentTokenCount as cachedInputTokens", async () => {
+    mockGenerateContent.mockResolvedValueOnce({
+      text: "{}",
+      candidates: [{ finishReason: "STOP" }],
+      usageMetadata: {
+        promptTokenCount: 2000,
+        candidatesTokenCount: 50,
+        cachedContentTokenCount: 900,
+      },
+    });
+
+    const driver = makeDriver();
+    const result = await driver.sendMessage([makeImage()], "test");
+    expect(result.usage).toEqual({
+      inputTokens: 2000,
+      outputTokens: 50,
+      cachedInputTokens: 900,
+    });
+  });
+
+  it("omits cached input tokens when not present in usage", async () => {
+    mockGenerateContent.mockResolvedValueOnce({
+      text: "{}",
+      candidates: [{ finishReason: "STOP" }],
+      usageMetadata: { promptTokenCount: 100, candidatesTokenCount: 50 },
+    });
+
+    const driver = makeDriver();
+    const result = await driver.sendMessage([makeImage()], "test");
+    expect(result.usage).not.toHaveProperty("cachedInputTokens");
+  });
+
   it("omits reasoning tokens when not present in usage", async () => {
     mockGenerateContent.mockResolvedValueOnce({
       text: "{}",
