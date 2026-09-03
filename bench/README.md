@@ -10,6 +10,10 @@ Nothing here is specific to any one dataset. See
 [`datasets/README.md`](datasets/README.md) for the dataset format; a synthetic
 `example` dataset ships with the repo so the pipeline runs on a fresh clone.
 
+For **video** input — asking a model to list the bugs it sees in a screen
+recording — see [`video/README.md`](video/README.md), a separate harness that
+sends the clip natively to Gemini or through the library's frame sampler.
+
 ## Quick start
 
 ```bash
@@ -33,11 +37,17 @@ Set `BENCH_DATASET` in `.env` to avoid passing `--dataset` every time.
 
 All four accept `--dataset <id-or-path>`.
 
+`--models` selects models outright rather than filtering the roster, so a
+one-off model can be swept without editing `bench.config.ts`.
+
 `bench:run` also takes `--models`, `--images`, `--prompt <variant>`,
 `--effort`, `--fidelity`, `--concurrency`, `--force`, and `--yes` (skip the cost
 confirmation). It prints an estimated cost and asks before spending anything.
 Runs are resumable: completed cells are skipped, and failed cells are retried on
 the next invocation.
+
+`bench:score` also takes `--models` (same explicit-selection semantics as
+`bench:run`), so records for a model kept out of the roster can still be scored.
 
 `bench:score` and `bench:report` take `--judge <model>`; judge verdicts are
 cached, so re-scoring is nearly free.

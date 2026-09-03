@@ -117,8 +117,22 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
     inputPricePerToken: 0.5 / PER_MILLION,
     outputPricePerToken: 3 / PER_MILLION,
   },
-  // OpenRouter passes through upstream per-model pricing (verified 2026-07-22
+  // OpenRouter passes through upstream per-model pricing (verified 2026-09-03
   // against https://openrouter.ai/api/v1/models).
+  // Meta's own listed rates ($1.25 / $4.25, cached input $0.15) match
+  // OpenRouter's pass-through exactly. Cached input is not modelled here:
+  // `calculateCost` applies no cache discount on any provider.
+  [`${Provider.OPENROUTER}:${Model.OpenRouter.MUSE_SPARK_1_3}`]: {
+    inputPricePerToken: 1.25 / PER_MILLION,
+    outputPricePerToken: 4.25 / PER_MILLION,
+  },
+  // Data-sharing tier: same model, ~12x cheaper, because Meta trains on what
+  // is submitted. Cached input is $0.002/MTok, not modelled (no provider gets
+  // a cache discount here).
+  [`${Provider.OPENROUTER}:${Model.OpenRouter.MUSE_SPARK_1_3_CONTRIBUTOR}`]: {
+    inputPricePerToken: 0.1 / PER_MILLION,
+    outputPricePerToken: 0.2 / PER_MILLION,
+  },
   [`${Provider.OPENROUTER}:${Model.OpenRouter.GROK_4_6}`]: {
     inputPricePerToken: 2 / PER_MILLION,
     outputPricePerToken: 6 / PER_MILLION,

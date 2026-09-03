@@ -185,6 +185,7 @@ async function main(): Promise<void> {
       judge: { type: "string" },
       prompt: { type: "string" },
       dataset: { type: "string" },
+      models: { type: "string" },
     },
   });
   const dataset = selectDataset(values.dataset);
@@ -201,14 +202,22 @@ async function main(): Promise<void> {
   const manifest: Manifest = await ensureManifest();
   // Only the configured roster and active (non-retired) images are scored;
   // other records stay on disk but are excluded from scores and reports.
+  // `--models` overrides the roster for this run, mirroring `bench:run`, so a
+  // model deliberately kept out of `bench.config.ts` can still be scored.
+  const scorableModels = values.models
+    ?.split(",")
+    .map((m) => m.trim())
+    .filter(Boolean);
   const allRecords = await loadRunRecords(variant);
   const { records, skippedModels, skippedImages } = filterScorableRecords(
     allRecords,
     manifest,
-    benchConfig.models,
+    scorableModels ?? benchConfig.models,
   );
   for (const model of skippedModels) {
-    console.log(`Skipping records for "${model}" (not in benchConfig.models)`);
+    console.log(
+      `Skipping records for "${model}" (not in ${scorableModels ? "--models" : "benchConfig.models"})`,
+    );
   }
   for (const imageId of skippedImages) {
     console.log(`Skipping records for retired image ${imageId}`);

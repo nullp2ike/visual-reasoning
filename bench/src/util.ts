@@ -1,5 +1,5 @@
-import { createHash } from "node:crypto";
-import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
+import { createHash, randomUUID } from "node:crypto";
+import { mkdir, readFile, rename, rm, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { MODEL_TO_PROVIDER } from "../../src/constants.js";
 import type { ProviderName } from "../../src/types.js";
@@ -117,12 +117,26 @@ export function inferProvider(model: string): ProviderName {
   throw new Error(`Cannot infer provider for model "${model}"`);
 }
 
-/** Write JSON atomically (tmp file + rename) so interrupted sweeps never leave partial records. */
+/**
+ * Write JSON atomically (tmp file + rename) so interrupted sweeps never leave
+ * partial records.
+ *
+ * The temp name carries a random suffix because concurrent writers can target
+ * the same destination: judge verdicts are cached by content hash, so two
+ * in-flight runs that produce an identical (expected, reported) pair race on
+ * one cache path. With a fixed `.tmp` suffix the first rename wins and the
+ * second fails with ENOENT, killing the whole scoring pass.
+ */
 export async function atomicWriteJson(filePath: string, value: unknown): Promise<void> {
   await mkdir(dirname(filePath), { recursive: true });
-  const tmpPath = `${filePath}.tmp`;
-  await writeFile(tmpPath, JSON.stringify(value, null, 2) + "\n", "utf8");
-  await rename(tmpPath, filePath);
+  const tmpPath = `${filePath}.${randomUUID()}.tmp`;
+  try {
+    await writeFile(tmpPath, JSON.stringify(value, null, 2) + "\n", "utf8");
+    await rename(tmpPath, filePath);
+  } catch (error) {
+    await rm(tmpPath, { force: true });
+    throw error;
+  }
 }
 
 export async function readJsonIfExists(filePath: string): Promise<unknown> {

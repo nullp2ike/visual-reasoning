@@ -122,6 +122,18 @@ describe("calculateCost", () => {
     expect(cost).toBeCloseTo(0.002, 10);
   });
 
+  it("calculates cost for openrouter meta/muse-spark-1.3", () => {
+    const cost = calculateCost("openrouter", "meta/muse-spark-1.3", 1000, 500);
+    // 1000 * (1.25/1M) + 500 * (4.25/1M) = 0.00125 + 0.002125 = 0.003375
+    expect(cost).toBeCloseTo(0.003375, 10);
+  });
+
+  it("calculates cost for openrouter meta/muse-spark-1.3-contributor", () => {
+    const cost = calculateCost("openrouter", "meta/muse-spark-1.3-contributor", 1000, 500);
+    // 1000 * (0.1/1M) + 500 * (0.2/1M) = 0.0001 + 0.0001 = 0.0002
+    expect(cost).toBeCloseTo(0.0002, 10);
+  });
+
   it("calculates cost for openrouter x-ai/grok-4.6", () => {
     const cost = calculateCost("openrouter", "x-ai/grok-4.6", 1000, 500);
     // 1000 * (2/1M) + 500 * (6/1M) = 0.002 + 0.003 = 0.005

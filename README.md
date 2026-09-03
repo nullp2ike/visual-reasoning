@@ -579,6 +579,7 @@ Any [OpenRouter](https://openrouter.ai/models) model slug (always `vendor/model`
 
 | Model          | Model ID                    | Input $/MTok | Output $/MTok | Notes                                 |
 | -------------- | --------------------------- | ------------ | ------------- | ------------------------------------- |
+| Muse Spark 1.3 | `meta/muse-spark-1.3`       | $1.25        | $4.25         | Meta flagship, 1M context; gated¹     |
 | Grok 4.6       | `x-ai/grok-4.6`             | $2           | $6            | Newest xAI flagship, 500K context     |
 | Grok 4.5       | `x-ai/grok-4.5`             | $2           | $6            | Prior xAI flagship, 500K context      |
 | Kimi K3        | `moonshotai/kimi-k3`        | $3           | $15           | Moonshot flagship, 1M context         |
@@ -586,6 +587,8 @@ Any [OpenRouter](https://openrouter.ai/models) model slug (always `vendor/model`
 | Qwen3.8 Max    | `qwen/qwen3.8-max`          | $2           | $6            | First Max tier with image input       |
 | Qwen3.7 Plus   | `qwen/qwen3.7-plus`         | $0.32        | $1.28         | Cost-effective, GUI/screen-reading    |
 | Qwen3.6 Flash  | `qwen/qwen3.6-flash`        | $0.19        | $1.13         | **Default** — cheap flash vision tier |
+
+¹ Muse Spark 1.3 is age-gated by OpenRouter: calls return HTTP 403 (`VisualAIAuthError`) until the account completes the 18+ confirmation at [openrouter.ai/settings/preferences](https://openrouter.ai/settings/preferences). It also reasons by default — expect several hundred reasoning tokens per call even with no `reasoningEffort` set. Meta also publishes a `meta/muse-spark-1.3-contributor` variant at $0.10 / $0.20 per MTok; it is much cheaper because Meta uses the submitted data for product improvement, so it is deliberately not listed here — opt in explicitly if that trade is acceptable for your screenshots.
 
 `qwen/qwen3.7-max` and the DeepSeek V4 family (`deepseek/deepseek-v4-pro`, `deepseek/deepseek-v4-flash`, and dated variants such as `deepseek/deepseek-v4-pro-0813`) are not listed because they accept no image input on OpenRouter.
 

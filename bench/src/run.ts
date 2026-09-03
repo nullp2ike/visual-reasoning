@@ -245,12 +245,20 @@ async function main(): Promise<void> {
   console.log(`Reasoning effort: ${effort}`);
   console.log(`Image fidelity: ${fidelity}`);
 
-  const modelFilter = values.models?.split(",").map((m) => m.trim());
+  const modelFilter = values.models
+    ?.split(",")
+    .map((m) => m.trim())
+    .filter(Boolean);
   const imageFilter = values.images?.split(",").map((i) => i.trim());
-  const models = benchConfig.models.filter((m) => !modelFilter || modelFilter.includes(m));
+  // `--models` selects models outright rather than filtering the roster: the
+  // roster is the default set, not an allowlist. This lets a one-off model run
+  // without adding it to bench.config.ts — which matters when a model should
+  // NOT be in every future sweep (e.g. a vendor's data-sharing endpoint).
+  // Unknown bare names still fail fast in inferProvider().
+  const models = modelFilter ?? benchConfig.models;
   const entries = manifest.entries.filter((e) => !imageFilter || imageFilter.includes(e.imageId));
   if (models.length === 0 || entries.length === 0) {
-    throw new Error("Filters matched no models or no images");
+    throw new Error("No models selected, or the image filter matched nothing");
   }
 
   const allCells: RunCell[] = models.flatMap((model) =>

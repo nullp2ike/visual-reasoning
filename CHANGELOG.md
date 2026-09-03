@@ -4,6 +4,38 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.20.0] - 2026-09-03
+
+### Added
+
+- **Muse Spark 1.3 (`meta/muse-spark-1.3`)** as a supported OpenRouter model — Meta's agentic flagship with native multimodal perception over images, video, documents, and audio; 1M-token context and ~944k max output ([model page](https://developer.meta.com/ai/models/muse-spark/)). Pricing: **$1.25 / $4.25 per MTok** input/output, matching Meta's own listed rates. Added to the `bench/` model roster.
+- **Muse Spark 1.3 Contributor (`meta/muse-spark-1.3-contributor`)** as a supported OpenRouter model — the same model as above at **$0.10 / $0.20 per MTok**, ~12x cheaper, because Meta uses everything submitted through it for product improvement. It is deliberately **not** in the `bench/` roster: sending an image here hands it to Meta for training, irreversibly, so it must never be a default. OpenRouter refuses it with HTTP 404 (`paid-model-training-violation-by-account`) until the account allows training endpoints at [openrouter.ai/settings/privacy](https://openrouter.ai/settings/privacy).
+- **Video bug-hunting harness (`bench/video/`).** A separate harness that sends a screen recording to a model and asks it to list every software bug it can see, with timestamps. Two delivery modes: `native` hands the video bytes to Gemini, which samples and tokenises them server-side (`videoMetadata.fps`, `mediaResolution`) and also hears the audio track; `frames` runs the library's own ffmpeg sampler through `ask()`, so the capability under test can be measured against what library users get today. Clips over 19 MB upload through the Gemini Files API automatically. Output is a Zod-validated bug report (severity, category, start/end timestamp, screen, observed, expected, evidence, confidence) plus a Markdown report and one JSON record per call. `pnpm video:example` builds a synthetic clip with four known defects from the committed screenshot dataset so the pipeline runs on a fresh clone. See [`bench/video/README.md`](./bench/video/README.md). Nothing under `src/` changed: this is tooling, not library surface.
+- Meta's cached-input rate for this model is $0.15 per MTok. As with every other provider, `calculateCost` applies no cache discount — `cachedInputTokens` stays informational.
+
+### Notes for upgraders
+
+- **Muse Spark 1.3 is age-gated by OpenRouter.** Until the account completes the 18+ confirmation at [openrouter.ai/settings/preferences](https://openrouter.ai/settings/preferences), every call returns HTTP 403 and the library surfaces a `VisualAIAuthError` reading `This model requires you to complete the following before use: 18+ age confirmation`. It is deliberately absent from the smoke suite for that reason: an unconfirmed account would fail the run for everyone else.
+- **It reasons by default.** With no `reasoningEffort` set, the driver sends no reasoning field, but the model still spent 370–814 reasoning tokens per call — roughly half to four-fifths of its output budget. Explicit efforts scale as expected (~205 / ~501 / ~710 reasoning tokens at low / medium / high). Budget `maxTokens` accordingly; the 4096 default is ample for single checks.
+- Meta also publishes `meta/muse-spark-1.3-contributor` at $0.10 / $0.20 per MTok. It is 12x cheaper because Meta uses the submitted data for product improvement, so it is deliberately absent from the pricing table and model list — add it yourself only if sending your screenshots to Meta for training is acceptable.
+- The OpenRouter default model is unchanged (`qwen/qwen3.6-flash`); pass `model: "meta/muse-spark-1.3"` (or `Model.OpenRouter.MUSE_SPARK_1_3`) to opt in.
+
+### Fixed
+
+- **`atomicWriteJson` (`bench/`) raced with itself and could abort a whole scoring pass.** It wrote to a fixed `<dest>.tmp` before renaming, so two concurrent writers targeting the same destination collided: the first rename succeeded and the second failed with `ENOENT`. This is reachable in normal use because judge verdicts are cached by content hash — two in-flight runs producing an identical (expected, reported) pair hash to one cache path. Observed killing a 2430-run scoring pass after 3 collisions. The temp name now carries a random suffix, and a failed write cleans up after itself.
+
+### Changed
+
+- **`bench:run --models` and `bench:score --models` now select models outright instead of filtering the configured roster.** Previously both intersected the flag with `benchConfig.models`, so naming a model absent from the roster produced "Filters matched no models" on the runner and a silent "Skipping records" on the scorer. The roster is the default set, not an allowlist. This makes it possible to sweep and score a one-off model without editing `bench.config.ts` — which matters when a model should _not_ be in every future sweep, such as a vendor's data-sharing endpoint. Unknown bare names still fail fast in `inferProvider()`.
+
+### Removed
+
+- **The `excluded-golden` prompt variant (`bench/`).** Superseded by `excluded-golden-v2` and dropped along with its on-disk runs, scores, and results markdown. Its wording named four exclusion categories and cut mean extras/run 1.89 -> 0.28, but also dropped mean recall 66.8% -> 58.1%: naming categories made models globally more conservative rather than merely quieter, and its narrow "cut off mid-word inside its own container" guard became a loophole models used to keep reporting the carousel clip anyway. That reasoning is preserved in the `bench.config.ts` header comment so the lesson outlives the variant.
+
+### Verified
+
+- Exercised live against OpenRouter on 2026-09-03 with the smoke fixture screenshot: `check()` (positive and negative assertions), `ask()`, and `compare()` all returned schema-valid structured output, so the model satisfies the library's JSON contract. Image input, `reasoningEffort`, and usage tracking all work. **Our estimated cost matched OpenRouter's own `usage.cost` to the last digit on all six calls** ($0.004498, $0.005858, $0.006742, $0.005448, $0.006984, $0.007159), confirming the $1.25 / $4.25 table entry is exact and that OpenRouter applies no token markup. Latency ran 4.3–9.1 s per call.
+
 ## [0.19.0] - 2026-08-14
 
 ### Added

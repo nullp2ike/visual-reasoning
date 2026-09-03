@@ -60,6 +60,8 @@ describe("Model", () => {
   });
 
   it("has correct OpenRouter model values", () => {
+    expect(Model.OpenRouter.MUSE_SPARK_1_3).toBe("meta/muse-spark-1.3");
+    expect(Model.OpenRouter.MUSE_SPARK_1_3_CONTRIBUTOR).toBe("meta/muse-spark-1.3-contributor");
     expect(Model.OpenRouter.GROK_4_6).toBe("x-ai/grok-4.6");
     expect(Model.OpenRouter.GROK_4_5).toBe("x-ai/grok-4.5");
     expect(Model.OpenRouter.KIMI_K3).toBe("moonshotai/kimi-k3");
