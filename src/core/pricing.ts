@@ -126,10 +126,14 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
     inputPricePerToken: 1.25 / PER_MILLION,
     outputPricePerToken: 4.25 / PER_MILLION,
   },
-  // Data-sharing tier: same model, ~12x cheaper, because Meta trains on what
-  // is submitted. Cached input is $0.002/MTok, not modelled (no provider gets
-  // a cache discount here).
-  [`${Provider.OPENROUTER}:${Model.OpenRouter.MUSE_SPARK_1_3_CONTRIBUTOR}`]: {
+  // Muse Spark 1.3's data-sharing tier: same model, ~12x cheaper, because
+  // Meta trains on everything submitted through it. Deliberately keyed by the
+  // literal slug rather than a `Model.OpenRouter` entry — it must never be
+  // reachable via autocomplete or default selection. Pass the string yourself
+  // (`model: "meta/muse-spark-1.3-contributor"`) to opt in; cost is still
+  // tracked correctly once you do. Cached input is $0.002/MTok, not modelled
+  // (no provider gets a cache discount here).
+  [`${Provider.OPENROUTER}:meta/muse-spark-1.3-contributor`]: {
     inputPricePerToken: 0.1 / PER_MILLION,
     outputPricePerToken: 0.2 / PER_MILLION,
   },

@@ -61,7 +61,6 @@ describe("Model", () => {
 
   it("has correct OpenRouter model values", () => {
     expect(Model.OpenRouter.MUSE_SPARK_1_3).toBe("meta/muse-spark-1.3");
-    expect(Model.OpenRouter.MUSE_SPARK_1_3_CONTRIBUTOR).toBe("meta/muse-spark-1.3-contributor");
     expect(Model.OpenRouter.GROK_4_6).toBe("x-ai/grok-4.6");
     expect(Model.OpenRouter.GROK_4_5).toBe("x-ai/grok-4.5");
     expect(Model.OpenRouter.KIMI_K3).toBe("moonshotai/kimi-k3");
@@ -74,6 +73,15 @@ describe("Model", () => {
     for (const model of Object.values(Model.OpenRouter)) {
       expect(model).toMatch(/^[^/]+\/[^/]+$/);
     }
+  });
+
+  it("does not export Meta's data-sharing tier as a named constant", () => {
+    // meta/muse-spark-1.3-contributor stays fully usable — pass the literal
+    // slug and it still resolves to the openrouter provider and prices
+    // correctly (see pricing.test.ts) — but it must never be reachable via
+    // `Model.OpenRouter.*` autocomplete or any default selection, since using
+    // it hands the caller's images to Meta for training.
+    expect(Object.values(Model.OpenRouter)).not.toContain("meta/muse-spark-1.3-contributor");
   });
 
   it("has no duplicate model values across providers", () => {

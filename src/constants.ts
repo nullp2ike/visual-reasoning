@@ -95,13 +95,6 @@ export const Model = {
    */
   OpenRouter: {
     MUSE_SPARK_1_3: "meta/muse-spark-1.3",
-    /**
-     * Meta's data-sharing tier for Muse Spark 1.3: same model, ~12x cheaper,
-     * because Meta uses everything submitted through it for product
-     * improvement. Never make this a default — sending an image here hands it
-     * to Meta for training, irreversibly.
-     */
-    MUSE_SPARK_1_3_CONTRIBUTOR: "meta/muse-spark-1.3-contributor",
     GROK_4_6: "x-ai/grok-4.6",
     GROK_4_5: "x-ai/grok-4.5",
     KIMI_K3: "moonshotai/kimi-k3",
