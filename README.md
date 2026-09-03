@@ -503,7 +503,7 @@ type SupportedMimeType = "image/jpeg" | "image/png" | "image/webp" | "image/gif"
 | Provider   | Default Model            |
 | ---------- | ------------------------ |
 | Anthropic  | `claude-sonnet-4-6`      |
-| OpenAI     | `gpt-5.4-mini`           |
+| OpenAI     | `gpt-5.6-luna`           |
 | Google     | `gemini-3-flash-preview` |
 | OpenRouter | `qwen/qwen3.6-flash`     |
 
@@ -545,18 +545,18 @@ All listed models support image/vision input. Pass any model ID to the `model` c
 
 ### OpenAI
 
-| Model         | Model ID        | Input $/MTok | Output $/MTok | Notes                             |
-| ------------- | --------------- | ------------ | ------------- | --------------------------------- |
-| GPT-5.6 Sol   | `gpt-5.6-sol`   | $5           | $30           | Newest flagship, frontier tier    |
-| GPT-5.6 Terra | `gpt-5.6-terra` | $2           | $12           | Newest balanced, everyday tier    |
-| GPT-5.6 Luna  | `gpt-5.6-luna`  | $0.20        | $1.20         | Newest, fastest/cheapest tier     |
-| GPT-5.5       | `gpt-5.5`       | $5           | $30           | Previous flagship, 1M context     |
-| GPT-5.4 Pro   | `gpt-5.4-pro`   | $30          | $180          | Most capable, extended context    |
-| GPT-5.4       | `gpt-5.4`       | $2.50        | $15           | Best vision quality               |
-| GPT-5.2       | `gpt-5.2`       | $1.75        | $14           | Balanced quality and cost         |
-| GPT-5.4 mini  | `gpt-5.4-mini`  | $0.75        | $4.50         | **Default** — fast and affordable |
-| GPT-5.4 nano  | `gpt-5.4-nano`  | $0.20        | $1.25         | Cheapest older-generation option  |
-| GPT-5 mini    | `gpt-5-mini`    | $0.25        | $2            | Fast and cheap                    |
+| Model         | Model ID        | Input $/MTok | Output $/MTok | Notes                                  |
+| ------------- | --------------- | ------------ | ------------- | -------------------------------------- |
+| GPT-5.6 Sol   | `gpt-5.6-sol`   | $5           | $30           | Newest flagship, frontier tier         |
+| GPT-5.6 Terra | `gpt-5.6-terra` | $2           | $12           | Newest balanced, everyday tier         |
+| GPT-5.6 Luna  | `gpt-5.6-luna`  | $0.20        | $1.20         | **Default** — newest, fastest/cheapest |
+| GPT-5.5       | `gpt-5.5`       | $5           | $30           | Previous flagship, 1M context          |
+| GPT-5.4 Pro   | `gpt-5.4-pro`   | $30          | $180          | Most capable, extended context         |
+| GPT-5.4       | `gpt-5.4`       | $2.50        | $15           | Best vision quality                    |
+| GPT-5.2       | `gpt-5.2`       | $1.75        | $14           | Balanced quality and cost              |
+| GPT-5.4 mini  | `gpt-5.4-mini`  | $0.75        | $4.50         | Prior default — fast and affordable    |
+| GPT-5.4 nano  | `gpt-5.4-nano`  | $0.20        | $1.25         | Cheapest older-generation option       |
+| GPT-5 mini    | `gpt-5-mini`    | $0.25        | $2            | Fast and cheap                         |
 
 ### Google
 

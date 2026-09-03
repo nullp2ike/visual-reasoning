@@ -119,7 +119,7 @@ export type KnownModelName =
 /** Default model selection used when a caller omits `config.model`. */
 export const DEFAULT_MODELS = {
   [Provider.ANTHROPIC]: Model.Anthropic.SONNET_4_6,
-  [Provider.OPENAI]: Model.OpenAI.GPT_5_4_MINI,
+  [Provider.OPENAI]: Model.OpenAI.GPT_5_6_LUNA,
   [Provider.GOOGLE]: Model.Google.GEMINI_3_FLASH_PREVIEW,
   [Provider.OPENROUTER]: Model.OpenRouter.QWEN_3_6_FLASH,
 } as const satisfies Record<ProviderName, KnownModelName>;

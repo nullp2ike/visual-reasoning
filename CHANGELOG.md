@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.21.0] - 2026-09-03
+
+### Changed
+
+- **The OpenAI default model is now `gpt-5.6-luna`, replacing `gpt-5.4-mini`.** Luna is both cheaper ($0.20 / $1.20 per MTok vs. $0.75 / $4.50) and newer. This affects any caller who does not pass `model` explicitly and relies on `OPENAI_API_KEY` alone for provider detection — `visualAI()` with no config, or `visualAI({ apiKey: "..." })`, now sends requests to `gpt-5.6-luna` instead of `gpt-5.4-mini`. Callers who pin a model explicitly (`model: "gpt-5.4-mini"` or `Model.OpenAI.GPT_5_4_MINI`) are unaffected.
+
+### Notes for upgraders
+
+- If you were relying on the implicit OpenAI default, pin `model: "gpt-5.4-mini"` (or `Model.OpenAI.GPT_5_4_MINI`) explicitly to keep the old behavior.
+
 ## [0.20.0] - 2026-09-03
 
 ### Added
