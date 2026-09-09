@@ -32,13 +32,18 @@ export interface Dataset {
   readonly resultsDir: string;
 }
 
-/** Dataset ids present on disk, in display order. */
-export function listDatasetIds(): string[] {
+/**
+ * Dataset ids present on disk, in display order. `requiredFile` is the
+ * ground-truth file a directory must contain to count as a dataset: the
+ * screenshot bench looks for `issues_per_file.md`, the visibility bench for
+ * `visibility_per_file.md`, and a directory may hold both.
+ */
+export function listDatasetIds(requiredFile: string = ISSUES_FILE): string[] {
   if (!existsSync(DATASETS_DIR)) return [];
   return readdirSync(DATASETS_DIR)
     .filter((name) => {
       const path = join(DATASETS_DIR, name);
-      return statSync(path).isDirectory() && existsSync(join(path, ISSUES_FILE));
+      return statSync(path).isDirectory() && existsSync(join(path, requiredFile));
     })
     .sort();
 }
@@ -56,11 +61,20 @@ export function datasetFrom(idOrPath: string): Dataset {
   return { id, dir, resultsDir: join(RESULTS_ROOT, id) };
 }
 
-function assertUsable(dataset: Dataset): Dataset {
-  if (!existsSync(join(dataset.dir, ISSUES_FILE))) {
-    const available = listDatasetIds();
+/**
+ * Verify a dataset directory carries the ground-truth file the caller needs,
+ * and fail with the list of directories that do. Parameterised so a second
+ * harness (see bench/visibility/) can require its own ground-truth file without
+ * duplicating this resolution logic.
+ */
+export function assertDatasetHasFile(
+  dataset: Dataset,
+  requiredFile: string = ISSUES_FILE,
+): Dataset {
+  if (!existsSync(join(dataset.dir, requiredFile))) {
+    const available = listDatasetIds(requiredFile);
     throw new Error(
-      `Dataset "${dataset.id}" not found: expected ${join(dataset.dir, ISSUES_FILE)}.\n` +
+      `Dataset "${dataset.id}" not found: expected ${join(dataset.dir, requiredFile)}.\n` +
         (available.length > 0
           ? `Available datasets: ${available.join(", ")}.`
           : `No datasets found under ${DATASETS_DIR}.`) +
@@ -88,13 +102,13 @@ let active: Dataset | undefined;
  * `activeDataset()`.
  */
 export function selectDataset(explicit?: string): Dataset {
-  active = assertUsable(datasetFrom(resolveDatasetRef(explicit)));
+  active = assertDatasetHasFile(datasetFrom(resolveDatasetRef(explicit)));
   return active;
 }
 
 /** The dataset selected for this process, resolving from env/config on first use. */
 export function activeDataset(): Dataset {
-  active ??= assertUsable(datasetFrom(resolveDatasetRef()));
+  active ??= assertDatasetHasFile(datasetFrom(resolveDatasetRef()));
   return active;
 }
 

@@ -7,6 +7,7 @@ import {
   DATASET_ENV_VAR,
   RESULTS_ROOT,
   activeDataset,
+  assertDatasetHasFile,
   datasetFrom,
   listDatasetIds,
   resetActiveDataset,
@@ -79,6 +80,27 @@ describe("resolveDatasetRef", () => {
 describe("listDatasetIds", () => {
   it("includes the committed example dataset", () => {
     expect(listDatasetIds()).toContain("example");
+  });
+
+  it("lists only datasets carrying the requested ground-truth file", () => {
+    const visibility = listDatasetIds("visibility_per_file.md");
+    expect(visibility).toContain("visibility-example");
+    expect(visibility).not.toContain("example");
+  });
+});
+
+describe("assertDatasetHasFile", () => {
+  it("requires issues_per_file.md by default", () => {
+    const root = mkdtempSync(join(tmpdir(), "bench-dataset-"));
+    writeFileSync(join(root, "visibility_per_file.md"), "## a.png\n", "utf8");
+    expect(() => assertDatasetHasFile(datasetFrom(root))).toThrow(/issues_per_file\.md/);
+  });
+
+  it("accepts a directory carrying the requested file instead", () => {
+    const root = mkdtempSync(join(tmpdir(), "bench-dataset-"));
+    writeFileSync(join(root, "visibility_per_file.md"), "## a.png\n", "utf8");
+    const dataset = datasetFrom(root);
+    expect(assertDatasetHasFile(dataset, "visibility_per_file.md")).toBe(dataset);
   });
 });
 

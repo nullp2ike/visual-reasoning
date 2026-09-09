@@ -33,6 +33,19 @@ export default tseslint.config(
   {
     // bench/datasets/ holds data, not source: images, ground-truth markdown, and
     // the standalone generator script for the example set.
-    ignores: ["dist/", "coverage/", ".history/", "bench/datasets/", "*.config.*", "*.mjs"],
+    //
+    // .claude/ holds local agent state, including transient git worktrees. Those
+    // are checkouts of this same repo, so linting them both duplicates the work
+    // and fails outright: their paths are not in any tsconfig `project`, which
+    // the type-aware parser treats as an error.
+    ignores: [
+      "dist/",
+      "coverage/",
+      ".history/",
+      ".claude/",
+      "bench/datasets/",
+      "*.config.*",
+      "*.mjs",
+    ],
   },
 );

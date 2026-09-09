@@ -104,6 +104,7 @@ const ai = visualAI({
   debug: true, // optional, logs prompts/responses to stderr
   maxTokens: 4096, // optional, default 4096
   reasoningEffort: "high", // optional, "low" | "medium" | "high" | "xhigh"
+  timeout: 120_000, // optional, ms — defaults to the provider SDK's own timeout
   trackUsage: false, // optional, defaults to false — usage stats to stderr
 });
 
@@ -254,6 +255,12 @@ await ai.elementsVisible(screenshot, ["Submit button", "Nav bar", "Footer"]);
 
 // Check that UI elements are hidden
 await ai.elementsHidden(screenshot, ["Loading spinner", "Error modal"]);
+
+// Clipping is judged the way a tester would. An element cut off at the trailing
+// edge of a scrollable row or feed passes, because scrolling reaches it. One
+// sliced by the screen edge or by fixed chrome such as the status bar or a
+// sticky nav fails, because scrolling cannot. An element you cannot see at all
+// fails: only what the screenshot shows is judged.
 
 // Accessibility checks (contrast, readability, interactive visibility, color blindness, color-alone meaning)
 await ai.accessibility(screenshot);
@@ -463,16 +470,17 @@ The `VisualAIKnownError` union and `isVisualAIKnownError()` helper are useful wh
 
 ## Configuration
 
-| Option            | Type    | Default          | Description                                                                   |
-| ----------------- | ------- | ---------------- | ----------------------------------------------------------------------------- |
-| `apiKey`          | string  | env var          | API key for the provider                                                      |
-| `model`           | string  | provider default | Model to use                                                                  |
-| `debug`           | boolean | `false`          | Enable error diagnostic logging to stderr                                     |
-| `debugPrompt`     | boolean | `false`          | Log prompts to stderr                                                         |
-| `debugResponse`   | boolean | `false`          | Log responses to stderr                                                       |
-| `maxTokens`       | number  | `4096`           | Max tokens for AI response                                                    |
-| `reasoningEffort` | string  | `undefined`      | `"low"` `"medium"` `"high"` `"xhigh"` — controls how deeply the model reasons |
-| `trackUsage`      | boolean | `false`          | Log token usage and estimated cost to stderr                                  |
+| Option            | Type    | Default          | Description                                                                                                                                                                 |
+| ----------------- | ------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `apiKey`          | string  | env var          | API key for the provider                                                                                                                                                    |
+| `model`           | string  | provider default | Model to use                                                                                                                                                                |
+| `debug`           | boolean | `false`          | Enable error diagnostic logging to stderr                                                                                                                                   |
+| `debugPrompt`     | boolean | `false`          | Log prompts to stderr                                                                                                                                                       |
+| `debugResponse`   | boolean | `false`          | Log responses to stderr                                                                                                                                                     |
+| `maxTokens`       | number  | `4096`           | Max tokens for AI response                                                                                                                                                  |
+| `reasoningEffort` | string  | `undefined`      | `"low"` `"medium"` `"high"` `"xhigh"` — controls how deeply the model reasons                                                                                               |
+| `timeout`         | number  | SDK default      | Per-request timeout in ms. Unset leaves each SDK's own default (OpenAI/OpenRouter 10 min, Google 1 min). SDKs retry timeouts, so total wall time can be a multiple of this. |
+| `trackUsage`      | boolean | `false`          | Log token usage and estimated cost to stderr                                                                                                                                |
 
 ## Exported Types
 
@@ -547,6 +555,7 @@ All listed models support image/vision input. Pass any model ID to the `model` c
 
 | Model         | Model ID        | Input $/MTok | Output $/MTok | Notes                                  |
 | ------------- | --------------- | ------------ | ------------- | -------------------------------------- |
+| GPT-6 Astra   | `gpt-6-astra`   | $10          | $50           | Most capable; restricted access¹       |
 | GPT-5.6 Sol   | `gpt-5.6-sol`   | $5           | $30           | Newest flagship, frontier tier         |
 | GPT-5.6 Terra | `gpt-5.6-terra` | $2           | $12           | Newest balanced, everyday tier         |
 | GPT-5.6 Luna  | `gpt-5.6-luna`  | $0.20        | $1.20         | **Default** — newest, fastest/cheapest |
@@ -557,6 +566,10 @@ All listed models support image/vision input. Pass any model ID to the `model` c
 | GPT-5.4 mini  | `gpt-5.4-mini`  | $0.75        | $4.50         | Prior default — fast and affordable    |
 | GPT-5.4 nano  | `gpt-5.4-nano`  | $0.20        | $1.25         | Cheapest older-generation option       |
 | GPT-5 mini    | `gpt-5-mini`    | $0.25        | $2            | Fast and cheap                         |
+
+¹ GPT-6 Astra is rolling out through OpenAI's Trusted Access Program, so many API keys cannot reach it yet — expect a `VisualAIProviderError` naming the model until your account is enabled.
+
+Astra reasons heavily enough to spend the entire 4096-token default output budget before emitting an answer, so **it is given a 32768-token budget automatically**, at every reasoning effort rather than only at `high`/`xhigh` like other OpenAI models. That follows OpenAI's guidance to reserve at least 25,000 tokens for reasoning and output. Its output length is erratic — identical calls have used anywhere from 0 to 16384+ reasoning tokens — so a large budget reduces truncation without eliminating it; a call that exhausts the budget still bills for the tokens it burned. Passing `maxTokens` explicitly still wins. It also accepts a fifth reasoning level, `max`, above `xhigh`; this library's `reasoningEffort` stops at `xhigh`, which is passed through unchanged, so `max` is not currently reachable.
 
 ### Google
 

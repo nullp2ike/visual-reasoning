@@ -4,9 +4,9 @@ A **dataset** is a directory of screenshots plus a description of what is wrong
 with each one. The benchmark asks every model under test the same question about
 every screenshot, then a judge checks the answers against these descriptions.
 
-Everything in this directory is gitignored except `example/`. Screenshots of a
-real product, and the model output that quotes them, stay on the machine that
-produced them.
+Everything in this directory is gitignored except `example/` and
+`visibility-example/`. Screenshots of a real product, and the model output that
+quotes them, stay on the machine that produced them.
 
 ## Layout
 
@@ -81,6 +81,39 @@ images regenerates it automatically (ids stay stable, removed images are
 retired), but editing an existing image's bytes or its expected issues
 invalidates prior runs and requires `--force`.
 
+## Visibility datasets
+
+The [element visibility benchmark](../visibility/README.md) uses its own ground
+truth file, `visibility_per_file.md`, listing for each image the elements that
+are on screen and plausible elements that are not:
+
+```markdown
+## orbit_home.png
+
+### visible
+
+- The "Orbit" app title in the header
+- The "Orbit" chewing gum logo in the header | FALSE
+
+### absent
+
+- A settings gear icon in the header
+```
+
+The section chooses the prompt: `### visible` elements are asked with
+`elementsVisible()` ("X is fully visible"), `### absent` ones with
+`elementsHidden()` ("X is NOT visible"), so a rep makes one call per section.
+Elements are sorted within each call, so their order never hints at the expected
+answers. A bullet may end with `| TRUE` or `| FALSE` (default `TRUE`) saying
+whether its section's claim really holds — that is how a near-miss statement
+about an element that does exist is written, and how you keep a call's expected
+answers from being uniform. A directory may carry both ground-truth
+files; the two harnesses keep their results apart (`visibility/` nests under the
+dataset's results directory). Visibility datasets are selected with `--dataset`
+or `visibility.config.ts` only — `BENCH_DATASET` is not consulted, since it
+usually names a screenshot dataset. See
+[`bench/visibility/README.md`](../visibility/README.md) for the full grammar.
+
 ## The example dataset
 
 `example/` holds five synthetic 480×800 screenshots of a fictional app, four
@@ -89,4 +122,12 @@ bench:run` works on a fresh clone. Regenerate with:
 
 ```bash
 node bench/datasets/example/generate.mjs bench/datasets/example
+```
+
+`visibility-example/` plays the same role for the visibility benchmark: one
+synthetic 480×800 screenshot with five elements that are on it and five
+plausible ones that are not. Regenerate with:
+
+```bash
+node bench/datasets/visibility-example/generate.mjs bench/datasets/visibility-example
 ```

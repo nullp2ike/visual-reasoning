@@ -14,6 +14,12 @@ For **video** input — asking a model to list the bugs it sees in a screen
 recording — see [`video/README.md`](video/README.md), a separate harness that
 sends the clip natively to Gemini or through the library's frame sampler.
 
+For **element visibility** — asking whether specific elements are on screen,
+where the answer is a boolean per element and grading needs no judge — see
+[`visibility/README.md`](visibility/README.md). It measures the failure mode a
+visibility assertion exists to catch: a model claiming to see something that is
+not there.
+
 ## Quick start
 
 ```bash
