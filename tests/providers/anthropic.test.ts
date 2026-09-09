@@ -10,9 +10,13 @@ import type { NormalizedImage } from "../../src/types.js";
 
 const mockCreate = vi.fn();
 
+let capturedAnthropicOptions: Record<string, unknown> | undefined;
+
 vi.mock("@anthropic-ai/sdk", () => ({
   default: class MockAnthropic {
-    constructor(_opts: Record<string, unknown>) {}
+    constructor(opts: Record<string, unknown>) {
+      capturedAnthropicOptions = opts;
+    }
     messages = { create: mockCreate };
   },
 }));
@@ -506,5 +510,21 @@ describe("AnthropicDriver", () => {
     });
     const result = await driver.sendMessage([makeImage()], "test");
     expect(result.text).toBe('{"pass": true}');
+  });
+
+  it("forwards timeout to the Anthropic client", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: '{"pass":true}' }],
+      usage: { input_tokens: 10, output_tokens: 5 },
+      stop_reason: "end_turn",
+    });
+    const driver = new AnthropicDriver({
+      apiKey: "k",
+      model: "claude-sonnet-4-6",
+      maxTokens: 100,
+      timeout: 45_000,
+    });
+    await driver.sendMessage([makeImage()], "p");
+    expect(capturedAnthropicOptions?.timeout).toBe(45_000);
   });
 });

@@ -128,6 +128,7 @@ export class GoogleDriver implements ProviderDriver {
   private apiKeyOrEnv: string | undefined;
   private reasoningEffort: ProviderConfig["reasoningEffort"];
   private imageDetail: ProviderConfig["imageDetail"];
+  private timeout: ProviderConfig["timeout"];
 
   constructor(config: ProviderConfig) {
     this.model = config.model;
@@ -136,6 +137,7 @@ export class GoogleDriver implements ProviderDriver {
     this.apiKeyOrEnv = config.apiKey;
     this.reasoningEffort = config.reasoningEffort;
     this.imageDetail = config.imageDetail;
+    this.timeout = config.timeout;
   }
 
   private toGeminiParts(images: NormalizedImage[]) {
@@ -164,7 +166,13 @@ export class GoogleDriver implements ProviderDriver {
       );
     }
 
-    this.client = new (GoogleGenAI as new (opts: { apiKey: string }) => GoogleClient)({ apiKey });
+    this.client = new (GoogleGenAI as new (opts: {
+      apiKey: string;
+      httpOptions?: { timeout: number };
+    }) => GoogleClient)({
+      apiKey,
+      ...(this.timeout !== undefined && { httpOptions: { timeout: this.timeout } }),
+    });
     return this.client;
   }
 

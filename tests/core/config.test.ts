@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   DEFAULT_MAX_TOKENS,
   DEFAULT_MODELS,
+  OPENAI_HEAVY_REASONING_MAX_TOKENS,
   OPENAI_REASONING_MAX_TOKENS,
 } from "../../src/constants.js";
 import { resetDebugDeprecationWarning, resolveConfig } from "../../src/core/config.js";
@@ -150,6 +151,27 @@ describe("resolveConfig", () => {
     expect(() => resolveConfig({})).toThrow(VisualAIConfigError);
   });
 
+  describe("timeout", () => {
+    it("is undefined by default so each SDK keeps its own default", () => {
+      const resolved = resolveConfig({ model: "gpt-5-mini", apiKey: "k" });
+      expect(resolved.timeout).toBeUndefined();
+    });
+
+    it("passes an explicit timeout through unchanged", () => {
+      const resolved = resolveConfig({ model: "gpt-5-mini", apiKey: "k", timeout: 60_000 });
+      expect(resolved.timeout).toBe(60_000);
+    });
+
+    it("rejects a non-positive timeout", () => {
+      expect(() => resolveConfig({ model: "gpt-5-mini", apiKey: "k", timeout: 0 })).toThrow(
+        VisualAIConfigError,
+      );
+      expect(() => resolveConfig({ model: "gpt-5-mini", apiKey: "k", timeout: -1 })).toThrow(
+        VisualAIConfigError,
+      );
+    });
+  });
+
   describe("OpenAI auto-increase maxTokens for high reasoning", () => {
     it("increases maxTokens for OpenAI + high effort when user did not set maxTokens", () => {
       const resolved = resolveConfig({
@@ -213,6 +235,38 @@ describe("resolveConfig", () => {
         reasoningEffort: "high",
       });
       expect(resolved.maxTokens).toBe(OPENAI_REASONING_MAX_TOKENS);
+    });
+
+    it("increases maxTokens for gpt-6-astra at every effort level, not just high", () => {
+      // Astra spends the 4096 default entirely on reasoning and returns
+      // status "incomplete" before emitting an answer — verified live against
+      // the API, where plain check()/ask() calls truncated at the default.
+      for (const reasoningEffort of ["low", "medium"] as const) {
+        const resolved = resolveConfig({ model: "gpt-6-astra", apiKey: "k", reasoningEffort });
+        expect(resolved.maxTokens).toBe(OPENAI_HEAVY_REASONING_MAX_TOKENS);
+      }
+    });
+
+    it("increases maxTokens for gpt-6-astra when no reasoning effort is set at all", () => {
+      const resolved = resolveConfig({ model: "gpt-6-astra", apiKey: "k" });
+      expect(resolved.maxTokens).toBe(OPENAI_HEAVY_REASONING_MAX_TOKENS);
+    });
+
+    it("preserves user-specified maxTokens for gpt-6-astra", () => {
+      const resolved = resolveConfig({ model: "gpt-6-astra", apiKey: "k", maxTokens: 2048 });
+      expect(resolved.maxTokens).toBe(2048);
+    });
+
+    it("does not increase maxTokens for other OpenAI models at default effort", () => {
+      const resolved = resolveConfig({ model: "gpt-5.6-luna", apiKey: "k" });
+      expect(resolved.maxTokens).toBe(DEFAULT_MAX_TOKENS);
+    });
+
+    it("gives heavy reasoners more than the effort-based increase", () => {
+      // OpenAI's reasoning guide recommends reserving at least 25,000 tokens;
+      // the effort-based 16384 sits below that and Astra truncated at it.
+      expect(OPENAI_HEAVY_REASONING_MAX_TOKENS).toBeGreaterThan(25_000);
+      expect(OPENAI_HEAVY_REASONING_MAX_TOKENS).toBeGreaterThan(OPENAI_REASONING_MAX_TOKENS);
     });
 
     it("emits debug log when auto-increase triggers", () => {

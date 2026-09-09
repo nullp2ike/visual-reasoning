@@ -10,9 +10,13 @@ import type { NormalizedImage } from "../../src/types.js";
 
 const mockGenerateContent = vi.fn();
 
+let capturedGoogleOptions: Record<string, unknown> | undefined;
+
 vi.mock("@google/genai", () => ({
   GoogleGenAI: class MockGoogleGenAI {
-    constructor(_opts: Record<string, unknown>) {}
+    constructor(opts: Record<string, unknown>) {
+      capturedGoogleOptions = opts;
+    }
     models = { generateContent: mockGenerateContent };
   },
 }));
@@ -516,5 +520,36 @@ describe("GoogleDriver", () => {
       expect(result.imageData).toEqual(Buffer.from("fake-png"));
       expect(result.mimeType).toBe("image/png");
     });
+  });
+
+  it("forwards timeout to the Google client via httpOptions", async () => {
+    mockGenerateContent.mockResolvedValueOnce({
+      text: '{"pass":true}',
+      candidates: [{ finishReason: "STOP" }],
+      usageMetadata: { promptTokenCount: 10, candidatesTokenCount: 5 },
+    });
+    const driver = new GoogleDriver({
+      apiKey: "k",
+      model: "gemini-3-flash-preview",
+      maxTokens: 100,
+      timeout: 45_000,
+    });
+    await driver.sendMessage([makeImage()], "p");
+    expect(capturedGoogleOptions?.httpOptions).toEqual({ timeout: 45_000 });
+  });
+
+  it("omits httpOptions when no timeout is configured", async () => {
+    mockGenerateContent.mockResolvedValueOnce({
+      text: '{"pass":true}',
+      candidates: [{ finishReason: "STOP" }],
+      usageMetadata: { promptTokenCount: 10, candidatesTokenCount: 5 },
+    });
+    const driver = new GoogleDriver({
+      apiKey: "k",
+      model: "gemini-3-flash-preview",
+      maxTokens: 100,
+    });
+    await driver.sendMessage([makeImage()], "p");
+    expect(capturedGoogleOptions).not.toHaveProperty("httpOptions");
   });
 });

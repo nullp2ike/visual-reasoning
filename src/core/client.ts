@@ -337,6 +337,7 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
     maxTokens: resolvedConfig.maxTokens,
     reasoningEffort: resolvedConfig.reasoningEffort,
     imageDetail: resolvedConfig.imageDetail,
+    timeout: resolvedConfig.timeout,
   };
   const driver = createDriver(resolvedConfig.provider, driverConfig);
   // Longest-edge pixel cap applied to every image/frame before it reaches a driver.

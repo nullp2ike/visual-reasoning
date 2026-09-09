@@ -13,6 +13,8 @@ export interface ProviderConfig {
    * image normalization, so it is not part of this config.
    */
   imageDetail?: ImageDetailLevel;
+  /** Per-request timeout in ms, forwarded to the provider SDK. Undefined keeps the SDK default. */
+  timeout?: number;
 }
 
 export interface RawProviderResponse {

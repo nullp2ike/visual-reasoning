@@ -64,6 +64,7 @@ export class OpenRouterDriver implements ProviderDriver {
   private apiKeyOrEnv: string | undefined;
   private reasoningEffort: ProviderConfig["reasoningEffort"];
   private imageDetail: ProviderConfig["imageDetail"];
+  private timeout: ProviderConfig["timeout"];
 
   constructor(config: ProviderConfig) {
     this.model = config.model;
@@ -72,6 +73,7 @@ export class OpenRouterDriver implements ProviderDriver {
     this.apiKeyOrEnv = config.apiKey;
     this.reasoningEffort = config.reasoningEffort;
     this.imageDetail = config.imageDetail;
+    this.timeout = config.timeout;
   }
 
   private async getClient(): Promise<OpenRouterClient> {
@@ -97,7 +99,12 @@ export class OpenRouterDriver implements ProviderDriver {
     this.client = new (OpenAI as new (opts: {
       apiKey: string;
       baseURL: string;
-    }) => OpenRouterClient)({ apiKey, baseURL: OPENROUTER_BASE_URL });
+      timeout?: number;
+    }) => OpenRouterClient)({
+      apiKey,
+      baseURL: OPENROUTER_BASE_URL,
+      ...(this.timeout !== undefined && { timeout: this.timeout }),
+    });
     return this.client;
   }
 

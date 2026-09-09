@@ -67,6 +67,7 @@ export const Model = {
     HAIKU_4_5: "claude-haiku-4-5",
   },
   OpenAI: {
+    GPT_6_ASTRA: "gpt-6-astra",
     GPT_5_6_SOL: "gpt-5.6-sol",
     GPT_5_6_TERRA: "gpt-5.6-terra",
     GPT_5_6_LUNA: "gpt-5.6-luna",
@@ -132,6 +133,31 @@ export const DEFAULT_MAX_TOKENS = 4096;
  * is insufficient for higher reasoning levels.
  */
 export const OPENAI_REASONING_MAX_TOKENS = 16384;
+
+/**
+ * Budget for models that reason heavily enough to truncate at
+ * `OPENAI_REASONING_MAX_TOKENS`. OpenAI's reasoning guide recommends reserving
+ * "at least 25,000 tokens for reasoning and outputs" when starting out; 16384
+ * sits below that, and `gpt-6-astra` was observed exhausting it at
+ * `reasoningEffort: "low"`. This leaves headroom above the recommendation
+ * while still capping cost — an uncapped request would be bounded only by the
+ * model's own max output (128k for Astra, ~$6.40 at $50/MTok).
+ */
+export const OPENAI_HEAVY_REASONING_MAX_TOKENS = 32768;
+
+/**
+ * Models that exhaust `DEFAULT_MAX_TOKENS` on reasoning at *every* effort
+ * level, not just high/xhigh, and so return status "incomplete" with no
+ * visible answer. They get `OPENAI_HEAVY_REASONING_MAX_TOKENS` by default
+ * regardless of `reasoningEffort`; an explicit `maxTokens` still wins.
+ *
+ * `gpt-6-astra` was added after live testing: plain `check()` and `ask()`
+ * calls truncated at the 4096 default, and `reasoningEffort: "low"` went on to
+ * exhaust 16384 as well.
+ */
+export const MODELS_REQUIRING_LARGE_OUTPUT_BUDGET: ReadonlySet<string> = new Set<string>([
+  Model.OpenAI.GPT_6_ASTRA,
+]);
 
 // --- Reverse map: model → provider ---
 

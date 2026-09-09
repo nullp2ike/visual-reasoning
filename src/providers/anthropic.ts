@@ -64,6 +64,7 @@ export class AnthropicDriver implements ProviderDriver {
   private maxTokens: number;
   private apiKeyOrEnv: string | undefined;
   private reasoningEffort: ProviderConfig["reasoningEffort"];
+  private timeout: ProviderConfig["timeout"];
 
   constructor(config: ProviderConfig) {
     this.model = config.model;
@@ -71,6 +72,7 @@ export class AnthropicDriver implements ProviderDriver {
     this.client = null;
     this.apiKeyOrEnv = config.apiKey;
     this.reasoningEffort = config.reasoningEffort;
+    this.timeout = config.timeout;
   }
 
   private async getClient(): Promise<AnthropicClient> {
@@ -93,7 +95,13 @@ export class AnthropicDriver implements ProviderDriver {
       );
     }
 
-    this.client = new (Anthropic as new (opts: { apiKey: string }) => AnthropicClient)({ apiKey });
+    this.client = new (Anthropic as new (opts: {
+      apiKey: string;
+      timeout?: number;
+    }) => AnthropicClient)({
+      apiKey,
+      ...(this.timeout !== undefined && { timeout: this.timeout }),
+    });
     return this.client;
   }
 

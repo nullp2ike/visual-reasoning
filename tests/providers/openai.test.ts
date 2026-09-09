@@ -10,9 +10,13 @@ import type { NormalizedImage } from "../../src/types.js";
 
 const mockCreate = vi.fn();
 
+let capturedOpenAIOptions: Record<string, unknown> | undefined;
+
 vi.mock("openai", () => ({
   default: class MockOpenAI {
-    constructor(_opts: Record<string, unknown>) {}
+    constructor(opts: Record<string, unknown>) {
+      capturedOpenAIOptions = opts;
+    }
     responses = { create: mockCreate };
   },
 }));
@@ -378,5 +382,24 @@ describe("OpenAIDriver", () => {
     expect(callArgs).toHaveProperty("text", {
       format: { type: "json_object" },
     });
+  });
+
+  it("forwards timeout to the OpenAI client", async () => {
+    mockCreate.mockResolvedValueOnce(makeResponse('{"pass":true}'));
+    const driver = new OpenAIDriver({
+      apiKey: "k",
+      model: "gpt-5-mini",
+      maxTokens: 100,
+      timeout: 45_000,
+    });
+    await driver.sendMessage([makeImage()], "p");
+    expect(capturedOpenAIOptions?.timeout).toBe(45_000);
+  });
+
+  it("omits timeout when not configured, leaving the SDK default", async () => {
+    mockCreate.mockResolvedValueOnce(makeResponse('{"pass":true}'));
+    const driver = new OpenAIDriver({ apiKey: "k", model: "gpt-5-mini", maxTokens: 100 });
+    await driver.sendMessage([makeImage()], "p");
+    expect(capturedOpenAIOptions).not.toHaveProperty("timeout");
   });
 });

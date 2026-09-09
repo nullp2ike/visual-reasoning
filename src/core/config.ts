@@ -5,6 +5,8 @@ import {
   DEFAULT_MODELS,
   type ImageDetailLevel,
   MODEL_TO_PROVIDER,
+  MODELS_REQUIRING_LARGE_OUTPUT_BUDGET,
+  OPENAI_HEAVY_REASONING_MAX_TOKENS,
   OPENAI_REASONING_MAX_TOKENS,
 } from "../constants.js";
 import { VisualAIConfigError } from "../errors.js";
@@ -18,6 +20,8 @@ export interface ResolvedConfig {
   reasoningEffort: VisualAIConfig["reasoningEffort"];
   maxImageDimension: number;
   imageDetail: ImageDetailLevel;
+  /** Per-request timeout in ms; undefined leaves the provider SDK default in place. */
+  timeout: number | undefined;
   debug: boolean;
   debugPrompt: boolean;
   debugResponse: boolean;
@@ -104,19 +108,36 @@ export function resolveConfig(config: VisualAIConfig): ResolvedConfig {
     );
   }
 
+  if (config.timeout !== undefined && (!Number.isFinite(config.timeout) || config.timeout <= 0)) {
+    throw new VisualAIConfigError(
+      `Invalid timeout: ${config.timeout}. Must be a positive number of milliseconds.`,
+    );
+  }
+
   const userSetMaxTokens = config.maxTokens !== undefined;
   let maxTokens = config.maxTokens ?? DEFAULT_MAX_TOKENS;
 
-  // OpenAI and OpenRouter reasoning tokens share the output budget, so auto-increase for high/xhigh
+  // OpenAI and OpenRouter reasoning tokens share the output budget, so the
+  // 4096 default can be consumed entirely by reasoning. Auto-increase either
+  // when the effort is high/xhigh, or when the model reasons heavily enough to
+  // truncate at every effort level (see MODELS_REQUIRING_LARGE_OUTPUT_BUDGET).
+  const effortNeedsLargeBudget =
+    config.reasoningEffort === "high" || config.reasoningEffort === "xhigh";
+  const modelNeedsLargeBudget = MODELS_REQUIRING_LARGE_OUTPUT_BUDGET.has(model);
   if (
     !userSetMaxTokens &&
     (provider === "openai" || provider === "openrouter") &&
-    (config.reasoningEffort === "high" || config.reasoningEffort === "xhigh")
+    (effortNeedsLargeBudget || modelNeedsLargeBudget)
   ) {
-    maxTokens = OPENAI_REASONING_MAX_TOKENS;
+    maxTokens = modelNeedsLargeBudget
+      ? OPENAI_HEAVY_REASONING_MAX_TOKENS
+      : OPENAI_REASONING_MAX_TOKENS;
     if (debug) {
+      const reason = modelNeedsLargeBudget
+        ? `model "${model}", which exhausts smaller budgets on reasoning at any effort`
+        : `provider "${provider}" with reasoningEffort "${config.reasoningEffort}"`;
       process.stderr.write(
-        `[visual-ai-assertions] Auto-increased maxTokens from ${DEFAULT_MAX_TOKENS} to ${OPENAI_REASONING_MAX_TOKENS} for provider "${provider}" with reasoningEffort "${config.reasoningEffort}".\n`,
+        `[visual-ai-assertions] Auto-increased maxTokens from ${DEFAULT_MAX_TOKENS} to ${maxTokens} for ${reason}.\n`,
       );
     }
   }
@@ -129,6 +150,7 @@ export function resolveConfig(config: VisualAIConfig): ResolvedConfig {
     reasoningEffort: config.reasoningEffort,
     maxImageDimension: config.maxImageDimension ?? DEFAULT_MAX_IMAGE_DIMENSION,
     imageDetail: config.imageDetail ?? DEFAULT_IMAGE_DETAIL,
+    timeout: config.timeout,
     debug,
     debugPrompt,
     debugResponse,

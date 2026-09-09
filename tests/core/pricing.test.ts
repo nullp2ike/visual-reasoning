@@ -56,6 +56,12 @@ describe("calculateCost", () => {
     expect(cost).toBeCloseTo(0.008, 10);
   });
 
+  it("calculates cost for openai gpt-6-astra", () => {
+    const cost = calculateCost("openai", "gpt-6-astra", 1000, 500);
+    // 1000 * (10/1M) + 500 * (50/1M) = 0.01 + 0.025 = 0.035
+    expect(cost).toBeCloseTo(0.035, 10);
+  });
+
   it("calculates cost for openai gpt-5.6-luna", () => {
     const cost = calculateCost("openai", "gpt-5.6-luna", 1000, 500);
     // 1000 * (0.2/1M) + 500 * (1.2/1M) = 0.0002 + 0.0006 = 0.0008

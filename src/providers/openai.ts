@@ -36,6 +36,7 @@ export class OpenAIDriver implements ProviderDriver {
   private apiKeyOrEnv: string | undefined;
   private reasoningEffort: ProviderConfig["reasoningEffort"];
   private imageDetail: ProviderConfig["imageDetail"];
+  private timeout: ProviderConfig["timeout"];
 
   constructor(config: ProviderConfig) {
     this.model = config.model;
@@ -44,6 +45,7 @@ export class OpenAIDriver implements ProviderDriver {
     this.apiKeyOrEnv = config.apiKey;
     this.reasoningEffort = config.reasoningEffort;
     this.imageDetail = config.imageDetail;
+    this.timeout = config.timeout;
   }
 
   private async getClient(): Promise<OpenAIClient> {
@@ -64,7 +66,10 @@ export class OpenAIDriver implements ProviderDriver {
       );
     }
 
-    this.client = new (OpenAI as new (opts: { apiKey: string }) => OpenAIClient)({ apiKey });
+    this.client = new (OpenAI as new (opts: { apiKey: string; timeout?: number }) => OpenAIClient)({
+      apiKey,
+      ...(this.timeout !== undefined && { timeout: this.timeout }),
+    });
     return this.client;
   }
 

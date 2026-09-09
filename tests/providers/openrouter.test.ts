@@ -321,4 +321,20 @@ describe("OpenRouterDriver", () => {
       else delete process.env.OPENROUTER_API_KEY;
     }
   });
+
+  it("forwards timeout to the OpenRouter client", async () => {
+    mockCreate.mockResolvedValueOnce({
+      choices: [{ message: { content: '{"pass":true}' }, finish_reason: "stop" }],
+      usage: { prompt_tokens: 10, completion_tokens: 5 },
+    });
+    const driver = new OpenRouterDriver({
+      apiKey: "k",
+      model: "x-ai/grok-4.5",
+      maxTokens: 100,
+      timeout: 45_000,
+    });
+    await driver.sendMessage([makeImage()], "p");
+    const opts = mockConstructor.mock.calls[0]![0] as Record<string, unknown>;
+    expect(opts.timeout).toBe(45_000);
+  });
 });

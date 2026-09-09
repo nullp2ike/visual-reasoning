@@ -273,6 +273,17 @@ export interface VisualAIConfig {
    * Anthropic (Claude auto-downscales images).
    */
   imageDetail?: ImageDetailLevel;
+  /**
+   * Per-request timeout in milliseconds, forwarded to the provider SDK.
+   * Omitted by default, so each SDK's own default applies (OpenAI and
+   * OpenRouter 10 minutes, Google 1 minute, Anthropic per its own rules).
+   *
+   * Worth setting for heavy reasoning models: they can spend many minutes on a
+   * single call, and the SDK default lets a request hang far longer than most
+   * test suites should tolerate. Note that provider SDKs retry timed-out
+   * requests, so total wall time can exceed this value by a multiple.
+   */
+  timeout?: number;
   trackUsage?: boolean;
 }
 

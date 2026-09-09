@@ -36,6 +36,7 @@ describe("Model", () => {
   });
 
   it("has correct OpenAI model values", () => {
+    expect(Model.OpenAI.GPT_6_ASTRA).toBe("gpt-6-astra");
     expect(Model.OpenAI.GPT_5_6_SOL).toBe("gpt-5.6-sol");
     expect(Model.OpenAI.GPT_5_6_TERRA).toBe("gpt-5.6-terra");
     expect(Model.OpenAI.GPT_5_6_LUNA).toBe("gpt-5.6-luna");

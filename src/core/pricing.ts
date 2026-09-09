@@ -41,6 +41,12 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
     inputPricePerToken: 1 / PER_MILLION,
     outputPricePerToken: 5 / PER_MILLION,
   },
+  // Cached input is $1/MTok and cache writes $12.50/MTok; neither is modelled
+  // here, since `calculateCost` applies no cache discount on any provider.
+  [`${Provider.OPENAI}:${Model.OpenAI.GPT_6_ASTRA}`]: {
+    inputPricePerToken: 10 / PER_MILLION,
+    outputPricePerToken: 50 / PER_MILLION,
+  },
   [`${Provider.OPENAI}:${Model.OpenAI.GPT_5_6_SOL}`]: {
     inputPricePerToken: 5 / PER_MILLION,
     outputPricePerToken: 30 / PER_MILLION,
