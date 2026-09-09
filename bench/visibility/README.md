@@ -28,7 +28,8 @@ pnpm visibility:run --dataset visibility-example --models claude-haiku-4-5
 pnpm visibility:report --dataset visibility-example
 ```
 
-Then read `bench/results/visibility-example/visibility/RESULTS.md`.
+Then read `bench/results/visibility-example/visibility/RESULTS.md`, or open
+`report.html` beside it.
 
 ## Ground truth
 
@@ -105,10 +106,10 @@ Every run record stores the image hash and a hash of the prompt actually sent.
 
 ## Commands
 
-| Command                  | What it does                                                           |
-| ------------------------ | ---------------------------------------------------------------------- |
-| `pnpm visibility:run`    | Executes the sweep, one record per (model, image, rep).                |
-| `pnpm visibility:report` | Grades every current record and writes `scores.json` and `RESULTS.md`. |
+| Command                  | What it does                                                                          |
+| ------------------------ | ------------------------------------------------------------------------------------- |
+| `pnpm visibility:run`    | Executes the sweep, one record per (model, image, rep).                               |
+| `pnpm visibility:report` | Grades every current record and writes `scores.json`, `RESULTS.md` and `report.html`. |
 
 `visibility:run` takes `--dataset`, `--models`, `--images`, `--reps`,
 `--effort`, `--fidelity`, `--concurrency`, `--force`, and `--yes` (skip the cost
@@ -144,6 +145,37 @@ failed. Failed and invalid reps shrink the denominator rather than counting as
 wrong, so a provider outage never looks like a model getting worse. Cost, tokens
 and latency are summed across a rep's calls, so those columns stay per-rep.
 
+## The consistency grid
+
+`report.html` is self-contained: scores are inlined, screenshots are linked
+relative to the page, and nothing is fetched from the network. Alongside the
+leaderboard and the image-by-model matrix it carries a **consistency grid** —
+one row per (image, element), one column per model, each cell counting the reps
+that answered correctly.
+
+That count is the reason to run several reps. A cell reading `5/5` or `0/5` is a
+settled answer, right or wrong. A cell reading `3/5` is the model disagreeing
+with itself on identical input, which no average and no single-rep run will show
+you. Those cells are shaded amber, and the filters narrow the grid to rows with
+any wrong answer, rows that are inconsistent, or rows asked with the
+`elementsHidden` prompt. Clicking any cell shows every rep's answer and the
+model's own reasoning next to the screenshot.
+
+Use it to audit ground truth as well as models: a row where every model is
+confidently wrong in every rep is usually a mislabelled or badly worded bullet
+rather than a shared blind spot.
+
+## The per-statement pivot
+
+Both reports also carry a **per-statement pivot**: one row per bullet wording,
+one column per model, each cell counting the _files_ in which that wording drew
+at least one wrong answer. Where the grid asks "how did this element do on this
+image?", the pivot asks "how does this wording do everywhere it appears?" — the
+question behind a ground-truth audit. A bullet failing across many files is
+almost always the wording rather than the models; one failing on a single file
+is the model, or that file's label. Rows are sorted worst first, and in the
+HTML clicking a cell lists the failing files with their rep counts.
+
 ## Output
 
 Everything lands in `bench/results/<dataset-id>/visibility/` (gitignored), beside
@@ -153,6 +185,7 @@ the screenshot bench's artifacts for the same dataset rather than mixed into the
 runs/<model>/<filename>/rep_N.json   one record per repetition
 scores.json                          graded cells + leaderboard metrics
 RESULTS.md                           matrix, per-element breakdown, leaderboard
+report.html                          the same, interactive, plus the pivot and consistency grid
 ```
 
 ## Files

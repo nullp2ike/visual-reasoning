@@ -1,6 +1,6 @@
 import "dotenv/config";
 import { writeFile } from "node:fs/promises";
-import { join } from "node:path";
+import { join, relative, sep } from "node:path";
 import { parseArgs } from "node:util";
 import { atomicWriteJson } from "../../src/util.js";
 import {
@@ -9,6 +9,8 @@ import {
   visibilityResultsDir,
 } from "./ground-truth.js";
 import { buildVisibilityScores } from "./grade.js";
+import { buildVisibilityReportHtml } from "./html.js";
+import { buildStatementPivot } from "./pivot.js";
 import { loadVisibilityRecords } from "./records.js";
 import type { GradedCell, VisibilityModelMetrics, VisibilityScores } from "./types.js";
 
@@ -162,6 +164,32 @@ export function buildVisibilityResultsMarkdown(scores: VisibilityScores): string
     );
   }
 
+  lines.push("## Per-statement pivot", "");
+  const pivot = buildStatementPivot(scores);
+  if (pivot.length === 0) {
+    lines.push("_No graded runs._", "");
+  } else {
+    lines.push(
+      `| Statement | Asked | ${series.join(" | ")} |`,
+      `| --- | --- | ${series.map(() => "---").join(" | ")} |`,
+      ...pivot.map((row) => {
+        const asked = row.askedAs
+          .map((m) => (m === "visible" ? "is it visible?" : "is it hidden?"))
+          .join(", ");
+        const cols = series.map((s) => {
+          const c = row.cells[s];
+          return c === undefined || c.files === 0 ? "–" : `${c.failingFiles}/${c.files}`;
+        });
+        return `| ${cell(row.statement)} | ${asked} | ${cols.join(" | ")} |`;
+      }),
+      "",
+      "Cell: files in which at least one rep answered this statement wrongly / files the statement",
+      "was graded in. Worst wording first. A statement failing across many files is almost always",
+      "the wording; one failing on a single file is the model, or that file's label.",
+      "",
+    );
+  }
+
   lines.push(
     "## Leaderboard",
     "",
@@ -196,6 +224,20 @@ export function resultsMdPath(resultsDir: string): string {
   return join(resultsDir, "RESULTS.md");
 }
 
+export function reportHtmlPath(resultsDir: string): string {
+  return join(resultsDir, "report.html");
+}
+
+/**
+ * Path from the report's own directory to the dataset's screenshots, so the
+ * page can link them instead of inlining them. Datasets may live outside the
+ * repo, in which case this is still a valid relative traversal.
+ */
+export function imageBaseForReport(resultsDir: string, datasetDir: string): string {
+  const rel = relative(resultsDir, datasetDir);
+  return rel === "" ? "." : rel.split(sep).join("/");
+}
+
 async function main(): Promise<void> {
   const { values } = parseArgs({
     options: { dataset: { type: "string" }, models: { type: "string" } },
@@ -228,8 +270,14 @@ async function main(): Promise<void> {
   const resultsDir = visibilityResultsDir(dataset);
   await atomicWriteJson(scoresPath(resultsDir), scores);
   await writeFile(resultsMdPath(resultsDir), buildVisibilityResultsMarkdown(scores), "utf8");
+  await writeFile(
+    reportHtmlPath(resultsDir),
+    buildVisibilityReportHtml(scores, imageBaseForReport(resultsDir, dataset.dir)),
+    "utf8",
+  );
   console.log(`Wrote ${scoresPath(resultsDir)}`);
   console.log(`Wrote ${resultsMdPath(resultsDir)}`);
+  console.log(`Wrote ${reportHtmlPath(resultsDir)}`);
   if (scores.staleRecords > 0) {
     console.log(
       `${scores.staleRecords} stale record(s) ignored — re-run "pnpm visibility:run" to refresh them.`,

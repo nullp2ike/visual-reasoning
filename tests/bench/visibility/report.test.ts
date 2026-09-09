@@ -105,6 +105,23 @@ describe("buildVisibilityResultsMarkdown", () => {
     expect(md.indexOf("## Per-element breakdown")).toBeLessThan(md.indexOf("## Leaderboard"));
   });
 
+  it("renders the per-statement pivot between the breakdown and the leaderboard", () => {
+    // Chewing gum logo is answered "visible" here, which is wrong in its one file.
+    const md = buildVisibilityResultsMarkdown(
+      scoresFrom([makeRecord([true, true], PERFECT_HIDDEN)]),
+    );
+    expect(md.indexOf("## Per-element breakdown")).toBeLessThan(
+      md.indexOf("## Per-statement pivot"),
+    );
+    expect(md.indexOf("## Per-statement pivot")).toBeLessThan(md.indexOf("## Leaderboard"));
+    expect(md).toMatch(/\| Chewing gum logo \| is it visible\? \| 1\/1 \|/);
+    expect(md).toMatch(/\| Title \| is it visible\? \| 0\/1 \|/);
+    // Worst wording first.
+    expect(md.indexOf("| Chewing gum logo | is it visible?")).toBeLessThan(
+      md.indexOf("| Title | is it visible?"),
+    );
+  });
+
   it("shows which prompt asked about each element alongside the expected answer", () => {
     const md = buildVisibilityResultsMarkdown(
       scoresFrom([makeRecord(PERFECT_VISIBLE, PERFECT_HIDDEN)]),
