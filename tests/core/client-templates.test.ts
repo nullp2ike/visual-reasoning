@@ -74,6 +74,80 @@ describe("visualAI template methods", () => {
     expect(result.statements).toHaveLength(2);
   });
 
+  it("elementsVisible() sends the finished-state rule by default", async () => {
+    mockAnthropicCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: makePassingResponse(1) }],
+      usage: { input_tokens: 100, output_tokens: 50 },
+    });
+
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
+    const image = await readFile(join(FIXTURES_DIR, "small.png"));
+    await ai.elementsVisible(image, ["Cover image"]);
+
+    const sent = JSON.stringify(mockAnthropicCreate.mock.calls[0]?.[0]);
+    expect(sent).toContain("finished, presented state");
+  });
+
+  it("elementsVisible() omits the finished-state rule when finalState is false", async () => {
+    mockAnthropicCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: makePassingResponse(1) }],
+      usage: { input_tokens: 100, output_tokens: 50 },
+    });
+
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
+    const image = await readFile(join(FIXTURES_DIR, "small.png"));
+    await ai.elementsVisible(image, ["Cover image"], { finalState: false });
+
+    const sent = JSON.stringify(mockAnthropicCreate.mock.calls[0]?.[0]);
+    expect(sent).not.toContain("finished, presented state");
+    // Clipping guidance is independent of load state and must survive.
+    expect(sent).toContain("layout fault");
+  });
+
+  it("elementsHidden() omits the state-overlay rule when finalState is false", async () => {
+    mockAnthropicCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: makePassingResponse(1) }],
+      usage: { input_tokens: 100, output_tokens: 50 },
+    });
+
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
+    const image = await readFile(join(FIXTURES_DIR, "small.png"));
+    await ai.elementsHidden(image, ["Cookie banner"], { finalState: false });
+
+    const sent = JSON.stringify(mockAnthropicCreate.mock.calls[0]?.[0]);
+    expect(sent).not.toContain("progress bar or error overlay");
+    expect(sent).toContain("appears nowhere in this screenshot counts as hidden");
+  });
+
+  it("elementsVisible() judges rendering quality by default", async () => {
+    mockAnthropicCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: makePassingResponse(1) }],
+      usage: { input_tokens: 100, output_tokens: 50 },
+    });
+
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
+    const image = await readFile(join(FIXTURES_DIR, "small.png"));
+    await ai.elementsVisible(image, ["Promo banner"]);
+
+    const sent = JSON.stringify(mockAnthropicCreate.mock.calls[0]?.[0]);
+    expect(sent).toContain("clearly defective in how it is rendered");
+    expect(sent).toContain("correctly rendered");
+  });
+
+  it("elementsVisible() drops to a presence check when asked", async () => {
+    mockAnthropicCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: makePassingResponse(1) }],
+      usage: { input_tokens: 100, output_tokens: 50 },
+    });
+
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
+    const image = await readFile(join(FIXTURES_DIR, "small.png"));
+    await ai.elementsVisible(image, ["Promo banner"], { requireCorrectRendering: false });
+
+    const sent = JSON.stringify(mockAnthropicCreate.mock.calls[0]?.[0]);
+    expect(sent).not.toContain("clearly defective in how it is rendered");
+  });
+
   it("elementsVisible() throws on empty elements array", async () => {
     const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
     const image = await readFile(join(FIXTURES_DIR, "small.png"));

@@ -329,6 +329,38 @@ export interface CompareOptions {
 /** Optional instructions for `elementsVisible()` and `elementsHidden()`. */
 export interface ElementsVisibilityOptions {
   instructions?: readonly string[];
+  /**
+   * Whether the screenshot shows the interface in its finished state. Defaults
+   * to `true`, which is what a test asserting on a settled screen wants: an
+   * element under a loading spinner, skeleton or error overlay is reported as
+   * not properly visible, because the overlay says the content is not ready.
+   *
+   * Set to `false` when the screenshot was deliberately captured mid-load, so
+   * loading chrome is expected rather than a defect. The finished-state rules
+   * are then left out of the prompt entirely, and only presence and clipping
+   * are judged. Note this omits the guidance rather than inverting it — to have
+   * the model actively disregard loading indicators, say so in `instructions`.
+   */
+  finalState?: boolean;
+  /**
+   * Whether an element that is present but clearly badly rendered should fail.
+   * Defaults to `true`: `elementsVisible()` judges presentation as well as
+   * presence, so text at contrast too low to read, elements overlapping, an
+   * element out of alignment with its siblings, or text cut off mid-word all
+   * fail, with the model told to say the element is present before naming the
+   * defect.
+   *
+   * Set to `false` for a pure presence check, where an element counts as visible
+   * if it is there at all, whatever it looks like. Worth doing when a suite
+   * asserts only that something rendered, or when defect reporting is noisy:
+   * open-ended defect hunting makes models over-report, and although the prompt
+   * counts only unambiguous defects, expect more false failures than a presence
+   * check produces.
+   *
+   * Ignored by `elementsHidden()`, where the question is absence and a rendering
+   * defect cannot change the answer.
+   */
+  requireCorrectRendering?: boolean;
 }
 
 /** Options for the built-in accessibility template. */

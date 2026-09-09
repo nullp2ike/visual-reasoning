@@ -261,6 +261,25 @@ await ai.elementsHidden(screenshot, ["Loading spinner", "Error modal"]);
 // sliced by the screen edge or by fixed chrome such as the status bar or a
 // sticky nav fails, because scrolling cannot. An element you cannot see at all
 // fails: only what the screenshot shows is judged.
+//
+// Overlays are judged by what they say about the element's state, not by how
+// much they cover. A badge, favourite icon or price pill coexists with finished
+// content and leaves the element visible. A loading spinner, skeleton, progress
+// bar or error overlay says it is not ready, so the check fails even though you
+// can still see what is underneath. A modal, dialog or cookie banner that a user
+// could not read or use past also fails.
+//
+// Pass finalState: false when the screenshot was deliberately captured mid-load,
+// so loading chrome is expected rather than a defect. The finished-state rules
+// are left out; presence, clipping and blocking overlays are still judged.
+await ai.elementsVisible(screenshot, ["Product image"], { finalState: false });
+
+// By default this judges presentation as well as presence: an element that is
+// there but clearly badly rendered fails — unreadable contrast, overlapping or
+// misaligned elements, text cut off mid-word — and the model says the element is
+// present before naming the defect. Pass requireCorrectRendering: false for a
+// pure presence check, where anything rendered counts however it looks.
+await ai.elementsVisible(screenshot, ["Promo banner"], { requireCorrectRendering: false });
 
 // Accessibility checks (contrast, readability, interactive visibility, color blindness, color-alone meaning)
 await ai.accessibility(screenshot);
