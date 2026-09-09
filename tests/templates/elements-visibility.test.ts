@@ -24,9 +24,7 @@ describe("buildElementsVisibilityPrompt", () => {
 
     it("includes visible role text", () => {
       const prompt = buildElementsVisibilityPrompt(["X"], true);
-      expect(prompt).toContain(
-        "present, properly visible, correctly rendered, and in their finished state",
-      );
+      expect(prompt).toContain("present, properly visible, and in their finished state");
     });
 
     it("passes an element reached by ordinary scrolling", () => {
@@ -90,7 +88,7 @@ describe("buildElementsVisibilityPrompt", () => {
       expect(prompt).not.toContain("Judge each element in its finished, presented state");
       expect(prompt).not.toContain("a loading spinner, a skeleton placeholder, a shimmer");
       expect(prompt).not.toContain("in their finished state");
-      expect(prompt).toContain("present, properly visible, and correctly rendered");
+      expect(prompt).toContain("present and properly visible");
     });
 
     it("keeps clipping and blocking-overlay rules when the screen is mid-load", () => {
@@ -101,29 +99,31 @@ describe("buildElementsVisibilityPrompt", () => {
       expect(prompt).toContain("modal, dialog, cookie banner, toast");
     });
 
-    it("judges presentation as well as presence by default", () => {
+    it("stays a presence check by default", () => {
       const implicit = buildElementsVisibilityPrompt(["X"], true);
       const explicit = buildElementsVisibilityPrompt(["X"], true, {
-        requireCorrectRendering: true,
-      });
-      expect(implicit).toBe(explicit);
-      expect(implicit).toContain("clearly defective in how it is rendered");
-    });
-
-    it("drops to a pure presence check when asked", () => {
-      const prompt = buildElementsVisibilityPrompt(["X"], true, {
         requireCorrectRendering: false,
       });
-      expect(prompt).not.toContain("clearly defective in how it is rendered");
-      expect(prompt).not.toContain("correctly rendered");
-      expect(prompt).toContain("present, properly visible, and in their finished state");
-      // Everything unrelated to rendering quality survives.
+      expect(implicit).toBe(explicit);
+      expect(implicit).not.toContain("clearly defective in how it is rendered");
+      expect(implicit).not.toContain("correctly rendered");
+    });
+
+    it("judges presentation as well when asked", () => {
+      const prompt = buildElementsVisibilityPrompt(["X"], true, {
+        requireCorrectRendering: true,
+      });
+      expect(prompt).toContain("clearly defective in how it is rendered");
+      expect(prompt).toContain("correctly rendered");
+      // Everything unrelated to rendering quality is unchanged.
       expect(prompt).toContain("ordinary scrolling would bring it fully into view");
       expect(prompt).toContain("modal, dialog, cookie banner, toast");
     });
 
     it("fails a present but badly rendered element", () => {
-      const prompt = buildElementsVisibilityPrompt(["X"], true);
+      const prompt = buildElementsVisibilityPrompt(["X"], true, {
+        requireCorrectRendering: true,
+      });
       expect(prompt).toContain("present but clearly defective in how it is rendered");
       expect(prompt).toContain("contrast too low to read");
       expect(prompt).toContain("overlapping or colliding");
@@ -132,12 +132,16 @@ describe("buildElementsVisibilityPrompt", () => {
     });
 
     it("tells the model to say the element is present before naming the defect", () => {
-      const prompt = buildElementsVisibilityPrompt(["X"], true);
+      const prompt = buildElementsVisibilityPrompt(["X"], true, {
+        requireCorrectRendering: true,
+      });
       expect(prompt).toMatch(/say that the element is present and then name the defect/);
     });
 
     it("draws a line at unambiguous defects, to curb over-reporting", () => {
-      const prompt = buildElementsVisibilityPrompt(["X"], true);
+      const prompt = buildElementsVisibilityPrompt(["X"], true, {
+        requireCorrectRendering: true,
+      });
       expect(prompt).toContain("Only clear, unambiguous defects count");
       expect(prompt).toContain("do not fail an element for tight spacing");
     });
@@ -156,7 +160,9 @@ describe("buildElementsVisibilityPrompt", () => {
     });
 
     it("keeps the correctness rule alongside clipping and overlay rules", () => {
-      const prompt = buildElementsVisibilityPrompt(["X"], true);
+      const prompt = buildElementsVisibilityPrompt(["X"], true, {
+        requireCorrectRendering: true,
+      });
       expect(prompt).toContain("ordinary scrolling would bring it fully into view");
       expect(prompt).toContain("modal, dialog, cookie banner, toast");
       expect(prompt).toContain("Judge each element in its finished, presented state");

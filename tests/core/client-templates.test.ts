@@ -119,7 +119,22 @@ describe("visualAI template methods", () => {
     expect(sent).toContain("appears nowhere in this screenshot counts as hidden");
   });
 
-  it("elementsVisible() judges rendering quality by default", async () => {
+  it("elementsVisible() forwards requireCorrectRendering to the provider", async () => {
+    mockAnthropicCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: makePassingResponse(1) }],
+      usage: { input_tokens: 100, output_tokens: 50 },
+    });
+
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
+    const image = await readFile(join(FIXTURES_DIR, "small.png"));
+    await ai.elementsVisible(image, ["Promo banner"], { requireCorrectRendering: true });
+
+    const sent = JSON.stringify(mockAnthropicCreate.mock.calls[0]?.[0]);
+    expect(sent).toContain("clearly defective in how it is rendered");
+    expect(sent).toContain("correctly rendered");
+  });
+
+  it("elementsVisible() stays a presence check when the option is omitted", async () => {
     mockAnthropicCreate.mockResolvedValueOnce({
       content: [{ type: "text", text: makePassingResponse(1) }],
       usage: { input_tokens: 100, output_tokens: 50 },
@@ -128,21 +143,6 @@ describe("visualAI template methods", () => {
     const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
     const image = await readFile(join(FIXTURES_DIR, "small.png"));
     await ai.elementsVisible(image, ["Promo banner"]);
-
-    const sent = JSON.stringify(mockAnthropicCreate.mock.calls[0]?.[0]);
-    expect(sent).toContain("clearly defective in how it is rendered");
-    expect(sent).toContain("correctly rendered");
-  });
-
-  it("elementsVisible() drops to a presence check when asked", async () => {
-    mockAnthropicCreate.mockResolvedValueOnce({
-      content: [{ type: "text", text: makePassingResponse(1) }],
-      usage: { input_tokens: 100, output_tokens: 50 },
-    });
-
-    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test" });
-    const image = await readFile(join(FIXTURES_DIR, "small.png"));
-    await ai.elementsVisible(image, ["Promo banner"], { requireCorrectRendering: false });
 
     const sent = JSON.stringify(mockAnthropicCreate.mock.calls[0]?.[0]);
     expect(sent).not.toContain("clearly defective in how it is rendered");

@@ -274,12 +274,14 @@ await ai.elementsHidden(screenshot, ["Loading spinner", "Error modal"]);
 // are left out; presence, clipping and blocking overlays are still judged.
 await ai.elementsVisible(screenshot, ["Product image"], { finalState: false });
 
-// By default this judges presentation as well as presence: an element that is
-// there but clearly badly rendered fails — unreadable contrast, overlapping or
-// misaligned elements, text cut off mid-word — and the model says the element is
-// present before naming the defect. Pass requireCorrectRendering: false for a
-// pure presence check, where anything rendered counts however it looks.
-await ai.elementsVisible(screenshot, ["Promo banner"], { requireCorrectRendering: false });
+// By default this is a presence check: an element counts as visible if it is
+// there at all, whatever it looks like. Pass requireCorrectRendering: true to
+// also fail an element that is present but clearly badly rendered — unreadable
+// contrast, overlapping or misaligned elements, text cut off mid-word — with
+// the model saying the element is present before naming the defect. Opt in per
+// assertion: measured on the bench, it catches exactly that case and makes
+// models flakier on plain presence questions.
+await ai.elementsVisible(screenshot, ["Promo banner"], { requireCorrectRendering: true });
 
 // Accessibility checks (contrast, readability, interactive visibility, color blindness, color-alone meaning)
 await ai.accessibility(screenshot);

@@ -10,6 +10,7 @@ import {
   parseVisibilityMarkdown,
   resolveVisibilityDataset,
   sortedElements,
+  imagePromptHash,
   visibilityPromptHash,
   visibilityResultsDir,
 } from "../../../bench/visibility/src/ground-truth.js";
@@ -316,5 +317,29 @@ describe("visibilityResultsDir", () => {
   it("nests under the dataset's results directory", () => {
     const dataset = datasetFrom("visibility-example");
     expect(visibilityResultsDir(dataset)).toBe(join(dataset.resultsDir, "visibility"));
+  });
+});
+
+describe("rendering-quality axis", () => {
+  it("hashes the rendering-judged prompt differently from the default", () => {
+    expect(visibilityPromptHash(["a"], ["b"], true)).not.toBe(visibilityPromptHash(["a"], ["b"]));
+  });
+
+  it("leaves the hash unchanged when only the hidden call exists, which ignores the option", () => {
+    expect(visibilityPromptHash([], ["b"], true)).toBe(visibilityPromptHash([], ["b"]));
+  });
+
+  it("returns the image's own hash for the default setting", () => {
+    const image = {
+      filename: "a.png",
+      sha256: "s",
+      visibleCall: ["a"],
+      hiddenCall: ["b"],
+      elements: ["a", "b"],
+      expectedVisible: ["a"],
+      promptHash: visibilityPromptHash(["a"], ["b"]),
+    };
+    expect(imagePromptHash(image, false)).toBe(image.promptHash);
+    expect(imagePromptHash(image, true)).toBe(visibilityPromptHash(["a"], ["b"], true));
   });
 });

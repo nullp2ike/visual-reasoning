@@ -3,6 +3,7 @@ import {
   buildVisibilityScores,
   computeVisibilityMetrics,
   gradeRecord,
+  renderingSeries,
   sortVisibilityLeaderboard,
 } from "../../../bench/visibility/src/grade.js";
 import {
@@ -85,6 +86,7 @@ function makeRecord(
     promptHash: "prompt-hash",
     reasoningEffort: "medium",
     imageFidelity: "auto",
+    requireCorrectRendering: false,
     maxTokens: 8192,
     timestamp: "2026-09-06T00:00:00.000Z",
     status: "ok",
@@ -409,5 +411,29 @@ describe("buildVisibilityScores", () => {
     const after = buildVisibilityScores(records, [flipped], "d");
     expect(after.staleRecords).toBe(0);
     expect(after.models[0]?.accuracy).toBeCloseTo(3 / 4);
+  });
+});
+
+describe("renderingSeries", () => {
+  it("leaves the default, presence-only setting untagged", () => {
+    expect(renderingSeries("gemini-3.8-flash", false)).toBe("gemini-3.8-flash");
+    expect(renderingSeries("gemini-3.8-flash (xhigh)", false)).toBe("gemini-3.8-flash (xhigh)");
+  });
+
+  it("tags a rendering-judged run, folding into an existing parenthetical", () => {
+    expect(renderingSeries("gemini-3.8-flash", true)).toBe("gemini-3.8-flash (correct-rendering)");
+    expect(renderingSeries("gemini-3.8-flash (xhigh, high-res)", true)).toBe(
+      "gemini-3.8-flash (xhigh, high-res, correct-rendering)",
+    );
+  });
+
+  it("separates the two settings into different series when grading", () => {
+    const off = gradeRecord(makeRecord(PERFECT_VISIBLE, PERFECT_HIDDEN), image);
+    const on = gradeRecord(
+      makeRecord(PERFECT_VISIBLE, PERFECT_HIDDEN, { requireCorrectRendering: true }),
+      image,
+    );
+    expect(off.series).toBe("model-a");
+    expect(on.series).toBe("model-a (correct-rendering)");
   });
 });

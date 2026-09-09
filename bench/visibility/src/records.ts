@@ -3,6 +3,7 @@ import { join } from "node:path";
 import type { Dataset } from "../../src/dataset.js";
 import { readJsonIfExists, runModelDir } from "../../src/util.js";
 import { visibilityResultsDir } from "./ground-truth.js";
+import { imagePromptHash } from "./ground-truth.js";
 import {
   VisibilityRunRecordSchema,
   type VisibilityImage,
@@ -31,10 +32,15 @@ export function recordPath(
   key: RecordKey,
   reasoningEffort: string,
   imageFidelity: string,
+  requireCorrectRendering = false,
 ): string {
+  // Runs that judge rendering quality get their own directory so both settings
+  // coexist on disk; the default keeps the bare directory, as primary effort
+  // does. The record's own field remains the source of truth.
+  const suffix = requireCorrectRendering ? "@correct-rendering" : "";
   return join(
     runsDir(dataset),
-    runModelDir(key.model, reasoningEffort, imageFidelity),
+    runModelDir(key.model, reasoningEffort, imageFidelity) + suffix,
     key.filename,
     `rep_${key.rep}.json`,
   );
@@ -47,7 +53,10 @@ export function recordPath(
  * records for free; rewording an element changes the prompt and invalidates them.
  */
 export function isRecordCurrent(record: VisibilityRunRecord, image: VisibilityImage): boolean {
-  return record.promptHash === image.promptHash && record.imageSha256 === image.sha256;
+  return (
+    record.promptHash === imagePromptHash(image, record.requireCorrectRendering) &&
+    record.imageSha256 === image.sha256
+  );
 }
 
 /** Load every run record on disk for a dataset, skipping any that no longer parse. */

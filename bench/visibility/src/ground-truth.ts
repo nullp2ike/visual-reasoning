@@ -185,13 +185,28 @@ export function sortedElements(entries: readonly ParsedElement[]): string[] {
 export function visibilityPromptHash(
   visibleCall: readonly string[],
   hiddenCall: readonly string[],
+  requireCorrectRendering = false,
 ): string {
   return sha256(
     [
-      visibleCall.length > 0 ? buildElementsVisibilityPrompt([...visibleCall], true) : "",
+      visibleCall.length > 0
+        ? buildElementsVisibilityPrompt([...visibleCall], true, { requireCorrectRendering })
+        : "",
+      // elementsHidden() ignores the option, so the hidden prompt never varies with it.
       hiddenCall.length > 0 ? buildElementsVisibilityPrompt([...hiddenCall], false) : "",
     ].join("\n--- hidden ---\n"),
   );
+}
+
+/**
+ * The prompt hash a record must carry to be current for `image` under a given
+ * rendering setting. `image.promptHash` is the default-setting hash, so this
+ * only rebuilds the prompt for the rendering-judged variant.
+ */
+export function imagePromptHash(image: VisibilityImage, requireCorrectRendering: boolean): string {
+  return requireCorrectRendering
+    ? visibilityPromptHash(image.visibleCall, image.hiddenCall, true)
+    : image.promptHash;
 }
 
 /**

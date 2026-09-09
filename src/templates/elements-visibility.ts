@@ -60,10 +60,12 @@ const ELEMENTS_VISIBLE_FINAL_STATE_RULE =
   "Judge each element in its finished, presented state. Things a design draws on top of an element — a badge, a favourite icon, a duration or price pill, a gradient scrim — coexist with finished content and leave it visible. An overlay that says the element is NOT ready — a loading spinner, a skeleton placeholder, a shimmer, a progress bar, an error or retry overlay — means the element is not properly visible even when you can still make out what sits underneath, so the check for that element FAILS. Name which of the two you are seeing in your reasoning.";
 
 /**
- * On by default: for a visual-assertion library, "is this element visible" is
- * asked to mean "is this element there and correctly presented", and a check
- * that passes on unreadable or overlapping content is not much of an assertion.
- * Callers who want presence alone pass `requireCorrectRendering: false`.
+ * Opt-in. Measured on the visibility bench with the rule on and off, five reps
+ * each: it caught the one bullet naming a present-but-overlapping element
+ * (5/5 on both models, against 3/5 and 0/5 without it) and nothing else, while
+ * tripling Gemini's flakiness on unrelated presence questions. A presence
+ * assertion should not pay that by default; pass `requireCorrectRendering: true`
+ * for the assertions where a rendering defect is the thing being checked.
  *
  * Open-ended defect hunting makes models over-report, which is why the closing
  * sentence draws the line at defects worth arguing about.
@@ -119,7 +121,7 @@ export function buildElementsVisibilityPrompt(
   const finalState = options?.finalState ?? true;
   // Presence-only by default. `elementsHidden` asks about absence, so a
   // rendering defect cannot change its answer and the option is ignored there.
-  const correctRendering = visible && (options?.requireCorrectRendering ?? true);
+  const correctRendering = visible && (options?.requireCorrectRendering ?? false);
   const defaultRules = visible
     ? visibleRules(finalState, correctRendering)
     : hiddenRules(finalState);

@@ -28,6 +28,7 @@ import {
 } from "../../src/util.js";
 import { visibilityBenchConfig } from "../visibility.config.js";
 import { loadVisibilityGroundTruth, resolveVisibilityDataset } from "./ground-truth.js";
+import { imagePromptHash } from "./ground-truth.js";
 import { isRecordCurrent, recordPath, runsDir } from "./records.js";
 import {
   VisibilityRunRecordSchema,
@@ -64,8 +65,11 @@ async function isCellComplete(
   image: VisibilityImage,
   effort: string,
   fidelity: string,
+  requireCorrectRendering: boolean,
 ): Promise<boolean> {
-  const raw = await readJsonIfExists(recordPath(dataset, cell, effort, fidelity));
+  const raw = await readJsonIfExists(
+    recordPath(dataset, cell, effort, fidelity, requireCorrectRendering),
+  );
   if (raw === undefined) return false;
   const parsed = VisibilityRunRecordSchema.safeParse(raw);
   return parsed.success && parsed.data.status === "ok" && isRecordCurrent(parsed.data, image);
@@ -148,6 +152,7 @@ async function executeCell(
   image: VisibilityImage,
   effort: string,
   fidelity: string,
+  requireCorrectRendering: boolean,
 ): Promise<VisibilityRunRecord> {
   const base = {
     schemaVersion: 2 as const,
@@ -156,9 +161,10 @@ async function executeCell(
     filename: cell.filename,
     imageSha256: image.sha256,
     rep: cell.rep,
-    promptHash: image.promptHash,
+    promptHash: imagePromptHash(image, requireCorrectRendering),
     reasoningEffort: effort,
     imageFidelity: fidelity,
+    requireCorrectRendering,
     maxTokens: visibilityBenchConfig.maxTokens,
     timestamp: new Date().toISOString(),
   };
@@ -169,7 +175,7 @@ async function executeCell(
       const result = await retryWithBackoff(
         () =>
           spec.mode === "visible"
-            ? client.elementsVisible(imageBytes, [...spec.elements])
+            ? client.elementsVisible(imageBytes, [...spec.elements], { requireCorrectRendering })
             : client.elementsHidden(imageBytes, [...spec.elements]),
         {
           maxAttempts: visibilityBenchConfig.maxAttempts,
@@ -251,7 +257,10 @@ async function main(): Promise<void> {
       concurrency: { type: "string" },
       effort: { type: "string" },
       fidelity: { type: "string" },
+      // `--correct-rendering` turns requireCorrectRendering on (a run axis; default off).
+      "correct-rendering": { type: "boolean" },
     },
+    allowNegative: true,
   });
 
   const dataset = resolveVisibilityDataset(values.dataset);
@@ -280,6 +289,7 @@ async function main(): Promise<void> {
     throw new Error(`Invalid --reps "${values.reps ?? ""}" (positive integer)`);
   }
 
+  const requireCorrectRendering = values["correct-rendering"] ?? false;
   const allImages = await loadVisibilityGroundTruth(dataset.dir);
   const imageFilter = values.images
     ?.split(",")
@@ -315,6 +325,9 @@ async function main(): Promise<void> {
   );
   console.log(`Reasoning effort: ${effort}`);
   console.log(`Image fidelity: ${fidelity}`);
+  console.log(
+    `Rendering quality: ${requireCorrectRendering ? "judged (--correct-rendering)" : "not judged (default)"}`,
+  );
 
   const byFilename = new Map(images.map((i) => [i.filename, i]));
   const allCells: RunCell[] = models.flatMap((model) =>
@@ -332,7 +345,10 @@ async function main(): Promise<void> {
   for (const cell of allCells) {
     const image = byFilename.get(cell.filename);
     if (!image) throw new Error(`Internal: no ground truth for ${cell.filename}`);
-    if (values.force || !(await isCellComplete(dataset, cell, image, effort, fidelity))) {
+    if (
+      values.force ||
+      !(await isCellComplete(dataset, cell, image, effort, fidelity, requireCorrectRendering))
+    ) {
       pending.push(cell);
     }
   }
@@ -402,13 +418,24 @@ async function main(): Promise<void> {
       }
       let record: VisibilityRunRecord;
       try {
-        record = await executeCell(cell, client, bytes, image, effort, fidelity);
+        record = await executeCell(
+          cell,
+          client,
+          bytes,
+          image,
+          effort,
+          fidelity,
+          requireCorrectRendering,
+        );
       } catch (error) {
         // Auth/config errors doom every remaining cell for this provider — stop early.
         abortedProviders.add(provider);
         throw error;
       }
-      await atomicWriteJson(recordPath(dataset, cell, effort, fidelity), record);
+      await atomicWriteJson(
+        recordPath(dataset, cell, effort, fidelity, requireCorrectRendering),
+        record,
+      );
       completed++;
       if (record.status === "ok") {
         const cost = record.usage?.reportedCost ?? record.usage?.estimatedCost;

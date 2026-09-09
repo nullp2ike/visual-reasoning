@@ -112,11 +112,19 @@ Every run record stores the image hash and a hash of the prompt actually sent.
 | `pnpm visibility:report` | Grades every current record and writes `scores.json`, `RESULTS.md` and `report.html`. |
 
 `visibility:run` takes `--dataset`, `--models`, `--images`, `--reps`,
-`--effort`, `--fidelity`, `--concurrency`, `--force`, and `--yes` (skip the cost
+`--effort`, `--fidelity`, `--correct-rendering`, `--concurrency`, `--force`, and `--yes` (skip the cost
 confirmation). It prints an estimated cost and asks before spending anything.
 Runs are resumable: complete cells are skipped and failed cells retried on the
 next invocation. As in the screenshot bench, `--models` selects models outright
 rather than filtering the roster.
+
+`--correct-rendering` turns on `requireCorrectRendering`, so `elementsVisible()`
+also fails elements that are present but badly rendered. It is a run axis like
+effort and fidelity: those records land under `<model>@correct-rendering/` and
+grade as their own `(correct-rendering)` series, while the default presence-only
+runs keep the bare directory and series id. Both settings sit side by side in
+one report, so the option's effect is read straight off the leaderboard rather
+than across two sweeps.
 
 `visibility:report` takes `--dataset` and `--models`.
 

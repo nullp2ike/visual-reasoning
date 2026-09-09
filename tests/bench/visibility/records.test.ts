@@ -1,3 +1,4 @@
+import { imagePromptHash } from "../../../bench/visibility/src/ground-truth.js";
 import { mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -9,7 +10,11 @@ import {
   recordPath,
   runsDir,
 } from "../../../bench/visibility/src/records.js";
-import type { VisibilityImage, VisibilityRunRecord } from "../../../bench/visibility/src/types.js";
+import {
+  VisibilityRunRecordSchema,
+  type VisibilityImage,
+  type VisibilityRunRecord,
+} from "../../../bench/visibility/src/types.js";
 
 function tempDataset(): Dataset {
   const root = mkdtempSync(join(tmpdir(), "visibility-results-"));
@@ -37,6 +42,7 @@ function makeRecord(partial: Partial<VisibilityRunRecord> = {}): VisibilityRunRe
     promptHash: "prompt-hash",
     reasoningEffort: "medium",
     imageFidelity: "auto",
+    requireCorrectRendering: false,
     maxTokens: 8192,
     timestamp: "2026-09-06T00:00:00.000Z",
     status: "ok",
@@ -178,5 +184,35 @@ describe("loadVisibilityRecords", () => {
     writeFileSync(path, JSON.stringify(makeRecord()), "utf8");
     writeFileSync(join(path, "..", "notes.txt"), "scratch", "utf8");
     await expect(loadVisibilityRecords(dataset)).resolves.toHaveLength(1);
+  });
+});
+
+describe("rendering-quality axis", () => {
+  it("gives rendering-judged runs their own directory", () => {
+    const dataset = tempDataset();
+    const key = { model: "model-a", filename: "a.png", rep: 1 };
+    const off = recordPath(dataset, key, "medium", "auto");
+    const on = recordPath(dataset, key, "medium", "auto", true);
+    expect(off).toContain(join("model-a", "a.png"));
+    expect(on).toContain(join("model-a@correct-rendering", "a.png"));
+    expect(recordPath(dataset, key, "medium", "auto", false)).toBe(off);
+  });
+
+  it("keeps a rendering-judged record current only against its own hash", () => {
+    const on = makeRecord({
+      requireCorrectRendering: true,
+      promptHash: imagePromptHash(image, true),
+    });
+    expect(isRecordCurrent(on, image)).toBe(true);
+    // The same record stamped with the default hash is stale: it ran under the other prompt.
+    expect(isRecordCurrent({ ...on, promptHash: image.promptHash }, image)).toBe(false);
+  });
+
+  it("treats a record written before the axis existed as the default setting", () => {
+    const legacy = { ...makeRecord() } as Record<string, unknown>;
+    delete legacy["requireCorrectRendering"];
+    const parsed = VisibilityRunRecordSchema.parse(legacy);
+    expect(parsed.requireCorrectRendering).toBe(false);
+    expect(isRecordCurrent(parsed, image)).toBe(true);
   });
 });

@@ -344,18 +344,17 @@ export interface ElementsVisibilityOptions {
   finalState?: boolean;
   /**
    * Whether an element that is present but clearly badly rendered should fail.
-   * Defaults to `true`: `elementsVisible()` judges presentation as well as
-   * presence, so text at contrast too low to read, elements overlapping, an
-   * element out of alignment with its siblings, or text cut off mid-word all
-   * fail, with the model told to say the element is present before naming the
-   * defect.
+   * Defaults to `false`: `elementsVisible()` is a presence check, and an element
+   * counts as visible if it is there at all, whatever it looks like.
    *
-   * Set to `false` for a pure presence check, where an element counts as visible
-   * if it is there at all, whatever it looks like. Worth doing when a suite
-   * asserts only that something rendered, or when defect reporting is noisy:
-   * open-ended defect hunting makes models over-report, and although the prompt
-   * counts only unambiguous defects, expect more false failures than a presence
-   * check produces.
+   * Set to `true` to judge presentation as well. Text at contrast too low to
+   * read, elements overlapping, an element out of alignment with its siblings,
+   * or text cut off mid-word then fail, with the model told to say the element
+   * is present before naming the defect. Opt in per assertion where a rendering
+   * defect is the thing being checked: measured with the rule on and off, it
+   * caught exactly the bullet naming a present-but-overlapping element and
+   * nothing else, while making the better model noticeably flakier on plain
+   * presence questions.
    *
    * Ignored by `elementsHidden()`, where the question is absence and a rendering
    * defect cannot change the answer.

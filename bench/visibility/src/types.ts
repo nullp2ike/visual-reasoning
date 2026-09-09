@@ -76,6 +76,13 @@ export const VisibilityRunRecordSchema = z.object({
   promptHash: z.string(),
   reasoningEffort: z.string(),
   imageFidelity: z.string(),
+  /**
+   * Whether `elementsVisible()` judged rendering quality (`--correct-rendering`)
+   * or presence only (the library default). A run axis like effort and
+   * fidelity: both settings keep their own records and leaderboard rows.
+   * Defaulted so records written before the axis existed read as the default.
+   */
+  requireCorrectRendering: z.boolean().default(false),
   maxTokens: z.number().int().positive(),
   timestamp: z.string(),
   /** `ok` only when every call in the rep succeeded — a rep is graded as a whole. */

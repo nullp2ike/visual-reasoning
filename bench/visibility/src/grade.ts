@@ -10,6 +10,18 @@ import type {
 } from "./types.js";
 
 /**
+ * Tag a series that judged rendering quality, folding into the effort/fidelity
+ * parenthetical when there is one: `gemini (xhigh)` -> `gemini (xhigh, correct-rendering)`.
+ * The default, presence-only, keeps the bare series id, as primary effort does.
+ */
+export function renderingSeries(series: string, requireCorrectRendering: boolean): string {
+  if (!requireCorrectRendering) return series;
+  return series.endsWith(")")
+    ? `${series.slice(0, -1)}, correct-rendering)`
+    : `${series} (correct-rendering)`;
+}
+
+/**
  * Grade one rep against its ground truth. Deterministic: the model's boolean
  * per element is compared with what the ground truth expects. No judge.
  *
@@ -32,7 +44,10 @@ export function gradeRecord(record: VisibilityRunRecord, image: VisibilityImage)
     );
   }
   const base = {
-    series: seriesId(record.model, record.reasoningEffort, record.imageFidelity),
+    series: renderingSeries(
+      seriesId(record.model, record.reasoningEffort, record.imageFidelity),
+      record.requireCorrectRendering,
+    ),
     model: record.model,
     provider: record.provider,
     reasoningEffort: record.reasoningEffort,
