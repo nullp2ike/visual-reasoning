@@ -3,6 +3,7 @@ import {
   parseAskResponse,
   parseCheckResponse,
   parseCompareResponse,
+  stripControlCharacters,
 } from "../../src/core/response.js";
 import { VisualAIResponseParseError } from "../../src/errors.js";
 
@@ -208,6 +209,92 @@ describe("parseCheckResponse", () => {
       const result = parseCheckResponse(raw);
       expect(result.pass).toBe(false);
       expect(result.reasoning).toMatch(/^0 of 2 checks passed/);
+    });
+  });
+});
+
+describe("control characters in model output", () => {
+  const withEscapedControls = JSON.stringify({
+    pass: true,
+    reasoning: "ok",
+    issues: [],
+    statements: [
+      {
+        // How Muse Spark via OpenRouter returns "−20%" and "Poké".
+        statement: 'The element "A badge reading \u000220%" on the "Pok\u0000e9" card',
+        pass: true,
+        reasoning: "seen\u0007",
+      },
+    ],
+  });
+
+  it("strips escaped control characters from every string field", () => {
+    const result = parseCheckResponse(withEscapedControls);
+    expect(result.statements[0]?.statement).toBe(
+      'The element "A badge reading 20%" on the "Poke9" card',
+    );
+    expect(result.statements[0]?.reasoning).toBe("seen");
+  });
+
+  it("recovers a response with raw control characters inside a string", () => {
+    // Kimi via OpenRouter: a literal U+0001 inside a string is invalid JSON.
+    const raw = '{"pass":true,"reasoning":"a\u0001b","issues":[],"statements":[]}'.replace(
+      "\\u0001",
+      "\u0001",
+    );
+    expect(raw).toContain("\u0001");
+    const result = parseCheckResponse(raw);
+    // The retry turns the raw byte into a space, so the text stays readable.
+    expect(result.reasoning).toBe("a b");
+  });
+
+  it("keeps tabs and newlines, which arrive through legitimate escapes", () => {
+    const raw = JSON.stringify({
+      pass: true,
+      reasoning: "line one\nline two\tindented",
+      issues: [],
+      statements: [],
+    });
+    expect(parseCheckResponse(raw).reasoning).toBe("line one\nline two\tindented");
+  });
+
+  it("sanitises nested issue fields too", () => {
+    const raw = JSON.stringify({
+      pass: false,
+      reasoning: "r",
+      issues: [
+        {
+          priority: "minor",
+          category: "content",
+          description: "bad\u001ftext",
+          suggestion: "fix\u007fit",
+        },
+      ],
+      statements: [{ statement: "s", pass: false, reasoning: "r" }],
+    });
+    const result = parseCheckResponse(raw);
+    expect(result.issues[0]?.description).toBe("badtext");
+    expect(result.issues[0]?.suggestion).toBe("fixit");
+  });
+
+  it("still throws on a response that is malformed beyond control characters", () => {
+    expect(() => parseCheckResponse('{"pass": true, "reasoning": ')).toThrow(
+      VisualAIResponseParseError,
+    );
+  });
+});
+
+describe("stripControlCharacters", () => {
+  it("leaves non-string values untouched", () => {
+    expect(stripControlCharacters(42)).toBe(42);
+    expect(stripControlCharacters(null)).toBeNull();
+    expect(stripControlCharacters(true)).toBe(true);
+  });
+
+  it("walks arrays and objects", () => {
+    expect(stripControlCharacters({ a: ["x\u0000y", { b: "z\u0001" }], n: 1 })).toEqual({
+      a: ["xy", { b: "z" }],
+      n: 1,
     });
   });
 });
