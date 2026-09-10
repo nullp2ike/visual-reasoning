@@ -1,4 +1,6 @@
-# Element visibility per image
+# Assertions per image
+
+Ground truth for the **assertion accuracy** benchmark (`pnpm assertion:run`).
 
 Each `##` heading is a filename in this directory. The section a bullet sits
 under decides **which prompt asks about it**: `### visible` elements go through

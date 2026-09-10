@@ -13,7 +13,7 @@ import { assertionBenchConfig } from "../assertion.config.js";
 import type { CallMode, VisibilityImage } from "./types.js";
 
 /** The file inside a dataset directory that lists element visibility per image. */
-export const VISIBILITY_FILE = "visibility_per_file.md";
+export const ASSERTIONS_FILE = "assertions_per_file.md";
 
 /** One ground-truth bullet, after its optional truth flag has been resolved. */
 export interface ParsedElement {
@@ -50,14 +50,14 @@ function parseBullet(text: string, lineNumber: number): { element: string; claim
   const element = (match[1] ?? "").trim();
   if (element.length === 0) {
     throw new Error(
-      `${VISIBILITY_FILE} line ${lineNumber}: bullet has a "| ${(match[2] ?? "").toUpperCase()}" flag but no element description`,
+      `${ASSERTIONS_FILE} line ${lineNumber}: bullet has a "| ${(match[2] ?? "").toUpperCase()}" flag but no element description`,
     );
   }
   return { element, claimHolds: (match[2] ?? "").toLowerCase() === "true" };
 }
 
 /**
- * Parse visibility_per_file.md: `## <filename>` headings, each followed by
+ * Parse assertions_per_file.md: `## <filename>` headings, each followed by
  * `### visible` and/or `### absent` sub-headings holding `- <element>` bullets.
  *
  * The section decides **which prompt asks**: `### visible` bullets are sent
@@ -97,7 +97,7 @@ export function parseVisibilityMarkdown(markdown: string): Map<string, ParsedEle
     if (fileHeading?.[1]) {
       const filename = fileHeading[1];
       if (byFile.has(filename)) {
-        throw new Error(`${VISIBILITY_FILE} line ${lineNumber}: duplicate heading "${filename}"`);
+        throw new Error(`${ASSERTIONS_FILE} line ${lineNumber}: duplicate heading "${filename}"`);
       }
       currentFile = filename;
       currentSection = undefined;
@@ -110,12 +110,12 @@ export function parseVisibilityMarkdown(markdown: string): Map<string, ParsedEle
       const name = sectionHeading[1].toLowerCase();
       if (!currentFile) {
         throw new Error(
-          `${VISIBILITY_FILE} line ${lineNumber}: "### ${sectionHeading[1]}" appears before any "## <filename>" heading`,
+          `${ASSERTIONS_FILE} line ${lineNumber}: "### ${sectionHeading[1]}" appears before any "## <filename>" heading`,
         );
       }
       if (!isSection(name)) {
         throw new Error(
-          `${VISIBILITY_FILE} line ${lineNumber}: unknown section "### ${sectionHeading[1]}" (expected "### visible" or "### absent")`,
+          `${ASSERTIONS_FILE} line ${lineNumber}: unknown section "### ${sectionHeading[1]}" (expected "### visible" or "### absent")`,
         );
       }
       currentSection = name;
@@ -129,7 +129,7 @@ export function parseVisibilityMarkdown(markdown: string): Map<string, ParsedEle
     if (!currentFile) continue;
     if (!currentSection) {
       throw new Error(
-        `${VISIBILITY_FILE} line ${lineNumber}: bullet "${raw}" under "${currentFile}" is not inside a "### visible" or "### absent" section`,
+        `${ASSERTIONS_FILE} line ${lineNumber}: bullet "${raw}" under "${currentFile}" is not inside a "### visible" or "### absent" section`,
       );
     }
     const entries = byFile.get(currentFile);
@@ -138,7 +138,7 @@ export function parseVisibilityMarkdown(markdown: string): Map<string, ParsedEle
     const { element, claimHolds } = parseBullet(raw, lineNumber);
     if (entries.some((e) => e.element === element)) {
       throw new Error(
-        `${VISIBILITY_FILE} line ${lineNumber}: element "${element}" is listed twice under "${currentFile}"`,
+        `${ASSERTIONS_FILE} line ${lineNumber}: element "${element}" is listed twice under "${currentFile}"`,
       );
     }
     entries.push({
@@ -152,7 +152,7 @@ export function parseVisibilityMarkdown(markdown: string): Map<string, ParsedEle
   for (const [filename, entries] of byFile) {
     if (entries.length === 0) {
       throw new Error(
-        `${VISIBILITY_FILE}: "${filename}" lists no elements. Every image needs at least one element under "### visible" or "### absent".`,
+        `${ASSERTIONS_FILE}: "${filename}" lists no elements. Every image needs at least one element under "### visible" or "### absent".`,
       );
     }
   }
@@ -217,7 +217,7 @@ export function imagePromptHash(image: VisibilityImage, requireCorrectRendering:
 export function resolveAssertionDataset(explicit?: string): Dataset {
   return assertDatasetHasFile(
     datasetFrom(explicit ?? assertionBenchConfig.dataset),
-    VISIBILITY_FILE,
+    ASSERTIONS_FILE,
   );
 }
 
@@ -228,7 +228,7 @@ export function assertionResultsDir(dataset: Dataset): string {
 
 /** Dataset ids on disk that carry a visibility ground-truth file. */
 export function listAssertionDatasetIds(): string[] {
-  return listDatasetIds(VISIBILITY_FILE);
+  return listDatasetIds(ASSERTIONS_FILE);
 }
 
 /**
@@ -237,13 +237,13 @@ export function listAssertionDatasetIds(): string[] {
  * stale run records can be detected later.
  */
 export async function loadVisibilityGroundTruth(datasetDir: string): Promise<VisibilityImage[]> {
-  const markdown = await readFile(join(datasetDir, VISIBILITY_FILE), "utf8");
+  const markdown = await readFile(join(datasetDir, ASSERTIONS_FILE), "utf8");
   const parsed = parseVisibilityMarkdown(markdown);
 
   const missing = [...parsed.keys()].filter((filename) => !existsSync(join(datasetDir, filename)));
   if (missing.length > 0) {
     throw new Error(
-      `${VISIBILITY_FILE} names ${missing.length} file(s) that do not exist in ${datasetDir}: ${missing.join(", ")}`,
+      `${ASSERTIONS_FILE} names ${missing.length} file(s) that do not exist in ${datasetDir}: ${missing.join(", ")}`,
     );
   }
 

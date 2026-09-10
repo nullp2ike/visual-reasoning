@@ -731,5 +731,5 @@ Column definitions:
 | claude-sonnet-5 | anthropic | medium | 95% | 95% | 96% | 4% | 97% | 94% | 17% | 5% | 28.2s / 37.4s | $0.0702 | $6.3153 | – | 682 |  |  |
 | x-ai/grok-4.5 | openrouter | medium | 95% | 96% | 94% | 6% | 98% | 92% | 4% | 5% | 47.0s / 133.8s | $0.0255 | $2.2949 | 782 |  |  |  |
 
-- **Generated:** 2026-09-10T16:07:17.084Z
+- **Generated:** 2026-09-10T16:12:23.779Z
 - **Repeats observed:** 5 per model × image

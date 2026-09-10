@@ -30,11 +30,13 @@ discovery](../discovery/README.md) sends one open prompt and lets the model
 choose what to report, with a judge grading the prose. See
 [`../README.md`](../README.md) for the side-by-side.
 
-> **On the names:** this harness is named for what it measures — assertion
-> accuracy — while its modules and types are named for what it asks about, the
-> visibility of elements (`VisibilityImage`, `visibility_per_file.md`,
-> `visibilityPromptHash`). The subject could widen later; the question it answers
-> would not change.
+> **On the names:** the harness, its commands, and its ground-truth file are
+> named for what they measure — assertion accuracy. `assertions_per_file.md`
+> dropped the older `visibility_` prefix because its contents outgrew it: roughly
+> half the bullets assert a defect category ("Invalid values", "Inconsistent
+> application state issues") rather than the presence of an element. The internal
+> types keep the `Visibility*` prefix (`VisibilityImage`, `visibilityPromptHash`)
+> because they model what the two prompts ask about, which is still visibility.
 
 ## Quick start
 
@@ -45,12 +47,12 @@ pnpm assertion:report --dataset golden
 
 Then read `bench/results/golden/assertion/RESULTS.md`, or open `report.html`
 beside it. `golden` carries both benchmarks' ground truth over one copy of the
-screenshots — `visibility_per_file.md` is this one's; see
+screenshots — `assertions_per_file.md` is this one's; see
 [`../datasets/README.md`](../datasets/README.md) for what it contains.
 
 ## Ground truth
 
-A dataset is a directory of images plus a `visibility_per_file.md`:
+A dataset is a directory of images plus a `assertions_per_file.md`:
 
 ```markdown
 ## orbit_home.png

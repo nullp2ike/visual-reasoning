@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
-  VISIBILITY_FILE,
+  ASSERTIONS_FILE,
   type ParsedElement,
   listAssertionDatasetIds,
   loadVisibilityGroundTruth,
@@ -42,7 +42,7 @@ Prose before the first heading is ignored.
 
 function tempDataset(markdown: string, files: Record<string, string> = {}): string {
   const dir = mkdtempSync(join(tmpdir(), "visibility-dataset-"));
-  writeFileSync(join(dir, VISIBILITY_FILE), markdown, "utf8");
+  writeFileSync(join(dir, ASSERTIONS_FILE), markdown, "utf8");
   for (const [name, contents] of Object.entries(files)) {
     writeFileSync(join(dir, name), contents, "utf8");
   }
@@ -302,20 +302,20 @@ describe("resolveAssertionDataset", () => {
   it("rejects a directory that only has the discovery bench's ground truth", () => {
     const dir = mkdtempSync(join(tmpdir(), "visibility-dataset-"));
     writeFileSync(join(dir, "issues_per_file.md"), "## a.png\n\n- broken\n", "utf8");
-    expect(() => resolveAssertionDataset(dir)).toThrow(/visibility_per_file\.md/);
+    expect(() => resolveAssertionDataset(dir)).toThrow(/assertions_per_file\.md/);
   });
 
-  it("accepts any directory containing visibility_per_file.md", () => {
+  it("accepts any directory containing assertions_per_file.md", () => {
     const dir = tempDataset(SAMPLE);
     expect(resolveAssertionDataset(dir).dir).toBe(dir);
   });
 });
 
 describe("listAssertionDatasetIds", () => {
-  it("lists only datasets carrying visibility_per_file.md", () => {
+  it("lists only datasets carrying assertions_per_file.md", () => {
     // Which datasets exist varies by checkout; assert the filter, not an id.
     for (const id of listAssertionDatasetIds()) {
-      expect(existsSync(join(datasetFrom(id).dir, VISIBILITY_FILE))).toBe(true);
+      expect(existsSync(join(datasetFrom(id).dir, ASSERTIONS_FILE))).toBe(true);
     }
   });
 });

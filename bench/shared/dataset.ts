@@ -36,7 +36,7 @@ export interface Dataset {
  * Dataset ids present on disk, in display order. `requiredFile` is the
  * ground-truth file a directory must contain to count as a dataset: the
  * discovery bench looks for `issues_per_file.md`, the assertion bench for
- * `visibility_per_file.md`, and a directory may hold both.
+ * `assertions_per_file.md`, and a directory may hold both.
  */
 export function listDatasetIds(requiredFile: string = ISSUES_FILE): string[] {
   if (!existsSync(DATASETS_DIR)) return [];

@@ -94,8 +94,8 @@ describe("listDatasetIds", () => {
     for (const id of listDatasetIds()) {
       expect(existsSync(join(DATASETS_DIR, id, "issues_per_file.md"))).toBe(true);
     }
-    for (const id of listDatasetIds("visibility_per_file.md")) {
-      expect(existsSync(join(DATASETS_DIR, id, "visibility_per_file.md"))).toBe(true);
+    for (const id of listDatasetIds("assertions_per_file.md")) {
+      expect(existsSync(join(DATASETS_DIR, id, "assertions_per_file.md"))).toBe(true);
     }
   });
 
@@ -107,15 +107,15 @@ describe("listDatasetIds", () => {
 describe("assertDatasetHasFile", () => {
   it("requires issues_per_file.md by default", () => {
     const root = mkdtempSync(join(tmpdir(), "bench-dataset-"));
-    writeFileSync(join(root, "visibility_per_file.md"), "## a.png\n", "utf8");
+    writeFileSync(join(root, "assertions_per_file.md"), "## a.png\n", "utf8");
     expect(() => assertDatasetHasFile(datasetFrom(root))).toThrow(/issues_per_file\.md/);
   });
 
   it("accepts a directory carrying the requested file instead", () => {
     const root = mkdtempSync(join(tmpdir(), "bench-dataset-"));
-    writeFileSync(join(root, "visibility_per_file.md"), "## a.png\n", "utf8");
+    writeFileSync(join(root, "assertions_per_file.md"), "## a.png\n", "utf8");
     const dataset = datasetFrom(root);
-    expect(assertDatasetHasFile(dataset, "visibility_per_file.md")).toBe(dataset);
+    expect(assertDatasetHasFile(dataset, "assertions_per_file.md")).toBe(dataset);
   });
 });
 

@@ -1,5 +1,10 @@
 # Issues per file
 
+Ground truth for the **defect discovery** benchmark (`pnpm discovery:run`).
+Each `##` heading is a filename in this directory and each `-` bullet is one
+defect a model is expected to report for it; a heading with a single empty
+bullet is a clean control, where anything reported counts as a false positive.
+
 ## 00_clean_control.png
 
 -

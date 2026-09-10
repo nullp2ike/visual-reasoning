@@ -4,7 +4,7 @@ A **dataset** is a directory of screenshots plus ground truth about them. Which
 ground-truth file it carries decides which benchmark can use it: [defect
 discovery](../discovery/README.md) needs `issues_per_file.md` (what is wrong with
 each screenshot), [assertion accuracy](../assertion/README.md) needs
-`visibility_per_file.md` (which elements are there and which are not). One
+`assertions_per_file.md` (which elements are there and which are not). One
 directory may carry both, and the two benchmarks keep their results apart.
 
 Datasets are tracked, so the ground truth and the runs graded against it are not
@@ -88,7 +88,7 @@ invalidates prior runs and requires `--force`.
 ## Datasets for the assertion benchmark
 
 The [assertion accuracy benchmark](../assertion/README.md) uses its own ground
-truth file, `visibility_per_file.md`, listing for each image the elements that
+truth file, `assertions_per_file.md`, listing for each image the elements that
 are on screen and plausible elements that are not:
 
 ```markdown
@@ -122,7 +122,7 @@ benchmark are selected with `--dataset` or `assertion.config.ts` only —
 
 | Dataset             | Ground truth             | What it is                                                                                     |
 | ------------------- | ------------------------ | ---------------------------------------------------------------------------------------------- |
-| `golden`  | `issues_per_file.md` + `visibility_per_file.md` | 18 screenshots, one seeded defect each plus a clean control, labelled for both benchmarks over one copy of the images. The default for both. |
+| `golden`  | `issues_per_file.md` + `assertions_per_file.md` | 18 screenshots, one seeded defect each plus a clean control, labelled for both benchmarks over one copy of the images. The default for both. |
 | `primary` | `issues_per_file.md`                            | Private product UI. Gitignored, so only present on the machine that captured it.                                                            |
 
 Adding your own needs no more than a directory, a handful of screenshots, one
