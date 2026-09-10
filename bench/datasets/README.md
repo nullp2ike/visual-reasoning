@@ -122,9 +122,8 @@ benchmark are selected with `--dataset` or `assertion.config.ts` only —
 
 | Dataset             | Ground truth             | What it is                                                                                     |
 | ------------------- | ------------------------ | ---------------------------------------------------------------------------------------------- |
-| `golden`            | `issues_per_file.md`     | 18 screenshots, one seeded defect each plus a clean control. Default for the discovery bench. |
-| `visibility-golden` | `visibility_per_file.md` | The same screens, labelled element by element for the assertion bench.                        |
-| `primary`           | `issues_per_file.md`     | Private product UI. Gitignored, so only present on the machine that captured it.               |
+| `golden`  | `issues_per_file.md` + `visibility_per_file.md` | 18 screenshots, one seeded defect each plus a clean control, labelled for both benchmarks over one copy of the images. The default for both. |
+| `primary` | `issues_per_file.md`                            | Private product UI. Gitignored, so only present on the machine that captured it.                                                            |
 
 Adding your own needs no more than a directory, a handful of screenshots, one
 `## <filename>` heading each, and at least one clean control for the screenshot

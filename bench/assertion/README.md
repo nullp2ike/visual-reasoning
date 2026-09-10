@@ -39,13 +39,14 @@ choose what to report, with a judge grading the prose. See
 ## Quick start
 
 ```bash
-pnpm assertion:run --dataset visibility-golden --models claude-haiku-4-5
-pnpm assertion:report --dataset visibility-golden
+pnpm assertion:run --dataset golden --models claude-haiku-4-5
+pnpm assertion:report --dataset golden
 ```
 
-Then read `bench/results/visibility-golden/visibility/RESULTS.md`, or open
-`report.html` beside it. `visibility-golden` is tracked; see
-[`../datasets/README.md`](../datasets/README.md) for what a dataset contains.
+Then read `bench/results/golden/assertion/RESULTS.md`, or open `report.html`
+beside it. `golden` carries both benchmarks' ground truth over one copy of the
+screenshots — `visibility_per_file.md` is this one's; see
+[`../datasets/README.md`](../datasets/README.md) for what it contains.
 
 ## Ground truth
 

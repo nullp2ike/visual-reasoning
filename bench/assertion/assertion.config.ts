@@ -7,9 +7,9 @@ export interface AssertionBenchConfig {
    * dataset directory anywhere on disk. Override per run with `--dataset`.
    *
    * Deliberately separate from `benchConfig.dataset` (and from the
-   * `BENCH_DATASET` env var): a visibility dataset needs
-   * `visibility_per_file.md`, which a screenshot dataset does not have, so
-   * inheriting that default would resolve to a directory without it.
+   * `BENCH_DATASET` env var) even while both name `golden`: this benchmark
+   * needs `visibility_per_file.md`, which a discovery-only dataset does not
+   * carry, so `BENCH_DATASET=primary` must not reach an assertion run.
    */
   readonly dataset: string;
   /** Models under test when `--models` is omitted. Shared with the discovery bench. */
@@ -29,7 +29,7 @@ export interface AssertionBenchConfig {
  * fidelity defaults, same retry and concurrency behaviour.
  */
 export const assertionBenchConfig: AssertionBenchConfig = {
-  dataset: "visibility-golden",
+  dataset: "golden",
   models: benchConfig.models,
   repeats: benchConfig.repeats,
   reasoningEffort: benchConfig.reasoningEffort,

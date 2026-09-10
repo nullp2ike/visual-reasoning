@@ -42,6 +42,7 @@ bench/
 ```
 
 Nothing in either benchmark is specific to one dataset. `golden` (18 screenshots,
-one seeded defect each plus a clean control) and `visibility-golden` (the same
-screens, labelled element by element) are tracked; `primary` is private product
-UI and gitignored. See [`datasets/README.md`](datasets/README.md) to add your own.
+one seeded defect each plus a clean control) is tracked and carries both
+benchmarks' ground truth over one copy of the screenshots; `primary` is private
+product UI and gitignored. See [`datasets/README.md`](datasets/README.md) to add
+your own.

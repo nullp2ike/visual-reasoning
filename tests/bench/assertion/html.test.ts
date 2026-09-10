@@ -7,7 +7,7 @@ function scores(partial: Partial<VisibilityScores> = {}): VisibilityScores {
   return {
     schemaVersion: 2,
     generatedAt: "2026-09-09T12:00:00.000Z",
-    dataset: "visibility-golden",
+    dataset: "golden",
     images: [
       {
         filename: "a.png",
@@ -85,7 +85,7 @@ function scores(partial: Partial<VisibilityScores> = {}): VisibilityScores {
 
 describe("buildVisibilityReportHtml", () => {
   it("produces a standalone document with no external resources", () => {
-    const html = buildVisibilityReportHtml(scores(), "../../datasets/visibility-golden");
+    const html = buildVisibilityReportHtml(scores(), "../../datasets/golden");
     expect(html.startsWith("<!doctype html>")).toBe(true);
     expect(html).not.toMatch(/<script[^>]+src=/);
     expect(html).not.toMatch(/<link[^>]+stylesheet/);
@@ -136,7 +136,7 @@ describe("buildVisibilityReportHtml", () => {
 
   it("states the dataset, image count and model count", () => {
     const html = buildVisibilityReportHtml(scores(), ".");
-    expect(html).toContain("visibility-golden");
+    expect(html).toContain("golden");
     expect(html).toContain("1 image(s)");
     expect(html).toContain("1 model(s)");
   });
@@ -155,23 +155,20 @@ describe("buildVisibilityReportHtml", () => {
   });
 
   it("links screenshots through the supplied relative base", () => {
-    const html = buildVisibilityReportHtml(scores(), "../../datasets/visibility-golden/");
+    const html = buildVisibilityReportHtml(scores(), "../../datasets/golden/");
     const parsed = JSON.parse(
       /<script id="data"[^>]*>([\s\S]*?)<\/script>/.exec(html)?.[1] ?? "",
     ) as { imageBase: string };
     // Trailing slash trimmed, since the page joins with "/" itself.
-    expect(parsed.imageBase).toBe("../../datasets/visibility-golden");
+    expect(parsed.imageBase).toBe("../../datasets/golden");
   });
 });
 
 describe("imageBaseForReport", () => {
   it("walks from the results directory back to the dataset", () => {
     expect(
-      imageBaseForReport(
-        "/repo/bench/results/visibility-golden/visibility",
-        "/repo/bench/datasets/visibility-golden",
-      ),
-    ).toBe("../../../datasets/visibility-golden");
+      imageBaseForReport("/repo/bench/results/golden/assertion", "/repo/bench/datasets/golden"),
+    ).toBe("../../../datasets/golden");
   });
 
   it("handles a dataset that lives outside the repo", () => {
