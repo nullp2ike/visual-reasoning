@@ -564,7 +564,8 @@ All listed models support image/vision input. Pass any model ID to the `model` c
 
 | Model             | Model ID            | Input $/MTok | Output $/MTok | Notes                                       |
 | ----------------- | ------------------- | ------------ | ------------- | ------------------------------------------- |
-| Claude Fable 5    | `claude-fable-5`    | $10          | $50           | Most capable; long-horizon agentic work     |
+| Claude Fable 5.1  | `claude-fable-5-1`  | $10          | $50           | Most capable; long-horizon agentic work     |
+| Claude Fable 5    | `claude-fable-5`    | $10          | $50           | Predecessor to Fable 5.1, same price        |
 | Claude Opus 4.8   | `claude-opus-4-8`   | $5           | $25           | Most capable Opus tier; supports `xhigh`    |
 | Claude Opus 4.7   | `claude-opus-4-7`   | $5           | $25           | Previous Opus; supports `xhigh` effort tier |
 | Claude Opus 4.6   | `claude-opus-4-6`   | $5           | $25           | Previous flagship, 128K max output          |

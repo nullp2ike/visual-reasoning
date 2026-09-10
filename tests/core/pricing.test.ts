@@ -2,6 +2,12 @@ import { describe, it, expect } from "vitest";
 import { calculateCost } from "../../src/core/pricing.js";
 
 describe("calculateCost", () => {
+  it("calculates cost for anthropic claude-fable-5-1", () => {
+    const cost = calculateCost("anthropic", "claude-fable-5-1", 1000, 500);
+    // Priced identically to Fable 5: 1000 * (10/1M) + 500 * (50/1M) = 0.035
+    expect(cost).toBeCloseTo(0.035, 10);
+  });
+
   it("calculates cost for anthropic claude-fable-5", () => {
     const cost = calculateCost("anthropic", "claude-fable-5", 1000, 500);
     // 1000 * (10/1M) + 500 * (50/1M) = 0.01 + 0.025 = 0.035
