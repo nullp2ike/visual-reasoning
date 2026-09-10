@@ -81,7 +81,9 @@ The judge is text-only: it never sees the screenshot, only the expected issues
 and what the model reported. Either an LLM (`claude-haiku-4-5`, `gpt-5.6-terra`,
 …) or a local embedding judge (`embed:bge-small`) that runs offline via
 Transformers.js and thresholds cosine similarity. Reports are written per judge
-so you can see how much the grading choice moves the ranking.
+so you can see how much the grading choice moves the ranking; the one named in
+`judgeModel` (`gpt-5.6-luna`) also owns the canonical `RESULTS.md` and
+`report.html`.
 
 ## Output
 

@@ -105,6 +105,10 @@ export interface BenchConfig {
    * (e.g. "embed:bge-small"). Embedding judges run fully locally via
    * Transformers.js and threshold cosine similarity — see bench/src/embed.ts and
    * `pnpm bench:calibrate-embed`. Select per run with `bench:score --judge <id>`.
+   *
+   * Whichever judge is named here also owns the canonical `RESULTS.md` and
+   * `report.html`; every other judge's reports are written under its own
+   * `RESULTS.<variant>.<judge>.md` / `report.<judge>.html`.
    */
   readonly judgeModel: string;
   /**
@@ -188,7 +192,7 @@ export const benchConfig: BenchConfig = {
   reasoningEffort: "medium",
   imageFidelity: "auto",
   maxTokens: 8192,
-  judgeModel: "claude-haiku-4-5",
+  judgeModel: "gpt-5.6-luna",
   // Rate-limit errors retry with backoff and failed cells resume on the next
   // run, so this can be raised safely; override per-run with --concurrency.
   concurrencyPerProvider: 6,
