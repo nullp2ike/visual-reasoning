@@ -1,4 +1,4 @@
-import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, mkdirSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, sep } from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
@@ -18,6 +18,17 @@ import { benchConfig } from "../../bench/bench.config.js";
 
 const originalEnv = process.env[DATASET_ENV_VAR];
 
+/**
+ * A throwaway directory that passes as a screenshot dataset. No dataset is
+ * committed, so anything asserting on a real one would only pass on the
+ * machine that happens to have it.
+ */
+function tempScreenshotDataset(): string {
+  const dir = mkdtempSync(join(tmpdir(), "bench-dataset-"));
+  writeFileSync(join(dir, "issues_per_file.md"), "## a.png\n\n- broken\n", "utf8");
+  return dir;
+}
+
 beforeEach(() => {
   Reflect.deleteProperty(process.env, DATASET_ENV_VAR);
   resetActiveDataset();
@@ -31,10 +42,10 @@ afterEach(() => {
 
 describe("datasetFrom", () => {
   it("treats a bare name as a directory under bench/datasets/", () => {
-    const dataset = datasetFrom("example");
-    expect(dataset.id).toBe("example");
-    expect(dataset.dir).toBe(join(DATASETS_DIR, "example"));
-    expect(dataset.resultsDir).toBe(join(RESULTS_ROOT, "example"));
+    const dataset = datasetFrom("checkout-screens");
+    expect(dataset.id).toBe("checkout-screens");
+    expect(dataset.dir).toBe(join(DATASETS_DIR, "checkout-screens"));
+    expect(dataset.resultsDir).toBe(join(RESULTS_ROOT, "checkout-screens"));
   });
 
   it("treats a value with a separator as a path, taking the id from its last segment", () => {
@@ -78,14 +89,19 @@ describe("resolveDatasetRef", () => {
 });
 
 describe("listDatasetIds", () => {
-  it("includes the committed example dataset", () => {
-    expect(listDatasetIds()).toContain("example");
+  it("lists only directories carrying the requested ground-truth file", () => {
+    // Datasets are gitignored, so which ones exist is per-machine (and none do
+    // on a fresh clone). Assert the filter rather than any particular id.
+    for (const id of listDatasetIds()) {
+      expect(existsSync(join(DATASETS_DIR, id, "issues_per_file.md"))).toBe(true);
+    }
+    for (const id of listDatasetIds("visibility_per_file.md")) {
+      expect(existsSync(join(DATASETS_DIR, id, "visibility_per_file.md"))).toBe(true);
+    }
   });
 
-  it("lists only datasets carrying the requested ground-truth file", () => {
-    const visibility = listDatasetIds("visibility_per_file.md");
-    expect(visibility).toContain("visibility-example");
-    expect(visibility).not.toContain("example");
+  it("returns nothing for a ground-truth file no dataset carries", () => {
+    expect(listDatasetIds("not-a-ground-truth-file.md")).toEqual([]);
   });
 });
 
@@ -106,8 +122,7 @@ describe("assertDatasetHasFile", () => {
 
 describe("selectDataset", () => {
   it("returns the selected dataset and makes it the active one", () => {
-    const selected = selectDataset("example");
-    expect(selected.id).toBe("example");
+    const selected = selectDataset(tempScreenshotDataset());
     expect(activeDataset()).toEqual(selected);
   });
 
@@ -117,9 +132,9 @@ describe("selectDataset", () => {
     expect(() => selectDataset(join(empty, "no-issues-file"))).toThrow(/not found/);
   });
 
-  it("names the available datasets when the requested one is missing", () => {
+  it("says what it looked for and points at the layout docs when it is missing", () => {
     expect(() => selectDataset("definitely-not-a-dataset")).toThrow(
-      /Available datasets:.*example/s,
+      /definitely-not-a-dataset[\s\S]*README\.md/,
     );
   });
 
@@ -132,12 +147,13 @@ describe("selectDataset", () => {
 
 describe("activeDataset", () => {
   it("resolves from the environment on first use when nothing was selected", () => {
-    process.env[DATASET_ENV_VAR] = "example";
-    expect(activeDataset().id).toBe("example");
+    const dir = tempScreenshotDataset();
+    process.env[DATASET_ENV_VAR] = dir;
+    expect(activeDataset().dir).toBe(dir);
   });
 
   it("memoizes the resolution so later env changes cannot move paths mid-run", () => {
-    process.env[DATASET_ENV_VAR] = "example";
+    process.env[DATASET_ENV_VAR] = tempScreenshotDataset();
     const first = activeDataset();
     process.env[DATASET_ENV_VAR] = "something-else";
     expect(activeDataset()).toEqual(first);

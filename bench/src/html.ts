@@ -12,6 +12,7 @@ export interface VariantScores {
  * external references are the dataset screenshots, loaded via `imageBase` —
  * a path relative to the report's own location, which the caller computes from
  * the report directory to the dataset directory (e.g. `../../datasets/<id>`).
+ * It defaults to `.` (screenshots beside the page); no dataset name is baked in.
  *
  * The client-side computeMatrixCell mirrors bench/src/matrix.ts semantics but
  * uses the page's staged override state so matrix counts update live; the TS
@@ -30,7 +31,7 @@ export function buildReportHtml(
   manifest: Manifest,
   overrides: Overrides,
   siblingJudges: readonly string[] = [],
-  imageBase = "../../datasets/example",
+  imageBase = ".",
 ): string {
   if (variants.length === 0) throw new Error("buildReportHtml: at least one variant is required");
   const variantOrder = variants.map((v) => v.variant);

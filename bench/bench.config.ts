@@ -79,8 +79,8 @@ export interface BenchConfig {
    * for good with `BENCH_DATASET` in `.env`. Results are namespaced by dataset,
    * so switching datasets never mixes manifests, runs, or reports.
    *
-   * Ships as `example` (the committed synthetic dataset) so a fresh clone can
-   * run the pipeline; real datasets are gitignored — see bench/datasets/README.md.
+   * No dataset is committed — every one is gitignored, so this default only
+   * names the dataset this checkout happens to use. See bench/datasets/README.md.
    */
   readonly dataset: string;
   /** Models under test. Provider is inferred from the model name by the library. */
@@ -118,7 +118,7 @@ export interface BenchConfig {
 }
 
 export const benchConfig: BenchConfig = {
-  dataset: "example",
+  dataset: "primary",
   models: [
     // Anthropic: flagship / mid / small
     "claude-fable-5",

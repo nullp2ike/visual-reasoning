@@ -24,12 +24,13 @@ present-recall while being useless.
 ## Quick start
 
 ```bash
-pnpm visibility:run --dataset visibility-example --models claude-haiku-4-5
-pnpm visibility:report --dataset visibility-example
+pnpm visibility:run --dataset my-set --models claude-haiku-4-5
+pnpm visibility:report --dataset my-set
 ```
 
-Then read `bench/results/visibility-example/visibility/RESULTS.md`, or open
-`report.html` beside it.
+Then read `bench/results/my-set/visibility/RESULTS.md`, or open `report.html`
+beside it. No dataset is committed — see
+[`../datasets/README.md`](../datasets/README.md) for what one has to contain.
 
 ## Ground truth
 
@@ -207,9 +208,3 @@ report.html                          the same, interactive, plus the pivot and c
 | `src/records.ts`       | Record paths, staleness check, record discovery.            |
 | `src/types.ts`         | Zod schemas for records, graded cells, metrics, and scores. |
 | `visibility.config.ts` | Model roster, repeats, effort, fidelity, concurrency.       |
-
-The example dataset is regenerated with:
-
-```bash
-node bench/datasets/visibility-example/generate.mjs bench/datasets/visibility-example
-```

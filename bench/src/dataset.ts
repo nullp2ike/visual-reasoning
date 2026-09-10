@@ -5,7 +5,7 @@ import { benchConfig } from "../bench.config.js";
 
 export const BENCH_DIR = join(dirname(fileURLToPath(import.meta.url)), "..");
 
-/** Root holding one directory per dataset. Everything but `example/` is gitignored. */
+/** Root holding one directory per dataset. Fully gitignored except its README. */
 export const DATASETS_DIR = join(BENCH_DIR, "datasets");
 
 /** Root holding one directory of results per dataset. Fully gitignored. */
@@ -24,7 +24,7 @@ export const DATASET_ENV_VAR = "BENCH_DATASET";
  * image IDs (`img_NN`) are only meaningful within one dataset.
  */
 export interface Dataset {
-  /** Directory name under `bench/datasets/`, e.g. "example". */
+  /** Directory name under `bench/datasets/`, e.g. "checkout-screens". */
   readonly id: string;
   /** Absolute path to the dataset directory. */
   readonly dir: string;

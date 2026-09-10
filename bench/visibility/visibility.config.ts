@@ -9,7 +9,7 @@ export interface VisibilityBenchConfig {
    * Deliberately separate from `benchConfig.dataset` (and from the
    * `BENCH_DATASET` env var): a visibility dataset needs
    * `visibility_per_file.md`, which a screenshot dataset does not have, so
-   * inheriting that default would fail on every fresh clone.
+   * inheriting that default would resolve to a directory without it.
    */
   readonly dataset: string;
   /** Models under test when `--models` is omitted. Shared with the screenshot bench. */
@@ -29,7 +29,7 @@ export interface VisibilityBenchConfig {
  * fidelity defaults, same retry and concurrency behaviour.
  */
 export const visibilityBenchConfig: VisibilityBenchConfig = {
-  dataset: "visibility-example",
+  dataset: "visibility-golden",
   models: benchConfig.models,
   repeats: benchConfig.repeats,
   reasoningEffort: benchConfig.reasoningEffort,

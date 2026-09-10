@@ -87,12 +87,7 @@ function scoresFrom(
   records: VisibilityRunRecord[],
   images: VisibilityImage[] = [image],
 ): VisibilityScores {
-  return buildVisibilityScores(
-    records,
-    images,
-    "visibility-example",
-    new Date("2026-09-06T12:00:00.000Z"),
-  );
+  return buildVisibilityScores(records, images, "sample-set", new Date("2026-09-06T12:00:00.000Z"));
 }
 
 describe("buildVisibilityResultsMarkdown", () => {
@@ -224,7 +219,7 @@ describe("buildVisibilityResultsMarkdown", () => {
     const md = buildVisibilityResultsMarkdown(
       scoresFrom([makeRecord(PERFECT_VISIBLE, PERFECT_HIDDEN)]),
     );
-    expect(md).toContain("`visibility-example` — 1 image(s), 4 element(s) under test");
+    expect(md).toContain("`sample-set` — 1 image(s), 4 element(s) under test");
   });
 });
 

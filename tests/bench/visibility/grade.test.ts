@@ -369,7 +369,7 @@ describe("buildVisibilityScores", () => {
         makeRecord(PERFECT_VISIBLE, PERFECT_HIDDEN, { model: "model-b", provider: "google" }),
       ],
       [image],
-      "visibility-example",
+      "sample-set",
       new Date("2026-09-06T12:00:00.000Z"),
     );
     expect(scores.models.map((m) => m.series).sort()).toEqual(["model-a", "model-b"]);
@@ -384,7 +384,7 @@ describe("buildVisibilityScores", () => {
         makeRecord(PERFECT_VISIBLE, PERFECT_HIDDEN, { rep: 2, promptHash: "old" }),
       ],
       [image],
-      "visibility-example",
+      "sample-set",
     );
     expect(scores.staleRecords).toBe(1);
     expect(scores.cells).toHaveLength(1);
@@ -394,7 +394,7 @@ describe("buildVisibilityScores", () => {
     const scores = buildVisibilityScores(
       [makeRecord(PERFECT_VISIBLE, PERFECT_HIDDEN, { filename: "gone.png" })],
       [image],
-      "visibility-example",
+      "sample-set",
     );
     expect(scores.staleRecords).toBe(1);
     expect(scores.models).toEqual([]);

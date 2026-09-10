@@ -6,9 +6,9 @@ harness runs every model under test against every screenshot several times,
 grades the answers with a judge, and emits a leaderboard, a screenshot × model
 matrix, and an interactive HTML report.
 
-Nothing here is specific to any one dataset. See
-[`datasets/README.md`](datasets/README.md) for the dataset format; a synthetic
-`example` dataset ships with the repo so the pipeline runs on a fresh clone.
+Nothing here is specific to any one dataset, and no dataset is committed —
+screenshots under test are usually private product UI. See
+[`datasets/README.md`](datasets/README.md) for the format to put yours in.
 
 For **video** input — asking a model to list the bugs it sees in a screen
 recording — see [`video/README.md`](video/README.md), a separate harness that
@@ -23,12 +23,12 @@ not there.
 ## Quick start
 
 ```bash
-pnpm bench:run --models claude-haiku-4-5 --dataset example
-pnpm bench:score --dataset example
-pnpm bench:report --dataset example
+pnpm bench:run --models claude-haiku-4-5 --dataset my-set
+pnpm bench:score --dataset my-set
+pnpm bench:report --dataset my-set
 ```
 
-Then open `bench/results/example/report.html`.
+Then open `bench/results/my-set/report.html`.
 
 Set `BENCH_DATASET` in `.env` to avoid passing `--dataset` every time.
 

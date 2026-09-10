@@ -4,9 +4,10 @@ A **dataset** is a directory of screenshots plus a description of what is wrong
 with each one. The benchmark asks every model under test the same question about
 every screenshot, then a judge checks the answers against these descriptions.
 
-Everything in this directory is gitignored except `example/` and
-`visibility-example/`. Screenshots of a real product, and the model output that
-quotes them, stay on the machine that produced them.
+Everything in this directory is gitignored except this README: no dataset is
+committed. Screenshots of a real product, and the model output that quotes them,
+stay on the machine that produced them, so bring your own — the format below is
+all a dataset needs.
 
 ## Layout
 
@@ -51,7 +52,7 @@ Precedence, highest first:
 
 1. `--dataset <id-or-path>` on any bench command
 2. `BENCH_DATASET=<id-or-path>` in your environment or `.env`
-3. `dataset` in [`bench/bench.config.ts`](../bench.config.ts) (ships as `example`)
+3. `dataset` in [`bench/bench.config.ts`](../bench.config.ts)
 
 A value without a path separator is a directory name under `bench/datasets/`; a
 value containing one is a path, so a dataset can live entirely outside the repo:
@@ -114,20 +115,9 @@ or `visibility.config.ts` only — `BENCH_DATASET` is not consulted, since it
 usually names a screenshot dataset. See
 [`bench/visibility/README.md`](../visibility/README.md) for the full grammar.
 
-## The example dataset
+## No dataset ships with the repo
 
-`example/` holds five synthetic 480×800 screenshots of a fictional app, four
-with one deliberate defect each and one clean control. It exists so `pnpm
-bench:run` works on a fresh clone. Regenerate with:
-
-```bash
-node bench/datasets/example/generate.mjs bench/datasets/example
-```
-
-`visibility-example/` plays the same role for the visibility benchmark: one
-synthetic 480×800 screenshot with five elements that are on it and five
-plausible ones that are not. Regenerate with:
-
-```bash
-node bench/datasets/visibility-example/generate.mjs bench/datasets/visibility-example
-```
+Both benchmarks need a dataset you supply. A first one can be small: a handful of
+screenshots, one `## <filename>` heading each, and at least one clean control for
+the screenshot bench. Point a run at it with `--dataset`, by id under this
+directory or by path to anywhere on disk.

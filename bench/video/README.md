@@ -8,11 +8,8 @@ the `visual-ai-assertions` library uses today.
 ## Quick start
 
 ```bash
-# 1. Build a synthetic example clip from the committed screenshot dataset
-pnpm video:example
-
-# 2. Ask Gemini 3.8 Flash what is wrong with it
-pnpm video:run --video bench/video/videos/example.mp4
+# Drop a recording in bench/video/videos/ (gitignored), then:
+pnpm video:run --video bench/video/videos/my-clip.mp4
 ```
 
 The run prints the bug list as it arrives and writes a Markdown report plus one
@@ -60,8 +57,7 @@ can then judge intent rather than only appearance.
 
 If a file named `<video-stem>.expected.md` sits next to the video (or is passed
 with `--expected`), its contents are embedded in the report under "Expected
-(ground truth)" so you can grade the model's list by eye. `pnpm video:example`
-writes one for the synthetic clip. There is no automatic judge yet; the JSON
+(ground truth)" so you can grade the model's list by eye. There is no automatic judge yet; the JSON
 records carry everything needed to add one later (see `bench/src/judge.ts` for
 the screenshot harness's approach).
 
@@ -85,4 +81,3 @@ from the library's pricing table.
 - [`src/frames.ts`](src/frames.ts) — frame-sampled delivery through the library
 - [`src/schema.ts`](src/schema.ts) — the structured bug-report schema (Zod + JSON Schema for Gemini)
 - [`src/report.ts`](src/report.ts) — Markdown report renderer
-- [`src/make-example.ts`](src/make-example.ts) — synthetic example clip generator
