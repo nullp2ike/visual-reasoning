@@ -1,6 +1,6 @@
 # visual-ai-assertions
 
-AI-powered visual assertions for E2E tests. Send screenshots — or short video recordings — to Claude, GPT, Gemini — or Grok, Kimi, and Qwen via OpenRouter — and get structured, typed results.
+AI-powered visual assertions for E2E tests. Send screenshots — or short video recordings — to Claude, GPT, Gemini — or Grok, Kimi, Qwen, and GLM via OpenRouter — and get structured, typed results.
 
 ## Installation
 
@@ -11,7 +11,7 @@ npm install visual-ai-assertions
 # Optional: install additional provider SDKs
 npm install @anthropic-ai/sdk    # for Claude
 npm install @google/genai        # for Gemini
-# OpenRouter (Grok, Kimi, Qwen, ...) uses the OpenAI SDK — no extra install
+# OpenRouter (Grok, Kimi, Qwen, GLM, ...) uses the OpenAI SDK — no extra install
 
 # Zod is a peer dependency
 npm install zod
@@ -622,8 +622,11 @@ Any [OpenRouter](https://openrouter.ai/models) model slug (always `vendor/model`
 | Qwen3.8 Max    | `qwen/qwen3.8-max`          | $2           | $6            | First Max tier with image input       |
 | Qwen3.7 Plus   | `qwen/qwen3.7-plus`         | $0.32        | $1.28         | Cost-effective, GUI/screen-reading    |
 | Qwen3.6 Flash  | `qwen/qwen3.6-flash`        | $0.19        | $1.13         | **Default** — cheap flash vision tier |
+| GLM 5.3 Flash  | `z-ai/glm-5.3-flash`        | $0.15        | $0.50         | Z.ai flash tier, 1.3M context²        |
 
 ¹ Muse Spark 1.3 is age-gated by OpenRouter: calls return HTTP 403 (`VisualAIAuthError`) until the account completes the 18+ confirmation at [openrouter.ai/settings/preferences](https://openrouter.ai/settings/preferences). It also reasons by default — expect several hundred reasoning tokens per call even with no `reasoningEffort` set.
+
+² GLM 5.3 Flash reasons by default — expect one to two hundred reasoning tokens per call even with no `reasoningEffort` set, billed at the output rate. OpenRouter's own context cap for it is 1,048,576 tokens (Z.ai lists 1,310,720) and its output ceiling is 131,072.
 
 Meta also publishes `meta/muse-spark-1.3-contributor`, the same model at $0.10 / $0.20 per MTok — about 12x cheaper — because Meta uses everything submitted through it for product improvement. It has **no named constant** (`Model.OpenRouter` does not expose it) and never appears by default anywhere in this library, so using it takes a deliberate, explicit choice: pass the slug directly as a plain string, `visualAI({ model: "meta/muse-spark-1.3-contributor" })`. Any OpenRouter slug works this way — see the note above the table — and cost tracking works correctly once you opt in. OpenRouter itself blocks it with HTTP 404 (`paid-model-training-violation-by-account`) until the account's privacy settings allow training endpoints, at [openrouter.ai/settings/privacy](https://openrouter.ai/settings/privacy). Only use it if sending your screenshots to Meta for training is a trade you've deliberately made.
 

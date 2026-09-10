@@ -182,6 +182,12 @@ describe("calculateCost", () => {
     expect(cost).toBeCloseTo(0.00075, 10);
   });
 
+  it("calculates cost for openrouter z-ai/glm-5.3-flash", () => {
+    const cost = calculateCost("openrouter", "z-ai/glm-5.3-flash", 1000, 500);
+    // 1000 * (0.15/1M) + 500 * (0.5/1M) = 0.00015 + 0.00025 = 0.0004
+    expect(cost).toBeCloseTo(0.0004, 10);
+  });
+
   it("returns undefined for unknown model", () => {
     expect(calculateCost("anthropic", "unknown-model", 100, 50)).toBeUndefined();
   });

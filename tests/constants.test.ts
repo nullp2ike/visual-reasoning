@@ -67,8 +67,10 @@ describe("Model", () => {
     expect(Model.OpenRouter.GROK_4_5).toBe("x-ai/grok-4.5");
     expect(Model.OpenRouter.KIMI_K3).toBe("moonshotai/kimi-k3");
     expect(Model.OpenRouter.KIMI_K2_7_CODE).toBe("moonshotai/kimi-k2.7-code");
+    expect(Model.OpenRouter.QWEN_3_8_MAX).toBe("qwen/qwen3.8-max");
     expect(Model.OpenRouter.QWEN_3_7_PLUS).toBe("qwen/qwen3.7-plus");
     expect(Model.OpenRouter.QWEN_3_6_FLASH).toBe("qwen/qwen3.6-flash");
+    expect(Model.OpenRouter.GLM_5_3_FLASH).toBe("z-ai/glm-5.3-flash");
   });
 
   it("uses vendor-prefixed slugs for all OpenRouter models", () => {

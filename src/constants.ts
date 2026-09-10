@@ -104,6 +104,7 @@ export const Model = {
     QWEN_3_8_MAX: "qwen/qwen3.8-max",
     QWEN_3_7_PLUS: "qwen/qwen3.7-plus",
     QWEN_3_6_FLASH: "qwen/qwen3.6-flash",
+    GLM_5_3_FLASH: "z-ai/glm-5.3-flash",
   },
 } as const;
 

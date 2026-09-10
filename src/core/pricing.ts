@@ -176,6 +176,12 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
     inputPricePerToken: 0.1875 / PER_MILLION,
     outputPricePerToken: 1.125 / PER_MILLION,
   },
+  // Verified 2026-09-10 against https://openrouter.ai/api/v1/models. Cached
+  // input is $0.03/MTok, not modelled (no provider gets a cache discount here).
+  [`${Provider.OPENROUTER}:${Model.OpenRouter.GLM_5_3_FLASH}`]: {
+    inputPricePerToken: 0.15 / PER_MILLION,
+    outputPricePerToken: 0.5 / PER_MILLION,
+  },
 };
 
 export function calculateCost(

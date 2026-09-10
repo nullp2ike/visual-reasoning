@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.23.0] - 2026-09-10
+
+### Added
+
+- **GLM 5.3 Flash (`z-ai/glm-5.3-flash`)** as a supported OpenRouter model — Z.ai's flash tier, and the cheapest vision model this library carries pricing for at **$0.15 / $0.50 per MTok**, undercutting `qwen/qwen3.6-flash` on both sides. Takes text, image, and video input, with a 1,310,720-token context (OpenRouter caps its own routing at 1,048,576) and a 131,072-token output ceiling. It supports `response_format` with structured outputs and `reasoning_effort`, so `check()`, `ask()`, `elementsVisible()` and the rest work through the existing OpenRouter driver with no special-casing. Verified live: a `check()` and an `elementsVisible()` call both returned well-formed answers, and the library's estimated cost matched OpenRouter's reported cost to the cent. Note it reasons by default — one to two hundred reasoning tokens per call with no `reasoningEffort` set, billed as output. Cached input is $0.03/MTok, which `calculateCost` does not model (no provider gets a cache discount here). Available as `Model.OpenRouter.GLM_5_3_FLASH`; the vendor prefix routes it, so no configuration is needed beyond `OPENROUTER_API_KEY`.
+
 ## [0.22.0] - 2026-09-04
 
 ### Added
