@@ -1,102 +1,47 @@
-# Visual reasoning benchmark
+# Benchmarks
 
-Measures how reliably vision models spot visual defects in screenshots. You
-supply a **dataset** — screenshots plus what is wrong with each one — and the
-harness runs every model under test against every screenshot several times,
-grades the answers with a judge, and emits a leaderboard, a screenshot × model
-matrix, and an interactive HTML report.
+Two benchmarks live here, and they answer different questions. Both run the same
+models against the same screenshots; what differs is who does the asking.
 
-Nothing here is specific to any one dataset. `golden` (18 screenshots, one
-seeded defect each plus a clean control) is tracked and is the default; the
-`primary` dataset is gitignored, being private product UI. See
-[`datasets/README.md`](datasets/README.md) for the format to add your own.
+|                     | [Defect discovery](discovery/README.md)                              | [Assertion accuracy](assertion/README.md)                                  |
+| ------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| **The question**    | Given no hints, does the model find the defects we seeded?           | Given a specific claim, does the model judge it correctly?                 |
+| **What is sent**    | One open prompt: "What looks visually broken on this page?"          | A list of elements, asked through `elementsVisible()` / `elementsHidden()` |
+| **The answer**      | Free prose — a list of issues the model chose to report              | One boolean per element                                                    |
+| **Grading**         | An LLM (or embedding) judge matches reported issues to expected ones | Deterministic — the boolean is compared with the ground truth              |
+| **Ground truth**    | `issues_per_file.md` — what is wrong with each screenshot            | `visibility_per_file.md` — which elements are there, and which are not     |
+| **Headline metric** | Recall of seeded defects, against extras reported per run            | Accuracy, and the hallucination rate inside it                             |
+| **Fails when**      | The model overlooks a defect, or invents defects on a clean page     | The model agrees with a claim that is false                                |
+| **Commands**        | `pnpm discovery:run` → `:score` → `:report`                          | `pnpm assertion:run` → `:report`                                           |
+| **Results**         | `results/<dataset>/`                                                 | `results/<dataset>/assertion/`                                             |
+
+The short version: **discovery measures what a model notices when nobody points
+at anything; assertion measures whether it will tell you the truth about
+something you pointed at.** A model can be strong at one and weak at the other,
+and the two failure modes cost a test suite differently — a missed defect is a
+bug that ships, while a false assertion is a test that passes when it should not.
+
+Neither replaces the other, and neither shares a leaderboard with the other.
 
 For **video** input — asking a model to list the bugs it sees in a screen
-recording — see [`video/README.md`](video/README.md), a separate harness that
-sends the clip natively to Gemini or through the library's frame sampler.
+recording — see [`video/README.md`](video/README.md). It is discovery-shaped
+(open prompt, free-prose answer) but has no judge yet.
 
-For **element visibility** — asking whether specific elements are on screen,
-where the answer is a boolean per element and grading needs no judge — see
-[`visibility/README.md`](visibility/README.md). It measures the failure mode a
-visibility assertion exists to catch: a model claiming to see something that is
-not there.
-
-## Quick start
-
-```bash
-pnpm bench:run --models claude-haiku-4-5 --dataset golden
-pnpm bench:score --dataset golden
-pnpm bench:report --dataset golden
-```
-
-Then open `bench/results/golden/report.html`.
-
-Set `BENCH_DATASET` in `.env` to avoid passing `--dataset` every time.
-
-## Commands
-
-| Command                      | What it does                                                                 |
-| ---------------------------- | ---------------------------------------------------------------------------- |
-| `pnpm bench:run`             | Executes the sweep and writes one run record per (model, image, rep).        |
-| `pnpm bench:score`           | Judges every run against the expected issues and writes a scores file.       |
-| `pnpm bench:report`          | Renders `RESULTS.*.md`, `report.*.html`, and the judge comparison.           |
-| `pnpm bench:calibrate-embed` | Picks a cosine threshold for the local embedding judge against an LLM judge. |
-
-All four accept `--dataset <id-or-path>`.
-
-`--models` selects models outright rather than filtering the roster, so a
-one-off model can be swept without editing `bench.config.ts`.
-
-`bench:run` also takes `--models`, `--images`, `--prompt <variant>`,
-`--effort`, `--fidelity`, `--concurrency`, `--force`, and `--yes` (skip the cost
-confirmation). It prints an estimated cost and asks before spending anything.
-Runs are resumable: completed cells are skipped, and failed cells are retried on
-the next invocation.
-
-`bench:score` also takes `--models` (same explicit-selection semantics as
-`bench:run`), so records for a model kept out of the roster can still be scored.
-
-`bench:score` and `bench:report` take `--judge <model>`; judge verdicts are
-cached, so re-scoring is nearly free.
-
-## Configuration
-
-[`bench.config.ts`](bench.config.ts) holds the roster of models, the number of
-repeats, the default dataset, reasoning effort, image fidelity, token budget,
-judge, and concurrency. It also defines the **prompt variants** — the exact
-questions put to the models. Changing a variant's wording invalidates existing
-runs for it (the prompt hash is stamped into every record), which the manifest
-guard will tell you about.
-
-## Axes
-
-A run is identified by (model, prompt variant, reasoning effort, image
-fidelity). Non-default efforts and fidelities are stored separately and appear
-as their own leaderboard rows, e.g. `gpt-5.6-luna (xhigh, high-res)`, so one
-model can be compared against itself across settings.
-
-## Judges
-
-The judge is text-only: it never sees the screenshot, only the expected issues
-and what the model reported. Either an LLM (`claude-haiku-4-5`, `gpt-5.6-terra`,
-…) or a local embedding judge (`embed:bge-small`) that runs offline via
-Transformers.js and thresholds cosine similarity. Reports are written per judge
-so you can see how much the grading choice moves the ranking; the one named in
-`judgeModel` (`gpt-5.6-luna`) also owns the canonical `RESULTS.md` and
-`report.html`.
-
-## Output
-
-Everything lands in `bench/results/<dataset-id>/`:
+## Layout
 
 ```
-manifest.json                    image ids, hashes, expected issues
-runs/<variant>/<model>/<img>/    one JSON record per repetition
-judge-cache/                     cached judge verdicts
-scores.<variant>.<judge>.json    graded cells + leaderboard metrics
-RESULTS.<variant>.<judge>.md     markdown leaderboard + matrix
-report.<judge>.html              interactive report with per-image drill-down
+bench/
+  bench.config.ts       models, repeats, effort, fidelity — shared by both benchmarks;
+                        also the discovery prompt variants and its judge
+  shared/               dataset resolution and small helpers both benchmarks use
+  discovery/            the defect-discovery benchmark
+  assertion/            the assertion-accuracy benchmark
+  video/                the video bug-hunting harness
+  datasets/             ground truth and screenshots (see datasets/README.md)
+  results/              per-dataset artifacts, namespaced by benchmark
 ```
 
-The HTML report links screenshots relative to its own location rather than
-inlining them, so it stays small and never embeds your dataset.
+Nothing in either benchmark is specific to one dataset. `golden` (18 screenshots,
+one seeded defect each plus a clean control) and `visibility-golden` (the same
+screens, labelled element by element) are tracked; `primary` is private product
+UI and gitignored. See [`datasets/README.md`](datasets/README.md) to add your own.

@@ -60,7 +60,7 @@ const ELEMENTS_VISIBLE_FINAL_STATE_RULE =
   "Judge each element in its finished, presented state. Things a design draws on top of an element — a badge, a favourite icon, a duration or price pill, a gradient scrim — coexist with finished content and leave it visible. An overlay that says the element is NOT ready — a loading spinner, a skeleton placeholder, a shimmer, a progress bar, an error or retry overlay — means the element is not properly visible even when you can still make out what sits underneath, so the check for that element FAILS. Name which of the two you are seeing in your reasoning.";
 
 /**
- * Opt-in. Measured on the visibility bench with the rule on and off, five reps
+ * Opt-in. Measured on the assertion bench with the rule on and off, five reps
  * each: it caught the one bullet naming a present-but-overlapping element
  * (5/5 on both models, against 3/5 and 0/5 without it) and nothing else, while
  * tripling Gemini's flakiness on unrelated presence questions. A presence

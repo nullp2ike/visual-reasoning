@@ -58,7 +58,7 @@ can then judge intent rather than only appearance.
 If a file named `<video-stem>.expected.md` sits next to the video (or is passed
 with `--expected`), its contents are embedded in the report under "Expected
 (ground truth)" so you can grade the model's list by eye. There is no automatic judge yet; the JSON
-records carry everything needed to add one later (see `bench/src/judge.ts` for
+records carry everything needed to add one later (see `bench/discovery/src/judge.ts` for
 the screenshot harness's approach).
 
 ## Output

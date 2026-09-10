@@ -103,8 +103,8 @@ export interface BenchConfig {
    * Either an LLM model name (provider inferred, e.g. "claude-haiku-4-5",
    * "gpt-5.6-terra") or a local embedding judge id of the form "embed:<id>"
    * (e.g. "embed:bge-small"). Embedding judges run fully locally via
-   * Transformers.js and threshold cosine similarity — see bench/src/embed.ts and
-   * `pnpm bench:calibrate-embed`. Select per run with `bench:score --judge <id>`.
+   * Transformers.js and threshold cosine similarity — see bench/discovery/src/embed.ts and
+   * `pnpm discovery:calibrate-embed`. Select per run with `discovery:score --judge <id>`.
    *
    * Whichever judge is named here also owns the canonical `RESULTS.md` and
    * `report.html`; every other judge's reports are written under its own

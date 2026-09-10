@@ -1,8 +1,11 @@
 # Benchmark datasets
 
-A **dataset** is a directory of screenshots plus a description of what is wrong
-with each one. The benchmark asks every model under test the same question about
-every screenshot, then a judge checks the answers against these descriptions.
+A **dataset** is a directory of screenshots plus ground truth about them. Which
+ground-truth file it carries decides which benchmark can use it: [defect
+discovery](../discovery/README.md) needs `issues_per_file.md` (what is wrong with
+each screenshot), [assertion accuracy](../assertion/README.md) needs
+`visibility_per_file.md` (which elements are there and which are not). One
+directory may carry both, and the two benchmarks keep their results apart.
 
 Datasets are tracked, so the ground truth and the runs graded against it are not
 one laptop away from being lost. The exception is `primary/`: screenshots of a
@@ -82,9 +85,9 @@ images regenerates it automatically (ids stay stable, removed images are
 retired), but editing an existing image's bytes or its expected issues
 invalidates prior runs and requires `--force`.
 
-## Visibility datasets
+## Datasets for the assertion benchmark
 
-The [element visibility benchmark](../visibility/README.md) uses its own ground
+The [assertion accuracy benchmark](../assertion/README.md) uses its own ground
 truth file, `visibility_per_file.md`, listing for each image the elements that
 are on screen and plausible elements that are not:
 
@@ -102,25 +105,25 @@ are on screen and plausible elements that are not:
 ```
 
 The section chooses the prompt: `### visible` elements are asked with
-`elementsVisible()` ("X is fully visible"), `### absent` ones with
+`elementsVisible()` ("X is visible on the page"), `### absent` ones with
 `elementsHidden()` ("X is NOT visible"), so a rep makes one call per section.
 Elements are sorted within each call, so their order never hints at the expected
 answers. A bullet may end with `| TRUE` or `| FALSE` (default `TRUE`) saying
 whether its section's claim really holds — that is how a near-miss statement
 about an element that does exist is written, and how you keep a call's expected
-answers from being uniform. A directory may carry both ground-truth
-files; the two harnesses keep their results apart (`visibility/` nests under the
-dataset's results directory). Visibility datasets are selected with `--dataset`
-or `visibility.config.ts` only — `BENCH_DATASET` is not consulted, since it
-usually names a screenshot dataset. See
-[`bench/visibility/README.md`](../visibility/README.md) for the full grammar.
+answers from being uniform. A directory may carry both ground-truth files; the
+two benchmarks keep their results apart (`assertion/` nests under the dataset's
+results directory, discovery's artifacts sit at its root). Datasets for this
+benchmark are selected with `--dataset` or `assertion.config.ts` only —
+`BENCH_DATASET` is not consulted, since it usually names a discovery dataset. See
+[`bench/assertion/README.md`](../assertion/README.md) for the full grammar.
 
 ## The datasets in this repo
 
 | Dataset             | Ground truth             | What it is                                                                                     |
 | ------------------- | ------------------------ | ---------------------------------------------------------------------------------------------- |
-| `golden`            | `issues_per_file.md`     | 18 screenshots, one seeded defect each plus a clean control. Default for the screenshot bench. |
-| `visibility-golden` | `visibility_per_file.md` | The same screens, labelled element by element for the visibility bench.                        |
+| `golden`            | `issues_per_file.md`     | 18 screenshots, one seeded defect each plus a clean control. Default for the discovery bench. |
+| `visibility-golden` | `visibility_per_file.md` | The same screens, labelled element by element for the assertion bench.                        |
 | `primary`           | `issues_per_file.md`     | Private product UI. Gitignored, so only present on the machine that captured it.               |
 
 Adding your own needs no more than a directory, a handful of screenshots, one
