@@ -86,7 +86,7 @@ function makeRecord(
     promptHash: "prompt-hash",
     reasoningEffort: "medium",
     imageFidelity: "auto",
-    requireCorrectRendering: false,
+    requireCorrectRendering: true,
     maxTokens: 8192,
     timestamp: "2026-09-06T00:00:00.000Z",
     status: "ok",
@@ -415,25 +415,25 @@ describe("buildVisibilityScores", () => {
 });
 
 describe("renderingSeries", () => {
-  it("leaves the default, presence-only setting untagged", () => {
-    expect(renderingSeries("gemini-3.8-flash", false)).toBe("gemini-3.8-flash");
-    expect(renderingSeries("gemini-3.8-flash (xhigh)", false)).toBe("gemini-3.8-flash (xhigh)");
+  it("leaves the default, rendering-judged setting untagged", () => {
+    expect(renderingSeries("grok-4.6", true)).toBe("grok-4.6");
+    expect(renderingSeries("grok-4.6 (xhigh)", true)).toBe("grok-4.6 (xhigh)");
   });
 
-  it("tags a rendering-judged run, folding into an existing parenthetical", () => {
-    expect(renderingSeries("gemini-3.8-flash", true)).toBe("gemini-3.8-flash (correct-rendering)");
-    expect(renderingSeries("gemini-3.8-flash (xhigh, high-res)", true)).toBe(
-      "gemini-3.8-flash (xhigh, high-res, correct-rendering)",
+  it("tags a presence-only run, folding into an existing parenthetical", () => {
+    expect(renderingSeries("grok-4.6", false)).toBe("grok-4.6 (presence-only)");
+    expect(renderingSeries("grok-4.6 (xhigh, high-res)", false)).toBe(
+      "grok-4.6 (xhigh, high-res, presence-only)",
     );
   });
 
   it("separates the two settings into different series when grading", () => {
-    const off = gradeRecord(makeRecord(PERFECT_VISIBLE, PERFECT_HIDDEN), image);
-    const on = gradeRecord(
-      makeRecord(PERFECT_VISIBLE, PERFECT_HIDDEN, { requireCorrectRendering: true }),
+    const on = gradeRecord(makeRecord(PERFECT_VISIBLE, PERFECT_HIDDEN), image);
+    const off = gradeRecord(
+      makeRecord(PERFECT_VISIBLE, PERFECT_HIDDEN, { requireCorrectRendering: false }),
       image,
     );
-    expect(off.series).toBe("model-a");
-    expect(on.series).toBe("model-a (correct-rendering)");
+    expect(on.series).toBe("model-a");
+    expect(off.series).toBe("model-a (presence-only)");
   });
 });

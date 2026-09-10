@@ -257,7 +257,7 @@ async function main(): Promise<void> {
       concurrency: { type: "string" },
       effort: { type: "string" },
       fidelity: { type: "string" },
-      // `--correct-rendering` turns requireCorrectRendering on (a run axis; default off).
+      // `--no-correct-rendering` opts out of judging rendering quality (default on).
       "correct-rendering": { type: "boolean" },
     },
     allowNegative: true,
@@ -289,7 +289,7 @@ async function main(): Promise<void> {
     throw new Error(`Invalid --reps "${values.reps ?? ""}" (positive integer)`);
   }
 
-  const requireCorrectRendering = values["correct-rendering"] ?? false;
+  const requireCorrectRendering = values["correct-rendering"] ?? true;
   const allImages = await loadVisibilityGroundTruth(dataset.dir);
   const imageFilter = values.images
     ?.split(",")
@@ -326,7 +326,7 @@ async function main(): Promise<void> {
   console.log(`Reasoning effort: ${effort}`);
   console.log(`Image fidelity: ${fidelity}`);
   console.log(
-    `Rendering quality: ${requireCorrectRendering ? "judged (--correct-rendering)" : "not judged (default)"}`,
+    `Rendering quality: ${requireCorrectRendering ? "judged (default)" : "not judged (--no-correct-rendering)"}`,
   );
 
   const byFilename = new Map(images.map((i) => [i.filename, i]));

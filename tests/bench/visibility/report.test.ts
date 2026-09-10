@@ -70,7 +70,7 @@ function makeRecord(
     promptHash: "prompt-hash",
     reasoningEffort: "medium",
     imageFidelity: "auto",
-    requireCorrectRendering: false,
+    requireCorrectRendering: true,
     maxTokens: 8192,
     timestamp: "2026-09-06T00:00:00.000Z",
     status: "ok",

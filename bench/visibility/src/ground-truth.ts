@@ -185,7 +185,7 @@ export function sortedElements(entries: readonly ParsedElement[]): string[] {
 export function visibilityPromptHash(
   visibleCall: readonly string[],
   hiddenCall: readonly string[],
-  requireCorrectRendering = false,
+  requireCorrectRendering = true,
 ): string {
   return sha256(
     [
@@ -201,12 +201,12 @@ export function visibilityPromptHash(
 /**
  * The prompt hash a record must carry to be current for `image` under a given
  * rendering setting. `image.promptHash` is the default-setting hash, so this
- * only rebuilds the prompt for the rendering-judged variant.
+ * only rebuilds the prompt for the presence-only variant.
  */
 export function imagePromptHash(image: VisibilityImage, requireCorrectRendering: boolean): string {
   return requireCorrectRendering
-    ? visibilityPromptHash(image.visibleCall, image.hiddenCall, true)
-    : image.promptHash;
+    ? image.promptHash
+    : visibilityPromptHash(image.visibleCall, image.hiddenCall, false);
 }
 
 /**

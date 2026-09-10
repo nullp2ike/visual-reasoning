@@ -32,12 +32,12 @@ export function recordPath(
   key: RecordKey,
   reasoningEffort: string,
   imageFidelity: string,
-  requireCorrectRendering = false,
+  requireCorrectRendering = true,
 ): string {
-  // Runs that judge rendering quality get their own directory so both settings
-  // coexist on disk; the default keeps the bare directory, as primary effort
-  // does. The record's own field remains the source of truth.
-  const suffix = requireCorrectRendering ? "@correct-rendering" : "";
+  // Presence-only runs get their own directory so both settings coexist on
+  // disk; the default, which judges rendering quality, keeps the bare directory
+  // as primary effort does. The record's own field remains the source of truth.
+  const suffix = requireCorrectRendering ? "" : "@presence";
   return join(
     runsDir(dataset),
     runModelDir(key.model, reasoningEffort, imageFidelity) + suffix,

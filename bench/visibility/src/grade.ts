@@ -10,15 +10,15 @@ import type {
 } from "./types.js";
 
 /**
- * Tag a series that judged rendering quality, folding into the effort/fidelity
- * parenthetical when there is one: `gemini (xhigh)` -> `gemini (xhigh, correct-rendering)`.
- * The default, presence-only, keeps the bare series id, as primary effort does.
+ * Tag a series that skipped rendering quality, folding into the effort/fidelity
+ * parenthetical when there is one: `grok (xhigh)` -> `grok (xhigh, presence-only)`.
+ * The default, which judges rendering quality, keeps the bare series id.
  */
 export function renderingSeries(series: string, requireCorrectRendering: boolean): string {
-  if (!requireCorrectRendering) return series;
+  if (requireCorrectRendering) return series;
   return series.endsWith(")")
-    ? `${series.slice(0, -1)}, correct-rendering)`
-    : `${series} (correct-rendering)`;
+    ? `${series.slice(0, -1)}, presence-only)`
+    : `${series} (presence-only)`;
 }
 
 /**

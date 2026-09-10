@@ -321,15 +321,15 @@ describe("visibilityResultsDir", () => {
 });
 
 describe("rendering-quality axis", () => {
-  it("hashes the rendering-judged prompt differently from the default", () => {
-    expect(visibilityPromptHash(["a"], ["b"], true)).not.toBe(visibilityPromptHash(["a"], ["b"]));
+  it("hashes the presence-only prompt differently from the default", () => {
+    expect(visibilityPromptHash(["a"], ["b"], false)).not.toBe(visibilityPromptHash(["a"], ["b"]));
   });
 
   it("leaves the hash unchanged when only the hidden call exists, which ignores the option", () => {
-    expect(visibilityPromptHash([], ["b"], true)).toBe(visibilityPromptHash([], ["b"]));
+    expect(visibilityPromptHash([], ["b"], false)).toBe(visibilityPromptHash([], ["b"]));
   });
 
-  it("returns the image's own hash for the default setting", () => {
+  it("returns the image's own hash for the default, rendering-judged setting", () => {
     const image = {
       filename: "a.png",
       sha256: "s",
@@ -339,7 +339,7 @@ describe("rendering-quality axis", () => {
       expectedVisible: ["a"],
       promptHash: visibilityPromptHash(["a"], ["b"]),
     };
-    expect(imagePromptHash(image, false)).toBe(image.promptHash);
-    expect(imagePromptHash(image, true)).toBe(visibilityPromptHash(["a"], ["b"], true));
+    expect(imagePromptHash(image, true)).toBe(image.promptHash);
+    expect(imagePromptHash(image, false)).toBe(visibilityPromptHash(["a"], ["b"], false));
   });
 });
