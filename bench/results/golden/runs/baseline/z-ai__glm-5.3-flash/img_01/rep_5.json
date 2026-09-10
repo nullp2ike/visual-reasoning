@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:34:02.567Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 issues: a major localization bug with an untranslated string, a minor truncated restaurant name, and a minor layout/contrast concern on category chips.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Section header displays raw localization key 'home_feed.popular_title' instead of translated text (should be e.g. 'Popular near you').",
+        "suggestion": "Fix the missing translation entry in the localization files so the proper heading string is rendered."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated/cut off at the right edge of the 'Fastest near you' carousel.",
+        "suggestion": "Add proper ellipsis truncation or widen the card/name area so full names are readable."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The horizontally scrollable category chips are cut off at the right edge with no visual affordance (partial chip barely visible), which may be missed by users.",
+        "suggestion": "Add a fade/gradient edge or partial next chip visibility to hint at horizontal scrolling."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 286,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0004133,
+    "reportedCost": 0.0004133,
+    "durationSeconds": 4.220343208
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "Section header displays raw localization key 'home_feed.popular_title' instead of translated text (should be e.g. 'Popular near you').",
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off at the right edge of the 'Fastest near you' carousel.",
+    "The horizontally scrollable category chips are cut off at the right edge with no visual affordance (partial chip barely visible), which may be missed by users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the section header showing the raw home_feed.popular_title localization key instead of translated text."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

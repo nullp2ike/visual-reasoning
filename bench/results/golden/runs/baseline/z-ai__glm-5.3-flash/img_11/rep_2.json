@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:34:53.698Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well-designed, but a few visual issues stand out: a horizontally cut-off restaurant card, a suspicious '-100%' discount badge, low-contrast category chips, and truncated text in the 'Fastest near you' section.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third card in the 'Fastest near you' row (Trattoria Piccol...) is cut off at the right edge of the screen with no visual affordance (e.g., partial peek, fade, or scroll indicator) indicating more content is available",
+        "suggestion": "Add a subtle fade-out edge or partial next-card preview to signal horizontal scrollability"
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The '-100%' discount badge on the pizza card implies a completely free item, which is likely a data/promo error and may be visually confusing or misleading",
+        "suggestion": "Verify the promo data; if correct, consider showing 'Free' instead of '-100%' for clarity"
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The selected 'All' filter chip uses white text on a dark background while unselected chips use dark text on light gray — contrast of unselected chips (gray on light gray) may be too low for some users",
+        "suggestion": "Increase text/background contrast on unselected filter chips to meet WCAG AA"
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Restaurant names in 'Fastest near you' (e.g., 'Trattoria Piccol') are truncated without ellipsis, causing abrupt text cutoff",
+        "suggestion": "Add ellipsis truncation or allow two-line names for consistency"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category chip is partially cut off at the right edge of the filter row with no scroll hint",
+        "suggestion": "Apply the same fade/peek treatment as the restaurant carousel for consistency"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 484,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1728,
+    "estimatedCost": 0.0005123,
+    "reportedCost": 0.00030494,
+    "durationSeconds": 5.242002
+  }
+}

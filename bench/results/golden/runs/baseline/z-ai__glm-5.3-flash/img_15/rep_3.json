@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_15",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:35:12.176Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well-designed, but the Android gesture/home-indicator bar overlaps the bottom navigation icons, and the horizontally scrolling restaurant cards are cut off at the screen edge (acceptable for a carousel, but the overlap in the bottom bar is a real visual defect).",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The system gesture bar / home indicator overlaps the bottom navigation bar, striking through the search and bookmarks icons and making them look broken or partially obscured.",
+        "suggestion": "Add bottom padding/inset handling (safe-area insets) so the bottom navigation icons render above the system gesture bar, or reduce icon area so they don't collide."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in the 'Fastest near you' carousel (Trattoria Piccola) is cut off mid-word at the right edge, which can look like truncated text rather than an intentional scrollable carousel.",
+        "suggestion": "Ensure the carousel peeks enough of the next card and add subtle scroll affordances (e.g., partial card visibility plus dots or edge fade) to signal scrollability."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 369,
+    "reasoningTokens": 92,
+    "cachedInputTokens": 1728,
+    "estimatedCost": 0.0004548,
+    "reportedCost": 0.00024744,
+    "durationSeconds": 5.620151832999996
+  }
+}

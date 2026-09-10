@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_04",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:34:15.544Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: a broken discount badge showing '-0%' and a minor truncated card in the horizontal carousel.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza card (partially visible 'Popular right now' item) displays a discount badge reading '-0%', which is meaningless and likely a data or rendering bug (a zero or miscomputed discount).",
+        "suggestion": "Fix the discount calculation so a real percentage shows (e.g. '-20%'), or hide the badge entirely when no discount applies."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in the 'Fastest near you' carousel ('Trattoria Piccol...') is cut off at the right edge with truncated text; if the carousel isn't clearly scrollable, users may miss content.",
+        "suggestion": "Ensure the horizontal carousel is clearly scrollable (peek hint, scroll indicators, or snap behavior) and avoid truncating restaurant names."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 278,
+    "reasoningTokens": 35,
+    "cachedInputTokens": 1728,
+    "estimatedCost": 0.00040930000000000003,
+    "reportedCost": 0.00020194,
+    "durationSeconds": 2.591675542000001
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:35:22.532Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders cleanly overall, but the horizontal 'Fastest near you' carousel clips the third restaurant card at the screen edge, truncating its name and delivery fee, which suggests a missing right padding or scroll affordance. A couple of minor polish items are also noted.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' (Trattoria Piccol...) is cut off at the right edge of the screen; its name and delivery fee are truncated. The carousel also lacks a visible scroll indicator suggesting more content exists.",
+        "suggestion": "Add right padding so partially visible cards peek intentionally and remain readable, or add a scroll hint (e.g., partial next card plus fade/indicator) to communicate horizontal scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "White time-badge text ('15-25 min', etc.) sits directly over busy food imagery; contrast is not guaranteed and may fail WCAG AA on lighter images (e.g., the white plate in the first card).",
+        "suggestion": "Give badges a solid or semi-opaque dark background with sufficient contrast, rather than relying on the image underneath."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Profile' tab is highlighted in green while on the Home feed, which may confuse users about their current screen.",
+        "suggestion": "Ensure the active tab reflects the current screen (Home should be highlighted here), or verify navigation state is correct."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 391,
+    "reasoningTokens": 24,
+    "cachedInputTokens": 1728,
+    "estimatedCost": 0.0004658,
+    "reportedCost": 0.00025844,
+    "durationSeconds": 4.634113125000003
+  }
+}

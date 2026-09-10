@@ -1,0 +1,32 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The third card in the 'Fastest near you' row (Trattoria Piccol...) is cut off at the right edge of the screen with no visual affordance (e.g., partial peek, fade, or scroll indicator) indicating more content is available",
+    "The '-100%' discount badge on the pizza card implies a completely free item, which is likely a data/promo error and may be visually confusing or misleading",
+    "The selected 'All' filter chip uses white text on a dark background while unselected chips use dark text on light gray — contrast of unselected chips (gray on light gray) may be too low for some users",
+    "Restaurant names in 'Fastest near you' (e.g., 'Trattoria Piccol') are truncated without ellipsis, causing abrupt text cutoff",
+    "The last category chip is partially cut off at the right edge of the filter row with no scroll hint"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          1
+        ],
+        "reasoning": "Reported issue 1 directly identifies the '-100%' discount badge on the pizza card as the same defect."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      2,
+      3,
+      4
+    ]
+  }
+}

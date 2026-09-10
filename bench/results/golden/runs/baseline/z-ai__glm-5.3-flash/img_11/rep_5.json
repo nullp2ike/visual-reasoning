@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:34:54.498Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well-structured, but there are a few notable issues: truncated restaurant names, the '-100%' promo badge appears incorrect/impossible, and minor layout truncation in horizontal carousels.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza card shows a '-100%' discount badge, implying the food is free, which looks like a broken or erroneous promo value.",
+        "suggestion": "Verify the discount calculation; likely the badge should show a realistic value (e.g., '-10%' or 'Free delivery') or the promo should be corrected."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in the 'Fastest near you' row is cut off mid-word ('Trattoria Piccol...'), which is expected carousel behavior but the truncated image edge looks awkward at the screen edge.",
+        "suggestion": "Add a subtle edge fade or partial-card peek indicator to signal horizontal scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chips row (All, Pizza, Sushi...) is also cut off on the right edge without a visual affordance for more categories.",
+        "suggestion": "Add a fade-out gradient or partial chip visibility to hint at scrollable content."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Low-contrast gray placeholder text in the search bar ('Restaurants, dishes, groceries') may be hard to read for some users.",
+        "suggestion": "Increase placeholder text contrast slightly while keeping it distinguishable from entered text."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 386,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1728,
+    "estimatedCost": 0.00046330000000000004,
+    "reportedCost": 0.00025594,
+    "durationSeconds": 4.320820165999998
+  }
+}

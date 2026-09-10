@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_14",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:35:06.736Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well-designed, but there is a horizontal overflow issue in the 'Fastest near you' carousel: the third card ('Trattoria Piccol...') is cut off at the screen edge, which is expected for a carousel, but its truncated name with an ellipsis mid-word at the card boundary looks broken. Also minor contrast and spacing concerns.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' (Trattoria Piccol...) is clipped at the right edge of the screen with its title truncated mid-word, creating a visually broken appearance rather than a clean peek of the next card",
+        "suggestion": "Adjust the carousel so the next card peeks cleanly (e.g., ~80% visible with a defined peek width), or apply proper text truncation with ellipsis that doesn't cut off at the container edge"
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery fee text ('€0.90 delivery') under card titles is small and low-contrast gray, which may be hard to read",
+        "suggestion": "Increase text contrast or slightly increase font size for delivery fee labels"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chips (All, Pizza, Sushi, Burgers, Healthy) are cut off at the right edge, suggesting the last chip may be partially hidden",
+        "suggestion": "Ensure the horizontally scrollable chip row shows a partial hint of the next chip consistently, or add a visual scroll affordance"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 381,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.00046080000000000003,
+    "reportedCost": 0.0004608,
+    "durationSeconds": 3.8312517080000106
+  }
+}

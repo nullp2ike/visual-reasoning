@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_13",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:35:02.539Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well-structured with no critical defects. A few minor cosmetic issues were found: the bottom restaurant card is partially cut off by the bottom navigation bar, the horizontal category chip row is clipped at the right edge, and the promotional banner's secondary text has moderate contrast on the green background.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second card in 'Popular right now' (-20% pizza) is partially cut off by the bottom navigation bar, hiding the restaurant name and details",
+        "suggestion": "Add bottom padding or scroll inset so content fully clears the fixed bottom navigation bar"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal category filter chips (All, Pizza, Sushi, Burgers, Healthy, ...) appear clipped at the right edge with a partially visible chip",
+        "suggestion": "This is likely intentional scroll behavior, but ensure the fade/edge affordance makes the horizontal scroll discoverable, e.g. add a subtle gradient fade"
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary text in the green promo banner ('Use code TALLINN3 at checkout · min. order €10') has moderate contrast against the green background",
+        "suggestion": "Darken the text or lighten the background slightly to meet WCAG AA contrast ratio of 4.5:1"
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant card images in 'Fastest near you' appear to be generic placeholder illustrations rather than real food photos",
+        "suggestion": "Replace with actual restaurant photography or confirm placeholder assets are intentional for the design"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 454,
+    "reasoningTokens": 48,
+    "cachedInputTokens": 1728,
+    "estimatedCost": 0.0004973,
+    "reportedCost": 0.00028994,
+    "durationSeconds": 4.806225040999998
+  }
+}

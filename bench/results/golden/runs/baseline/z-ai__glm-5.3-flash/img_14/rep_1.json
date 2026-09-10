@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_14",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:35:05.586Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well-structured, but there are a few layout issues: truncated cards at the right edge of the 'Fastest near you' row and the category filter chips, inconsistent card sizing, and a partially cut-off promo card at the bottom of the viewport.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The 'Trattoria Piccola' card in the 'Fastest near you' row is cut off at the right edge of the screen, with its name and image partially clipped.",
+        "suggestion": "If this is a horizontally scrollable carousel, add a visual affordance (e.g., partial peek with fade or scroll indicator); otherwise adjust card widths so full cards fit within the viewport."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category filter chip is clipped at the right edge of the screen, suggesting a scrollable chip row with no visible indication of more options.",
+        "suggestion": "Add a fade-out gradient or partial chip visibility cue so users understand the filter list scrolls horizontally."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Card sizes in the 'Fastest near you' row are inconsistent: 'Smash Bros Burgers' card is narrower and its image/text block alignment differs from the neighboring cards, making the row look uneven.",
+        "suggestion": "Use uniform card widths and consistent image aspect ratios across the row."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom card (with the −20% badge) is cut off mid-content at the viewport bottom, showing only the top of the pizza image with no title visible.",
+        "suggestion": "If this is expected scroll behavior it's fine, but ensure the card's badge and image render completely when scrolled; avoid cropping that hides the badge context."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 527,
+    "reasoningTokens": 82,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0005338000000000001,
+    "reportedCost": 0.0005338,
+    "durationSeconds": 6.54330666599999
+  }
+}

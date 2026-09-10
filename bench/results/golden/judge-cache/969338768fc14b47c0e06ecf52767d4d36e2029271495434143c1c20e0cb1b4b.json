@@ -1,0 +1,30 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "Third restaurant name 'Trattoria Piccol...' is truncated and its card is cut off at the screen edge, which is expected in a horizontal carousel but the truncation may confuse users",
+    "The '-100%' discount badge on the pizza listing implies a completely free item, which may be a data/styling error or misleading promo",
+    "White 'Order now' text on the green promo banner and small white text on delivery-time badges over images may have borderline contrast depending on underlying imagery",
+    "The category chip row is cut off at the right edge with a partially visible chip, indicating horizontal scroll with no visual scroll affordance"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          1
+        ],
+        "reasoning": "Reported issue 1 identifies the '-100%' discount badge on the pizza listing, matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      2,
+      3
+    ]
+  }
+}

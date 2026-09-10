@@ -1,0 +1,30 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Middle card in the carousel is not aligned with the other cards"
+  ],
+  "reportedIssues": [
+    "The third card in 'Fastest near you' (Trattoria Piccolo) is cut off at the right edge of the screen, which is expected for a carousel, but only a sliver of the image and text is visible with no strong visual cue that more content is scrollable.",
+    "Restaurant name 'Trattoria Piccol…' is truncated mid-word, and the truncated card has no visible delivery time label placement consistent with the others.",
+    "Card heights in the 'Fastest near you' row are inconsistent — the middle card (Smash Bros Burgers) sits lower than the others because its title/delivery text align differently, making the row look misaligned.",
+    "The promotional banner (green) uses white text on a medium green background; the secondary line 'Use code TALLINN3 at checkout · min. order €10' may have low contrast for some users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          2
+        ],
+        "reasoning": "Reported issue 2 directly describes the middle card sitting lower than the others, making the row misaligned."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1,
+      3
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_04",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:34:15.658Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: a broken discount badge showing '-0%' and a minor layout issue with a partially cut-off restaurant card.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Discount badge on the pizza card shows '-0%', which is nonsensical - a 0% discount should not be displayed, or the badge value is rendering incorrectly.",
+        "suggestion": "Hide the badge when the discount is 0%, or fix the data/logic so the correct discount percentage (e.g. '-20%') is displayed."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal 'Fastest near you' carousel cards are cut off at the right edge of the screen ('Trattoria Piccol...' is truncated), which is expected carousel behavior but the partially visible card and truncated name may look broken to users.",
+        "suggestion": "Ensure the partial card is clearly swipeable (e.g., add a peek effect or scroll indicator) so it's obvious more content exists off-screen."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 257,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1728,
+    "estimatedCost": 0.00039880000000000004,
+    "reportedCost": 0.00019144,
+    "durationSeconds": 2.3407398749999992
+  }
+}

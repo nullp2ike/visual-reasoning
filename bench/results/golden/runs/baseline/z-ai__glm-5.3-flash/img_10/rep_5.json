@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:34:51.578Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: a duplicated restaurant card that appears to be a data error, and a minor clipping issue with a horizontally scrolling card.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Fastest near you' section shows the same restaurant 'Green Bowl Poké' twice in a row with identical images, delivery fees, and times, which looks like a duplicated data entry",
+        "suggestion": "Deduplicate the restaurant list so each restaurant appears only once in the recommendations carousel"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in 'Fastest near you' ('Smash Bros Bu...') is cut off at the right edge; while likely intentional horizontal scrolling, the truncated restaurant name looks awkward",
+        "suggestion": "Ensure the card width accommodates the full restaurant name or add a fade/scroll affordance to signal more content"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 230,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1728,
+    "estimatedCost": 0.0003853,
+    "reportedCost": 0.00017794,
+    "durationSeconds": 2.513583666999999
+  }
+}

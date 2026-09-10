@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:34:54.413Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page looks generally well-structured and polished. A few content-level issues stand out: an implausible discount badge and a truncated restaurant name in the horizontal carousel.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza restaurant card shows a '−100%' discount badge, implying the food is completely free. This is likely a pricing/data error that could confuse users or violate promotion rules.",
+        "suggestion": "Verify the discount value in the data feed and correct it (e.g., −10% or −50%), or hide the badge if no valid promotion exists."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The restaurant name 'Trattoria Piccol' in the 'Fastest near you' carousel appears truncated mid-word because the card overflows the screen edge.",
+        "suggestion": "Ensure card widths allow full names with ellipsis truncation, or keep enough of the next card visible with proper text wrapping."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The partially visible carousel card at the right edge is cut off abruptly with no fade or peek affordance, making it unclear more content is scrollable.",
+        "suggestion": "Add a subtle edge fade or partially visible next card to signal horizontal scrolling."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 354,
+    "reasoningTokens": 37,
+    "cachedInputTokens": 1728,
+    "estimatedCost": 0.0004473,
+    "reportedCost": 0.00023994,
+    "durationSeconds": 4.075908666000003
+  }
+}

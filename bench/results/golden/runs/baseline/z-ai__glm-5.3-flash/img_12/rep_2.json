@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:34:58.522Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: a text overlap problem in the popular restaurant card and the third card in the 'Fastest near you' row is cut off at the screen edge, which appears intentional but may clip the 'Trattoria Piccol' name.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Under 'Tokumaru Ramen Bar', the delivery time text '25-30 min' overlaps with '€0 delivery' text, producing garbled text '25-30€0lineliiveryy'",
+        "suggestion": "Fix the overlapping text elements so delivery time and delivery fee render as separate, non-overlapping labels"
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Third restaurant name 'Trattoria Piccol' appears truncated at the screen edge in the 'Fastest near you' row",
+        "suggestion": "Ensure full restaurant names are visible or use proper ellipsis truncation with accessible full text"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 244,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1728,
+    "estimatedCost": 0.0003923,
+    "reportedCost": 0.00018494,
+    "durationSeconds": 3.2958517499999944
+  }
+}

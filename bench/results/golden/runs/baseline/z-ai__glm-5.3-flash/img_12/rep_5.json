@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:34:58.978Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed, but there is a clear text-overlap defect in the 'Tokumaru Ramen Bar' listing where '25–30 min delivery' collides with '€0 delivery', making both unreadable. A minor issue exists with a partially cut-off restaurant card at the screen edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Popular right now' section, under 'Tokumaru Ramen Bar', the delivery time text '25–30 min delivery' overlaps with '€0 delivery', producing garbled, unreadable text ('€0rdelimiivery')",
+        "suggestion": "Fix the text positioning/overflow so the delivery time and delivery fee render in separate, non-overlapping lines or spaces"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in the 'Fastest near you' carousel ('Trattoria Piccol...') is cut off at the right edge of the screen with its name truncated",
+        "suggestion": "If this is an intentionally scrollable carousel it is acceptable, but ensure there is a visible affordance (e.g., partial peek with scroll hint) so users know more cards exist; otherwise adjust card widths to fit"
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Category filter chips (e.g., 'Pizza', 'Sushi') use light gray text on light gray backgrounds with low contrast",
+        "suggestion": "Increase text/background contrast for filter chips to meet WCAG AA standards"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 419,
+    "reasoningTokens": 46,
+    "cachedInputTokens": 1728,
+    "estimatedCost": 0.0004798,
+    "reportedCost": 0.00027244,
+    "durationSeconds": 5.085399166999996
+  }
+}

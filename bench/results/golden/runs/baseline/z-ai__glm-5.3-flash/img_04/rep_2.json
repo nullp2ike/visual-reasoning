@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_04",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:34:12.932Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 clear visual bug: a discount badge showing an invalid '-0%' value on the pizza card. Otherwise the page renders cleanly.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza card badge shows '-0%', which is not a valid discount value and looks like a data/formatting bug",
+        "suggestion": "Fix the discount calculation or hide the badge when the discount is zero"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The 'Fastest near you' horizontal carousel's third card (Trattoria Piccola) is cut off at the right edge with no visual affordance indicating more content",
+        "suggestion": "This partial-card pattern is common, but adding a subtle edge fade or peek indicator could improve discoverability of scrollable content"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 233,
+    "reasoningTokens": 22,
+    "cachedInputTokens": 1728,
+    "estimatedCost": 0.0003868,
+    "reportedCost": 0.00017944,
+    "durationSeconds": 2.571505874999999
+  }
+}

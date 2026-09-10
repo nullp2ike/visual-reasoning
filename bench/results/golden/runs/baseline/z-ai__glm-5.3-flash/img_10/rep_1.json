@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:34:47.508Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well-designed, but a few visual issues were found: duplicate identical restaurant cards, truncated content, and a cut-off category chip.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Two identical 'Green Bowl Poké' cards appear side by side in the 'Fastest near you' section with the same image, delivery time, and fee, which looks like a data duplication error",
+        "suggestion": "Deduplicate the restaurant list or ensure unique content per card"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The 'Smash Bros Bu...' card title and image are truncated at the right edge of the horizontal carousel",
+        "suggestion": "Ensure card titles wrap or reduce card width so full names are visible; add a peek of the next card for scroll affordance"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row is cut off at the right edge with a partially visible chip and no visible indication of scrollability",
+        "suggestion": "Add a fade/gradient edge or partial next chip to indicate horizontal scrolling"
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Illustrated food images use low-contrast, stylized artwork that may not convey meaningful information to screen readers",
+        "suggestion": "Provide descriptive alt text for restaurant images"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 324,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0004323,
+    "reportedCost": 0.0004323,
+    "durationSeconds": 3.543899749999997
+  }
+}

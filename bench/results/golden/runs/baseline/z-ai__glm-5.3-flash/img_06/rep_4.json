@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_06",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:34:28.681Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well-structured, but a few visual issues stand out: a horizontally cut-off restaurant card in 'Fastest near you', and a partially cut-off pizza card at the bottom edge of the screen.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' row (Trattoria Piccola) is cut off at the right edge of the screen, with its name truncated mid-word ('Trattoria Piccol...') and delivery price partially visible.",
+        "suggestion": "Ensure the horizontal carousel reveals a hint of the next card while keeping card content like names readable, or reduce card width / increase padding so the truncation is intentional (e.g., proper ellipsis) rather than appearing clipped."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second card under 'Popular right now' (pizza image with -20% badge) is clipped by the bottom navigation bar, showing only a partial slice of content with no visible title or details.",
+        "suggestion": "Adjust bottom padding/margins so the last card's content (title, rating, delivery info) is not obscured by the bottom tab bar, or add scroll insets below the nav bar."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The category filter chips are cut off at the right edge (a chip is partially visible next to 'Healthy'), which is acceptable for a scrollable carousel but the partial chip may look unintentionally clipped.",
+        "suggestion": "Add a fade-out gradient or ensure at least a small portion of the next chip is visible to signal horizontal scrollability clearly."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 396,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1728,
+    "estimatedCost": 0.0004683,
+    "reportedCost": 0.00026094,
+    "durationSeconds": 4.580655749999998
+  }
+}

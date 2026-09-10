@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_08",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:34:37.549Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders cleanly overall, but there is a typo in the search placeholder text and a few minor usability concerns such as a truncated restaurant card in the horizontal list.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Search bar placeholder contains a typo: 'Restarants' instead of 'Restaurants'",
+        "suggestion": "Correct the placeholder text to 'Restaurants, dishes, groceries'"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Third card in the 'Fastest near you' row ('Trattoria Piccol...') is cut off at the right edge, which is expected for a horizontal scroll but the partially visible card can look broken if horizontal scrolling affordance is unclear",
+        "suggestion": "Add a visual affordance (e.g., peek spacing, scroll hint, or edge fade) to indicate the row is horizontally scrollable"
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The green promo banner's 'Order now' button and headline use high contrast, but the subtext 'Use code TALLINN3 at checkout · min. order €10' has lower contrast on the green background",
+        "suggestion": "Increase text contrast or slightly darken the banner gradient behind the subtext for readability"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 333,
+    "reasoningTokens": 16,
+    "cachedInputTokens": 1728,
+    "estimatedCost": 0.0004368,
+    "reportedCost": 0.00022944,
+    "durationSeconds": 3.9926975419999944
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:35:17.250Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well-structured, but several visual issues were found: content cut off on the right edge in the 'Fastest near you' carousel, a truncated restaurant name, and a red badge clipping over the notification bell icon.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' section is cut off at the right edge of the screen, showing only a partial card ('Trattoria Piccolo'), which may look like broken rendering rather than an intentional carousel.",
+        "suggestion": "Add a subtle peek/edge-fade indicator or slight horizontal padding so partial cards are clearly recognizable as a scrollable carousel."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The restaurant name 'Trattoria Piccolo' is truncated with no ellipsis, and its price row is only partially visible.",
+        "suggestion": "Apply text truncation with ellipsis or allow the name to wrap so it remains readable even when partially scrolled."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The notification bell icon in the top-right has a small red badge dot that slightly overlaps/clips outside the circular button boundary.",
+        "suggestion": "Adjust badge positioning so the red dot sits cleanly on the icon's corner without clipping outside the button shape."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chips row ('All', 'Pizza', 'Sushi'...) appears to have another chip partially cut off at the right edge with no visual cue of scrollability.",
+        "suggestion": "Add a fade-out gradient or partial chip visibility cue to indicate horizontal scrolling."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 452,
+    "reasoningTokens": 40,
+    "cachedInputTokens": 1728,
+    "estimatedCost": 0.0004963,
+    "reportedCost": 0.00028894,
+    "durationSeconds": 5.677668874999989
+  }
+}

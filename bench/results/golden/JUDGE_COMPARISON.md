@@ -36,8 +36,9 @@ Judges compared: `claude-haiku-4-5` vs `embed:bge-small` vs `gpt-5.6-luna`
 | qwen/qwen3.8-max (low) | 81% | 2.4 | 74% | 2.4 | 84% | 2.4 | 9% |
 | x-ai/grok-4.5 | 79% | 3.9 | 64% | 4.0 | 68% | 4.0 | 15% |
 | x-ai/grok-4.6 | 79% | 3.6 | 64% | 3.8 | 75% | 3.7 | 15% |
+| z-ai/glm-5.3-flash | – | – | – | – | 72% | 2.1 | – |
 
-## Disagreements (169)
+## Disagreements (186)
 
 ### img_01 01_raw_localization_key.png — meta/muse-spark-1.3
 
@@ -75,6 +76,19 @@ Expected: Section title shows the raw translation key home_feed.popul…
   - rep 4: The reported issue identifies the same restaurant section header displaying the raw home_feed.popular_title localization key instead of translated text.
   - rep 5: The reported issue identifies the restaurant section header showing the same raw localization key instead of translated text.
 
+### img_01 01_raw_localization_key.png — z-ai/glm-5.3-flash
+
+Expected: Section title shows the raw translation key home_feed.popul…
+
+- **claude-haiku-4-5**: no verdicts
+- **embed:bge-small**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The reported issue identifies the same section title displaying the raw home_feed.popular_title localization key instead of translated text.
+  - rep 2: The reported issue identifies the same section title displaying the raw home_feed.popular_title translation key instead of translated text.
+  - rep 3: Reported issue 0 identifies the same section header showing the raw home_feed.popular_title localization key.
+  - rep 4: Both issues describe the section title showing the raw localization key instead of translated text.
+  - rep 5: Reported issue 0 describes the section header showing the raw home_feed.popular_title localization key instead of translated text.
+
 ### img_02 02_invalid_placeholder_data.png — meta/muse-spark-1.3
 
 Expected: Delivery fee shows €NaN
@@ -110,6 +124,19 @@ Expected: Delivery fee shows €NaN
   - rep 3: The reported issue describes the delivery fee displaying as €NaN, matching the expected defect.
   - rep 4: The report identifies the same €NaN delivery fee defect on a restaurant card.
   - rep 5: Reported issue 0 describes a delivery fee rendered as NaN instead of a valid price.
+
+### img_02 02_invalid_placeholder_data.png — z-ai/glm-5.3-flash
+
+Expected: Delivery fee shows €NaN
+
+- **claude-haiku-4-5**: no verdicts
+- **embed:bge-small**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue 0 describes the delivery fee displaying as €NaN, which is the same defect.
+  - rep 2: Reported issue 0 describes the delivery fee displaying €NaN, matching the expected defect.
+  - rep 3: The reported issue describes the delivery fee displaying the raw value €NaN, matching the expected defect.
+  - rep 4: Both issues describe the delivery fee displaying the invalid value €NaN.
+  - rep 5: Reported issue 0 describes the delivery fee displaying €NaN, which is the same defect.
 
 ### img_03 03_broken_image.png — claude-fable-5
 
@@ -699,6 +726,19 @@ Expected: Restaurant cover image failed to load
   - rep 4: The first Popular right now restaurant card shows a broken-image placeholder instead of its cover photo.
   - rep 5: The broken-image placeholder on the Tokumaru Ramen Bar card directly indicates its restaurant cover photo failed to load.
 
+### img_03 03_broken_image.png — z-ai/glm-5.3-flash
+
+Expected: Restaurant cover image failed to load
+
+- **claude-haiku-4-5**: no verdicts
+- **embed:bge-small**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The reported Tokumaru Ramen Bar card image failing to load matches the expected restaurant cover image loading defect.
+  - rep 2: The reported broken-image placeholder on the restaurant card describes the cover image failing to load.
+  - rep 3: The broken-image placeholder on the restaurant card directly indicates that its cover photo failed to load.
+  - rep 4: The reported broken-image placeholder and empty area on the Tokumaru Ramen Bar card describe the restaurant cover image failing to load.
+  - rep 5: The Tokumaru Ramen Bar card explicitly shows a broken placeholder image instead of its restaurant cover photo.
+
 ### img_04 04_pointless_zero_discount.png — meta/muse-spark-1.3
 
 Expected: Discount badge shows −0%
@@ -734,6 +774,19 @@ Expected: Discount badge shows −0%
   - rep 3: Reported issue 0 describes the same meaningless −0% discount badge.
   - rep 4: The reported issue identifies the discount badge displaying '-0%', matching the expected defect.
   - rep 5: Reported issue 0 describes a −0% discount badge, matching the expected defect.
+
+### img_04 04_pointless_zero_discount.png — z-ai/glm-5.3-flash
+
+Expected: Discount badge shows −0%
+
+- **claude-haiku-4-5**: no verdicts
+- **embed:bge-small**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue 0 identifies the pizza card badge displaying '-0%', matching the expected discount badge defect.
+  - rep 2: Reported issue 0 describes the pizza card badge displaying '-0%', matching the discount badge defect.
+  - rep 3: Reported issue 0 describes the pizza card's discount badge incorrectly displaying '-0%'. 
+  - rep 4: Reported issue 0 describes the discount badge displaying '-0%', matching the expected defect.
+  - rep 5: Reported issue 0 identifies the pizza restaurant card's discount badge displaying '-0%', matching the expected defect.
 
 ### img_05 05_contrast_failure.png — meta/muse-spark-1.3
 
@@ -793,6 +846,19 @@ Expected: Promo banner text is unreadable, white text on a pale mint …
   - rep 3: Reported issue 4 describes the promo banner text having low contrast because light text is placed on a light green background.
   - rep 4: Reported issue 3 describes the promo banner's low text contrast against a pale green background, making it unreadable.
   - rep 5: The reported issue identifies the promo banner's low-contrast light text on a light green background, matching the unreadable white text on pale mint background.
+
+### img_05 05_contrast_failure.png — z-ai/glm-5.3-flash
+
+Expected: Promo banner text is unreadable, white text on a pale mint …
+
+- **claude-haiku-4-5**: no verdicts
+- **embed:bge-small**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue 0 identifies the same promo banner and the same white-on-pale-mint low-contrast text problem.
+  - rep 2: The reported issue identifies the same promo banner text contrast problem: white text on a pale mint background makes it unreadable.
+  - rep 3: Reports 0 and 1 both describe the promo banner text, including the code, as low-contrast and difficult to read against the pale mint background.
+  - rep 4: Reported issue 0 identifies the promo text as white on a light mint-green background with nearly unreadable contrast.
+  - rep 5: Reported issue 0 describes the promo banner text as white on a very light mint background with poor readability, matching the expected defect.
 
 ### img_06 06_missing_nav_icon.png — claude-fable-5
 
@@ -990,6 +1056,19 @@ Expected: Orders icon is missing from the bottom nav bar
   - rep 3: Reported issue 1 explicitly states that the Orders tab has no icon in the bottom tab bar.
   - rep 4: Reported issue 2 describes the Orders tab in the bottom navigation missing its icon, matching the expected defect.
   - rep 5: Reported issue 3 describes the bottom navigation Orders slot lacking its icon, matching the expected defect.
+
+### img_06 06_missing_nav_icon.png — z-ai/glm-5.3-flash
+
+Expected: Orders icon is missing from the bottom nav bar
+
+- **claude-haiku-4-5**: no verdicts
+- **embed:bge-small**: no verdicts
+- **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: found
+  - rep 1: None of the reported issues describes a missing Orders icon in the bottom navigation bar.
+  - rep 2: Neither reported issue describes a missing Orders icon in the bottom navigation bar.
+  - rep 3: Neither reported issue describes a missing Orders icon in the bottom navigation bar.
+  - rep 4: None of the reported issues mention a missing Orders icon in the bottom navigation bar.
+  - rep 5: Reported issue 0 describes the Orders tab in the bottom navigation missing its icon.
 
 ### img_07 07_state_inconsistency.png — claude-opus-4-8
 
@@ -1487,6 +1566,19 @@ Expected: Loading spinner is shown on top of already loaded content
   - rep 4: Reported issue 2 describes a loading spinner displayed over already loaded restaurant image content.
   - rep 5: The reported loading spinner overlays a restaurant image/content, matching a spinner shown on already loaded content.
 
+### img_07 07_state_inconsistency.png — z-ai/glm-5.3-flash
+
+Expected: Loading spinner is shown on top of already loaded content
+
+- **claude-haiku-4-5**: no verdicts
+- **embed:bge-small**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The reported spinner remains overlaid on an already displayed restaurant card image, matching the loading spinner shown over loaded content.
+  - rep 2: Reported issue 0 describes a loading spinner overlaying an already visible hero image, matching the defect.
+  - rep 3: The reported stuck spinner over the loaded card image describes a loading indicator remaining visible after content should have loaded.
+  - rep 4: Reported issue 0 describes a loading spinner displayed over restaurant content after the page has loaded, matching the expected defect.
+  - rep 5: The reported spinner overlays an already visible restaurant image, matching a loading spinner shown on loaded content.
+
 ### img_08 08_typo_in_text.png — claude-sonnet-5
 
 Expected: The word Restaurants is misspelled Restarants
@@ -1568,6 +1660,19 @@ Expected: The word Restaurants is misspelled Restarants
   - rep 3: Reported issue 0 identifies the same misspelling of “Restaurants” as “Restarants” in the search bar.
   - rep 4: Reported issue 0 identifies the same misspelling of “Restaurants” as “Restarants” in the search placeholder.
   - rep 5: Reported issue 0 identifies the same misspelling of “Restaurants” as “Restarants” in the search bar.
+
+### img_08 08_typo_in_text.png — z-ai/glm-5.3-flash
+
+Expected: The word Restaurants is misspelled Restarants
+
+- **claude-haiku-4-5**: no verdicts
+- **embed:bge-small**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue 0 identifies the same misspelling of “Restaurants” as “Restarants” in the search placeholder.
+  - rep 2: Reported issue 0 identifies the same typo, 'Restarants' instead of 'Restaurants'.
+  - rep 3: Reported issue 0 identifies the same misspelling of “Restaurants” as “Restarants” in the search placeholder.
+  - rep 4: Reported issue 0 identifies the same misspelling of 'Restaurants' as 'Restarants'.
+  - rep 5: The reported issue identifies the same misspelling of “Restaurants” as “Restarants” in the search bar.
 
 ### img_09 09_text_truncation.png — claude-opus-4-8
 
@@ -1950,6 +2055,19 @@ Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
   - rep 4: None of the reported issues mentions the 'Tokumaru Ramen Bar' heading or its specific mid-word truncation to 'Tokumaru Ramei'.
   - rep 5: None of the reported issues describes the truncated "Tokumaru Ramen Bar" heading.
 
+### img_09 09_text_truncation.png — z-ai/glm-5.3-flash
+
+Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
+
+- **claude-haiku-4-5**: no verdicts
+- **embed:bge-small**: no verdicts
+- **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: None of the reported issues concerns the 'Tokumaru Ramen Bar' heading; they describe a different restaurant card, a promo banner, and a filter chip.
+  - rep 2: None of the reported issues concerns the 'Tokumaru Ramen Bar' heading being truncated.
+  - rep 3: The reported truncation concerns a different restaurant name in the 'Fastest near you' carousel, not the 'Tokumaru Ramen Bar' heading.
+  - rep 4: None of the reported issues describes the Tokumaru Ramen Bar heading being truncated mid-word without an ellipsis.
+  - rep 5: None of the reported issues describes the Tokumaru Ramen Bar heading being cut off mid-word.
+
 ### img_10 10_duplicate_elements.png — gemini-3-flash-preview
 
 Expected: Green Bowl Poké card appears twice in the carousel
@@ -2100,6 +2218,19 @@ Expected: Green Bowl Poké card appears twice in the carousel
   - rep 3: Reported issue 0 describes the Green Bowl Poké card appearing twice as identical first and second carousel cards.
   - rep 4: The report describes two identical restaurant cards, matching the duplicate Green Bowl Poké card defect.
   - rep 5: Reported issue 1 describes Green Bowl Poké appearing twice as duplicate cards in the listing.
+
+### img_10 10_duplicate_elements.png — z-ai/glm-5.3-flash
+
+Expected: Green Bowl Poké card appears twice in the carousel
+
+- **claude-haiku-4-5**: no verdicts
+- **embed:bge-small**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue 0 explicitly identifies two identical Green Bowl Poké cards in the carousel, matching the expected duplication.
+  - rep 2: Reported issue 1 directly describes the Green Bowl Poké card appearing twice in the carousel.
+  - rep 3: Reported issue 0 identifies two identical Green Bowl Poké cards appearing consecutively in the carousel, matching the duplication defect.
+  - rep 4: Reported issue 0 describes two identical Green Bowl Poké cards appearing side by side, matching the duplicate carousel card defect.
+  - rep 5: Reported issue 0 describes Green Bowl Poké appearing twice in the same carousel section.
 
 ### img_11 11_impossible_discount_value.png — claude-haiku-4-5
 
@@ -2274,6 +2405,19 @@ Expected: Discount badge shows −100%
   - rep 3: None of the reported issues mentions a discount badge or an incorrect −100% value.
   - rep 4: None of the reported issues describes an incorrect −100% discount badge; they only describe clipping of cards or filters.
   - rep 5: The pizza card's '-100%' badge describes the same discount badge showing −100%.
+
+### img_11 11_impossible_discount_value.png — z-ai/glm-5.3-flash
+
+Expected: Discount badge shows −100%
+
+- **claude-haiku-4-5**: no verdicts
+- **embed:bge-small**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue 1 identifies the '-100%' discount badge on the pizza listing, matching the expected defect.
+  - rep 2: Reported issue 1 directly identifies the '-100%' discount badge on the pizza card as the same defect.
+  - rep 3: Reported issue 0 describes the pizza card's −100% discount badge, matching the expected defect.
+  - rep 4: Reported issue 0 identifies the same −100% discount badge on the pizza restaurant card.
+  - rep 5: Reported issue 0 identifies the pizza card's −100% discount badge, matching the expected defect.
 
 ### img_12 12_overlapping_elements.png — claude-haiku-4-5
 
@@ -2518,6 +2662,19 @@ Expected: Delivery fee text overlaps the delivery time text
   - rep 4: The reported issue describes delivery-time text overlapping the restaurant name, not delivery fee text overlapping delivery time text.
   - rep 5: The report describes the delivery time and delivery text overlapping in the same location.
 
+### img_12 12_overlapping_elements.png — z-ai/glm-5.3-flash
+
+Expected: Delivery fee text overlaps the delivery time text
+
+- **claude-haiku-4-5**: no verdicts
+- **embed:bge-small**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The reported issue describes the delivery fee and delivery time text overlapping on the same line.
+  - rep 2: Reported issue 0 describes the delivery time overlapping the delivery fee text, matching the expected defect.
+  - rep 3: Reported issue 0 describes the delivery fee text overlapping the delivery time text.
+  - rep 4: Reported issue 0 describes the delivery fee and delivery time text overlapping in the same area.
+  - rep 5: Reported issue 0 describes the delivery fee text overlapping the delivery time text.
+
 ### img_13 13_orphaned_notification_badge.png — claude-sonnet-4-6
 
 Expected: An icon is missing from the top right corner, only a red do…
@@ -2737,6 +2894,19 @@ Expected: An icon is missing from the top right corner, only a red do…
   - rep 3: Reported issue 1 describes the top-right control showing only a red badge instead of its icon.
   - rep 4: No reported issue clearly identifies a missing top-right icon with only a red dot visible.
   - rep 5: Reported issue 0 directly describes the top-right control showing only a red badge with its icon missing.
+
+### img_13 13_orphaned_notification_badge.png — z-ai/glm-5.3-flash
+
+Expected: An icon is missing from the top right corner, only a red do…
+
+- **claude-haiku-4-5**: no verdicts
+- **embed:bge-small**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: Reported issue 1 describes the top-right circular control showing only a red dot because its icon is missing.
+  - rep 2: The top-right notification element is described as showing only a red dot, matching the missing icon defect.
+  - rep 3: None of the reported issues describes a missing top-right icon replaced by a red dot.
+  - rep 4: None of the reported issues describes a missing top-right icon replaced by a red dot.
+  - rep 5: None of the reported issues describes a missing top-right app icon represented only by a red dot.
 
 ### img_14 14_misalignment.png — claude-haiku-4-5
 
@@ -3211,6 +3381,19 @@ Expected: Middle card in the carousel is not aligned with the other c…
   - rep 4: The third carousel card being clipped on the right indicates the card alignment/layout defect described for the middle card.
   - rep 5: The reported card is clipped at the carousel edge, which is a different issue from the middle card being misaligned with the other cards.
 
+### img_14 14_misalignment.png — z-ai/glm-5.3-flash
+
+Expected: Middle card in the carousel is not aligned with the other c…
+
+- **claude-haiku-4-5**: no verdicts
+- **embed:bge-small**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: found
+  - rep 1: The report describes an individual card in the same row being narrower and misaligned relative to neighboring cards.
+  - rep 2: None of the reported issues describes the middle carousel card being misaligned relative to the other cards.
+  - rep 3: The clipped, mispositioned restaurant card describes the same carousel card alignment/layout defect.
+  - rep 4: None of the reported issues describes the middle carousel card being misaligned with the other cards.
+  - rep 5: Reported issue 2 directly describes the middle card sitting lower than the others, making the row misaligned.
+
 ### img_15 15_safe_area_violation.png — claude-fable-5
 
 Expected: Bottom nav labels are cut off below the screen edge and the…
@@ -3523,6 +3706,19 @@ Expected: Bottom nav labels are cut off below the screen edge and the…
   - rep 4: None of the reported issues concerns the bottom navigation labels or gesture bar overlap; they describe clipping of restaurant cards or a category chip row.
   - rep 5: Reported issue 3 concerns cramped icon spacing at the edges, not bottom navigation labels being cut off or overlapped by the gesture bar.
 
+### img_15 15_safe_area_violation.png — z-ai/glm-5.3-flash
+
+Expected: Bottom nav labels are cut off below the screen edge and the…
+
+- **claude-haiku-4-5**: no verdicts
+- **embed:bge-small**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: found
+  - rep 1: The reported issue describes the bottom navigation being cut off by the viewport, matching the expected bottom navigation clipping problem.
+  - rep 2: None of the reported issues describes the bottom navigation labels being cut off or overlapped by the gesture bar.
+  - rep 3: Report 0 describes the gesture bar overlapping and obscuring the bottom navigation, which is the same bottom-edge layout defect.
+  - rep 4: None of the reported issues concerns bottom navigation labels or gesture-bar overlap; the viewport-cut card is a different element.
+  - rep 5: Reported issue 0 describes the system gesture indicator overlapping and obscuring the bottom navigation, matching the expected bottom-edge overlap defect.
+
 ### img_16 16_filter_content_mismatch.png — claude-fable-5
 
 Expected: Pizza category is selected but the feed still shows all cui…
@@ -3651,6 +3847,19 @@ Expected: Pizza category is selected but the feed still shows all cui…
   - rep 4: Neither report describes the feed failing to filter to pizza when the Pizza category is selected.
   - rep 5: Reported issue 1 describes the Pizza filter being selected while the feed shows non-Pizza cuisines, matching the expected defect.
 
+### img_16 16_filter_content_mismatch.png — z-ai/glm-5.3-flash
+
+Expected: Pizza category is selected but the feed still shows all cui…
+
+- **claude-haiku-4-5**: no verdicts
+- **embed:bge-small**: no verdicts
+- **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: missed, rep 5: missed
+  - rep 1: None of the reported issues describes the Pizza category filter failing to limit the feed to pizza results.
+  - rep 2: None of the reported issues describes the Pizza filter failing to restrict the feed to pizza restaurants.
+  - rep 3: Reported issue 2 describes the Pizza filter being selected while non-pizza cuisines remain visible.
+  - rep 4: None of the reported issues describes the Pizza filter being selected while the feed shows all cuisines.
+  - rep 5: None of the reported issues concerns the selected Pizza category or the feed showing unrelated cuisines.
+
 ### img_17 17_wrong_active_nav_state.png — claude-opus-5
 
 Expected: Profile is highlighted in the bottom nav bar while the home…
@@ -3755,3 +3964,16 @@ Expected: Profile is highlighted in the bottom nav bar while the home…
   - rep 3: Reported issue 0 describes the Profile tab being active while the Home feed is displayed, matching the expected navigation highlight defect.
   - rep 4: Reported issue 0 identifies the Profile tab as active while Home feed content is displayed, which is the same navigation highlight defect.
   - rep 5: Reported issue 0 describes the Profile tab highlighted while the Home feed is displayed, matching the expected defect.
+
+### img_17 17_wrong_active_nav_state.png — z-ai/glm-5.3-flash
+
+Expected: Profile is highlighted in the bottom nav bar while the home…
+
+- **claude-haiku-4-5**: no verdicts
+- **embed:bge-small**: no verdicts
+- **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: missed, rep 5: missed
+  - rep 1: Neither reported issue concerns the bottom navigation highlighting the Profile tab while the home feed is displayed.
+  - rep 2: None of the reported issues describes an incorrect Profile highlight in the bottom navigation while the home feed is displayed.
+  - rep 3: Reported issue 2 describes the Profile tab highlighted while the Home feed is displayed.
+  - rep 4: None of the reported issues describes an incorrect Profile highlight in the bottom navigation while the home feed is displayed.
+  - rep 5: None of the reported issues concerns the bottom navigation highlighting Profile while the home feed is displayed.

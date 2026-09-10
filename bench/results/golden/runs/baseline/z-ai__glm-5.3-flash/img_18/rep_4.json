@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:33:54.320Z",
+  "status": "ok",
+  "result": {
+    "summary": "Overall the page renders cleanly with no critical defects. A few minor visual polish issues were found: the bottom navigation bar appears clipped at the bottom edge, the last card in the 'Fastest near you' carousel is cut off mid-title, and secondary gray text has fairly low contrast on white.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom navigation bar is clipped at the very bottom of the screen, with the home indicator partially overlapping it and the bottom of the pizza card content cut off mid-element.",
+        "suggestion": "Ensure the viewport accounts for safe-area insets so the bottom navigation and cards fully render without clipping."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the third restaurant card ('Trattoria Piccol...') is cut off at the right screen edge and its title is truncated with no visible ellipsis.",
+        "suggestion": "This is acceptable for a horizontally scrollable carousel, but consider adding a subtle peek of the next card or a fade/scroll hint so users know more content is available."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary text such as '€0.90 delivery' and delivery times uses light gray on white, which is low contrast and may be hard to read for users with visual impairments.",
+        "suggestion": "Darken the secondary text color to meet WCAG AA contrast (at least 4.5:1)."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 452,
+    "reasoningTokens": 91,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0004963,
+    "reportedCost": 0.0004963,
+    "durationSeconds": 9.754126249999999
+  }
+}

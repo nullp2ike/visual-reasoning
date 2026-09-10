@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:35:22.972Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders cleanly overall; only minor cosmetic issues were found, mostly related to horizontally scrolling content being clipped at the screen edge.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in the 'Fastest near you' row ('Trattoria Piccola') is cut off at the right edge of the screen, which is expected for a carousel but the clipping is abrupt with no partial peek hint of the next card's title or an affordance indicating scrollability.",
+        "suggestion": "Ensure enough of the next card is visible to hint at horizontal scrolling, or add a scroll indicator (e.g., dots) below the carousel."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chips (Pizza, Sushi, Burgers, Healthy, and a partially visible chip) are also clipped at the right edge with no visible indication that more categories exist.",
+        "suggestion": "Show a partial sliver of the next chip or add a fade/gradient edge to indicate scrollable content."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The notification badge on the bell icon is small and relies solely on a red dot to convey unread state, which may be missed by users with visual impairments.",
+        "suggestion": "Add an accessible label (e.g., 'Notifications, 1 unread') and consider making the badge slightly larger or including a count."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 425,
+    "reasoningTokens": 76,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0004828,
+    "reportedCost": 0.0004828,
+    "durationSeconds": 4.477372541999998
+  }
+}

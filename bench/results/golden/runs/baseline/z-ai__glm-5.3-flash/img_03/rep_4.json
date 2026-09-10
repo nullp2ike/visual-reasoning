@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_03",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:34:10.226Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 notable issues: a broken/missing image in the 'Popular right now' section and a truncated restaurant card at the right edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "styling",
+        "description": "Tokumaru Ramen Bar card shows a broken-image placeholder icon instead of the restaurant's photo, leaving a large empty gray area in the 'Popular right now' section.",
+        "suggestion": "Fix the image URL or add a fallback placeholder image/restaurant logo so the card doesn't render as an empty gray block."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in 'Fastest near you' (Trattoria Piccol...) is cut off at the right edge, with its name and image truncated.",
+        "suggestion": "This may be intentional horizontal scrolling, but consider adding a visual affordance (e.g., partial peek with clearer spacing or a scroll indicator) so users know more cards are available."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 245,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1728,
+    "estimatedCost": 0.0003928,
+    "reportedCost": 0.00018544,
+    "durationSeconds": 2.4484029169999992
+  }
+}

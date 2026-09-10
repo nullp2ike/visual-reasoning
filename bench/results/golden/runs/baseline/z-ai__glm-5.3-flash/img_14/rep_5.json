@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_14",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:35:09.011Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders mostly well, with a few minor visual/layout issues: a partially cut-off restaurant card in the horizontal carousel, truncated restaurant name text, and inconsistent card heights in the 'Fastest near you' row.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in 'Fastest near you' (Trattoria Piccolo) is cut off at the right edge of the screen, which is expected for a carousel, but only a sliver of the image and text is visible with no strong visual cue that more content is scrollable.",
+        "suggestion": "Add a subtle peek of the next card (e.g., show ~30-50% of it) or a pagination indicator/dots to make the horizontal scroll affordance clearer."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol…' is truncated mid-word, and the truncated card has no visible delivery time label placement consistent with the others.",
+        "suggestion": "Ensure the name truncates with an ellipsis ('Trattoria Picco…') and keep the delivery time chip in a consistent position across all cards."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Card heights in the 'Fastest near you' row are inconsistent — the middle card (Smash Bros Burgers) sits lower than the others because its title/delivery text align differently, making the row look misaligned.",
+        "suggestion": "Fix image heights and align text blocks so all cards in the carousel share the same top and bottom edges."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The promotional banner (green) uses white text on a medium green background; the secondary line 'Use code TALLINN3 at checkout · min. order €10' may have low contrast for some users.",
+        "suggestion": "Verify contrast ratio meets WCAG AA (4.5:1) for the smaller banner text, darkening the green or bolding the text if needed."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 484,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1728,
+    "estimatedCost": 0.0005123,
+    "reportedCost": 0.00030494,
+    "durationSeconds": 6.721200417
+  }
+}

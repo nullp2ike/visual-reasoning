@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T15:33:54.319Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several visual issues, mainly placeholder/illustration images in restaurant cards instead of real photos, a horizontally cut-off card, and minor accessibility/contrast concerns.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Restaurant cards use generic illustrations (plate of food, burger, ramen bowl, pizza) that appear to be placeholder graphics rather than actual restaurant photos, suggesting images failed to load or real imagery is missing.",
+        "suggestion": "Load real restaurant/dish photos, or verify image CDN URLs; if intentionally using illustrations, ensure consistency across all cards."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Trattoria Piccola' card in the 'Fastest near you' row is cut off at the right edge with no visible scroll affordance (e.g., partial next card peek is present but no arrows/dots), making it unclear the list is scrollable.",
+        "suggestion": "Add a visible scroll indicator (dots, fade edge, or arrows) so users know more cards are available horizontally."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The promo banner (dark green background with white text) may have low contrast for the smaller 'Use code TALLINN3...' text, and the code is only conveyed in text without emphasis.",
+        "suggestion": "Verify contrast ratios meet WCAG AA (4.5:1) for the smaller body text on the green background."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The notification badge (red dot) on the bell icon overlaps the icon edge slightly and has no visible count, which is ambiguous.",
+        "suggestion": "Add a numeric count to the badge or increase spacing so it doesn't visually collide with the bell icon."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Category filter chips are cut off at the right edge ('All, Pizza, Sushi, Burgers, Healthy' plus a partially visible chip) with no scroll hint.",
+        "suggestion": "Add a fade-out gradient or partial chip peek to signal horizontal scrollability."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 545,
+    "reasoningTokens": 51,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0005428,
+    "reportedCost": 0.0005428,
+    "durationSeconds": 6.769206083
+  }
+}

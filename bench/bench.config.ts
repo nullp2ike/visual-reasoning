@@ -142,7 +142,7 @@ export const benchConfig: BenchConfig = {
     "gemini-3.5-flash-lite",
     "gemini-3-flash-preview",
     "gemini-3.1-flash-lite",
-    // OpenRouter: Meta, xAI, Moonshot, Qwen (all vision-capable; slugs are
+    // OpenRouter: Meta, xAI, Moonshot, Qwen, Z.ai (all vision-capable; slugs are
     // vendor-prefixed and routed through the openrouter provider).
     // Note: qwen3.8-max is the first Max tier to accept image input (3.6-max
     // and 3.7-max are text-only on OpenRouter).
@@ -178,6 +178,11 @@ export const benchConfig: BenchConfig = {
     "moonshotai/kimi-k2.7-code",
     "qwen/qwen3.8-max",
     "qwen/qwen3.7-plus",
+    // Cheapest row on the board ($0.15/$0.50 per MTok) and the only one under
+    // qwen3.6-flash on both sides. Reasons by default (~190 tokens/call with
+    // no effort configured), so its cost per run runs a little above the
+    // headline rate.
+    "z-ai/glm-5.3-flash",
   ],
   repeats: 5,
   reasoningEffort: "medium",

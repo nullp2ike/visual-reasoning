@@ -1,0 +1,28 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Loading spinner is shown on top of already loaded content"
+  ],
+  "reportedIssues": [
+    "A loading spinner is stuck in the center of the 'Tokumaru Ramen Bar' card image, indicating the image failed to load or the loading state never resolved.",
+    "The third card in 'Fastest near you' ('Trattoria Piccol...') is cut off at the right edge of the screen and its name is truncated.",
+    "The notification bell has a red dot indicator, but there is no visible count or accessible label describing the unread notifications."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "The reported stuck spinner over the loaded card image describes a loading indicator remaining visible after content should have loaded."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}
