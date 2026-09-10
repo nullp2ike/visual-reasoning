@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-4-5",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:50:36.948Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: one major content problem with a visible translation key placeholder, and one minor text truncation issue.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Section title shows 'home_feed.popular_title' which appears to be a translation key or placeholder that wasn't replaced with actual content",
+        "suggestion": "Replace with a proper localized section title like 'Popular near you', 'Most Popular', or similar appropriate heading"
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated in the 'Fastest near you' section, cutting off the complete name",
+        "suggestion": "Adjust text truncation logic to show full restaurant names, use ellipsis more carefully, or allow text wrapping where appropriate"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1854,
+    "outputTokens": 793,
+    "estimatedCost": 0.005819,
+    "durationSeconds": 10.56547825
+  }
+}

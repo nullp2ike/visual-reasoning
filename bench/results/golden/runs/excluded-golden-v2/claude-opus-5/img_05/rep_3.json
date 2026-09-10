@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_05",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:38:44.898Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page layout is largely intact, but the promotional banner has a serious contrast failure: its white headline and subtitle text sit on a light mint-green background, making them nearly illegible. A secondary contrast issue affects the favorite (heart) icon on the second restaurant card.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "accessibility",
+        "description": "In the green promo banner, the headline '3 free deliveries for you' and the subtitle 'Use code TALLINN3 at checkout · min. order €10' are rendered in white on a very light mint background, resulting in extremely low contrast and text that is effectively unreadable.",
+        "suggestion": "Change the banner text color to a dark green/near-black tone (or darken the banner background) so contrast meets at least 4.5:1 for body text and 3:1 for large text."
+      },
+      {
+        "priority": "major",
+        "category": "styling",
+        "description": "The favorite heart icon on the second 'Popular right now' card (pizza) uses a dark circular background with a dark outline, so it nearly disappears against the dark image area, unlike the white heart button on the ramen card above it.",
+        "suggestion": "Use a consistent favorite-button treatment across all cards (e.g. white/translucent circle with a dark heart outline) so it is always visible over imagery."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Inconsistent visual weight in the promo banner: the 'Order now' button is high-contrast while the surrounding copy is not, making the banner look half-rendered or broken.",
+        "suggestion": "Align the banner's typography and button styling into a single accessible color scheme so the block reads as one coherent component."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 674,
+    "estimatedCost": 0.027285000000000004,
+    "durationSeconds": 46.34775308300008
+  }
+}

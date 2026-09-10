@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_05",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:31:42.603Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen is mostly polished, but several cards and chips are clipped by the viewport edges, which is the main visual break. Promo banner contrast and a few overlapping labels are smaller issues.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last category chip (Healthy) and the last Fastest-near-you card (Trattoria Piccol…) are cut off at the right edge, so names and controls look truncated.",
+        "suggestion": "Add consistent horizontal padding or fade/peek so the last item is fully visible, or make the carousels clearly swipeable with more of the next card shown."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom restaurant card (pizza with −20%) is cropped by the tab bar, hiding the restaurant name, rating, and delivery info.",
+        "suggestion": "Add bottom content inset so cards sit fully above the tab bar, or allow the list to scroll so the last card is not covered."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Promo banner body text (“Use code TALLINN3…”) is very light on the mint background and is hard to read.",
+        "suggestion": "Darken the secondary text or increase contrast against the green banner."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Time badges sit on top of the food photos and slightly cover the dishes, especially on the burger and pasta cards.",
+        "suggestion": "Give badges more padding/offset or a stronger scrim so they don’t collide with the artwork."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Notification bell badge sits tight against the icon circle and looks slightly cramped.",
+        "suggestion": "Nudge the red dot inward or enlarge the hit area so it doesn’t clip the icon ring."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 390,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.006104,
+    "reportedCost": 0.003416,
+    "durationSeconds": 10.296594457999992
+  }
+}

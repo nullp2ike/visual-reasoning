@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_10",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:30:29.219Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed. The main visual defect is a duplicated restaurant card in the 'Fastest near you' carousel; a couple of minor consistency issues were also noted.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Fastest near you' carousel shows the same restaurant twice: two identical 'Green Bowl Poké' cards with the same image, '15–25 min' badge, and '€0.90 delivery' price appear side by side.",
+        "suggestion": "De-duplicate the restaurant list before rendering the carousel (e.g., filter by unique restaurant ID) so each restaurant appears only once."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Favorite (heart) buttons appear on the large 'Popular right now' cards but are absent from the 'Fastest near you' cards, creating inconsistent interaction affordances across restaurant cards.",
+        "suggestion": "Apply the favorite button consistently to all restaurant cards, or intentionally document/design the difference between card types."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The second 'Popular right now' card (pizza, −20% badge) shows no restaurant name, rating, or delivery info visible before the viewport cutoff, and its heart icon sits on a dark circle unlike the ramen card's plain heart, making the two cards look inconsistent.",
+        "suggestion": "Ensure card metadata layout and favorite-icon styling are consistent across all cards in the 'Popular right now' list."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 629,
+    "estimatedCost": 0.052320000000000005,
+    "durationSeconds": 65.294805
+  }
+}

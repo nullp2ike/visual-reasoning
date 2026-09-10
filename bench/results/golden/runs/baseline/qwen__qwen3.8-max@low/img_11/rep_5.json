@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T13:18:40.604Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed, but the horizontal restaurant carousels ('Fastest near you' and the category filter chips) are clipped at the right edge without a clear visual affordance, and the 'Trattoria Piccol...' restaurant name is truncated mid-word. These are minor to moderate visual/usability issues; no critical breakage found.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The 'Fastest near you' carousel cuts off the third card ('Trattoria Piccol...') at the right screen edge with no visible scroll indicator or gradient fade, so it is not obvious the row is horizontally scrollable.",
+        "suggestion": "Add a subtle right-edge gradient fade or peek of the next card plus a scroll hint so users know the row scrolls horizontally."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol...' is truncated mid-word with an ellipsis due to the card being clipped at the viewport edge.",
+        "suggestion": "Ensure truncated names use a clean ellipsis at a consistent card width, or allow the name to wrap to two lines within the card."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chip row (All, Pizza, Sushi, Burgers, Healthy) is also clipped at the right edge with a partially visible chip and no scroll affordance.",
+        "suggestion": "Add a right-edge fade or ensure the last visible chip is fully shown to signal horizontal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The notification bell icon relies on a small red dot to convey unread status, which may be missed by users with visual impairments and has no visible text label.",
+        "suggestion": "Provide an accessible label (e.g., 'Notifications, 1 unread') and consider a badge with a count for clearer communication."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1711,
+    "outputTokens": 966,
+    "reasoningTokens": 525,
+    "estimatedCost": 0.009218,
+    "reportedCost": 0.008098,
+    "durationSeconds": 28.008175125000008
+  }
+}

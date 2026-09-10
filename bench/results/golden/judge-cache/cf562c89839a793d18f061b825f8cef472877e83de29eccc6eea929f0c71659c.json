@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers shows '€NaN delivery' instead of a valid price, indicating a failed number format or missing fee.",
+    "The third 'Fastest near you' card title is clipped as 'Trattoria Piccol', so the restaurant name is unreadable.",
+    "The last category chip is cut off at the right edge of the screen, so users cannot see or tap the full label.",
+    "The second Popular card (pizza, -20%) is cropped by the bottom tab bar, hiding title, rating, and delivery info."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe a delivery fee displaying as '€NaN' due to failed number formatting."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

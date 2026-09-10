@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T12:33:25.911Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: an untranslated section heading and a restaurant name clipped inside a card (not at the screen edge).",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading shows the raw localization key 'home_feed.popular_title' instead of a human-readable title.",
+        "suggestion": "Replace the key with the localized string (e.g. 'Popular near you') and add a fallback so missing translations never render as keys."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The restaurant name 'Trattoria Piccol' is truncated inside its card in the Fastest near you row, not merely clipped by the screen edge.",
+        "suggestion": "Allow the title to wrap to two lines, shrink the type, or give the card enough width so the full name is readable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 224,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 128,
+    "estimatedCost": 0.005268,
+    "reportedCost": 0.005076,
+    "durationSeconds": 15.280284875
+  }
+}

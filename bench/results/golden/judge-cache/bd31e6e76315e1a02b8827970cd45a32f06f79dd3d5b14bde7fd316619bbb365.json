@@ -1,0 +1,24 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The second section heading displays the raw i18n key 'home_feed.popular_title' instead of a translated label such as 'Popular near you'.",
+    "The favorite (heart) buttons on the two restaurant cards use inconsistent backgrounds — the first is a light/white circle, the second is a dark circle — creating visual inconsistency and different contrast levels.",
+    "The third card in the 'Fastest near you' carousel is clipped mid-title ('Trattoria Piccol') with no visual affordance that the row scrolls horizontally.",
+    "Category chips row ('All, Pizza, Sushi, Burgers, Healthy…') is cut off at the right edge with no scroll indicator, so additional categories may be missed."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 identifies the same section heading displaying the raw home_feed.popular_title translation key instead of translated text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

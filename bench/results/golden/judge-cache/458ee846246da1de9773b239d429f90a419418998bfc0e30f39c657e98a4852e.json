@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "Top-right circular button is an empty light-gray circle with only a small red dot and no avatar, icon or label - looks like a failed image load or missing button content.",
+    "Right edge abruptly cuts off the category pill row and the third 'Fastest near you' card, truncating the name to 'Trattoria Piccol' without ellipsis or end padding."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.76 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

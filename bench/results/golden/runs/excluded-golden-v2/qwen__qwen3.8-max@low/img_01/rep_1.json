@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:26:09.069Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-designed, but one section header displays a raw localization key instead of translated text, which is a clear content defect. Other partially visible elements (right-edge carousel item, bottom card) are expected scroll behaviors and not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section header above the ramen card shows the raw i18n key 'home_feed.popular_title' instead of a human-readable translated title (e.g. 'Popular near you'). This indicates a missing or failed localization string.",
+        "suggestion": "Add the missing translation for the 'home_feed.popular_title' key in the relevant locale files and ensure the localization pipeline resolves it before rendering; add a fallback so a friendly default title shows if the key is absent."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 777,
+    "reasoningTokens": 573,
+    "estimatedCost": 0.00825,
+    "reportedCost": 0.00713,
+    "durationSeconds": 76.397176083
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_15",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:59:33.369Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished, but there are a few visual/usability concerns: bottom navigation appears to collide with the system gesture area, horizontal lists rely on clipped edge content, and some icon-only controls may be hard to understand or operate.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom navigation sits very close to the system gesture indicator area, and the dark gesture bar visually overlaps/crowds the center nav icons, making the tab bar look cramped or struck-through.",
+        "suggestion": "Add safe-area bottom padding and increase separation between the system gesture indicator and the app tab bar; verify on Android gesture navigation and iOS home-indicator devices."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Horizontally scrolling sections such as categories and 'Fastest near you' show items clipped at the right edge with limited visual affordance beyond the partial card/chip.",
+        "suggestion": "Add a subtle edge fade, scroll indicator, or more consistent peek width so users clearly understand the row continues."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Favorite heart buttons and bottom navigation icons are icon-only and may not expose clear labels to screen readers or users who rely on visible text.",
+        "suggestion": "Provide accessible labels such as 'Save Tokumaru Ramen Bar', 'Search', 'Cart', and 'Profile', and consider visible labels or larger touch targets for bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Secondary metadata text such as delivery fees and restaurant details uses light gray coloring that may be difficult to read in bright conditions.",
+        "suggestion": "Increase contrast of secondary text toward WCAG AA while preserving the visual hierarchy."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 639,
+    "outputTokens": 1159,
+    "reasoningTokens": 734,
+    "estimatedCost": 0.019302,
+    "reportedCost": 0.0175767,
+    "durationSeconds": 34.23559216699999
+  }
+}

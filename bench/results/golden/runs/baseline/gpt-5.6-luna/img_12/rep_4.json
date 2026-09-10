@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-luna",
+  "provider": "openai",
+  "imageId": "img_12",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:39:14.172Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly coherent, but there is a clear text overlap in the restaurant metadata and the fixed bottom navigation obscures the next restaurant card.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The Tokumaru Ramen Bar metadata line appears overlapped or duplicated around “25–30 min” and “delivery,” making the information difficult to read.",
+        "suggestion": "Fix the metadata layout by using consistent spacing between items, preventing flex items from overlapping, and allowing the line to wrap when necessary."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation covers the lower portion of the next restaurant card image and content.",
+        "suggestion": "Add sufficient bottom padding to the scrollable page or reserve space for the navigation bar so restaurant cards are not hidden behind it."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal category and restaurant carousels show partially clipped items at the right edge, which can look like accidental truncation if horizontal scrolling is not obvious.",
+        "suggestion": "Keep the carousel behavior but add a clearer scroll affordance, such as a partial-card treatment with spacing or a subtle fade/arrow indicator."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 773,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.0012898,
+    "durationSeconds": 11.160290999999969
+  }
+}

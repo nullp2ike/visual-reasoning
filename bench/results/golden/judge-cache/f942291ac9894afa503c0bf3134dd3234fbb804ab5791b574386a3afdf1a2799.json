@@ -1,0 +1,24 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The 'Fastest near you' row is cut off at the right edge, showing a partial third card (Trattoria Piccol...) with truncated text, indicating the horizontal scroll container is clipped by the screen boundary without clear affordance to scroll.",
+    "The category filter chips ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') are cut off at the right edge with an additional partially visible chip, making it unclear if more categories exist.",
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off due to the card being clipped at the screen edge.",
+    "The heart/favorite icon for 'Tokumaru Ramen' is white on a busy food image background, which may reduce visibility while the second heart icon (on the pizza image below) is styled with a dark circular background, showing inconsistent icon styling across similar cards."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.66 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

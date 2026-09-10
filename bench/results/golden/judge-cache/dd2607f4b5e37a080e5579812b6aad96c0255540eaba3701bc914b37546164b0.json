@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "The third card in the 'Fastest near you' carousel ('Trattoria Piccol...') is cut off at the right edge with its name truncated. While this is a common carousel affordance, the truncation happens mid-word without a clear visual cue that more content is scrollable.",
+    "The gray secondary text (e.g., '€0.90 delivery', '25–35 min · €0 delivery · Ramen') uses a light gray that may have insufficient contrast against the white background for users with low vision.",
+    "The search bar placeholder reads 'Restarants, dishes, groceries' which contains a spelling error ('Restarants' should be 'Restaurants')."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Reported issue 2 explicitly identifies the misspelling of 'Restarants' in the search bar placeholder text."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

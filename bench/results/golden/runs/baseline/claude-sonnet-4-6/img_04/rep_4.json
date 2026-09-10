@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_04",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:02:33.829Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: one major layout truncation issue and one minor content issue.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card 'Trattoria Piccol...' in the 'Fastest near you' section is cut off — both the image and the restaurant name are truncated at the right edge of the screen with no visual indication of scrollability (no scroll indicator or partial reveal cue).",
+        "suggestion": "Add a visible partial card peek or a horizontal scroll indicator to communicate that the list is scrollable. Ensure the card text is not clipped abruptly without an ellipsis."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The last visible restaurant card at the bottom of the screen shows a '-0%' badge, which is semantically meaningless and likely a placeholder or data error (a 0% discount badge serves no purpose).",
+        "suggestion": "Remove the discount badge entirely when the discount value is 0%, or ensure the backend only sends a badge when there is a valid non-zero discount to display."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 286,
+    "estimatedCost": 0.009765,
+    "durationSeconds": 7.543696541999933
+  }
+}

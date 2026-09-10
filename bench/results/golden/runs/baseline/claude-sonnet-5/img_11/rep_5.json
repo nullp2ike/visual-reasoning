@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_11",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:01:20.179Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 issues: content is cut off at the right edge of horizontal scroll sections and category filter row, and a promotional badge shows an unclear/likely erroneous value.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Fastest near you' horizontal card list is cut off abruptly at the right edge, showing a partial restaurant card (Trattoria Piccol...) with truncated text and image, indicating the scroll area is clipped by the viewport without a clear scroll affordance.",
+        "suggestion": "Add a fade/gradient edge or partial card preview intentionally sized to hint at scrollability, and ensure text doesn't get awkwardly truncated mid-word."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row (All, Pizza, Sushi, Burgers, Healthy) is cut off on the right side with an additional partially visible pill, suggesting more categories exist off-screen without a clear scroll indicator.",
+        "suggestion": "Add a subtle fade gradient at the edge of the scrollable filter row to indicate more content is available."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The pizza promotional card at the bottom shows a '-100%' discount badge, which is unusual and could look like an error (implying free food, likely unintended or a placeholder value).",
+        "suggestion": "Verify the discount value is correct; if intentional (e.g., free item promo), consider clarifying the label such as 'Free' instead of '-100%' for clarity."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 557,
+    "estimatedCost": 0.014277,
+    "durationSeconds": 9.401986083000084
+  }
+}

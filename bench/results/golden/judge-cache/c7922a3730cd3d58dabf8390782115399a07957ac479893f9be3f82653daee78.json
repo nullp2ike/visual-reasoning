@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "In the Tokumaru Ramen Bar row, the delivery time and delivery fee text overlap each other ('25–35 min' collides with '€0 delivery'), producing an illegible string like '25–3S0 mdinlivery'.",
+    "The third card in 'Fastest near you' is clipped mid-word ('Trattoria Piccol') and its title has no ellipsis or visible affordance that the list scrolls horizontally.",
+    "The favorite (heart) buttons on the two 'Popular right now' cards use inconsistent backgrounds — one white circle, one dark circle — creating a mismatched look.",
+    "The category chip row is cut off at the right edge with a partially rendered chip, and the second promo card is abruptly cut by the bottom navigation bar without any visual fade.",
+    "The notification bell badge and heart icons appear to be icon-only controls with no visible labels, and the '€0 delivery' / '−20%' badges rely on color alone for emphasis."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.82 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

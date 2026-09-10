@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "Bottom navigation shows Profile as active (green) while the screen displays the Home feed content; Home should be highlighted instead",
+    "Wishlist heart buttons in Popular right now section are inconsistent: Tokumaru Ramen Bar heart has no background circle while the pizza card below has a dark circular background",
+    "Third card in Fastest near you shows truncated name 'Trattoria Piccol' and time badges use inconsistent spacing '20-30 min' vs '20-30 min'"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.91 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

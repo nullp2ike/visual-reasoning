@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-4-8",
+  "provider": "anthropic",
+  "imageId": "img_04",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T09:01:04.727Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: a major content bug showing a meaningless discount value and a minor styling inconsistency between favorite icons.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza card in 'Popular right now' displays a '-0%' badge, which represents a 0% discount and is meaningless/broken. This is likely a data error where a discount value failed to populate.",
+        "suggestion": "Hide the discount badge entirely when the discount value is 0, or display the correct discount percentage."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) icons are styled inconsistently between cards: the Tokumaru Ramen card shows a white heart with no background, while the pizza card shows a heart on a dark circular background.",
+        "suggestion": "Standardize the favorite icon styling across all restaurant cards for visual consistency."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 482,
+    "estimatedCost": 0.022485,
+    "durationSeconds": 36.5211370000001
+  }
+}

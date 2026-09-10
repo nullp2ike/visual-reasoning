@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "In the 'Tokumaru Ramen Bar' card, the delivery time and delivery fee labels overlap each other, rendering as garbled text like '25–3€0 mdielivery' instead of '25–35 min · €0 delivery · Ramen'.",
+    "In the 'Fastest near you' carousel, the third restaurant name is cut off mid-word ('Trattoria Piccol...') with no ellipsis, and its card is clipped at the screen edge.",
+    "An empty, partially visible filter chip appears at the right edge after the 'Healthy' chip, showing a blank pill with no label.",
+    "The €0 delivery text alignment issue also causes the row baseline to look uneven compared to the rating '4.8 (500+)' on the right side."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Report 0 explicitly describes the delivery time and delivery fee labels overlapping in the same card."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

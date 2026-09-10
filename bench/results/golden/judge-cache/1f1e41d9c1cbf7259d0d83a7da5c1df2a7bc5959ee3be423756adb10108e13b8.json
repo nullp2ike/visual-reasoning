@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The rightmost items in horizontally scrolling sections are hard-clipped at the screen edge, including the third “Fastest near you” restaurant whose name is cut off as “Trattoria Piccol…”.",
+    "A promotional badge shows “-0%”, which reads as a meaningless or broken discount value.",
+    "The lower “Popular right now” card is cut off by the bottom of the viewport in this static view, making the page look unfinished if perceived as a fixed screen rather than scrollable content."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.88 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

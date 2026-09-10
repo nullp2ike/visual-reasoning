@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The label 'Trattoria Piccolo' is truncated abruptly to 'Trattoria Piccol' without ellipsis in the carousel.",
+    "The 'Pizza' category filter is active, but the feed displays non-pizza items like ramen and sushi."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Both describe the Pizza category filter being active while the feed shows non-pizza items (all cuisines vs. ramen and sushi)."
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

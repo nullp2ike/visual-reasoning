@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers shows delivery fee as '€NaN delivery', indicating a null/undefined value was formatted as currency instead of a real price.",
+    "Restaurant name 'Trattoria Piccol' is cut off mid-word under the third Fastest near you card, so the full name is not readable."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the delivery fee displaying as €NaN, matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

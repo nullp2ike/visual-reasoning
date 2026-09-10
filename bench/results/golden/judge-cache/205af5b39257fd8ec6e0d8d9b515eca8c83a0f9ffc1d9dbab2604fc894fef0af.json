@@ -1,0 +1,25 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The second card in \"Popular right now\" shows a promo badge reading \"-0%\", which represents a zero discount and looks like a data/formatting bug.",
+    "The favorite (heart) buttons are styled inconsistently: the Tokumaru Ramen card uses a white circular button with a dark outline heart, while the pizza card below uses a dark/transparent circle with a white heart, making it look broken and reducing contrast against the light pizza image.",
+    "In the \"Fastest near you\" carousel the third card is hard-clipped at the screen edge and its title renders as \"Trattoria Piccol\" with no ellipsis, so it reads as truncated/broken text rather than scrollable content.",
+    "The category filter chip row is also clipped mid-chip at the right edge with no fade or partial-chip indication, so users may not realize more categories exist.",
+    "The bottom pizza card is cut off by the fixed bottom navigation bar; its name, rating and metadata are hidden and the image is sliced abruptly right at the nav divider.",
+    "The Green Bowl Poké thumbnail has a near-white background while its neighbouring cards use dark imagery, and its \"15–25 min\" badge sits on a very light area, giving the row an inconsistent, unfinished look.",
+    "Icon-only controls (notification bell, heart/favorite buttons, search icon) have no visible text labels; if accessible names are missing they will be unusable with screen readers."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 identifies the promo badge displaying “-0%,” matching the incorrect discount badge."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5, 6]
+  }
+}

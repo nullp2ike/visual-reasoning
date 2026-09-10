@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_03",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:00:12.885Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 issues, including a missing image placeholder in the 'Popular right now' section and a cut-off card in the horizontal scroll list.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "missing-element",
+        "description": "The Tokumaru Ramen Bar card in 'Popular right now' shows a broken/missing image placeholder icon instead of an actual restaurant image.",
+        "suggestion": "Ensure the image asset loads correctly or provide a fallback image so the placeholder icon is never shown to users."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card 'Trattoria Piccol...' in the 'Fastest near you' row is cut off at the edge of the screen, truncating the restaurant name.",
+        "suggestion": "Adjust card width or add partial peek indication so truncated content is clearly intentional, or increase spacing to avoid abrupt text cutoff."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row (All, Pizza, Sushi, Burgers, Healthy) is cut off on the right edge, hiding additional category options without a clear scroll indicator.",
+        "suggestion": "Add a fade/gradient edge or scroll arrow to indicate the row is horizontally scrollable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 470,
+    "estimatedCost": 0.012972000000000001,
+    "durationSeconds": 9.885278165999916
+  }
+}

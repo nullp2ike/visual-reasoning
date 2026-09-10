@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The bottom navigation highlights “Profile” as the active tab, but the screen content appears to be the Home feed with delivery address, search, categories, and restaurant lists.",
+    "The fixed bottom navigation appears to overlap the restaurant list content. The second “Popular right now” card is partially hidden behind the bottom bar, making the page feel cut off.",
+    "Several horizontally scrollable sections are abruptly clipped on the right edge, including the category chips and the “Fastest near you” restaurant cards. This can look like content is accidentally cut off rather than intentionally scrollable."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.84 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

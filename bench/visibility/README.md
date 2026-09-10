@@ -24,13 +24,13 @@ present-recall while being useless.
 ## Quick start
 
 ```bash
-pnpm visibility:run --dataset my-set --models claude-haiku-4-5
-pnpm visibility:report --dataset my-set
+pnpm visibility:run --dataset visibility-golden --models claude-haiku-4-5
+pnpm visibility:report --dataset visibility-golden
 ```
 
-Then read `bench/results/my-set/visibility/RESULTS.md`, or open `report.html`
-beside it. No dataset is committed — see
-[`../datasets/README.md`](../datasets/README.md) for what one has to contain.
+Then read `bench/results/visibility-golden/visibility/RESULTS.md`, or open
+`report.html` beside it. `visibility-golden` is tracked; see
+[`../datasets/README.md`](../datasets/README.md) for what a dataset contains.
 
 ## Ground truth
 
@@ -187,7 +187,7 @@ HTML clicking a cell lists the failing files with their rep counts.
 
 ## Output
 
-Everything lands in `bench/results/<dataset-id>/visibility/` (gitignored), beside
+Everything lands in `bench/results/<dataset-id>/visibility/`, beside
 the screenshot bench's artifacts for the same dataset rather than mixed into them:
 
 ```

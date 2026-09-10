@@ -1,0 +1,25 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The second section heading displays the raw i18n key 'home_feed.popular_title' instead of a human-readable title such as 'Popular near you'. The missing translation string is visible to end users.",
+    "The favorite (heart) buttons on the two popular restaurant cards use different treatments: the ramen card has a white circular background with a dark outline heart, while the pizza card has a dark/transparent circle with a white heart. This inconsistency looks like a rendering bug.",
+    "In the 'Fastest near you' carousel the third card ('Trattoria Piccol…') is clipped mid-word at the screen edge with no visible affordance that the list scrolls horizontally.",
+    "The 'See all' links and promo body text are green/grey on white at small sizes; the secondary metadata ('€0.90 delivery', '25–35 min • €0 delivery • Ramen') is light grey and may fall below the 4.5:1 contrast ratio.",
+    "The notification bell has a red dot badge with no accompanying count or text label, so its state is conveyed by color alone."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes the same defect: section heading displaying raw i18n key 'home_feed.popular_title' instead of translated text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

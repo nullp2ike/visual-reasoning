@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_17",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:28:10.386Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished, but a few visual/state issues stand out: the active bottom tab does not match the displayed page, some content appears to be obscured by the fixed bottom navigation, and horizontally scrollable items look abruptly cut off at the right edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom navigation highlights “Profile” as the active tab, but the screen content appears to be the Home feed with delivery address, search, categories, and restaurant lists.",
+        "suggestion": "Ensure the active bottom navigation state matches the current screen. Highlight “Home” on this page, or navigate to the actual Profile screen when Profile is selected."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation appears to overlap the restaurant list content. The second “Popular right now” card is partially hidden behind the bottom bar, making the page feel cut off.",
+        "suggestion": "Add sufficient bottom padding or safe-area spacing to the scrollable content so cards and text can scroll fully above the navigation bar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Several horizontally scrollable sections are abruptly clipped on the right edge, including the category chips and the “Fastest near you” restaurant cards. This can look like content is accidentally cut off rather than intentionally scrollable.",
+        "suggestion": "Add right-side padding, a subtle fade indicator, or clearer carousel behavior so partially visible items feel intentional and accessible."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 733,
+    "reasoningTokens": 423,
+    "estimatedCost": 0.031045,
+    "durationSeconds": 11.710754875000013
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The lower food card shows a discount badge labeled \"-0%\", which is meaningless and looks like broken or missing promotional data.",
+    "The third \"Fastest near you\" card title reads \"Trattoria Piccol\" and is visibly cut off at the edge without a proper ellipsis or full-name treatment.",
+    "The category filter row ends with a partially visible empty pill on the right, which looks like a clipping or layout glitch rather than a clear scroll affordance.",
+    "Horizontal restaurant cards in \"Fastest near you\" are clipped mid-card at the screen edge with no gradient mask, making the section feel abruptly cut off."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.78 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

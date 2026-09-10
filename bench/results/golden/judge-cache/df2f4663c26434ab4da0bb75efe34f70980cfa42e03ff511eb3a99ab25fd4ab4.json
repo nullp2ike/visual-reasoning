@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The 'Fastest near you' horizontal card row is cut off at the right edge, and the third restaurant name appears truncated as 'Trattoria Piccol...'.",
+    "The category filter chips row is also partially cut off on the right side after 'Healthy', making the overflow look accidental rather than intentional.",
+    "Bottom navigation shows 'Profile' selected even though the visible content is the Home feed.",
+    "Search placeholder text is light gray and may be difficult to read for low-vision users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "cosine 0.92 >= 0.69 threshold (reported #2)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

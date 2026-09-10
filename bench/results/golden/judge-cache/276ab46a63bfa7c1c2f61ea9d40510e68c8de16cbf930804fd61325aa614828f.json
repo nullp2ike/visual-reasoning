@@ -1,0 +1,25 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "The circular button in the top-right of the header renders as an empty light-gray circle with only a small red notification dot — the icon (profile/notifications/cart) appears to be missing or failed to load.",
+    "In the 'Fastest near you' carousel the third item is cut off mid-word ('Trattoria Piccol') and its card image bleeds off the right edge with no ellipsis or peek affordance, making it look broken rather than scrollable.",
+    "The category filter chip row is clipped at the right edge — a chip after 'Healthy' is only half rendered with its label invisible, so users may not realize the row scrolls.",
+    "Favorite (heart) buttons are styled inconsistently: the Tokumaru card uses a white circle with a dark outline heart, while the pizza card below uses a dark circle with a white heart.",
+    "Thumbnail treatments in the 'Fastest near you' row are inconsistent — the first card has a pale gray background while the other two use dark photographic backgrounds, making the row look unfinished.",
+    "The bottom pizza card is truncated by the bottom navigation bar with no visible title or metadata, and there is little bottom scroll padding, so it reads as content cut off rather than more content below.",
+    "Low-emphasis gray text such as 'DELIVER TO', delivery fees and the '25–35 min • €0 delivery • Ramen' metadata line has weak contrast against the white background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.80 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5, 6]
+  }
+}

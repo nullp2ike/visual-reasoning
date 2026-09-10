@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_15",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:03:55.696Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual issues: a broken-looking element in the bottom navigation bar and partial cutoff of a horizontal restaurant card.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom navigation bar contains an unexplained horizontal line/rectangle positioned between the search and bookmark icons, which looks like a misplaced active-indicator or visual artifact.",
+        "suggestion": "Remove or reposition the stray bar; if it is meant to indicate the active tab, align it beneath the corresponding icon and use a consistent style."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third 'Fastest near you' restaurant card ('Trattoria Piccol') is partially cut off on the right edge of the screen.",
+        "suggestion": "Add padding or a peek state to the horizontal scroll container so users can clearly see there are more items to swipe through."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 650,
+    "reasoningTokens": 432,
+    "estimatedCost": 0.00408242,
+    "reportedCost": 0.00900228,
+    "durationSeconds": 5.7851798340000675
+  }
+}

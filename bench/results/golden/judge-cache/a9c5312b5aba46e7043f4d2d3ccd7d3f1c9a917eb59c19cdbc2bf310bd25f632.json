@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "Restaurant title 'Trattoria Piccol' is truncated abruptly.",
+    "Top-right profile icon is a blank placeholder with an unaligned red dot.",
+    "Category filter row ends with an unlabelled clipped pill on the edge."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.81 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

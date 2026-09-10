@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The 'Pizza' category chip is selected (highlighted dark), but the displayed content does not reflect a pizza-only filter: 'Fastest near you' shows Green Bowl Poké and Smash Bros Burgers, and 'Popular right now' features Tokumaru Ramen Bar. Only the trattoria and the pizza card at the bottom match the filter.",
+    "The Green Bowl Poké thumbnail image appears low-fidelity/placeholder-like (abstract blobs on a plate) compared to other restaurant cards, making it look unfinished."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes Pizza category selected but feed showing non-pizza restaurants (Poké, Burgers, Ramen), exactly matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

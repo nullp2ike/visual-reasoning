@@ -1,0 +1,24 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section heading displays the raw localization key \"home_feed.popular_title\" instead of a user-facing title.",
+    "The rightmost category chip is visibly cut off at the screen edge, with only part of an additional pill shown after \"Healthy.\"",
+    "The third restaurant card in the \"Fastest near you\" carousel is cut off on the right, including its title and content.",
+    "The next promotional restaurant card is cropped by the fixed bottom navigation, leaving only its image visible and making the scrolling content feel abruptly obscured."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.92 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

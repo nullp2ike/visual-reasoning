@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-4-8",
+  "provider": "anthropic",
+  "imageId": "img_14",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:59:25.710Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is a food delivery app home screen that renders mostly well. Found a few minor layout and content issues related to cut-off elements in horizontal carousels.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the 'Trattoria Piccol...' card on the right edge is cut off, truncating both the restaurant name and image.",
+        "suggestion": "This is expected for a scrollable carousel, but consider adding a partial-peek indicator or padding to make it clearer the content scrolls horizontally."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The cards in the 'Fastest near you' row have inconsistent vertical alignment — the burger card image is taller and extends higher than the adjacent poké card, causing an uneven top edge.",
+        "suggestion": "Standardize image container heights across carousel cards so all items align consistently."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The bottom pizza card under 'Popular right now' is partially cut off by the viewport, showing only the top portion with a '-20%' badge and no title or details.",
+        "suggestion": "Ensure adequate bottom spacing or lazy-load so partial cards don't appear truncated at the fold; this is generally acceptable scroll behavior."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 427,
+    "estimatedCost": 0.020545,
+    "durationSeconds": 8.902482791999995
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Under 'Tokumaru Ramen Bar', the metadata line shows overlapping text: '25–30 min' and '€0 delivery' are rendered on top of each other (appearing as garbled '25–30rdelivery'), making both pieces of information unreadable.",
+    "The third card in 'Fastest near you' ('Trattoria Piccol...') is cut off at the right screen edge with no visual affordance indicating horizontal scrollability.",
+    "The notification bell icon in the top-right has a red badge dot with no numeric count or text alternative, so the meaning of the badge is unclear to screen reader users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the delivery fee and delivery time text overlapping in the same metadata line."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

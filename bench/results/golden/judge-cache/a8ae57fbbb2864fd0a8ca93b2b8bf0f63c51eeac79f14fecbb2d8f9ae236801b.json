@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The bottom restaurant card (pizza with -20% badge) is cut off at the bottom edge of the screen and appears to extend behind the bottom navigation bar area, making the card look incomplete and potentially obscuring content.",
+    "The restaurant name 'Trattoria Picco' in the 'Fastest near you' horizontal card is truncated with an ellipsis, so the full name is not visible."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.62 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

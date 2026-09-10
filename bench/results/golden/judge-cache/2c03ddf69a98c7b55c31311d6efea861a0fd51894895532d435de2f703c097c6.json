@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The third restaurant card in the 'Fastest near you' row shows a truncated name 'Trattoria Piccol' without an ellipsis, making it unclear that the name is cut off. The card is also partially clipped by the screen edge in a way that hides both the image and the name awkwardly.",
+    "The bottom-most restaurant card (pizza item) is cut off mid-image with no visual indicator that it is scrollable, which could confuse users into thinking the content ends there."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.55 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

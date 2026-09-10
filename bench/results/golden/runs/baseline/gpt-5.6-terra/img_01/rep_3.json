@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_01",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:33:43.606Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well laid out, but it contains a prominent untranslated/raw localization key and several horizontally clipped items that make the feed look unfinished.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading displays the raw localization key \"home_feed.popular_title\" instead of a user-facing title.",
+        "suggestion": "Add or correct the translation for this key and render the intended localized section title, such as \"Popular\" or \"Popular near you\"."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal category row cuts off an additional chip at the right edge, and the \"Fastest near you\" carousel cuts off the third restaurant card and its name (\"Trattoria Picco...\").",
+        "suggestion": "Make the horizontal-scroll affordance intentional by adding adequate end padding and/or a visible fade/partial-card treatment; ensure text truncation is deliberate and does not look accidentally cropped."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The next popular-list card is visibly cut off by the fixed bottom navigation, leaving only its upper portion visible at the bottom of the viewport.",
+        "suggestion": "Provide sufficient bottom content inset/padding for the scrollable feed so cards can scroll fully above the bottom navigation."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 269,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.00685,
+    "durationSeconds": 4.4585986249999845
+  }
+}

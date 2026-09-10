@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.7-plus",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:14:38.201Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page appears mostly well-designed with a clean layout, but there is a significant content issue where a discount badge displays '-100%', which is likely an error or misleading. There are also minor layout issues with truncated text.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The bottom card displays a '-100%' badge, which implies the item is free or the price is negative. This is likely a data error, a misconfigured promotion, or misleading to users.",
+        "suggestion": "Verify the promotion logic. If it means '100% off delivery', the text should say 'Free delivery' or '100% off'. If it's a bug, fix the data source."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' section is truncated, cutting off the full name.",
+        "suggestion": "Consider using a smaller font size, allowing two lines for the name, or ensuring the horizontal scroll container provides enough width to display full names if possible."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1689,
+    "outputTokens": 2705,
+    "reasoningTokens": 2421,
+    "estimatedCost": 0.00400288,
+    "reportedCost": 0.00400288,
+    "durationSeconds": 53.41529408299993
+  }
+}

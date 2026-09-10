@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "imageId": "img_18",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:29:52.188Z",
+  "status": "ok",
+  "result": {
+    "summary": "No critical visual breakage is apparent. The main concerns are abruptly clipped horizontal content and content appearing beneath the fixed bottom navigation.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category row ends with an unlabeled sliver of the next chip at the right edge, making it look accidentally cut off rather than clearly scrollable.",
+        "suggestion": "Adjust carousel spacing or expose enough of the next chip and its label to create a clearer horizontal-scroll affordance."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in “Fastest near you” is sharply clipped, including its restaurant name and delivery details.",
+        "suggestion": "Use a consistent partial-card preview with adequate right padding, or snap cards so text is not left partially visible at the viewport edge."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlays the lower restaurant card, hiding part of its image and potentially subsequent details while scrolling.",
+        "suggestion": "Add bottom content padding equal to the navigation and safe-area height so all cards can scroll fully above the fixed bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 848,
+    "reasoningTokens": 612,
+    "estimatedCost": 0.034495,
+    "durationSeconds": 21.400046583999995
+  }
+}

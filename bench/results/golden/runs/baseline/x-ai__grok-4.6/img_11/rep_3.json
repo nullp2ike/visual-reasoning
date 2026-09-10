@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:22.535Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content-cut-off issues: category chips and restaurant cards overflow the screen, restaurant names are truncated, and a promo card is clipped at the bottom.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card in the 'Fastest near you' row (Trattoria Piccol…) is clipped at the right edge, so the name and image are incomplete.",
+        "suggestion": "Add horizontal padding or a peek/carousel fade so cards don’t get cut off, or wrap/scale the last visible card fully on screen."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last category filter chip ('Healthy') is cut off at the right edge of the screen.",
+        "suggestion": "Ensure the chip row has enough end padding or allow full swipe so the last chip is fully visible."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The restaurant name 'Trattoria Piccol' is truncated without an ellipsis or full name visible.",
+        "suggestion": "Show the full name on two lines or use a proper ellipsis and tooltip/accessible label for the complete name."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom popular restaurant card is cut off by the tab bar, so the restaurant name, rating, and details are not visible.",
+        "suggestion": "Add bottom content inset equal to the tab bar height so cards can scroll fully above the navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Promo banner text sits on a busy green pattern; the white body copy may be harder to read depending on the overlay.",
+        "suggestion": "Increase overlay contrast or add a subtle text shadow/scrim behind the promo copy."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 375,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.006014,
+    "reportedCost": 0.003326,
+    "durationSeconds": 9.853803749999992
+  }
+}

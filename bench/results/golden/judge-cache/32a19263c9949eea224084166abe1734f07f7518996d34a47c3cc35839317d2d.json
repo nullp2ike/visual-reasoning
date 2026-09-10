@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "Horizontally scrolling sections are clipped at the right edge: the category chips after “Healthy” and the “Trattoria Piccol…” restaurant card are cut off, making content look broken or overflowing.",
+    "Search placeholder text appears misspelled as “Restarants, dishes, groceries” instead of “Restaurants…”.",
+    "Small green metadata text such as “€0 delivery” and “See all” may have limited contrast and readability for some users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.84 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

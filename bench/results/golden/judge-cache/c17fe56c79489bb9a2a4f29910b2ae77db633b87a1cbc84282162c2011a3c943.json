@@ -1,0 +1,19 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Under the 'Smash Bros Burgers' card in the 'Fastest near you' row, the delivery fee reads '€NaN delivery' instead of a valid price. 'NaN' (Not a Number) is a raw programming error value leaking into the UI, which looks broken and confuses users about the actual delivery cost."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The reported issue describes the delivery fee displaying €NaN instead of a valid price."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_10",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:42:13.359Z",
+  "status": "ok",
+  "result": {
+    "summary": "The layout is largely intact, but the 'Fastest near you' carousel contains a duplicated restaurant entry, and the favorite (heart) button styling is inconsistent between the two 'Popular right now' cards, with the second one having poor contrast against a dark image.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Fastest near you' carousel shows 'Green Bowl Poké' twice in a row — identical image, delivery time (15–25 min) and delivery fee (€0.90) — which looks like a duplicated data entry rather than two distinct venues.",
+        "suggestion": "De-duplicate the restaurant list by unique ID before rendering the carousel, or differentiate the entries (e.g. distinct branch names/addresses) if they are genuinely separate locations."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite heart buttons on the two 'Popular right now' cards use different styles: the first is a white circle with a dark outlined heart, the second is a dark/transparent circle with a white heart, giving low contrast against the bright pizza image.",
+        "suggestion": "Use one consistent favorite button treatment (e.g. white circular background with dark heart outline plus a subtle shadow) across all cards to ensure visibility on any image."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The 'Popular right now' section only shows the image portion of the second (pizza) card before the list is cut, and no restaurant name/rating row is visible for it, making the section feel unbalanced compared to the fully rendered first card.",
+        "suggestion": "Ensure the card metadata block renders together with the image so partially scrolled cards still read as complete units, and verify bottom padding above the tab bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 776,
+    "estimatedCost": 0.029835,
+    "durationSeconds": 33.48989433300006
+  }
+}

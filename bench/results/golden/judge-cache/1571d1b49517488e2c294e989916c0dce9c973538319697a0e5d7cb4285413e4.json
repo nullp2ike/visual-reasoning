@@ -1,0 +1,26 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The promo badge on the pizza card reads \"-100%\", which implies the item is entirely free and is almost certainly a data/formatting error (or a discount value rendered without capping/labeling).",
+    "The favorite (heart) buttons on the two 'Popular right now' cards use different treatments: the first is a white circle with a dark outline heart, the second is a dark/translucent circle with a white heart. Inconsistent affordance for the same control.",
+    "The second 'Popular right now' card is clipped by the bottom navigation bar — its image is cut mid-way and the name, rating and delivery info are not visible, making the list look broken rather than scrollable.",
+    "In the 'Fastest near you' carousel the third restaurant name is hard-clipped as \"Trattoria Piccol\" with no ellipsis, and its card is sliced by the screen edge.",
+    "The 'Green Bowl Poké' thumbnail has a light grey background while the sibling thumbnails are dark, making the row look visually unbalanced; the white 15–25 min pill also has weak contrast on it.",
+    "The category chip row is cut off at the right edge with a sliver of a chip visible, giving no clear scroll affordance.",
+    "Secondary text such as the search placeholder, delivery prices and 'DELIVER TO' label is light grey on white, likely below the 4.5:1 contrast ratio.",
+    "Icon-only controls (notification bell with unread dot, heart buttons) have no visible text label; if accessible names are missing they are unusable with screen readers."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.74 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5, 6, 7]
+  }
+}

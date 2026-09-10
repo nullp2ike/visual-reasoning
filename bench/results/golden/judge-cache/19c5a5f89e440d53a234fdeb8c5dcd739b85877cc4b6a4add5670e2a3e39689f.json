@@ -1,0 +1,19 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "'Pizza' category pill is in selected state but 'Fastest near you' shows Green Bowl Poke, Smash Bros Burgers, Trattoria Piccolo and 'Popular right now' shows Tokumaru Ramen Bar, which are non-pizza venues"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.57 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

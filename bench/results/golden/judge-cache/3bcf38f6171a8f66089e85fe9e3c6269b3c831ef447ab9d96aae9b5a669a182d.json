@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The bottom navigation bar appears to overlay the restaurant list content. The second restaurant card image is cut off behind the fixed tab bar, making the page feel clipped at the bottom.",
+    "Several horizontally scrollable elements are abruptly cut off on the right edge, including the category chips and the 'Fastest near you' restaurant cards. This makes the partial items look unintentionally cropped.",
+    "The rightmost category chip is visible only as an empty gray sliver, which looks like a missing or broken label rather than a scrollable category."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.62 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

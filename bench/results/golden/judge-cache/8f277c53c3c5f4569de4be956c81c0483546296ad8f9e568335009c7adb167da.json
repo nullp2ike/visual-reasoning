@@ -1,0 +1,19 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The 'Pizza' filter chip is shown as selected (dark/active state), but the page content is not filtered to pizza: 'Fastest near you' shows Green Bowl Poké and Smash Bros Burgers, and 'Popular right now' features Tokumaru Ramen Bar (tagged 'Ramen'). The selected filter state contradicts the displayed results."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The Pizza filter appears selected, but the feed still displays restaurants from other cuisines instead of only pizza."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

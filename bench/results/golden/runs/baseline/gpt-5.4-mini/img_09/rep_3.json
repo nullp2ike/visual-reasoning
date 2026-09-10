@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "imageId": "img_09",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:29:04.354Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page mostly renders correctly, but there is a noticeable layout issue where the fixed bottom navigation overlaps the content, partially hiding the next restaurant card. A few horizontally scrollable items are also clipped at the edges, which may look unfinished.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom navigation bar overlaps the restaurant list, cutting off the second card in the \"Popular right now\" section and obscuring part of its image/content.",
+        "suggestion": "Add enough bottom padding/margin to the scrollable content so the last visible cards sit above the fixed navigation bar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Some horizontally scrollable cards and labels are clipped at the right edge (for example, the category row and the partially visible restaurant card), which can make the page look slightly truncated.",
+        "suggestion": "Ensure the carousel has clearer edge spacing or more obvious scroll affordance so partially visible items feel intentional rather than cut off."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 728,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.00463425,
+    "durationSeconds": 6.39830145899998
+  }
+}

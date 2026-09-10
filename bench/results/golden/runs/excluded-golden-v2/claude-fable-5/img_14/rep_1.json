@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_14",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:33:08.250Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but the 'Fastest near you' carousel has a noticeable vertical misalignment: the middle card (Smash Bros Burgers) is offset lower than its neighbors, so images, time badges, titles, and delivery prices don't line up across the row.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the Smash Bros Burgers card is vertically offset compared to the Green Bowl Poké and Trattoria Piccola cards. Its image starts lower, and its title and delivery-fee text sit noticeably below the baselines of the adjacent cards, making the row look broken.",
+        "suggestion": "Align all carousel cards to a common top edge with equal image heights, so titles and delivery prices share the same baselines across the row."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The delivery-time badges within the 'Fastest near you' cards are placed at inconsistent positions (e.g., bottom-left inside the first image vs. lower/overlapping placement on the middle card), which adds to the uneven appearance.",
+        "suggestion": "Standardize the badge position (e.g., always bottom-left inside the image with the same padding) across all carousel cards."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 569,
+    "estimatedCost": 0.04932,
+    "durationSeconds": 64.992218667
+  }
+}

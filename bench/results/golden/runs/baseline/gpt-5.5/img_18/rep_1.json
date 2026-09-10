@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_18",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:24:13.139Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly usable, but a few carousel and fixed navigation elements look visually clipped or overlapping.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlaps the restaurant list content. The second restaurant card is partially hidden behind the nav bar, making the image/card feel cut off.",
+        "suggestion": "Add enough bottom padding or safe-area spacing to the scrollable content so the final visible cards are not covered by the fixed bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal category chips are clipped on the right edge, showing only part of the next empty-looking pill. This looks unfinished rather than clearly scrollable.",
+        "suggestion": "Either add a fade/scroll affordance, ensure the next chip contains visible text, or adjust spacing so partial chips do not appear awkwardly cropped."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The 'Fastest near you' carousel shows the third restaurant card heavily cut off on the right, including its title. While this may indicate horizontal scrolling, it visually feels cramped.",
+        "suggestion": "Use carousel snapping, slightly reduce card widths, or add a clearer horizontal scroll treatment so partial cards look intentional."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 588,
+    "reasoningTokens": 328,
+    "estimatedCost": 0.026695,
+    "durationSeconds": 14.801913584
+  }
+}

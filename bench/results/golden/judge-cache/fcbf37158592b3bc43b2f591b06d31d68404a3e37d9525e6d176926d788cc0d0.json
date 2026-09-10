@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The first two items in the 'Fastest near you' section are exact duplicates (Green Bowl Poké).",
+    "The restaurant card at the bottom of the screen is clipped/cut off."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.75 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

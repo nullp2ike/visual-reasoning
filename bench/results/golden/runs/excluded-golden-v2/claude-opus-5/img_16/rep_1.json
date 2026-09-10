@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_16",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:50:57.921Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page layout is largely intact, but there are a few visual inconsistencies: the favorite (heart) buttons on the 'Popular right now' cards use two different styles, the active 'Pizza' filter does not appear to be applied to the listings, and one carousel card's artwork background does not match its siblings.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "styling",
+        "description": "The favorite/heart buttons on the two 'Popular right now' cards are styled differently: the Tokumaru Ramen Bar card has a white circular button with a dark outlined heart, while the pizza card below it has a dark/black circular button with a white heart.",
+        "suggestion": "Use a single consistent favorite button treatment (same background, icon color, size and shadow) across all restaurant cards, regardless of image content."
+      },
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The 'Pizza' category chip is visually selected (active black state), yet the listings shown include poké, burgers and ramen restaurants, so the filter appears not to be applied to the content below.",
+        "suggestion": "Either apply the selected category filter to the listed results, or reset the chip to 'All' when unfiltered content is being displayed."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "In the 'Fastest near you' carousel, the first card (Green Bowl Poké) has a light gray image background while the neighbouring cards use dark imagery, making the row look visually uneven and causing the white time badge to have low contrast on the light background.",
+        "suggestion": "Normalize card imagery treatment (e.g. apply a consistent dark overlay/gradient) so badges keep consistent contrast across all cards."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 943,
+    "estimatedCost": 0.034010000000000006,
+    "durationSeconds": 31.22151091699954
+  }
+}

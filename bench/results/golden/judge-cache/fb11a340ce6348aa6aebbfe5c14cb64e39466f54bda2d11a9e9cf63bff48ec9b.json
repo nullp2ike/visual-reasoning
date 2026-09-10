@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Orders icon is missing from the bottom nav bar"],
+  "reportedIssues": [
+    "Third card in 'Fastest near you' shows restaurant name truncated mid-word as 'Trattoria Piccol' at the screen edge",
+    "Delivery time badges use inconsistent formatting: '15-25 min' and '20-30 min' without spaces vs '20-30 min' with spaces",
+    "Bottom 'Popular right now' pizza card with '-20%' badge is flush against and clipped by the bottom tab bar with no padding, hiding its restaurant name and details"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.64 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

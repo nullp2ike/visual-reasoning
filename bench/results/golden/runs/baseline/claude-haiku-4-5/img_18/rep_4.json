@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-4-5",
+  "provider": "anthropic",
+  "imageId": "img_18",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:04:29.421Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 issues: major content truncation problems where restaurant names and cards are cut off at screen edges, affecting content readability and usability.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' section (Trattoria Piccol) is partially cut off on the right side, with the full restaurant name and image truncated",
+        "suggestion": "Ensure all cards fit properly within the viewport width or implement proper horizontal scrolling that fully displays each card without cutting content"
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' appears to be truncated - should likely be 'Trattoria Piccolo' or similar, making it unclear to users",
+        "suggestion": "Verify the complete restaurant name and ensure text truncation doesn't occur with CSS text-overflow properties or by adjusting card width"
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom pizza restaurant card in 'Popular right now' section is partially cut off - the restaurant name and details below the image are not fully visible",
+        "suggestion": "Ensure proper spacing and height for cards to display all content, or implement pagination/scrolling to show complete information"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter pills at the top appear to extend beyond the visible viewport, suggesting there are more categories that aren't fully accessible",
+        "suggestion": "Make the category filter section horizontally scrollable with proper indicators, or adjust layout to show all relevant categories"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1854,
+    "outputTokens": 817,
+    "estimatedCost": 0.005939,
+    "durationSeconds": 9.382910040999995
+  }
+}

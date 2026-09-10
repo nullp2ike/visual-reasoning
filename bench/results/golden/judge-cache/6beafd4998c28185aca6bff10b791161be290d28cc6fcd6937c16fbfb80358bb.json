@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Restaurant cover image failed to load"],
+  "reportedIssues": [
+    "The horizontal category row is cut off at the right edge: an unlabeled partial chip is visible after “Healthy.” The “Fastest near you” restaurant carousel also cuts off the third card, including its restaurant name (“Trattoria Piccol…”), creating an abrupt, unfinished appearance.",
+    "The Tokumaru Ramen Bar card’s hero image is missing and displays a generic broken-image placeholder icon in a large gray image area.",
+    "The next popular restaurant card is partially obscured by the fixed bottom navigation, leaving only the top of its image visible at the bottom of the viewport."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Report 1 describes a restaurant card's hero image missing and showing a broken-image placeholder, which is the same defect as a failed-to-load cover image."
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

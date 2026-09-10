@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_02",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T10:31:11.361Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 major issue: a data rendering error displaying 'NaN' for a delivery price.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Smash Bros Burgers shows '€NaN delivery' instead of a valid delivery price. This indicates a JavaScript/data rendering error where a numeric value failed to resolve properly.",
+        "suggestion": "Investigate the data pipeline or API response for this restaurant's delivery fee. Ensure the value is properly parsed as a number before rendering, and add a fallback (e.g., '€0.00' or 'Free') for null/undefined values."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1910,
+    "outputTokens": 170,
+    "estimatedCost": 0.00828,
+    "durationSeconds": 75.03543820899911
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "In the 'Popular right now' section, the Tokumaru Ramen Bar metadata reads '25-35delivery • Ramen' with the minutes unit and spacing missing or collapsed, making the delivery estimate hard to read and appearing broken.",
+    "The third card in the 'Fastest near you' horizontal list ('Trattoria Piccol...') is clipped at the right edge of the screen.",
+    "The bottom restaurant card in the 'Popular right now' section (pizza with '-20%' badge) is cut off at the bottom, leaving no visible bottom padding."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.65 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

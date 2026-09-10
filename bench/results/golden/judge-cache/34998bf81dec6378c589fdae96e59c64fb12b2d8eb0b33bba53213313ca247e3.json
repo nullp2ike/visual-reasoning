@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "In the Tokumaru Ramen Bar card, the delivery time and delivery fee text appear overlapping/garbled ('25-3€0min delivery')",
+    "Third card in 'Fastest near you' row (Trattoria Piccolo) is cut off at the edge of the screen, showing only partial content",
+    "Category filter row (Pizza, Sushi, Burgers, Healthy) is cut off on the right edge, suggesting more categories exist but no visual scroll indicator is shown"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.85 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

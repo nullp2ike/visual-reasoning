@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The bottom navigation shows 'Profile' as the active (highlighted green) tab, but the screen displayed is clearly the Home/discovery feed. The 'Home' tab should be active.",
+    "The last category chip in the filter row (after 'Healthy') is cut off at the right edge with no visible label, appearing as an empty sliver of a pill.",
+    "The third restaurant card title 'Trattoria Piccol...' is truncated abruptly at the screen edge without an ellipsis, making the name unreadable.",
+    "The pizza card in 'Popular right now' is cut off at the bottom by the navigation bar, hiding its title, rating, and delivery info."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the Profile tab highlighted while the Home feed is displayed, exactly matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' section is truncated/cut off at the right edge of the screen.",
+    "The placeholder text in the search bar reads 'Restarants' which is a misspelling of 'Restaurants'.",
+    "The favorite (heart) icons appear inconsistent — one is a white outline over the ramen image and the other is a dark/filled circle over the pizza image, creating visual inconsistency.",
+    "The 'Healthy' category chip at the right edge appears partially cut off, indicating the category row is horizontally scrollable but lacks a visual affordance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 explicitly identifies the misspelling 'Restarants' instead of 'Restaurants' in the search bar placeholder text."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3]
+  }
+}

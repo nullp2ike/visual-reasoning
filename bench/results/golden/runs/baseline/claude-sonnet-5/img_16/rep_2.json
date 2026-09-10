@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_16",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:01:50.997Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 issues: category cards and restaurant cards are cut off at screen edge, and the third 'Fastest near you' card content is obscured, indicating horizontal scroll clipping problems.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Trattoria Piccol...' restaurant card in 'Fastest near you' section is cut off at the right edge of the screen, hiding delivery info and truncating the name",
+        "suggestion": "Add clearer scroll affordance (e.g., partial card peek with fade gradient) or adjust card width so cut-off is intentional and visually indicated"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row (All, Pizza, Sushi, Burgers, Healthy) is cut off on the right side suggesting more categories exist but no visual scroll indicator is present",
+        "suggestion": "Add a fade/gradient edge or scroll indicator to signal horizontally scrollable content"
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' appears truncated without ellipsis due to card being cut off by screen edge rather than text truncation styling",
+        "suggestion": "Ensure text truncates with ellipsis within visible card bounds or ensure card fully fits before cutoff"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 459,
+    "estimatedCost": 0.012807,
+    "durationSeconds": 6.819589333000011
+  }
+}

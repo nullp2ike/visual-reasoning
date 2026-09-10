@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_06",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:34:11.169Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished, but horizontal content is visibly clipped at the right edge and the bottom navigation overlays the scrolling content.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The horizontal restaurant carousel under \"Fastest near you\" is cut off at the right edge: the third card and its title (\"Trattoria Picco...\") are visibly truncated without a clear trailing viewport gutter.",
+        "suggestion": "Implement the carousel with a right-side content inset/padding and ensure cards are intentionally clipped only within a scrollable viewport; avoid partially cutting text outside the visible layout area."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom navigation bar overlaps the main feed. The next \"Popular right now\" restaurant card is obscured by the fixed navigation, so its content cannot be fully seen without additional scrolling.",
+        "suggestion": "Add sufficient bottom padding to the scrollable page equal to the navigation bar and safe-area height, or place the navigation outside the feed flow so no cards are hidden behind it."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category pill row also ends with a partially visible, unlabeled pill at the far right, making the horizontal overflow look abrupt.",
+        "suggestion": "Add consistent end padding to the horizontal category list and ensure the partial next item is visibly intentional, or show a clear scroll affordance."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 291,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.007114,
+    "durationSeconds": 5.088063916999963
+  }
+}

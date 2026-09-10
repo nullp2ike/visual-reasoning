@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_11",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:34:51.423Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished, but horizontal carousels and the fixed bottom navigation create visible clipping that makes content feel cut off rather than intentionally scrollable.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is clipped at the right edge, leaving a partially visible next chip with no clear visual affordance that the row can be scrolled horizontally.",
+        "suggestion": "Add right-side padding and a deliberate carousel affordance, such as a fade gradient, partial-card spacing, or a visible scroll indicator."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in the \"Fastest near you\" row is cut off at the right edge, including its restaurant title and delivery information.",
+        "suggestion": "Use clearer horizontal-carousel treatment with consistent trailing spacing or provide a visible cue that users can swipe to reveal additional restaurants."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlaps the next \"Popular right now\" restaurant card, obscuring a substantial portion of its image while the content scrolls behind it.",
+        "suggestion": "Reserve bottom content padding equal to the navigation height so list cards remain fully visible above the fixed navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 445,
+    "reasoningTokens": 187,
+    "estimatedCost": 0.008962,
+    "durationSeconds": 7.440567334000021
+  }
+}

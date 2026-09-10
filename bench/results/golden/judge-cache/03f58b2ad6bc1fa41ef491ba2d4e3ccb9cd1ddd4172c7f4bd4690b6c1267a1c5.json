@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The pizza card in the 'Popular right now' section displays a '–0%' discount badge, which is meaningless (a zero-percent discount) and looks like a data or rendering bug.",
+    "In the 'Fastest near you' carousel, the third restaurant name is cut off as 'Trattoria Piccol' with no ellipsis, making the truncation look accidental rather than intentional.",
+    "A category filter chip on the far right (after 'Healthy') is cut off at the screen edge with almost no visible content, which can look broken rather than like a scrollable list.",
+    "Delivery fee text ('€0.90 delivery', '€2.40 delivery', etc.) and the '25–35 min • €0 delivery • Ramen' meta line use light gray text that may have low contrast against the white background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 identifies the pizza card's meaningless '–0%' discount badge, matching the expected zero-percent discount badge defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

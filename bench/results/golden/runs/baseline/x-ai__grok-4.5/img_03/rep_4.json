@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_03",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:52:07.688Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual issues including a broken/missing restaurant image placeholder, truncated restaurant names, and incomplete category filter chips.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The 'Tokumaru Ramen Bar' card under 'Popular right now' shows a broken image placeholder (mountain icon) instead of a restaurant photo, leaving a large empty gray area.",
+        "suggestion": "Load the correct restaurant image or provide a proper fallback illustration so the card is not visually empty."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated with missing letters at the end of the 'Fastest near you' row.",
+        "suggestion": "Allow the name to wrap to two lines, use a smaller font, or truncate with an ellipsis so the full name is readable on tap/hover."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chips row is cut off on the right (partial chip visible after 'Healthy'), suggesting horizontal overflow without clear affordance.",
+        "suggestion": "Ensure chips scroll cleanly with padding/fade indicator, or fit the full set without clipping."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza promo image is partially cut off by the bottom navigation bar, making the card look incomplete.",
+        "suggestion": "Add sufficient bottom padding/margin above the tab bar so full cards are visible when scrolling."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 378,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006032,
+    "reportedCost": 0.0029856,
+    "durationSeconds": 7.875393166999999
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The '-100%' badge on the pizza restaurant card is confusing and likely a data error. A -100% discount is illogical (it would mean paying twice the price) and lacks explanatory context.",
+    "The restaurant name 'Trattoria Piccol' appears truncated in the 'Fastest near you' section, likely should be 'Trattoria Piccolo' or longer."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe the same defect: a discount badge displaying −100% on a restaurant card, identified as a data error."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

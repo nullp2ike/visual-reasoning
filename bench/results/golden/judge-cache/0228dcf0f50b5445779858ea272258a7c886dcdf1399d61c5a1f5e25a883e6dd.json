@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The third card in the 'Fastest near you' horizontal list ('Trattoria Piccol...') is visibly cropped at the right screen edge and its name is truncated with an ellipsis, which can look like broken or clipped content in a static view.",
+    "The restaurant name 'Tokumaru Ramei' is displayed while its cuisine category is listed as 'Ramen', suggesting a possible typo in the restaurant name.",
+    "The second card in the 'Popular right now' section (pizza) is cut off at the bottom of the screen, which is expected for scrollable content but can appear visually incomplete in a screenshot."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.71 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

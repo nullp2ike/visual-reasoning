@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:52:35.595Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual and layout issues are present: truncated restaurant names, a loading spinner overlaid on a popular item that looks broken, cut-off category chips, and partial cards at the edges of carousels.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' is clipped mid-image and the name is truncated to 'Trattoria Piccol', cutting off readable content at the screen edge.",
+        "suggestion": "Ensure horizontal carousels fully show card content or use consistent truncation with ellipsis, and add adequate end padding so names and images are not cut off."
+      },
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "A large circular loading spinner is centered over the Tokumaru Ramen Bar hero image while the rest of the card (title, rating, meta) is already visible, making the section look broken or stuck loading.",
+        "suggestion": "Show a proper skeleton/placeholder for the whole card until the image is ready, or fade the image in without a persistent centered spinner once text content is rendered."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row is cut off on the right (partial 'Healthy' chip and a peek of another chip), which looks unfinished and hides options.",
+        "suggestion": "Add end padding/fade or make the chip row clearly scrollable so the last visible chips are not sliced in half."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom 'Popular right now' pizza card is heavily cropped by the bottom navigation, so most of the dish and any title below it are not visible in the viewport.",
+        "suggestion": "Add bottom content inset/padding equal to the tab bar height so cards are not obscured, or ensure the list scrolls with enough clearance."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name truncation without ellipsis (e.g. 'Trattoria Piccol') looks like a layout bug rather than intentional overflow handling.",
+        "suggestion": "Apply text overflow ellipsis (or two-line clamp) consistently on restaurant titles in the horizontal list."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 539,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006998,
+    "reportedCost": 0.0063452,
+    "durationSeconds": 11.262307666000009
+  }
+}

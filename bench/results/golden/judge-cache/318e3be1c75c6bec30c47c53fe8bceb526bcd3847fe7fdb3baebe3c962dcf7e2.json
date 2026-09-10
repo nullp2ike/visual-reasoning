@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The third card in the 'Fastest near you' horizontal scroll row ('Trattoria Piccol...') is hard-clipped at the right screen edge with its title and image cut off mid-character, giving no clear visual cue that the row is scrollable.",
+    "In the bottom navigation bar, the system home-indicator bar overlaps the search (magnifier) icon, making the icon appear struck-through and visually broken.",
+    "The truncated restaurant name 'Trattoria Piccol...' uses an ellipsis that cuts the word awkwardly; combined with the edge clipping it reads as a rendering glitch rather than intentional truncation.",
+    "The category filter chips row ('All', 'Pizza', 'Sushi'...) is also cut off at the right edge with a partially visible chip and no scroll affordance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Issue 1 describes the bottom navigation bar where the system home-indicator bar (gesture bar) overlaps the search icon, matching the expected defect of gesture bar overlapping bottom nav icons."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3]
+  }
+}

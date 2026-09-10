@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you section.",
+    "A large circular loading spinner is centered over the Tokumaru Ramen Bar card image, obscuring the food photo and looking broken or stuck.",
+    "Category filter chips row is cut off on the right (partial chip visible after Healthy), suggesting horizontal overflow without clear affordance.",
+    "The third restaurant card in Fastest near you is partially clipped at the right edge of the screen.",
+    "Bottom restaurant card (pizza with -20% badge) is heavily cropped by the bottom navigation, so most of the card and any title/details below are not visible.",
+    "Promotional banner and list sections compete for space while a spinner covers a key popular item, making the feed feel incomplete or broken."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1, 5],
+        "reasoning": "Issues 1 and 5 both describe a loading spinner overlaying already-loaded content (food photos/cards), matching the expected defect of spinner shown on top of loaded content."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3, 4]
+  }
+}

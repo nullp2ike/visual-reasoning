@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:04.146Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout overflow and clipping issues make restaurant names and category chips look broken, plus a likely truncated restaurant title.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card in 'Fastest near you' is cut off at the right edge, so 'Trattoria Piccol' is truncated and part of the image is clipped.",
+        "suggestion": "Give the horizontal list enough peek/padding, or wrap/ellipsize names so cards don’t overflow the screen."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The cuisine filter chips overflow the right edge; 'Healthy' is partially cut off and the next chip is barely visible.",
+        "suggestion": "Add horizontal scroll insets or fade so the last visible chip isn’t clipped."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The featured restaurant name appears truncated as 'Tokumaru Ramer' instead of a complete name like 'Tokumaru Ramen'.",
+        "suggestion": "Allow the title to wrap or use a larger text area so the full restaurant name is shown."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza card is cut off by the tab bar, so the restaurant details under that card are not visible.",
+        "suggestion": "Add bottom content padding equal to the tab bar height so cards can scroll fully into view."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 362,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.005936,
+    "reportedCost": 0.003248,
+    "durationSeconds": 8.46579250000001
+  }
+}

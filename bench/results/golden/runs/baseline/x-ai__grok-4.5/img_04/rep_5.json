@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_04",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:52:15.604Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual and layout issues: truncated restaurant names, a broken discount badge showing '-0%', cut-off category chips, and incomplete card content at the bottom of the feed.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated with missing letters at the end of the card.",
+        "suggestion": "Allow multi-line titles, reduce font size, or use ellipsis with full name on detail view so names are fully readable."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Pizza card shows a nonsensical '-0%' badge, which looks like a failed or empty discount label.",
+        "suggestion": "Hide the badge when there is no real discount, or show a valid promo (e.g. percentage or 'Deal') only when applicable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter row is clipped on the right; the next chip is only partially visible with no clear affordance to scroll.",
+        "suggestion": "Add horizontal scroll padding/fade or ensure chips wrap/scroll fully so all filters are discoverable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Bottom restaurant card is cut off by the tab bar, so image and details are only partially shown.",
+        "suggestion": "Add bottom content inset/padding equal to the tab bar height so the last card can scroll fully into view."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery time pills on 'Fastest near you' cards sit over the food images and can reduce image clarity.",
+        "suggestion": "Increase contrast (stronger scrim or solid background) or place time below the image for cleaner hierarchy."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 450,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006464,
+    "reportedCost": 0.0034176,
+    "durationSeconds": 9.704570709
+  }
+}

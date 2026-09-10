@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Restaurant name is cut off mid-word with no ellipsis"],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccolo' is truncated to 'Trattoria Piccol' without ellipses.",
+    "The text 'Tokumaru Ramen' is horizontally clipped at the right boundary, making 'n' look like 'ı'."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe a restaurant name cut off mid-word without ellipsis, with issue 0 providing a specific example of 'Trattoria Piccolo' truncated to 'Trattoria Piccol'."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

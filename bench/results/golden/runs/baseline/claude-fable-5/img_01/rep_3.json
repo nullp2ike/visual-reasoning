@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:24:28.055Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-rendered, but there is one clear defect: an untranslated localization key ('home_feed.popular_title') is displayed as a section heading instead of the actual title. A few minor issues include a truncated restaurant name in the horizontal carousel and a partially cut-off category chip.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Raw localization key 'home_feed.popular_title' is displayed as a section heading instead of the translated string (e.g., 'Popular near you').",
+        "suggestion": "Add the missing translation for the 'home_feed.popular_title' key in the locale file, and implement a fallback to a default language so raw keys never appear in the UI."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' carousel appears cut off at the screen edge without an ellipsis or clear indication of truncation.",
+        "suggestion": "Apply proper text truncation with an ellipsis within the card boundary, or ensure the card peeks in a way that makes horizontal scrollability obvious."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category filter chip after 'Healthy' is cut off at the right edge, showing only a sliver, which may not clearly signal that the row scrolls.",
+        "suggestion": "Adjust chip spacing so the partially visible chip shows enough content (e.g., part of a label) to indicate horizontal scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The bottom pizza card is cut off by the viewport with only the '-20%' badge and favorite icon visible, and no restaurant details yet shown (expected for scroll position, but worth verifying it renders fully on scroll).",
+        "suggestion": "Verify the card renders its full details (name, rating, delivery info) when scrolled into view; no fix needed if it does."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 694,
+    "estimatedCost": 0.05444,
+    "durationSeconds": 13.728138874999999
+  }
+}

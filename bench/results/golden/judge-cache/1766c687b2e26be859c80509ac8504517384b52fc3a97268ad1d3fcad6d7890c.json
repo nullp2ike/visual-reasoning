@@ -1,0 +1,25 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel, the third card is cut off by the viewport and its title 'Trattoria Piccol' is hard-truncated mid-word with no ellipsis, and its delivery fee text is also clipped.",
+    "The circular element in the top-right header (presumably the profile/avatar button) is an empty light grey circle containing only a red notification dot — no icon, initials or image is rendered.",
+    "The category filter chip row is clipped at the right edge, showing a sliver of the next chip with no visual affordance (fade or arrow) indicating it scrolls.",
+    "Favorite (heart) buttons are styled inconsistently: white filled circle with dark outline on the ramen card, dark filled circle with white outline on the pizza card. Cards in the 'Fastest near you' row have no heart at all.",
+    "The second 'Popular right now' card is abruptly cut by the bottom tab bar with no fade or bottom padding, so the card and its missing metadata row look broken rather than scrollable.",
+    "Badge information is redundant/ambiguous: the ramen card shows a '€0 delivery' badge while the metadata line below repeats '€0 delivery', and the pizza card's '-20%' badge lacks any context about what is discounted.",
+    "The green promo banner contains large overlapping translucent circles that are clipped awkwardly at the right and bottom edges, creating a visible seam near the 'Order now' button."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Report 1 describes the top-right circular element containing only a red notification dot with no icon rendered, matching the expected defect of a missing icon with only a red dot visible."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3, 4, 5, 6]
+  }
+}

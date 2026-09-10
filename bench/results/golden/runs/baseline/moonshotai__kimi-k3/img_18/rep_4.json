@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:54:28.463Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely functional and visually consistent, with intentional horizontally scrolling carousels. The main findings are minor content clipping/truncation at the right viewport edge and small accessibility/styling improvements; nothing appears critically broken.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name in the 'Fastest near you' carousel is clipped mid-word as 'Trattoria Piccol' at the screen edge without a clear ellipsis, making the full name unreadable.",
+        "suggestion": "Ensure truncated labels use an ellipsis within the card bounds or reduce card width/font so the text truncates cleanly before the viewport edge."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The rightmost category chip after 'Healthy' is only partially visible and cut off abruptly at the screen edge.",
+        "suggestion": "If the chip row is scrollable, add a fade/edge indicator or consistent end padding; otherwise fit chips within the viewport or wrap to a second row."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The favorite heart icons are placed over busy food imagery with only a dark circular backdrop, which may be hard to see for some users and lacks a visible selected state distinction in the static view.",
+        "suggestion": "Increase the contrast/opacity of the icon backdrop and ensure the control has a clear focus/active state plus an accessible label."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Promo banner text 'Use code TALLINN3 at checkout · min. order €10' mixes the code with conditions in one line, making the code slightly less scannable.",
+        "suggestion": "Visually emphasize the promo code (e.g., monospace chip or bolder treatment) and separate the minimum-order condition for quicker scanning."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2105,
+    "outputTokens": 877,
+    "reasoningTokens": 554,
+    "estimatedCost": 0.01947,
+    "reportedCost": 0.01947,
+    "durationSeconds": 33.290680834
+  }
+}

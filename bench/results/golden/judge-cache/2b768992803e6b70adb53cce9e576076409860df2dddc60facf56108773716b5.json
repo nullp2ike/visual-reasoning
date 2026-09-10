@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The restaurant title 'Trattoria Piccolo' is truncated to 'Trattoria Piccol'.",
+    "The promotion badge shows a '-100%' discount, which is likely a data error."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.88 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

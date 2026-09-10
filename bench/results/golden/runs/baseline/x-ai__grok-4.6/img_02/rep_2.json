@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:30:30.299Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual and content bugs: a broken delivery price (€NaN), a truncated restaurant name, a cut-off category chip, and a promo card that is clipped at the bottom.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "Smash Bros Burgers shows '€NaN delivery' instead of a valid price, indicating a data or formatting error.",
+        "suggestion": "Handle missing or invalid delivery fees with a fallback (e.g. 'Free' or a real amount) and never render NaN."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card title 'Trattoria Piccol' is cut off by the screen edge with no ellipsis or wrapping.",
+        "suggestion": "Constrain card width and use text overflow (ellipsis) or allow wrapping so the full name remains readable."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The category filter row is clipped on the right; the last chip is only partially visible with no clear scroll affordance.",
+        "suggestion": "Add padding/peek of the next chip and a fade or scroll indicator so users know more categories exist."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza promo card is cut off by the tab bar, so the restaurant name and details are not fully visible.",
+        "suggestion": "Add bottom content inset/padding so the last card can scroll fully above the navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 377,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.006026,
+    "reportedCost": 0.003338,
+    "durationSeconds": 57.255910792
+  }
+}

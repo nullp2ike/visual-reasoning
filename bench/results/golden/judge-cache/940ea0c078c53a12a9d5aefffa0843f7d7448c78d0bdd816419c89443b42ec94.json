@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated on the last Fastest near you card.",
+    "Tokumaru Ramen Bar delivery line shows overlapping/garbled text ('25-30elivery') instead of a clear time and fee.",
+    "Category chips (Healthy and the next item) are cut off at the right edge with no clear scroll affordance.",
+    "The last Fastest near you card is clipped at the right edge, hiding part of the image and ETA badge."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Issue 1 describes overlapping/garbled text in the delivery line showing time and fee merged together, which matches the delivery fee and delivery time text overlap."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3]
+  }
+}

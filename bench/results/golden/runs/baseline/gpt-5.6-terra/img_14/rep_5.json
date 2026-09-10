@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_14",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:35:25.586Z",
+  "status": "ok",
+  "result": {
+    "summary": "No clearly broken UI elements are visible. The main visual concern is that horizontally scrollable rows show clipped partial items at the right edge, which can make content appear cut off without an obvious scroll affordance.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category row ends with an unlabeled partial pill, and the \"Fastest near you\" row cuts off the third restaurant card and its title at the right screen edge.",
+        "suggestion": "Add a clearer horizontal-scroll affordance (such as a fade, chevron, or consistent partial-card treatment), or adjust card/chip sizing and padding so the clipping looks intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The next popular restaurant card is partially obscured by the fixed bottom navigation at the bottom of the viewport, making the feed appear to continue underneath the navigation.",
+        "suggestion": "Ensure the scrollable content has sufficient bottom padding so cards can be fully scrolled above the fixed navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 728,
+    "reasoningTokens": 509,
+    "estimatedCost": 0.012358000000000001,
+    "durationSeconds": 12.55558033300005
+  }
+}

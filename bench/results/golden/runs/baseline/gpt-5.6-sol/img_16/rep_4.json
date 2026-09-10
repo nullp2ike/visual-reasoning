@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "imageId": "img_16",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:33:18.223Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished, but horizontal carousel content is visibly clipped at the right edge and the fixed bottom navigation obscures part of the restaurant feed.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row ends with a partially visible, unlabeled pill at the right edge, making it look accidentally cut off.",
+        "suggestion": "Adjust carousel padding or scroll position so the next chip shows enough content to be identifiable, or hide it fully until the user scrolls."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in “Fastest near you,” including its restaurant name and delivery text, is abruptly clipped by the right viewport edge.",
+        "suggestion": "Add consistent horizontal carousel gutters and intentional peeking width, while applying ellipsis to text within each card."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlays the next restaurant card, hiding a substantial portion of its image and content area.",
+        "suggestion": "Add bottom padding to the scrollable feed equal to the navigation bar and safe-area height so all content can scroll fully above the overlay."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 552,
+    "reasoningTokens": 309,
+    "estimatedCost": 0.025615000000000002,
+    "durationSeconds": 14.005777000000002
+  }
+}

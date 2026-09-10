@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The 'Smash Bros Burgers' card displays '€NaN delivery' instead of a valid price, indicating a failed numeric parse or missing/invalid delivery fee value.",
+    "Horizontal carousels ('Fastest near you' and the category chips) clip items at the right edge (e.g. 'Trattoria Piccol...' and a partially visible chip) with no visible scroll indicator.",
+    "The restaurant name 'Trattoria Piccol...' is truncated without a guaranteed ellipsis or full-name access, which can hurt readability and tap-target clarity."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.76 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

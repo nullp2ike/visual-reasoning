@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-4-5",
+  "provider": "anthropic",
+  "imageId": "img_08",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:05:27.889Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 major layout issues where content cards are being cut off due to overflow problems, making text unreadable and cards incomplete.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' section has truncated text - 'Trattoria Piccol' appears to be cut off at the right edge, likely missing characters from the restaurant name",
+        "suggestion": "Ensure the horizontal scrolling container or card container has proper sizing and text truncation handling. Either allow full text display or implement proper text truncation with ellipsis (...)"
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom card in 'Popular right now' section is partially cut off vertically, showing only the top portion of a pizza image and preventing users from seeing the full card details",
+        "suggestion": "Adjust the vertical spacing, container height, or implement proper scrolling/pagination to ensure all cards are fully visible or properly scrollable without being cut off at the bottom"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1854,
+    "outputTokens": 746,
+    "estimatedCost": 0.005584,
+    "durationSeconds": 18.325499707999988
+  }
+}

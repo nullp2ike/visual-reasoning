@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The 'Fastest near you' horizontal card list is cut off abruptly at the right edge, showing a partial restaurant card (Trattoria Piccol...) with truncated text and image, indicating the scroll area is clipped by the viewport without a clear scroll affordance.",
+    "The category filter row (All, Pizza, Sushi, Burgers, Healthy) is cut off on the right side with an additional partially visible pill, suggesting more categories exist off-screen without a clear scroll indicator.",
+    "The pizza promotional card at the bottom shows a '-100%' discount badge, which is unusual and could look like an error (implying free food, likely unintended or a placeholder value)."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Reported issue 2 directly describes a discount badge showing '-100%' on a promotional card, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

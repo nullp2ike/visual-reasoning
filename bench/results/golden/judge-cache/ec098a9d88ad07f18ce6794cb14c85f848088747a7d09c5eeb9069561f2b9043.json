@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "Exposed localization/i18n key 'home_feed.popular_title' is visible instead of actual section title text",
+    "Third restaurant name in 'Fastest near you' section is truncated - 'Trattoria Piccol' appears cut off"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe the same issue: the raw translation key 'home_feed.popular_title' is displayed instead of the translated section title text."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

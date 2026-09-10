@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:36:55.758Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: a major truncated restaurant name in the Fastest section and a minor cut-off category chip on the right edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The restaurant name 'Trattoria Piccol' is truncated mid-word under the third card in 'Fastest near you', so the full name is not readable.",
+        "suggestion": "Allow the title to wrap to two lines, use a shorter display name, or ensure cards and text have enough width/ellipsis handling so names are fully legible."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row ends with a partially visible empty/white chip on the far right, which looks like a broken or incomplete control.",
+        "suggestion": "Ensure horizontal padding or fade masking so only complete chips are shown, or make the trailing partial chip clearly part of intentional scroll without looking blank."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 238,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005351999999999999,
+    "reportedCost": 0.002088,
+    "durationSeconds": 35.528871249999966
+  }
+}

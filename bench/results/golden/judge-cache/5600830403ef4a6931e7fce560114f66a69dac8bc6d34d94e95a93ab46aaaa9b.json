@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The 'Fastest near you' carousel shows 'Green Bowl Poké' twice as the first two cards, with identical image, delivery time (15–25 min) and delivery fee (€0.90), suggesting a duplicate item in the data set.",
+    "The favorite heart button on the 'Popular right now' cards is inconsistent: the Tokumaru Ramen Bar card uses a white circular background with a dark outline heart, while the pizza card below uses a dark/transparent circle with a white heart.",
+    "Badges overlaid on card images (e.g., '€0 delivery', '−20%', '15–25 min') and heart icons rely on image backgrounds for contrast; on lighter photos the text/icon contrast may fall below accessible thresholds."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 explicitly describes the Green Bowl Poké card appearing twice in the carousel."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

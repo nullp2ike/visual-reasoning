@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant name 'Tokumaru Ramen' in the 'Popular right now' section is clipped mid-glyph (rendered as 'Tokumaru Rameı'), cutting off the final character without an ellipsis, even though there is significant empty space between the title and the 4.8 rating on the right."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe the same restaurant name 'Tokumaru Ramen' being clipped mid-word without ellipsis, though reported issue says 'Rameı' while expected says 'Ramei' (likely the same glyph rendering difference)."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

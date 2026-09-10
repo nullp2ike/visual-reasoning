@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The last restaurant in Fastest near you (Trattoria Piccol...) is clipped at the right edge so the name and image are incomplete.",
+    "The last category chip (after Healthy) is cut off at the right edge of the screen.",
+    "A large loading spinner overlays the Tokumaru Ramen Bar image, making the card look unfinished or broken.",
+    "The bottom restaurant card is partially hidden behind the tab bar, so the image and details are cropped.",
+    "Restaurant title 'Trattoria Piccol' appears truncated without ellipsis or wrap."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "The report describes a large loading spinner overlaying an already visible restaurant image, matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3, 4]
+  }
+}

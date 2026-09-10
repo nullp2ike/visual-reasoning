@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Orders icon is missing from the bottom nav bar"],
+  "reportedIssues": [
+    "The 'Fastest near you' horizontal card row is clipped at the right edge ('Trattoria Piccol...' card and its image are cut off mid-card) with no scroll indicator, fade-out gradient, or peek affordance to signal that the row is horizontally scrollable.",
+    "The category filter chip row ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') is cut off at the right edge with a partially visible chip and no scroll hint.",
+    "Restaurant name 'Trattoria Piccol...' is truncated without an ellipsis in a way that looks abrupt against the clipped card.",
+    "The favorite (heart) buttons on the 'Popular right now' cards are icon-only with no visible label, and the notification bell relies solely on a small red dot to convey unread state."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.55 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

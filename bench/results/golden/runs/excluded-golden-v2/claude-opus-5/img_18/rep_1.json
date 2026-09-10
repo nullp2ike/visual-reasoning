@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_18",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:09:30.637Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page layout is largely coherent, but the favorite (heart) buttons in the 'Popular right now' list are styled inconsistently, and a couple of minor visual inconsistencies exist in the card imagery/badges.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "styling",
+        "description": "The favorite/heart buttons on the two 'Popular right now' cards use different styles: the Tokumaru Ramen Bar card has a white circular background with a dark outlined heart, while the pizza card below has a dark/transparent circular background with a white outlined heart. On the dark photo background the second button has poor contrast and looks broken or in a different state.",
+        "suggestion": "Use a single consistent button treatment (e.g., white/semi-opaque circle with a dark heart, or a consistent scrim) for all favorite toggles, reserving a visual change only for the actual 'favorited' state."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Thumbnail treatments in the 'Fastest near you' carousel are inconsistent: the Green Bowl Poké image sits on a light grey background while the neighbouring cards use dark, vignetted photo backgrounds, making the row look uneven.",
+        "suggestion": "Standardize image backgrounds/overlays across carousel thumbnails so all cards share the same visual weight and badge legibility."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The discount badge '−20%' and delivery badges are small green-on-white pills over imagery; the '€0 delivery' green text on white may fall below comfortable contrast at this size, and heart buttons have no visible text label.",
+        "suggestion": "Increase badge text weight/size or darken the green, and add accessible labels (e.g., 'Add to favorites') to icon-only buttons."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 828,
+    "estimatedCost": 0.031135000000000003,
+    "durationSeconds": 61.507362332999996
+  }
+}

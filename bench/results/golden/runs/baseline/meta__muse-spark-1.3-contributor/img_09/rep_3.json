@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "meta/muse-spark-1.3-contributor",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-03T11:26:54.455Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 layout issues: the 'Tokumaru Ramen' title is clipped to 'Tokumaru Ramer' and the lower popular restaurant card is cut off by the bottom navigation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name under 'Popular right now' is visually clipped and reads as 'Tokumaru Ramer' with the final 'n' cut off despite having full screen width available",
+        "suggestion": "Fix text container width, padding or overflow to prevent clipping and ensure the full name 'Tokumaru Ramen' displays, using ellipsis truncation only if needed"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Bottom pizza restaurant card (-20% badge) is cut off by the bottom tab bar with no name, delivery time or rating visible and no bottom scroll padding",
+        "suggestion": "Add bottom content padding / safe-area inset so cards scroll fully above the tab bar and their details are not obscured"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1739,
+    "outputTokens": 2544,
+    "reasoningTokens": 2250,
+    "cachedInputTokens": 1726,
+    "estimatedCost": 0.0006827000000000001,
+    "reportedCost": 0.000513552,
+    "durationSeconds": 24.533957291999993
+  }
+}

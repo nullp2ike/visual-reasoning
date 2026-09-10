@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The fixed bottom navigation overlaps the restaurant feed content. The lower restaurant card image continues underneath the nav area, making the content feel cut off and partially hidden.",
+    "The category chip row is clipped on the right edge, showing only a blank partial pill after “Healthy.” This looks like an unfinished or broken chip rather than an intentional carousel affordance.",
+    "The “Fastest near you” carousel cuts off the third restaurant card quite abruptly, including its title, which makes the item look broken or incomplete."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.65 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

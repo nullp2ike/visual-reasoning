@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "The search field placeholder text reads 'Restarants, dishes, groceries' which contains a typo ('Restarants' should be 'Restaurants').",
+    "The third card in 'Fastest near you' (Trattoria Piccol...) is cut off on the right edge, with truncated title text.",
+    "The 'Popular right now' pizza card at the bottom is partially cut off by the fixed bottom navigation bar, making it appear incomplete.",
+    "The two heart/favorite icons have inconsistent styling: the ramen card heart is white outline on light background while the pizza card heart is white on dark circular background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.75 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "The metadata beneath “Tokumaru Ramen Bar” appears to overlap or duplicate itself: the delivery time, delivery fee, and cuisine text collide on the same line, making the information difficult to read.",
+    "The second restaurant card is partially covered by the fixed bottom navigation bar, leaving its image and likely content inaccessible at the bottom of the viewport."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.72 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T10:58:34.178Z",
+  "status": "ok",
+  "result": {
+    "summary": "The layout is largely coherent, but two issues stand out: the bottom navigation highlights the wrong tab for the current screen, and the favorite (heart) buttons on the 'Popular right now' cards use inconsistent styling. A minor thumbnail inconsistency was also noted.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom navigation shows 'Profile' as the active/selected tab (green icon and label) while the visible content is clearly the Home feed (delivery address, search, categories, restaurant carousels).",
+        "suggestion": "Sync the active navigation state with the rendered route so 'Home' is highlighted on the home feed."
+      },
+      {
+        "priority": "major",
+        "category": "styling",
+        "description": "The favorite heart buttons on the two 'Popular right now' cards are styled differently: the first is a white circle with a dark outline heart, the second is a dark/near-black circle with a white heart. Inconsistent treatment of the same control.",
+        "suggestion": "Use one consistent button style (e.g. semi-transparent white circle with dark heart) for all favorite toggles, ensuring adequate contrast over any image."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "In the 'Fastest near you' carousel, the Green Bowl Poké thumbnail has a light gray background while the neighboring cards use dark photographic backgrounds, making the row look visually uneven and the white duration pill on it slightly lower contrast.",
+        "suggestion": "Normalize thumbnail treatment (consistent image overlay/gradient) so cards in the carousel share the same visual weight and the pill text remains legible."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 754,
+    "estimatedCost": 0.029285000000000005,
+    "durationSeconds": 52.828678167
+  }
+}

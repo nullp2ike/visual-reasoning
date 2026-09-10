@@ -1,0 +1,24 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "The last category chip ('Healthy') is cut off at the right edge, and there is no visible cue that more categories can be scrolled.",
+    "The third 'Fastest near you' card is clipped on the right, so the restaurant image and name are incomplete.",
+    "Restaurant name 'Trattoria Piccol' is truncated without ellipsis or wrap, hiding the full name.",
+    "On the Tokumaru Ramen Bar card, '25-30' overlaps 'delivery', making the delivery time unreadable.",
+    "The bottom pizza promo card is cut off by the tab bar, so the offer is only partially visible.",
+    "The last category pill is flush against the screen edge, which looks unfinished compared with the left padding."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "Reported issue 3 describes the delivery time text being overlapped by the adjacent delivery label on a restaurant card."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 4, 5]
+  }
+}

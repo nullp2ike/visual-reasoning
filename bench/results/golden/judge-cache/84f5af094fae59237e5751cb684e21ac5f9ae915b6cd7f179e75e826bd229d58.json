@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The 'Smash Bros Burgers' card in the 'Fastest near you' section displays '€NaN delivery', indicating a failed numeric calculation or missing delivery fee value being formatted as a number.",
+    "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' carousel is cut off at the screen edge with no ellipsis styling, making it look abruptly clipped.",
+    "A category filter chip after 'Healthy' is cut off at the right edge showing only a sliver of the pill, which can look broken rather than scrollable."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the exact same defect: a delivery fee displaying as '€NaN' due to failed numeric calculation."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

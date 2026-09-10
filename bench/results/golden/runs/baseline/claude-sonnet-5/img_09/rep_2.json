@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_09",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:00:57.017Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 issues: a major layout cutoff issue with the 'Fastest near you' section, a minor category filter cutoff, and a minor content truncation issue with restaurant name.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card 'Trattoria Piccol...' in 'Fastest near you' section is cut off at the right edge of the screen, showing only partial content",
+        "suggestion": "Ensure horizontal scroll indication is clear or adjust card width/spacing so cards are either fully visible or clearly indicate scrollability with a partial card preview intentionally designed"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row (All, Pizza, Sushi, Burgers, Healthy) has an additional category cut off at the right edge, not clearly indicating scrollability",
+        "suggestion": "Add a fade gradient or partial visibility cue to indicate more categories can be scrolled into view"
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' appears truncated without ellipsis, making it look like a text rendering error rather than an intentionally cut-off card",
+        "suggestion": "Add ellipsis truncation to text or ensure the card boundary clearly indicates it's a partially visible scrollable item"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 440,
+    "estimatedCost": 0.012522,
+    "durationSeconds": 7.29093966699997
+  }
+}

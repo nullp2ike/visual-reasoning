@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-4-5",
+  "provider": "anthropic",
+  "imageId": "img_11",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:05:59.019Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 issues: critical content cutoff in the 'Popular right now' section, major text truncation in the restaurant list, and a major layout overlap with the navigation bar.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "missing-element",
+        "description": "The restaurant name for the second 'Popular right now' card (showing pizza with -100% label) is completely cut off and not visible. Users cannot identify which restaurant this is.",
+        "suggestion": "Adjust the card layout to ensure restaurant names are fully visible above or below the images, or reduce image height to accommodate text within the viewport."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' section is partially cut off on the right edge. The restaurant name 'Trattoria Piccol' appears truncated (likely should be 'Trattoria Piccola').",
+        "suggestion": "Ensure all carousel cards are fully visible within the screen width, or implement proper text truncation with ellipsis (...) to indicate incomplete text."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom restaurant card in 'Popular right now' overlaps with the bottom navigation bar, making content partially obscured.",
+        "suggestion": "Add bottom padding to the scrollable content area to ensure the last card has adequate spacing above the fixed navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1854,
+    "outputTokens": 761,
+    "estimatedCost": 0.005659,
+    "durationSeconds": 8.707885708999937
+  }
+}

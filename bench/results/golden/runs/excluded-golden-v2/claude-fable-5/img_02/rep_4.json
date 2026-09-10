@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_02",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:25:06.193Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well laid out, but there is one clear data/rendering defect: the Smash Bros Burgers card displays '€NaN delivery', indicating a broken delivery fee value.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Smash Bros Burgers' card in the 'Fastest near you' carousel shows '€NaN delivery', meaning the delivery fee value failed to compute or parse (NaN leaked into the UI).",
+        "suggestion": "Fix the data mapping/number parsing for the delivery fee, and add a guard so that missing or invalid fees render a fallback (e.g., 'Free delivery', a placeholder, or hide the fee line) instead of 'NaN'."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 313,
+    "estimatedCost": 0.036520000000000004,
+    "durationSeconds": 113.930666375
+  }
+}

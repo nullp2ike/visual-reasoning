@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:32:20.519Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several visual issues: a broken discount badge (-100%), truncated restaurant names, and awkward overlapping labels on food images.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza card shows a '-100%' badge, which looks incorrect or broken for a discount/offer label.",
+        "suggestion": "Verify the discount logic and display a sensible value (e.g. '-20%') or hide the badge when the value is invalid."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated with missing letters at the end of the card.",
+        "suggestion": "Allow the title to wrap to two lines, use a responsive ellipsis, or widen the card so the full name is readable."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery time pills (e.g. '15–25 min') sit overlapping the bottom of the food images in a way that can obscure the artwork.",
+        "suggestion": "Add more padding/margin or place the time badge in a clearer overlay area so it does not cover key parts of the image."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips row ends with a partially visible empty chip on the far right, which can look like a layout glitch beyond normal carousel clipping.",
+        "suggestion": "Ensure chip spacing and horizontal inset so only intentional content peeks at the edge, or add consistent end padding."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 384,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006227999999999999,
+    "reportedCost": 0.002964,
+    "durationSeconds": 27.079365291999945
+  }
+}

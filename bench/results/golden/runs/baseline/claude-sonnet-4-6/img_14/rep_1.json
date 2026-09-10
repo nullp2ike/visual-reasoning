@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_14",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:03:51.099Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual issues on the food delivery app page: one major layout truncation issue and one minor missing element.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Trattoria Piccol...' restaurant card in the 'Fastest near you' section is cut off on the right side — both the image and the restaurant name are truncated, making it unclear to the user that this is a scrollable section.",
+        "suggestion": "Add a visible scroll indicator, arrow, or partial card peek with a clear affordance to signal horizontal scrollability. Ensure the truncated text has an ellipsis and that the card peek is intentional and consistent in design."
+      },
+      {
+        "priority": "minor",
+        "category": "missing-element",
+        "description": "The second restaurant card in 'Fastest near you' (Smash Bros Burgers) does not show a delivery price label below the name, unlike the other two cards which show '€0.90 delivery' and '€1.90 delivery' respectively.",
+        "suggestion": "Ensure consistent display of delivery fee information across all restaurant cards in the horizontal scroll list."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 296,
+    "estimatedCost": 0.009915,
+    "durationSeconds": 7.727451459000004
+  }
+}

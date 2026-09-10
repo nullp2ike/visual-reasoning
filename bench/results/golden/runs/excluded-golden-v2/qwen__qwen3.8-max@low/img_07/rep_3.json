@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:31:53.741Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed, but one card in the 'Popular right now' section shows a perpetual loading spinner overlaying the restaurant image, which looks visually broken and suggests a stalled image/asset load.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The 'Tokumaru Ramen Bar' card displays a circular loading spinner centered over the food image, indicating the image or content failed to finish loading. This looks broken to users and obscures the photo.",
+        "suggestion": "Ensure the image loads correctly; if loading is slow, use a blurred placeholder or skeleton, and add an error/timeout state that hides the spinner and shows a fallback image instead of an indefinite loader."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 961,
+    "reasoningTokens": 772,
+    "estimatedCost": 0.009354000000000001,
+    "reportedCost": 0.008234,
+    "durationSeconds": 83.69604395800002
+  }
+}

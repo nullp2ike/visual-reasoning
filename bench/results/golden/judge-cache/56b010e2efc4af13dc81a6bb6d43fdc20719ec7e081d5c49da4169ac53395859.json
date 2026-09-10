@@ -1,0 +1,25 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "The circular control in the header (top right, next to 'DELIVER TO') is an empty light-grey circle with only a red notification dot — the icon or avatar image failed to render, so its purpose is unclear and it has no accessible label.",
+    "The third item in the 'Fastest near you' carousel is hard-clipped at the viewport edge and its title reads 'Trattoria Piccol' with no ellipsis, making the name look broken rather than scrollable.",
+    "The bottom 'pizza' restaurant card is cut off mid-image by the bottom navigation bar; no name, rating or delivery info is visible, so the section end looks like a rendering error.",
+    "Favourite (heart) buttons are styled inconsistently: the Tokumaru card uses a white circular background with dark outline, while the pizza card uses a dark/transparent circle with white outline.",
+    "The category filter chip row is clipped at the right edge with a sliver of the next chip visible, giving no clear affordance that the row scrolls.",
+    "The green promo banner contains large overlapping translucent circles that are cropped oddly at the right and bottom edges, reading as a stray graphic artifact rather than intentional decoration.",
+    "Secondary metadata such as '€0.90 delivery' and '25–35 min • €0 delivery • Ramen' uses light grey text that may fall below the 4.5:1 contrast ratio."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the missing top-right icon with only a red notification dot visible."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5, 6]
+  }
+}

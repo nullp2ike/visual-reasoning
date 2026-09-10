@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The bottom card content is clipped behind the bottom navigation bar.",
+    "A discount tag indicates '-100%', which appears to be placeholder or erroneous data."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.81 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

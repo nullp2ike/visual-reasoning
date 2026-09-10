@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_14",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:27:22.638Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found a few visual/layout issues, mainly caused by horizontally clipped carousel content and the fixed bottom navigation overlapping the feed.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation bar overlaps the restaurant list. The second popular card is partially hidden behind the nav, so its lower content is not visible.",
+        "suggestion": "Add sufficient bottom padding/safe-area spacing to the scrollable content so cards can scroll fully above the bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Several horizontal carousel items are visibly cut off at the right edge, including the category chip row and the restaurant cards under “Fastest near you.” This may be intentional, but it currently looks abrupt and slightly broken.",
+        "suggestion": "Use clearer carousel affordance such as consistent partial peeking, scroll snapping, right-side padding, or a subtle fade so the clipping feels intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The rightmost restaurant in the “Fastest near you” row is truncated so much that its name and card content are hard to read.",
+        "suggestion": "Adjust card width/gap or carousel padding so partially visible cards do not expose unreadable text, or hide text until the card is more fully in view."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 787,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.032665,
+    "durationSeconds": 17.451603042000002
+  }
+}

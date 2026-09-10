@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The third restaurant card in 'Fastest near you' (Trattoria Piccolo) is cut off at the right edge of the screen, showing only a partial image and truncated name.",
+    "Restaurant name 'Tokumaru Ramen' appears truncated as 'Tokumaru Rame' due to text overflow.",
+    "The pizza promotional card at the bottom of the screen is abruptly cut off by the viewport/navigation bar, making it unclear what content or CTA follows."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.81 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The device home indicator (horizontal gesture bar) is rendered directly on top of the bottom navigation bar, overlapping and partially obscuring the search icon in the center. This creates a visual collision and may interfere with tapping the search tab.",
+    "The notification bell icon in the top-right has a small red dot indicator with no accompanying label or badge count, which may be unclear to users relying on screen readers.",
+    "In the 'Fastest near you' row, the delivery-time pill badges sit at the bottom-left of each card image with inconsistent vertical alignment relative to the differing image backgrounds, giving a slightly uneven appearance across cards."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the gesture bar overlapping the bottom navigation icons, matching the expected defect about gesture bar overlap; the label cutoff aspect is not explicitly mentioned but the core UI collision is the same."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

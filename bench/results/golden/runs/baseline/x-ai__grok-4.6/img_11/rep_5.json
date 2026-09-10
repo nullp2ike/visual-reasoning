@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:27.574Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen has several layout clipping problems: restaurant names and category chips are cut off, the promo banner sits too close to the search field, and the last popular card is cropped by the tab bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' clips the name 'Trattoria Piccol' at the right edge of the screen.",
+        "suggestion": "Give the horizontal list enough padding or allow cards to scroll fully so names and prices are never truncated."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last category chip is only partially visible on the right, so users cannot tell what the next filter is.",
+        "suggestion": "Add end padding or a fade/peek so the last chip is fully readable or clearly indicates more options."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The second popular restaurant card is cut off by the bottom tab bar, hiding most of the restaurant name and details.",
+        "suggestion": "Add bottom content inset so the last card can scroll fully above the tab bar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The green promo banner sits very close to the search field with almost no gap, making the header feel cramped.",
+        "suggestion": "Increase vertical spacing between the search bar and the promo card."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The pizza card shows a '-100%' badge, which looks like a broken or placeholder discount rather than a real offer.",
+        "suggestion": "Replace with a valid discount value or hide the badge when the percentage is invalid."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 354,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.005888,
+    "reportedCost": 0.0032,
+    "durationSeconds": 8.527003082999988
+  }
+}

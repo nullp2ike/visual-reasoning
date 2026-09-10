@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-luna",
+  "provider": "openai",
+  "imageId": "img_14",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:40:06.705Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished, but several horizontally arranged elements and lower content appear visibly clipped or obscured, which may indicate overflow or insufficient spacing around the fixed navigation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The category chip row is cut off at the right edge, with only part of the next chip visible. Without an obvious scroll cue, this can look like broken horizontal overflow.",
+        "suggestion": "Constrain the row within a deliberate horizontal carousel, add appropriate scroll behavior and spacing, or show all categories responsively."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third card in the “Fastest near you” row is visibly clipped on the right, including truncated restaurant content.",
+        "suggestion": "Use a clearly intentional carousel layout with peek spacing and swipe affordance, or reflow the cards on smaller screens so they fit cleanly."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlays the next restaurant card, cutting off its lower content and making the page appear to end abruptly.",
+        "suggestion": "Add bottom padding to the scrollable content equal to the navigation bar height plus safe-area spacing, and ensure cards can be fully viewed above the navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The visible restaurant name on the clipped third card is truncated (“Trattoria Picco…”), making the content difficult to read.",
+        "suggestion": "Allow the title to wrap or ensure the full title is available through a properly sized carousel card."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 612,
+    "reasoningTokens": 290,
+    "estimatedCost": 0.0010966,
+    "durationSeconds": 7.2054396249999995
+  }
+}

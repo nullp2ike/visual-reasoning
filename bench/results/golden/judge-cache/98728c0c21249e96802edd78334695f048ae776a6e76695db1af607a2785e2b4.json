@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The 'Fastest near you' section shows two identical 'Green Bowl Poké' cards side by side with the same image, delivery time (15–25 min), and price (€0.90 delivery). This looks like duplicated/placeholder data rather than distinct restaurants.",
+    "The third card in 'Fastest near you' ('Smash Bros Bu...') is clipped at the right screen edge, truncating the restaurant name. While horizontal scroll affordance is implied, the truncation can look broken at a glance.",
+    "The category filter row ends with a partially visible chip cut off at the right edge after 'Healthy', which may look like a layout glitch rather than an intentional scroll hint.",
+    "The notification bell icon relies on a small red dot to indicate unread alerts, which is a color-only cue and may be missed by color-blind users or at a glance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 describes two identical 'Green Bowl Poké' cards appearing side by side in the carousel with duplicate content, matching the expected defect of the card appearing twice."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

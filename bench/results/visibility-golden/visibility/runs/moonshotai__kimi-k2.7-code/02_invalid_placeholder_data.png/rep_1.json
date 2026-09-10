@@ -1,0 +1,300 @@
+{
+  "schemaVersion": 2,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "filename": "02_invalid_placeholder_data.png",
+  "imageSha256": "81cd8429e1976d1eb506c45b83e452ececb4e0be2d3b4ce968094671a1399d11",
+  "rep": 1,
+  "promptHash": "91727c8f05082f2613e8af7fd93b90984904a770791675d0f66649da5dee8dfc",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "requireCorrectRendering": true,
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T08:17:16.773Z",
+  "status": "ok",
+  "calls": [
+    {
+      "mode": "visible",
+      "elements": [
+        "A \"3 free deliveries for you\" promotional banner with promo code TALLINN3",
+        "A \"Fastest near you\" section",
+        "A discount badge reading \"−20%\" for the pizza restaurant",
+        "A notification bell icon in the top-right corner",
+        "A red notification dot in the top-right corner",
+        "A star rating on the \"Green Bowl Poké\" card",
+        "Bottom navigation items \"Home\", \"Search\", \"Orders\" and \"Profile\" with icons",
+        "Correct delivery fee information",
+        "The \"All\" category chip highlighted as the selected filter",
+        "The \"Home\" tab highlighted as the active tab in the bottom navigation",
+        "The delivery address in the header",
+        "The delivery address repeated in a footer at the bottom of the screen",
+        "The full restaurant name \"Tokumaru Ramen Bar\"",
+        "The search field placeholder text \"Restaurants, dishes, groceries\"",
+        "The section heading \"Popular right now\""
+      ],
+      "status": "ok",
+      "result": {
+        "pass": false,
+        "reasoning": "12 of 15 checks passed. Most UI elements are rendered correctly, but the page contains a defective delivery fee ('€NaN delivery'), the Green Bowl Poké card does not show a star rating, and the delivery address is not repeated in a footer.",
+        "statements": [
+          {
+            "statement": "The element \"A \"3 free deliveries for you\" promotional banner with promo code TALLINN3\" is visible on the page",
+            "pass": true,
+            "reasoning": "Green promotional banner with '3 free deliveries for you', code TALLINN3, minimum order info, and Order now button is clearly visible",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"A \"Fastest near you\" section\" is visible on the page",
+            "pass": true,
+            "reasoning": "The 'Fastest near you' heading and horizontal restaurant cards are clearly visible",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"A discount badge reading \"−20%\" for the pizza restaurant\" is visible on the page",
+            "pass": true,
+            "reasoning": "A white pill with '-20%' is visible on the pizza restaurant card near the bottom",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"A notification bell icon in the top-right corner\" is visible on the page",
+            "pass": true,
+            "reasoning": "A bell icon is clearly shown in the top-right corner",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"A red notification dot in the top-right corner\" is visible on the page",
+            "pass": true,
+            "reasoning": "A red notification dot is shown on the bell icon in the top-right corner",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"A star rating on the \"Green Bowl Poké\" card\" is visible on the page",
+            "pass": false,
+            "reasoning": "The Green Bowl Poké card shows time badge, name, and delivery fee, but no star rating is visible",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"Bottom navigation items \"Home\", \"Search\", \"Orders\" and \"Profile\" with icons\" is visible on the page",
+            "pass": true,
+            "reasoning": "All four bottom navigation items with icons and labels are clearly visible",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"Correct delivery fee information\" is visible on the page",
+            "pass": false,
+            "reasoning": "The delivery fee for Smash Bros Burgers is rendered as '€NaN delivery', which is incorrect/defective",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"The \"All\" category chip highlighted as the selected filter\" is visible on the page",
+            "pass": true,
+            "reasoning": "The 'All' chip is styled in black, clearly indicating it is selected",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"The \"Home\" tab highlighted as the active tab in the bottom navigation\" is visible on the page",
+            "pass": true,
+            "reasoning": "The Home tab icon and label are green, clearly indicating it is active",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"The delivery address in the header\" is visible on the page",
+            "pass": true,
+            "reasoning": "The header clearly displays 'Weizenbergi 20, Tallinn' as the delivery address",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"The delivery address repeated in a footer at the bottom of the screen\" is visible on the page",
+            "pass": false,
+            "reasoning": "There is no footer at the bottom of the screen; only the bottom navigation bar is visible",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"The full restaurant name \"Tokumaru Ramen Bar\"\" is visible on the page",
+            "pass": true,
+            "reasoning": "The full restaurant name 'Tokumaru Ramen Bar' is clearly shown under its card",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"The search field placeholder text \"Restaurants, dishes, groceries\"\" is visible on the page",
+            "pass": true,
+            "reasoning": "The search bar clearly contains the placeholder text 'Restaurants, dishes, groceries'",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"The section heading \"Popular right now\"\" is visible on the page",
+            "pass": true,
+            "reasoning": "The 'Popular right now' heading is clearly visible",
+            "confidence": "high",
+            "timestampSeconds": null
+          }
+        ]
+      },
+      "usage": {
+        "inputTokens": 2881,
+        "outputTokens": 2301,
+        "reasoningTokens": 903,
+        "cachedInputTokens": 6,
+        "estimatedCost": 0.010991170000000001,
+        "reportedCost": 0.0089522925,
+        "durationSeconds": 64.83922629199992
+      }
+    },
+    {
+      "mode": "hidden",
+      "elements": [
+        "A loading spinner",
+        "A promotional banner with an \"Order now\" button",
+        "A search input above the category chips",
+        "Duplicate elements",
+        "Error messages",
+        "Grammatical errors",
+        "Inconsistent application state issues",
+        "Invalid values",
+        "Layout alignment problems",
+        "Missing elements",
+        "Missing translations",
+        "Overlapping elements",
+        "Text cut off mid-word inside its own container, with no ellipsis",
+        "Unreadable text for visually impaired users"
+      ],
+      "status": "ok",
+      "result": {
+        "pass": false,
+        "reasoning": "11 of 14 checks passed. Most statements pass, but the promotional banner and search input are visible (contradicting statements 2 and 3), and an invalid value ('€NaN delivery') is displayed for Smash Bros Burgers (contradicting statement 8). Therefore not all statements passed.",
+        "statements": [
+          {
+            "statement": "The element \"A loading spinner\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "No loading spinner, skeleton, or progress indicator is visible in the screenshot.",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"A promotional banner with an \"Order now\" button\" is NOT visible on the page",
+            "pass": false,
+            "reasoning": "A green promotional banner with '3 free deliveries for you' and a white 'Order now' button is clearly visible below the category chips.",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"A search input above the category chips\" is NOT visible on the page",
+            "pass": false,
+            "reasoning": "A search bar with placeholder 'Restaurants, dishes, groceries' is visible directly above the category chips.",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"Duplicate elements\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "No duplicate UI elements (e.g., repeated buttons, labels, or icons) are visible.",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"Error messages\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "No explicit error message banners, toasts, or alerts are shown.",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"Grammatical errors\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "All visible text appears grammatically correct.",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"Inconsistent application state issues\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "No obvious UI indicators of an inconsistent application state (e.g., stale counters, mismatched selections) are visible.",
+            "confidence": "medium",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"Invalid values\" is NOT visible on the page",
+            "pass": false,
+            "reasoning": "The delivery fee for 'Smash Bros Burgers' is displayed as '€NaN', which is an invalid value.",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"Layout alignment problems\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "Headers, cards, chips, and navigation appear properly aligned with no obvious misalignment.",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"Missing elements\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "Expected top-level elements (header, search, categories, banner, lists, bottom nav) are present; the partially visible card at the right edge is part of a scrollable row, not a missing element.",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"Missing translations\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "All visible text is in English and no placeholder translation keys or blank labels are shown.",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"Overlapping elements\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "No UI elements overlap each other unexpectedly.",
+            "confidence": "high",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"Text cut off mid-word inside its own container, with no ellipsis\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "No text inside a container is visibly truncated mid-word without an ellipsis; the only partial content is the rightmost scrollable card at the screen edge, which is expected behavior.",
+            "confidence": "medium",
+            "timestampSeconds": null
+          },
+          {
+            "statement": "The element \"Unreadable text for visually impaired users\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "Text colors and sizes appear to provide sufficient contrast and readability; no very small or extremely low-contrast text is evident.",
+            "confidence": "medium",
+            "timestampSeconds": null
+          }
+        ]
+      },
+      "usage": {
+        "inputTokens": 2730,
+        "outputTokens": 5536,
+        "reasoningTokens": 4393,
+        "cachedInputTokens": 6,
+        "estimatedCost": 0.0229986,
+        "reportedCost": 0.04946588,
+        "durationSeconds": 32.289168041999915
+      }
+    }
+  ],
+  "usage": {
+    "inputTokens": 5611,
+    "outputTokens": 7837,
+    "reasoningTokens": 5296,
+    "cachedInputTokens": 12,
+    "estimatedCost": 0.03398977,
+    "reportedCost": 0.0584181725,
+    "durationSeconds": 97.12839433399984
+  }
+}

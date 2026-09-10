@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_14",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:33:26.619Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed, but the 'Fastest near you' carousel shows noticeable alignment inconsistencies: the middle card (Smash Bros Burgers) is vertically offset from its neighbors, causing its image, title, and delivery-fee text to sit lower than the adjacent cards. A couple of minor cosmetic points were also noted.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the Smash Bros Burgers card is vertically misaligned: its image starts lower and is taller than the Green Bowl Poké and Trattoria cards, so its title ('Smash Bros Burgers') and delivery fee text sit on a different baseline than the neighboring cards, making the row look broken/staggered.",
+        "suggestion": "Give all carousel cards a fixed, identical image height and top alignment so titles and delivery-fee labels align on the same baseline across the row."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The delivery-time badges in the 'Fastest near you' cards are positioned inconsistently (bottom-left overlay at differing vertical offsets across cards), reinforcing the uneven look of the row.",
+        "suggestion": "Anchor the time badge to the same corner with identical padding/offset on every card."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The Green Bowl Poké thumbnail appears washed out / low-contrast (nearly blank gray background) compared to the richer imagery on adjacent cards, making it look like a broken or placeholder image.",
+        "suggestion": "Use a properly rendered photo with similar brightness/contrast treatment as the other restaurant thumbnails, or add a fallback image check."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 805,
+    "estimatedCost": 0.06112000000000001,
+    "durationSeconds": 106.88644595800002
+  }
+}

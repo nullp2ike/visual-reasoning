@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The third 'Fastest near you' card shows the restaurant name as 'Trattoria Piccol', which appears truncated (likely missing the final letter(s) such as 'o'). This makes the listing look broken and hard to read.",
+    "The second 'Popular right now' card (pizza with -20% badge) is partially cut off at the bottom of the screen by the bottom navigation bar, so users cannot see the full card or its details without scrolling."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.57 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

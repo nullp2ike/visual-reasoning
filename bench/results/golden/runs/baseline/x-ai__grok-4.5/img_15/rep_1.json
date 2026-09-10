@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_15",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:53:54.462Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and truncation issues make the food delivery home screen look broken: restaurant names and cards are cut off, category chips overflow, and the bottom tab bar has an incomplete/misaligned selection indicator.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' is heavily clipped on the right edge, and the name 'Trattoria Piccol' is truncated mid-word.",
+        "suggestion": "Ensure horizontal carousels show partial next cards intentionally with consistent peek, or use proper overflow/padding so names and images are not cut off mid-content. Allow full names with ellipsis or wrapping."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The category filter chips row (All, Pizza, Sushi, Burgers, Healthy) overflows the screen with a partial chip visible on the right and no clear scroll affordance.",
+        "suggestion": "Add horizontal scroll with padding/fade, ensure the last visible chip isn’t awkwardly clipped, or wrap/scroll chips cleanly."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The second 'Popular right now' card (pizza) is cut off at the bottom of the viewport so only part of the image shows, with no clear continuation cue beyond the tab bar.",
+        "suggestion": "Add bottom content padding above the tab bar so cards aren’t obscured, and keep section spacing consistent while scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Bottom tab bar shows a short gray line under the search icon that looks like a broken or incomplete selection indicator rather than a polished active state.",
+        "suggestion": "Use a clear selected tab style (filled icon/label or full-width indicator) aligned to the active tab, or hide the indicator when Home is selected."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant title 'Trattoria Piccol' appears truncated without ellipsis, which reads like a content/layout bug.",
+        "suggestion": "Apply text overflow ellipsis or allow two-line titles so names don’t end abruptly mid-word."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 528,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006932000000000001,
+    "reportedCost": 0.0062792,
+    "durationSeconds": 12.203477458999988
+  }
+}

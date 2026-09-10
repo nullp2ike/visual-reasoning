@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant name 'Tokumaru Ramen' in the 'Popular right now' card is clipped mid-character by the rating block on the same row, so the name renders as 'Tokumaru Ramei'. This is a full-width vertical card, not a horizontal carousel edge.",
+    "Favorite (heart) buttons are inconsistent: the Tokumaru Ramen card uses a white circular button with dark outline, while the pizza card below uses a dark/transparent circular button with white outline.",
+    "The first 'Fastest near you' thumbnail (Green Bowl Poké) has a light gray image background while sibling thumbnails use dark backgrounds, and its white '15–25 min' badge has low contrast against that light background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the exact same defect: 'Tokumaru Ramen' name clipped/cut off rendering as 'Tokumaru Ramei' due to the rating block overlapping the text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

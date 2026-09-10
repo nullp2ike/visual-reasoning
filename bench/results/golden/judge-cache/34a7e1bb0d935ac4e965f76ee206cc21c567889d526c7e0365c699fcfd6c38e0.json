@@ -1,0 +1,24 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The second 'Popular right now' card shows a promotional badge reading '-0%', which communicates no discount at all and looks like a data/formatting bug.",
+    "In the 'Fastest near you' carousel the third item's title is hard-clipped mid-word ('Trattoria Piccol') at the screen edge with no ellipsis, so it reads as broken text rather than intentional truncation.",
+    "Favorite (heart) buttons are styled inconsistently: the Tokumaru Ramen card uses a white circular background with a dark outline heart, while the pizza card below uses a dark/translucent circle with a white heart.",
+    "The first 'Fastest near you' thumbnail (Green Bowl Poké) is very light/washed out compared to the dark, contrasty neighbours, and its white '15–25 min' pill has weak contrast against the pale background.",
+    "The pizza card at the bottom is sliced by the fixed bottom navigation bar with no visible fade or padding, making the content appear cut off rather than scrollable.",
+    "Secondary metadata such as '€0.90 delivery' and '25–35 min • €0 delivery • Ramen' uses light grey text that may fall below the 4.5:1 contrast requirement."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 identifies the promotional badge showing '-0%', matching the expected discount badge defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

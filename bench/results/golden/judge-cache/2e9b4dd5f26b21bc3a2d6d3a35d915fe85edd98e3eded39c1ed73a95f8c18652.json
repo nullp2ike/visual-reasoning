@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The rightmost restaurant card in the “Fastest near you” row is cut off, including its restaurant name and delivery details.",
+    "A nearly empty fragment of the next category pill is visible at the far-right edge of the category row, making the row look accidentally cropped.",
+    "The “−100%” promotion badge is ambiguous and looks like an erroneous discount value."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Reported issue 2 identifies the “−100%” promotion badge and describes its problematic discount value."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

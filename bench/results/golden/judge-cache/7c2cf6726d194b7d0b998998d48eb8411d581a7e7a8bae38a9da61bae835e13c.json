@@ -1,0 +1,25 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The second card in 'Popular right now' (the pizza card with the -20% badge) shows only an image — the restaurant name, rating, delivery time/fee and cuisine metadata row that the Tokumaru Ramen Bar card has is absent, leaving blank space below the image.",
+    "In the bottom tab bar a thick black horizontal bar is drawn across the middle, overlapping and partially obscuring the search and bookmark/saved icons, so those tabs look broken and unreadable.",
+    "The favourite (heart) buttons are styled inconsistently between the two 'Popular right now' cards: the first has a white circular background with a dark outline heart, the second has a dark circular background with a white heart.",
+    "The first 'Fastest near you' thumbnail (Green Bowl Poké) uses a light grey background while the sibling thumbnails use dark photographic backgrounds, making the row look uneven.",
+    "Bottom navigation icons have no text labels, making their purpose ambiguous, and there is no visible active-state indication for the current tab."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "The thick horizontal bar in the bottom tab bar overlaps and obscures the navigation icons, matching the reported gesture-bar/layout obstruction."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3, 4]
+  }
+}

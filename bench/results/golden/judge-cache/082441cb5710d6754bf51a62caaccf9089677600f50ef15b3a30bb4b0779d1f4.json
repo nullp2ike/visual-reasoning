@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The 'Trattoria Piccol...' restaurant name in the 'Fastest near you' row is cut off at the right edge, indicating clipped content rather than proper truncation with ellipsis handling.",
+    "The heart/favorite icons have inconsistent styling — the Tokumaru Ramen Bar card shows a white circle with a dark heart outline, while the pizza card shows a dark circle with a white heart, creating visual inconsistency.",
+    "The bottom pizza card is partially cut off by the fold/navigation bar, showing only the top portion of the image and no restaurant details."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.63 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

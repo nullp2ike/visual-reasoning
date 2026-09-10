@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "On the 'Tokumaru Ramen Bar' card, the metadata line renders overlapping text: '25–35 min' and '€0 delivery' are drawn on top of each other ('25–3​5 min/€0 delivery' collision) before the '• Ramen' separator, making the delivery time and fee illegible.",
+    "The favorite (heart) buttons on the two 'Popular right now' cards use inconsistent styles — the first has a white circular background with a dark outline heart, the second has a dark/transparent background with a white heart.",
+    "The 'Tokumaru Ramen Bar' subtitle text appears clipped/low-contrast grey overlapping the surrounding baseline, and the card's title row bottom padding is tighter than the card above, creating uneven vertical rhythm in the list."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 describes delivery fee text ('€0 delivery') and delivery time text ('25–35 min') overlapping on the same metadata line, matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

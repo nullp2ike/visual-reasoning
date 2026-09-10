@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "Third card in 'Fastest near you' shows restaurant name truncated mid-word as 'Trattoria Piccol' at the screen edge with no padding or ellipsis.",
+    "Favorite heart buttons are inconsistent: the Tokumaru Ramen Bar card has a bare white outline with no background while the pizza card below has a white outline on a dark circular background.",
+    "Delivery time badges use inconsistent spacing: '15-25 min' and '20-30 min' with spaces vs '20-30 min' without spaces.",
+    "Second card in 'Popular right now' shows a '-100%' badge which looks like erroneous or placeholder promo data."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "The second card in 'Popular right now' is described as showing a '-100%' badge, matching the expected discount badge defect."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

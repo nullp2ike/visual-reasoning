@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "The third card in the “Fastest near you” row is cut off at the right screen edge. Its restaurant name (“Trattoria Piccol…”) and delivery-price text are visibly truncated, with no clear affordance that the row can be horizontally scrolled.",
+    "The category-chip row ends with a partially visible chip on the right, which appears abruptly clipped and can look like unintended horizontal overflow.",
+    "The second restaurant card in “Popular right now” is largely hidden behind the fixed bottom navigation, leaving only the top of the image visible and making the content look cut off."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.61 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

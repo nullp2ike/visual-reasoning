@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_13",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:03:28.492Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-designed, but there are two noticeable truncation issues: one in the horizontal 'Fastest near you' carousel and another where the bottom navigation bar obscures the lower restaurant card in the 'Popular right now' section.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom restaurant card in the 'Popular right now' section (pizza item) is cut off by the bottom navigation bar, so the restaurant name, rating, and delivery details are not visible.",
+        "suggestion": "Add sufficient bottom padding or margin to the scrollable content area so the last item scrolls fully into view above the bottom navigation bar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in the 'Fastest near you' horizontal scroll ('Trattoria Piccol...') is partially cut off at the right edge of the screen.",
+        "suggestion": "Ensure the horizontal scroll container has adequate right padding or snaps items fully into view so partially visible cards don't appear broken."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 2763,
+    "reasoningTokens": 2511,
+    "estimatedCost": 0.01200617,
+    "reportedCost": 0.01295314,
+    "durationSeconds": 64.38070937499998
+  }
+}

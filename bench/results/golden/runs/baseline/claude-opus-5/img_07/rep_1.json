@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_07",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:55:01.666Z",
+  "status": "ok",
+  "result": {
+    "summary": "The food delivery home screen is mostly well structured, but several visual defects stand out: a persistent loading spinner overlaying the already-loaded 'Tokumaru Ramen Bar' hero image, a horizontal carousel item ('Trattoria Piccol…') whose title is clipped at the screen edge, restaurant card images that appear heavily blurred/dark, and a heart (favourite) icon whose styling is inconsistent between cards. The second popular card is also cut off with no visible metadata before the bottom nav.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "performance",
+        "description": "A circular loading spinner is still displayed in the center of the 'Tokumaru Ramen Bar' banner even though the image behind it has fully rendered, making the card look stuck/broken.",
+        "suggestion": "Hide the loading indicator once the image load event fires; ensure the spinner is removed on both success and error states."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel the third card is cut off at the right edge and its title is truncated mid-word ('Trattoria Piccol') with no ellipsis, so it reads as broken text rather than an intentional peek.",
+        "suggestion": "Apply text-overflow: ellipsis / line clamping to card titles and align the carousel so the partially visible card is clipped predictably (or add proper edge padding and snap scrolling)."
+      },
+      {
+        "priority": "major",
+        "category": "styling",
+        "description": "Restaurant hero images are very dark and blurry with strong bokeh, making the food barely identifiable and reducing contrast for the white overlay badges (e.g. '20–30 min', '€0 delivery').",
+        "suggestion": "Use sharper, brighter imagery or reduce the darkening overlay; if the blur is a placeholder (LQIP), swap in the full-resolution image after load."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favourite (heart) buttons are styled inconsistently: the first card uses a white circular background with a dark outline heart, the second uses a dark/transparent circle with a white heart.",
+        "suggestion": "Standardise the favourite button background, size and icon colour across all cards."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second 'Popular right now' card is clipped by the bottom navigation bar with no visible name, rating or delivery info, so it looks unfinished rather than scrollable.",
+        "suggestion": "Add bottom content padding equal to the nav bar height so cards scroll clear of the tab bar, and consider fading/masking the cut-off edge."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Icon-only controls (notification bell with red dot, heart favourite buttons) have no visible text label; contrast of the grey placeholder text in the search field and the '€0.90 delivery' subtitles is also low.",
+        "suggestion": "Provide accessible labels for icon buttons and darken secondary text to meet at least 4.5:1 contrast."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 981,
+    "estimatedCost": 0.034395,
+    "durationSeconds": 16.861466958000005
+  }
+}

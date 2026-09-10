@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_15",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:59:42.489Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly readable, but the bottom navigation area looks visually broken/clipped, with additional minor truncation issues in horizontally scrolling content.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Bottom tab bar appears too low and partially overlapped by the system gesture/navigation area; the center search and cart icons look clipped or crowded by the black horizontal bar.",
+        "suggestion": "Increase bottom safe-area padding and ensure the tab bar sits above the system gesture inset so all icons are fully visible and tappable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The rightmost category chip after “Healthy” is cut off at the screen edge without enough visual affordance.",
+        "suggestion": "Add edge fade/arrow or reduce chip spacing so horizontal scrolling is clearer and the next item is visibly peeking."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name “Trattoria Piccol…” is truncated in the Fastest near you carousel.",
+        "suggestion": "Allow two-line titles, reduce card content width constraints, or use a smaller font to avoid awkward truncation."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 519,
+    "reasoningTokens": 275,
+    "estimatedCost": 0.014091,
+    "reportedCost": 0.0085614,
+    "durationSeconds": 29.28745191599999
+  }
+}

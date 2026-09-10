@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The third restaurant name in 'Fastest near you' is truncated mid-word: 'Trattoria Piccol' is cut off inside its text area.",
+    "The bottom pizza card shows only the image (with -20% badge and heart) and has no restaurant name, delivery time, fee, or category text beneath it, unlike the ramen card above."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "Neither report describes the pizza category filter being selected while the feed displays all cuisines."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

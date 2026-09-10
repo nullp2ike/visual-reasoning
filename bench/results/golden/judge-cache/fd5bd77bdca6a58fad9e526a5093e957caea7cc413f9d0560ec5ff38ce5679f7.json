@@ -1,0 +1,25 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel, the third card ('Trattoria Piccol…' / '€1.90 delivery') is hard-clipped at the screen edge with no ellipsis or fade, so the title and price appear cut mid-word rather than intentionally peeking.",
+    "The second 'Popular right now' card shows a '-100%' discount badge, which implies the item is free and is almost certainly a data or formatting error (likely a mis-mapped discount value).",
+    "Favorite (heart) buttons are styled inconsistently: the first card uses a white circular background with a dark outline heart, the second uses a dark/translucent circle with a white heart.",
+    "The second popular restaurant card is cut off by the bottom navigation bar with no visible name, rating, or delivery info, and there appears to be no bottom padding accounting for the tab bar/home indicator.",
+    "The category chip row is cut at the right edge showing only a sliver of the next chip, with no scroll affordance indicator.",
+    "The first carousel card ('Green Bowl Poké') has a light grey image background while the other cards use dark imagery, making the row look visually unbalanced.",
+    "Secondary text on the green promo banner ('Use code TALLINN3 at checkout · min. order €10') and the grey search placeholder are low-contrast against their backgrounds."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 identifies the second 'Popular right now' card's −100% discount badge."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3, 4, 5, 6]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "A large circular loading spinner is overlaid on the Tokumaru Ramen Bar card image, obscuring the food photo while the rest of the card (title, rating, meta) is already fully visible.",
+    "The third restaurant name in 'Fastest near you' is truncated to 'Trattoria Piccol' with no ellipsis or full title visible.",
+    "The category filter row shows a partial empty/white chip on the far right edge beyond 'Healthy', looking like a broken or incomplete control."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The spinner overlays an already loaded restaurant card while its other content is visible."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

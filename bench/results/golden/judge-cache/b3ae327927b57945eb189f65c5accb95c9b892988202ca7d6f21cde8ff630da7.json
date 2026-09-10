@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "Pizza category pill is selected/active but the restaurant lists still show non-pizza venues: Green Bowl Poké, Smash Bros Burgers, Trattoria Piccolo, Tokumaru Ramen Bar",
+    "Horizontal scroll rows are clipped at the right edge: the far-right category pill is half-visible and the third card name reads 'Trattoria Piccol' with text and image cut off",
+    "Second card under Popular right now showing pizza with -20% badge is cut off by bottom tab bar with no restaurant name, delivery time or rating visible"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.75 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

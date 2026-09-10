@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The 'Pizza' category chip is shown as selected (black/active), yet the listings below are unfiltered — poké, burgers, ramen and generic 'Fastest near you'/'Popular right now' sections are displayed with no pizza-specific results at the top.",
+    "In the 'Fastest near you' carousel the third card ('Trattoria Piccol…') is hard-clipped by the screen edge, cutting both the image and the '€1.90 delivery' label mid-text with no trailing gutter.",
+    "The category chip row is also clipped at the right edge, showing a sliver of an unnamed chip after 'Healthy', which looks like a rendering glitch rather than a scroll affordance.",
+    "Favorite (heart) buttons are styled inconsistently: white circle with dark outline on the ramen card, but a dark/translucent circle on the pizza card below, reducing icon contrast.",
+    "The second 'Popular right now' card is cut off by the bottom tab bar with its title and metadata hidden, giving the impression of clipped content.",
+    "The notification bell badge and 'See all' green links rely on color alone / small hit targets; the promo banner's secondary text also has lower contrast against the green fill."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes the Pizza category appearing selected while the feed displays unfiltered cuisines including non-pizza items."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "In the bottom navigation bar, a long dark horizontal line/bar stretches from the search icon to the receipt/orders icon, overlapping both icons. It looks like a rendering artifact or misplaced element (possibly a mispositioned home-indicator or progress bar) rather than intentional design.",
+    "The third card in 'Fastest near you' shows a truncated restaurant name ('Trattoria Piccol...') because the card is clipped at the screen edge without an ellipsis or peek affordance styling.",
+    "A category chip at the far right of the filter row (after 'Healthy') is cut off with no visible label, appearing as an empty gray sliver.",
+    "Bottom navigation icons have no text labels and only the home icon appears highlighted; the search and orders icons are obscured, making the nav hard to interpret."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0, 3],
+        "reasoning": "Issue 0 describes the gesture bar overlapping bottom nav icons; Issue 3 describes obscured search/orders icons and missing text labels in bottom nav, both matching the expected defect of bottom nav problems with overlap/obstruction."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

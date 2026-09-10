@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_05",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:00:22.800Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 4 issues: mainly layout truncation and minor visual inconsistencies on the food delivery app home screen.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Fastest near you' horizontal scroll section cuts off the third restaurant card (Trattoria Piccolo) abruptly at the screen edge, with the name and price truncated/hidden.",
+        "suggestion": "Add a fade gradient or partial peek indicator at the edge to signal scrollability, or ensure card content isn't cut mid-text."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The promotional banner text ('3 free deliveries for you' and subtext) has low contrast against the light green background, making it harder to read.",
+        "suggestion": "Increase text color contrast or darken the banner background slightly for better readability."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row (Pizza, Sushi, Burgers, Healthy) is cut off on the right edge, hiding additional category options without a clear scroll affordance.",
+        "suggestion": "Add a visual cue (fade/arrow) indicating more categories are scrollable to the right."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The pizza promotional image at the bottom of the screen is abruptly cut off by the navigation bar, with no visible restaurant name or details before the cutoff.",
+        "suggestion": "Ensure card content isn't cropped by the bottom nav; add proper spacing or lazy-load indicator."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 570,
+    "estimatedCost": 0.014472,
+    "durationSeconds": 7.303677208999987
+  }
+}

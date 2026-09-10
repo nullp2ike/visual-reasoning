@@ -1,0 +1,24 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "Section title displays raw localization key 'home_feed.popular_title' instead of translated text like 'Popular near you'",
+    "The category filter row ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') is cut off at the right edge, hiding additional categories without a clear scroll indicator",
+    "The third restaurant card in 'Fastest near you' (Trattoria Piccol...) is cut off at the right edge of the screen, and its name text is truncated",
+    "The pizza promo card at the bottom is abruptly cropped by the screen/navigation bar with no visible restaurant name or details"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.95 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

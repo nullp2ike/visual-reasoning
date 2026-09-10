@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "The third restaurant card in 'Fastest near you' is cut off on the right, so the name reads 'Trattoria Piccol' and the rest of the card is hidden.",
+    "The category filter row is clipped on the right (Healthy chip cut off, next chip barely visible), so users cannot see all filters.",
+    "The bottom restaurant promo card is cropped by the tab bar, hiding most of the offer content."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.59 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

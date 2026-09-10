@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_08",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:51:17.907Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed, but there are a few visual/content defects: a misspelled search placeholder, awkwardly clipped text on a horizontally scrolling card, and a partially cut-off category chip that may confuse users.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The search bar placeholder reads 'Restarants, dishes, groceries' — 'Restaurants' is misspelled.",
+        "suggestion": "Correct the placeholder text to 'Restaurants, dishes, groceries'."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in 'Fastest near you' shows the restaurant name clipped as 'Trattoria Piccol' with no ellipsis, making the truncation look accidental rather than a scroll affordance.",
+        "suggestion": "Apply text-overflow ellipsis or constrain the label width to the card so partial words aren't hard-clipped at the screen edge."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category filter chip after 'Healthy' is cut off at the right screen edge with almost no visible content, giving little indication of what it is.",
+        "suggestion": "Adjust chip spacing/peek amount so a meaningful portion of the next chip is visible, signaling horizontal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza restaurant card is cut off by the tab bar with its title and details not visible above the fold, and the '-20%' badge floats without context.",
+        "suggestion": "Ensure card content scrolls fully into view and consider adding bottom padding so the last card isn't obscured by the navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 727,
+    "estimatedCost": 0.05609,
+    "durationSeconds": 12.939888791999998
+  }
+}

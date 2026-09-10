@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The pizza card shows a white badge reading '-100%', which is confusing and likely a broken discount/percentage display.",
+    "Restaurant name 'Trattoria Piccol...' is truncated in the Fastest near you row, so the full name is unreadable.",
+    "Category filter chips overflow the screen; a partial chip is visible on the right with no clear affordance that the row scrolls.",
+    "The third 'Fastest near you' card is heavily clipped at the right edge, making the row look broken.",
+    "Bottom pizza card is cut off mid-image above the tab bar, so the section feels incomplete on load."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 directly describes the −100% badge on a pizza card as a broken discount display, matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

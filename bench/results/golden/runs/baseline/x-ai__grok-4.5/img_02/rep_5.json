@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:51:58.205Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual and data issues: delivery cost shows as €NaN (broken data), restaurant names are truncated, and category chips overflow the screen edge.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "Smash Bros Burgers shows delivery cost as '€NaN delivery', indicating a null/undefined price was rendered instead of a valid amount.",
+        "suggestion": "Validate and format delivery fees before display; fall back to a sensible default or hide the fee when the value is missing."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is cut off mid-word in the Fastest near you row, so the full name is not readable.",
+        "suggestion": "Allow multi-line titles, reduce font size, or use ellipsis with full name on tap so names are not truncated awkwardly."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Category filter chips (All, Pizza, Sushi, Burgers, Healthy) overflow the right edge of the screen with no clear scroll affordance.",
+        "suggestion": "Make the chip row horizontally scrollable with padding/fade, or wrap chips so all options stay fully visible."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Bottom navigation labels and icons appear uneven in weight/color (Home is strongly emphasized while others look washed out).",
+        "suggestion": "Ensure inactive tab styles still meet contrast guidelines and keep consistent icon/label alignment and weight."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 386,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.00608,
+    "reportedCost": 0.0030336,
+    "durationSeconds": 9.43909275
+  }
+}

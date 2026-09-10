@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The active 'Pizza' category filter fails to refine results, showing Ramen and Burgers instead.",
+    "Restaurant name 'Trattoria Piccol...' is clipped due to lack of space.",
+    "Generic vector illustrations are used as placeholders for food items."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the selected Pizza filter failing to narrow the feed, which matches the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

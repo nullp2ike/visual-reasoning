@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:31:54.342Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and visual problems: truncated restaurant names, a category chip cut off, a loading spinner over a popular restaurant card, and the last featured card cropped by the tab bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant in Fastest near you (Trattoria Piccol...) is clipped at the right edge so the name and image are incomplete.",
+        "suggestion": "Give the horizontal list enough trailing padding or allow full-card peek so names and images are not cut off."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last category chip (after Healthy) is cut off at the right edge of the screen.",
+        "suggestion": "Add end padding to the chip row or make the last chip fully visible so users can see and tap all categories."
+      },
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "A large loading spinner overlays the Tokumaru Ramen Bar image, making the card look unfinished or broken.",
+        "suggestion": "Hide or replace the spinner once the image is loaded, or use a skeleton that does not cover the whole photo."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom restaurant card is partially hidden behind the tab bar, so the image and details are cropped.",
+        "suggestion": "Add bottom content inset equal to the tab bar height so the last card is fully visible when scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant title 'Trattoria Piccol' appears truncated without ellipsis or wrap.",
+        "suggestion": "Use ellipsis or allow two-line titles so names remain readable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 354,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.005888,
+    "reportedCost": 0.0032,
+    "durationSeconds": 9.758621124999976
+  }
+}

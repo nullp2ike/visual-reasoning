@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The 'Fastest near you' third card (Trattoria Piccola) is cut off at the right edge with truncated text, though this is expected for a horizontally scrollable carousel.",
+    "Restaurant name 'Trattoria Piccol...' is truncated without an ellipsis clearly finishing the label in the visible area.",
+    "The bottom pizza card in 'Popular right now' is partially cut off by the navigation bar, showing incomplete content."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.56 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

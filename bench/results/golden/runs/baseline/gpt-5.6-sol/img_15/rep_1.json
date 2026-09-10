@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "imageId": "img_15",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:32:46.123Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly visually consistent, but the bottom navigation is broken by unsafe bottom-area positioning. Horizontal carousel items are also clipped at the right edge, though this may be intentional.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The system gesture/home indicator overlaps the bottom navigation, crossing through the search and saved icons. The navigation icons are also partially cut off by the bottom edge.",
+        "suggestion": "Apply the device bottom safe-area inset and increase the navigation bar’s bottom padding so all controls sit fully above the system gesture area."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Content in the horizontal category and restaurant carousels is abruptly clipped at the right edge, including a partial category pill and truncated restaurant card/title.",
+        "suggestion": "If the partial-item treatment is intentional, add consistent trailing spacing to clarify horizontal scrolling; otherwise constrain item widths so complete items fit within the viewport."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 478,
+    "reasoningTokens": 276,
+    "estimatedCost": 0.023395,
+    "durationSeconds": 17.577302291999978
+  }
+}

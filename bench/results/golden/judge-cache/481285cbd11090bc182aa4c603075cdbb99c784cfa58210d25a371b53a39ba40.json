@@ -1,0 +1,25 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The second card in 'Popular right now' (the pizza card with the -20% badge) shows only the image; the restaurant name, rating, delivery time/fee and cuisine text that appear on the Tokumaru Ramen Bar card are absent, leaving an empty gap beneath the image.",
+    "In the bottom tab bar a long solid black horizontal bar spans across the middle, overlapping/obscuring the search icon and the third tab icon, making the tabs hard to identify and tap accurately.",
+    "Favorite (heart) buttons are styled inconsistently: white circular background on the ramen card and dark/translucent circular background on the pizza card.",
+    "In 'Fastest near you' the first card image uses a light gray background while the neighboring cards use dark imagery, making the row look visually uneven.",
+    "Bottom navigation icons have no text labels, and the promotional banner's secondary text ('Use code TALLINN3...') is low-contrast light green on green."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1, 4],
+        "reasoning": "Issue 1 describes a black bar overlapping bottom tab icons; issue 4 describes missing text labels on bottom nav icons and overlap issues—both address the bottom navigation defect with overlapping elements and missing/obscured labels."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3]
+  }
+}

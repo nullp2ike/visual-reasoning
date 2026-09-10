@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-4-5",
+  "provider": "anthropic",
+  "imageId": "img_16",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:06:35.001Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 major layout issues: multiple content cards are visually cut off on the right and bottom edges of the page, preventing full visibility of restaurant information.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' section (Trattoria Piccol) is horizontally cut off on the right edge - both the image and restaurant name are truncated",
+        "suggestion": "Ensure the horizontal scroll container has proper overflow handling or adjust card sizing to fit within viewport without truncation"
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The category filter buttons row has the rightmost button partially cut off, making it impossible to see or interact with the complete filter options",
+        "suggestion": "Implement horizontal scrolling for the filter buttons or adjust padding/margins to ensure all buttons are visible within the viewport"
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom restaurant card in 'Popular right now' section is vertically cut off, showing only the top portion of what appears to be a pizza restaurant card",
+        "suggestion": "Adjust container height constraints or implement proper vertical scrolling to ensure all content cards are fully visible and not clipped at the bottom"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1854,
+    "outputTokens": 774,
+    "estimatedCost": 0.005724,
+    "durationSeconds": 15.452809917000007
+  }
+}

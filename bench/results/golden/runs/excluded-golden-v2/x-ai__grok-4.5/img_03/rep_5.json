@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_03",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:26:29.908Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual problems stand out: a popular restaurant card with a missing/broken image placeholder, truncated restaurant names, and a promo banner whose supporting text has weak contrast on the green background.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The first card under 'Popular right now' (Tokumaru Ramen Bar) shows only a gray placeholder with a broken-image icon instead of a food photo, while other cards have images.",
+        "suggestion": "Load the restaurant image correctly or provide a proper fallback illustration so the card matches the rest of the feed."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated with the last letters cut off in the Fastest near you row.",
+        "suggestion": "Allow the title to wrap to two lines, use a shorter display name, or ensure horizontal cards give enough width so full names remain readable."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Promo banner secondary text ('Use code TALLINN3 at checkout · min. order €10') is light green on a medium green background and has low contrast.",
+        "suggestion": "Use white or a much lighter tint for the secondary line so it meets WCAG contrast requirements against the green banner."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category chips row ends with a partially visible empty/white chip on the right, which looks like a stray or unfinished control rather than a clear overflow hint.",
+        "suggestion": "Ensure only real categories appear in the scroller and that overflow is indicated cleanly without an empty pill fragment."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 417,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006425999999999999,
+    "reportedCost": 0.003162,
+    "durationSeconds": 42.43640320900001
+  }
+}

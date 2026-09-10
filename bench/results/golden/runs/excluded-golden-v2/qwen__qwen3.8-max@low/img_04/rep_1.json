@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_04",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:28:25.166Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed with clear hierarchy, consistent spacing, and good use of color. One minor cosmetic defect was found: the discount badge on the second 'Popular right now' card displays '-0%', which is a meaningless value. Horizontal carousels and bottom-cut content are treated as intended features and not reported.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The badge on the pizza card in the 'Popular right now' section shows '-0%', which is a nonsensical discount value (zero percent off) and looks like a data/logic error.",
+        "suggestion": "Hide the discount badge when the discount value is 0, or ensure the backend only supplies meaningful positive discount percentages for the badge."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 1050,
+    "reasoningTokens": 856,
+    "estimatedCost": 0.009888000000000001,
+    "reportedCost": 0.009888,
+    "durationSeconds": 63.30012825000001
+  }
+}

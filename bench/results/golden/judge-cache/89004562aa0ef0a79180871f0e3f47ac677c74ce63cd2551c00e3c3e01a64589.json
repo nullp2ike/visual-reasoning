@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "The delivery info text under 'Tokumaru Ramen Bar' shows overlapping/garbled text reading '25-3€0 mdienlivery · Ramen', indicating two text strings rendering on top of each other",
+    "The third card 'Trattoria Piccol...' in the 'Fastest near you' row is cut off at the edge of the screen, with its name truncated",
+    "Heart icon on the ramen bar image is white/outline while similar heart icon on the pizza image below has a dark filled circle background, creating inconsistent visual style"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The garbled delivery information describes the delivery fee and delivery time text rendering on top of each other."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

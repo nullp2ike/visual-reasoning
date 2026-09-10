@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "meta/muse-spark-1.3",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-03T19:40:07.511Z",
+  "status": "ok",
+  "result": {
+    "summary": "Home content renders but bottom navigation shows wrong active tab (Profile instead of Home), plus minor carousel clipping and inconsistent card image scaling.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "Bottom navigation highlights Profile in green as active while the screen shows Home feed content - Home should be active",
+        "suggestion": "Update navigation selected state so Home is highlighted when home feed is displayed and Profile is only highlighted on profile screen"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Third card in 'Fastest near you' shows restaurant name cut off mid-word as 'Trattoria Piccol' at the screen edge",
+        "suggestion": "Add proper end padding and snap behavior to horizontal carousel and use ellipsis truncation for names instead of mid-letter clipping"
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "First 'Fastest near you' card for Green Bowl Poké has large empty light background with small centered dish image, inconsistent with neighboring filled dark cards",
+        "suggestion": "Use consistent image cover fill, sizing and background treatment across all restaurant cards"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1739,
+    "outputTokens": 1741,
+    "reasoningTokens": 1446,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.009573,
+    "reportedCost": 0.009573,
+    "durationSeconds": 25.92204041699972
+  }
+}

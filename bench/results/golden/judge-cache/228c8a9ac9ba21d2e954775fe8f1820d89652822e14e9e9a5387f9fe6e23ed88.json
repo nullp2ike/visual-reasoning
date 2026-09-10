@@ -1,0 +1,25 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant title 'Tokumaru Ramen' is truncated mid-word ('Ramei') where it runs into the star rating '4.8 (500+)' on the right, with no ellipsis — it looks like a text overflow/collision rather than intentional truncation.",
+    "In the 'Fastest near you' carousel the third card's name 'Trattoria Piccol' is hard-clipped by the screen edge with no ellipsis or visible partial-card affordance beyond the raw cut.",
+    "The favorite (heart) buttons use inconsistent styling: the first card has a white circular background with dark outline, while the second card has a dark/transparent circle with white outline.",
+    "The second 'Popular right now' card image is abruptly cut off by the bottom navigation bar with no scroll hint or bottom padding, making the content look truncated rather than scrollable.",
+    "The notification bell has a red dot indicator with no textual/accessible label, and delivery-time badges rely on small overlay text over busy imagery which may reduce legibility."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.83 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

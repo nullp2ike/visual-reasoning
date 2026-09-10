@@ -1,0 +1,25 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The promo badge on the second 'Popular right now' card reads '-100%', implying a 100% discount (free order). This is almost certainly a data/formatting bug rather than a real offer.",
+    "The third card in 'Fastest near you' has its title truncated mid-word ('Trattoria Piccol') and the image/price are clipped by the viewport edge with no ellipsis.",
+    "The second pizza card in 'Popular right now' is cut off by the fixed bottom navigation bar — its title, rating and delivery info are hidden behind/below the nav.",
+    "The favorite (heart) buttons are styled inconsistently: the first card uses a white circular background with a dark outline heart, while the second uses a dark/transparent circle with a white heart.",
+    "The category chip row is clipped at the right edge with a partially visible chip and no visual scroll affordance (fade or arrow), making it unclear more filters exist.",
+    "The notification bell's red dot indicator conveys unread state by color/shape only and has no visible label; icon-only nav and heart buttons also lack visible text alternatives.",
+    "The green promo banner's decorative circles are clipped awkwardly at the right/bottom corners, and the 'Order now' button sits close to the banner's bottom edge."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the promo badge displaying “-100%,” matching the expected discount badge defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5, 6]
+  }
+}

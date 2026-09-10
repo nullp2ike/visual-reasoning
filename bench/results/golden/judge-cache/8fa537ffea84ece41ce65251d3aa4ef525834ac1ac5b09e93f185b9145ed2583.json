@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "Bottom navigation shows Profile as active (green) while the screen displays the Home feed content",
+    "Second card in Popular right now (pizza image) runs directly into the bottom tab bar with no spacing, hiding its restaurant name, metadata and rating",
+    "Third card in Fastest near you is cut off mid-image and mid-text showing 'Trattoria Piccol' without ellipsis or end padding"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.89 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

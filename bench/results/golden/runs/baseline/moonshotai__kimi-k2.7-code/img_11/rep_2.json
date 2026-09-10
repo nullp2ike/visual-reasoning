@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:03:12.223Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page generally looks polished, but there are a few visible breaks: an unrealistic discount value on one card, content cut off at the bottom of the viewport, and a truncated restaurant name in the horizontal list.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza card in the 'Popular right now' section shows a '-100%' badge, which is an unrealistic/impossible discount value and looks like a data or UI bug.",
+        "suggestion": "Replace the badge with a valid discount such as '-20%' or 'Free delivery', or remove it if the data is unavailable."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The second restaurant card in 'Popular right now' (pizza) is cut off at the bottom of the screen, making it unclear whether there is more content below.",
+        "suggestion": "Add enough bottom padding or safe-area spacing so that the last visible card is fully within the viewport, or indicate additional scrollable content."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third card in the 'Fastest near you' carousel has its restaurant name truncated ('Trattoria Picco...'), so the full name is not readable in the static view.",
+        "suggestion": "Either enlarge the visible card width, shorten the displayed name with an ellipsis tooltip, or ensure the carousel peek indicates more content."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category pill list extends to the right edge with no visible scroll affordance, and 'Healthy' sits close to the screen edge, which may feel cramped.",
+        "suggestion": "Add right padding to the pill list and consider a subtle fade or scrollbar indicator to show it is horizontally scrollable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 1401,
+    "reasoningTokens": 1016,
+    "estimatedCost": 0.00689867,
+    "reportedCost": 0.01501028,
+    "durationSeconds": 9.874849541999982
+  }
+}

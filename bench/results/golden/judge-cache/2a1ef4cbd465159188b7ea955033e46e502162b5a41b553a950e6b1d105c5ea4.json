@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section heading 'home_feed.popular_title' is a raw localization/translation key being rendered as visible text instead of the actual translated string (e.g., 'Popular near you'). This indicates a missing or failed localization lookup.",
+    "The third restaurant card in the 'Fastest near you' horizontal scroll list ('Trattoria Piccol...') is clipped and the restaurant name is cut off without an ellipsis indicator, making it unclear to the user that the name is truncated."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe the same defect: a section title displaying the raw translation key 'home_feed.popular_title' instead of the translated text."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

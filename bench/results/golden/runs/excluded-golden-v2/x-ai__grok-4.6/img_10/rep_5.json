@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T12:35:07.704Z",
+  "status": "ok",
+  "result": {
+    "summary": "Two visual issues: duplicate restaurant cards in the Fastest carousel and a slightly clipped promo banner.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The Fastest near you carousel shows the same restaurant twice in a row (Green Bowl Poké with identical image, time, and delivery fee).",
+        "suggestion": "Deduplicate carousel items so each restaurant appears only once, or ensure distinct nearby options are shown."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The green promo banner’s bottom-right corner is slightly cut off / not fully rounded, so the card edge looks cropped against the page background.",
+        "suggestion": "Give the banner enough padding or overflow so the full rounded rectangle (including the decorative circle) is visible."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 168,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 384,
+    "estimatedCost": 0.004932,
+    "reportedCost": 0.004356,
+    "durationSeconds": 14.854924457999994
+  }
+}

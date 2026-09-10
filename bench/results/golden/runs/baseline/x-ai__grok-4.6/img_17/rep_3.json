@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:33:30.265Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and clipping issues: the last cuisine chip and a restaurant card title are cut off, and the popular-now list appears cropped at the bottom.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card in the 'Fastest near you' row is clipped on the right, cutting off the name 'Trattoria Piccol'.",
+        "suggestion": "Ensure horizontal carousels leave enough padding or peek so titles remain fully readable, or wrap/truncate with ellipsis consistently."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The cuisine filter chips overflow the screen; the last visible chip ('Healthy') is cut off and the next chip is only partially shown.",
+        "suggestion": "Add end padding or fade, or allow the chip row to scroll with a fully visible last item."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second 'Popular right now' card is cut off by the bottom tab bar, so the restaurant name and details are not visible.",
+        "suggestion": "Add bottom content inset equal to the tab bar height so cards are not hidden behind it."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Bottom tab bar appears to highlight Profile while the screen is the Home feed, which can look like a wrong selected state.",
+        "suggestion": "Keep the Home tab selected when showing the home/delivery feed."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 305,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.005594,
+    "reportedCost": 0.002906,
+    "durationSeconds": 19.181433791000018
+  }
+}

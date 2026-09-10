@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:25:53.176Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several issues: a critical data display bug showing NaN for delivery cost, truncated restaurant names, and a minor layout overflow on category chips.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "Smash Bros Burgers shows '€NaN delivery' instead of a valid delivery fee, indicating a data formatting or null-handling bug.",
+        "suggestion": "Handle null/undefined delivery prices gracefully (e.g. show 'Free', '€0', or hide the fee) and ensure numeric values are properly parsed before display."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you carousel card.",
+        "suggestion": "Allow multi-line titles, reduce font size, or use ellipsis with full name on detail view so names are fully readable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips row shows a partial empty chip on the far right, suggesting awkward overflow beyond the intentional partial last item.",
+        "suggestion": "Ensure horizontal padding and chip spacing so only intentional content peeks at the edge without empty ghost chips."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 306,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.0057599999999999995,
+    "reportedCost": 0.002496,
+    "durationSeconds": 70.53428504200001
+  }
+}

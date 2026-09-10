@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The favorite/heart button on the pizza card in 'Popular right now' is rendered as a dark circle with a dark outline heart, so the icon is barely visible against its background. The equivalent button on the ramen card above uses a white circle with a dark heart, so the two are visually inconsistent.",
+    "The bottom tab bar shows 'Profile' as the active (green, filled) tab while the screen displays the home feed. The active state does not match the current view.",
+    "The first card thumbnail in 'Fastest near you' (Green Bowl Poké) has a pale grey background while the neighbouring thumbnails use dark backgrounds, making the row look inconsistent, and the bowl artwork appears off-centre/cropped at the left edge.",
+    "The 'See all' links and the notification bell with red dot have no visible text labels describing their target; the bell badge also conveys state by colour alone."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Issue 1 directly describes the Profile tab showing as active in the bottom nav bar while the home feed is displayed, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3]
+  }
+}

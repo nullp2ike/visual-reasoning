@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:18.405Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen has several layout and content problems: restaurant names and category chips are clipped, two cards in Fastest near you appear identical, and the promo banner text sits awkwardly over the decorative graphic.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third Fastest near you card title is cut off as 'Smash Bros Bu' and the last category chip is only a sliver, so users cannot read the full names.",
+        "suggestion": "Give cards enough width or allow wrapping/ellipsis with a tooltip, and add peek or scroll padding so the last category chip is fully visible."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The first two Fastest near you cards show the same restaurant, image, time, and delivery fee (Green Bowl Poké twice).",
+        "suggestion": "Deduplicate the list so each nearby restaurant appears once, or clearly distinguish different locations/menus if they are meant to be unique."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Promo banner body copy overlaps the circular graphic and is cramped against the right edge.",
+        "suggestion": "Add more right padding or constrain the illustration so the offer text stays fully readable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom Popular card is cropped by the tab bar, hiding most of the restaurant details.",
+        "suggestion": "Add bottom content inset so the last card can scroll fully above the navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 377,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.006026,
+    "reportedCost": 0.003338,
+    "durationSeconds": 8.106847917000007
+  }
+}

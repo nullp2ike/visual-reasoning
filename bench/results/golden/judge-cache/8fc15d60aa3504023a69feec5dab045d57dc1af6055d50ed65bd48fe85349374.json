@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section title displays raw localization key 'home_feed.popular_title' instead of translated text, indicating a missing translation string.",
+    "In the 'Fastest near you' horizontal list, the third card (Trattoria Piccolo) is cut off at the edge of the screen, and its name text is truncated ('Piccol...').",
+    "The category filter row (All, Pizza, Sushi, Burgers, Healthy) has an additional partially visible chip cut off at the right edge, suggesting the scrollable row isn't clearly indicating more content.",
+    "The pizza promotional image at the bottom of the screen is abruptly cropped by the bottom navigation bar, cutting off part of the content before the user can see full details."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the exact same defect: the section title displaying the raw translation key 'home_feed.popular_title' instead of showing translated text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

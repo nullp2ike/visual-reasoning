@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Restaurant cover image failed to load"],
+  "reportedIssues": [
+    "The restaurant image for 'Tokumaru Ramen Bar' in the 'Popular right now' section failed to load, showing only a gray broken-image placeholder icon.",
+    "The third card in 'Fastest near you' is hard-clipped at the screen edge with its title truncated ('Trattoria Piccol...') and no visible ellipsis or edge padding, making it look cut off rather than intentionally scrollable.",
+    "A category filter chip at the far right (after 'Healthy') is clipped to a thin sliver, appearing broken rather than partially visible.",
+    "The pizza promo card at the bottom is cut off by the bottom navigation bar, with its content overlapping the viewport edge without spacing."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.81 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

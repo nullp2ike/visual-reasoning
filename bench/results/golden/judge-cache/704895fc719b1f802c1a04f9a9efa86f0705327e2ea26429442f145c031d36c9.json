@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "On the 'Tokumaru Ramen Bar' card, the delivery-time and delivery-fee texts are drawn on top of each other ('25–35 min' overlapping '€0 delivery'), producing unreadable garbled text.",
+    "The bottom 'Popular right now' pizza card is cut off abruptly by the bottom navigation bar, hiding its title, rating and badges with no visible scroll affordance.",
+    "Favorite (heart) buttons are styled inconsistently: the first card uses a white circular background with a dark outline heart, while the second uses a dark/translucent circle with a white heart.",
+    "In 'Fastest near you' the third card and its title ('Trattoria Piccol…') are clipped at the screen edge without truncation ellipsis, and the category chip row is likewise cut mid-chip.",
+    "Icon-only controls (notification bell with unread dot, heart favorite buttons) have no visible text labels, which may leave them unlabeled for screen readers."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 explicitly describes the delivery-time and delivery-fee texts overlapping on the same card."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

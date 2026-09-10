@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "The horizontal category chips (All, Pizza, Sushi, Burgers, Healthy) are cut off on the right, with a partial chip visible and no clear affordance that the list is scrollable.",
+    "The third card in “Fastest near you” (Trattoria Piccol…) is clipped by the right edge of the screen, cutting off both the image and the restaurant name.",
+    "Restaurant name “Trattoria Piccol” is truncated mid-word with no ellipsis, making the listing hard to read.",
+    "The bottom “Popular right now” promo card is cut off by the tab bar, so the offer and favorite control are only partially visible."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.61 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

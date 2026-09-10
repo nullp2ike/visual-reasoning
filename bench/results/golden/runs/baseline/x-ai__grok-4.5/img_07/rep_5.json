@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:52:41.687Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual and layout issues are present: truncated restaurant names, a loading spinner overlaying a popular item card, partially cut-off category chips and restaurant cards, and incomplete bottom content.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you section.",
+        "suggestion": "Allow text wrapping, reduce font size, or use ellipsis with full name on a second line or tooltip so the full name is readable."
+      },
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "A large circular loading spinner is centered over the Tokumaru Ramen Bar card image, obscuring the food photo and looking broken or stuck.",
+        "suggestion": "Show a proper skeleton/placeholder while loading, or hide the spinner once the image has loaded; ensure the spinner does not permanently cover content."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips row is cut off on the right (partial chip visible after Healthy), suggesting horizontal overflow without clear affordance.",
+        "suggestion": "Ensure horizontal scroll is obvious, add fade/peek for more chips, or wrap/adjust spacing so chips are fully visible."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third restaurant card in Fastest near you is partially clipped at the right edge of the screen.",
+        "suggestion": "Adjust card width, padding, or carousel peek so cards don’t appear cut off unintentionally."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Bottom restaurant card (pizza with -20% badge) is heavily cropped by the bottom navigation, so most of the card and any title/details below are not visible.",
+        "suggestion": "Add sufficient bottom padding/scroll inset so full cards can be scrolled into view above the tab bar."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Promotional banner and list sections compete for space while a spinner covers a key popular item, making the feed feel incomplete or broken.",
+        "suggestion": "Prioritize finished loaded states for above-the-fold popular items and avoid indefinite overlay spinners on primary cards."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 555,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.007094,
+    "reportedCost": 0.0040476,
+    "durationSeconds": 12.491712834000005
+  }
+}

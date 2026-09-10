@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-luna",
+  "provider": "openai",
+  "imageId": "img_16",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:40:47.390Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished, but horizontal content is visibly clipped and the fixed bottom navigation obscures part of the next restaurant card.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The category chip row overflows the viewport: the next chip is only partially visible on the right edge.",
+        "suggestion": "Contain the horizontal carousel within the layout, add deliberate horizontal scrolling behavior and spacing, or ensure the final visible chip is not awkwardly clipped."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The restaurant carousel extends beyond the right edge, leaving the third card and its title visibly cut off.",
+        "suggestion": "Use a properly implemented horizontal carousel with consistent card widths, intentional peeking, and no truncated text unless the clipping is clearly part of the interaction design."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlays the second restaurant card, hiding its lower content and making the page appear cut off.",
+        "suggestion": "Add sufficient bottom padding to the scrollable content or adjust the navigation overlay so the full card can be viewed above it."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 547,
+    "reasoningTokens": 307,
+    "estimatedCost": 0.0010186000000000001,
+    "durationSeconds": 6.768548415999976
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "Search bar placeholder is misspelled as \"Restarants, dishes, groceries\" instead of \"Restaurants, dishes, groceries\".",
+    "The third card in \"Fastest near you\" is clipped at the right edge and the restaurant name is truncated as \"Trattoria Piccol...\", making the text look broken.",
+    "The category filter row overflows horizontally with the rightmost chip cut off at the screen edge without a clear scroll affordance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.82 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

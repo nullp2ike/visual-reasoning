@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Under 'Tokumaru Ramen Bar', the meta row shows overlapping text: the delivery time range (e.g. '25–35 min') and the '€0 delivery' label are stacked/overprinted on the same line, resulting in a garbled, unreadable string like '25–3€0 delivery'.",
+    "The same meta row also appears to merge the delivery fee with the cuisine tag ('Ramen') without a clear separator, making the line harder to scan."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 explicitly describes the delivery fee and delivery time overlapping in the same meta row."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

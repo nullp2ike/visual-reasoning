@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:54:20.564Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several visual/layout issues: truncated restaurant names and cut-off category chips, partial off-screen cards, and a large empty gap under the promo banner.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you row, and the third card is only partially visible.",
+        "suggestion": "Ensure card titles wrap or use ellipsis consistently, and give horizontal carousels enough peek/padding so labels remain fully readable."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Category filter chips overflow the screen; 'Healthy' is clipped and further options are cut off on the right with no clear scroll affordance.",
+        "suggestion": "Add horizontal scroll with visible fade/peek of the next chip, or wrap/resize chips so all labels stay fully visible."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Large empty white space between the green promo banner and the 'Fastest near you' section makes the layout look broken or sparse.",
+        "suggestion": "Tighten vertical spacing between the banner and the next section header for a denser, more intentional layout."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Bottom restaurant card (pizza) is heavily cropped with only the top portion visible, which can look like a broken or incomplete section.",
+        "suggestion": "Ensure list cards have consistent height/safe area above the tab bar so key imagery and labels aren’t awkwardly cut off mid-scroll."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 395,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.0061340000000000006,
+    "reportedCost": 0.0030876,
+    "durationSeconds": 7.8530175839999865
+  }
+}

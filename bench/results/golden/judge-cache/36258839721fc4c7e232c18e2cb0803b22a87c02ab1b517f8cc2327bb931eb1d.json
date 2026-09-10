@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Under 'Tokumaru Ramen Bar' the delivery-time and delivery-fee texts are drawn on top of each other, producing garbled output ('25–3€0mdielivery • Ramen'). The metadata row is not laid out with proper spacing/flow.",
+    "The favourite heart button on the first 'Popular right now' card uses a white/light background with a dark outline, while the second card's heart button uses a dark background, creating inconsistent control styling.",
+    "The third card in 'Fastest near you' ('Trattoria Piccol…') has a much lighter/washed-out first card image compared to the other tiles, suggesting a missing or low-contrast image asset for 'Green Bowl Poké'."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the delivery fee and delivery time texts overlapping in the same metadata row."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

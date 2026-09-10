@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_11",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:31:43.189Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed. The main visual/content anomaly is a '−100%' discount badge on a restaurant card, which reads as a data or content error (a 100% discount is almost certainly unintended). A couple of minor polish issues were also noted.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza restaurant card in 'Popular right now' displays a '−100%' badge, implying the entire order is free. This is almost certainly a data error or misconfigured promotion, and it undermines trust in the displayed prices.",
+        "suggestion": "Validate promotion values before rendering; cap or hide discount badges above a sane threshold (e.g., >90%) and fix the underlying promo data so the correct discount percentage is shown."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The heart (favorite) icon on the Tokumaru Ramen Bar image sits directly on the photo without a contrasting backdrop, whereas the heart on the pizza card has a dark circular background — inconsistent treatment and potentially poor contrast on light photos.",
+        "suggestion": "Apply the same semi-transparent dark circular backdrop to all favorite icons on cards to ensure consistent styling and adequate contrast."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Delivery fee information is duplicated on the Tokumaru Ramen Bar card: a '€0 delivery' badge overlays the image while '€0 delivery' also appears in the metadata line below.",
+        "suggestion": "Show the free-delivery indicator only once (e.g., keep the badge and omit it from the metadata row) to reduce redundancy."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 750,
+    "estimatedCost": 0.058370000000000005,
+    "durationSeconds": 49.383814291000014
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Promo banner text is unreadable, white text on a pale mint background"],
+  "reportedIssues": [
+    "The green promotional banner uses white text ('3 free deliveries for you', 'Use code TALLINN3 at checkout · min. order €10') on a very light mint background, making it nearly illegible and failing WCAG contrast requirements.",
+    "The favourite heart buttons are inconsistent between the two 'Popular right now' cards: the first uses a white circular background with a dark outline heart, the second uses a dark/transparent circle with a white heart.",
+    "The second 'Popular right now' card (pizza) is cut off by the bottom navigation bar with no visible title, rating or metadata, making it look broken rather than a natural scroll cutoff.",
+    "In 'Fastest near you', the third card is clipped and its name is truncated mid-word ('Trattoria Piccol') with no ellipsis, and the delivery text is also cut at the screen edge.",
+    "The category filter row shows a sliver of an unnamed chip at the right edge, which reads as a rendering glitch rather than a scrollable list.",
+    "The notification bell's red dot indicator conveys new-notification state by colour/shape only with no text label."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.79 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

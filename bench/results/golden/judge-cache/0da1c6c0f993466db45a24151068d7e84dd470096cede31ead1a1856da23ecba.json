@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccol' in the 'Fastest near you' section is cut off mid-word. The card image is intentionally partially visible to hint at horizontal scrolling, but the text label beneath it is also clipped, making the name unreadable.",
+    "The last category filter pill (rightmost, partially visible) is cut off with no scroll indicator or affordance visible, making it unclear to users that the filter row is horizontally scrollable."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.62 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:01:15.281Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly functional, but there is a clear content/localization defect where a translation key is displayed as plain text instead of the intended title. One restaurant name is also truncated in the horizontally scrolling list, which is minor.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading shows the raw localization key 'home_feed.popular_title' instead of the translated user-facing label (e.g., 'Popular near you').",
+        "suggestion": "Update the localization file or string mapping so the correct translated title is rendered, and add a fallback to avoid showing raw keys."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' horizontal carousel, the third restaurant name 'Trattoria Piccol...' is truncated with an ellipsis, making the full name unreadable.",
+        "suggestion": "Increase card width, allow multi-line restaurant names, or show the full name on tap/title attribute to improve readability."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 478,
+    "reasoningTokens": 234,
+    "estimatedCost": 0.00343742,
+    "reportedCost": 0.00458628,
+    "durationSeconds": 5.047915500000003
+  }
+}

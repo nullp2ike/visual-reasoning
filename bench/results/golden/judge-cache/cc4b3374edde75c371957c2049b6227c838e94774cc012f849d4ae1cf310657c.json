@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The 'Pizza' category chip is shown as selected (dark/active), yet the listings below include poké, burgers, ramen and other non-pizza restaurants — the filter appears to have no effect on the displayed results.",
+    "The favorite heart button on the second 'Popular right now' card (pizza) is rendered as a dark circle with a dark outlined heart, unlike the white circular button on the ramen card above it. The icon nearly disappears against its own background.",
+    "Icon-only controls (notification bell with unread dot, favorite hearts, search icon) have no visible text labels, which may leave them unlabeled for screen readers."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 directly describes the Pizza category chip appearing selected while the feed shows all cuisines including non-pizza restaurants, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

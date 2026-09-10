@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The pizza card in 'Popular right now' displays a '-0%' badge, which represents a 0% discount and is meaningless/broken. This is likely a data error where a discount value failed to populate.",
+    "The favorite (heart) icons are styled inconsistently between cards: the Tokumaru Ramen card shows a white heart with no background, while the pizza card shows a heart on a dark circular background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the exact same defect: a discount badge displaying −0% on a pizza card, indicating a data population failure."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

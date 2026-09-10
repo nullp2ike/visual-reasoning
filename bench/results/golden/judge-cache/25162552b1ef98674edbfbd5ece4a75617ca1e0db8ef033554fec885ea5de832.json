@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The category row ends with an unlabeled partial gray pill at the right edge, making the final category look cut off rather than clearly indicating more horizontally scrollable options.",
+    "The third card in the “Fastest near you” carousel is visibly cut off, including its restaurant name and delivery information, with no trailing gutter at the screen edge.",
+    "The fixed bottom navigation overlays the next restaurant card in the feed, obscuring a substantial portion of its image in the current view."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.63 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:35:48.987Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed. The main visible defect is an incorrect active state in the bottom navigation bar: the 'Profile' tab is highlighted even though the user is clearly on the Home screen.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "styling",
+        "description": "The bottom navigation shows 'Profile' as the active (green) tab, but the displayed content is the Home screen (delivery address, search, promos, restaurant lists). The 'Home' tab appears inactive/gray, creating a misleading navigation state.",
+        "suggestion": "Highlight the 'Home' tab as active when the home feed is displayed, and ensure the active-tab state is bound to the current route rather than hardcoded."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The heart (favorite) icon on the Tokumaru Ramen Bar image is a light outline over a busy, mid-tone photo without a contrasting scrim, making it hard to see compared to the pizza card's heart which has a dark circular background.",
+        "suggestion": "Apply a consistent semi-transparent dark circular background behind all favorite icons on imagery to guarantee visibility and contrast."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 573,
+    "estimatedCost": 0.04952000000000001,
+    "durationSeconds": 26.24037720899994
+  }
+}

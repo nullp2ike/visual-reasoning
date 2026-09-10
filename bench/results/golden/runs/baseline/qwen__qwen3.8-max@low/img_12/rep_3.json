@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T13:19:00.986Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-designed, but there is a clear text overlap bug in the 'Popular right now' section where the delivery time and delivery fee strings collide, plus a horizontal clipping issue on the restaurant card row.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Under 'Tokumaru Ramen Bar' the metadata line shows overlapping text: '25–30 min' and '€0 delivery' are rendered on top of each other (e.g. '25–3€0 delivery'), making both pieces of information unreadable.",
+        "suggestion": "Fix the layout of the subtitle row so the time range, delivery fee, and category are separate non-overlapping elements (e.g. use a flex row with proper spacing/separators instead of absolutely positioned or negative-margin text)."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The 'Fastest near you' horizontal card list is clipped at the right edge: 'Trattoria Piccol...' is cut off mid-word with no visible scroll affordance or padding, which can look broken rather than intentionally scrollable.",
+        "suggestion": "Add right-edge padding plus a scroll indicator (gradient fade or partial next-card peek) so users understand the row is horizontally scrollable, and ensure card titles truncate with an ellipsis cleanly."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The promo code line 'Use code TALLINN3 at checkout · min. order €10' is small and low-contrast white-on-green, making the key offer details hard to scan.",
+        "suggestion": "Slightly increase font size/weight or contrast of the code and minimum-order text to improve legibility of the promotion terms."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1711,
+    "outputTokens": 993,
+    "reasoningTokens": 562,
+    "estimatedCost": 0.00938,
+    "reportedCost": 0.00826,
+    "durationSeconds": 32.934270833000014
+  }
+}

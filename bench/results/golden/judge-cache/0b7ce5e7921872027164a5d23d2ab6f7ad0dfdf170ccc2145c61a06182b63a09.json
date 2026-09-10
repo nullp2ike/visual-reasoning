@@ -1,0 +1,19 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Under the 'Tokumaru Ramen Bar' card, the metadata line shows overlapping text: the delivery time range '25–30 min' and the '€0 delivery' label are printed on top of one another, producing an unreadable garbled string ('25–3€0 delivery' / '30 min' intermixed). This is a text-overlap defect inside its own container, not edge clipping."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The report describes the delivery fee label overlapping the delivery time text in the same metadata line."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

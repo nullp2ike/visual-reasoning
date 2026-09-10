@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The lower restaurant card shows a badge reading '-0%', which looks broken or like a failed discount calculation rather than a meaningful offer.",
+    "The third 'Fastest near you' card title is truncated to 'Trattoria Piccol' with no ellipsis, so the restaurant name is cut off mid-word.",
+    "Delivery fee presentation is inconsistent: small cards use '€0.90 delivery' under the name while the popular card uses a floating '€0 delivery' pill on the image plus inline '€0 delivery' in the meta line."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 identifies the lower restaurant card's incorrect '-0%' discount badge."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

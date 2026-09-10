@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:53:27.797Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several layout and content issues: truncated restaurant names and delivery info, overlapping text on a card, and cut-off category chips and list items.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you section.",
+        "suggestion": "Allow wrapping, reduce font size, or use ellipsis with full name on tap; ensure cards have enough width or horizontal scroll shows full titles."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Delivery time text on Tokumaru Ramen Bar is garbled/overlapping as '25-3Ddelivery' instead of a clear '25-35 min delivery'.",
+        "suggestion": "Fix text layout so time range and 'delivery' don't collide; ensure proper spacing and no overflow on the card meta row."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Bottom restaurant card (pizza) is partially cut off by the bottom navigation bar, hiding title and details.",
+        "suggestion": "Add bottom padding/safe-area inset to the scroll content so the last card is fully visible above the tab bar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips row is cut off on the right (partial chip visible after Healthy).",
+        "suggestion": "Indicate horizontal scroll more clearly or ensure chips fit/wrap without clipping the edge awkwardly."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Third card in Fastest near you shows incomplete name and may confuse users about the restaurant identity.",
+        "suggestion": "Show full restaurant name or a clear truncated form with accessibility label for the full name."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 443,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006422000000000001,
+    "reportedCost": 0.0033756,
+    "durationSeconds": 11.468121874999998
+  }
+}

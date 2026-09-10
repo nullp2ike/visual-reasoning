@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:43:23.723Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed with clear hierarchy and consistent styling. The main visual defect is the 'Trattoria Piccol...' restaurant title being clipped at the right screen edge within the horizontally scrollable 'Fastest near you' carousel. Per the review guidelines, partially visible carousel items and bottom-viewport cutoff are treated as intended features, so no other defects are reported.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' horizontal carousel, the third card's title 'Trattoria Piccol...' is truncated by the right screen edge. While horizontal scroll affordance is expected, the title clipping can look like a rendering glitch to users.",
+        "suggestion": "Apply an ellipsis with a fixed max-width to carousel card titles, or add right-edge padding/fade mask so partially visible cards read as intentionally scrollable rather than broken."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 901,
+    "reasoningTokens": 676,
+    "estimatedCost": 0.008994,
+    "reportedCost": 0.007874,
+    "durationSeconds": 95.307131208
+  }
+}

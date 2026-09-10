@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers displays '€NaN delivery' instead of a valid price. NaN (Not a Number) indicates a data parsing or calculation error.",
+    "The rightmost restaurant card in the 'Fastest near you' section (Trattoria Piccol) is horizontally cut off, and the restaurant name appears truncated, making full information inaccessible."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the same defect: delivery fee displaying €NaN due to a data parsing or calculation error."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

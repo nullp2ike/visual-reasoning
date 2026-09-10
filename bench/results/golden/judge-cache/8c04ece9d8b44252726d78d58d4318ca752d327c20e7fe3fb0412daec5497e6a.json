@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The delivery fee for 'Smash Bros Burgers' is displayed as '€NaN delivery', indicating a malformed or missing numeric value.",
+    "The third 'Fastest near you' card is partially cut off on the right edge and its name 'Trattoria Picco...' is truncated.",
+    "The bottom of the second 'Popular right now' card (pizza image) is clipped by the bottom of the visible screen."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 explicitly describes the delivery fee displaying as '€NaN', matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

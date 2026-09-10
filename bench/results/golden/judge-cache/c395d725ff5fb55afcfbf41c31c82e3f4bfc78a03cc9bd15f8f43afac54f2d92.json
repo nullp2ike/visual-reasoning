@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The pizza card in the 'Popular right now' section shows a '-100%' badge, which is an unrealistic/impossible discount value and looks like a data or UI bug.",
+    "The second restaurant card in 'Popular right now' (pizza) is cut off at the bottom of the screen, making it unclear whether there is more content below.",
+    "The third card in the 'Fastest near you' carousel has its restaurant name truncated ('Trattoria Picco...'), so the full name is not readable in the static view.",
+    "The category pill list extends to the right edge with no visible scroll affordance, and 'Healthy' sits close to the screen edge, which may feel cramped."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 identifies the pizza card's −100% discount badge, matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

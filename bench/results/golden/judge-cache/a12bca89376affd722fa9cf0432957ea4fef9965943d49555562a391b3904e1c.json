@@ -1,0 +1,19 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "On the Tokumaru Ramen Bar card, the delivery-time and delivery-fee/cuisine metadata beneath the restaurant name overlap each other. Text such as “25–30 min” and “€0 delivery” is rendered on top of itself, making the details difficult to read."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.77 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

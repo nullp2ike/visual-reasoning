@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The Smash Bros Burgers card displays \"€NaN delivery\", exposing an invalid/unformatted price value to the user.",
+    "The restaurant/category carousels are cut off at the right screen edge; the Trattoria card and the next category chip appear as partial slivers, which looks visually abrupt and makes the horizontal-scroll behavior less obvious.",
+    "The second card in the Popular right now section continues underneath the fixed bottom navigation, leaving its content partially obscured at the bottom of the viewport."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.75 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

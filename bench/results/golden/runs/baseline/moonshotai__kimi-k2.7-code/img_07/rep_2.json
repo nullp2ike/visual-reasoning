@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:02:41.840Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page looks mostly polished, but one key visual/functionality issue stands out: a loading spinner is overlaid on the main promotional card, suggesting an image or content is still loading and partially obscures the UI. There are also minor layout/content truncation issues.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "A circular loading spinner is displayed on top of the Tokumaru Ramen Bar card, partially obscuring the food image. This suggests the image or card content is not fully loaded, creating a broken-looking state.",
+        "suggestion": "Ensure images and card data finish loading before removing the spinner, or show a skeleton/placeholder instead of an overlaid spinner on top of content."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' carousel ('Trattoria Picco...') is truncated at the right edge, cutting off part of the name and image.",
+        "suggestion": "Add sufficient right padding or use peek-layout spacing so the last visible card is not clipped at the screen edge."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The restaurant name 'Trattoria Picco...' is ellipsized, making the full name unreadable without tapping into the detail view.",
+        "suggestion": "Consider allowing two-line titles or a tooltip/expansion to show the full restaurant name when space is limited."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 401,
+    "reasoningTokens": 57,
+    "estimatedCost": 0.00314867,
+    "reportedCost": 0.00397028,
+    "durationSeconds": 5.5615450000000415
+  }
+}

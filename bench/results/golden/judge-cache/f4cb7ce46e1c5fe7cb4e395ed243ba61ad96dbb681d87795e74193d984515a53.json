@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "The third restaurant card in 'Fastest near you' ('Trattoria Piccol...') is cut off at the right screen edge, with its title truncated mid-word and no visible scroll indicator or peek-shadow to signal that the row is horizontally scrollable.",
+    "The category filter chip row ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') is clipped at the right edge with a partially visible chip, giving no visual cue that more categories exist.",
+    "The notification bell icon in the top-right has a red dot badge but no visible text label or apparent accessible name, and the badge state may not be announced to screen readers.",
+    "The 'Popular right now' card images bleed edge-to-edge while the 'Fastest near you' cards have rounded corners and padding, creating a slightly inconsistent card treatment between sections."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.60 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

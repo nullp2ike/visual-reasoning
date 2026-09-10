@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel, the third restaurant card is cut off at the right edge and its title is visibly truncated as 'Trattoria Piccol' rather than fully ellipsized or intentionally peeked.",
+    "The category chip row shows a tiny sliver of the next pill at the far right edge after 'Healthy', which can read as a rendering artifact.",
+    "The bottom visible popular item shows a '-100%' badge, which is visually prominent but ambiguous/unusual for a discount and may look like an incorrect promo value."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Issue 2 directly describes a '-100%' badge appearing on a popular item, matching the discount badge showing −100% defect."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

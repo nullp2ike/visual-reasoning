@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_09",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:29:53.891Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but one visible text truncation defect stands out: the restaurant name 'Tokumaru Ramen' is clipped mid-character to 'Tokumaru Ramei' despite ample empty space remaining before the rating on the same row.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The restaurant title in the 'Popular right now' section reads 'Tokumaru Ramei' — the final letter(s) of 'Ramen' are clipped mid-glyph with no ellipsis, even though there is plenty of whitespace between the title and the 4.8 rating on the right.",
+        "suggestion": "Fix the title container's width constraint or max-width so the full name renders; if truncation is genuinely needed, apply proper ellipsis truncation (text-overflow: ellipsis) instead of hard clipping mid-character."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 408,
+    "estimatedCost": 0.04127,
+    "durationSeconds": 35.28979704199999
+  }
+}

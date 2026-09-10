@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel the cards are not aligned on a shared baseline. The 'Smash Bros Burgers' card image starts ~20px lower than its neighbours and its title/delivery-fee text sit below those of 'Green Bowl Poké' and 'Trattoria Piccol…', producing a ragged, broken-looking row.",
+    "Card thumbnails in the same carousel are visually inconsistent: the 'Green Bowl Poké' image is shorter and rendered on a pale grey background while the other two use full-bleed dark photography, making the first card look unstyled/placeholder-like.",
+    "The favorite (heart) buttons are styled differently between the two 'Popular right now' cards: the Tokumaru Ramen card has a plain outlined heart with no backdrop, while the pizza card's heart sits on a dark circular chip.",
+    "Cards in the 'Fastest near you' row omit rating information that is shown for 'Popular right now' items, so comparable restaurant cards present different metadata."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the middle carousel card sitting lower than its neighboring cards, causing misalignment."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

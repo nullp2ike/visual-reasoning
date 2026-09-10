@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:04:20.210Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly polished, but there are two visible issues: a bottom restaurant card is clipped by the fixed navigation bar, and a restaurant name in the horizontal list is truncated.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last 'Popular right now' card (pizza) is cut off at the bottom by the fixed tab navigation bar, so its details and tappable area are partially hidden.",
+        "suggestion": "Add bottom padding or a scroll inset equal to the navigation bar height so the last card can scroll fully into view above the nav bar."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third card under 'Fastest near you' shows a truncated restaurant name ('Trattoria Picco...'), making the full name unreadable.",
+        "suggestion": "Show the full name on tap, expand card width if possible, or allow the text to wrap to a second line with truncation/ellipsis handling."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 2041,
+    "reasoningTokens": 1824,
+    "estimatedCost": 0.00929867,
+    "reportedCost": 0.01709028,
+    "durationSeconds": 14.142231499999994
+  }
+}

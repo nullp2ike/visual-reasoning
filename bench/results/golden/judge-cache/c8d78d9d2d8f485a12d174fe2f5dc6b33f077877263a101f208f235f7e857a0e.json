@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "Horizontally scrolling items are cut off abruptly at the right edge, including a category chip and the “Trattoria Piccol…” restaurant card/name.",
+    "The lower “Popular right now” card shows a “-0%” badge, which is meaningless and looks like a formatting/data error.",
+    "Small delivery/time metadata under restaurant cards uses light gray text that may be hard to read for low-vision users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.77 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

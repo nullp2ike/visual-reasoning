@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:54:10.226Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content issues: truncated restaurant names and category chips, cut-off cards at the edges, and incomplete visible content that make the page look broken.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' (Trattoria Piccol...) is heavily truncated on the right edge, cutting off both the image and the name.",
+        "suggestion": "Ensure horizontal carousels show partial peek of the next card with consistent padding, or fully contain cards within the viewport without clipping text."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated mid-word with no ellipsis, making it unreadable.",
+        "suggestion": "Apply text overflow ellipsis (or two-line clamp) so names remain legible when space is limited."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips overflow the screen; a partial empty chip is visible on the far right, suggesting more categories without a clear scroll affordance.",
+        "suggestion": "Add clear horizontal scroll indication or ensure chips wrap/fit without showing a cut-off empty pill."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza promo card is cut off at the bottom of the viewport, so the restaurant name and details below the image are not visible in the current frame.",
+        "suggestion": "Allow natural scroll and ensure list items aren’t awkwardly clipped; keep enough bottom padding above the tab bar."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery time badges sit over food images with varying contrast; on lighter plates the white pill can reduce legibility of the time text.",
+        "suggestion": "Add a subtle shadow or darker scrim behind time badges so text stays readable on all image backgrounds."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 474,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006608,
+    "reportedCost": 0.0035616,
+    "durationSeconds": 11.042374458000006
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_15",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:03:55.173Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found one major visual issue: the bottom navigation bar appears malformed with a stretched or misplaced active background element, and one minor content truncation issue.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom navigation bar has a malformed active state element: a wide gray rounded rectangle is positioned behind the search icon and appears to extend over the adjacent bookmark/orders icon, making the tab layout look broken and confusing the active state.",
+        "suggestion": "Resize and reposition the active tab indicator so it fits tightly around only the selected icon, ensure equal spacing and alignment for all four navigation items, and verify the background shape does not overlap neighboring icons."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The restaurant name \"Trattoria Piccol\" is truncated in the \"Fastest near you\" card, so the full name is not visible.",
+        "suggestion": "Use a text truncation style with ellipsis (e.g., \"Trattoria Piccol...\") or adjust the card width to accommodate the full name."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 1204,
+    "reasoningTokens": 950,
+    "estimatedCost": 0.00615992,
+    "reportedCost": 0.01343428,
+    "durationSeconds": 9.26585712499998
+  }
+}

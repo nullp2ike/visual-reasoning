@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_04",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:26:10.207Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed. The main defect found is a nonsensical discount badge showing '–0%' on a restaurant card, which indicates a data or formatting bug. A couple of minor cosmetic inconsistencies were also noted.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza restaurant card in the 'Popular right now' section displays a '–0%' discount badge, which is meaningless to the user (a zero-percent discount) and suggests a data or template bug where the discount value is missing or zero.",
+        "suggestion": "Hide the discount badge entirely when the discount value is 0 or null, or ensure the correct discount percentage is passed to the badge component."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) buttons on the two 'Popular right now' cards have inconsistent backgrounds: the first appears as a plain white heart with no visible circular background, while the second has a dark semi-transparent circular background.",
+        "suggestion": "Apply a consistent style (e.g., the same semi-transparent circular background) to all favorite buttons over card images to ensure visibility and visual consistency."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 484,
+    "estimatedCost": 0.045070000000000006,
+    "durationSeconds": 69.997135166
+  }
+}

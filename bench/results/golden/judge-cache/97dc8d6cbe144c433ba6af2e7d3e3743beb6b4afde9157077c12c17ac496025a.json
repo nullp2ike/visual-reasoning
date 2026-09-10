@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The pizza restaurant card in 'Popular right now' shows a '−100%' discount badge, which implies the order is completely free. This is almost certainly a data or calculation error (e.g., discount value misformatted).",
+    "In the 'Fastest near you' carousel, the third card's name is cut off as 'Trattoria Piccol' with no ellipsis, making the truncation look accidental rather than intentional.",
+    "At the right edge of the category chip row, a chip is clipped and appears empty (no visible label), which looks broken.",
+    "The second 'Popular right now' card (pizza) is cut off by the bottom navigation bar with no visible title or details, so the '−100%' badge floats without context."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.77 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

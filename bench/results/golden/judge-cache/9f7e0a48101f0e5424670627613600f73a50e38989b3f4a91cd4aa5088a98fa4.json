@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "Top-right header button appears as an empty light-grey circle with only a small red notification dot, with no avatar, profile or bell icon loaded inside",
+    "Favorite heart button treatment is inconsistent in Popular right now section: first card (Tokumaru Ramen Bar) shows a bare white outline with no background scrim, second card (pizza) shows heart inside a dark translucent circle",
+    "Scrollable rows clip at the right viewport edge with partially visible category chip and truncated restaurant name 'Trattoria Piccol' and image"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.77 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

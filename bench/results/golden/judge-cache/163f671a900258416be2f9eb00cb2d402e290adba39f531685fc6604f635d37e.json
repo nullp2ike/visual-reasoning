@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Under 'Tokumaru Ramen Bar', the info line is rendered as overlapping/garbled text (reads like '25–3€0rd€livery · Ramen'), where the ETA ('25–30 min'), delivery fee ('€0 delivery'), and tag ('Ramen') appear to collide in the same space instead of being separated.",
+    "The right-edge carousel card ('Trattoria Piccol...') is clipped mid-name at the viewport boundary.",
+    "The second 'Popular right now' card is partially cut off at the bottom of the visible area, showing only the top of the pizza image and '-20%' badge."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.77 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

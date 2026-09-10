@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:51:38.447Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content clipping issues: restaurant names and category chips are cut off, and the bottom of the feed is partially obscured by the tab bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third 'Fastest near you' card title is truncated to 'Trattoria Piccol' instead of showing the full restaurant name.",
+        "suggestion": "Allow multi-line titles, reduce font size, or ensure cards/text containers expand or ellipsize consistently with full names visible on tap."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The horizontal category filter row is clipped on the right; the next chip is only partially visible with no clear affordance that the list scrolls.",
+        "suggestion": "Add peek padding, a fade edge, or a clearer scroll indicator so users know more categories are available."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom restaurant card (pizza) is cut off by the fixed bottom tab bar, so part of the content is hidden.",
+        "suggestion": "Add bottom content inset/padding equal to the tab bar height so the last cards can scroll fully into view."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Delivery fee on the Green Bowl Poké card shows '€0.90 delivery', which may be unintended or inconsistent with the free-delivery promo messaging nearby.",
+        "suggestion": "Verify pricing copy and align promo/fee display so users are not confused by conflicting delivery costs."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 323,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.0057020000000000005,
+    "reportedCost": 0.0050492,
+    "durationSeconds": 8.892456959
+  }
+}

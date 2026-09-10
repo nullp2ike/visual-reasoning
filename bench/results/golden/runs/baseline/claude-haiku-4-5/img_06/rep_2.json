@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-4-5",
+  "provider": "anthropic",
+  "imageId": "img_06",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:05:06.489Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 major issues: incomplete content visibility in restaurant cards that prevents users from seeing full information.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The bottom card in 'Popular right now' section is cut off - the restaurant name and delivery details are not visible, only the food image is shown",
+        "suggestion": "Ensure the full card content is visible by adjusting the card height or scroll container, or display the restaurant name above/overlaid on the image"
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The third restaurant card in 'Fastest near you' section shows 'Trattoria Piccol' which appears to be a truncated name",
+        "suggestion": "Either show the full restaurant name with proper text wrapping/sizing, or implement a tooltip to display the complete name on hover/tap"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1854,
+    "outputTokens": 881,
+    "estimatedCost": 0.006259,
+    "durationSeconds": 12.145456833000061
+  }
+}

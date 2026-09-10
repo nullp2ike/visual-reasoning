@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The bottom navigation highlights “Profile” as the active tab, but the visible content is the home/discovery feed with delivery address, search, categories, and restaurant lists.",
+    "The category chip row has a partially visible blank/gray chip at the far right edge, which looks accidentally cut off.",
+    "Some horizontally scrolling restaurant cards in the “Fastest near you” section are clipped at the right edge, including truncated card content."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 directly describes the same defect: Profile tab highlighted in bottom nav while home/discovery feed content is displayed."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

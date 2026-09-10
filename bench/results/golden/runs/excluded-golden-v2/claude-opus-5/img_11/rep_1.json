@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_11",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:42:28.519Z",
+  "status": "ok",
+  "result": {
+    "summary": "The layout is largely sound, but the 'Popular right now' section contains an implausible discount badge and inconsistent favorite-button styling, plus one card image that renders noticeably washed out compared to its siblings.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza card in 'Popular right now' shows a discount badge reading '-100%', which implies the order is entirely free and is almost certainly a data/formatting error (or an unbounded discount value).",
+        "suggestion": "Validate discount values and cap them at a realistic range; display '-100%' only for genuine free items, otherwise render the correct percentage or a 'Free item' label."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Favorite (heart) buttons are styled inconsistently between the two 'Popular right now' cards: the first uses a white circle with a dark outlined heart, the second uses a dark circle with a white heart.",
+        "suggestion": "Use one consistent favorite-button treatment across all cards, ideally a semi-transparent dark or white circle with sufficient contrast on any image."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Green Bowl Poké' thumbnail in the 'Fastest near you' carousel renders on a very light gray background while sibling cards use dark imagery, making the white '15–25 min' badge low contrast and the card look unfinished.",
+        "suggestion": "Apply a consistent image overlay/gradient behind the duration badge so it maintains contrast regardless of image brightness."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 870,
+    "estimatedCost": 0.032185000000000005,
+    "durationSeconds": 52.86793550000014
+  }
+}

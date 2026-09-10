@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:51:38.447Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and overflow issues are visible: truncated restaurant names, clipped horizontal-scroll cards/chips, and a partially off-screen category control, which make the home feed look unfinished and harder to scan.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the “Fastest near you” row, the third restaurant title is cut off mid-word (“Trattoria Piccol”) with no ellipsis, so the name is unreadable.",
+        "suggestion": "Constrain card width consistently, apply single-line truncation with ellipsis (text-overflow: ellipsis), and/or allow the title to wrap to two lines so full names remain legible."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The rightmost “Fastest near you” card (image and delivery-time pill) is heavily clipped by the screen edge, and the section does not clearly communicate a horizontal carousel.",
+        "suggestion": "Add peeking/padding on the trailing edge, consistent card gutters, and optional scroll indicators or snap points so cut-off content feels intentional rather than broken."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips overflow the viewport; a partial empty/white chip is visible on the far right with no clear affordance that the row scrolls.",
+        "suggestion": "Implement a proper horizontal scroller with end padding, fade edge, or chevron so users understand more filters exist, and avoid rendering a half-visible empty chip."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The lower “Popular right now” pizza card is only partially visible (image and -20% badge) with no restaurant name or metadata yet in view, which can look like a broken/incomplete tile on first paint.",
+        "suggestion": "Ensure the first popular card fully fits above the tab bar on common viewport heights, or add slightly more bottom padding/safe-area spacing so key content isn’t obscured by the nav."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery-time badges sit over food imagery with light backgrounds; on bright plate photos (e.g. poke bowl) contrast and alignment look slightly uneven compared with darker burger/ramen cards.",
+        "suggestion": "Standardize badge contrast (stronger scrim or border), fixed positioning, and minimum contrast so labels stay readable on all thumbnail backgrounds."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 1253,
+    "reasoningTokens": 747,
+    "estimatedCost": 0.011282,
+    "reportedCost": 0.0082356,
+    "durationSeconds": 29.100921333000002
+  }
+}

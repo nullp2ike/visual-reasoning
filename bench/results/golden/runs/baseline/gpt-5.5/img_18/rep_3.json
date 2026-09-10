@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_18",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:24:13.139Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly coherent, but a few elements appear clipped or crowded, suggesting horizontal overflow/carousel and fixed navigation spacing issues.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlaps the restaurant list content. The second restaurant card is partially hidden behind the tab bar, making the card feel cut off.",
+        "suggestion": "Add sufficient bottom padding or safe-area spacing to the scrollable content so cards are not obscured by the fixed bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Several horizontally scrollable items are visibly cut off at the right edge, including the category chip row and the 'Fastest near you' restaurant cards. The far-right category chip appears as a blank partial pill, which looks visually broken.",
+        "suggestion": "Ensure partially visible carousel items still show enough content to communicate they are scrollable, or add spacing/snap behavior so clipped items do not appear as empty fragments."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third restaurant name in the 'Fastest near you' row is truncated at the right edge, making it hard to read.",
+        "suggestion": "Allow more card width, use proper text truncation with ellipsis, or ensure the card is fully visible when snapped into place."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Some secondary gray text, such as delivery fees and metadata, has relatively low contrast against the white background.",
+        "suggestion": "Use a slightly darker gray or stronger font weight to improve readability."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 681,
+    "reasoningTokens": 356,
+    "estimatedCost": 0.029485,
+    "durationSeconds": 15.871838125
+  }
+}

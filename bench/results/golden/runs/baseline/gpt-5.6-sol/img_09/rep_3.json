@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "imageId": "img_09",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:31:29.425Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished, but horizontally scrolling content is clipped awkwardly at the right edge, and the fixed bottom navigation obscures part of the restaurant feed.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The rightmost category chip and the third restaurant card in “Fastest near you” are cut off at the viewport edge. The restaurant name and delivery fee are also visibly truncated, making the layout look broken rather than intentionally scrollable.",
+        "suggestion": "Add trailing horizontal padding and adjust card widths or scroll snapping so partial items appear as deliberate carousel previews without clipping their text."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlays the lower restaurant card, hiding a substantial part of its image and content.",
+        "suggestion": "Add bottom content padding equal to the navigation bar and safe-area height so feed items can scroll fully above it."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 457,
+    "reasoningTokens": 261,
+    "estimatedCost": 0.022765,
+    "durationSeconds": 12.565316166000033
+  }
+}

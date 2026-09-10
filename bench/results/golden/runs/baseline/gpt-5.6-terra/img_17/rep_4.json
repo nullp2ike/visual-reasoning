@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_17",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:35:54.172Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well composed, but horizontally scrolling content is visibly clipped at the right edge, making cards and category pills look cut off rather than intentionally contained.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The horizontal restaurant carousel in “Fastest near you” is cut off on the right: the third restaurant card extends beyond the viewport, truncating its image and name (“Trattoria Piccol…”).",
+        "suggestion": "Implement the row as a clearly padded horizontal scroll container, or resize cards so whole cards fit within the viewport. Preserve a deliberate partial-card affordance with consistent right padding if horizontal scrolling is intended."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is also clipped at the far right, showing only part of an additional pill without a clear margin or scroll affordance.",
+        "suggestion": "Add consistent trailing padding and horizontal-scroll behavior/affordance, or limit the visible chips to fit the screen width."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second “Popular right now” restaurant card is abruptly obscured by the fixed bottom navigation, leaving its image/content visibly cut off at the bottom of the screen.",
+        "suggestion": "Add bottom content inset/padding equal to the bottom navigation height so scrolling can reveal the full final cards above the navigation."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 285,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.007042,
+    "durationSeconds": 4.292963457999984
+  }
+}

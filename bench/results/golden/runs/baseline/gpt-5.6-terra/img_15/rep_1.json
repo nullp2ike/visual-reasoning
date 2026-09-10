@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_15",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:35:28.690Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual issues: the bottom navigation is obstructed/clipped, and the second popular restaurant card is incomplete.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom navigation bar is cut off at the bottom of the screen, and the system gesture indicator overlaps the navigation icons. The search, orders, and profile icons are partially obscured and not fully visible.",
+        "suggestion": "Respect the bottom safe-area inset and increase the navigation bar's bottom padding/height so all icons sit above the gesture indicator and remain fully visible."
+      },
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The second card in the “Popular right now” section shows only a pizza image and favorite button; its restaurant name, rating, delivery information, and other card details are missing, leaving an unexplained blank area below the image.",
+        "suggestion": "Render the complete restaurant metadata beneath the image, matching the layout used for the Tokumaru Ramen Bar card."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 696,
+    "reasoningTokens": 480,
+    "estimatedCost": 0.011974,
+    "durationSeconds": 11.452827291999943
+  }
+}

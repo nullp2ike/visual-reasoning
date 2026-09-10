@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_18",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:33:36.850Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well composed, but the fixed bottom navigation appears to overlap and obscure scrollable restaurant content near the bottom of the screen.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The second card in the “Popular right now” section is cut off by the fixed bottom navigation bar. Its image/content continues underneath the navigation area, making the card’s lower portion inaccessible or visually hidden.",
+        "suggestion": "Add sufficient bottom padding/safe-area inset to the scrollable feed so the final visible content clears the fixed bottom navigation bar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal category and restaurant carousels end with partially visible pills/cards at the right edge, including an unlabeled partial category pill. While this may indicate horizontal scrolling, it reads somewhat clipped and incomplete.",
+        "suggestion": "Use a clearer carousel affordance, such as a fade gradient, peek treatment with consistent spacing, or an explicit horizontal-scroll indicator, and ensure partially shown category items remain recognizable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 471,
+    "reasoningTokens": 250,
+    "estimatedCost": 0.009274,
+    "durationSeconds": 9.737336624999996
+  }
+}

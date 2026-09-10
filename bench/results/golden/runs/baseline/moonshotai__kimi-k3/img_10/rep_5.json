@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:57:58.768Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly intact, but the 'Fastest near you' carousel shows an obviously duplicated restaurant card and several horizontally scrolling items are clipped at the right edge without a clear scroll affordance.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Two identical 'Green Bowl Poké' cards appear side-by-side in 'Fastest near you' with the same image, 15–25 min time, and €0.90 delivery fee, suggesting duplicated or incorrectly rendered data.",
+        "suggestion": "Deduplicate restaurant results and verify the list adapter/data source is not binding the same item twice."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third 'Fastest near you' card is cut off at the right edge and its title is truncated as 'Smash Bros Bu…', making the entry feel broken.",
+        "suggestion": "Add clear horizontal-scroll affordance, edge fade, or adjust card widths so partially visible items look intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row is clipped after 'Healthy' with the next chip only barely visible, so users may not realize more categories exist.",
+        "suggestion": "Increase peek width of the off-screen chip or add a gradient/arrow to indicate horizontal scrolling."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 517,
+    "reasoningTokens": 237,
+    "estimatedCost": 0.014061,
+    "reportedCost": 0.014061,
+    "durationSeconds": 22.388201624999986
+  }
+}

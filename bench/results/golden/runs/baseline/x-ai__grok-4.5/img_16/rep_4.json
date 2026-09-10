@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:54:11.792Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and truncation problems hurt readability: category chips and restaurant cards are cut off, names and prices overflow or clip, and section content feels cramped at the edges.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated with no ellipsis or wrapping in the Fastest near you row.",
+        "suggestion": "Allow 2-line names, shrink type, or add ellipsis so full names remain readable."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Horizontal category chips overflow the viewport; 'Healthy' is partially cut off and further options are hidden without a clear scroll affordance.",
+        "suggestion": "Ensure horizontal scroll with peek of the next chip, or wrap/resize chips so all primary filters are discoverable."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Fastest near you cards are clipped on the right; the third card is only partly visible with no strong indication of more content.",
+        "suggestion": "Add consistent card peek, snap scrolling, or padding so users can see and reach additional restaurants."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Popular right now pizza card is cut off at the bottom by the tab bar, hiding part of the image and any title/meta below.",
+        "suggestion": "Add bottom content inset/padding equal to the tab bar height so cards aren’t obscured."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Delivery fee under Green Bowl Poké shows '€.90 delivery' with a missing leading zero/digit formatting.",
+        "suggestion": "Format currency consistently as €0.90 (or local equivalent) across all cards."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Promo banner and section spacing feel tight against rounded card edges; text and CTAs sit close to boundaries on smaller widths.",
+        "suggestion": "Increase internal padding and inter-section spacing for clearer hierarchy and touch targets."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 424,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006308,
+    "reportedCost": 0.0032616,
+    "durationSeconds": 10.813555292000004
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T12:33:43.536Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: a major data display bug showing €NaN delivery and a minor layout overflow on a restaurant name.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Smash Bros Burgers shows '€NaN delivery' instead of a valid delivery fee, indicating a failed number format or missing price.",
+        "suggestion": "Handle null/invalid delivery fees with a fallback (e.g. 'Free' or a real amount) and never render NaN."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The restaurant name 'Trattoria Piccol' is cut off at the right edge of its card.",
+        "suggestion": "Allow the title to wrap to two lines or truncate with an ellipsis so the name stays fully readable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 211,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1920,
+    "estimatedCost": 0.005189999999999999,
+    "reportedCost": 0.00231,
+    "durationSeconds": 12.152916249999999
+  }
+}

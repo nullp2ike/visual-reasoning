@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "Top-right profile/avatar area shows a plain gray circle with only a red dot, looking like a missing or unloaded avatar image.",
+    "The 'Fastest near you' carousel is clipped at the right edge, with 'Trattoria Piccol...' cut off mid-name and the card partially off-screen.",
+    "The category chip row is also cut off at the right edge after 'Healthy', making the filter list look incomplete.",
+    "The large green promo banner has decorative shapes that slightly crowd the right side and reduce visual balance near the CTA area."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.78 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

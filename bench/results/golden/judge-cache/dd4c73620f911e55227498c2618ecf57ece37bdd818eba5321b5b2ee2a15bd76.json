@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The promotion badge on the lower restaurant card displays “−0%,” which is nonsensical and looks like a data or formatting error.",
+    "The rightmost category chip is visible only as an empty sliver at the screen edge, making the category row look accidentally clipped.",
+    "The third card in the “Fastest near you” carousel is cut off at the right edge, including its restaurant name and delivery information."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.77 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

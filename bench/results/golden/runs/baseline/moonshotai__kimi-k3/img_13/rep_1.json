@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_13",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:58:38.264Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly coherent, but several horizontally scrolling elements are visibly clipped at the screen edges, making content look cut off; the top-right circular control also appears blank except for a red dot.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Fastest near you' carousel clips the third card on the right, truncating the restaurant name to 'Trattoria Piccol...' and cutting off the image/delivery details.",
+        "suggestion": "Add clearer carousel affordance, reduce card width, or ensure edge truncation looks intentional with fade/gradient and consistent peek spacing."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row shows a barely visible sliver of the next chip after 'Healthy' at the right edge, which looks like accidental overflow.",
+        "suggestion": "Use consistent horizontal padding and either hide the partial chip or make the peek amount deliberate and balanced."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In 'Popular right now', the second promo card is cut off by the bottom of the viewport/nav area, showing only the pizza image top and making the section feel unfinished in a static view.",
+        "suggestion": "Ensure the first fully visible card fits above the fold or add spacing/scroll hint so partial content reads as intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "missing-element",
+        "description": "The top-right circular control appears mostly empty/light gray with only a tiny red dot, so its purpose or icon is unclear.",
+        "suggestion": "Add a recognizable profile/notification icon or avatar and align the badge consistently."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 693,
+    "reasoningTokens": 352,
+    "estimatedCost": 0.016701,
+    "reportedCost": 0.016701,
+    "durationSeconds": 36.048867042
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_07",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:25:50.663Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 visual issues: a loading overlay appears stuck on a restaurant card, the bottom navigation overlaps feed content, and some horizontal carousel content is clipped at the right edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "A loading spinner is visible in the center of the Tokumaru Ramen Bar image even though the rest of the card content appears loaded. This makes the card look unfinished or stuck in a loading state.",
+        "suggestion": "Hide the spinner once the image/card has loaded, or show a proper skeleton/loading state for the entire card until loading completes."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom navigation bar appears to cover part of the restaurant feed. The next restaurant image is visible behind/under the fixed tab bar, making the content feel clipped.",
+        "suggestion": "Add sufficient bottom padding or safe-area spacing to the scrollable content so cards do not sit underneath the fixed bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Items in horizontal rows are cut off at the right edge, including the category pills and the third card in the 'Fastest near you' section. This may be intentional carousel peeking, but it looks slightly abrupt because content and text are visibly truncated.",
+        "suggestion": "If this is a carousel, ensure the partial item is intentionally spaced and not cutting important text. Otherwise, adjust card widths/margins so visible items fit cleanly within the viewport."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 828,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.033895,
+    "durationSeconds": 15.473573500000013
+  }
+}

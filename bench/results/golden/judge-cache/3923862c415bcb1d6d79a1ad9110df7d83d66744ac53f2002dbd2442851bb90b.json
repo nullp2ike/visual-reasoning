@@ -1,0 +1,25 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "Cards in the 'Fastest near you' carousel are not vertically aligned: the Green Bowl Poké image starts higher and is shorter than the Smash Bros Burgers card, so the time badges, restaurant names and delivery prices sit on different baselines across the row.",
+    "The Green Bowl Poké thumbnail has a light/grey background while the other two thumbnails use dark food photography, making the row look visually inconsistent.",
+    "'Trattoria Piccol...' name and its card are cut off at the right screen edge with no ellipsis or peek indicator, so users may not realize the row scrolls.",
+    "The second 'Popular right now' card (pizza) is abruptly clipped by the bottom navigation bar; its name, rating and metadata are not visible and there is no bottom padding for the fixed nav.",
+    "Favorite (heart) icons are styled inconsistently: the ramen card has a plain white outline heart while the pizza card's heart sits inside a dark circular button.",
+    "Tokumaru Ramen Bar shows '€0 delivery' twice — once as an overlay badge on the image and again in the metadata line.",
+    "The category filter chips row is cut off at the right edge and the notification bell's red dot has no visible label/count, so its meaning relies on color alone."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.68 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 4, 5, 6]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The bottom navigation highlights “Profile” as the active tab, but the visible screen content is the home/restaurant feed. This creates a clear navigation state mismatch.",
+    "The lower restaurant card is partially covered by the fixed bottom navigation bar, making the card content look cut off at the bottom of the screen.",
+    "The horizontal category row shows a clipped, mostly blank pill on the far right. It looks like a broken or empty category item rather than an intentional scroll hint.",
+    "In the “Fastest near you” carousel, the third restaurant card is heavily clipped at the right edge, including its image and restaurant name. This can look visually broken if horizontal scrolling is not obvious."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.82 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

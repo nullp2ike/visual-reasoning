@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_07",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:28:34.544Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed. The main visual defect is a loading spinner stuck in the center of the 'Tokumaru Ramen Bar' hero image in the 'Popular right now' section, suggesting the image failed to finish loading or the loading indicator was never dismissed.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "A loading spinner is displayed on top of the 'Tokumaru Ramen Bar' card image even though the underlying image appears rendered, indicating a stuck/orphaned loading state or an image that never resolved.",
+        "suggestion": "Ensure the loading indicator is removed once the image load completes (or fails), and provide a fallback placeholder image with retry logic on load failure."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 333,
+    "estimatedCost": 0.037520000000000005,
+    "durationSeconds": 32.51351679199998
+  }
+}

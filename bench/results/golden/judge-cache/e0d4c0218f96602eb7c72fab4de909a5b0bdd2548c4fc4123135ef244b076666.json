@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "The fixed bottom navigation appears to overlay the content. The second restaurant card is cut off behind the bottom nav, which can make content feel hidden or inaccessible.",
+    "Several horizontal carousel items are partially clipped at the right edge, including the category chip row and the 'Fastest near you' restaurant cards. While this may be intentional, it looks slightly abrupt and unfinished.",
+    "The third item in the 'Fastest near you' carousel is visibly cut off, including the restaurant name, making the text hard to read in the current viewport.",
+    "Some secondary text, such as delivery fees and inactive bottom navigation labels, uses light gray that may be low contrast on a white background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.60 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

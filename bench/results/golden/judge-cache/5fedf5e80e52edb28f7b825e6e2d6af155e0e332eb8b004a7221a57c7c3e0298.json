@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Text corruption in Tokumaru Ramen Bar section showing '25-35Ⅲdelivery' with invalid Roman numeral character (Ⅲ) instead of 'min', making delivery time information unclear",
+    "Third restaurant card in 'Fastest near you' section (Trattoria Piccol) is cut off on the right side with truncated restaurant name and incomplete information display"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 describes delivery fee and time text merged together ('25-35Ⅲdelivery'), indicating overlapping text where fee and time information are conflated."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:52:37.912Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual and layout problems: truncated restaurant names, a loading spinner stuck over content, cut-off category chips and cards, and partial bottom content.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you row.",
+        "suggestion": "Allow multi-line titles, reduce font size, or ensure cards have enough width/ellipsis handling so full names are readable."
+      },
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "A large circular loading spinner is overlaid on the Tokumaru Ramen Bar hero image, blocking the main visual of a featured item.",
+        "suggestion": "Hide the spinner once the image has loaded, or show a proper skeleton/placeholder that does not obscure the final content."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips on the right (after Healthy) are clipped by the screen edge, implying incomplete horizontal scroll affordance.",
+        "suggestion": "Add consistent end padding and a clearer scroll indicator so users know more categories exist off-screen."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom restaurant card (pizza with -20%) is heavily cropped by the bottom navigation, so most of the item is not visible.",
+        "suggestion": "Add bottom content padding equal to the tab bar height so cards can scroll fully into view above the nav."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Fastest near you cards show only partial third card, with harsh crop and no strong peek/fade cue for horizontal scrolling.",
+        "suggestion": "Use consistent card peek width and optional edge fade so the carousel scrollability is obvious."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 451,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.00647,
+    "reportedCost": 0.0034236,
+    "durationSeconds": 12.227717291000008
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "A dark rounded horizontal bar is drawn across the bottom navigation, overlapping/obscuring the search and bookmark (saved) icons, making those tabs unreadable and likely hard to tap accurately.",
+    "Bottom navigation tab labels (e.g. Home, Search, Saved, Profile) are missing or cut off — only icons are visible, so destinations are ambiguous for screen-reader and sighted users alike.",
+    "The favorite (heart) button styling is inconsistent between the two 'Popular right now' cards: one has a white circular background with a dark outline heart, the other has a dark circle with a white heart.",
+    "The second 'Popular right now' card (pizza) shows no restaurant name, rating, delivery time or cuisine metadata beneath its image, unlike the Tokumaru Ramen Bar card above it."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0, 1],
+        "reasoning": "Reports 0 and 1 describe the bottom navigation being obscured by an overlapping bar and having labels cut off, respectively."
+      }
+    ],
+    "extraReportedIndexes": [2, 3]
+  }
+}

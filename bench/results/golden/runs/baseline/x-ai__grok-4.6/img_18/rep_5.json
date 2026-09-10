@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:29:33.227Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen has several layout and content overflow problems: category chips and restaurant cards are clipped, names are truncated, and the last popular listing is cut off by the tab bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card in the 'Fastest near you' row (Trattoria Piccol…) is clipped on the right, cutting off both the image and the restaurant name.",
+        "suggestion": "Ensure horizontal cards have enough trailing padding or fade so names and images are fully visible, or allow the row to scroll with a complete last card peek."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The second popular restaurant card (pizza with -20%) is cut off at the bottom by the tab bar, so the restaurant name, rating, and delivery details are not visible.",
+        "suggestion": "Add bottom padding/safe-area inset to the scroll content so cards sit fully above the tab bar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chips overflow the right edge (Healthy is partially cut off), which can look unfinished if scrolling is not obvious.",
+        "suggestion": "Add a right fade, extra padding, or a visible scroll affordance so the last chip is not abruptly clipped."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated without a full readable title.",
+        "suggestion": "Allow two-line titles or a slightly smaller type size so names remain complete on standard phone widths."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 398,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.0061519999999999995,
+    "reportedCost": 0.003464,
+    "durationSeconds": 56.954741750000004
+  }
+}

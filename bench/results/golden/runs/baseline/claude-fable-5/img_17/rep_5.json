@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:53:19.970Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-composed, but there are a few visual/consistency problems: the bottom navigation highlights the wrong tab, a restaurant name is truncated without ellipsis handling, and a category chip is awkwardly clipped at the screen edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom navigation bar shows 'Profile' as the active (highlighted green) tab, but the screen displayed is clearly the Home feed. The 'Home' tab appears inactive/gray.",
+        "suggestion": "Correct the active-state logic so the tab corresponding to the currently displayed screen (Home) is highlighted."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "In the 'Fastest near you' carousel, the third restaurant name 'Trattoria Piccol' is cut off mid-word at the screen edge without a visible ellipsis, making it look broken rather than intentionally scrollable.",
+        "suggestion": "Apply text truncation with an ellipsis within the card width, or ensure the card peeks in a way that makes horizontal scrolling obvious."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row shows a partially clipped, empty-looking pill at the far right edge after 'Healthy', with no visible label, appearing as a stray UI fragment.",
+        "suggestion": "Adjust chip spacing/peek amount so a portion of the next chip's label is visible, signaling scrollability instead of looking like a rendering glitch."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery time badges ('15-25 min', '20-30 min') overlap the food images inconsistently — the third card's badge is partially cut off by the screen edge along with the card.",
+        "suggestion": "Ensure badges remain fully within their card bounds and that partially visible cards clip cleanly at consistent points."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 752,
+    "estimatedCost": 0.05734,
+    "durationSeconds": 13.942899791000004
+  }
+}

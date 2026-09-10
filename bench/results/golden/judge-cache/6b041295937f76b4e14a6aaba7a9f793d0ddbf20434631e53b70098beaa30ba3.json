@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The delivery fee for “Smash Bros Burgers” displays as “€NaN delivery”, indicating a broken or missing numeric value being rendered to the user.",
+    "Several horizontal carousel items are cut off at the right edge, including the category pill after “Healthy” and the third restaurant card in “Fastest near you”. This may be intentional scrolling behavior, but visually it looks abrupt and unfinished."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.81 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

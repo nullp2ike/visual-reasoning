@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you section, making the full name unreadable.",
+    "The pizza card shows a '-100%' badge, which looks broken or incorrect as a discount label (implies free or data error).",
+    "The rightmost category chip ('Healthy') is clipped by the screen edge with no clear affordance that more categories exist beyond the visible row.",
+    "Delivery fee and metadata text under restaurant cards uses very light gray, which may reduce readability especially on non-retina or bright displays."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 directly describes a '-100%' badge on a card appearing broken or incorrect, matching the expected defect of a discount badge showing −100%."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3]
+  }
+}

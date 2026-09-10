@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The 'Pizza' category chip is shown as active/selected, yet the listings below are poké, burgers, pasta and ramen — the filter appears not to be applied to the results.",
+    "In the 'Fastest near you' carousel the third card ('Trattoria Piccol…') and its delivery price are hard-cut at the right screen edge with no ellipsis or visual affordance, making the text look broken rather than scrollable.",
+    "Favorite (heart) buttons are styled inconsistently: the first card uses a white circular background with a dark outline heart, while the second uses a dark/transparent circle with a white heart.",
+    "The category chip row is clipped at the right edge showing only a thin sliver of the next chip, giving the impression of a rendering glitch.",
+    "The second 'Popular right now' card is cut off by the bottom navigation bar with no name, rating or metadata visible, so it reads as an incomplete card.",
+    "Icon-only controls (notification bell, favorite hearts) have no visible text label; if accessible labels are also missing, screen-reader users cannot identify them."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes Pizza category appearing selected while the feed shows non-pizza cuisines, indicating the filter is not applied."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

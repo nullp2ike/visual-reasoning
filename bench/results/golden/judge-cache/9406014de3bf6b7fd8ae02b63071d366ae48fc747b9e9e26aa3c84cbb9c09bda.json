@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "Category filter 'Pizza' is selected but displayed restaurants are non-pizza (Green Bowl Poké, Smash Bros Burgers, Tokumaru Ramen Bar)",
+    "Third card in 'Fastest near you' shows restaurant name cut off mid-word as 'Trattoria Piccol' without ellipsis",
+    "Favorite heart icon styling is inconsistent in 'Popular right now' - Tokumaru Ramen Bar heart has no background circle while the pizza card below has a dark circular background"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.74 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

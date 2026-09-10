@@ -1,0 +1,25 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section heading displays the untranslated key 'home_feed.popular_title' instead of a human-readable title.",
+    "The third 'Fastest near you' card (Trattoria Piccol…) is clipped on the right, cutting off the restaurant name and part of the image.",
+    "The last featured restaurant card is cut off at the bottom by the tab bar, hiding most of the pizza image and any details below it.",
+    "The category chip row is clipped on the right (partial 'Healthy' chip and a cut-off next chip).",
+    "Restaurant names in the fastest-near-you row wrap or truncate unevenly (e.g. 'Trattoria Piccol')."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.91 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

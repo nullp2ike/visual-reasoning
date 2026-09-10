@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "The last restaurant card in 'Fastest near you' is cut off so the name reads 'Trattoria Piccol' and the third card is only partially visible.",
+    "Search placeholder is misspelled as 'Restarants' instead of 'Restaurants'.",
+    "The category filter row is clipped on the right; 'Healthy' is cut and the next chip is only a sliver.",
+    "The green promo banner overlaps/clips the category chips above it, hiding part of the last visible filter."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 directly describes the misspelling of 'Restaurants' as 'Restarants' in the search placeholder."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3]
+  }
+}

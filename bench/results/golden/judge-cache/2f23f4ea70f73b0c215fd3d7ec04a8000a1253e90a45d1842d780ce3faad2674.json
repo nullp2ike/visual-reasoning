@@ -1,0 +1,24 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant title 'Tokumaru Ramei' appears hard-clipped mid-word (likely 'Tokumaru Ramen'), with the final letter cut off and no ellipsis, making the text look broken.",
+    "In the 'Fastest near you' carousel, the third card's title 'Trattoria Piccol...' is cut off at the screen edge without an ellipsis, so the name reads as broken text rather than intentionally scrollable content.",
+    "A category filter chip at the far right of the chip row is cut off with only a sliver visible, giving little affordance that more categories exist.",
+    "The heart (favorite) icon on the Tokumaru Ramen card sits directly over a dark image without a contrasting background, unlike the pizza card below where it has a dark circular backdrop, creating inconsistent icon treatment."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.87 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

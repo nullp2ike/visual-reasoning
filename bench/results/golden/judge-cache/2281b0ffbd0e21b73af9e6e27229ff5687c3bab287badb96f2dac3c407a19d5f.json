@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The discount badge on the lower restaurant card shows “-0%”, which looks like an invalid or placeholder promotion value.",
+    "The bottom navigation bar overlaps the restaurant content; the lower card image is partially hidden behind it.",
+    "Some horizontally scrollable items are awkwardly clipped at the right edge, including a blank partial category pill and the third restaurant in “Fastest near you”."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.85 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "meta/muse-spark-1.3",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-03T19:36:08.267Z",
+  "status": "ok",
+  "result": {
+    "summary": "No critical visual breakage detected. The layout, navigation, and sections render correctly. Found 2 minor inconsistencies: uneven thumbnail fill in the fastest-near-you carousel and a questionable -100% promo badge.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The 'Green Bowl Poké' thumbnail in 'Fastest near you' shows a small centered illustration with large empty beige space, while neighboring cards are filled edge-to-edge, creating inconsistent visual weight.",
+        "suggestion": "Ensure all restaurant thumbnails use the same aspect ratio, scaling and cropping so images fill the card consistently."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The second card under 'Popular right now' shows a '-100%' badge which looks like an erroneous or placeholder promotion value.",
+        "suggestion": "Verify promotion data and display intended discount format, e.g. percentage off an item vs free delivery, to avoid confusing '-100%' labeling."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1739,
+    "outputTokens": 2637,
+    "reasoningTokens": 2343,
+    "cachedInputTokens": 1726,
+    "estimatedCost": 0.013381,
+    "reportedCost": 0.0114824,
+    "durationSeconds": 35.44087766600001
+  }
+}

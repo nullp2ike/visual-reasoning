@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "A loading spinner is overlaid on the center of the Tokumaru Ramen Bar image, indicating the image or card content is still loading or stuck.",
+    "The 'Fastest near you' horizontal list has the third item (Trattoria Piccol...) cut off at the right edge with truncated text.",
+    "The bottom pizza card under 'Popular right now' is cut off by the viewport, showing only partial content.",
+    "The heart (favorite) icons have inconsistent styling — one is a white outline on the ramen card and another appears dark filled on the pizza card."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.69 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

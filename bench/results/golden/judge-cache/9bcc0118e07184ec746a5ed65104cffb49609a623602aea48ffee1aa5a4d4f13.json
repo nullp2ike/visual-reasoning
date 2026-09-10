@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "Category chips and restaurant cards are clipped at the right edge of the viewport, which can look like broken truncation rather than intentional horizontal scrolling.",
+    "The bottom visible promo badge shows “-100%”, which is ambiguous and may read as an error rather than a discount/free offer.",
+    "Secondary metadata such as delivery fees, time ranges, and cuisine labels use small gray text that may be hard to read for low-vision users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 describes the promo badge displaying “-100%,” matching the expected discount badge defect."
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

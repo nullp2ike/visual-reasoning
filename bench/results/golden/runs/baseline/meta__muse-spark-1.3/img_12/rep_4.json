@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "meta/muse-spark-1.3",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-03T19:36:43.753Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found a major overlapping text defect under Tokumaru Ramen Bar where delivery time and fee collide, plus a minor clipped empty filter chip at the right edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Delivery info text under 'Tokumaru Ramen Bar' is garbled and overlapping, appearing as '25-30rdelivery' instead of separate readable time and fee.",
+        "suggestion": "Fix text stacking/overlap in that metadata line so it reads clearly, e.g. '25-30 min \u000420 delivery \u0000b7 Ramen' with proper spacing and no overlapping layers."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Rightmost category filter chip after 'Healthy' is cut off at screen edge and appears empty with no visible label.",
+        "suggestion": "Ensure the scrollable filter row renders labels correctly and add padding or fade indicator so partially visible chips do not look like empty broken pills."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1739,
+    "outputTokens": 1563,
+    "reasoningTokens": 1292,
+    "cachedInputTokens": 1726,
+    "estimatedCost": 0.008816500000000001,
+    "reportedCost": 0.0069179,
+    "durationSeconds": 125.863315084
+  }
+}

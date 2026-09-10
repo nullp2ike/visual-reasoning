@@ -1,0 +1,24 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "A thick dark horizontal bar runs across the bottom navigation area, overlapping/obscuring the middle nav icons (search and bookmark).",
+    "Bottom navigation items have no visible text labels — only icons are shown, and any labels appear to be cut off or omitted.",
+    "The second card in 'Popular right now' (pizza) shows the image and a −20% badge but has no restaurant name, rating, delivery time, or fee text; blank white space appears where the metadata should be.",
+    "Favorite (heart) buttons are styled inconsistently: white circular background on the ramen card versus dark background on the pizza card."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0, 1],
+        "reasoning": "Reports 0 and 1 describe the bottom navigation being obstructed and its labels missing or cut off, matching the expected bottom-edge overlap defect."
+      }
+    ],
+    "extraReportedIndexes": [2, 3]
+  }
+}

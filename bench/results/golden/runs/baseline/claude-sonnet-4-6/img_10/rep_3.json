@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_10",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:03:19.163Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 visual issues on the food delivery app page: one major layout truncation issue, one minor duplicate content issue, and one minor truncation issue.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' section is partially cut off — both the image and the restaurant name 'Smash Bros Bu...' are truncated at the right edge of the screen, giving an incomplete and broken appearance.",
+        "suggestion": "Ensure the horizontal scroll container has proper padding/snap points and that partial cards are visually indicated as scrollable (e.g., show ~20-30% of the next card) in a controlled and intentional way, or add a visible scroll affordance."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The 'Fastest near you' section shows two identical 'Green Bowl Poké' restaurant cards with the same delivery time (15-25 min) and the same delivery price (€0.90), suggesting duplicate data or a rendering/data fetch issue.",
+        "suggestion": "Verify the data source to ensure distinct restaurant entries are being returned and rendered. If these are two different branches, differentiate them with branch names or addresses."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza restaurant card is cut off at the bottom of the screen with no visible restaurant name or details, making it unclear if it is a scrollable item or broken content.",
+        "suggestion": "This is likely intentional scroll affordance, but ensure at least the restaurant name is partially visible to give users context about what they will see upon scrolling."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 420,
+    "estimatedCost": 0.011775,
+    "durationSeconds": 12.46722195799998
+  }
+}

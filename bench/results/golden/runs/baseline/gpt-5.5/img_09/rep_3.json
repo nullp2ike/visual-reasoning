@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_09",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:26:06.618Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally usable, but a few elements look visually clipped or obscured, mostly around horizontally scrolling content and the fixed bottom navigation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlaps the content. The second restaurant card in the “Popular right now” section is partially hidden behind the nav bar, making the card feel cut off.",
+        "suggestion": "Add enough bottom padding or safe-area spacing to the scrollable content so the last visible cards can scroll fully above the bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Several horizontal carousel items are visibly cut off at the right edge, including the category chips and the “Fastest near you” restaurant cards. This may be intentional, but the partial unlabeled chip/card can look broken.",
+        "suggestion": "Ensure horizontal lists have proper spacing, snapping, or a clearer affordance that they are scrollable. Avoid showing a tiny partial item with no readable label."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The restaurant name appears as “Tokumaru Ramei,” which looks like a typo or truncated version of “Tokumaru Ramen.”",
+        "suggestion": "Verify the restaurant name and either correct the text or apply proper truncation with an ellipsis if the full name cannot fit."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card title in “Fastest near you” is clipped at the right edge without a visible ellipsis, making it look abruptly cut off.",
+        "suggestion": "Use ellipsis truncation for partially visible carousel card titles or keep titles within the visible card bounds."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 736,
+    "reasoningTokens": 388,
+    "estimatedCost": 0.031135,
+    "durationSeconds": 11.75611275
+  }
+}

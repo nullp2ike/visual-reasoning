@@ -1,0 +1,19 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The category filter chips at the top have a 'Healthy' category cut off slightly on the right edge, but the instruction explicitly allows horizontally scrollable rows to have partially visible last items. Let's check for other issues: look at the top green banner where text overlaps or fits tightly. Actually, everything looks fairly standard except maybe the status bar icons overlapping slightly or just standard mobile UI. Let's review the bottom pizza card: '-100%' badge overlaps the top left corner of the pizza image nicely. Wait, let's look at the category filters: 'All', 'Pizza', 'Sushi', 'Burgers', 'Healthy' and a tiny bit of another one. That's allowed."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Report 0 explicitly mentions a '-100%' badge overlapping the top left corner of the pizza image, matching the discount badge showing −100% defect."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

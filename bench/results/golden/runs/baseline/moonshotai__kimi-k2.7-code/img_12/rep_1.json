@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:03:22.142Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly intact, but there is a clearly broken text label in the 'Popular right now' section that garbles the delivery-time and fee info for Tokumaru Ramen Bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The info line under 'Tokumaru Ramen Bar' reads '25-35Ddelivery • Ramen', which looks malformed: the time unit is missing/broken and 'delivery' is concatenated to an stray 'D'. This makes the card look glitchy and harder to read.",
+        "suggestion": "Fix the label formatting so it displays the correct delivery time and fee with proper separators/spacing, e.g., '25-35 min • delivery €0 • Ramen' or the localized equivalent."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom 'Popular right now' pizza card is partially cut off by the bottom navigation bar, hiding its restaurant name and details until the user scrolls.",
+        "suggestion": "Ensure the last card has enough bottom padding/margin so it can be fully scrolled into view above the navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 1999,
+    "reasoningTokens": 1726,
+    "estimatedCost": 0.00914117,
+    "reportedCost": 0.01979428,
+    "durationSeconds": 13.616522874999907
+  }
+}

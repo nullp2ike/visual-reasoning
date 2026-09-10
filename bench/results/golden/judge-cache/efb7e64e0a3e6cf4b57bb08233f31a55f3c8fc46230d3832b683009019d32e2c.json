@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "Third restaurant card in 'Fastest near you' section (Trattoria Piccol) is partially cut off on the right side, obscuring part of the restaurant name",
+    "Second restaurant card in 'Popular right now' section is incomplete - the card shows the image and '-100%' badge but the restaurant name, rating, delivery time, and other details are cut off below the visible viewport"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.67 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

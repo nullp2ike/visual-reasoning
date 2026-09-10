@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_12",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:01:26.718Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 issues, including a critical text overlap bug and layout cropping issues affecting the card list.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "Text overlap in 'Tokumaru Ramen Bar' card where '25-30' delivery time overlaps with '€0 delivery' text, making it unreadable ('25-3€0delivery')",
+        "suggestion": "Fix the text layout to ensure delivery time and delivery cost text elements do not overlap; add proper spacing or separate them into distinct lines"
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third card in 'Fastest near you' section (Trattoria Piccola) is cut off at the right edge of the screen, showing only partial content",
+        "suggestion": "Adjust horizontal scroll/carousel padding so cards are either fully visible or clearly indicate scrollability with a partial preview intentionally, and ensure text isn't truncated awkwardly"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The pizza restaurant card at the bottom of the screen is cut off by the bottom navigation bar, with no restaurant name or details visible",
+        "suggestion": "Add sufficient bottom padding/margin to the scrollable content area so cards aren't obscured by the fixed navigation bar"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 432,
+    "estimatedCost": 0.012402,
+    "durationSeconds": 7.302228166999994
+  }
+}

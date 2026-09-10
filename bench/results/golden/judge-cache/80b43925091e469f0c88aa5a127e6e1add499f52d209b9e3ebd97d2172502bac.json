@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccolo' is truncated prematurely in the horizontal list.",
+    "The '-100%' badge on the bottom item is ambiguous and potentially a data placeholder.",
+    "The 'min. order €10' text in the green banner is small and lacks high contrast."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 directly identifies the −100% badge as displaying on the bottom item, matching the expected discount badge defect."
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

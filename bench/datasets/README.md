@@ -4,10 +4,10 @@ A **dataset** is a directory of screenshots plus a description of what is wrong
 with each one. The benchmark asks every model under test the same question about
 every screenshot, then a judge checks the answers against these descriptions.
 
-Everything in this directory is gitignored except this README: no dataset is
-committed. Screenshots of a real product, and the model output that quotes them,
-stay on the machine that produced them, so bring your own — the format below is
-all a dataset needs.
+Datasets are tracked, so the ground truth and the runs graded against it are not
+one laptop away from being lost. The exception is `primary/`: screenshots of a
+real product, and the model output quoting them, stay on the machine that
+produced them, so it and its results are gitignored.
 
 ## Layout
 
@@ -115,9 +115,15 @@ or `visibility.config.ts` only — `BENCH_DATASET` is not consulted, since it
 usually names a screenshot dataset. See
 [`bench/visibility/README.md`](../visibility/README.md) for the full grammar.
 
-## No dataset ships with the repo
+## The datasets in this repo
 
-Both benchmarks need a dataset you supply. A first one can be small: a handful of
-screenshots, one `## <filename>` heading each, and at least one clean control for
-the screenshot bench. Point a run at it with `--dataset`, by id under this
-directory or by path to anywhere on disk.
+| Dataset             | Ground truth             | What it is                                                                                     |
+| ------------------- | ------------------------ | ---------------------------------------------------------------------------------------------- |
+| `golden`            | `issues_per_file.md`     | 18 screenshots, one seeded defect each plus a clean control. Default for the screenshot bench. |
+| `visibility-golden` | `visibility_per_file.md` | The same screens, labelled element by element for the visibility bench.                        |
+| `primary`           | `issues_per_file.md`     | Private product UI. Gitignored, so only present on the machine that captured it.               |
+
+Adding your own needs no more than a directory, a handful of screenshots, one
+`## <filename>` heading each, and at least one clean control for the screenshot
+bench. Point a run at it with `--dataset`, by id under this directory or by path
+to anywhere on disk.

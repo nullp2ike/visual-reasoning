@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_14",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:27:19.237Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly polished, but there are a few visible layout issues around clipped horizontal content and the fixed bottom navigation overlapping feed content.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation bar overlaps the restaurant feed. The second 'Popular right now' card is partially hidden behind the nav, making the lower portion of the card/image difficult to see.",
+        "suggestion": "Add sufficient bottom padding or safe-area inset to the scrollable content so cards can scroll fully above the bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Several horizontally scrollable sections are abruptly clipped at the right edge, including the category chips and the 'Fastest near you' restaurant cards. A partial chip/card is visible with no visual affordance that the row scrolls.",
+        "suggestion": "Add a fade/gradient edge, stronger scroll affordance, or adjust spacing so partially visible items look intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third restaurant in the 'Fastest near you' row is cut off, including its image and name, which reads only partially as 'Trattoria Piccol...'.",
+        "suggestion": "Ensure carousel cards have consistent visible widths and allow enough spacing so partially shown cards do not make text look unintentionally truncated."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 795,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.032905000000000004,
+    "durationSeconds": 17.091997957999993
+  }
+}

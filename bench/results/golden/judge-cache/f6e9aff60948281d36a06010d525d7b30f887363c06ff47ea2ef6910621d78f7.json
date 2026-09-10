@@ -1,0 +1,25 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel the third card ('Trattoria Piccol…') is hard-clipped by the viewport edge — the title is cut mid-word with no ellipsis and the card has no trailing gutter, so it reads as broken rather than as an intentional peek.",
+    "The pizza card shows a '-100%' discount badge, which implies a fully free item and looks like a data/formatting error (likely meant to be a smaller percentage or a '100% off delivery' label).",
+    "The two favorite (heart) buttons in 'Popular right now' use different treatments — the first is a white/light circle, the second a dark translucent circle — creating inconsistent visual language between identical controls.",
+    "Tokumaru Ramen Bar shows '€0 delivery' twice: once as an image overlay badge and again in the metadata row below the title.",
+    "Thumbnail treatments are inconsistent: the 'Green Bowl Poké' image has a light grey background while the neighbouring cards use dark, vignetted photography, making the row look unbalanced.",
+    "The category chip row is cut off at the right edge with a sliver of the next chip visible and no fade or padding, which reads as clipped content rather than a scrollable list.",
+    "Icon-only controls (notification bell with unread dot, heart/favorite buttons) have no visible text label, so their purpose and state rely solely on iconography."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 describes the pizza card's −100% discount badge and the same formatting problem."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3, 4, 5, 6]
+  }
+}

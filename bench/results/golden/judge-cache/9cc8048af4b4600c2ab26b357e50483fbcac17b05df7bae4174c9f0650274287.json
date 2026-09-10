@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' row is cut off at the right edge of the screen.",
+    "The bottom pizza card in 'Popular right now' is partially cut off with no restaurant name or details visible, giving an incomplete impression at the fold.",
+    "The heart/favorite icon on the Tokumaru Ramen card is white/outlined on a light area while the pizza card's heart is on a dark circular background, creating visual inconsistency between the two favorite buttons."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.53 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

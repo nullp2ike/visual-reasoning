@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel, the third card ('Trattoria Piccol') is cut off at the right screen edge with its name truncated mid-word and no visible scroll indicator or peek padding, making it appear broken rather than intentionally scrollable.",
+    "The category filter chips ('All', 'Pizza', 'Sushi', etc.) and the 'See all' links rely on color/weight alone in places, and the partially visible chip at the far right is clipped without indication that more categories exist.",
+    "The bottom navigation 'Profile' tab is highlighted green while the visible screen is the home/feed view, which may confuse users about the active section."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Reported issue 2 directly describes the Profile tab being highlighted while the home/feed view is displayed, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

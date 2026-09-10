@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_12",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:03:42.109Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual issues on the food delivery app page: one major layout/content overlap issue and one minor truncation issue.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Popular right now' section, the Tokumaru Ramen Bar listing shows overlapping text: '25-35 min delivery' text appears to be rendering on top of or mixed with delivery time information, making it difficult to read clearly. The delivery time and category text appear jumbled together.",
+        "suggestion": "Ensure proper spacing and line separation between the delivery time estimate and the restaurant category label. Use separate UI elements or add sufficient vertical padding between text lines."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third restaurant card in 'Fastest near you' section ('Trattoria Piccol...') has its name truncated without an ellipsis or proper overflow handling, cutting off mid-word.",
+        "suggestion": "Apply proper text overflow handling with ellipsis ('...') or adjust the card width/font size to ensure restaurant names are fully visible or gracefully truncated."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 290,
+    "estimatedCost": 0.009825,
+    "durationSeconds": 8.73923679200001
+  }
+}

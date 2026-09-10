@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you row, and the third card is partially off-screen without a clear way to see the full name.",
+    "The pizza card shows a green badge reading '-100%', which looks like a broken or incorrect discount label rather than a meaningful offer (e.g. 100% off or free item).",
+    "Category filter chips (All, Pizza, Sushi, Burgers, Healthy) overflow horizontally and the last chip is clipped at the right edge with no clear scroll indicator.",
+    "Delivery time pills on the Fastest near you cards sit over the images with heavy white fills that can clash with varied food photography and reduce visual polish.",
+    "Bottom navigation labels and icons rely mainly on color for the selected Home state; Search/Orders/Profile are low-contrast gray and may be harder to distinguish for some users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 describes the pizza card's green badge displaying “-100%,” matching the expected discount badge defect."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3, 4]
+  }
+}

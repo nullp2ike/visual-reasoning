@@ -1,0 +1,24 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers shows '€NaN delivery' instead of a numeric delivery fee, exposing a broken value/parsing error to the user.",
+    "The third card in 'Fastest near you' is cut off at the right screen edge and its title 'Trattoria Piccol…' is truncated mid-word without an ellipsis or padding, making the carousel look clipped rather than scrollable.",
+    "The pizza card under 'Popular right now' is abruptly cut by the bottom tab bar with no visible title, rating or fade, so the card appears broken rather than partially scrolled.",
+    "Favourite (heart) buttons are inconsistent: the first card uses a white circular background with a dark outline heart, the second uses a dark/transparent circle with a white heart.",
+    "Cards in 'Fastest near you' omit rating/cuisine metadata that 'Popular right now' cards show, creating an inconsistent information hierarchy.",
+    "Secondary text such as '€0.90 delivery' and the '25–35 min • €0 delivery • Ramen' row uses light grey on white, likely below 4.5:1 contrast."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the delivery fee displaying as €NaN instead of a numeric value."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

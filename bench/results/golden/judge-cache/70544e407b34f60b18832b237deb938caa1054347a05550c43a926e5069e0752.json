@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The 'Fastest near you' section's third card (Trattoria Piccolo) is cut off at the right edge of the screen, indicating horizontal scroll content is not properly contained or indicated.",
+    "Restaurant name 'Trattoria Piccol' appears truncated without ellipsis, making it look like a text/content error.",
+    "The 'Profile' bottom navigation icon is highlighted in green while the current screen content shown resembles the Home feed, creating a mismatch between highlighted nav state and displayed content.",
+    "The category filter row (Pizza, Sushi, Burgers, Healthy) is also clipped at the right edge, cutting off what appears to be an additional category option."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Issue 2 describes the Profile nav icon being highlighted while the Home feed content is displayed, which is the exact mismatch described in the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

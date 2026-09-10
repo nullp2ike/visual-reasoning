@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The rightmost restaurant card in the 'Fastest near you' section (Trattoria Piccol) is partially cut off on the right side of the screen, making the delivery time badge and restaurant image not fully visible",
+    "The category filter row has a partially visible category button on the far right that extends beyond the screen, indicating there's more content not shown",
+    "The bottom restaurant card (pizza image) is cut off at the bottom of the visible area, with incomplete content showing"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.59 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

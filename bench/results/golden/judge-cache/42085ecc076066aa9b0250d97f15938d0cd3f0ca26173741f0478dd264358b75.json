@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Under 'Tokumaru Ramen Bar' the metadata line shows overlapping text: '25–30 min' and '€0 delivery' are rendered on top of each other (e.g. '25–3€0 delivery'), making both pieces of information unreadable.",
+    "The 'Fastest near you' horizontal card list is clipped at the right edge: 'Trattoria Piccol...' is cut off mid-word with no visible scroll affordance or padding, which can look broken rather than intentionally scrollable.",
+    "The promo code line 'Use code TALLINN3 at checkout · min. order €10' is small and low-contrast white-on-green, making the key offer details hard to scan."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.77 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

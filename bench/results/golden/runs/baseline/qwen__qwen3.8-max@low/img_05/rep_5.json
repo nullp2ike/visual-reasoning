@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_05",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T13:16:06.402Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed, but the promotional banner has a serious contrast problem making its text nearly unreadable, and the horizontal restaurant carousel is cut off at the right edge without a clear scroll affordance.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "accessibility",
+        "description": "The '3 free deliveries for you' banner uses white text on a light mint-green background, resulting in very low contrast. The headline and the 'Use code TALLINN3 at checkout · min. order €10' subtext are difficult to read.",
+        "suggestion": "Use a darker green background or dark-colored text on the light banner to meet WCAG contrast ratios (at least 4.5:1 for body text)."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The 'Fastest near you' horizontal carousel cuts off the third card ('Trattoria Piccol...') at the right screen edge with truncated text and no visible scroll indicator or peeking affordance.",
+        "suggestion": "Add a subtle scroll hint (e.g., partial card peek with consistent padding, pagination dots, or a gradient fade) so users understand the row is horizontally scrollable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1711,
+    "outputTokens": 893,
+    "reasoningTokens": 590,
+    "estimatedCost": 0.00878,
+    "reportedCost": 0.00766,
+    "durationSeconds": 28.850589042000006
+  }
+}

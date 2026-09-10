@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-4-8",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:59:40.307Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is a food delivery app home screen that renders mostly well, with only minor visual issues related to text truncation on horizontally-scrolling cards.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' (Trattoria Piccol...) is cut off at the right edge with truncated text, which is expected for a horizontal scroll but can look broken if there's no visual scroll affordance.",
+        "suggestion": "Add a subtle gradient fade or partial peek that clearly signals horizontal scrolling, and ensure card names truncate cleanly with ellipsis."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The heart/favorite icons appear inconsistent: the ramen card uses a white circle with dark outline heart, while the pizza card uses a dark circle with white heart, creating visual inconsistency.",
+        "suggestion": "Standardize the favorite icon background and color treatment across all restaurant cards for consistency."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The bottom pizza card is partially cut off by the viewport/navigation bar, showing only the top portion.",
+        "suggestion": "Ensure adequate bottom padding so partially visible cards don't appear awkwardly clipped against the fixed navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 434,
+    "estimatedCost": 0.020720000000000002,
+    "durationSeconds": 6.875004750000022
+  }
+}

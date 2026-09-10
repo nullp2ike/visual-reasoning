@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_04",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:25:09.471Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 visual issues: one content error, one layout overlap, and minor clipping in horizontal carousels.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The discount badge on the lower restaurant card shows “-0%”, which looks like an invalid or placeholder promotion value.",
+        "suggestion": "Hide the badge when the discount is 0%, or display a meaningful promotion such as “€0 delivery” or “10% off”."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom navigation bar overlaps the restaurant content; the lower card image is partially hidden behind it.",
+        "suggestion": "Add enough bottom padding/safe-area inset to the scrollable content so cards can sit fully above the fixed bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Some horizontally scrollable items are awkwardly clipped at the right edge, including a blank partial category pill and the third restaurant in “Fastest near you”.",
+        "suggestion": "Adjust carousel spacing or snapping so partially visible items still look intentional, or show a clearer scroll affordance."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 753,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.031645,
+    "durationSeconds": 17.59801424999999
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "In the \"Fastest near you\" carousel the cards are not aligned on a shared baseline: the middle card (Smash Bros Burgers) image starts ~25px lower than the neighbouring cards, so its title and delivery-fee lines sit below those of the other cards, making the row look jumbled.",
+    "The first card's image (Green Bowl Poké) renders on a pale gray/white background while the other cards use dark photo-style backgrounds, and its time badge sits at a different vertical offset. It reads as a broken/placeholder image.",
+    "Favorite heart buttons are inconsistent: the Tokumaru Ramen Bar card shows a plain white outline heart with no background, while the card below has a heart inside a dark circular chip.",
+    "Secondary text such as \"€0.90 delivery\", \"25–35 min • €0 delivery • Ramen\" and the tab labels use light gray on white, which may fall below the 4.5:1 contrast requirement."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 explicitly describes the middle carousel card being vertically misaligned with the neighboring cards."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

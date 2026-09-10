@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The favorite/heart button on the second 'Popular right now' card (pizza) is rendered as a dark filled circle with a dark outline icon, unlike the white circular button with dark icon used on the Tokumaru Ramen Bar card. The icon nearly disappears against its own background, making it hard to see and tap confidently.",
+    "The promotional badge on the pizza card reads '-100%', implying the item is entirely free, which is almost certainly a data or formatting error (e.g., a discount value mis-scaled).",
+    "The 'Green Bowl Poké' thumbnail in the 'Fastest near you' carousel has a pale grey/white background while the neighbouring cards use dark, photographic backgrounds, breaking visual consistency across the row.",
+    "The Tokumaru Ramen Bar card shows '€0 delivery' twice — once as an overlay badge on the image and again in the metadata line beneath the title."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 identifies the promotional badge on the pizza card reading '-100%', matching the expected discount badge defect."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3]
+  }
+}

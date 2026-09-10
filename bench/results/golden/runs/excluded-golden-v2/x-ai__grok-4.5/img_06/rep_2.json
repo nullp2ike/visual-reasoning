@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_06",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:28:20.853Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 layout issues: truncated restaurant names in the Fastest near you carousel and incomplete bottom navigation labels.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated/cut off mid-word under the third card in Fastest near you, making the full name unreadable.",
+        "suggestion": "Allow multi-line titles, reduce font size, or ensure card width and text wrapping show the complete restaurant name."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Bottom tab bar shows incomplete or missing labels: Orders has no visible icon above it, and the Orders/Profile area looks misaligned or partially blank compared to Home and Search.",
+        "suggestion": "Ensure every tab has a proper icon and fully visible label, with consistent spacing and alignment across the tab bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 187,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005045999999999999,
+    "reportedCost": 0.001782,
+    "durationSeconds": 46.194876083999986
+  }
+}

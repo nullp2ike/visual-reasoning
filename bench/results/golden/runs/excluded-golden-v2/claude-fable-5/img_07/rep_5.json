@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_07",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:29:07.101Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page mostly renders correctly. The main visual defect is a loading spinner left visible on top of the Tokumaru Ramen Bar hero image, suggesting a stuck or unfinished image-loading state.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "A loading spinner is displayed in the center of the Tokumaru Ramen Bar card image even though the image behind it appears fully loaded, indicating a stuck or orphaned loading state.",
+        "suggestion": "Ensure the spinner overlay is removed once the image finishes loading (e.g., hide the loader on the image's onLoad event, and add a timeout/fallback so the spinner never persists indefinitely)."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The green promo banner's decorative circles are abruptly clipped at the banner's right edge, creating hard cut lines within the card.",
+        "suggestion": "Apply overflow clipping with matching rounded corners or reposition the decorative shapes so they blend smoothly instead of ending in sharp straight edges."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 457,
+    "estimatedCost": 0.04372000000000001,
+    "durationSeconds": 51.728158540999985
+  }
+}

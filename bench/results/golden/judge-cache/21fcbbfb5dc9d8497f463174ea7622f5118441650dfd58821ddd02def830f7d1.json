@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Restaurant cover image failed to load"],
+  "reportedIssues": [
+    "The first card in Popular right now (Tokumaru Ramen Bar) shows a broken-image placeholder instead of a restaurant photo.",
+    "The last restaurant in Fastest near you (Trattoria Piccol…) is clipped on the right, cutting off both the photo and the name.",
+    "The Healthy category chip is cut off at the right edge of the screen, so the last filter is only partially visible.",
+    "The pizza promo card at the bottom is overlapped by the tab bar, hiding the lower part of the image and content."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.59 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

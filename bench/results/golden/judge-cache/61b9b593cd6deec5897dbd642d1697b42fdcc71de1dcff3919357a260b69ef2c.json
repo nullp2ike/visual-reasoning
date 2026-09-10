@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The last restaurant card in “Fastest near you” (Trattoria Piccol…) is cropped so the name and image are cut off at the right edge.",
+    "The bottom restaurant card (pizza) is cut off by the tab bar, hiding the restaurant name, rating, and delivery details.",
+    "The pizza card shows a “-0%” badge, which looks like a broken or empty discount.",
+    "The category chips row is clipped on the right (Healthy is cut off and the next chip is only a sliver).",
+    "Restaurant names in the “Fastest near you” row wrap or truncate inconsistently (e.g. “Trattoria Piccol”)."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Issue 2 directly describes the pizza card showing a '-0%' badge as a broken or empty discount, matching the expected defect of a discount badge displaying −0%."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3, 4]
+  }
+}

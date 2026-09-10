@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_15",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:35:33.414Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished, but several horizontally scrolling elements and lower content are visibly clipped by the screen edges, making the layout look unfinished.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The category chip row is cut off on the right: a partial next chip is visible with no clear padding or indication that the row is intentionally horizontally scrollable.",
+        "suggestion": "Add consistent edge padding and an intentional horizontal-scroll affordance (such as a fade/peek treatment), or ensure the category chips fit within the viewport."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Fastest near you' restaurant carousel is visibly clipped at the right edge. The Trattoria card and its text are truncated, which makes the content appear broken rather than deliberately scrollable.",
+        "suggestion": "Use a clearly designed horizontal carousel with a partial-card preview and adequate text-safe widths, or display full cards in a vertically stacked/grid layout."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom navigation is partially obscured/cut off by the device bottom area. Its icons are only partly visible, and a dark horizontal system gesture indicator overlaps the navigation region.",
+        "suggestion": "Respect the device safe-area inset and add sufficient bottom padding so the full navigation bar and all icons remain visible above the system gesture area."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second 'Popular right now' restaurant card is cut off at the bottom of the screenshot, leaving only its image visible without corresponding restaurant details.",
+        "suggestion": "Ensure list/card spacing and viewport-safe scrolling make the next card's content accessible; if this is a fixed capture state, avoid presenting a partially clipped card as complete content."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 360,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.007942,
+    "durationSeconds": 5.0055714579999915
+  }
+}

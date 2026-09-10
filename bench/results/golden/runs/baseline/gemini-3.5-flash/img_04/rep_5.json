@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gemini-3.5-flash",
+  "provider": "google",
+  "imageId": "img_04",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T09:03:52.945Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found two minor visual and content issues relating to text truncation and an illogical badge value.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "A promotional badge on the pizza item displays a '-0%' discount, which is confusing and serves no purpose.",
+        "suggestion": "Hide the discount badge if the calculated discount percentage is zero."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The restaurant title 'Trattoria Piccolo' is truncated to 'Trattoria Piccol' at the edge of the card.",
+        "suggestion": "Implement proper text truncation with ellipsis or wrap the text to a second line."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1425,
+    "outputTokens": 887,
+    "reasoningTokens": 709,
+    "estimatedCost": 0.010120500000000001,
+    "durationSeconds": 5.082033917
+  }
+}

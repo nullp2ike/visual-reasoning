@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccol' is truncated/cut off at the end of the card in the 'Fastest near you' section.",
+    "The last category filter chip ('Healthy') is only partially visible and cut off at the right edge of the screen.",
+    "The second popular restaurant card (pizza) shows only a discount badge and image with no visible restaurant name, rating, or delivery info in the current viewport framing—name may be missing or pushed below."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe a restaurant name truncated mid-word without ellipsis on a card; issue 0 reports 'Trattoria Piccol' cut off, matching the pattern of 'Tokumaru Ramei' truncation."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

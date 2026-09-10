@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The favorite/heart button on the second 'Popular right now' card (pizza) is rendered as a dark heart on a dark circular background, making it nearly invisible, unlike the identical button on the ramen card which uses a white circle with a dark outline heart.",
+    "The promotional badge on the pizza card reads '-100%', implying a completely free order, which is almost certainly a data/formatting error (e.g., a discount value being misinterpreted or unbounded).",
+    "The 'Green Bowl Poké' thumbnail in the 'Fastest near you' carousel uses a light gray background while the neighboring cards use dark photographic backgrounds, creating visual inconsistency; the white '15–25 min' time badge also has weak contrast against that light thumbnail."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 directly describes a promotional badge showing '-100%' on the pizza card, identifying it as a data/formatting error."
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

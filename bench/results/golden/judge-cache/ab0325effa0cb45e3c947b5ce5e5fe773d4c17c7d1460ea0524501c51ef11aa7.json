@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The category filter chips row ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') is cut off at the right edge with a partially visible chip, giving no clear visual cue that the row is horizontally scrollable.",
+    "In the 'Fastest near you' carousel, the third card ('Trattoria Piccol...') is clipped mid-word at the right screen edge, and the card title is truncated without an ellipsis in a controlled way.",
+    "The restaurant name 'Tokumaru Ramen' in the 'Popular right now' section appears cut off ('Tokumaru Rameı') where it meets the rating block on the right, suggesting the title container does not reserve enough space or lacks ellipsis handling."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Issue 2 describes the exact same defect: 'Tokumaru Ramen' heading cut off mid-word ('Tokumaru Rameı') without ellipsis, caused by insufficient container space."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

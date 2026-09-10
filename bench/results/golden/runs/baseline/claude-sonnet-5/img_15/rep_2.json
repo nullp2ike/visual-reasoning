@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_15",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:01:44.251Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 4 issues: content is cut off at the right edge of the screen in multiple sections, and there is a bottom navigation bar element that appears malformed.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Fastest near you' horizontal scroll list cuts off the third restaurant card (Trattoria Piccolo) at the edge of the screen with no visual indication of scrollability",
+        "suggestion": "Add a partial peek of the next card with a gradient fade or scroll indicator to signal horizontal scrolling is available"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chips (All, Pizza, Sushi, Burgers, Healthy) are cut off at the right edge, showing a partially visible additional chip",
+        "suggestion": "Add a fade/gradient overlay at the edge or ensure consistent padding to indicate more categories are scrollable"
+      },
+      {
+        "priority": "major",
+        "category": "styling",
+        "description": "The bottom navigation bar's middle icon (search/reorder icon) appears as an unusual horizontal bar shape rather than a standard icon, inconsistent with the home and profile icons",
+        "suggestion": "Replace with a properly rendered, consistent icon matching the style of the other navigation icons"
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccolo' is truncated/cut off due to the card being cut at the screen edge",
+        "suggestion": "Ensure text truncation uses ellipsis or resize card layout so text isn't abruptly cut by the screen boundary"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 590,
+    "estimatedCost": 0.014772,
+    "durationSeconds": 6.699819374999962
+  }
+}

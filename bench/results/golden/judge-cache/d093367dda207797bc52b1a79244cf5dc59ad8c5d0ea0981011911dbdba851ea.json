@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The 'Fastest near you' section shows two identical 'Green Bowl Poké' entries with the same delivery time, price, and image, suggesting a duplication bug or placeholder data.",
+    "The third card 'Smash Bros Bu...' in the 'Fastest near you' row is cut off at the right edge of the screen, with truncated text and partial image visibility.",
+    "The pizza image/card at the bottom of the 'Popular right now' section is abruptly cropped by the bottom navigation bar, cutting off the restaurant name and details.",
+    "The category filter row (Pizza, Sushi, Burgers, Healthy) is cut off on the right edge, indicating more categories exist but there's no visual cue (like a fade or arrow) suggesting horizontal scrollability.",
+    "Generic placeholder-style food bowl icons are used for two different 'Green Bowl Poké' listings instead of distinct, realistic imagery."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0, 4],
+        "reasoning": "cosine 0.77 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

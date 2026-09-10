@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_11",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:42:46.997Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders mostly correctly, but the 'Popular right now' list has an inconsistent/low-contrast favorite button on the second card and a suspicious '-100%' discount badge. A minor image-styling inconsistency also appears in the 'Fastest near you' carousel.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The second promoted restaurant card shows a '-100%' discount badge, implying the order is entirely free. This is almost certainly a data/formatting error (e.g. a raw or miscalculated discount value) rather than a real offer.",
+        "suggestion": "Validate discount values before rendering and cap/format them sensibly (e.g. '-50%' or 'Free item'); suppress badges outside a plausible range."
+      },
+      {
+        "priority": "major",
+        "category": "styling",
+        "description": "The favorite (heart) button on the second 'Popular right now' card uses a dark/near-black circular background with a white outline heart, while the identical button on the card above uses a white circle with a dark outline. The inconsistent treatment makes the second heart hard to see against the dark image and looks broken.",
+        "suggestion": "Apply a single consistent favorite-button style (e.g. semi-transparent white circle with dark icon) across all restaurant cards, ensuring sufficient contrast over any image."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Green Bowl Poké' thumbnail in the 'Fastest near you' carousel has a light gray background while the neighbouring thumbnails use dark photographic backgrounds, so the row looks visually uneven and the white duration pill on it has weak contrast.",
+        "suggestion": "Normalize thumbnail treatment (consistent background/overlay gradient) and ensure the duration pill has a contrasting background on light images."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 771,
+    "estimatedCost": 0.02971,
+    "durationSeconds": 41.825151957999914
+  }
+}

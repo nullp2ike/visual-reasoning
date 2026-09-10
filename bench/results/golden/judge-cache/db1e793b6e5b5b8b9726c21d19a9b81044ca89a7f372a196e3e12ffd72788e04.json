@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Text rendering issue in 'Tokumaru Ramen Bar' section - the text appears corrupted showing 'Drdellvery' instead of properly formatted delivery information",
+    "The third restaurant card 'Trattoria Piccol' in the 'Fastest near you' section is partially cut off on the right side, making the restaurant name and details incomplete",
+    "The bottom restaurant card (pizza with -20% discount) is partially cut off at the bottom of the visible area"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.64 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

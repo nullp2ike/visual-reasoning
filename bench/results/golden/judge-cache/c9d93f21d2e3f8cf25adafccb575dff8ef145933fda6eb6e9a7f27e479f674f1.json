@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The 'Smash Bros Burgers' card in the 'Fastest near you' section displays '€NaN delivery', indicating a failed number formatting or missing delivery fee value in the data.",
+    "The last category chip after 'Healthy' is clipped at the right edge with no visible label, which may look broken if horizontal scrolling isn't obvious.",
+    "The restaurant name 'Trattoria Piccol...' is cut off at the screen edge without an ellipsis, appearing abruptly truncated."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.71 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

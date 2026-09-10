@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_17",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:28:13.236Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly coherent, but there are a few visual/navigation inconsistencies: the bottom navigation highlights the wrong tab, some horizontally scrolling content appears awkwardly clipped, and content is partially hidden behind the fixed bottom navigation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom navigation highlights “Profile” as the active tab, but the visible screen content is the home/restaurant feed. This creates a clear navigation state mismatch.",
+        "suggestion": "Highlight “Home” as the active tab on this screen, or ensure tapping Profile actually displays profile-related content."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The lower restaurant card is partially covered by the fixed bottom navigation bar, making the card content look cut off at the bottom of the screen.",
+        "suggestion": "Add sufficient bottom padding to the scrollable content so cards are not obscured by the fixed navigation bar and home indicator area."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal category row shows a clipped, mostly blank pill on the far right. It looks like a broken or empty category item rather than an intentional scroll hint.",
+        "suggestion": "Either show enough of the next category label to make the horizontal scroll obvious, add a fade/scroll affordance, or avoid rendering a partial empty-looking chip."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the “Fastest near you” carousel, the third restaurant card is heavily clipped at the right edge, including its image and restaurant name. This can look visually broken if horizontal scrolling is not obvious.",
+        "suggestion": "Adjust card widths/spacing or add a subtle carousel affordance so the clipped card clearly reads as part of a horizontally scrollable list."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 879,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.035425,
+    "durationSeconds": 15.323979166999983
+  }
+}

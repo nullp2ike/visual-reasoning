@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel, the Smash Bros Burgers card shows '€NaN delivery' instead of a valid price, indicating an unparsed/undefined delivery fee value leaking into the UI.",
+    "The favorite heart button on the pizza card in 'Popular right now' uses a dark/transparent background while the identical button on the Tokumaru Ramen Bar card above uses a white circular background, making the controls look inconsistent."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe a delivery fee displaying as €NaN due to an unparsed/undefined value in the UI."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

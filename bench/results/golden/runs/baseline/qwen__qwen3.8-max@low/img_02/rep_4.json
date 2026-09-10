@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T13:14:42.022Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-designed, but one restaurant card shows a broken delivery price ('€NaN'), indicating a data/formatting bug. Horizontal carousels also clip content at the right edge without a clear scroll affordance.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The 'Smash Bros Burgers' card displays '€NaN delivery' instead of a valid price, indicating a failed numeric parse or missing/invalid delivery fee value.",
+        "suggestion": "Fix the data source or formatting logic so a valid currency value renders (e.g. '€1.90 delivery' or 'Free delivery'); add a fallback for null/undefined fees so 'NaN' never reaches the UI."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Horizontal carousels ('Fastest near you' and the category chips) clip items at the right edge (e.g. 'Trattoria Piccol...' and a partially visible chip) with no visible scroll indicator.",
+        "suggestion": "Add a subtle scroll affordance such as a fade-out gradient, partial-card peek with consistent spacing, or pagination dots so users know more content is available horizontally."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The restaurant name 'Trattoria Piccol...' is truncated without a guaranteed ellipsis or full-name access, which can hurt readability and tap-target clarity.",
+        "suggestion": "Ensure text truncation uses a proper ellipsis and expose the full name via tooltip/accessibility label, or allow two-line wrapping for restaurant titles."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1711,
+    "outputTokens": 980,
+    "reasoningTokens": 584,
+    "estimatedCost": 0.009302,
+    "reportedCost": 0.009302,
+    "durationSeconds": 34.079596667000004
+  }
+}

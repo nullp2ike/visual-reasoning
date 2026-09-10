@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Orders icon is missing from the bottom nav bar"],
+  "reportedIssues": [
+    "The last restaurant card in the 'Fastest near you' row is cut off at the right edge, truncating the name 'Trattoria Piccol' and hiding part of the image.",
+    "The bottom navigation 'Orders' tab has no icon, only the label, unlike Home, Search, and Profile.",
+    "The category filter chips overflow the right edge so 'Healthy' is only partially visible and the next chip is cut off.",
+    "The second Popular restaurant card is clipped at the bottom of the viewport, cutting off the pizza image and any title/details below it."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.82 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The 'Trattoria Piccolo' restaurant card and its details are cut off at the right edge of the screen in the 'Fastest near you' section.",
+    "The category filter row (All, Pizza, Sushi, Burgers, Healthy) is cut off on the right edge, hiding additional categories.",
+    "The '-100%' discount badge on the pizza promo at the bottom is ambiguous and could confuse users (100% off may look like a display error).",
+    "The heart/favorite icon on the ramen bar image has a white outline while the pizza promo below has a dark circular background, creating inconsistent icon styling across cards.",
+    "The bottom pizza promotional card is abruptly cropped at the bottom of the screen without clear indication of scrollability."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Reported issue 2 specifically identifies the '-100%' discount badge on the pizza promotion as the problematic element."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3, 4]
+  }
+}

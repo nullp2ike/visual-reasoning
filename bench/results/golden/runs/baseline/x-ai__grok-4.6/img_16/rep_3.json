@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:33:14.010Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content clipping issues: category chips and restaurant cards overflow the screen, and a popular listing is cut off at the bottom.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The rightmost restaurant card in 'Fastest near you' is clipped so the name 'Trattoria Piccol' is truncated and the image is cut off at the screen edge.",
+        "suggestion": "Give the last card enough inset/padding or snap the carousel so full cards (or a clear peek) remain fully visible."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last item in the 'Popular right now' list is cut off by the bottom navigation bar, so the restaurant name, rating, and details are not visible.",
+        "suggestion": "Add bottom padding/safe-area inset so list content can scroll fully above the tab bar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is clipped on the right; 'Healthy' is partially cut off with no clear indication of more categories.",
+        "suggestion": "Add end padding and a fade/overflow affordance so users can tell the row is horizontally scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The green promo banner uses very light/white body copy on a mid-green background, which may be hard to read.",
+        "suggestion": "Increase contrast of the secondary promo text (e.g., darker or fully white with stronger weight)."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 321,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 128,
+    "estimatedCost": 0.00569,
+    "reportedCost": 0.005498,
+    "durationSeconds": 13.200317415999976
+  }
+}

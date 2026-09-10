@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The Tokumaru Ramen Bar card in 'Popular right now' displays a circular loading spinner centered on top of an image that has already fully loaded, so the overlay looks like a stuck/never-dismissed loader obscuring the food photo.",
+    "The favorite heart buttons on the two 'Popular right now' cards use different treatments: the first has a white circular background with a dark outline heart, while the second has a dark/transparent circular background. This inconsistency looks unintentional.",
+    "The 'Green Bowl Poké' thumbnail renders on a very light grey background while the neighboring carousel images use dark photographic backgrounds, making it look like a missing/placeholder image within the row.",
+    "The white '15–25 min' time badge sits on a very light grey thumbnail background, giving low contrast compared with the same badge on the darker adjacent cards."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 explicitly describes a loading spinner over an image that has already loaded."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

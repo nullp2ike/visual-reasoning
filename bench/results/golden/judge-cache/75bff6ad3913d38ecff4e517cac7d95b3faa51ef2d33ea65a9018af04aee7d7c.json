@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The Tokumaru Ramen Bar hero image in 'Popular right now' displays a circular loading spinner in the center even though the image behind it has fully rendered. The spinner appears stuck/orphaned and obscures the food photo.",
+    "The favorite heart buttons on the two 'Popular right now' cards use different treatments: the first has a white circular background with a dark outline heart, while the second has a dark/transparent circle with a white heart, creating visual inconsistency.",
+    "The first card in 'Fastest near you' (Green Bowl Poké) has a very light, washed-out image background while the sibling cards use dark imagery, making the row look uneven; the white '15–25 min' badge also has weak contrast against that light background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 describes a loading spinner visible on top of fully loaded content (the ramen image), matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

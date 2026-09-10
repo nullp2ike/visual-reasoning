@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The pizza card in 'Popular right now' displays a '−100%' discount badge, which suggests everything is free. This is almost certainly a pricing/data error (or a mislabeled 'free delivery' promo) and undermines user trust.",
+    "Redundant '€0 delivery' information on the Tokumaru Ramen Bar card: it appears both as an overlay badge on the image and again in the metadata line below the title.",
+    "Inconsistent favorite (heart) button styling between cards: the ramen card uses a borderless white outline heart while the pizza card's heart sits in a dark translucent circle."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the exact same defect: a discount badge displaying −100% on a card, identified as a data/pricing error."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

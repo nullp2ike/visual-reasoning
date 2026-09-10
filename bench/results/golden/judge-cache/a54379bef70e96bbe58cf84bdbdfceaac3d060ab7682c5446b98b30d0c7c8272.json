@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The third restaurant card in the 'Fastest near you' section ('Trattoria Piccol...') is partially cut off on the right edge, with both the image and the restaurant name truncated mid-word.",
+    "The restaurant name 'Trattoria Piccol...' is cut off without an ellipsis, making it unclear what the full name is."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.70 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_07",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:34:18.711Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well structured, but several horizontally scrolling elements are visibly clipped at the right edge, and a loading indicator is obscuring restaurant imagery.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The horizontal category chip row is cut off on the right: an unlabeled partial pill is visible after “Healthy,” making the control look accidentally clipped rather than intentionally scrollable.",
+        "suggestion": "Add clear horizontal-scroll affordance and adequate end padding, or size the chips so the row does not expose an ambiguous clipped item."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The “Fastest near you” restaurant carousel is clipped at the right edge; the third restaurant card and its title are truncated (“Trattoria Piccol…”).",
+        "suggestion": "Use consistent carousel viewport padding and make the next-card preview intentional, or ensure cards/titles are fully visible before the viewport edge."
+      },
+      {
+        "priority": "minor",
+        "category": "performance",
+        "description": "A centered loading spinner is displayed over the Tokumaru Ramen Bar image, obscuring the content while the card’s other details are already visible.",
+        "suggestion": "Replace the spinner with a skeleton before card content loads, or remove it once the image/card is rendered."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The next restaurant card in the “Popular right now” list is cropped by the fixed bottom navigation, leaving only part of its image visible and making the content area feel crowded at the bottom.",
+        "suggestion": "Provide sufficient bottom content inset/padding so the last visible card clears the fixed navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 335,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.0076419999999999995,
+    "durationSeconds": 5.768990708000026
+  }
+}

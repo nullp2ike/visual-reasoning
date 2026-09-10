@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The 'Fastest near you' carousel shows two identical 'Green Bowl Poké' cards side by side (same image, same 15–25 min badge, same €0.90 delivery), which looks like a data duplication bug.",
+    "The third card in 'Fastest near you' is clipped and its title is truncated to 'Smash Bros Bu' without an ellipsis, making it look broken rather than intentionally scrollable.",
+    "A sixth category filter chip after 'Healthy' is cut off at the right edge with no visible label, appearing as an empty gray sliver.",
+    "The green promo banner has faint circular decorative shapes on the right side that overlap the edge and look like a rendering artifact rather than intentional decoration."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 explicitly describes the Green Bowl Poké card appearing twice in the 'Fastest near you' carousel with identical content."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

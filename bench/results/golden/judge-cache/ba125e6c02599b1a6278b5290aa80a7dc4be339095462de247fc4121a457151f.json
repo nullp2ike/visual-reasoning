@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "Section header below 'Fastest near you' displays raw localization key 'home_feed.popular_title' instead of a human-readable title",
+    "Favorite heart icon on 'Tokumaru Ramen Bar' card has no dark circular background while the heart icon on the pizza card below does, creating inconsistent styling"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.87 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

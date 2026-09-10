@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:09:30.637Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found a few layout/content clipping issues: a restaurant name is truncated in the Fastest near you row, and the category filter chips appear cut off on the right without a clear affordance beyond the intentional partial last item.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The restaurant name 'Trattoria Piccol' is truncated/cut off on the third card in the 'Fastest near you' section, so the full name is not readable.",
+        "suggestion": "Allow the title to wrap to two lines, use a smaller font, or ensure card width and text truncation (ellipsis) still leave enough of the name visible; test with longer restaurant names."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chip row ends abruptly with a partial 'Healthy' chip and a faint next chip, which is acceptable for horizontal scroll, but there is no strong visual cue that more categories exist beyond the edge.",
+        "suggestion": "Ensure consistent peek of the next chip and optional fade/scroll indicator so users clearly understand the row is scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Delivery fee text under the truncated name ('€1.90 delivery') is fully visible while the name is not, creating an uneven card presentation in the horizontal list.",
+        "suggestion": "Align text treatment across cards so names and meta lines use consistent max lines and truncation rules."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 357,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006066,
+    "reportedCost": 0.002802,
+    "durationSeconds": 52.504284792
+  }
+}

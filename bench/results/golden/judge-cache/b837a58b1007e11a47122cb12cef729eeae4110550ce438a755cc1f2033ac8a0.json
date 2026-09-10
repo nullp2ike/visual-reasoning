@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant name 'Tokumaru Ramen' is clipped to 'Tokumaru Ramei' (the final 'n' is cut off) despite visible empty space between the title and the 4.8 rating on the right. The text is hard-clipped with no ellipsis, making it look broken rather than intentionally truncated.",
+    "The rightmost category chip after 'Healthy' is visible only as a tiny sliver at the screen edge with no readable content, which can look like a rendering artifact rather than a scroll affordance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe the same restaurant heading being hard-clipped mid-word to 'Tokumaru Ramei' without ellipsis, despite available space."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

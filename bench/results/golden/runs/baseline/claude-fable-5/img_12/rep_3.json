@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_12",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:52:00.928Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-rendered, but there is one clearly broken element: overlapping metadata text under the 'Tokumaru Ramen Bar' listing. A few minor cosmetic issues also exist, such as edge-truncated carousel items which may or may not be intentional.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Under 'Tokumaru Ramen Bar', the delivery time ('25–35 min') and delivery fee ('€0 delivery') texts are rendered on top of each other, producing garbled overlapping text like '25–3€0mdeihivery'.",
+        "suggestion": "Lay out the metadata items in a horizontal flex row with proper spacing and separators (e.g., '25–35 min · €0 delivery · Ramen') instead of absolutely positioning them at the same coordinates."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in 'Fastest near you' ('Trattoria Piccol...') and the last category chip after 'Healthy' are cut off at the right screen edge with the chip showing almost no content.",
+        "suggestion": "If this is a horizontal carousel this may be intentional, but ensure enough of the next item is visible (a clear 'peek') and that truncated labels use ellipsis or wrap properly to signal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The restaurant name 'Trattoria Piccol' appears truncated without an ellipsis, making it look accidentally clipped rather than deliberately shortened.",
+        "suggestion": "Apply text-overflow: ellipsis (or equivalent) to truncated titles so clipping looks intentional."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 709,
+    "estimatedCost": 0.05519,
+    "durationSeconds": 12.932304541999999
+  }
+}

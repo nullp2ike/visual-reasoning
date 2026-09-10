@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section heading displays the raw i18n key 'home_feed.popular_title' instead of a localized string (e.g. 'Popular near you').",
+    "The third card in 'Fastest near you' is cut off mid-word ('Trattoria Piccol...'), and the last category chip after 'Healthy' is clipped at the screen edge with no visible scroll affordance.",
+    "The 'See all' links use a light green color that may have borderline contrast against the white background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 identifies the same section heading displaying the raw home_feed.popular_title translation key instead of localized text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

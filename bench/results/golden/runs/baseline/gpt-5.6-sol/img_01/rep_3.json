@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "imageId": "img_01",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:30:10.841Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visible issues: an untranslated localization key and an awkwardly clipped category item.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading displays the raw localization key “home_feed.popular_title” instead of a user-facing title.",
+        "suggestion": "Add or correct the translation mapping and display the intended localized heading, such as “Popular near you.”"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category pill is cut off at the far right with none of its label visible, making it look like a broken or empty control.",
+        "suggestion": "Adjust carousel spacing or initial scroll position so part of the next label is visible, or keep the final fully visible pill aligned within the viewport."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 461,
+    "reasoningTokens": 295,
+    "estimatedCost": 0.022885000000000003,
+    "durationSeconds": 11.378571375
+  }
+}

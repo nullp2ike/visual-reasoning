@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Orders icon is missing from the bottom nav bar"],
+  "reportedIssues": [
+    "The third card in the 'Fastest near you' carousel ('Trattoria Piccol...') is clipped by the right viewport edge, with the restaurant name truncated mid-word and no visible scroll indicator or fade to signal horizontal scrollability.",
+    "The second 'Popular right now' card (the -20% pizza) is cut off by the bottom navigation bar, hiding its name, rating, delivery time and price so the item cannot be evaluated without scrolling.",
+    "The two favorite (heart) buttons use inconsistent styling: the first has a white/light circular background with a dark outline heart, while the second has a dark circular background with a white heart.",
+    "The category filter chip row is cut off at the right edge; a partially visible chip appears after 'Healthy' with no label readable.",
+    "Secondary metadata text such as '€0.90 delivery' and '25–35 min • €0 delivery • Ramen' uses light grey on white, which may fall below the 4.5:1 contrast ratio.",
+    "The notification bell with a red dot badge conveys unread state only by color/shape and likely has no accessible label or count."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "No reported issue mentions a missing Orders icon or any missing navigation element in the bottom nav bar."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 4, 5]
+  }
+}

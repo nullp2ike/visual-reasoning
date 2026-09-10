@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:33:19.189Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout overflow issues: restaurant names and the last category chip are clipped, and the bottom promo card is cut off by the tab bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card in Fastest near you (Trattoria Piccol) is clipped on the right, cutting off the restaurant name.",
+        "suggestion": "Allow the horizontal list to scroll fully or add padding so names and images are not truncated at the screen edge."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom restaurant promo card is cut off by the tab bar, so the restaurant name, rating, and details are not visible.",
+        "suggestion": "Add bottom padding/safe-area inset to the scroll content so cards sit fully above the tab bar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chips row is cut off on the right (Healthy is clipped, next chip barely visible).",
+        "suggestion": "Ensure the chips scroller has enough end padding or a fade so the last items are fully readable."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' appears truncated and may be incomplete.",
+        "suggestion": "Use wrapping, smaller type, or ellipsis with a full name on a second line or tooltip."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 290,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 384,
+    "estimatedCost": 0.005504,
+    "reportedCost": 0.004928,
+    "durationSeconds": 11.032109999999985
+  }
+}

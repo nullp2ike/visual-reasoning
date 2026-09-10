@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The second restaurant card in the 'Popular right now' section (pizza image with '-20%' badge) is significantly cut off at the bottom of the screen, showing only the top portion of the image and no restaurant name, time, or delivery info.",
+    "In the 'Fastest near you' horizontal scroll, the third restaurant name appears truncated as 'Trattoria Piccol' with the rest of the name cut off."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "Neither reported issue describes a filtering/content problem where pizza category selection fails to filter the feed; both describe visual truncation/cutoff issues."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The pizza restaurant card in 'Popular right now' displays a '−100%' badge, implying the entire order is free. This is almost certainly a data error or misconfigured promotion, and it undermines trust in the displayed prices.",
+    "The heart (favorite) icon on the Tokumaru Ramen Bar image sits directly on the photo without a contrasting backdrop, whereas the heart on the pizza card has a dark circular background — inconsistent treatment and potentially poor contrast on light photos.",
+    "Delivery fee information is duplicated on the Tokumaru Ramen Bar card: a '€0 delivery' badge overlays the image while '€0 delivery' also appears in the metadata line below."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the exact same defect: a discount badge displaying −100% on a restaurant card."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

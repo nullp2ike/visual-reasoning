@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The active 'Pizza' category filter fails to refine results, showing Ramen and Burgers instead.",
+    "Restaurant name 'Trattoria Piccol...' is clipped due to lack of space.",
+    "Generic vector illustrations are used as placeholders for food items."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe the Pizza category filter failing to work, with the feed showing unfiltered results instead of only pizzas."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

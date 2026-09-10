@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel, the 'Trattoria Piccol...' card on the right edge is cut off, truncating both the restaurant name and image.",
+    "The cards in the 'Fastest near you' row have inconsistent vertical alignment — the burger card image is taller and extends higher than the adjacent poké card, causing an uneven top edge.",
+    "The bottom pizza card under 'Popular right now' is partially cut off by the viewport, showing only the top portion with a '-20%' badge and no title or details."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.72 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

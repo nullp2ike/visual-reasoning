@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-4-8",
+  "provider": "anthropic",
+  "imageId": "img_04",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:58:16.400Z",
+  "status": "ok",
+  "result": {
+    "summary": "The food delivery app page renders cleanly overall. A few minor issues relate to text truncation in the horizontally-scrolling restaurant cards.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol...' in the 'Fastest near you' carousel is cut off at the right edge of the screen.",
+        "suggestion": "This is expected for a horizontally-scrollable list, but ensure the partially visible card clearly signals scrollability, or add a peek/fade effect to indicate more content."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Popular right now' pizza card at the bottom shows a '-0%' discount badge, which is meaningless as a promotion.",
+        "suggestion": "Hide the discount badge when the value is 0%, or replace with a valid discount value."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 284,
+    "estimatedCost": 0.01697,
+    "durationSeconds": 5.875584208999993
+  }
+}

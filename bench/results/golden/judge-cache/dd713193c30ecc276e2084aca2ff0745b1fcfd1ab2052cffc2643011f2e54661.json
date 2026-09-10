@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Promo banner text is unreadable, white text on a pale mint background"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you row.",
+    "Category filter chips overflow the screen; the last chip is partially cut off on the right.",
+    "Promo banner body text is cramped and appears cut off mid-line ('min. order €10' runs into the edge / hard to read).",
+    "Bottom restaurant card (pizza) is heavily cropped by the viewport/nav bar, so most of the image and details are not visible.",
+    "Delivery time badges sit over food imagery with limited contrast/padding variation, and heart icons float without strong affordance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "cosine 0.75 >= 0.69 threshold (reported #2)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3, 4]
+  }
+}

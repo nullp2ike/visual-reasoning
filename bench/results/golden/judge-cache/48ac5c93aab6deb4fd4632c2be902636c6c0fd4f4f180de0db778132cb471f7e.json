@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The category row ends with a partially visible, unlabeled gray chip on the right edge, making the row appear truncated rather than clearly horizontally scrollable.",
+    "The third card in the 'Fastest near you' carousel is visibly clipped, including its restaurant name and delivery text, which can be mistaken for content overflow."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.55 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The Smash Bros Burgers card displays the invalid delivery text “€NaN delivery,” indicating a failed or missing numeric value.",
+    "The horizontal restaurant and category carousels are visibly clipped at the right edge, including a partially visible category pill and truncated restaurant card/title.",
+    "The fixed bottom navigation overlays the second popular restaurant card, obscuring part of its image and potentially its content."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.69 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

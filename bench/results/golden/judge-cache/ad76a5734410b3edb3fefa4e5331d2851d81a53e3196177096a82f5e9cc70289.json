@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "The info line under 'Tokumaru Ramen Bar' reads '25-35Ddelivery • Ramen', which looks malformed: the time unit is missing/broken and 'delivery' is concatenated to an stray 'D'. This makes the card look glitchy and harder to read.",
+    "The bottom 'Popular right now' pizza card is partially cut off by the bottom navigation bar, hiding its restaurant name and details until the user scrolls."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.66 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

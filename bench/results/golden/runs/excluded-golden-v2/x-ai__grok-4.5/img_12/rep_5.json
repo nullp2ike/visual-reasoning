@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:33:13.018Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several visual bugs: overlapping/garbled delivery text on a popular restaurant card, a truncated restaurant name in the horizontal carousel, and a broken delivery-time string.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "On the Tokumaru Ramen Bar card, the delivery info text ('25-30 delivery') overlaps and collides with itself, producing unreadable garbled characters (looks like '25-3Edelivery').",
+        "suggestion": "Fix layout/stacking so delivery time and fee sit on one clean line with proper spacing (e.g. '25–30 min · €X delivery') and do not overlap."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol...' is truncated mid-word in the Fastest near you row, with no ellipsis treatment that keeps the name readable.",
+        "suggestion": "Apply consistent text truncation with ellipsis on a single line, or allow the card title to wrap/scale so the full name (or a sensible abbreviation) is visible."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Delivery time string under Tokumaru reads as '25-3Edelivery' / incomplete '25-30 delivery' and is missing units (min) and fee formatting consistency with other cards.",
+        "suggestion": "Use the same format as other cards: '25–30 min' plus a clear delivery fee (or '€0 delivery'), with no overlapping layers."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category chips row shows a partial empty/white chip on the far right edge beyond 'Healthy', which can look like a clipped or broken control.",
+        "suggestion": "Ensure horizontal padding and snap/scroll behavior so only intentional chip content peeks at the edge, or add fade/scroll affordance."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 465,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.0067139999999999995,
+    "reportedCost": 0.00345,
+    "durationSeconds": 44.75642033399997
+  }
+}

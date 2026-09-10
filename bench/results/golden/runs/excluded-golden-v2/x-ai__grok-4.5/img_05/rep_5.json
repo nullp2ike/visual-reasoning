@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_05",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:28:04.803Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several layout and content clipping issues: truncated restaurant names in the horizontal carousel and overlapping promo badge text on a popular restaurant card.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card title in 'Fastest near you' is truncated mid-word ('Trattoria Piccol'), cutting off the full name.",
+        "suggestion": "Ensure card titles wrap to two lines, use a smaller font, or ellipsize gracefully with full name available on the detail view; give cards enough width so names aren’t clipped mid-word."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "On the Tokumaru Ramen Bar card, the green '€0 delivery' pill overlaps the food image content (noodles/bowl), reducing legibility of both the badge and the imagery.",
+        "suggestion": "Reposition the delivery badge (e.g. higher padding from edges, semi-opaque backdrop, or place below the image) so it doesn’t cover key parts of the photo."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips row shows a partially cut-off chip on the far right with no clear affordance beyond the expected carousel edge treatment.",
+        "suggestion": "If not intentional horizontal scroll-only, add fade/peek styling or ensure consistent chip sizing; otherwise this can be left as-is per carousel norms."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Promo banner text ('3 free deliveries for you') uses a light green on a light green background, which may reduce contrast for some users.",
+        "suggestion": "Darken the headline color slightly or strengthen the background gradient to meet WCAG contrast guidelines."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 364,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006108,
+    "reportedCost": 0.002844,
+    "durationSeconds": 75.78870299999998
+  }
+}

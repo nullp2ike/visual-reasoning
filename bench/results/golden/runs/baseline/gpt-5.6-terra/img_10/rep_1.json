@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_10",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:34:35.674Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well-structured, but horizontally scrollable content is visibly cut off at the right edge and the bottom navigation overlays the restaurant feed.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third card in the “Fastest near you” row is clipped by the right screen edge, including its restaurant name and delivery-price text. The partial card may imply horizontal scrolling, but the content is not fully readable in its current state.",
+        "suggestion": "Ensure the carousel has clear horizontal-scroll affordance and appropriate end padding, or adjust card sizing so visible cards do not expose truncated text."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category-chip row ends with a partially visible chip on the right, making the row look abruptly clipped.",
+        "suggestion": "Add right-side carousel padding and a clearer scroll cue, or size/space the chips so the visible viewport ends cleanly."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlaps the restaurant feed; the next restaurant image is visibly covered/cut off behind the navigation bar.",
+        "suggestion": "Add sufficient bottom content padding equal to the fixed navigation height so feed cards can scroll fully above the navigation."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 499,
+    "reasoningTokens": 237,
+    "estimatedCost": 0.00961,
+    "durationSeconds": 9.957452791000017
+  }
+}

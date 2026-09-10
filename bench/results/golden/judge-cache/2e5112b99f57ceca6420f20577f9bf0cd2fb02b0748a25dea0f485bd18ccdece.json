@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The bottom card (pizza image) is partially cut off by the bottom navigation bar.",
+    "The discount badge on the bottom card displays '-0%', which is confusing and provides no value to the user.",
+    "The horizontal scrollable category list ('All', 'Pizza', 'Sushi', etc.) is cut off on the right side, indicating there are more categories, but there is no visual cue (like a fade or arrow) to suggest scrolling."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 describes the exact same defect: a discount badge displaying '-0%' on a card, which is nonsensical."
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

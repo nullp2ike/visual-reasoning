@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccol...' is truncated in the 'Fastest near you' section.",
+    "The heart icon (favorite button) on the 'Tokumaru Ramen Bar' card has low contrast against the dark background of the image.",
+    "The bottom navigation bar icons (Search, Orders, Profile) are greyed out, which is standard for inactive states, but the active 'Home' icon is green. This is fine, but ensuring consistent sizing and spacing is important."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.59 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

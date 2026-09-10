@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section heading below 'Fastest near you' shows the raw localization key 'home_feed.popular_title' instead of a human-readable title (e.g. 'Popular near you'). This indicates a missing or failed translation string.",
+    "The third card in the 'Fastest near you' horizontal carousel ('Trattoria Piccol...') is cut off at the right edge with its name truncated, which is expected for a scrollable row but the truncation happens mid-word without a clear visual affordance that more content exists.",
+    "The notification bell icon in the top-right has a small red dot indicator with no text label or badge count, which may be unclear to screen-reader users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 identifies the same section heading displaying the raw key home_feed.popular_title instead of translated text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

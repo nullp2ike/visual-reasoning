@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "The third card in the 'Fastest near you' row ('Trattoria Piccol...') is cut off at the right edge of the screen. While this can signal horizontal scrollability, there is no visual affordance (scroll hint, partial peek with fade, or scroll indicator) confirming it is scrollable, which may confuse users.",
+    "The circular element in the top-right header contains only a small red dot with no icon or label, making its purpose (notification badge, profile, cart?) unclear.",
+    "The category filter chips ('Pizza', 'Sushi', etc.) rely on light gray backgrounds with dark text; the unselected chips have relatively low contrast against the white page background, which may reduce tap-target visibility."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.81 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

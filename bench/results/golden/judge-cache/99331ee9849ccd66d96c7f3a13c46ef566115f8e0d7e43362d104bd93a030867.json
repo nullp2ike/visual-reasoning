@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Promo banner text is unreadable, white text on a pale mint background"],
+  "reportedIssues": [
+    "Promotional banner text '3 free deliveries for you' and 'Use code TALLINN3 at checkout' is white on a very light mint background and is almost unreadable due to insufficient contrast.",
+    "Second card under 'Popular right now' (pizza with -20% badge) is clipped and obscured by the bottom tab bar, with no restaurant name, rating or delivery info visible and no spacing above navigation.",
+    "Thumbnail images in 'Fastest near you' row appear blurry/low-resolution, especially backgrounds, making cards look unfinished compared to sharper illustrations below."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.86 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

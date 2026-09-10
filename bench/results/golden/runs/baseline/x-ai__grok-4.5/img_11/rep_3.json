@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:53:16.828Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content issues: truncated restaurant names, an incomplete category chip row, a suspicious '-100%' badge, and cut-off content at the bottom of the feed.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated with missing letters in the Fastest near you row.",
+        "suggestion": "Allow multi-line titles, reduce font size, or use ellipsis with full name on detail/hover so names are fully readable."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "A '-100%' badge appears on the pizza card, which looks like a broken or incorrect discount label.",
+        "suggestion": "Show a clear promo format (e.g. '100% off' or '-€X') only when valid; hide or fix bad discount data."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category chips row is cut off on the right (partial 'Healthy' and a clipped next chip), with no clear affordance that more filters exist.",
+        "suggestion": "Add fade/scroll hint or ensure horizontal scroll is obvious so users know more categories are available."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The lower pizza card is heavily cropped by the bottom of the viewport/nav, so the offer is hard to evaluate.",
+        "suggestion": "Add bottom padding above the tab bar so cards aren’t obscured, or ensure the feed scrolls fully into view."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery time labels sit as white pills over food images and can reduce visual clarity of the imagery.",
+        "suggestion": "Increase pill contrast/shadow or place meta info below the image for cleaner cards."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 453,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006482,
+    "reportedCost": 0.0034356,
+    "durationSeconds": 11.515420834000004
+  }
+}

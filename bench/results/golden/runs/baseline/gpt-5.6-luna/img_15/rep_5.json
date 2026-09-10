@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-luna",
+  "provider": "openai",
+  "imageId": "img_15",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:40:45.128Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally coherent, but there are a few visible layout issues involving horizontal clipping and an overlapping element in the bottom navigation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The category chip row is horizontally clipped at the right edge, with only part of another chip visible and no clear indication that the row is scrollable.",
+        "suggestion": "Add consistent horizontal scrolling behavior with appropriate right padding, or show a fade/scroll cue so partially visible chips look intentional."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The restaurant carousel under “Fastest near you” is cut off at the right edge, leaving the third card and its name visibly truncated.",
+        "suggestion": "Ensure the carousel has proper clipping and spacing, or make the partial-card preview clearly intentional with sufficient peek space and scroll affordance."
+      },
+      {
+        "priority": "major",
+        "category": "styling",
+        "description": "A thick dark horizontal bar overlays the bottom navigation icons, obscuring the search and center navigation controls.",
+        "suggestion": "Remove the stray overlay or reposition the system/navigation indicator so it does not cover interactive navigation elements."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The second restaurant card in the “Popular right now” section is visible only as an image near the bottom of the viewport, with its title and metadata cut off.",
+        "suggestion": "Adjust bottom spacing or card rendering so the next card does not appear abruptly truncated above the fixed navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 828,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.0013557999999999999,
+    "durationSeconds": 15.191245583000011
+  }
+}

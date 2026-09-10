@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Restaurant cover image failed to load"],
+  "reportedIssues": [
+    "The 'Tokumaru Ramen Bar' card under 'Popular right now' shows a gray broken-image placeholder icon instead of an actual restaurant photo, making the card look broken and unfinished.",
+    "In the 'Fastest near you' row, the third card ('Trattoria Piccol...') is cut off at the right screen edge with the title truncated mid-word and no visible scroll indicator, which can look like a layout glitch rather than an intentional carousel.",
+    "The category filter chips row ('All', 'Pizza', 'Sushi', ...) also has a partially visible chip cut off at the right edge with no scroll hint, mirroring the carousel truncation issue."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.63 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

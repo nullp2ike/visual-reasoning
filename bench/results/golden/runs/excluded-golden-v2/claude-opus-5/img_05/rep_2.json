@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_05",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:38:34.230Z",
+  "status": "ok",
+  "result": {
+    "summary": "The layout is mostly coherent, but the promotional banner has severe contrast problems that make its text nearly unreadable, and there are minor inconsistencies in card styling.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "accessibility",
+        "description": "The promo banner headline '3 free deliveries for you' and subtext 'Use code TALLINN3 at checkout · min. order €10' are rendered in white on a very light mint-green background, resulting in almost no contrast. The promo code — the key information — is effectively illegible.",
+        "suggestion": "Use a dark green or near-black text color on the light mint background (or darken the banner background) to reach at least 4.5:1 contrast for body text and 3:1 for large text."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Favorite (heart) buttons on the 'Popular right now' cards are styled inconsistently: the first card has a white circular background with a dark outline heart, while the second card has a dark circular background with a white heart.",
+        "suggestion": "Standardize the favorite button treatment (e.g., a semi-transparent dark scrim with a white heart) across all restaurant cards."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Thumbnails in the 'Fastest near you' carousel are visually inconsistent — the first card ('Green Bowl Poké') uses a light grey/white background while the others use dark, blurred photo-style backgrounds, making the row look unfinished.",
+        "suggestion": "Apply a consistent image treatment or placeholder background across all carousel thumbnails."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The promo banner's subtext runs very close to the right edge of the banner and its decorative circle overlaps the text area, adding to the readability problem.",
+        "suggestion": "Add consistent internal padding to the banner and move/lower the opacity of the decorative shape so it never sits behind text."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 881,
+    "estimatedCost": 0.03246,
+    "durationSeconds": 35.09168291600002
+  }
+}

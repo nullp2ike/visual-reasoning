@@ -1,0 +1,25 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The first two cards in 'Fastest near you' are identical (same Green Bowl Poké image, name, time, and delivery fee).",
+    "The third 'Fastest near you' card title is truncated to 'Smash Bros Bu' and the image is cut off at the right edge.",
+    "The last 'Popular right now' card is cut off by the bottom tab bar, so the restaurant name, rating, and details are not visible.",
+    "The category chip row is clipped on the right (Healthy is cut off, next chip only a sliver).",
+    "The green promo banner’s right side and rounded corner appear slightly cropped against the screen edge.",
+    "The search field placeholder is very light gray on a light background, so 'Restaurants, dishes, groceries' has weak contrast.",
+    "The notifications bell badge is a tiny red dot with no count or accessible name visible."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.71 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5, 6]
+  }
+}

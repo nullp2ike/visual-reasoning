@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_13",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:46.011Z",
+  "status": "ok",
+  "result": {
+    "summary": "The screen is mostly coherent, but the header action control looks broken (empty/low-contrast circle) and the fastest-near-you row clips a restaurant name mid-word.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The top-right circular control is visually empty: only a faint gray circle and a red badge are visible, with no icon, avatar, or label. It reads as a failed/missing asset rather than a usable button.",
+        "suggestion": "Render a clear cart or profile icon inside the circle, increase contrast against the white header, and give the control an accessible name."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last Fastest near you card is clipped by the screen edge so the restaurant name reads as “Trattoria Piccol” with no ellipsis, which looks like broken/truncated text.",
+        "suggestion": "Either fit ~2.5 cards with a clearer peek, or truncate the visible title with an ellipsis so names are not cut mid-word."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The empty header circle is nearly the same color as the background, so the control is easy to miss aside from the red notification dot.",
+        "suggestion": "Add a visible stroke, stronger fill, or a high-contrast icon so the control is discoverable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 3314,
+    "reasoningTokens": 3016,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.023648,
+    "reportedCost": 0.02096,
+    "durationSeconds": 59.51189287500002
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The rightmost restaurant in the “Fastest near you” row is cut off at the viewport edge, including its name and delivery details, making the card look broken rather than intentionally scrollable.",
+    "A small, unlabeled fragment of the next category chip appears at the far right of the category row.",
+    "The discount badge on the lower restaurant card reads “−0%,” which is nonsensical and looks like a formatting or calculation error."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Reported issue 2 describes the exact same defect: a discount badge displaying '−0%', which matches the expected defect of showing −0%."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

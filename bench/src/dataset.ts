@@ -5,10 +5,10 @@ import { benchConfig } from "../bench.config.js";
 
 export const BENCH_DIR = join(dirname(fileURLToPath(import.meta.url)), "..");
 
-/** Root holding one directory per dataset. Fully gitignored except its README. */
+/** Root holding one directory per dataset. Tracked, apart from `primary/`. */
 export const DATASETS_DIR = join(BENCH_DIR, "datasets");
 
-/** Root holding one directory of results per dataset. Fully gitignored. */
+/** Root holding one directory of results per dataset. Tracked, apart from `primary/`. */
 export const RESULTS_ROOT = join(BENCH_DIR, "results");
 
 /** The file inside a dataset directory that lists expected issues per image. */

@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "The third restaurant card name 'Trattoria Piccol...' is truncated at the right screen edge with no ellipsis, making the name unreadable ('Trattoria Piccol').",
+    "An empty, unlabeled category chip is partially visible at the far right of the filter row (after 'Healthy'), appearing as a blank gray pill.",
+    "The bottom pizza restaurant card (with the '-20%' badge) is cut off by the bottom navigation bar, hiding its name, rating, and delivery details.",
+    "The heart (favorite) icon on the pizza card sits on a dark circular background while the one on the ramen card does not, creating inconsistent icon treatment between cards.",
+    "Delivery time badges (e.g., '15-25 min') overlap the food images with white pills; on lighter images like the Green Bowl Poké card, edge contrast between pill and background is low."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.63 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 4]
+  }
+}

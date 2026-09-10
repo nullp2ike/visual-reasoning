@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_16",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:57:26.936Z",
+  "status": "ok",
+  "result": {
+    "summary": "The food delivery home screen is largely coherent, but several elements are clipped or mismatched. The 'Fastest near you' horizontal carousel is cut off at the right edge with a truncated restaurant name, the 'Popular right now' second card is cut off by the bottom nav with no visible details, the category chip row is clipped mid-chip, and one favorite heart icon uses inconsistent styling (dark filled circle vs white).",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the third card is clipped at the right screen edge and its title is truncated to 'Trattoria Piccol' with no ellipsis, making the restaurant name unreadable.",
+        "suggestion": "Add horizontal padding/peek so partially visible cards show a consistent sliver, and apply text truncation with an ellipsis to card titles."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The second card under 'Popular right now' (the -20% pizza) is cut off by the bottom tab bar; its name, rating and delivery info are not visible, and there is no visual cue that the list continues.",
+        "suggestion": "Add bottom content inset equal to the tab bar height and ensure the scroll container allows the full card to be reached."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) buttons are styled inconsistently: the ramen card uses a white circular background with dark outline heart, while the pizza card uses a dark/translucent circle with white heart.",
+        "suggestion": "Standardize the favorite button background and icon color across all cards."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is clipped mid-chip at the right edge, showing a sliver of an unnamed chip with no scroll affordance.",
+        "suggestion": "Add trailing padding and/or a fade/gradient edge to indicate the chip list is horizontally scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Notification bell and heart icons are icon-only controls with no visible text label; the red notification dot also relies on color alone to convey unread state.",
+        "suggestion": "Provide accessible labels (e.g. 'Notifications, 1 unread', 'Add to favorites') and supplement the dot with a count or text for screen readers."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The promo banner's decorative overlapping circles are clipped abruptly at the banner's right/bottom edges, producing hard visible seams.",
+        "suggestion": "Clip decorative shapes to the banner's rounded corners or reposition them so edges are not visibly cut."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 862,
+    "estimatedCost": 0.031420000000000003,
+    "durationSeconds": 14.370921167000022
+  }
+}

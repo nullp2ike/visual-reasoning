@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The third restaurant card in 'Fastest near you' is clipped mid-image and the name is truncated to 'Trattoria Piccol', cutting off readable content at the screen edge.",
+    "A large circular loading spinner is centered over the Tokumaru Ramen Bar hero image while the rest of the card (title, rating, meta) is already visible, making the section look broken or stuck loading.",
+    "The category filter row is cut off on the right (partial 'Healthy' chip and a peek of another chip), which looks unfinished and hides options.",
+    "The bottom 'Popular right now' pizza card is heavily cropped by the bottom navigation, so most of the dish and any title below it are not visible in the viewport.",
+    "Restaurant name truncation without ellipsis (e.g. 'Trattoria Piccol') looks like a layout bug rather than intentional overflow handling."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "The report describes a loading spinner over a hero image while the card's content is already visible."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3, 4]
+  }
+}

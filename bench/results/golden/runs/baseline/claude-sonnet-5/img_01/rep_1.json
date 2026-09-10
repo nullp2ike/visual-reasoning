@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:59:55.087Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 issues: an untranslated placeholder key string, a cut-off restaurant card at the edge of the screen, and inconsistent heart icon styling.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "The section title displays a raw localization key 'home_feed.popular_title' instead of translated text like 'Popular near you'",
+        "suggestion": "Fix the i18n binding so the correct translated string is rendered instead of the key identifier"
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card ('Trattoria Piccol...') in the 'Fastest near you' row is cut off at the right edge of the screen, truncating its name and hiding delivery info",
+        "suggestion": "Adjust horizontal scroll/padding or card width so cards are either fully visible or clearly indicate scrollability without abrupt clipping"
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The heart/favorite icon has inconsistent background styling between the Tokumaru Ramen Bar card (white background) and the pizza promo card (dark background), creating visual inconsistency",
+        "suggestion": "Standardize the favorite icon button style (background color/opacity) across all promotional and restaurant cards"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 462,
+    "estimatedCost": 0.012852,
+    "durationSeconds": 7.397453833000036
+  }
+}

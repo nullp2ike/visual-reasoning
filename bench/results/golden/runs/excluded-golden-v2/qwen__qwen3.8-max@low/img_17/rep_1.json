@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:42:14.706Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-structured with consistent spacing, clear hierarchy, and a coherent green brand color. No critical or major visual defects were found. Two minor polish issues were noted: the horizontally scrollable 'Fastest near you' carousel lacks a visible scroll affordance (e.g., gradient fade or peek indicator beyond the clipped third card), and the 'Profile' tab is highlighted in green while the visible content is the Home feed, which may cause navigation-state confusion.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Fastest near you' horizontal carousel gives no visual cue that it is scrollable; the third card ('Trattoria Piccol...') is simply clipped at the right edge with no gradient fade, arrow, or pagination dots.",
+        "suggestion": "Add a subtle right-edge gradient fade or a small scroll indicator so users understand the row can be swiped horizontally to reveal more restaurants."
+      },
+      {
+        "priority": "minor",
+        "category": "functionality",
+        "description": "The bottom navigation shows 'Profile' highlighted in green (active state) while the displayed screen is clearly the Home feed (hero banner, 'Fastest near you', 'Popular right now'), creating a mismatch between the active tab and the visible content.",
+        "suggestion": "Sync the active tab state with the rendered screen: highlight 'Home' when the home feed is shown, or navigate to the Profile screen when 'Profile' is selected."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 1044,
+    "reasoningTokens": 689,
+    "estimatedCost": 0.009852,
+    "reportedCost": 0.009852,
+    "durationSeconds": 116.58002633299994
+  }
+}

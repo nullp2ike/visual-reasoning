@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_03",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:24:47.472Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 visual issues, mainly a missing restaurant image and some content being clipped by fixed or horizontally scrollable areas.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The main image for the 'Tokumaru Ramen Bar' card is missing and shows a gray placeholder with a broken-image style icon.",
+        "suggestion": "Ensure the restaurant image loads correctly, provide a valid image URL, or use a polished fallback image instead of a generic placeholder."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom navigation bar overlaps the feed content; the pizza card is partially hidden behind the fixed nav area.",
+        "suggestion": "Add bottom padding or safe-area spacing to the scrollable content so cards are not covered by the bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Some horizontally scrollable items are abruptly clipped at the right edge, including the category chip after 'Healthy' and the third restaurant card in 'Fastest near you'.",
+        "suggestion": "If this is intentional carousel behavior, add clearer spacing or snap points; otherwise adjust item widths/margins so visible text and cards are not cut off awkwardly."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 694,
+    "reasoningTokens": 441,
+    "estimatedCost": 0.029875000000000002,
+    "durationSeconds": 13.999329958000002
+  }
+}

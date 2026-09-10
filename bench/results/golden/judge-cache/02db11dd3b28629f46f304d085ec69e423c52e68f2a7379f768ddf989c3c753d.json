@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The bottom navigation bar shows 'Profile' as the active tab (green icon and label) while the screen displayed is clearly the Home/discovery feed with delivery address, search and restaurant carousels. The active-state indicator does not match the visible content.",
+    "The favourite heart buttons on the two 'Popular right now' cards are styled differently: the Tokumaru Ramen card has a white circular button with a dark outline heart, while the pizza card below has a dark/transparent circle with a white heart, which blends into the dark image area and reads as low contrast.",
+    "In the 'Fastest near you' carousel the first card (Green Bowl Poké) has a very light grey image background while the neighbouring cards use dark photographic backgrounds, making the row look visually uneven and the white '15–25 min' badge low-contrast against it."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Report 0 directly describes the Profile tab being highlighted in the bottom nav while the Home feed is displayed, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

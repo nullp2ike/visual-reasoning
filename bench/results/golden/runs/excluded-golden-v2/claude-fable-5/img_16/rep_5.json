@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_16",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:35:12.714Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed. The main visual/logic defect is that the 'Pizza' filter chip is shown as selected, yet the displayed content is not filtered to pizza restaurants (ramen bar, burger joints, poké bowls are shown). A couple of minor cosmetic observations were also noted.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Pizza' category filter chip is in the selected/active state, but the listed restaurants do not match the filter: 'Fastest near you' shows Green Bowl Poké and Smash Bros Burgers, and 'Popular right now' features Tokumaru Ramen Bar. Only one partially visible pizza card appears at the bottom.",
+        "suggestion": "Ensure the restaurant lists actually filter by the selected category, or reset the chip to 'All' if the content is unfiltered, so the UI state matches the displayed results."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Inconsistent presentation of delivery fee info: cards in 'Fastest near you' show it as plain text ('€0.90 delivery'), while 'Popular right now' cards use an overlaid badge ('€0 delivery') plus repeated text in the meta row, creating slight redundancy and inconsistency.",
+        "suggestion": "Standardize how delivery fees are displayed across sections (either badge or meta text) and avoid duplicating the same information within one card."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 589,
+    "estimatedCost": 0.050320000000000004,
+    "durationSeconds": 61.365219291999935
+  }
+}

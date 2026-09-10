@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_05",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:25:10.775Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found a few visual issues, mostly around clipped scrollable content and readability. The page is generally usable, but some elements look unintentionally cut off or hard to read.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlaps the content area. The second restaurant card is partially hidden behind the tab bar, making the image and card content look cut off.",
+        "suggestion": "Add sufficient bottom padding or safe-area spacing to the scrollable content so cards do not render underneath the bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The promotional banner uses white text on a very light mint background, which has low contrast and is difficult to read, especially the smaller subtitle text.",
+        "suggestion": "Use darker text, increase the background contrast, or add a darker overlay so the promotion copy remains readable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A partially visible category chip appears at the far right of the category row with no readable label, which can look like a broken or clipped UI element.",
+        "suggestion": "Adjust the horizontal scrolling area so the next chip is more clearly visible, add side padding, or hide overflow cleanly with a fade/mask."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the third restaurant card is heavily clipped on the right edge, including its title. While horizontal scrolling may be intended, it appears visually abrupt in this screenshot.",
+        "suggestion": "Increase spacing, adjust card widths, or use a subtle carousel fade/peek treatment so clipped cards look intentional."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 733,
+    "reasoningTokens": 393,
+    "estimatedCost": 0.031045,
+    "durationSeconds": 14.249262125000001
+  }
+}

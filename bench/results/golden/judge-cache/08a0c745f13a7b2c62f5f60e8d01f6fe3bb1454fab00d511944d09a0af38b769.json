@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccol' is cut off mid-word in the Fastest near you row; the full name does not fit in the card width.",
+    "A circular loading spinner is centered over the Tokumaru Ramen Bar hero image in Popular right now, suggesting incomplete image load or a stuck loading state."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "The reported circular spinner overlays the restaurant hero image, matching a loading spinner displayed over already visible content."
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The 'Trattoria Piccolo' restaurant card and the pizza discount card at the bottom are cut off at the right/bottom edge of the screen, indicating horizontal and vertical scroll content is not clearly indicated",
+    "The category filter pills (All, Pizza, Sushi, Burgers, Healthy) are cut off on the right side, suggesting more categories exist off-screen without a clear scroll indicator",
+    "The pizza discount card at the bottom lacks a visible restaurant name/title, unlike the Tokumaru Ramen Bar card above it"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.65 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

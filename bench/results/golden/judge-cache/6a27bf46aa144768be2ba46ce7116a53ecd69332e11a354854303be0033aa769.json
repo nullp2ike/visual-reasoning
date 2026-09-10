@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers card displays '€NaN delivery' instead of a valid delivery price, indicating a missing/invalid fee value is being rendered directly in the UI.",
+    "The third 'Fastest near you' card (Trattoria Piccol...) is clipped at the right viewport edge and its name is truncated.",
+    "Small grey metadata text such as delivery fees and '25–35 min • €0 delivery • Ramen' may have low contrast against the white background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.78 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

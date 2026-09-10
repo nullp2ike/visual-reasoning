@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_15",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:35:10.496Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 layout issues: truncated restaurant name in the Fastest near you section and incomplete delivery fee text under a restaurant card.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The restaurant name 'Trattoria Piccol' is truncated/cut off on the third card in the Fastest near you row.",
+        "suggestion": "Ensure full restaurant names are visible via wrapping, smaller type, or ellipsis with accessible full name (e.g. tooltip), and that card width accommodates typical titles."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Delivery fee text under the third Fastest near you card appears incomplete as '€1.90 deliver' instead of 'delivery'.",
+        "suggestion": "Prevent text clipping on card labels so the full '€1.90 delivery' string is always readable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 186,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005039999999999999,
+    "reportedCost": 0.001776,
+    "durationSeconds": 97.41412475000007
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_16",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:35:46.451Z",
+  "status": "ok",
+  "result": {
+    "summary": "No critical visual breakage is visible. The main polish issue is that horizontally scrollable content is cut off at the right edge without a clear affordance, which can look like clipped or incomplete UI.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category row ends with a partially visible, unlabeled gray chip on the right edge, making the row appear truncated rather than clearly horizontally scrollable.",
+        "suggestion": "Add a visible horizontal-scroll cue (such as a fade/gradient, chevron, or more intentional partial chip content) and ensure the next chip is recognizable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in the 'Fastest near you' carousel is visibly clipped, including its restaurant name and delivery text, which can be mistaken for content overflow.",
+        "suggestion": "Use a deliberate carousel edge treatment or padding/fade to signal that cards continue horizontally, while keeping the clipped card preview visually intentional."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 568,
+    "reasoningTokens": 357,
+    "estimatedCost": 0.010438,
+    "durationSeconds": 56.43275079200009
+  }
+}

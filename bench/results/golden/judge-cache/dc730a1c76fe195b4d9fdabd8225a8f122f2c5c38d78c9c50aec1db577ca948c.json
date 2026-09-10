@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The third restaurant card in the 'Fastest near you' section ('Trattoria Piccol...') is cut off at the right edge of the screen, with both the image and the restaurant name truncated. This indicates a horizontal overflow or carousel that doesn't visually communicate scrollability.",
+    "The bottom pizza card in the 'Popular right now' section is cut off vertically at the bottom of the screen without any visual cue indicating more content below, which may confuse users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "Neither reported issue describes a category filter problem; both describe card truncation/overflow issues in different sections."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

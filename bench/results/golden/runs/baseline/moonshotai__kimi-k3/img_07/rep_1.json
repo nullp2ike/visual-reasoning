@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:56:37.458Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly intact, but the main 'Popular right now' restaurant image appears stuck in a loading state with a spinner overlay, which is the most visible broken element. There are also minor horizontal-clipping/truncation artifacts in carousels and some low-contrast placeholder text.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "performance",
+        "description": "The large Tokumaru Ramen Bar card shows a central loading spinner over the food image while surrounding content is already rendered, making the page look unfinished or slow.",
+        "suggestion": "Ensure the image loads before revealing the card, use a cached/thumbnail placeholder, and cap spinner duration with a fallback image or error state."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Items in horizontally scrolling rows are clipped at the right edge, including the third 'Fastest near you' card name 'Trattoria Piccol...' and the category chip rail.",
+        "suggestion": "This can be normal for carousels, but add clearer scroll affordance, edge fade, or ensure partially visible cards look intentional rather than accidentally cut off."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search placeholder text 'Restaurants, dishes, groceries' is light gray and may be hard to read for low-vision users.",
+        "suggestion": "Increase placeholder contrast or use a darker gray while still distinguishing it from entered text."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 639,
+    "outputTokens": 665,
+    "reasoningTokens": 364,
+    "estimatedCost": 0.011892,
+    "reportedCost": 0.0117192,
+    "durationSeconds": 33.01390591600002
+  }
+}

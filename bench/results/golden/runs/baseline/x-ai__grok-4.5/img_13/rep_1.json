@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_13",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:53:30.839Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual layout and truncation issues are present: restaurant names and category chips are cut off, and the bottom of the popular section is clipped by the navigation bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card under 'Fastest near you' has its name truncated to 'Trattoria Piccol' instead of the full name.",
+        "suggestion": "Allow multi-line titles, reduce font size, or ensure cards have enough width so restaurant names are fully visible."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Category filter chips (e.g. after 'Healthy') are cut off at the right edge with no clear affordance that the row is horizontally scrollable.",
+        "suggestion": "Add peek of the next chip, a fade/scroll indicator, or ensure the chip row scrolls with visible overflow so users know more categories exist."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The lower 'Popular right now' card (pizza with -20% badge) is heavily clipped by the bottom tab bar, hiding most of the image and any title/metadata below it.",
+        "suggestion": "Add sufficient bottom padding/safe-area inset above the tab bar so full cards and their labels remain visible while scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The profile/avatar control in the top-right is a nearly empty light circle with only a tiny red dot, which looks incomplete or broken.",
+        "suggestion": "Show a proper user avatar, initials, or a clearer icon so the control reads as intentional UI."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Delivery fee styling is inconsistent: some use '€0.90 delivery' while the popular card uses a '€0 delivery' pill on the image.",
+        "suggestion": "Standardize how free vs paid delivery is presented across list and featured cards for a cleaner visual system."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 495,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006734,
+    "reportedCost": 0.0060812,
+    "durationSeconds": 10.872067792000001
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "The third card in the 'Fastest near you' row ('Trattoria Piccol...') is cut off at the right screen edge with its name truncated mid-word, and there is no visible scroll indicator or peek padding to signal that the row is horizontally scrollable.",
+    "The second 'Popular right now' card (pizza with -20% badge) is clipped at the bottom of the viewport above the tab bar, making it look like a rendering glitch rather than scrollable content.",
+    "The notification bell icon in the top-right has a small red dot indicator that may be hard to perceive for users with low vision or color-vision deficiencies."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.67 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

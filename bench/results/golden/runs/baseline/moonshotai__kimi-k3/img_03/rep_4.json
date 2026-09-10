@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_03",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:55:25.188Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly intact, but there is one prominent broken restaurant image in the 'Popular right now' section and a couple of minor horizontal-clipping/layout concerns.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The Tokumaru Ramen Bar card shows a grey placeholder with a broken-image icon instead of the restaurant/food photo.",
+        "suggestion": "Fix the image URL or asset loading, add a retry/error state, and use a branded fallback image rather than a generic broken-image icon."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The right edge of the category chip row is cut off, with only part of the next chip visible after 'Healthy'.",
+        "suggestion": "This may be intentional for horizontal scrolling, but add a clearer fade/edge affordance or ensure partially visible chips look deliberately scrollable rather than accidentally clipped."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In 'Fastest near you', the third restaurant card ('Trattoria Piccol...') is clipped at the screen edge and its name/delivery text are cut off.",
+        "suggestion": "If horizontal scrolling is intended, keep consistent card peek width and text truncation; otherwise adjust card spacing so content is not awkwardly cropped."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 496,
+    "reasoningTokens": 220,
+    "estimatedCost": 0.013746000000000001,
+    "reportedCost": 0.0082164,
+    "durationSeconds": 21.727316541000008
+  }
+}

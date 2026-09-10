@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The 'Fastest near you' carousel shows the same restaurant twice: two identical 'Green Bowl Poké' cards with the same 15–25 min ETA, same €0.90 delivery fee and identical thumbnail image sit side by side.",
+    "The favorite/heart button on the second 'Popular right now' card (pizza) uses a dark, semi-transparent circle with a dark outlined heart, which blends into the dark image background and is barely visible. The first card uses a white circle with a dark heart.",
+    "Only the placeholder illustration is shown for the poké and burger cards in the 'Fastest near you' row, while the 'Popular right now' cards use full-bleed imagery, creating an inconsistent visual treatment with large empty grey areas."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 explicitly describes the same restaurant card (Green Bowl Poké) appearing twice in the carousel with identical details."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

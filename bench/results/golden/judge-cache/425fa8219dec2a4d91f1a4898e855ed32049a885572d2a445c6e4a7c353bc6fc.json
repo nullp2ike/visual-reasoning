@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The 'Fastest near you' carousel cuts off the third card ('Trattoria Piccol...') at the right screen edge with no visible scroll indicator or gradient fade, so it is not obvious the row is horizontally scrollable.",
+    "Restaurant name 'Trattoria Piccol...' is truncated mid-word with an ellipsis due to the card being clipped at the viewport edge.",
+    "The category filter chip row (All, Pizza, Sushi, Burgers, Healthy) is also clipped at the right edge with a partially visible chip and no scroll affordance.",
+    "The notification bell icon relies on a small red dot to convey unread status, which may be missed by users with visual impairments and has no visible text label."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.51 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

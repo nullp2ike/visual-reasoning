@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The third restaurant card in 'Fastest near you' (Trattoria Piccol...) is heavily truncated on the right edge, cutting off both the image and the name.",
+    "Restaurant name 'Trattoria Piccol' is truncated mid-word with no ellipsis, making it unreadable.",
+    "Category filter chips overflow the screen; a partial empty chip is visible on the far right, suggesting more categories without a clear scroll affordance.",
+    "The bottom pizza promo card is cut off at the bottom of the viewport, so the restaurant name and details below the image are not visible in the current frame.",
+    "Delivery time badges sit over food images with varying contrast; on lighter plates the white pill can reduce legibility of the time text."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "None of the reported issues identifies the pizza category being selected while the feed incorrectly shows all cuisines."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 4]
+  }
+}

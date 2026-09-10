@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_05",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T13:15:59.238Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed, but the promotional banner has a serious contrast problem making its text nearly unreadable, and the horizontal restaurant carousel cuts off content at the right edge without a clear scroll affordance.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "accessibility",
+        "description": "The '3 free deliveries for you' banner uses white/light text on a pale mint-green background, resulting in very low contrast. The headline and the 'Use code TALLINN3 at checkout · min. order €10' subtext are difficult to read.",
+        "suggestion": "Use a darker green background or darker text color to meet WCAG AA contrast ratios (at least 4.5:1 for body text), or add a subtle text shadow/overlay to improve legibility."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The 'Fastest near you' horizontal carousel clips the third card ('Trattoria Piccol...') at the right screen edge with no visible scroll indicator, pagination dots, or gradient fade to signal that more content is available horizontally.",
+        "suggestion": "Add a right-edge gradient fade or scroll hint, and ensure consistent card peeking so users understand the row is swipeable."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third restaurant name 'Trattoria Piccol' is truncated mid-word at the viewport edge, which looks like a rendering glitch rather than intentional ellipsis.",
+        "suggestion": "Apply proper text truncation with an ellipsis ('Trattoria Piccol…') or allow the card to fully render within a scrollable container."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1711,
+    "outputTokens": 906,
+    "reasoningTokens": 499,
+    "estimatedCost": 0.008858,
+    "reportedCost": 0.008858,
+    "durationSeconds": 30.724873957999996
+  }
+}

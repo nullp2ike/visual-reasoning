@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Orders icon is missing from the bottom nav bar"],
+  "reportedIssues": [
+    "The bottom navigation 'Orders' tab shows a label but no visible icon, making the tab bar look inconsistent and possibly broken.",
+    "Content in the horizontal sections is cut off at the right edge, including the 'Healthy' category chip and the 'Trattoria Piccol...' restaurant card.",
+    "The heart/favorite icons on dark restaurant images are thin dark outlines with low contrast, making them hard to see.",
+    "The second 'Popular right now' card is heavily cropped at the bottom of the viewport, which can look like broken rendering even though it is likely just scroll position."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.86 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The pizza restaurant card displays a '−100%' discount badge, implying the food is completely free. This is almost certainly a data or calculation error (e.g., a free-delivery promo being rendered as a 100% discount) and could mislead users or indicate broken promo logic.",
+    "On the Tokumaru Ramen Bar card, '€0 delivery' is shown twice — once as a badge overlay on the image and again in the metadata line below — which is redundant.",
+    "Delivery-time pill badges on the 'Fastest near you' cards are inconsistently positioned relative to the card edges (the first card's pill sits lower/closer to the edge than the others)."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 identifies the −100% discount badge on a restaurant card, matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The last category chip ('Healthy') is clipped at the right edge and a partial next chip is visible, with no clear indication that the row is scrollable.",
+    "The third 'Fastest near you' card is cut off on the right and the restaurant name is truncated ('Trattoria Piccol').",
+    "The bottom restaurant card (pizza with -20%) is cut off by the tab bar, hiding the restaurant name and details.",
+    "A loading spinner is overlaid on the Tokumaru Ramen Bar image, making the listing look incomplete or broken.",
+    "Favorite (heart) icons sit on the restaurant images without a strong contrast background, so they can be hard to see."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "The reported loading spinner overlays a restaurant image/content, matching a spinner shown on already loaded content."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 4]
+  }
+}

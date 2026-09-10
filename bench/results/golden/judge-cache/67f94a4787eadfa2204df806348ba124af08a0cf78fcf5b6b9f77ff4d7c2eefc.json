@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "In the 'Popular right now' section, the Tokumaru Ramen Bar subtitle line renders overlapping strings ('25–35 min' and '€0 delivery' collide, producing '25–3 5 min delivery'), making the delivery time and fee illegible.",
+    "The favorite (heart) buttons on the two 'Popular right now' cards use inconsistent styling — the first has a white circular background with a dark outline heart, the second has a dark circular background with a white heart.",
+    "The 'Popular right now' cards show only badges ('€0 delivery', '−20%') and image; the ramen card's rating row (4.8 (500+)) sits far right while the collided metadata below breaks visual hierarchy of the card footer."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes delivery fee text ('€0 delivery') overlapping with delivery time text ('25–35 min'), producing illegible combined output."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

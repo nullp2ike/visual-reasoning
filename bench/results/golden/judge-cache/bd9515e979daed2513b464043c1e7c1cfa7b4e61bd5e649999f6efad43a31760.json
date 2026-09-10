@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "The fixed bottom navigation bar overlaps the restaurant list. The second popular card is partially hidden behind the nav, so its lower content is not visible.",
+    "Several horizontal carousel items are visibly cut off at the right edge, including the category chip row and the restaurant cards under “Fastest near you.” This may be intentional, but it currently looks abrupt and slightly broken.",
+    "The rightmost restaurant in the “Fastest near you” row is truncated so much that its name and card content are hard to read."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "No reported issue describes misalignment of the middle card; reports 0-2 describe truncation/overlap issues at edges or with navigation, not center card alignment."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

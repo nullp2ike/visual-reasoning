@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "imageId": "img_06",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:28:49.319Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual issues: one major layout problem where content is obscured by the bottom navigation, and one minor clipping issue in the horizontal restaurant carousel.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The lower restaurant card is cut off by the bottom navigation bar, making the content appear hidden and harder to access.",
+        "suggestion": "Add enough bottom padding/scroll space so list items clear the fixed navigation bar, or make the content area scroll above the nav."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The rightmost restaurant card in the \"Fastest near you\" row is partially clipped off-screen, so the card feels incomplete.",
+        "suggestion": "Adjust horizontal carousel spacing or card width so partially visible items are intentional and more clearly indicate horizontal scrolling."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 637,
+    "reasoningTokens": 460,
+    "estimatedCost": 0.00422475,
+    "durationSeconds": 5.561200332999986
+  }
+}

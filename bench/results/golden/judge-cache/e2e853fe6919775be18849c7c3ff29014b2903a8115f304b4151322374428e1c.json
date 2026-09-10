@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The third restaurant card 'Trattoria Piccol...' in 'Fastest near you' section is cut off at the right edge of the screen, showing only partial content",
+    "The category filter row (All, Pizza, Sushi, Burgers, Healthy) has an additional category cut off at the right edge, not clearly indicating scrollability",
+    "Restaurant name 'Trattoria Piccol' appears truncated without ellipsis, making it look like a text rendering error rather than an intentionally cut-off card"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Both describe a restaurant name truncated mid-word without ellipsis, appearing as a rendering error rather than intentional truncation."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

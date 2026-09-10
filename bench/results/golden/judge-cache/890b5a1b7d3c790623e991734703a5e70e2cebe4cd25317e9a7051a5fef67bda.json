@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated with no ellipsis or wrapping, so the full name is unreadable in the Fastest near you row.",
+    "The category filter chips row is cut off on the right (Healthy is partially clipped and further chips are hidden) with no clear scroll affordance.",
+    "The bottom pizza promo card is heavily cropped by the screen edge and tab bar, so most of the image and any title/details below are not visible.",
+    "Delivery fee text under Fastest near you cards uses inconsistent formatting (e.g. '€0.90 delivery' vs typical '€0.90 delivery' styling) and sits tightly under truncated titles.",
+    "Promo banner and food imagery use flat illustration style that can look slightly soft/blurry at edges against the white background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "None of the reported issues describe a navigation bar highlighting problem; all issues concern content layout, truncation, and styling rather than nav state."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 4]
+  }
+}

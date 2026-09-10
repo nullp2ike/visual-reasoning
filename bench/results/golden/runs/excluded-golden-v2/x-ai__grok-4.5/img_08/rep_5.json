@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_08",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:30:31.498Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several layout and content clipping issues: restaurant names truncated in the horizontal carousel, category chips cut off on the right, and a heart icon overlapping food imagery.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card title 'Trattoria Piccol' is truncated mid-word and the delivery fee line may also be incomplete, making the restaurant name unreadable.",
+        "suggestion": "Ensure card titles wrap to two lines, use a smaller font, or give cards enough width so full names display; avoid mid-word clipping."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row is cut off on the right with only a sliver of the next chip visible, and no clear affordance that more categories exist beyond 'Healthy'.",
+        "suggestion": "Add a fade/gradient edge or ensure partial chips still show enough label text; keep horizontal scroll but improve the peek of the next item."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) icon on the Tokumaru Ramen Bar card sits over the food image with low contrast and no strong circular background, making it harder to see and tap.",
+        "suggestion": "Place the heart on a solid or semi-opaque circular badge (as on the pizza card below) so it remains visible against busy imagery."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Search field placeholder reads 'Restarants, dishes, grocery' — 'Restarants' appears misspelled (should be 'Restaurants').",
+        "suggestion": "Correct the placeholder spelling to 'Restaurants, dishes, grocery'."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 420,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006444,
+    "reportedCost": 0.00318,
+    "durationSeconds": 37.73708245799999
+  }
+}

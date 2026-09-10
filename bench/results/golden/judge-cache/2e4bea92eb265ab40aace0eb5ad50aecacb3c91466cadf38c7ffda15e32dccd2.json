@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The 'Tokumaru Ramen' restaurant name is vertically clipped at the bottom.",
+    "Insufficient bottom padding allows the navigation bar to overlap content."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "Reported issue 0 describes vertical clipping at the bottom, but the expected defect is horizontal truncation mid-word ('Tokumaru Ramei'); these are different problems affecting different axes."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

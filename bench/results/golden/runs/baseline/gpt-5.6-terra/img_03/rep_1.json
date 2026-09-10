@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_03",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:33:51.440Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well laid out, but a prominent restaurant card has a broken or unloaded image, leaving a placeholder in a key content area.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The Tokumaru Ramen Bar card displays a gray image placeholder icon instead of the restaurant/food image, unlike the surrounding restaurant cards.",
+        "suggestion": "Fix the image asset URL or image-loading state for this card. If loading fails, show a polished branded fallback image rather than a generic broken-image placeholder."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The rightmost restaurant card in the “Fastest near you” carousel is visibly cut off, including its title and delivery information, which can look unintended without a clear carousel affordance.",
+        "suggestion": "Ensure the horizontal carousel has clear scroll affordances (such as a partial-card treatment with adequate padding, paging indicator, or swipe hint) and avoid clipping important text too tightly."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is clipped at the right edge, leaving a partial unlabeled chip visible.",
+        "suggestion": "Add a clear horizontal-scroll cue and spacing, or constrain/resize chips so the visible area does not end on an ambiguous partial chip."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 382,
+    "reasoningTokens": 104,
+    "estimatedCost": 0.008206,
+    "durationSeconds": 6.7425224999999624
+  }
+}

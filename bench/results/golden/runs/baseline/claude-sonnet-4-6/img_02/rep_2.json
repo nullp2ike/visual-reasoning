@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_02",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:02:17.817Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: one major content/data error and one minor layout issue.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Smash Bros Burgers shows '€NaN delivery' instead of a valid delivery price. 'NaN' (Not a Number) is a JavaScript data error leaking into the UI.",
+        "suggestion": "Ensure the delivery fee value is properly fetched and validated before rendering. Add a fallback value (e.g., '€0.00' or 'Free') when the data is null or undefined to prevent NaN from displaying."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' section ('Trattoria Piccol...') is partially cut off, and the restaurant name is truncated without an ellipsis indicator, making it unclear this is a scrollable row.",
+        "suggestion": "Add a visible ellipsis to truncated text and consider adding a subtle scroll indicator or shadow to signal horizontal scrollability to the user."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 280,
+    "estimatedCost": 0.009675,
+    "durationSeconds": 7.928695542000002
+  }
+}

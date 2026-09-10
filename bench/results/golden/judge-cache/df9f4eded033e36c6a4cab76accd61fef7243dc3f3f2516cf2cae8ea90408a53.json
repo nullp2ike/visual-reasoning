@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section heading shows the untranslated localization key 'home_feed.popular_title' instead of a human-readable title like 'Popular near you'. This indicates a missing or failed i18n string lookup.",
+    "The horizontal restaurant carousel ('Fastest near you') and the category filter chips are cut off at the right edge (e.g., 'Trattoria Piccol...' truncated), which is expected for scrollable rows but there is no visible scroll affordance or fade indicator.",
+    "The notification bell icon in the top-right has a small red dot indicator with no text alternative or badge count, which may not be perceivable by screen reader users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.86 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

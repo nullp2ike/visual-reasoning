@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The third restaurant card in the 'Fastest near you' horizontal carousel shows 'Trattoria Piccol' — the name is abruptly cut off mid-word without an ellipsis. While partial card visibility is an intentional carousel pattern, the text should be truncated with '...' rather than just clipped at the card boundary.",
+    "The last visible category filter pill (after 'Healthy') is partially cut off at the right edge with no visual indicator (e.g., fade gradient) that the row is horizontally scrollable.",
+    "The third restaurant card image in 'Fastest near you' appears noticeably darker/blurred compared to the first two cards, creating a visual inconsistency in the row."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.61 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

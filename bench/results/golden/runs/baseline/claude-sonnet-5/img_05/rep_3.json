@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_05",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:00:27.487Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several layout and content issues, mostly related to cropped elements at the screen edge and a promotional banner with faded/low-contrast text.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Fastest near you' horizontal scroll section cuts off the third restaurant card (Trattoria Piccolo) at the screen edge, making the name and details partially unreadable.",
+        "suggestion": "Add a visual cue (e.g., partial card fade or peek indicator) or adjust card widths/spacing so cut-off content is clearly indicated as scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Text in the '3 free deliveries for you' promotional banner appears low-contrast/faded against the light green background, especially the subtext.",
+        "suggestion": "Increase text color contrast or darken the banner background to improve readability."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row (All, Pizza, Sushi, Burgers, Healthy) is cut off on the right edge, suggesting more categories exist but the cutoff isn't clearly indicated as scrollable.",
+        "suggestion": "Add a fade/gradient overlay at the edge or partial visibility of the next item to signal horizontal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The pizza promotion card at the bottom is abruptly cut off by the bottom navigation bar, with no visible restaurant name or details.",
+        "suggestion": "Ensure adequate spacing/padding so cards are not obscured by the fixed bottom navigation, or add scroll padding."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccolo' is truncated ('Piccol') due to card cutoff at the screen edge.",
+        "suggestion": "Use text truncation with ellipsis or ensure the full card is scrollable into view."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 711,
+    "estimatedCost": 0.016587,
+    "durationSeconds": 8.702581417000038
+  }
+}

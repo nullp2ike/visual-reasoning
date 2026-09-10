@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The 'Pizza' filter is selected, but results display non-pizza items like Poké and Burgers.",
+    "Restaurant name 'Trattoria Piccol' is clipped abruptly at the screen edge."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe the Pizza category/filter being selected but the feed showing items from other cuisines (non-pizza items)."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

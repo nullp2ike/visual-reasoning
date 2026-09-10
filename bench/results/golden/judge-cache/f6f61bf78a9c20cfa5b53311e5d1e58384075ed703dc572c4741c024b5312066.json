@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' in 'Fastest near you' carousel is truncated, with final letters cut off at card edge without ellipsis",
+    "Restaurant name 'Tokumaru Ramer' under 'Popular right now' is clipped, with the final 'n' partially cut off"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.74 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

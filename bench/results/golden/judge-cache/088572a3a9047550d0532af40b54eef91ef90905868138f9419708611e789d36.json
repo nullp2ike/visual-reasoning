@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The horizontal category chip row is cut off on the right: an unlabeled partial pill is visible after “Healthy,” making the control look accidentally clipped rather than intentionally scrollable.",
+    "The “Fastest near you” restaurant carousel is clipped at the right edge; the third restaurant card and its title are truncated (“Trattoria Piccol…”).",
+    "A centered loading spinner is displayed over the Tokumaru Ramen Bar image, obscuring the content while the card’s other details are already visible.",
+    "The next restaurant card in the “Popular right now” list is cropped by the fixed bottom navigation, leaving only part of its image visible and making the content area feel crowded at the bottom."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Issue 2 describes a loading spinner displayed over already-visible content (the Tokumaru Ramen Bar image and other details), matching the expected defect of a spinner shown on top of loaded content."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

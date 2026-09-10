@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:33:31.944Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content issues: restaurant names and category chips are clipped, a restaurant card is cut off at the bottom, and the Profile tab appears selected on the Home screen.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third 'Fastest near you' card (Trattoria Piccol) is cropped on the right, cutting off the restaurant name and part of the image.",
+        "suggestion": "Add consistent card widths, padding, and horizontal scrolling so names and images are fully visible, or wrap/truncate names with ellipsis."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last popular restaurant card (pizza with -20% badge) is cut off at the bottom by the tab bar, hiding most of the restaurant details.",
+        "suggestion": "Add bottom content inset/padding so the last card sits fully above the tab bar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is clipped on the right; the last chip is only partially visible.",
+        "suggestion": "Ensure the chip scroller has enough trailing padding or a fade so the last item is not cut mid-chip."
+      },
+      {
+        "priority": "minor",
+        "category": "functionality",
+        "description": "The bottom navigation highlights Profile in green while the visible screen is the Home feed.",
+        "suggestion": "Keep the Home tab selected/highlighted when this screen is shown."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 369,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.005978000000000001,
+    "reportedCost": 0.00329,
+    "durationSeconds": 15.051368541000004
+  }
+}

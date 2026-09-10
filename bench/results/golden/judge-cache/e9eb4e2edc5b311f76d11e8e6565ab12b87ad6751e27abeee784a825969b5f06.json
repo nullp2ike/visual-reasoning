@@ -1,0 +1,25 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "Search field placeholder reads 'Restarants, dishes, groceries' — 'Restarants' is misspelled (should be 'Restaurants').",
+    "In the 'Fastest near you' carousel the third card is hard-cut at the right screen edge and its title renders as 'Trattoria Piccol' with no ellipsis, and its price line is also clipped, making it look broken rather than scrollable.",
+    "The favourite (heart) buttons are styled inconsistently: the Tokumaru Ramen card uses a white circular button with a dark outline heart, while the pizza card below uses a dark/translucent circle with a white heart.",
+    "The 'Green Bowl Poké' thumbnail has a light grey background while the sibling cards use dark photographic backgrounds, so the row looks visually uneven and the white '15–25 min' badge has weak contrast against it.",
+    "The category filter chips ('All, Pizza, Sushi, Burgers, Healthy…') are cut off at the right edge with a sliver of the next chip, giving no clear scroll affordance.",
+    "The second restaurant card (pizza) is abruptly truncated by the bottom tab bar with no bottom padding, so the card appears cropped instead of scrolled.",
+    "Cards in 'Fastest near you' show only delivery time and fee, while 'Popular right now' cards show rating and cuisine — inconsistent metadata makes the lists feel unfinished."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly reports the misspelling 'Restarants' in the search field placeholder, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5, 6]
+  }
+}

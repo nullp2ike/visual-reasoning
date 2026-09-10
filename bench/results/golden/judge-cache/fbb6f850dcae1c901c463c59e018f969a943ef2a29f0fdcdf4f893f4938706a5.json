@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Orders icon is missing from the bottom nav bar"],
+  "reportedIssues": [
+    "The third restaurant card in 'Fastest near you' shows the name 'Trattoria Piccol' cut off abruptly without an ellipsis, making the truncation look like a rendering bug rather than intentional overflow handling.",
+    "The last category chip after 'Healthy' is clipped at the right edge with only a small sliver visible, which can look broken and may not clearly signal horizontal scrollability.",
+    "The bottom pizza card ('-20%') is cut off mid-image by the bottom navigation bar, leaving a partially visible card with no name or details.",
+    "The 'Fastest near you' cards show only delivery fee, while 'Popular right now' cards show rating, time, fee, and cuisine — the inconsistent information density can feel unfinished.",
+    "Grey secondary text (e.g., '€0.90 delivery', '25–35 min · €0 delivery · Ramen') appears low contrast against the white background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.65 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 4]
+  }
+}

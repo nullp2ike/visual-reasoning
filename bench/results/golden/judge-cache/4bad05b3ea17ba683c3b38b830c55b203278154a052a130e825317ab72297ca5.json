@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "The 'Fastest near you' carousel cuts off the third card ('Trattoria Piccol...') abruptly at the right screen edge with no fade, gradient, or scroll indicator, so users may not realize the row is horizontally scrollable.",
+    "The category filter chips row ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') is also clipped at the right edge with a partially visible chip and no scroll affordance.",
+    "The notification/profile avatar in the top-right shows only a small red dot on an empty gray circle, with no visible icon or label; its purpose is ambiguous and the red dot may be missed by users with low vision.",
+    "Restaurant name 'Trattoria Piccol...' is truncated mid-word without an ellipsis in the visible area, which looks slightly broken."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "The report describes the top-right notification/profile element showing only a red dot with the icon missing."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

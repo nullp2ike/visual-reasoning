@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The category chip row is clipped at the right edge, with an additional chip only partially visible after “Healthy,” which can look like accidental overflow rather than intentional horizontal scrolling.",
+    "In “Fastest near you,” the third restaurant card is cut off at the viewport edge and its name appears truncated as “Trattoria Piccol…”, which may read as broken text if users do not realize the row scrolls.",
+    "The lower “Popular right now” pizza card is abruptly cropped by the bottom of the visible area, which is expected on a scrolling screen but can appear unfinished in a static view."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.60 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

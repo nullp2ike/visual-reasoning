@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The Profile tab is highlighted as active in the bottom navigation bar, but the screen content shows the Home feed (delivery address, search bar, categories, promotional banner, and restaurant recommendations).",
+    "The second card in the 'Popular right now' section is cut off at the bottom of the viewport, showing only a partial pizza image and hiding the restaurant name, rating, delivery time, and cuisine information.",
+    "The third restaurant card in the 'Fastest near you' horizontal list is partially off-screen and the name is truncated to 'Trattoria Piccol...' with no clear scroll affordance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.87 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T12:35:02.648Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 layout issues: restaurant names are clipped in the Fastest and Popular sections.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant name in the Fastest near you row is cut off mid-word (“Trattoria Piccol”), so the listing is unreadable.",
+        "suggestion": "Give each carousel card enough width or wrap/truncate the title with an ellipsis so the full name stays visible."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The Popular restaurant title “Tokumaru Ramen” is clipped at the last letter, making the name look incomplete.",
+        "suggestion": "Allow the title to wrap or use a slightly smaller font / more horizontal space so the full name displays."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 205,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1920,
+    "estimatedCost": 0.005154,
+    "reportedCost": 0.002274,
+    "durationSeconds": 9.890884625000005
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "Search field placeholder has a spelling error: 'Restarants, dishes, groceries'",
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you section",
+    "Category filter chips row is clipped on the right edge (partial pill visible), and the third 'Fastest near you' card is heavily cut off",
+    "Bottom restaurant card (pizza) is partially cut off by the tab bar with no clear scroll fade or spacing"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.73 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

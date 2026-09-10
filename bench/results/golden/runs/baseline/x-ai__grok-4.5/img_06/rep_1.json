@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_06",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:52:26.584Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and truncation issues affect restaurant cards and category chips, plus incomplete bottom navigation labels that hurt usability.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' (Trattoria Piccol...) is cut off at the right edge, with the name truncated and only a partial image visible.",
+        "suggestion": "Ensure horizontal scroll areas show full cards or add proper peek/padding so names and images are not clipped; consider responsive card widths."
+      },
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The bottom tab bar shows an empty label under the third icon (between Search and Profile), so the Orders tab text is missing or invisible.",
+        "suggestion": "Restore the 'Orders' label with the same styling as other tabs and verify icon-to-label alignment."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips overflow the screen; 'Healthy' is partially cut off and a further chip is only a sliver on the right.",
+        "suggestion": "Add horizontal scrolling with adequate end padding or wrap/resize chips so all options are fully visible."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' appears truncated mid-word without ellipsis treatment that preserves readability.",
+        "suggestion": "Use consistent text overflow (ellipsis) and ensure enough card width or two-line titles for longer names."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 379,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006038,
+    "reportedCost": 0.0053852,
+    "durationSeconds": 8.987659125000006
+  }
+}

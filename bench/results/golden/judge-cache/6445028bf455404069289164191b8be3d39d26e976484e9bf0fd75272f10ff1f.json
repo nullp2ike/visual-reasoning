@@ -1,0 +1,24 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The third card in the 'Fastest near you' carousel is cut off mid-word ('Trattoria Piccol') and its delivery text ('€1.90 delivery') is clipped at the screen edge with no ellipsis or fade indicator, making it look broken rather than scrollable.",
+    "The favorite (heart) buttons are styled inconsistently: the Tokumaru Ramen card uses a white circular background with a dark outline heart, while the pizza card below uses a dark/black circle with a white heart.",
+    "The bottom pizza card is abruptly cut in half by the bottom navigation bar, with no visible title, rating or metadata, so the list appears to end unfinished.",
+    "The 'Green Bowl Poké' thumbnail is very light/washed out compared to the dark, high-contrast images of neighboring cards, and the white '15–25 min' badge has poor contrast against it.",
+    "The category filter chip row is cut off at the right edge, showing only a sliver of the next chip without any scroll affordance.",
+    "Icon-only controls (notification bell, heart/favorite buttons) have no visible text labels, and the bell's red dot conveys state by color alone."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.56 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 4, 5]
+  }
+}

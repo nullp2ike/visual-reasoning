@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The 'Smash Bros Burgers' card in the 'Fastest near you' carousel displays '€NaN delivery', indicating a failed number computation or missing delivery fee value being rendered directly to the user.",
+    "Delivery fee formatting is inconsistent across cards: '€0.90' and '€1.90' in the carousel vs '€0 delivery' (no decimals) on the Tokumaru Ramen Bar card."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 explicitly describes '€NaN delivery' on the 'Smash Bros Burgers' card, directly matching the expected defect of delivery fee showing €NaN."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

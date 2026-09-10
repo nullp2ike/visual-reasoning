@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "The 'Trattoria Piccol...' restaurant card in the 'Fastest near you' section is cut off at the right edge of the screen, truncating the name and hiding delivery info.",
+    "Restaurant name 'Trattoria Piccol...' appears truncated with no ellipsis styling or indication it's cut off intentionally.",
+    "The pizza promotional image at the bottom of the screen is abruptly cut off by the navigation bar, with no visible title or details.",
+    "The horizontal category filter list (All, Pizza, Sushi, Burgers, Healthy) appears to have an additional category cut off at the right edge, suggesting incomplete scroll affordance.",
+    "Notification bell icon has a red dot indicator with no accessible label or count, which may not be conveyed to screen readers."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.69 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3, 4]
+  }
+}

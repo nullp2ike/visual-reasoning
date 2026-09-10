@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "The third restaurant card under 'Fastest near you' has its name truncated to 'Trattoria Piccol' instead of the full name.",
+    "Category filter chips (e.g. after 'Healthy') are cut off at the right edge with no clear affordance that the row is horizontally scrollable.",
+    "The lower 'Popular right now' card (pizza with -20% badge) is heavily clipped by the bottom tab bar, hiding most of the image and any title/metadata below it.",
+    "The profile/avatar control in the top-right is a nearly empty light circle with only a tiny red dot, which looks incomplete or broken.",
+    "Delivery fee styling is inconsistent: some use '€0.90 delivery' while the popular card uses a '€0 delivery' pill on the image."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "cosine 0.75 >= 0.69 threshold (reported #3)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 4]
+  }
+}

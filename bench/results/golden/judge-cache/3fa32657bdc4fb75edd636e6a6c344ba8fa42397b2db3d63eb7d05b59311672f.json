@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you section, and its card image is partially clipped on the right edge.",
+    "The bottom pizza promotional card is heavily cropped—only the top portion of the pizza image is visible, cutting off most of the content.",
+    "Category filter chips (All, Pizza, Sushi, Burgers, Healthy) overflow horizontally with a partial chip visible on the right, without clear scroll affordance.",
+    "Delivery fee text under Green Bowl Poké shows '€0.90 delivery' which may be incomplete or oddly formatted compared to others.",
+    "Profile avatar in the top right is an empty light circle with only a tiny red dot, looking unfinished or broken."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [4],
+        "reasoning": "cosine 0.76 >= 0.69 threshold (reported #4)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

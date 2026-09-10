@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "The third restaurant name in 'Fastest near you' is cut off mid-word ('Trattoria Piccol' instead of the full name).",
+    "Tokumaru Ramen Bar shows broken delivery text '25-3€delivery' where the time range and fee appear concatenated/corrupted."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "The reported Tokumaru Ramen Bar issue describes the delivery time and fee appearing concatenated, matching the text overlap defect."
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

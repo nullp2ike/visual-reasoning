@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_08",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:25:56.133Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally usable, but a few layout issues are visible: content is being obscured by the fixed bottom navigation, and some horizontally scrolling items are abruptly clipped at the right edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation bar overlaps the restaurant list content. The lower pizza card is partially hidden behind the nav, which may make content or controls inaccessible near the bottom of the page.",
+        "suggestion": "Add sufficient bottom padding/safe-area spacing to the scrollable content so cards can scroll fully above the bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Several horizontal carousel items are cut off abruptly at the right edge, including the category chip after 'Healthy' and the third restaurant card in 'Fastest near you'. This can look like broken clipping rather than intentional horizontal scrolling.",
+        "suggestion": "Add clearer carousel spacing, snapping, or a subtle fade/peek treatment so the horizontal overflow feels intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third restaurant name in the 'Fastest near you' row is truncated by the viewport, making it difficult to read without scrolling horizontally.",
+        "suggestion": "Ensure carousel cards have enough visible width or use consistent truncation with ellipsis only after the item is fully within its card."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 724,
+    "reasoningTokens": 443,
+    "estimatedCost": 0.030775,
+    "durationSeconds": 14.393093666
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:45:23.219Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally intact, but the “Fastest near you” section shows the same restaurant twice side by side, which looks like a duplicated content/rendering issue. Excluded per instructions: the right-edge partially visible carousel item and the bottom-cut popular card are treated as normal scrolling behavior.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "“Green Bowl Poké” appears twice consecutively in the “Fastest near you” carousel with identical image, 15–25 min time, and €0.90 delivery, making the section look duplicated or incorrectly populated.",
+        "suggestion": "Deduplicate restaurant results before rendering and ensure each card in a recommendation row maps to a unique restaurant ID."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2183,
+    "outputTokens": 434,
+    "reasoningTokens": 264,
+    "estimatedCost": 0.013059000000000001,
+    "reportedCost": 0.0075294,
+    "durationSeconds": 54.41618437499995
+  }
+}

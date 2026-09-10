@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_08",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:55:20.057Z",
+  "status": "ok",
+  "result": {
+    "summary": "The screen is broadly coherent, but several visual defects stand out: a typo in the search placeholder, horizontally clipped restaurant cards without ellipsis, an inconsistent thumbnail background, an inconsistent/low-contrast favorite button, and the bottom card being cut off flush against the tab bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Search field placeholder reads 'Restarants, dishes, groceries' — 'Restaurants' is misspelled.",
+        "suggestion": "Correct the placeholder text to 'Restaurants, dishes, groceries'."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel the third card ('Trattoria Piccol…') is hard-clipped at the screen edge: both the image and the title/price text are cut mid-character with no ellipsis, so the label appears broken rather than intentionally peeking.",
+        "suggestion": "Truncate card titles with ellipsis and apply consistent carousel side padding/peek width so partially visible cards look deliberate, not chopped."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom pizza card in 'Popular right now' is cut off abruptly by the bottom tab bar, with its title, rating and metadata hidden and no scroll affordance or spacing.",
+        "suggestion": "Add bottom content inset equal to the tab bar height so the last card can scroll fully into view."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) button on the pizza card uses a dark translucent background while the identical button on the ramen card uses a solid white background, creating inconsistent styling and lower icon contrast.",
+        "suggestion": "Use a single consistent chip style (e.g. white circle with dark outline heart) for all favorite buttons."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Green Bowl Poké' thumbnail has a light grey background while sibling cards use dark photographic backgrounds, making the row look visually unbalanced and the white '15–25 min' badge sits on a light background.",
+        "suggestion": "Normalize image backgrounds/overlays across cards and add a subtle scrim behind time badges to guarantee contrast."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is clipped so an unnamed chip after 'Healthy' shows only a sliver, offering no hint of what it is.",
+        "suggestion": "Adjust chip spacing/peek so the next chip's label is partially readable, or add a fade/scroll indicator."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 1035,
+    "estimatedCost": 0.035745,
+    "durationSeconds": 17.03326116599998
+  }
+}

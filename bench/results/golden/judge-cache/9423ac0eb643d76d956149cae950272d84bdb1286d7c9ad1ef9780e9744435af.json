@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The bottom navigation bar shows 'Profile' as the active/selected tab (green icon and label), yet the screen content displayed is the Home feed (delivery address, search, category chips, restaurant carousels). The active tab indicator does not match the visible screen, which is confusing and suggests a broken navigation state.",
+    "The notification bell icon in the top-right has a small red unread-indicator dot with no accompanying badge count or text alternative, so the meaning of the dot may not be perceivable to screen-reader or low-vision users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 directly describes Profile being highlighted in the bottom nav while Home feed content is displayed, matching the navigation state mismatch defect."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "The circular control in the upper-right is mostly blank, showing only a tiny red dot. It looks like an avatar, map, or notification icon failed to render.",
+    "The category row and “Fastest near you” carousel end with partially visible items at the right edge, including clipped restaurant text. Although this may indicate horizontal scrolling, the cutoff looks abrupt."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.77 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

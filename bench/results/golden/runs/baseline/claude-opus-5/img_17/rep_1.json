@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:57:39.980Z",
+  "status": "ok",
+  "result": {
+    "summary": "The layout mostly holds up, but several issues stand out: the active bottom-nav tab doesn't match the content shown, restaurant card titles are hard-clipped without ellipsis, favorite-button styling is inconsistent between cards, and card imagery/treatments are inconsistent across the carousel.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom navigation highlights 'Profile' as the active tab, but the screen displayed is the Home/discovery feed (address, search, promo banner, restaurant lists).",
+        "suggestion": "Sync the active tab state with the rendered route so 'Home' is highlighted on this screen."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The third card in 'Fastest near you' shows a hard-clipped title ('Trattoria Piccol') and clipped delivery text with no ellipsis, making it look broken rather than intentionally scrollable.",
+        "suggestion": "Apply text truncation with an ellipsis, and add a right-side peek/padding so partially visible carousel cards read as scrollable content."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The second 'Popular right now' card (pizza) is cut off by the bottom navigation bar; its name, rating and metadata are not visible and the image is sliced mid-card.",
+        "suggestion": "Add bottom padding/safe-area inset equal to the nav bar height on the scroll container so cards can scroll fully into view."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) buttons are styled inconsistently: white circular background on the ramen card, dark/translucent background on the pizza card.",
+        "suggestion": "Standardize the favorite button on a single background treatment and contrast level across all cards."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Image treatment is inconsistent in the 'Fastest near you' row — the first card has a light gray background while the others use dark vignetted photos, making the row look unfinished.",
+        "suggestion": "Normalize image backgrounds/overlays across cards, or apply the same gradient scrim to every thumbnail."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is clipped at the right edge with only a sliver of the next chip visible and no fade or arrow affordance.",
+        "suggestion": "Add horizontal padding and a gradient fade or scroll indicator to signal more categories exist."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Icon-only controls (notification bell with unread dot, heart favorite buttons) have no visible text labels, and accessible names cannot be inferred visually.",
+        "suggestion": "Ensure each icon button has an accessible label (e.g. 'Notifications, 1 unread', 'Add Tokumaru Ramen Bar to favorites') and a minimum 44x44pt touch target."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 1164,
+    "estimatedCost": 0.038970000000000005,
+    "durationSeconds": 18.610317166000023
+  }
+}

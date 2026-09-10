@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T13:17:57.479Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well-structured, but the 'Fastest near you' horizontal carousel has layout and content issues: a duplicated restaurant card, truncated card text on the right edge, and clipped category chips.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Fastest near you' row shows two identical 'Green Bowl Poké' cards with the same image, delivery time (15–25 min) and price (€0.90 delivery), which looks like duplicated/placeholder data rather than distinct restaurants.",
+        "suggestion": "Populate the carousel with distinct restaurant entries; if only one Green Bowl Poké exists, do not render it twice."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in 'Fastest near you' ('Smash Bros Bu...') and its delivery price are cut off at the right screen edge with no visual affordance (e.g., fade or peek) indicating horizontal scrollability.",
+        "suggestion": "Add a right-edge gradient/fade or partial-card peek plus scroll snapping so users understand the row is horizontally scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chip row ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') is clipped at the right edge with a partially visible chip and no scroll indicator.",
+        "suggestion": "Make the chip row horizontally scrollable with a subtle edge fade or ensure all chips fit/wrap appropriately."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The notification bell icon relies on a small red dot to convey unread status, which may be missed by users with low vision and has no text alternative.",
+        "suggestion": "Add an accessible label/badge count (e.g., aria-label 'Notifications, 1 unread') and a larger, higher-contrast indicator."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1711,
+    "outputTokens": 1037,
+    "reasoningTokens": 558,
+    "estimatedCost": 0.009644,
+    "reportedCost": 0.009644,
+    "durationSeconds": 37.23625662499998
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:53:17.996Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual layout and content issues: truncated restaurant names, a suspicious '-100%' badge, cut-off category pills, and partially visible cards that hurt polish and clarity.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated with missing letters at the end of the card.",
+        "suggestion": "Allow multi-line titles, reduce font size, or use ellipsis with full name on detail view so names are not cut off."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "A green badge shows '-100%' on the pizza card, which looks like a broken or incorrect discount label.",
+        "suggestion": "Verify promo logic and display a clear offer (e.g. '100% off' or 'Free') only when valid; hide malformed percentages."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal category filter row is clipped on the right (partial pill visible), suggesting overflow without clear affordance.",
+        "suggestion": "Ensure proper horizontal scroll padding/fade or show a partial next chip so users know more categories exist."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza promotional card is heavily cropped by the bottom navigation, so most of the image and context are hidden.",
+        "suggestion": "Add bottom content padding so cards clear the tab bar, or ensure scroll position leaves key content fully visible."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Third 'Fastest near you' card is only partially on-screen with no strong scroll cue, making the carousel feel cut off.",
+        "suggestion": "Add consistent peek of the next card and/or scroll indicators so horizontal lists feel intentional."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 453,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006482,
+    "reportedCost": 0.0034356,
+    "durationSeconds": 9.757631458000004
+  }
+}

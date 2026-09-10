@@ -1,0 +1,24 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The promo badge on the pizza card reads '-0%', which communicates no discount at all — almost certainly a data/formatting bug (null or zero discount rendered instead of being hidden).",
+    "In the 'Fastest near you' carousel the third card is hard-clipped at the screen edge and its title 'Trattoria Piccol' is cut mid-word with no ellipsis, so it reads as broken text rather than an intentional peek of the next item.",
+    "The favourite (heart) button on the second 'Popular right now' card uses a dark/translucent circle with a dark outline heart, whereas the card above uses a white circle with a dark heart. The dark-on-dark variant has very poor contrast against the pizza image and looks unintentional.",
+    "The 'Green Bowl Poké' thumbnail has a light grey background while the adjacent thumbnails are dark, making the row look visually inconsistent; the white '15–25 min' badge also has weak contrast on that light image.",
+    "The second popular card is cut off by the bottom tab bar with no visible fade or spacing, so its title/rating row is hidden behind the navigation and the card appears amputated.",
+    "The category chip row is clipped mid-chip on the right edge with no scroll indicator, and the 'See all' links plus icon-only buttons (bell, hearts) have no visible text labels for screen readers."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.79 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

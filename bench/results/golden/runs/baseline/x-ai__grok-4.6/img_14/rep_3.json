@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_14",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:48.363Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout overflow issues clip restaurant names, category chips, and promo cards, plus a few visual inconsistencies in badges and the bottom tab bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' is cut off on the right, clipping the restaurant name ('Trattoria Piccol') and part of the image.",
+        "suggestion": "Give the horizontal list enough padding or peek so names and images are fully visible, or wrap/truncate names with ellipsis after a complete word."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The category chip row is clipped on the right (partial 'Healthy' and a cut-off next chip), so users cannot see the full set of filters.",
+        "suggestion": "Add end padding and a clear scroll affordance so the last visible chip is fully on-screen."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom restaurant promo card is cut off by the tab bar, hiding most of the card content.",
+        "suggestion": "Add bottom content inset equal to the tab bar height so the last card can scroll fully into view."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery-time badges sit inconsistently on cards (centered on the first card, overlapping the burger image on the second).",
+        "suggestion": "Use a consistent badge position and contrast treatment on every card."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The Orders tab icon appears faint or incomplete compared with the other tab icons.",
+        "suggestion": "Use the same stroke weight and color as the other inactive tab icons."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 438,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.006392,
+    "reportedCost": 0.003704,
+    "durationSeconds": 10.96518737499998
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:53:10.581Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual layout and content issues: truncated restaurant names, duplicate cards with identical content, and partial category chips cut off at the edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Restaurant name 'Smash Bros Bu' is truncated/cut off in the Fastest near you section.",
+        "suggestion": "Allow multi-line titles, reduce font size, or use ellipsis with full name on tap; ensure card width accommodates typical names."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Two identical 'Green Bowl Poké' cards appear side by side with the same image, time, and delivery fee, looking like a data or rendering bug.",
+        "suggestion": "Deduplicate the list or ensure distinct nearby restaurants are shown; verify API/data binding for this carousel."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips (e.g. after 'Healthy') are clipped at the right edge with no clear affordance that the row scrolls.",
+        "suggestion": "Add horizontal scroll padding/fade, a partial next chip, or a chevron so users know more filters exist."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Bottom of the pizza promo card and related content are cut off by the bottom navigation bar.",
+        "suggestion": "Add sufficient bottom padding/safe area so list content is not obscured by the tab bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 369,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005978000000000001,
+    "reportedCost": 0.0029316,
+    "durationSeconds": 7.385466541999994
+  }
+}

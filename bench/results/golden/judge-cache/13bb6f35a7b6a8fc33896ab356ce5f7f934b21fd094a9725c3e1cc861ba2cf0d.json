@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you section, making the full name unreadable.",
+    "Category filter chips row is cut off on the right (partial chip visible after Healthy), and the third restaurant card in Fastest near you is partially clipped at the screen edge.",
+    "Bottom tab bar icons appear incomplete or poorly spaced; the bookmark/orders icon sits under a thin bar and home is the only clearly active state, which can look broken.",
+    "Popular right now pizza card shows only a discount badge with no restaurant name or delivery info visible in the viewport (card appears cut off at bottom)."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Issue 2 describes bottom tab bar icons appearing incomplete and poorly spaced, matching the defect of bottom nav labels being cut off and overlapped."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

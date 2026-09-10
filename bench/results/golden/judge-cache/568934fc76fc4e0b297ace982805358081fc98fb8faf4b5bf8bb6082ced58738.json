@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Restaurant cover image failed to load"],
+  "reportedIssues": [
+    "The 'Tokumaru Ramen Bar' card in the 'Popular right now' section shows a broken-image placeholder icon instead of an actual restaurant photo.",
+    "The third card in 'Fastest near you' is clipped at the right edge, cutting off the restaurant name ('Trattoria Piccol…') with no visible truncation ellipsis handling in the title text.",
+    "A category filter chip after 'Healthy' is cut off at the right screen edge, showing only a sliver of the pill with no visible label.",
+    "The pizza restaurant card at the bottom is abruptly cut off by the bottom navigation bar, hiding its name, rating, and delivery info."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.66 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

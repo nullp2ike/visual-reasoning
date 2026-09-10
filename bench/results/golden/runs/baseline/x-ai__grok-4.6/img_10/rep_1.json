@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:11.215Z",
+  "status": "ok",
+  "result": {
+    "summary": "The food delivery home screen has several layout and content issues: duplicated restaurant cards, a truncated restaurant name, a category chip cut off at the screen edge, and a promo card clipped at the bottom.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The first two 'Fastest near you' cards are identical (same image, name 'Green Bowl Poké', time, and delivery fee), which looks like a data or rendering bug.",
+        "suggestion": "Ensure each card maps to a unique restaurant and remove duplicate items from the list."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant name is truncated to 'Smash Bros Bu' and the card is cut off at the right edge of the screen.",
+        "suggestion": "Allow wrapping or a shorter display name, and give the last visible card enough padding so the name and image are not clipped."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category chip ('Healthy') is cut off on the right, with only a sliver of the next chip visible.",
+        "suggestion": "Add end padding or a fade so the last fully visible chip isn't clipped, or make the scroll affordance clearer."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second 'Popular right now' promo card is cut off at the bottom by the tab bar, so the restaurant name and details are not visible.",
+        "suggestion": "Add bottom content inset so the last card can scroll fully above the tab bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 394,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 384,
+    "estimatedCost": 0.006128,
+    "reportedCost": 0.005552,
+    "durationSeconds": 9.644429082999995
+  }
+}

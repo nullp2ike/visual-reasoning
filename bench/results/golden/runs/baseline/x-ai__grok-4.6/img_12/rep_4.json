@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:32.434Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content clipping issues: category chips and restaurant cards overflow, a restaurant name is truncated, and delivery time text overlaps on a popular listing.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card in the 'Fastest near you' row is clipped on the right, cutting off the name 'Trattoria Piccol'.",
+        "suggestion": "Give the horizontal carousel enough padding or peek so the last visible card (or its title) is not cut off."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "On the Tokumaru Ramen Bar card, delivery time text is garbled/overlapping as '25-30elivery' instead of a clear time and delivery fee.",
+        "suggestion": "Fix the metadata layout so time and delivery info do not collide and display as something like '25–30 min · delivery'."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chips overflow the screen; 'Healthy' is cut off and the next chip is only partially visible.",
+        "suggestion": "Add right padding or fade and allow full horizontal scroll so chips are not clipped at the viewport edge."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza promo card is cropped by the tab bar, so most of the restaurant details below the image are not visible.",
+        "suggestion": "Ensure list content has enough bottom inset above the tab bar so cards are not hidden."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 317,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.005666,
+    "reportedCost": 0.002978,
+    "durationSeconds": 15.889778125000012
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_15",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:33:02.783Z",
+  "status": "ok",
+  "result": {
+    "summary": "The food delivery home screen is mostly polished, but several cards and chips are clipped at the screen edges, and one restaurant listing is cut off mid-scroll.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card in the 'Fastest near you' row is cut off on the right, truncating the name to 'Trattoria Piccol' and hiding the rest of the card.",
+        "suggestion": "Add consistent horizontal padding or allow the carousel to peek the next card without clipping text; ensure names wrap or ellipsize fully within the visible card."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last item in the category chip row ('Healthy') is partially cut off at the right edge of the screen.",
+        "suggestion": "Give the chip scroller enough end padding so the last chip is fully visible, or show a clearer peek of the next chip."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second 'Popular right now' restaurant card is cropped at the bottom of the viewport, so only the image is visible and the restaurant name/details are missing.",
+        "suggestion": "This may be expected mid-scroll, but consider ensuring cards snap so titles remain visible or add a bit more bottom padding above the tab bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 334,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.0057680000000000006,
+    "reportedCost": 0.00308,
+    "durationSeconds": 9.900908333
+  }
+}

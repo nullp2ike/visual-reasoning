@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "In the 'Fastest near you' horizontal carousel, the third card ('Trattoria Piccol...') is clipped at the right viewport edge: the restaurant name is truncated mid-word and the card is partially cut off, with no visible scroll indicator or peek padding to signal that the row is scrollable.",
+    "The 'See all' links (green text on white) and the gray delivery-fee/meta text (e.g., '€0.90 delivery', '25–35 min') use relatively low-contrast color combinations that may fall below WCAG AA contrast ratios for small text.",
+    "The selected category pill 'Pizza' is active, yet the 'Fastest near you' section shows non-pizza restaurants (Poké, Burgers, Ramen), which can look inconsistent with the active filter."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Reported issue 2 describes Pizza category being selected but the feed showing non-pizza restaurants, matching the expected defect of a selected category filter not being applied."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

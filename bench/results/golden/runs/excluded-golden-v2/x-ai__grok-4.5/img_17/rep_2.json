@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:36:27.609Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 layout issues: restaurant names are truncated without ellipsis in the Fastest near you carousel, and a pizza card appears without a restaurant name or metadata while neighboring cards have full labels.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' row, the third restaurant name is cut off mid-word as 'Trattoria Piccol' with no ellipsis or wrapping, so the full name is unreadable.",
+        "suggestion": "Constrain card titles with text overflow ellipsis, allow 2-line wrapping, or widen cards so full names remain visible."
+      },
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The bottom pizza promotional card shows only a '-20%' badge and heart icon with no restaurant name, rating, delivery time, or category—unlike the ramen card above it—making the listing incomplete.",
+        "suggestion": "Add the restaurant name and standard metadata (time, delivery fee, cuisine, rating) below the image, consistent with other restaurant cards."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 265,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005514,
+    "reportedCost": 0.0048612,
+    "durationSeconds": 28.10648916700005
+  }
+}

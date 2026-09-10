@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The third restaurant name in Fastest near you is truncated (“Smash Bros Bu”), so the full name is unreadable.",
+    "Green Bowl Poké appears twice in a row with the same image, time, and delivery fee, which looks like a data or list-duplication bug.",
+    "The last category chip is clipped at the right edge of the screen, so users cannot see the full label.",
+    "The bottom restaurant promo card is cut off by the tab bar, hiding the name and details."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.83 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3]
+  }
+}

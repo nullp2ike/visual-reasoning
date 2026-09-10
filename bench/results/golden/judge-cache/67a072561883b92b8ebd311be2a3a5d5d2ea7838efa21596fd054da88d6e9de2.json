@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "Under 'Fastest near you', the first two cards are identical (same Green Bowl Poké image, name, time, and delivery fee), which looks like a data or rendering bug.",
+    "The third 'Fastest near you' card title is truncated to 'Smash Bros Bu' instead of the full restaurant name.",
+    "Category filter row is cut off on the right (partial 'Healthy' and next pill), with no clear affordance that more filters exist.",
+    "Bottom of the pizza card is clipped by the tab bar, so the offer/image feels incomplete when scrolling stops."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.76 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

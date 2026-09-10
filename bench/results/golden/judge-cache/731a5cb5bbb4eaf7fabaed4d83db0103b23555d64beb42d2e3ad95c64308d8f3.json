@@ -1,0 +1,25 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "The circular button in the top-right of the header is empty (light gray circle) apart from a small red notification dot — the expected icon (profile avatar or notification bell) appears to be missing or failed to load.",
+    "In the 'Fastest near you' carousel the third card is cut hard by the viewport edge and its title reads 'Trattoria Piccol' with the word sliced mid-character and no ellipsis, making it look broken rather than scrollable.",
+    "The category chip row is also clipped at the right edge with a barely visible sliver of the next chip, giving no clear affordance that the row scrolls.",
+    "The favorite (heart) buttons are styled inconsistently: white circle with dark outline heart on the ramen card, dark/translucent circle with white heart on the pizza card.",
+    "Thumbnail treatments in the 'Fastest near you' row are inconsistent — the Green Bowl Poké tile has a pale gray background while the other two are dark, so the white 'min' badge contrast varies and the row looks unbalanced.",
+    "The second 'Popular right now' card is abruptly cut off by the bottom navigation bar with no bottom padding, hiding its title/rating and making the list feel truncated.",
+    "Icon-only controls (header button, heart/favorite buttons, search icon) have no visible text labels; if they also lack accessible names they are unusable with screen readers."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.78 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5, 6]
+  }
+}

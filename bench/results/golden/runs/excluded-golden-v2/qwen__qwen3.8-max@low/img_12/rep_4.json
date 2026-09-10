@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:37:42.464Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-structured, but there is a clear text overlap defect in the 'Tokumaru Ramen Bar' card where the delivery-time text and the delivery-fee text are rendered on top of each other, producing unreadable overlapping glyphs.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Tokumaru Ramen Bar' card, the metadata line shows overlapping text: '25–35 min' and '€0 delivery' (and the bullet separator) are drawn on top of one another, resulting in garbled, illegible text like '25–3€0 delivery'.",
+        "suggestion": "Fix the layout of the card's subtitle row so the time range, separator bullet, delivery fee, and cuisine tag are laid out horizontally with proper spacing (e.g., flex row with gap) instead of being absolutely positioned or constrained to the same space."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 772,
+    "reasoningTokens": 540,
+    "estimatedCost": 0.00822,
+    "reportedCost": 0.0071,
+    "durationSeconds": 65.14724175000005
+  }
+}

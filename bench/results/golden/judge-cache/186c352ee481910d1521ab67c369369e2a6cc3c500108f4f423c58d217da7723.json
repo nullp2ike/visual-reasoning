@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Promo banner text is unreadable, white text on a pale mint background"],
+  "reportedIssues": [
+    "The green promo banner uses white text ('3 free deliveries for you' and the code/min-order line) on a very light mint background, giving very low contrast and making the offer details hard to read.",
+    "The third restaurant card in 'Fastest near you' is hard-clipped by the viewport edge — the name reads 'Trattoria Piccol' and the delivery price is cut mid-line, with no visible affordance that the row scrolls.",
+    "Favorite (heart) buttons are styled inconsistently: the Tokumaru Ramen card has a white circular button while the pizza card below has a dark/transparent circular button, so the same control looks like two different states.",
+    "The category filter chip row is cut off at the right edge with only a sliver of the next chip visible, which reads as a rendering glitch rather than a scrollable list.",
+    "The second 'Popular right now' card is cut off by the fixed bottom navigation bar with no bottom spacing, so its title/metadata are hidden behind the nav.",
+    "Restaurant card images appear as heavily blurred/generic illustrations with strong vignettes, making dishes hard to identify and looking like low-quality placeholders."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes white text on a light mint background with low contrast in the promo banner, matching the unreadable text defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

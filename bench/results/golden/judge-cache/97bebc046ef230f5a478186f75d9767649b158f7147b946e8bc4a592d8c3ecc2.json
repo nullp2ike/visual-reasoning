@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers shows '€NaN delivery' instead of a valid price, indicating a calculation or data-binding error.",
+    "The 'Trattoria Piccol...' card and its content are cut off at the right edge of the screen in the 'Fastest near you' horizontal scroll section.",
+    "Delivery fee formatting is inconsistent - some show '€0.90 delivery', others show '€0 delivery' as a badge overlay, creating visual inconsistency in presentation style."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0, 2],
+        "reasoning": "cosine 0.80 >= 0.69 threshold (reported #2)"
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

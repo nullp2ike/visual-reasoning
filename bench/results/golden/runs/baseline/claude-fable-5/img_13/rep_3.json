@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_13",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:52:12.161Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed, but there are a few visual defects: a truncated restaurant name on the right-edge carousel card, a partially visible empty category chip, and the last restaurant card being cut off with missing details before the bottom navigation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "In the 'Fastest near you' carousel, the third card's name reads 'Trattoria Piccol' — the text is hard-clipped at the screen edge with no ellipsis, making the restaurant name unreadable/ambiguous.",
+        "suggestion": "Apply text truncation with an ellipsis (e.g., 'Trattoria Piccol…') or wrap the label within the card bounds so the name isn't hard-cut by the viewport edge."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "After the 'Healthy' filter chip, a sliver of another chip is visible at the right edge with no visible label, appearing as an empty gray pill.",
+        "suggestion": "Adjust chip spacing/peek width so partially visible chips show at least part of their label, or add a fade/gradient at the edge to indicate horizontal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last restaurant card (pizza, '-20%') is abruptly cut off by the bottom navigation bar, hiding its name, rating, and delivery info. There is no visual affordance (padding or fade) indicating more content below.",
+        "suggestion": "Add bottom padding equal to the nav bar height to the scroll container, or ensure the list scrolls fully so the final card's metadata isn't obscured."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The profile avatar in the top-right is an empty gray circle with only a small red notification dot — no image or initials are rendered, making it look like a broken/unloaded avatar.",
+        "suggestion": "Show a placeholder icon or user initials inside the avatar circle when no profile photo is available."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 879,
+    "estimatedCost": 0.06369,
+    "durationSeconds": 16.209949292000005
+  }
+}

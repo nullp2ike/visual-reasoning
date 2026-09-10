@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "Favorite heart buttons and the notification bell appear to be icon-only controls with no visible label or accessible name.",
+    "Secondary metadata like delivery fees and time ranges use small gray text that may be hard to read for low-vision users.",
+    "Category chips and restaurant cards are cut off at the right edge; this helps imply scrolling but the clipped 'Healthy' chip and partially visible restaurant card can look unintentionally cropped.",
+    "The 'Pizza' category is selected while visible recommendations include ramen, burgers, and poké, which may make the filter state feel inconsistent."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "cosine 0.72 >= 0.69 threshold (reported #3)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

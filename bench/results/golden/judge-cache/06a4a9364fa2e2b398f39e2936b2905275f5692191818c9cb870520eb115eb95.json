@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "Section heading displays raw localization key 'home_feed.popular_title' instead of the intended user-facing text (e.g., 'Popular near you').",
+    "The third restaurant card in the 'Fastest near you' horizontal list is truncated; the name appears as 'Trattoria Piccol' with the rest cut off.",
+    "The bottom restaurant card (pizza image with '-20%' badge) is cut off at the bottom of the viewport, hiding its name, rating, and delivery details."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe the same UI element (section title) displaying a raw translation key 'home_feed.popular_title' instead of translated text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

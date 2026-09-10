@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The third restaurant name in “Fastest near you” is cut off mid-word (“Trattoria Piccol”), so the full name is unreadable inside its card.",
+    "The lower Popular card shows a “-0%” badge, which reads as a broken or meaningless discount (0% off)."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "The report identifies the lower Popular card's “-0%” discount badge, matching the defective −0% badge."
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

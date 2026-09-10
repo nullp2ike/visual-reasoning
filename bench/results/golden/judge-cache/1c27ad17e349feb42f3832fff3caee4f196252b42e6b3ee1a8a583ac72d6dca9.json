@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The rightmost category chip and restaurant card are visibly cut off at the screen edge; the restaurant name is also clipped without a clear truncation treatment.",
+    "The second large restaurant card is covered by the fixed bottom navigation, causing its image to end abruptly behind the bar.",
+    "The “−100%” discount badge is unusual and may look like malformed promotional copy."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "cosine 0.87 >= 0.69 threshold (reported #2)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_05",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:38:49.869Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page layout is mostly sound, but the promotional banner has a serious contrast failure that makes its headline and subtext nearly unreadable, plus a couple of smaller styling inconsistencies.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "accessibility",
+        "description": "The promo banner headline '3 free deliveries for you' and subtext 'Use code TALLINN3 at checkout · min. order €10' are rendered in white on a very light mint green background, giving almost no contrast and making the offer effectively illegible.",
+        "suggestion": "Change the banner text to a dark green/near-black color (or darken the banner background) so text meets at least 4.5:1 contrast ratio."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) buttons in the 'Popular right now' list are styled inconsistently: the ramen card uses a white circular background with a dark outline heart, while the pizza card below uses a dark circular background with a white heart.",
+        "suggestion": "Standardize the favorite button treatment across all cards (e.g., semi-transparent dark scrim with white heart) for visual consistency."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "In the 'Fastest near you' carousel, the Green Bowl Poké thumbnail is a very pale gray while the neighboring thumbnails are dark, so the white '15–25 min' badge sits on a low-contrast background and the card looks like a broken/placeholder image.",
+        "suggestion": "Apply a consistent image treatment/gradient scrim behind the ETA badge, or use a properly exposed image so the badge remains readable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 705,
+    "estimatedCost": 0.02806,
+    "durationSeconds": 70.27910424999997
+  }
+}

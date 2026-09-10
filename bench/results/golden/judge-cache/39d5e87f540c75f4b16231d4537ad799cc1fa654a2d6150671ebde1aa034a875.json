@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The \"Smash Bros Burgers\" card displays \"€NaN delivery\", exposing an invalid/uncomputed price instead of a usable delivery fee.",
+    "The third item in the \"Fastest near you\" horizontal list is cut off at the right edge, including its restaurant name, making the content appear truncated."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 explicitly describes a delivery fee showing €NaN, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

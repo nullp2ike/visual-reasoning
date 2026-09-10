@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:53:06.190Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual and layout issues: truncated restaurant names, duplicate cards in the fastest section, cut-off category chips, and incomplete bottom content.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Restaurant name 'Smash Bros Bu' is truncated and cut off mid-word on the third 'Fastest near you' card.",
+        "suggestion": "Allow multi-line titles, reduce font size, or use ellipsis with full name on a secondary line so the full name is readable."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The first two 'Fastest near you' cards show identical images, titles ('Green Bowl Poké'), times, and delivery fees, looking like a duplicate/bug rather than distinct restaurants.",
+        "suggestion": "Ensure each card loads unique restaurant data; if intentional, differentiate with distinct imagery or labels."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips (All, Pizza, Sushi, Burgers, Healthy) are cut off on the right edge with no clear affordance that the row scrolls.",
+        "suggestion": "Add partial next-chip peek, fade, or scroll indicator so users know more categories exist."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom 'Popular right now' pizza card is heavily cropped by the bottom navigation, with no visible title or metadata for that listing.",
+        "suggestion": "Add more bottom padding/scroll space so card titles and details remain fully visible above the tab bar."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery time badges sit over the food images with limited contrast on light plate backgrounds, reducing readability.",
+        "suggestion": "Increase badge contrast (stronger background/shadow) or reposition so text stays legible on all image types."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 466,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.00656,
+    "reportedCost": 0.0035136,
+    "durationSeconds": 10.592271208999998
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:54:15.507Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and truncation issues are visible: restaurant names and category chips are cut off, and the bottom promotional card is partially clipped by the tab bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated in the Fastest near you row, cutting off the full name.",
+        "suggestion": "Allow multi-line titles, reduce font size, or ensure cards scroll/resize so full names are visible."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom pizza promotional card is partially cut off by the bottom navigation bar, hiding part of the image and content.",
+        "suggestion": "Add sufficient bottom padding/margin to the scroll content so cards clear the tab bar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips (e.g. Healthy) overflow or are clipped on the right edge of the screen.",
+        "suggestion": "Ensure the chip row is horizontally scrollable with clear overflow and adequate end padding."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Delivery fee text under Green Bowl Poké shows '€0.90 delivery' which may be hard to scan next to truncated neighbors.",
+        "suggestion": "Keep card widths consistent and use ellipsis or wrapping rules so secondary text remains fully readable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 354,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005888,
+    "reportedCost": 0.0052352,
+    "durationSeconds": 8.158601999999984
+  }
+}

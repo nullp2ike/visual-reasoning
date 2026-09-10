@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_05",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:25:15.137Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-structured, but there are a few visual problems: the promotional banner has severely low-contrast white text on a pale green background, a category filter chip is cut off at the screen edge with no visible label, and a restaurant name in the horizontal carousel is truncated without an ellipsis.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "accessibility",
+        "description": "The promo banner text '3 free deliveries for you' and 'Use code TALLINN3 at checkout · min. order €10' is white/very light on a pale mint-green background, making it nearly unreadable and failing contrast requirements.",
+        "suggestion": "Use a dark text color (e.g., dark green or near-black) on the light green banner, or darken the banner background so white text meets WCAG contrast ratios (4.5:1 for body text)."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A sixth category filter chip on the right edge (after 'Healthy') is clipped so only a sliver of the pill is visible with no readable label, which looks broken rather than like an intentional scroll affordance.",
+        "suggestion": "Adjust chip spacing/peek amount so a meaningful portion of the next chip (including part of its label) is visible, or add a fade/gradient edge to signal horizontal scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "In the 'Fastest near you' carousel, the third restaurant name appears as 'Trattoria Piccol', truncated at the screen edge without an ellipsis, making the text look cut off/broken.",
+        "suggestion": "Constrain the label to the card width and apply text truncation with an ellipsis (e.g., 'Trattoria Picco…'), or wrap the name to a second line."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza restaurant card is partially hidden behind the bottom navigation bar with its content (name, rating) not visible, which can appear broken in a static view.",
+        "suggestion": "Add bottom padding equal to the nav bar height to the scroll container so the last card is not overlapped when scrolled to the end."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 818,
+    "estimatedCost": 0.06064,
+    "durationSeconds": 15.391079249999995
+  }
+}

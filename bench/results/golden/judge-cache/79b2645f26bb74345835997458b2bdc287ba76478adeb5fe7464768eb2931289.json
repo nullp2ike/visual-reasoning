@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "Category filter 'Pizza' is selected but 'Fastest near you' and 'Popular right now' show non-pizza venues like Green Bowl Poké, Smash Bros Burgers, Trattoria Piccolo and Tokumaru Ramen Bar",
+    "Third card in 'Fastest near you' shows truncated name 'Trattoria Piccol' clipped at screen edge without ellipsis",
+    "Green Bowl Poké thumbnail illustration appears small and centered with large empty background while neighboring cards fill the image area, looking like an image fit or missing-image issue"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.59 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

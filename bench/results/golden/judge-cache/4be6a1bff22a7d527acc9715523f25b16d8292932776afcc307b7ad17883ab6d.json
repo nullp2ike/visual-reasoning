@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "In the 'Fastest near you' row, the third card ('Trattoria Piccol...') is cut off at the right screen edge, truncating the restaurant name mid-word with no ellipsis or visual cue that the row is horizontally scrollable.",
+    "The category filter chip row ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') shows a partially visible chip cut off at the right edge with no scroll hint.",
+    "The '-100%' discount badge on the bottom pizza card is ambiguous and could be misread (a 100% discount implies a free item, which may be a data/content error).",
+    "The notification bell relies on a small red dot to indicate unread alerts, which is a weak visual cue and may be missed by users with low vision or color-vision deficiencies."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Reported issue 2 directly describes the −100% discount badge showing on a card, identifying the same UI element with the same problematic content."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

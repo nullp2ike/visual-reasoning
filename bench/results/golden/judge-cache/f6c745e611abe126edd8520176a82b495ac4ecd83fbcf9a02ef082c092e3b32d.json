@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers card shows '€NaN delivery' instead of a valid price, indicating a failed numeric parse or missing delivery-fee value being rendered raw.",
+    "The third card in 'Fastest near you' (Trattoria Piccol...) is cut off at the right screen edge with its title truncated, which can look broken rather than intentionally scrollable.",
+    "The notification bell in the top-right has only a small red dot indicator with no visible label or badge count, which may be unclear to screen-reader and low-vision users.",
+    "Category filter chips ('Pizza', 'Sushi', etc.) are cut off at the right edge with no visible scroll cue, similar to the restaurant row."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the exact same defect: a delivery fee displaying as '€NaN' due to failed numeric parsing or missing value."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

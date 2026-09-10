@@ -1,0 +1,24 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section heading displays the untranslated localization key 'home_feed.popular_title' instead of a human-readable title.",
+    "The third 'Fastest near you' card is clipped on the right so the restaurant name 'Trattoria Piccol' is truncated and the card is only partially visible.",
+    "The last popular restaurant card is cut off by the bottom tab bar, hiding most of the image and all of the restaurant details.",
+    "The category chip row is cut off on the right (partial 'Healthy' chip and a sliver of the next chip)."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.91 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

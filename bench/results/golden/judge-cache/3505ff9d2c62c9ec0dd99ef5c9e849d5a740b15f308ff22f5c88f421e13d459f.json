@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers displays '€NaN delivery' instead of a valid delivery fee amount",
+    "The rightmost restaurant card in 'Fastest near you' section (Trattoria Piccol) is horizontally cut off, obscuring part of the card content",
+    "Restaurant name 'Trattoria Piccol' appears truncated and incomplete",
+    "Category filter pills on the right side are partially cut off, indicating a horizontal overflow"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe a delivery fee displaying as €NaN instead of a valid amount, with the same restaurant (Smash Bros Burgers) mentioned in reported issue."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

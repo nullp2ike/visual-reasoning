@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "A circular loading spinner is displayed on top of the Tokumaru Ramen Bar card, partially obscuring the food image. This suggests the image or card content is not fully loaded, creating a broken-looking state.",
+    "The third restaurant card in the 'Fastest near you' carousel ('Trattoria Picco...') is truncated at the right edge, cutting off part of the name and image.",
+    "The restaurant name 'Trattoria Picco...' is ellipsized, making the full name unreadable without tapping into the detail view."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Report 0 describes a loading spinner overlaid on top of already-loaded content (the Tokumaru Ramen Bar card with its food image), matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

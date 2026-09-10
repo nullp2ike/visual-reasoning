@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "The horizontal category list is cut off on the right: a partial category pill is visible after “Healthy,” with no clear spacing or affordance indicating the list can be scrolled.",
+    "The “Fastest near you” horizontal restaurant carousel is clipped at the right edge. The third card and its restaurant name (“Trattoria Piccol…”) are truncated, making the content appear broken rather than intentionally scrollable.",
+    "The next card in “Popular right now” is largely obscured by the fixed bottom navigation, leaving only its image visible and making the feed look abruptly cut off."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.60 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

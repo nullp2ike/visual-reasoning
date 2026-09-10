@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Promo banner text is unreadable, white text on a pale mint background"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated with missing letters at the end of the Fastest near you row.",
+    "Category filter chips overflow horizontally; the last visible chip ('Healthy') is cut off and further options are only partially shown.",
+    "The third 'Fastest near you' card is heavily clipped on the right edge so image and delivery time badge are incomplete.",
+    "Bottom 'Popular right now' pizza card is cut off mid-image by the tab bar with no clear fade or spacing.",
+    "Promo banner text is low-contrast light green on light green, reducing readability of the offer details.",
+    "Delivery time badges sit with inconsistent vertical alignment over the food images across the three fastest cards."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [4],
+        "reasoning": "Issue 4 describes low-contrast text on the promo banner (light green on light green), which matches the expected defect of unreadable text due to poor color contrast on the banner."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 5]
+  }
+}

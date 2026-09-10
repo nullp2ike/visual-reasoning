@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated in the Fastest near you row, and the third card is partially clipped off-screen with no clear scroll affordance.",
+    "The category filter row (All, Pizza, Sushi, Burgers, Healthy) overflows the screen edge with a clipped chip on the right and no visible scroll cue.",
+    "The Popular right now section’s second promo card is cut off at the bottom by the tab bar, so users only see a partial image and badge.",
+    "Delivery time badges (e.g. '15–25 min') sit on light food imagery with low contrast, making the white pill and dark text harder to read.",
+    "Promo banner and section headers are fine, but truncated names and clipped cards make key restaurant info incomplete at a glance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "None of the reports describes the middle carousel card being misaligned; the clipped cards and overflow issues are different defects."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 4]
+  }
+}

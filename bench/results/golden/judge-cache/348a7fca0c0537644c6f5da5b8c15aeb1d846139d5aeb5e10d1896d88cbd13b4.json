@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you row, so the full name is not readable.",
+    "Category filter chips are cut off on the right (Healthy is partial and another pill is barely visible), suggesting overflow without a clear scroll affordance.",
+    "The third Fastest near you card is only partially on-screen, making the section feel unfinished and harder to browse.",
+    "The bottom Popular item (pizza) is heavily cropped by the bottom nav, so key promo content is hard to see without scrolling.",
+    "Delivery time badges sit over food images with soft contrast on light plates, which can reduce legibility."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "None of the reported issues describes the feed failing to filter to Pizza after the category is selected."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 4]
+  }
+}

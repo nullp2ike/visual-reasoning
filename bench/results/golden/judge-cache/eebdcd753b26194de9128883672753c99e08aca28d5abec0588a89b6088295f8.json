@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers shows delivery cost as '€NaN delivery', indicating a null/undefined price was rendered instead of a valid amount.",
+    "Restaurant name 'Trattoria Piccol' is cut off mid-word in the Fastest near you row, so the full name is not readable.",
+    "Category filter chips (All, Pizza, Sushi, Burgers, Healthy) overflow the right edge of the screen with no clear scroll affordance.",
+    "Bottom navigation labels and icons appear uneven in weight/color (Home is strongly emphasized while others look washed out)."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.76 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

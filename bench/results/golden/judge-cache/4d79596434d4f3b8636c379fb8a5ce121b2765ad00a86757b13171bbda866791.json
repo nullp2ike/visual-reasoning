@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "Bottom navigation highlights Profile in green as active while the screen shows Home feed content - Home should be active",
+    "Third card in 'Fastest near you' shows restaurant name cut off mid-word as 'Trattoria Piccol' at the screen edge",
+    "First 'Fastest near you' card for Green Bowl Poké has large empty light background with small centered dish image, inconsistent with neighboring filled dark cards"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.90 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

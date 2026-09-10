@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_11",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:03:28.516Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual issues on the food delivery app page: one truncated restaurant name and one partially cut-off restaurant card in the horizontal scroll section.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' section shows a truncated name 'Trattoria Piccol' — the full name is cut off due to the card being partially out of the viewport without a clear visual affordance that it's scrollable.",
+        "suggestion": "Ensure restaurant names wrap or truncate with an ellipsis properly, and add a visible scroll indicator or partial card peek to signal horizontal scrollability to users."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza restaurant card is cut off mid-image at the bottom of the screen with no restaurant name or details visible, making it unclear what the item is.",
+        "suggestion": "Show at least a portion of the restaurant name/details below the image even when partially scrolled, or adjust card height so minimal metadata is always visible."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 276,
+    "estimatedCost": 0.009615,
+    "durationSeconds": 7.9153073749999745
+  }
+}

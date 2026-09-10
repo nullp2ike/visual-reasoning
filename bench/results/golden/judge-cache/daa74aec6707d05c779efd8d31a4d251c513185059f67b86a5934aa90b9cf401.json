@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The 'Pizza' filter chip is selected (highlighted dark), yet the visible results include non-pizza venues: Green Bowl Poké, Smash Bros Burgers, and Tokumaru Ramen Bar (tagged 'Ramen'). The filter appears to have no effect on the listings.",
+    "The third card in 'Fastest near you' is cut off mid-word ('Trattoria Piccol...') with no ellipsis or visual affordance indicating horizontal scrolling.",
+    "The last category chip after 'Healthy' is clipped at the right screen edge with almost no visible content, making it look like a rendering glitch rather than a scrollable list.",
+    "The heart (favorite) icon on the Tokumaru Ramen Bar image sits on a variable dark photo background without a consistent backing, risking low contrast on lighter images (the pizza card below uses a dark circle backing, creating inconsistency)."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes the Pizza filter chip being selected but the feed showing non-pizza results (Green Bowl Poké, Smash Bros Burgers, Tokumaru Ramen Bar), which is exactly the defect of the filter having no effect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

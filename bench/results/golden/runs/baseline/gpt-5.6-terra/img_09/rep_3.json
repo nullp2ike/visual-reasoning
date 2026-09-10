@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_09",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:34:28.951Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally visually coherent. The main noticeable issue is that horizontally scrolling content is abruptly clipped at the right edge, which makes some category and restaurant content look cut off rather than intentionally scrollable.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category row ends with a partially visible, unlabeled gray chip at the right edge, making the navigation appear cropped.",
+        "suggestion": "Add consistent end padding and a clearer horizontal-scroll affordance, or ensure the next chip is sufficiently visible to look intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third restaurant in the 'Fastest near you' row is cut off at the right edge, including its name and delivery-price text.",
+        "suggestion": "Use padding at the end of the horizontal carousel and consider slightly narrower cards or a visible peek/scroll indicator so the truncation reads as intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The next popular restaurant card is partially covered by the fixed bottom navigation in the visible viewport, which can make the content appear obscured.",
+        "suggestion": "Ensure the scrolling content has adequate bottom inset/padding so cards can be fully scrolled above the persistent bottom navigation."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 610,
+    "reasoningTokens": 350,
+    "estimatedCost": 0.010942,
+    "durationSeconds": 9.655630917000002
+  }
+}

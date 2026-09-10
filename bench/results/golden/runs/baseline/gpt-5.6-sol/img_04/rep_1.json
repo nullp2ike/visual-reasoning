@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "imageId": "img_04",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:30:31.383Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 visible issues, primarily involving awkward horizontal clipping and content being obscured by the fixed navigation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The rightmost restaurant in the “Fastest near you” row is cut off at the viewport edge, including its name and delivery details, making the card look broken rather than intentionally scrollable.",
+        "suggestion": "Add a clear horizontal-carousel treatment with consistent side padding, snap points, and enough spacing so partially visible cards do not clip their text."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A small, unlabeled fragment of the next category chip appears at the far right of the category row.",
+        "suggestion": "Adjust chip spacing or the carousel’s initial width so the next chip is either meaningfully visible with part of its label or fully outside the viewport."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The discount badge on the lower restaurant card reads “−0%,” which is nonsensical and looks like a formatting or calculation error.",
+        "suggestion": "Hide zero-value discount badges or display a valid positive discount percentage."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 647,
+    "reasoningTokens": 404,
+    "estimatedCost": 0.028465,
+    "durationSeconds": 15.192330957999976
+  }
+}

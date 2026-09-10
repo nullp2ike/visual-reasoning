@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "The category chip row is cut off at the right edge, showing only a partial next chip without an obvious scroll affordance.",
+    "The third restaurant card in the “Fastest near you” carousel is visibly truncated at the right edge, including its title.",
+    "The next restaurant card in the “Popular right now” section is partially covered by the fixed bottom navigation bar, making its content difficult to view."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.69 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

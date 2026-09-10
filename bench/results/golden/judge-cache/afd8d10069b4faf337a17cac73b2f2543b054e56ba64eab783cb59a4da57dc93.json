@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "The search field placeholder reads 'Restarants, dishes, groceries' — 'Restarants' is a misspelling of 'Restaurants'.",
+    "In the 'Fastest near you' carousel, the third card's title is cut off mid-word ('Trattoria Piccol') with no ellipsis, making it look broken rather than intentionally scrollable.",
+    "The category chip row shows a partially clipped, empty-looking chip after 'Healthy' at the right screen edge, which reads as a rendering artifact.",
+    "The 'Green Bowl Poké' card image has a noticeably lighter/washed-out background compared to the darker, richer imagery of neighboring cards, creating visual inconsistency in the carousel."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 explicitly identifies the misspelling 'Restarants' instead of 'Restaurants' in the search field placeholder."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

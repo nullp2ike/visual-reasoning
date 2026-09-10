@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:12.658Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content issues: truncated restaurant names, a likely duplicate listing, a cut-off category chip, and a promo card that clips at the bottom.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant name in Fastest near you is truncated (“Smash Bros Bu”), so the full name is unreadable.",
+        "suggestion": "Allow the name to wrap to two lines, use a smaller type size, or show an ellipsis with a tooltip/full name on tap."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Green Bowl Poké appears twice in a row with the same image, time, and delivery fee, which looks like a data or list-duplication bug.",
+        "suggestion": "Deduplicate restaurant cards and verify the nearby/fastest feed is not repeating the same venue."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category chip is clipped at the right edge of the screen, so users cannot see the full label.",
+        "suggestion": "Add end padding or a fade/peek so the last chip is fully visible, or make the row clearly scrollable with enough inset."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom restaurant promo card is cut off by the tab bar, hiding the name and details.",
+        "suggestion": "Add bottom content inset so cards sit fully above the navigation bar, or make the last card peek intentionally with enough visible context."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 318,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.005672,
+    "reportedCost": 0.002984,
+    "durationSeconds": 9.831219375000016
+  }
+}

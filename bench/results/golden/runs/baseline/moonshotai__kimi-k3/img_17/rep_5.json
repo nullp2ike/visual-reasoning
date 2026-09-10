@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:00:25.798Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly intact, but the bottom navigation appears to highlight Profile while the content is the Home feed, creating a clear state mismatch. A few horizontally scrolling items are clipped at the right edge, which is somewhat expected but looks untidy.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "Bottom navigation shows Profile as the active/selected tab while the main content is clearly the Home discovery feed.",
+        "suggestion": "Sync the selected tab state with the visible route; highlight Home instead of Profile on this screen."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The rightmost category chip is only a tiny sliver at the screen edge, making the filter row look accidentally cut off rather than intentionally scrollable.",
+        "suggestion": "Add consistent horizontal padding or show a clearer partial next chip so the row reads as scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In Fastest near you, the third restaurant name is abruptly truncated as “Trattoria Piccol” at the viewport edge.",
+        "suggestion": "Use ellipsis with enough card peek width, or reduce card width slightly so clipped titles still look deliberate."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 922,
+    "reasoningTokens": 617,
+    "estimatedCost": 0.020136,
+    "reportedCost": 0.01452,
+    "durationSeconds": 13.10858445799991
+  }
+}

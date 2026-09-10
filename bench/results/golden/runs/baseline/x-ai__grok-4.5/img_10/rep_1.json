@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:53:05.346Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual and content issues: duplicate restaurant cards, truncated names, and incomplete category pills that hurt polish and scannability.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Under 'Fastest near you', the first two cards are identical (same Green Bowl Poké image, name, time, and delivery fee), which looks like a data or rendering bug.",
+        "suggestion": "Ensure unique nearby restaurants are loaded and remove duplicate entries from the list."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third 'Fastest near you' card title is truncated to 'Smash Bros Bu' instead of the full restaurant name.",
+        "suggestion": "Allow multi-line titles, reduce font size, or use ellipsis with full name on tap; ensure card width accommodates typical names."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter row is cut off on the right (partial 'Healthy' and next pill), with no clear affordance that more filters exist.",
+        "suggestion": "Add fade/scroll hint or ensure horizontal scroll is obvious; keep active and key filters fully visible."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Bottom of the pizza card is clipped by the tab bar, so the offer/image feels incomplete when scrolling stops.",
+        "suggestion": "Add bottom padding/safe-area inset so the last card clears the navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 373,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006002,
+    "reportedCost": 0.0053492,
+    "durationSeconds": 8.266326165999999
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel the cards are not aligned on a common baseline: the 'Green Bowl Poké' image block is shorter and sits higher, 'Smash Bros Burgers' is shifted ~40px lower, so titles and delivery-fee lines appear at three different vertical positions.",
+    "The third card ('Trattoria Piccol…', '€1.90 delivery') is hard-clipped at the right edge of the screen with no ellipsis or partial-card peek styling, making it look broken rather than scrollable.",
+    "The second 'Popular right now' card (pizza with −20% badge) is cut off by the fixed bottom navigation bar; its name, rating and delivery info are not visible, so the list appears to end mid-card.",
+    "Inconsistent image treatment: the 'Green Bowl Poké' tile has a flat light-gray background with a centered illustration while sibling tiles use dark photographic imagery, suggesting a failed image load or fallback placeholder.",
+    "The favorite (heart) buttons differ between the two 'Popular right now' cards: the first is an unfilled outline with no background, the second sits on a dark filled circle.",
+    "The time badges ('15–25 min', '20–30 min') sit at different vertical offsets within their cards and one overlaps the card's bottom edge, breaking visual rhythm.",
+    "The category chip row is clipped mid-chip at the right edge with no fade or partial-chip affordance, so users may not realize more filters exist."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The report explicitly states that cards in the carousel sit at different vertical positions, including the middle card."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5, 6]
+  }
+}

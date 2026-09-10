@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_04",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:00:14.744Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 4 issues including a cut-off restaurant card, truncated text, and inconsistent badge styling.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Trattoria Piccol...' restaurant card in the 'Fastest near you' section is cut off at the right edge of the screen, with its name truncated and no visible delivery price.",
+        "suggestion": "Ensure horizontal scroll carousel properly clips or reveals full card content, or add a peek indicator so users know more content is scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The badge on the second 'Popular right now' item (pizza) shows '-0%', which is a meaningless discount value.",
+        "suggestion": "Remove the discount badge if there is no actual discount, or only display badges when there is a nonzero promotional value."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Inconsistent badge styling between cards: 'Tokumaru Ramen Bar' uses a white pill badge with green text ('€0 delivery') while the pizza card below uses a white pill with black text ('-0%'), creating inconsistent visual hierarchy.",
+        "suggestion": "Standardize badge color scheme and typography across all promotional badges for consistency."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The pizza restaurant card at the bottom is cut off by the screen/navigation bar, hiding its name, rating, and delivery info.",
+        "suggestion": "Add sufficient bottom padding or ensure scrollable content isn't obscured by the fixed bottom navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 596,
+    "estimatedCost": 0.014862,
+    "durationSeconds": 10.412447999999975
+  }
+}

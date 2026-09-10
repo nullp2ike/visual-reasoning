@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' section is truncated and does not fully display.",
+    "The '-100%' label on the bottom card is ambiguous. It could mean a 100% discount (free item) or something else, which might confuse users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.80 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

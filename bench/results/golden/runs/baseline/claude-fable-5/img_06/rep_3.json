@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_06",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:25:25.069Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed; the main visual problems are text/content clipping at the right edge of horizontal carousels and a partially rendered empty category chip. No critical breakages were found.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' carousel is clipped mid-word at the screen edge with no ellipsis, making the name unreadable.",
+        "suggestion": "Constrain the label width to the card and apply text truncation with an ellipsis (e.g., 'Trattoria Picco…'), or wrap to a second line within the card bounds."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category filter chip after 'Healthy' is cut off at the right edge and appears empty, giving a broken look to the chip row.",
+        "suggestion": "Add right padding/peek spacing so partially visible chips still show some label text, or add a fade/gradient edge to indicate horizontal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last card in the 'Fastest near you' carousel is abruptly cropped at the screen edge without any visual affordance (fade or padding) indicating more content.",
+        "suggestion": "Add trailing padding or an edge fade so the cropped card reads as intentional carousel overflow rather than a rendering error."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The pizza card at the bottom (with the −20% badge) shows only the image with no visible restaurant name or metadata before the tab bar, which can look incomplete if the list doesn't scroll further.",
+        "suggestion": "Ensure the card's title and details are laid out directly below the image and confirm the section is scrollable; consider bottom padding so content isn't hidden behind the tab bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 861,
+    "estimatedCost": 0.06279000000000001,
+    "durationSeconds": 15.810742500000007
+  }
+}

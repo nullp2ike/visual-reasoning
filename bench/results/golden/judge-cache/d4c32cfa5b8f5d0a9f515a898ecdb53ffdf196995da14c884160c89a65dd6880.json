@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel, the third card's title 'Trattoria Piccol...' is cut off at the screen edge with no ellipsis or fade-out, making it look broken rather than intentionally scrollable.",
+    "A circular loading spinner is rendered on top of the Tokumaru Ramen Bar card image, suggesting the image failed to finish loading or the spinner is stuck, which looks visually broken.",
+    "The category filter chips row ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') is clipped at the right edge with a partially visible chip and no scroll indicator, so users may not realize more categories exist.",
+    "The promo banner's decorative circle shapes are clipped abruptly at the right edge of the green card, which looks slightly unfinished."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "The report describes a loading spinner over an already displayed restaurant card image, matching the spinner-over-content defect."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3]
+  }
+}

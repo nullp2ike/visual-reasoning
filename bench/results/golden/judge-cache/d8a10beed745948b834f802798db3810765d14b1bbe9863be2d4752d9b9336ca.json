@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section heading shows the raw localization key 'home_feed.popular_title' instead of a human-readable title (e.g. 'Popular near you'). This indicates a missing/failed translation string.",
+    "The horizontal 'Fastest near you' carousel and the category chip row are cut off at the right edge (e.g. 'Trattoria Piccol...' and a partially visible chip), with no visible scroll affordance or fade indicator.",
+    "The notification bell icon relies only on a small red dot to convey unread status, with no text label or badge count, which can be hard to perceive."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the section heading displaying the raw localization key home_feed.popular_title instead of translated text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

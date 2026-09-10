@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The 'Profile' tab is highlighted as active in the bottom navigation, but the visible content (Home feed with restaurant listings) corresponds to the Home screen, not a Profile page.",
+    "The third restaurant card 'Trattoria Piccol...' in the 'Fastest near you' row is cut off at the edge of the screen, truncating both the image and the name.",
+    "Restaurant name 'Trattoria Piccol...' is truncated without ellipsis styling being clearly intentional, making it look broken rather than a scrollable list.",
+    "The pizza promotion image at the bottom of the screen is abruptly cut off by the bottom navigation bar, giving an unfinished appearance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the Profile tab highlighted while Home feed content is displayed."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-luna",
+  "provider": "openai",
+  "imageId": "img_14",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:40:29.564Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished, but horizontally scrolling content is visibly clipped at the right edge and the fixed bottom navigation obscures part of the next restaurant card.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category-chip row extends beyond the viewport, leaving a partially visible chip cut off on the right edge.",
+        "suggestion": "Keep the horizontal carousel intentional by adding clear scroll affordance or spacing, and ensure partially visible chips do not look accidentally truncated."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third “Fastest near you” restaurant card and its title are cut off by the right viewport edge.",
+        "suggestion": "Use a controlled horizontal carousel with consistent card widths, right padding, and optional pagination/scroll indicators so the clipping reads as intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The fixed bottom navigation covers the lower portion of the next restaurant card, making the content appear abruptly cut off.",
+        "suggestion": "Add bottom padding to the scrollable content equal to the navigation bar height, or adjust the screenshot/scroll position so cards are not obscured."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 643,
+    "reasoningTokens": 399,
+    "estimatedCost": 0.0011338,
+    "durationSeconds": 7.660234082999988
+  }
+}

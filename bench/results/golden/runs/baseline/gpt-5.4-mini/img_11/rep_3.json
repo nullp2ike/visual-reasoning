@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "imageId": "img_11",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:29:17.759Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual issues: one significant layout problem where content is obscured by the fixed bottom navigation, and one minor truncation issue in a restaurant title.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation bar overlaps the feed content, causing the next restaurant card to be partially hidden behind it.",
+        "suggestion": "Add enough bottom padding/margin to the scrollable content so list items stay fully visible above the navigation bar."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Some restaurant names are truncated with ellipses, such as the partially visible 'Trattoria Picco...'.",
+        "suggestion": "Widen the card text area if possible or use a shorter secondary line so key names remain readable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 666,
+    "reasoningTokens": 495,
+    "estimatedCost": 0.00435525,
+    "durationSeconds": 5.987251000000048
+  }
+}

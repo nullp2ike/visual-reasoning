@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "The third card in 'Fastest near you' is clipped at the right screen edge and its title is cut mid-word ('Trattoria Piccol...') with no ellipsis, making it look broken rather than an intentional carousel peek.",
+    "The last category filter chip after 'Healthy' is only partially visible as a thin sliver with no readable label, which looks like a rendering glitch.",
+    "The bottom pizza card in 'Popular right now' is abruptly cut off by the bottom navigation bar, with the restaurant name and details entirely hidden.",
+    "Inconsistent metadata across cards: the 'Fastest near you' cards show delivery fee and time but no ratings, while 'Popular right now' cards show ratings — the pizza card also shows a '-20%' badge with no visible restaurant info.",
+    "The avatar in the top-right corner appears as an empty gray circle with only a small red notification dot, looking like a failed image load."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [4],
+        "reasoning": "Issue 4 describes the top-right corner avatar as an empty circle with only a red notification dot, matching the expected defect of a missing icon with only a red dot visible."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

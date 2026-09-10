@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:57:57.985Z",
+  "status": "ok",
+  "result": {
+    "summary": "No critical blockers are visible, but the page has a likely duplicate-content bug in the “Fastest near you” carousel and a few minor visual/accessibility concerns around clipped carousel content and low-contrast secondary text.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The first two “Fastest near you” cards appear to be exact duplicates: same “Green Bowl Poké” name, same bowl image, same 15–25 min ETA, and same €0.90 delivery fee.",
+        "suggestion": "Check the data source and rendering logic for duplicated restaurant entries; ensure each card maps to a unique restaurant or clearly label variants if intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The rightmost visible “Fastest near you” card is cut off mid-name (“Smash Bros Bu…”) at the screen edge, which can look broken even if it is meant to indicate horizontal scrolling.",
+        "suggestion": "Add clearer carousel affordance such as peek spacing, scroll indicator, snap alignment, or ensure truncation uses ellipsis rather than hard clipping."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary metadata such as delivery fees and restaurant details uses light gray text that may be difficult to read for low-vision users.",
+        "suggestion": "Increase contrast of secondary text to meet WCAG AA contrast guidance while preserving the visual hierarchy."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 916,
+    "reasoningTokens": 618,
+    "estimatedCost": 0.020046,
+    "reportedCost": 0.01443,
+    "durationSeconds": 14.063254249999998
+  }
+}

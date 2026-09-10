@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Restaurant cover image failed to load"],
+  "reportedIssues": [
+    "The Tokumaru Ramen Bar card shows a broken-image placeholder instead of a restaurant photo.",
+    "The last restaurant name in the Fastest near you row is clipped (\"Trattoria Piccol\").",
+    "The category chips row is cut off on the right, so later categories are only partially visible.",
+    "The pizza promo card at the bottom is cropped by the tab bar, hiding the restaurant name and details."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.65 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

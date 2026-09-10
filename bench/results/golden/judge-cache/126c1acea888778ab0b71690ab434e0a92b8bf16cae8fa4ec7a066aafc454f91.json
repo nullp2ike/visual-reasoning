@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The category chip row overflows the viewport: the next chip is only partially visible on the right edge.",
+    "The restaurant carousel extends beyond the right edge, leaving the third card and its title visibly cut off.",
+    "The fixed bottom navigation overlays the second restaurant card, hiding its lower content and making the page appear cut off."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.58 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

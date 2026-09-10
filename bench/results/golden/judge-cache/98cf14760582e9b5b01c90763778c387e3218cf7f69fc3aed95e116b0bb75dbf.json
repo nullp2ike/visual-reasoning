@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The bottom pizza card shows a '−100%' discount badge, which implies the item is completely free. This is likely a data or calculation error rather than an intended promotion.",
+    "In the 'Fastest near you' carousel, the third card's title is truncated mid-word ('Trattoria Piccol') with no ellipsis, making the clipping look accidental rather than a designed carousel peek.",
+    "A category filter chip at the far right of the chips row is cut off and appears as an empty sliver, giving a broken look to the filter bar.",
+    "The pizza card at the bottom is abruptly cut off by the bottom navigation bar, with its image and text partially hidden behind the nav."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 identifies the same −100% discount badge on the bottom pizza card."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

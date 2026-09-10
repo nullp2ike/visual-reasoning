@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_16",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:27:56.193Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally usable and polished, but a few elements look visually clipped or awkward, especially around horizontally scrollable content and the fixed bottom navigation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom navigation bar appears to overlay the restaurant list content. The second restaurant card image is cut off behind the fixed tab bar, making the page feel clipped at the bottom.",
+        "suggestion": "Add sufficient bottom padding or safe-area inset to the scrollable content so cards can scroll fully above the fixed bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Several horizontally scrollable elements are abruptly cut off on the right edge, including the category chips and the 'Fastest near you' restaurant cards. This makes the partial items look unintentionally cropped.",
+        "suggestion": "Use consistent horizontal padding, a fade/gradient edge, or ensure partial items are intentionally styled as carousel previews."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The rightmost category chip is visible only as an empty gray sliver, which looks like a missing or broken label rather than a scrollable category.",
+        "suggestion": "Avoid showing only a tiny part of the next chip, or add enough spacing so the next chip is partially readable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 784,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.032575,
+    "durationSeconds": 17.660170749999992
+  }
+}

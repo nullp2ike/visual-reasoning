@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The horizontal category-chip row overflows the viewport; a partial chip is visibly cut off along the right edge with no clear inset or affordance that the row can scroll.",
+    "The third card in the \"Fastest near you\" carousel is cut off by the right screen boundary, including its image, restaurant name (\"Trattoria Piccol...\"), and delivery text. This makes the content appear truncated rather than deliberately scrollable.",
+    "The \"Popular right now\" list continues underneath the fixed bottom navigation, so the next restaurant card is partially hidden at the bottom of the screen."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.57 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

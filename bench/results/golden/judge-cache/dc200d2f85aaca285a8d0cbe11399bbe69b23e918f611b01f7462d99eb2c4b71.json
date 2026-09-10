@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "In the 'Popular right now' section, the Tokumaru Ramen Bar card shows overlapping text: '25-35 min delivery' text is rendered over itself or clipped, making it appear as '25-3̶0̶delivery' with characters merging/overlapping, making the delivery time unreadable.",
+    "The third restaurant card in the 'Fastest near you' section ('Trattoria Piccol...') has its name truncated without an ellipsis or proper truncation handling, cutting off mid-word."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.76 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

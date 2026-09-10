@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_08",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:00:45.356Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 4 issues including cut-off content in the horizontal card carousels and a truncated category filter, plus minor layout inconsistencies.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Trattoria Piccolo' restaurant card in the 'Fastest near you' section is cut off at the right edge of the screen, showing only partial text and image.",
+        "suggestion": "Ensure horizontal scroll cards are properly clipped with a visual cue (e.g., partial card peeking with fade/gradient) or adjust spacing so the cut-off looks intentional rather than broken."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row (All, Pizza, Sushi, Burgers, Healthy) shows another category partially cut off at the right edge.",
+        "suggestion": "Add a fade-out gradient or partial visibility indicator to signal scrollability, or ensure consistent card cropping."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The pizza promotional card at the bottom is abruptly cut off by the screen/navigation bar, making it unclear if there's a restaurant name or additional info below.",
+        "suggestion": "Ensure sufficient padding above the bottom navigation bar or add scroll affordance so users know more content is below."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Inconsistent heart icon styling between the ramen bar card (white outline heart on dark background) and pizza card (dark filled circle heart) without clear pattern.",
+        "suggestion": "Standardize the favorite/heart icon style and background treatment across all promotional cards for visual consistency."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 609,
+    "estimatedCost": 0.015057000000000001,
+    "durationSeconds": 10.914961666999966
+  }
+}

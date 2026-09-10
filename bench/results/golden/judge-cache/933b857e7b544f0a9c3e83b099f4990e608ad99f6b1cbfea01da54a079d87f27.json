@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Orders icon is missing from the bottom nav bar"],
+  "reportedIssues": [
+    "The second 'Popular right now' card (the −20% pizza) is cut off by the fixed bottom navigation bar, so its name, rating and delivery info are not visible and the image appears abruptly sliced.",
+    "The favorite (heart) buttons on the two 'Popular right now' cards use inconsistent styles: the first is a dark heart on a white circle, the second is a white heart on a dark translucent circle, which looks like a rendering/state error and reduces contrast.",
+    "The third card title in 'Fastest near you' reads 'Trattoria Piccol' — clipped at the viewport edge with no ellipsis, so it looks broken rather than intentionally truncated.",
+    "The 'Green Bowl Poké' thumbnail has a light gray background while the sibling thumbnails are dark, making it look like a missing/placeholder image. Its time badge also has weaker contrast against the light background.",
+    "The category chip row is clipped mid-chip at the right edge with no visible affordance that it scrolls horizontally."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "No reported issue describes a missing Orders icon in the bottom navigation bar; reported issues focus on card visibility, styling, and content clipping."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 4]
+  }
+}

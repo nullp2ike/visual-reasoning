@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:03:15.362Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page has a few visual/content problems: an implausible '-100%' discount badge, a truncated restaurant name in the horizontal list, and inconsistent favorite icon styling between cards.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The discount badge on the second 'Popular right now' card displays '-100%', which is confusing and likely incorrect (a -100% discount implies the item is free and the negative sign is misleading).",
+        "suggestion": "Verify and display the correct discount value (e.g. '20% off' or 'Up to 50% off') and avoid negative percentages unless they clearly convey a different meaning."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The restaurant name 'Trattoria Piccolo' in the 'Fastest near you' list is truncated to 'Trattoria Piccol' because the card width is too narrow.",
+        "suggestion": "Use text-overflow ellipsis or increase card width so long names are readable without being cut off mid-word."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite heart icon styling is inconsistent: the ramen card uses a plain outline heart while the pizza card uses a heart inside a dark circular button.",
+        "suggestion": "Apply a consistent favorite button treatment across all restaurant cards, ideally with a visible tap target/background for accessibility."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 1359,
+    "reasoningTokens": 1027,
+    "estimatedCost": 0.00674117,
+    "reportedCost": 0.01163428,
+    "durationSeconds": 9.354370875000022
+  }
+}

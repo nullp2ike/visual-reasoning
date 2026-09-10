@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:31:56.359Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed, but one card shows a stuck/permanent loading spinner overlaying the restaurant image, which looks visually broken.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The 'Tokumaru Ramen Bar' card in the 'Popular right now' section displays a circular loading spinner permanently overlaid in the center of the food image, suggesting the image failed to finish loading or the spinner was never dismissed.",
+        "suggestion": "Ensure the loading spinner is hidden once the image finishes loading; add a timeout/fallback so a failed image load removes the spinner and shows a placeholder instead."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The favorite/heart buttons on the restaurant cards are icon-only controls without visible text labels, which may be unclear to screen reader users.",
+        "suggestion": "Add accessible labels (e.g., aria-label='Add to favorites') to the heart icon buttons."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 951,
+    "reasoningTokens": 695,
+    "estimatedCost": 0.009294,
+    "reportedCost": 0.008174,
+    "durationSeconds": 71.48926558299998
+  }
+}

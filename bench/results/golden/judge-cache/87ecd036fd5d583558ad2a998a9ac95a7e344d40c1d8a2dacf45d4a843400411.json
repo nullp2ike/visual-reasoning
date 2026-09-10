@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The bottom restaurant card is partially cut off behind the bottom navigation bar, hiding its title and metadata.",
+    "The 'Pizza' category chip is active, but the displayed restaurants feature non-pizza items like Poké, Burgers, and Ramen.",
+    "The third item title in the horizontal carousel 'Trattoria Piccol...' is truncated abruptly at the screen edge."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Both describe the Pizza category being active/selected while non-pizza restaurants (Poké, Burgers, Ramen) are still displayed in the feed."
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

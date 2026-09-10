@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccol' is abruptly cut off in the 'Fastest near you' carousel. There is no ellipsis (...) to indicate the text continues, making it appear broken rather than intentionally truncated.",
+    "The discount badge on the bottom pizza restaurant card shows '-100%', which is an unusual and likely erroneous value. This could indicate a data rendering bug where a promo code or discount value is being incorrectly calculated or displayed.",
+    "The third card in the 'Fastest near you' horizontal carousel is partially clipped with no visual affordance (e.g., a fade gradient or partial shadow) to indicate it is scrollable. Users may not realize additional restaurants are available."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 identifies the discount badge on the bottom pizza restaurant card displaying −100%, matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The bottom navigation bar shows 'Profile' as the active (highlighted green) tab, but the screen displayed is clearly the Home feed. The 'Home' tab appears inactive/gray.",
+    "In the 'Fastest near you' carousel, the third restaurant name 'Trattoria Piccol' is cut off mid-word at the screen edge without a visible ellipsis, making it look broken rather than intentionally scrollable.",
+    "The category chip row shows a partially clipped, empty-looking pill at the far right edge after 'Healthy', with no visible label, appearing as a stray UI fragment.",
+    "Delivery time badges ('15-25 min', '20-30 min') overlap the food images inconsistently — the third card's badge is partially cut off by the screen edge along with the card."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.87 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

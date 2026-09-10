@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:24:29.870Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several issues including a critical broken delivery fee display (NaN), truncated restaurant names, and minor layout/styling problems on the food delivery home screen.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "Smash Bros Burgers shows delivery fee as '€NaN delivery', indicating a null/undefined price failed to format correctly.",
+        "suggestion": "Handle missing or invalid delivery fee values with a fallback (e.g. 'Free', '—', or hide the fee) and fix the data/formatting so NaN never appears to users."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated in the Fastest near you carousel card.",
+        "suggestion": "Allow multi-line titles, reduce font size, or use ellipsis with full name on detail view so names are not cut off mid-word."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Category filter chips row ends with a partially visible empty/white chip on the right, looking like incomplete UI rather than intentional scroll affordance.",
+        "suggestion": "Ensure only real categories render, add proper peek of the next labeled chip, or pad the scroll end so empty placeholders are not shown."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Promo banner code and min. order text is dense and may wrap awkwardly on smaller widths; secondary line is long relative to the card.",
+        "suggestion": "Tighten copy or allow clearer line breaks so the offer remains scannable on all phone sizes."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 403,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.0063419999999999995,
+    "reportedCost": 0.003078,
+    "durationSeconds": 106.339572375
+  }
+}

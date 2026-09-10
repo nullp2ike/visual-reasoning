@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "Search bar placeholder reads 'Restarants, dishes, groceries' - 'Restaurants' is misspelled.",
+    "Third card in 'Fastest near you' shows truncated name 'Trattoria Piccol' cut off mid-word at the screen edge without ellipsis.",
+    "Second card in 'Popular right now' (pizza with -20% badge) is clipped behind the bottom tab bar, hiding restaurant name, rating and delivery info."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.85 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

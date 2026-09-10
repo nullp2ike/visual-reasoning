@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:53:11.604Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there are a few visual/functional inconsistencies: the bottom navigation highlights the wrong tab, a restaurant name is truncated, and a partially rendered filter chip appears at the right edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom navigation shows 'Profile' as the active (green) tab, but the screen displayed is clearly the Home feed (delivery address, search, restaurant lists). The active-tab state does not match the current screen.",
+        "suggestion": "Highlight the 'Home' tab when the home feed is displayed, ensuring the navigation active state stays in sync with the current view."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third card in 'Fastest near you' shows a truncated restaurant name ('Trattoria Piccol...') that is clipped by the screen edge without an ellipsis or clear affordance.",
+        "suggestion": "Apply proper text truncation with an ellipsis within the card bounds, or constrain the label width to the card so text isn't hard-clipped at the viewport edge."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category filter chip after 'Healthy' is cut off at the right edge with only a sliver visible, which looks broken rather than like an intentional scroll hint.",
+        "suggestion": "Show a larger visible portion of the next chip (e.g., 30–40% peeking) or add a fade/gradient at the edge to clearly indicate horizontal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The 'DELIVER TO' label and delivery fee text use light gray on white, which may have insufficient contrast for readability.",
+        "suggestion": "Darken the secondary text color to meet WCAG AA contrast ratio (4.5:1) for small text."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 743,
+    "estimatedCost": 0.05689,
+    "durationSeconds": 13.750072708000006
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "The bottom navigation bar overlaps the feed content. The second restaurant card in the “Popular right now” section is partially hidden behind the fixed tab bar, making the card feel cut off.",
+    "The horizontal restaurant carousel under “Fastest near you” is cut off on the right edge. The third card and its restaurant name are only partially visible, which can look visually broken if not intended as a scroll hint.",
+    "The category chip row has a partially visible item at the far right with no clear label, which may look like an accidental clipping issue."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.71 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

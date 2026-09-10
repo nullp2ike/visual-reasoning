@@ -1,0 +1,24 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The hero image for 'Tokumaru Ramen Bar' in 'Popular right now' still shows a loading spinner overlaying a partially loaded/blurred image, suggesting the image never finished loading or the spinner isn't dismissed on load.",
+    "The third card in 'Fastest near you' has its title clipped mid-word ('Trattoria Piccol') at the screen edge with no ellipsis, and the card itself is cut off flush against the viewport, making it unclear the row is scrollable.",
+    "The category filter row ends with an unlabeled chip fragment clipped at the right edge, appearing as an empty grey pill rather than a readable category.",
+    "Favorite (heart) buttons are styled inconsistently: the first card uses a white circular background with a dark outline heart while the second uses a dark/translucent circle with a white heart.",
+    "The second 'Popular right now' card (-20% promo) is cut off by the bottom navigation bar with no visible restaurant name, and there is no bottom spacing so content appears to sit under the nav.",
+    "Secondary text such as '€0.90 delivery' and the '25–35 min • €0 delivery • Ramen' metadata line uses light grey on white, likely below the 4.5:1 contrast threshold."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes a loading spinner remaining over already displayed image content."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

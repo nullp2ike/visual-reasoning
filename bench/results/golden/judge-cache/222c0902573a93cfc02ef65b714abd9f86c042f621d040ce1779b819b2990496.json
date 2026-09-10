@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccolo' is truncated to 'Trattoria Piccol' in the 'Fastest near you' section.",
+    "The name 'Tokumaru Ramen' is clipped at the end, displaying as 'Tokumaru Rameı' due to insufficient horizontal space."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Both describe the 'Tokumaru Ramen' heading being cut off mid-word due to insufficient space, with the text rendering incorrectly (expected 'Tokumaru Ramei', reported 'Tokumaru Rameı')."
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

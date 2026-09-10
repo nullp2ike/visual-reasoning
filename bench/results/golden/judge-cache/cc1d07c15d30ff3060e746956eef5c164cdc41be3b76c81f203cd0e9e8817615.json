@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "Search field placeholder reads 'Restarants, dishes, groceries' — 'Restaurants' is misspelled.",
+    "In the 'Fastest near you' carousel the third card ('Trattoria Piccol…') is hard-clipped at the screen edge: both the image and the title/price text are cut mid-character with no ellipsis, so the label appears broken rather than intentionally peeking.",
+    "The bottom pizza card in 'Popular right now' is cut off abruptly by the bottom tab bar, with its title, rating and metadata hidden and no scroll affordance or spacing.",
+    "The favorite (heart) button on the pizza card uses a dark translucent background while the identical button on the ramen card uses a solid white background, creating inconsistent styling and lower icon contrast.",
+    "The 'Green Bowl Poké' thumbnail has a light grey background while sibling cards use dark photographic backgrounds, making the row look visually unbalanced and the white '15–25 min' badge sits on a light background.",
+    "The category chip row is clipped so an unnamed chip after 'Healthy' shows only a sliver, offering no hint of what it is."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 explicitly identifies the misspelling 'Restarants' instead of 'Restaurants' in the search field placeholder."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

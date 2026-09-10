@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "The third card in the “Fastest near you” carousel is cut off by the viewport, including its restaurant name and delivery price. The text is hard-clipped rather than intentionally truncated.",
+    "A partially visible, unlabeled category chip appears at the far right of the filter row, which looks like a broken or empty control.",
+    "The fixed bottom navigation overlays the lower restaurant image, hiding feed content behind an opaque bar."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The third carousel card being cut off indicates it is misaligned relative to the other cards."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

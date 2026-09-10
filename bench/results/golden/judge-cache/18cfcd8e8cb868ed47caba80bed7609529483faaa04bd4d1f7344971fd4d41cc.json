@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Promo banner text is unreadable, white text on a pale mint background"],
+  "reportedIssues": [
+    "The promotional banner text ('3 free deliveries for you' and the code/min-order details) is light/white on a very pale mint background, making it hard to read.",
+    "The third restaurant name in the 'Fastest near you' section reads 'Trattoria Piccol' and appears cut off without an ellipsis, suggesting the card width truncates the full name."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.83 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

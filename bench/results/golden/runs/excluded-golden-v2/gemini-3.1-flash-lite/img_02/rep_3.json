@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "gemini-3.1-flash-lite",
+  "provider": "google",
+  "imageId": "img_02",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T10:39:54.198Z",
+  "status": "ok",
+  "result": {
+    "summary": "The main visual issue is an incorrect data display in the 'Fastest near you' section for 'Smash Bros Burgers'.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The delivery fee for 'Smash Bros Burgers' is displayed as '€NaN'. 'NaN' stands for 'Not a Number', indicating a JavaScript/data processing error.",
+        "suggestion": "Check the API response for the delivery fee field to ensure it contains a valid numeric value or a proper fallback string (e.g., 'Check price' or 'N/A') instead of leaking an error code."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1508,
+    "outputTokens": 157,
+    "estimatedCost": 0.0006125,
+    "durationSeconds": 3.474741291999817
+  }
+}

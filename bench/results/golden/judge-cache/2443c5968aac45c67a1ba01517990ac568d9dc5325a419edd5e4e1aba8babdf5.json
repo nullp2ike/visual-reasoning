@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "Favorite heart icon styling is inconsistent in 'Popular right now' section - first card (Tokumaru Ramen Bar) shows a plain white outline heart with no background directly on the image, while the second card (pizza) shows the heart inside a dark circular button.",
+    "'-100%' badge on the second 'Popular right now' card looks like placeholder or erroneous promotion content"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.77 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

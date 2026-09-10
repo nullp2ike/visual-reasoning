@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Under 'Smash Bros Burgers' the delivery fee displays as '€NaN delivery', which is a broken/undefined numeric value leaking into the UI.",
+    "The third card in 'Fastest near you' ('Trattoria Piccol...') is cut off at the right screen edge with no visible scroll affordance or peeking gap, which can make the horizontal scrollability less obvious."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 identifies the delivery fee displaying as the broken value €NaN."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

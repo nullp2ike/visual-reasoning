@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "The third card in 'Fastest near you' section shows truncated text 'Trattoria Piccol' and the card image is cut off at the right edge, indicating incomplete rendering of the horizontal scroll content.",
+    "The search bar placeholder text reads 'Restarants' which appears to be a misspelling of 'Restaurants'.",
+    "The favorite (heart) icon on the Tokumaru Ramen Bar card is white/outlined while the heart on the pizza card below has a dark filled background, creating visual inconsistency between similar cards."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.85 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

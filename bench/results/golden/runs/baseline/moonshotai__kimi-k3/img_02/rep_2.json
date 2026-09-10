@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:54:59.752Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally usable, but there is a clear data/display bug: one restaurant shows an invalid delivery price. A couple of minor carousel truncation/cropping behaviors are visible but likely intentional.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Smash Bros Burgers displays “€NaN delivery”, indicating missing or invalid delivery fee data being rendered as Not-a-Number.",
+        "suggestion": "Validate delivery fee data before rendering; hide the fee, show a fallback such as “Delivery unavailable”, or fix the upstream pricing value so NaN never reaches the UI."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third restaurant card in “Fastest near you” and the rightmost category chip are partially cut off at the viewport edge.",
+        "suggestion": "If intentional for horizontal scrolling, add a fade/overflow indicator or peek spacing; otherwise adjust carousel padding and card widths so content is not ambiguously clipped."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name “Trattoria Piccol…” is truncated in the visible card area.",
+        "suggestion": "Use controlled ellipsis with full name available on tap, or increase card width/line allowance for long restaurant names."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 522,
+    "reasoningTokens": 255,
+    "estimatedCost": 0.014136,
+    "reportedCost": 0.014136,
+    "durationSeconds": 25.389195166999997
+  }
+}

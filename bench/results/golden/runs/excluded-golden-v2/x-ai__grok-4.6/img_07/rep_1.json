@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T12:34:33.800Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: a major loading-state overlay on a restaurant card and a minor loading spinner that looks unfinished.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The Tokumaru Ramen Bar card image is covered by a large circular spinner, so the photo is obscured and it is unclear whether the card is still loading or stuck.",
+        "suggestion": "Show a skeleton or shimmer on the image until it is ready, then hide the spinner. If loading fails, show an error or retry state instead of leaving the overlay visible."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The spinner is a mostly empty white circle with only a small green arc, which looks incomplete and draws attention away from the restaurant content.",
+        "suggestion": "Use a clearer, more complete loading indicator that is smaller or placed so it does not dominate the card image."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 234,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 384,
+    "estimatedCost": 0.005327999999999999,
+    "reportedCost": 0.004752,
+    "durationSeconds": 11.235937208999996
+  }
+}

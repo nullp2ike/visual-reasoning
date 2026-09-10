@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_03",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:52:07.725Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual problems: a broken/missing restaurant image with placeholder icon, truncated restaurant name, and a partially cut-off category chip and promo card at the bottom.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "missing-element",
+        "description": "The 'Tokumaru Ramen Bar' card shows a large empty gray area with only a broken-image placeholder icon instead of a restaurant photo.",
+        "suggestion": "Load the correct image asset for this restaurant or provide a proper fallback image so the card is not empty."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated with the end cut off in the Fastest near you row.",
+        "suggestion": "Allow the name to wrap to two lines, use a smaller font, or add ellipsis/truncation handling so the full name is readable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chips row is cut off on the right (partial 'Healthy' and next chip visible), and the bottom pizza promo card is clipped by the screen edge.",
+        "suggestion": "Ensure horizontal scrolling for chips is clear and that bottom content has enough padding above the tab bar so cards are not cut off."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 319,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005678,
+    "reportedCost": 0.0026316,
+    "durationSeconds": 8.022036249999998
+  }
+}

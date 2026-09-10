@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:59:57.759Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 issues: an untranslated string key exposed in the UI, and minor layout truncation issues with content cut off at the screen edge.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "Raw i18n key 'home_feed.popular_title' is displayed instead of a translated string, indicating a missing localization entry",
+        "suggestion": "Add the proper translation string for this key (e.g., 'Popular near you') and ensure the localization pipeline resolves keys before rendering"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' section ('Trattoria Piccol...') is cut off at the right edge of the screen with truncated text",
+        "suggestion": "Adjust card width or add proper horizontal scroll padding so cards are not abruptly clipped at the screen edge"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter row ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') is clipped at the right edge, suggesting an additional category is cut off",
+        "suggestion": "Ensure horizontal scroll indicator or fade gradient is present to signal more scrollable content, or add proper padding"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 462,
+    "estimatedCost": 0.012852,
+    "durationSeconds": 7.428741875000065
+  }
+}

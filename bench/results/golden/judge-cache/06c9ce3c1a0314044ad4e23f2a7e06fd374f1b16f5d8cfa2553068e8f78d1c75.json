@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The 'Fastest near you' horizontal carousel cuts off the third item (Trattoria Piccol...) mid-word and mid-image at the right edge, which can look unintentionally clipped rather than clearly scrollable.",
+    "The restaurant name 'Trattoria Piccol...' is truncated without a visible ellipsis styling consistency and its delivery info is also clipped.",
+    "The heart (favorite) icon on the first 'Popular right now' ramen card appears with a white/outlined style while the second card below uses a dark filled circle, creating visual inconsistency between cards.",
+    "The '−100%' promo badge on the pizza card is ambiguous and could confuse users about the actual discount."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "Issue 3 directly describes the −100% promo badge as ambiguous, matching the discount badge defect."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

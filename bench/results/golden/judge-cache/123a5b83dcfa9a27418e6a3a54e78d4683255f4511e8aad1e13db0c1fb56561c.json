@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated with missing letters at the end of the card.",
+    "Pizza card shows a nonsensical '-0%' badge, which looks like a failed or empty discount label.",
+    "Category filter row is clipped on the right; the next chip is only partially visible with no clear affordance to scroll.",
+    "Bottom restaurant card is cut off by the tab bar, so image and details are only partially shown.",
+    "Delivery time pills on 'Fastest near you' cards sit over the food images and can reduce image clarity."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "The reported pizza card issue describes the same nonsensical −0% discount badge."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3, 4]
+  }
+}

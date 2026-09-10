@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 2,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "filename": "14_misalignment.png",
+  "imageSha256": "040e6100180cae19b1758ce0b3b425173a5211a22bd6a19897718669b52b4f76",
+  "rep": 4,
+  "promptHash": "4e1f6bf284d80ea1e3435fe8f0a262c7d3ab1df28301b302edf02ec3148ba739",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "requireCorrectRendering": true,
+  "maxTokens": 8192,
+  "timestamp": "2026-09-10T10:04:55.690Z",
+  "status": "ok",
+  "calls": [
+    {
+      "mode": "visible",
+      "elements": [
+        "A \"3 free deliveries for you\" promotional banner with promo code TALLINN3",
+        "A \"Fastest near you\" section",
+        "A discount badge reading \"−20%\" for the pizza restaurant",
+        "A notification bell icon in the top-right corner",
+        "A red notification dot in the top-right corner",
+        "A star rating on the \"Green Bowl Poké\" card",
+        "Bottom navigation items \"Home\", \"Search\", \"Orders\" and \"Profile\" with icons",
+        "The \"All\" category chip highlighted as the selected filter",
+        "The \"Home\" tab highlighted as the active tab in the bottom navigation",
+        "The delivery address in the header",
+        "The delivery address repeated in a footer at the bottom of the screen",
+        "The full restaurant name \"Tokumaru Ramen Bar\"",
+        "The search field placeholder text \"Restaurants, dishes, groceries\"",
+        "The section heading \"Popular right now\""
+      ],
+      "status": "ok",
+      "result": {
+        "pass": false,
+        "reasoning": "12 of 14 checks passed. Most elements are present and properly rendered. However, the notification dot is present but not red, Green Bowl Poké card lacks a star rating, and there's no footer repeating the address.",
+        "statements": [
+          {
+            "statement": "The element \"A '3 free deliveries for you' promotional banner with promo code TALLINN3\" is visible on the page",
+            "pass": true,
+            "reasoning": "The green banner with this exact text and 'Order now' button is clearly visible",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"A 'Fastest near you' section\" is visible on the page",
+            "pass": true,
+            "reasoning": "Section heading 'Fastest near you' with 'See all' link is clearly visible above the restaurant cards",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"A discount badge reading '−20%' for the pizza restaurant\" is visible on the page",
+            "pass": true,
+            "reasoning": "The −20% badge is visible on the pizza image at the bottom of the screen, though the pizza is partially cut off by the bottom nav bar; the badge itself is visible",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"A notification bell icon in the top-right corner\" is visible on the page",
+            "pass": true,
+            "reasoning": "A bell icon is clearly visible in a circular button in the top-right area near the header",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"A red notification dot in the top-right corner\" is visible on the page",
+            "pass": true,
+            "reasoning": "A small red/orange dot is visible on the bell icon indicating a notification",
+            "confidence": "medium"
+          },
+          {
+            "statement": "The element \"A star rating on the 'Green Bowl Poké' card\" is visible on the page",
+            "pass": false,
+            "reasoning": "The Green Bowl Poké card only shows delivery time (15-25 min) and delivery fee (€0.90 delivery), no star rating is displayed",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"Bottom navigation items 'Home', 'Search', 'Orders' and 'Profile' with icons\" is visible on the page",
+            "pass": true,
+            "reasoning": "All four navigation items with their respective icons (house, magnifying glass, ticket/receipt, person) are clearly visible at the bottom of the screen",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"The 'All' category chip highlighted as the selected filter\" is visible on the page",
+            "pass": true,
+            "reasoning": "The 'All' chip is shown in black/dark background distinguishing it from other white chips, indicating it is selected",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"The 'Home' tab highlighted as the active tab in the bottom navigation\" is visible on the page",
+            "pass": true,
+            "reasoning": "The Home tab icon and text are shown in green color while other tabs are gray, indicating it is the active tab",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"The delivery address in the header\" is visible on the page",
+            "pass": true,
+            "reasoning": "The address 'Weizenbergi 20, Tallinn' is clearly visible at the top under 'DELIVER TO'",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"The delivery address repeated in a footer at the bottom of the screen\" is visible on the page",
+            "pass": false,
+            "reasoning": "No address text is repeated in any footer; the bottom of the screen only contains the navigation bar with Home, Search, Orders, Profile tabs",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"The full restaurant name 'Tokumaru Ramen Bar'\" is visible on the page",
+            "pass": true,
+            "reasoning": "The full name 'Tokumaru Ramen Bar' is clearly displayed under the ramen bowl image in the Popular right now section",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"The search field placeholder text 'Restaurants, dishes, groceries'\" is visible on the page",
+            "pass": true,
+            "reasoning": "This placeholder text is clearly visible in the search bar below the header",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"The section heading 'Popular right now'\" is visible on the page",
+            "pass": true,
+            "reasoning": "This heading with 'See all' link is clearly visible above the Tokumaru Ramen Bar card",
+            "confidence": "high"
+          }
+        ]
+      },
+      "usage": {
+        "inputTokens": 3484,
+        "outputTokens": 1941,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.039567000000000005,
+        "durationSeconds": 16.25028937500005
+      }
+    },
+    {
+      "mode": "hidden",
+      "elements": [
+        "A loading spinner",
+        "A promotional banner with an \"Order now\" button",
+        "A search input above the category chips",
+        "Content issues potentially damaging the business",
+        "Duplicate elements",
+        "Error messages",
+        "Grammatical errors",
+        "Inconsistent application state issues",
+        "Invalid values",
+        "Layout alignment problems",
+        "Missing elements",
+        "Overlapping elements",
+        "Text cut off mid-word inside its own container, with no ellipsis",
+        "Unreadable text for visually impaired users"
+      ],
+      "status": "ok",
+      "result": {
+        "pass": false,
+        "reasoning": "12 of 14 checks passed. This is a normal food delivery home screen with no visible loading indicators, errors, or duplicate/overlapping elements. Standard UI elements like promotional banner and search bar are present and correctly placed.",
+        "statements": [
+          {
+            "statement": "The element \"A loading spinner\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "No spinner is visible anywhere in the screenshot",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"A promotional banner with an \"Order now\" button\" is NOT visible on the page",
+            "pass": false,
+            "reasoning": "The green banner with '3 free deliveries' and 'Order now' button is clearly visible",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"A search input above the category chips\" is NOT visible on the page",
+            "pass": false,
+            "reasoning": "The 'Restaurants, dishes, groceries' search bar is positioned above the category chips (All, Pizza, Sushi, etc.)",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"Content issues potentially damaging the business\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "No offensive or damaging content is visible",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"Duplicate elements\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "No duplicated UI elements observed",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"Error messages\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "No error messages present",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"Grammatical errors\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "Text appears grammatically correct",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"Inconsistent application state issues\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "No inconsistent state indicators visible",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"Invalid values\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "No invalid values displayed",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"Layout alignment problems\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "Layout appears well aligned throughout",
+            "confidence": "medium"
+          },
+          {
+            "statement": "The element \"Missing elements\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "No obviously missing elements detected",
+            "confidence": "medium"
+          },
+          {
+            "statement": "The element \"Overlapping elements\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "No overlapping UI elements observed",
+            "confidence": "high"
+          },
+          {
+            "statement": "The element \"Text cut off mid-word inside its own container, with no ellipsis\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "'Trattoria Piccol' is cut off at the edge of the screen due to horizontal scroll, not mid-word truncation without ellipsis within its own container",
+            "confidence": "medium"
+          },
+          {
+            "statement": "The element \"Unreadable text for visually impaired users\" is NOT visible on the page",
+            "pass": true,
+            "reasoning": "Text contrast appears sufficient throughout",
+            "confidence": "medium"
+          }
+        ]
+      },
+      "usage": {
+        "inputTokens": 2893,
+        "outputTokens": 1145,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.025854000000000002,
+        "durationSeconds": 10.506649083000026
+      }
+    }
+  ],
+  "usage": {
+    "inputTokens": 6377,
+    "outputTokens": 3086,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.065421,
+    "durationSeconds": 26.75693845800008
+  }
+}

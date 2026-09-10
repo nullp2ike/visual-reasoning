@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_06",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:56:20.928Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally usable, but there are minor layout/content clipping issues in horizontally scrolling sections and a small accessibility concern with low-contrast placeholder text.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row and 'Fastest near you' carousel show items clipped at the right edge, including a partially visible category chip and the truncated restaurant name 'Trattoria Piccol...'.",
+        "suggestion": "Add clearer carousel affordance, inset/scroll padding, or ensure truncated labels use ellipsis gracefully rather than appearing accidentally cut off."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Search placeholder text 'Restaurants, dishes, groceries' is light gray on a light background and may be hard to read for low-vision users.",
+        "suggestion": "Increase placeholder contrast or use a darker gray that meets WCAG contrast guidance while still appearing secondary."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third 'Fastest near you' card title is visibly cut off as 'Trattoria Piccol' without an ellipsis in the visible area.",
+        "suggestion": "Apply text truncation with ellipsis or reduce card width/count so restaurant names remain readable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 533,
+    "reasoningTokens": 274,
+    "estimatedCost": 0.014301000000000001,
+    "reportedCost": 0.0141282,
+    "durationSeconds": 9.085641707999981
+  }
+}

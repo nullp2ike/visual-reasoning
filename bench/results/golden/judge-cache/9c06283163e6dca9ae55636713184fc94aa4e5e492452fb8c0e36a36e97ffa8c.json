@@ -1,0 +1,27 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "A solid dark horizontal bar sits across the bottom navigation bar, overlapping/obscuring the middle (search and bookmark/orders) icons. It looks like a stray drag handle, scroll indicator, or mis-sized element rendered on top of the tab bar.",
+    "The second card in 'Popular right now' (the pizza image with the −20% badge) has no restaurant name, rating, delivery time, or price row, unlike the Tokumaru Ramen Bar card above it. The card appears truncated/unfinished.",
+    "The favorite (heart) buttons are styled inconsistently: the first popular card uses a white circular background with a dark outline heart, while the second uses a dark/transparent circle with a white heart.",
+    "In the 'Fastest near you' carousel the third item's title is hard-clipped mid-word ('Trattoria Piccol') at the screen edge with no ellipsis, and the card itself is cut off, giving no clear affordance that the row scrolls.",
+    "The category chip row is also cut off at the right edge, with a sliver of the next chip visible, which reads as a rendering glitch rather than a scrollable row.",
+    "Bottom navigation icons have no text labels, and the notification bell / heart buttons are icon-only, making purpose unclear for screen readers and low-vision users.",
+    "Delivery-fee and time badges use differing shapes/placement across sections (pill inside image bottom-left in the carousel vs. top-left in the popular cards), reducing visual consistency."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The dark horizontal obstruction across the bottom navigation matches the reported overlap of the navigation contents by the bottom gesture/bar area."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5, 6]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_06",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:56:37.045Z",
+  "status": "ok",
+  "result": {
+    "summary": "No critical blockers found. The page mostly renders correctly, but there are minor horizontal-overflow/clipping issues in the category chips and restaurant carousels that make content look cut off, plus some low-contrast secondary text.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row is clipped at the right edge, with only a sliver of the next pill visible after “Healthy”, making the row look unintentionally cut off.",
+        "suggestion": "Add end padding, a fade/scroll indicator, or snap behavior so partially visible chips are clearly intentional and tappable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In “Fastest near you”, the third card is partially off-screen and its title is truncated as “Trattoria Piccol…”, which can read as broken rather than a deliberate carousel peek.",
+        "suggestion": "Use consistent card peek width, ellipsize long restaurant names cleanly, and ensure the off-screen card has enough visible context to signal horizontal scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary metadata such as delivery fees and time ranges uses small light-gray text that may be hard to read on white background.",
+        "suggestion": "Increase text contrast and/or font size for metadata to meet WCAG AA contrast guidance."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 777,
+    "reasoningTokens": 440,
+    "estimatedCost": 0.017961,
+    "reportedCost": 0.0124314,
+    "durationSeconds": 32.08343979099998
+  }
+}

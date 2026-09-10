@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-luna",
+  "provider": "openai",
+  "imageId": "img_04",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:36:30.399Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished, but there are a few visible layout issues involving clipped horizontal content and the fixed bottom navigation overlapping the restaurant list.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The category chip row is horizontally clipped on the right, leaving a partial pill visible at the edge of the screen.",
+        "suggestion": "Implement a deliberate horizontal scroll area with clear clipping behavior, or adjust spacing so the final visible chip is fully contained within the viewport."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The horizontal 'Fastest near you' restaurant carousel shows the third card cut off at the right edge, including truncated restaurant text.",
+        "suggestion": "Ensure the carousel has intentional snap/scroll behavior and sufficient right padding, or show only complete cards within the viewport."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlaps the second popular restaurant card, obscuring its image and likely its remaining content.",
+        "suggestion": "Add bottom padding to the scrollable page content equal to the navigation bar height, or position the navigation so it does not cover restaurant cards."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The visible second popular restaurant card is incomplete because the restaurant name and metadata are below the bottom navigation area.",
+        "suggestion": "Allow the page to scroll beyond the fixed navigation and verify that the complete card content remains accessible."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 436,
+    "reasoningTokens": 138,
+    "estimatedCost": 0.0008853999999999999,
+    "durationSeconds": 5.5208708330000515
+  }
+}

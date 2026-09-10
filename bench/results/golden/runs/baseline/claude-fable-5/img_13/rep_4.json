@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_13",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:52:13.904Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there are a few visual defects: truncated text on a restaurant card, a partially rendered category chip at the edge of the screen, and an empty avatar placeholder in the header. Overall severity is low to moderate.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "In the 'Fastest near you' carousel, the third restaurant name 'Trattoria Piccol...' is hard-clipped at the screen edge without an ellipsis, making the name unreadable and looking broken.",
+        "suggestion": "Apply text truncation with an ellipsis within the card width, or ensure the card layout keeps the title fully inside the visible card boundary so partial cards only clip the image, not raw text."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category filter chip after 'Healthy' is cut off at the right edge showing only a sliver of an empty pill, which looks like a rendering glitch rather than an intentional scroll hint.",
+        "suggestion": "Show enough of the next chip (including part of its label) to clearly signal horizontal scrollability, or add a fade/gradient at the edge to indicate more content."
+      },
+      {
+        "priority": "minor",
+        "category": "missing-element",
+        "description": "The profile avatar in the top-right corner is an empty gray circle with only a notification dot — no image, initials, or icon is displayed.",
+        "suggestion": "Show a fallback avatar (user initials or a person icon) when no profile photo is available so the circle doesn't appear as a failed image load."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza card (with the −20% badge) is abruptly cut off by the tab bar with no visible restaurant name or details, making the last section look incomplete.",
+        "suggestion": "This is likely just scroll position, but ensure sufficient bottom padding/content inset so cards aren't obscured by the tab bar when scrolled to the end."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 875,
+    "estimatedCost": 0.06349,
+    "durationSeconds": 15.674416250000009
+  }
+}

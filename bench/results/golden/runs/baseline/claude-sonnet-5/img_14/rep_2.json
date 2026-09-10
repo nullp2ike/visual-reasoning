@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_14",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:01:36.781Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several layout and content issues, mainly related to cut-off cards and inconsistent visual elements in the horizontal scroll sections.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Trattoria Piccolo' card in the 'Fastest near you' section is cut off at the right edge of the screen, showing only a partial view of the restaurant card and truncated name.",
+        "suggestion": "Adjust the horizontal scroll container padding or add a visual cue (like a fade/gradient edge) to indicate more content is scrollable."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The category filter row (All, Pizza, Sushi, Burgers, Healthy) is cut off at the right edge with an additional category partially visible, making it unclear there are more options.",
+        "suggestion": "Add a fade gradient or partial visibility indicator at the edge to signal scrollability, or ensure consistent card widths."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The heart/favorite icon on 'Tokumaru Ramen Bar' card is white and blends into the light-colored ramen bowl image background, reducing visibility.",
+        "suggestion": "Add a semi-transparent dark background circle behind the heart icon for better contrast against varying image backgrounds."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The pizza promotional card at the bottom of the screen is abruptly cut off, showing only the top portion of the image with a '-20%' badge, without any visible restaurant name or details.",
+        "suggestion": "Ensure the card layout accounts for viewport cutoff gracefully, or add lazy-loading placeholders so the cut isn't jarring mid-image."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The 'Green Bowl Poké' card image appears generic/placeholder-like with a simple plate icon rather than an actual appetizing food photo.",
+        "suggestion": "Replace with a higher-quality, realistic food photograph to improve visual appeal and consistency with other cards."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Notification bell icon has a small red dot indicator but lacks any visible count or aria-label context for screen readers.",
+        "suggestion": "Add an accessible label (e.g., 'You have new notifications') and consider showing a count badge if applicable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 869,
+    "estimatedCost": 0.018957,
+    "durationSeconds": 10.388925832999986
+  }
+}

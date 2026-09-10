@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel, the third card's name reads 'Trattoria Piccol' — the text is hard-clipped at the screen edge with no ellipsis, making the restaurant name unreadable/ambiguous.",
+    "After the 'Healthy' filter chip, a sliver of another chip is visible at the right edge with no visible label, appearing as an empty gray pill.",
+    "The last restaurant card (pizza, '-20%') is abruptly cut off by the bottom navigation bar, hiding its name, rating, and delivery info. There is no visual affordance (padding or fade) indicating more content below.",
+    "The profile avatar in the top-right is an empty gray circle with only a small red notification dot — no image or initials are rendered, making it look like a broken/unloaded avatar."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "The report describes the top-right avatar/icon as missing its image or initials, leaving only the red notification dot visible."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

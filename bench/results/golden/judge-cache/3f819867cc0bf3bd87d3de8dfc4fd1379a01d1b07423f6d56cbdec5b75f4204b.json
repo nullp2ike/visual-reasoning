@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The 'Trattoria Piccol...' restaurant card in 'Fastest near you' section is cut off at the right edge of the screen, hiding delivery info and truncating the name",
+    "The category filter row (All, Pizza, Sushi, Burgers, Healthy) is cut off on the right side suggesting more categories exist but no visual scroll indicator is present",
+    "Restaurant name 'Trattoria Piccol' appears truncated without ellipsis due to card being cut off by screen edge rather than text truncation styling"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "No reported issue describes a filtering problem where Pizza selection fails to filter the feed; all reported issues describe layout/truncation problems with UI elements, not filtering logic."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

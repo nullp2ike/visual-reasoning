@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_06",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:52:33.884Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and clipping issues make the food-delivery home screen look broken: truncated restaurant names, a partially cut-off category chip, and a bottom card that is heavily cropped by the tab bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated with no ellipsis or wrapping in the Fastest near you row.",
+        "suggestion": "Allow the name to wrap to two lines, shrink font slightly, or use ellipsis (…); ensure card width accommodates typical names."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom pizza promotional card is heavily cropped by the tab bar, so most of the image and any title/details below it are hidden.",
+        "suggestion": "Add bottom padding/safe-area inset to the scroll content equal to the tab bar height so the full card (or at least its key info) is visible."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal category chips row is cut off on the right—only a sliver of the next chip is visible with no clear affordance that more categories exist.",
+        "suggestion": "Add right padding/fade, a partial next chip, or a chevron so users understand the row is scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Bottom navigation shows an empty Orders slot with no icon, unlike Home, Search, and Profile.",
+        "suggestion": "Add the missing Orders icon (e.g. receipt/bag) to match the other tabs and improve scannability."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 343,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005822,
+    "reportedCost": 0.0027756,
+    "durationSeconds": 7.758660667000004
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "The third 'Fastest near you' restaurant card is heavily clipped on the right edge, showing only part of the image and a truncated name ('Trattoria Piccol').",
+    "Restaurant name 'Trattoria Piccol' appears truncated, likely missing the end of the full name.",
+    "Category filter chips row is cut off on the right (partial chip visible after 'Healthy'), suggesting overflow without clear affordance.",
+    "The bottom 'Popular right now' promo card is partially cut off by the tab bar, hiding lower content.",
+    "Delivery time badges overlay food images with varying contrast and placement, and the middle card badge sits lower, looking slightly inconsistent."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The clipped right edge of the third carousel card indicates that it is misaligned relative to the other cards."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

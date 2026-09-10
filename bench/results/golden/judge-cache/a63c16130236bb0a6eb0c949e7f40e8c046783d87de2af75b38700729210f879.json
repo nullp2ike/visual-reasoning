@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The 'Trattoria Piccolo' restaurant card in the 'Fastest near you' section is cut off at the right edge of the screen, with its name truncated ('Trattoria Piccol').",
+    "The category filter row (All, Pizza, Sushi, Burgers, Healthy) has an additional category partially visible and cut off at the right edge.",
+    "The promotional banner card at the very bottom (pizza image with '-100%' badge) is abruptly cropped by the bottom navigation bar, cutting off any text/details.",
+    "Inconsistent image aspect ratios/quality between the 'Fastest near you' thumbnails (small square icons) and the 'Popular right now' banners (large rectangular images), creating a visually inconsistent card hierarchy."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Issue 2 directly describes a −100% badge on a promotional card being cropped, which matches the discount badge defect."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

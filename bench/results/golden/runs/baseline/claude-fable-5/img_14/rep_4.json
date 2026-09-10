@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_14",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:52:28.415Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but the 'Fastest near you' carousel shows noticeable layout misalignment: the middle card (Smash Bros Burgers) is vertically offset from its neighbors, and card images have inconsistent sizes/aspect ratios. There is also a hard text cutoff ('Trattoria Piccol') without ellipsis, and a category chip is clipped at the screen edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the middle card (Smash Bros Burgers) is vertically misaligned — its image starts lower and its title/price sit lower than the adjacent cards (Green Bowl Poké and Trattoria), making the row look broken.",
+        "suggestion": "Align all carousel cards to a common top edge and use a fixed, uniform image height so titles and delivery prices sit on the same baseline."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Card thumbnails in 'Fastest near you' have inconsistent heights/aspect ratios (the poké image is taller than the burger image), contributing to the uneven row.",
+        "suggestion": "Enforce a consistent aspect ratio (e.g., 4:3 or 16:9) with object-fit cover for all carousel thumbnails."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third card title is hard-clipped as 'Trattoria Piccol' with no ellipsis, which looks like broken text rather than intentional carousel overflow.",
+        "suggestion": "Apply text truncation with an ellipsis (…) or ensure the text is clipped along with the card container so partial words aren't shown against the page background."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category filter chip after 'Healthy' is cut off at the right screen edge with only a sliver visible, giving little affordance of what it is.",
+        "suggestion": "Adjust the chip carousel so the peeking item shows enough of its label (e.g., 30–40% visible) to signal horizontal scrollability, or add a fade/gradient edge."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The bottom pizza card in 'Popular right now' is abruptly cut off by the tab bar with no visual separation, so its content collides with the navigation area.",
+        "suggestion": "Add bottom padding/safe-area inset to the scroll container or a subtle shadow/divider on the tab bar so content doesn't appear clipped underneath it."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 1076,
+    "estimatedCost": 0.07354,
+    "durationSeconds": 18.184724707999994
+  }
+}

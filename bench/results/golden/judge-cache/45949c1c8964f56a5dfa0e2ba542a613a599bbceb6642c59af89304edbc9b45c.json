@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers shows '€NaN delivery' instead of a valid delivery price. 'NaN' (Not a Number) is a JavaScript data error leaking into the UI.",
+    "The third restaurant card in the 'Fastest near you' section ('Trattoria Piccol...') is partially cut off, and the restaurant name is truncated without an ellipsis indicator, making it unclear this is a scrollable row."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the delivery fee displaying €NaN instead of a valid price."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

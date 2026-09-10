@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "Category filter 'Pizza' is selected but displayed restaurants are non-pizza (Green Bowl Pok\u0000e9, Smash Bros Burgers, Tokumaru Ramen Bar)",
+    "Wishlist heart icons have inconsistent treatment: ramen card shows white outline directly on image, pizza card shows white outline on dark circular scrim",
+    "Delivery time badges use inconsistent formatting: '15-25 min' and '20-30 min' without spaces vs '20-30 min' with spaces around hyphen"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.75 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

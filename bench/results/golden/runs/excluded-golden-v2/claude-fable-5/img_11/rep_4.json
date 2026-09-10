@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_11",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:31:35.216Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed. The main visual anomaly is a '−100%' discount badge on a restaurant card, which appears to be a data/content error rather than a plausible promotion. No serious layout breakage, overlap, or misalignment was detected elsewhere.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza restaurant card in 'Popular right now' displays a '−100%' badge, implying the food is completely free. This is almost certainly a data error or a misconfigured promotion, and it undermines trust in the displayed pricing.",
+        "suggestion": "Validate discount values on the backend/client (e.g., cap or reject 100% discounts) and display the intended promotion, such as '€0 delivery' or the correct percentage off."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "On the Tokumaru Ramen Bar card, '€0 delivery' is shown twice — once as a badge on the image and again in the metadata line below — which is redundant.",
+        "suggestion": "Show the free-delivery indicator in only one place (either the image badge or the metadata row) to reduce visual noise."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 568,
+    "estimatedCost": 0.04927000000000001,
+    "durationSeconds": 38.34781854100002
+  }
+}

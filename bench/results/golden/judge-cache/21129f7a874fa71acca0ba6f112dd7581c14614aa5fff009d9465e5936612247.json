@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section heading displays the raw i18n key 'home_feed.popular_title' instead of a translated, human-readable title (e.g. 'Popular near you'). This indicates a missing or failed localization string.",
+    "The horizontal restaurant carousel under 'Fastest near you' cuts off the third card ('Trattoria Piccol...') at the right edge with no visual affordance (e.g. fade or partial-card hint is present but the title is truncated awkwardly).",
+    "The notification bell icon in the top-right has a red dot indicator but no visible label or badge count, which may be unclear to screen-reader users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 identifies the same section title showing the raw home_feed.popular_title translation key instead of translated text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

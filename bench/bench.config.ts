@@ -23,9 +23,9 @@ import type { ImageDetailLevel, ReasoningEffortLevel } from "../src/constants.js
  *   indicator, cramped spacing). It predates this naming convention and keeps
  *   its bare id because `results/primary/runs/excluded/` already holds runs
  *   under it. Do NOT reuse it for other datasets: against
- *   `new_golden_dataset` it would suppress 4 of the 17 expected defects, because
+ *   `golden` it would suppress 4 of the 17 expected defects, because
  *   there clipping, overlap, and alignment are real ground truth.
- * - `excluded-golden-v2` is the list for `new_golden_dataset`: the two
+ * - `excluded-golden-v2` is the list for `golden`: the two
  *   scroll/viewport-edge bullets only, which were ~84% of the clean control's
  *   noise on their own, framed as "features, not defects". Everything narrower
  *   than that is deliberately omitted. Its predecessor (`excluded-golden`, now
@@ -34,7 +34,7 @@ import type { ImageDetailLevel, ReasoningEffortLevel } from "../src/constants.js
  *   list names, the more conservative models become beyond them, and narrow
  *   wording ("cut off mid-word inside its own container") became a loophole
  *   models used to keep reporting the carousel clip anyway. Any
- *   `results/new_golden_dataset/runs/excluded-golden/` records on disk are
+ *   `results/golden/runs/excluded-golden/` records on disk are
  *   orphaned and can be deleted.
  */
 export const BENCH_PROMPT_VARIANTS = {
@@ -79,8 +79,8 @@ export interface BenchConfig {
    * for good with `BENCH_DATASET` in `.env`. Results are namespaced by dataset,
    * so switching datasets never mixes manifests, runs, or reports.
    *
-   * No dataset is committed — every one is gitignored, so this default only
-   * names the dataset this checkout happens to use. See bench/datasets/README.md.
+   * Datasets are tracked apart from `primary`, which is gitignored because its
+   * screenshots are private product UI. See bench/datasets/README.md.
    */
   readonly dataset: string;
   /** Models under test. Provider is inferred from the model name by the library. */
@@ -118,7 +118,7 @@ export interface BenchConfig {
 }
 
 export const benchConfig: BenchConfig = {
-  dataset: "primary",
+  dataset: "golden",
   models: [
     // Anthropic: flagship / mid / small
     "claude-fable-5",

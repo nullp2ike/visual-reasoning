@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:03:17.422Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly intact, but there are a few visually broken elements: a clipped restaurant card in the 'Fastest near you' carousel, an implausible '-100%' discount badge, and category chips that appear cut off at the screen edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' carousel is clipped at the right edge of the screen, and its name is truncated to 'Trattoria Piccol...', making the item hard to identify and the section look unfinished.",
+        "suggestion": "Adjust the horizontal carousel so cards fit fully within the viewport or show a deliberate partial peek with proper spacing, and ensure long names truncate consistently with ellipsis."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Popular right now' pizza card displays a '-100%' badge, which is nonsensical as a discount value and looks like a data or formatting error.",
+        "suggestion": "Replace the badge with a valid discount value (e.g., '20% off') or remove it if no discount applies."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chips run to the right edge of the screen and the last visible chip ('Healthy') appears cut off, giving no clear visual affordance that the list is horizontally scrollable.",
+        "suggestion": "Add right padding or a subtle fade/gradient and show a partial next chip to indicate that more categories are available by scrolling."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 1377,
+    "reasoningTokens": 1017,
+    "estimatedCost": 0.00680867,
+    "reportedCost": 0.01177828,
+    "durationSeconds": 9.21651324999996
+  }
+}

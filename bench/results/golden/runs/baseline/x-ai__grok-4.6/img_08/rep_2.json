@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_08",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:01.255Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content issues: truncated restaurant names and category chips, a misspelled search placeholder, and a promo card that appears cut off at the bottom.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card in the 'Fastest near you' row is clipped so the name reads 'Trattoria Piccol' instead of the full title.",
+        "suggestion": "Ensure the horizontal list peeks enough of the next card or wrap/truncate names with an ellipsis so full names remain readable."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom restaurant card (pizza with -20%) is cut off by the tab bar, hiding the restaurant name, rating, and other details.",
+        "suggestion": "Add bottom padding/safe-area inset so the last card is fully visible above the tab bar, or allow the list to scroll fully."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Search placeholder is misspelled as 'Restarants' instead of 'Restaurants'.",
+        "suggestion": "Correct the placeholder copy to 'Restaurants, dishes, groceries'."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is cut off on the right, showing only a sliver of the next filter.",
+        "suggestion": "Add a fade/peek or ensure the last visible chip isn't clipped so users can tell the list is scrollable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 309,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.005618,
+    "reportedCost": 0.00293,
+    "durationSeconds": 7.425032208000019
+  }
+}

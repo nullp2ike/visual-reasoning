@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:53:28.381Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several visual/layout issues: truncated restaurant names and delivery info, overlapping text on a card, and cut-off category chips and food cards.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "Delivery time text on Tokumaru Ramen Bar is garbled/overlapping: '25-30delivery' appears as broken text ('25-3Ddelivery' style) instead of clean '25-30 min delivery'.",
+        "suggestion": "Fix text layout/spacing so delivery time and category read clearly as separate labels (e.g. '25-30 min · Ramen') without character collision or overflow."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol...' is truncated and cut off on the right edge of the Fastest near you row.",
+        "suggestion": "Allow full name on wrap, use ellipsis consistently with enough padding, or make the horizontal list scroll with complete visible titles."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Category filter chips row is clipped on the right (Healthy and following chip partially off-screen) with no clear affordance that more categories exist.",
+        "suggestion": "Ensure horizontal scroll is obvious (peek of next chip, fade, or arrows) and that chips aren’t cut mid-label without scrolling."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Bottom promotional/popular card (pizza) is heavily cropped at the bottom of the viewport, hiding title, rating, and other details.",
+        "suggestion": "Adjust scroll area/padding above the tab bar so card content isn’t obscured, or ensure the list scrolls fully above the fixed nav."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Fastest near you third card is only partially visible, cutting off image and text awkwardly.",
+        "suggestion": "Show a clearer peek of the next card or tighten card widths so content doesn’t feel unfinished at the edge."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Inconsistent delivery badge formatting (some '€x.xx delivery', popular card '€0 delivery', time badges over images) and tight spacing make the hierarchy slightly uneven.",
+        "suggestion": "Standardize badge styles, padding, and label formats across restaurant cards for a cleaner visual rhythm."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 491,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006710000000000001,
+    "reportedCost": 0.0036636,
+    "durationSeconds": 12.874728917
+  }
+}

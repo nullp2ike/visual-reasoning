@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_04",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:25:00.061Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there are a few visible defects: a nonsensical '–0%' discount badge, a truncated restaurant name, and a partially clipped category chip with no visible label.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza restaurant card in 'Popular right now' displays a '–0%' discount badge, which is meaningless — a 0% discount should not be shown as a promotion.",
+        "suggestion": "Hide the discount badge when the discount value is 0, or fix the data source so the correct discount percentage is rendered."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in 'Fastest near you' shows a truncated restaurant name ('Trattoria Piccol...') without an ellipsis or clear truncation treatment, appearing cut off at the screen edge.",
+        "suggestion": "Apply proper text truncation with an ellipsis inside the card bounds, or ensure the carousel peek reveals enough of the card so the name isn't awkwardly clipped."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip after 'Healthy' is clipped at the right edge and shows no visible label, making it look like an empty/broken pill rather than an intentional carousel peek.",
+        "suggestion": "Adjust the horizontal scroll peek so part of the next chip's label is visible, or add a fade/gradient at the edge to signal there is more content to scroll."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Delivery cost information is inconsistent in emphasis: 'Tokumaru Ramen Bar' shows '€0 delivery' both as a badge and in the metadata line, which is redundant.",
+        "suggestion": "Show the free-delivery indicator in one place (e.g., only the badge) to reduce visual noise."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 793,
+    "estimatedCost": 0.059390000000000005,
+    "durationSeconds": 13.825927791999995
+  }
+}

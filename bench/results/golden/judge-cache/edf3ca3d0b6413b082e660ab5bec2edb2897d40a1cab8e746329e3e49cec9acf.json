@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The promo badge on the pizza card in 'Popular right now' reads '-0%', which advertises a zero-percent discount — almost certainly a data/formatting bug where a missing or zero discount value is still rendered as a badge.",
+    "The favorite (heart) button on the second popular card uses a dark/translucent circular background while the identical control on the first card uses a solid white background, creating an inconsistent look and reduced icon contrast on the busy pizza image.",
+    "The 'Green Bowl Poké' thumbnail in the 'Fastest near you' carousel has a very light, near-white background while sibling thumbnails are dark, making the white '15–25 min' badge harder to read and the card look washed out compared to its neighbours."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 identifies the promo badge on the pizza card displaying '-0%', matching the expected discount badge defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

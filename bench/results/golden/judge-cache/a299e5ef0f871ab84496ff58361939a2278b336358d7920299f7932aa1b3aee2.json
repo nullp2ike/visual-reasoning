@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated with missing letters in the Fastest near you row.",
+    "The pizza card shows a '-100%' badge, which looks like a broken or incorrect discount label.",
+    "Category filter chips are cut off on the right edge (partial chip visible after Healthy).",
+    "The bottom popular item (pizza) card is heavily clipped by the viewport/tab bar, so most of the image and any title below are not visible.",
+    "Delivery time pills sit over food images with light backgrounds that can reduce image clarity and contrast consistency across cards."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.81 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3, 4]
+  }
+}

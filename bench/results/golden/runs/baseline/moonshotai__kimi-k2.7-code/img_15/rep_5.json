@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_15",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:04:01.528Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual issues: a major layout problem with a cut-off carousel card and a minor accessibility issue with low-contrast bottom navigation icons.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' horizontal carousel is abruptly cut off at the right edge of the screen. The restaurant name 'Trattoria Piccol' is truncated mid-word without a clear ellipsis, and the card image is partially clipped, making the carousel look broken or improperly contained.",
+        "suggestion": "Add sufficient right padding to the horizontal scroll container so partially visible cards are clearly peeking, or ensure the last fully visible card fits within the viewport. Also apply proper text-overflow ellipsis handling for truncated restaurant names."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The inactive icons in the bottom navigation bar (search, orders, profile) use a very light gray color against the white background, resulting in poor contrast that makes them difficult to see.",
+        "suggestion": "Increase the color contrast of inactive navigation icons by using a darker gray or adding subtle filled backgrounds so they remain clearly visible while still appearing inactive compared to the selected state."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 1955,
+    "reasoningTokens": 1670,
+    "estimatedCost": 0.00897617,
+    "reportedCost": 0.01640228,
+    "durationSeconds": 11.212377499999944
+  }
+}

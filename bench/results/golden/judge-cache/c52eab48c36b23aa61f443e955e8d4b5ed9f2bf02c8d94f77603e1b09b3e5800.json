@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "The 'Fastest near you' restaurant cards and the category filter chips are cut off at the right screen edge (e.g. 'Trattoria Piccol...' and a partially visible chip), with no visible scroll indicator or gradient hint that more content exists horizontally.",
+    "The circular button in the top-right corner renders as an empty light-gray circle containing only a tiny red notification dot; no icon (e.g. profile, bell, or avatar) is visible, making its purpose unclear.",
+    "The red notification dot on the top-right button has no accompanying label or badge count, and the button itself lacks a visible text label, which can be confusing for screen-reader and low-vision users.",
+    "Restaurant name 'Trattoria Piccol...' is truncated mid-word at the card edge, which looks awkward combined with the clipped card."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Issue 1 directly describes a top-right corner button that renders as an empty circle with only a red dot visible, with no icon present."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3]
+  }
+}

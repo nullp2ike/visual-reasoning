@@ -1,0 +1,24 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The third 'Fastest near you' card title is truncated to 'Trattoria Piccol' and delivery info may also be clipped, while only part of the card is visible at the edge.",
+    "The bottom pizza promotional card is partially covered by the fixed bottom tab bar, hiding part of the image and content.",
+    "The category filter chips row is cut off on the right (partial chip visible after 'Healthy'), with no clear affordance that more categories exist.",
+    "Restaurant name 'Tokumaru Ramen' appears to lose the final letter ('Ramen' vs expected full spelling) or sits awkwardly near the rating."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "cosine 0.76 >= 0.69 threshold (reported #3)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

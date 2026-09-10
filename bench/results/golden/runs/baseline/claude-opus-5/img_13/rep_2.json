@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_13",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:56:35.000Z",
+  "status": "ok",
+  "result": {
+    "summary": "The layout is mostly coherent, but several rendering problems stand out: the top-right avatar/action button renders as an empty grey circle, horizontal carousel items and filter chips are hard-clipped at the screen edge with text cut mid-word, the two favourite (heart) buttons use inconsistent styling, and the last restaurant card is abruptly truncated by the bottom navigation bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The circular control in the header (top right, next to 'DELIVER TO') is an empty light-grey circle with only a red notification dot — the icon or avatar image failed to render, so its purpose is unclear and it has no accessible label.",
+        "suggestion": "Render the intended icon/avatar (with a fallback initial or placeholder glyph) and add an accessible label such as 'Notifications' or 'Account'."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third item in the 'Fastest near you' carousel is hard-clipped at the viewport edge and its title reads 'Trattoria Piccol' with no ellipsis, making the name look broken rather than scrollable.",
+        "suggestion": "Add horizontal padding/peek so the next card is clearly partially visible, and apply text-overflow: ellipsis with a max width to card titles."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom 'pizza' restaurant card is cut off mid-image by the bottom navigation bar; no name, rating or delivery info is visible, so the section end looks like a rendering error.",
+        "suggestion": "Add bottom content padding equal to the nav bar height and ensure list items are not partially rendered at the fold, or scroll-snap card boundaries."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Favourite (heart) buttons are styled inconsistently: the Tokumaru card uses a white circular background with dark outline, while the pizza card uses a dark/transparent circle with white outline.",
+        "suggestion": "Standardise the favourite button to one treatment (e.g. semi-transparent dark scrim with white icon) across all cards for consistency and legibility over any image."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chip row is clipped at the right edge with a sliver of the next chip visible, giving no clear affordance that the row scrolls.",
+        "suggestion": "Show a consistent partial chip with edge padding or add a fade/gradient mask to signal horizontal scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The green promo banner contains large overlapping translucent circles that are cropped oddly at the right and bottom edges, reading as a stray graphic artifact rather than intentional decoration.",
+        "suggestion": "Clip the decorative shapes to the banner's rounded corners and reposition them so they don't collide with the 'Order now' button or edges."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary metadata such as '€0.90 delivery' and '25–35 min • €0 delivery • Ramen' uses light grey text that may fall below the 4.5:1 contrast ratio.",
+        "suggestion": "Darken the secondary text colour to meet WCAG AA contrast against the white background."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 1371,
+    "estimatedCost": 0.044145000000000004,
+    "durationSeconds": 20.119888584
+  }
+}

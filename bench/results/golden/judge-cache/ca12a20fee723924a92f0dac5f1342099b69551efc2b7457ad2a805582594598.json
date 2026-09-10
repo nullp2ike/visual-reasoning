@@ -1,0 +1,24 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant name 'Tokumaru Ramen' in the 'Popular right now' section appears clipped mid-character (renders as 'Tokumaru Rameı') even though there is ample empty space between the name and the 4.8 rating on the right.",
+    "The third card in 'Fastest near you' shows a hard-cut title ('Trattoria Piccol') with no ellipsis, making it look broken rather than intentionally truncated by the carousel edge.",
+    "A category filter chip at the far right of the chip row is cut off at the screen edge with almost no visible content, giving little affordance that more categories exist.",
+    "Placeholder text in the search field ('Restaurants, dishes, groceries') is light gray on light gray background, which may fall below recommended contrast ratios."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the Tokumaru Ramen name being clipped mid-character without an ellipsis, matching the expected heading defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

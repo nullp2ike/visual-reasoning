@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:00:18.238Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely functional, but there are minor layout/visual polish issues around horizontally scrolling content being clipped at the screen edges and some image overlay controls that may be hard to see.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row is clipped on the right edge, with the next chip after “Healthy” partially cut off and no clear fade/arrow affordance.",
+        "suggestion": "Add horizontal padding, an edge fade, or a scroll indicator so users can tell the filter row continues off-screen."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The “Fastest near you” carousel truncates the third restaurant card and name (“Trattoria Piccol…”) at the viewport edge, which can look like broken content rather than intentional scrolling.",
+        "suggestion": "Use consistent card peek spacing, edge fades, or snap scrolling so partially visible cards look deliberate and remain readable."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Favorite heart icons are placed over food imagery with only a dark translucent backdrop, which may have inconsistent contrast depending on the photo.",
+        "suggestion": "Use a stronger circular background, stroke, or minimum contrast treatment for icon buttons over images."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 526,
+    "reasoningTokens": 261,
+    "estimatedCost": 0.014196,
+    "reportedCost": 0.0140232,
+    "durationSeconds": 7.508045582999941
+  }
+}

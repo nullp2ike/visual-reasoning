@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Orders icon is missing from the bottom nav bar"],
+  "reportedIssues": [
+    "In the 'Fastest near you' horizontal carousel, the third restaurant card ('Trattoria Piccol...') is clipped mid-word at the right screen edge, and its '€1.90 delivery' text is also cut off. There is no gradient fade, scroll indicator, or partial-card peek styling to signal that the row is horizontally scrollable, which makes the truncation look like a layout bug rather than intentional overflow.",
+    "The category filter chips row ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') also runs off the right edge with a partially visible chip, again without a clear scroll affordance.",
+    "The notification bell icon in the top-right has a small red dot badge with no numeric count or text alternative, so screen-reader users and some sighted users cannot tell how many notifications are pending.",
+    "The bottom pizza card ('-20%') is cut off by the fixed bottom navigation bar mid-image, with no title or metadata visible, which can look like a rendering glitch rather than a scroll position."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "None of the reported issues describes a missing Orders icon in the bottom navigation bar."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

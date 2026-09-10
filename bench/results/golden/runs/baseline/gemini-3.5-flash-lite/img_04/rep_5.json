@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gemini-3.5-flash-lite",
+  "provider": "google",
+  "imageId": "img_04",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:53:47.936Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual issues including an awkward card cutoff and a redundant discount badge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The pizza card at the bottom is abruptly clipped by the viewport edge above the bottom navigation bar.",
+        "suggestion": "Add proper bottom padding or margin to the scrollable container so cards are fully visible."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The discount badge displays '-0%' which is redundant and looks like a data glitch.",
+        "suggestion": "Hide the discount badge if the value is 0% or invalid."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1425,
+    "outputTokens": 627,
+    "reasoningTokens": 410,
+    "estimatedCost": 0.0019950000000000002,
+    "durationSeconds": 2.8794544170000007
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:53:05.790Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page mostly renders correctly, but there is one notable navigation state bug and a few minor visual concerns around truncation and cropped carousel items.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom navigation shows 'Profile' as the active/highlighted tab (green icon and label), but the screen displayed is clearly the Home feed with delivery address, search, promos, and restaurant lists. The 'Home' tab should be active.",
+        "suggestion": "Fix the active tab state logic so the Home tab is highlighted when the home feed is displayed."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' carousel is truncated without an ellipsis, making it look cut off rather than intentionally clipped.",
+        "suggestion": "Add a text ellipsis (…) for truncated names or constrain the label width to the card so truncation appears intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category filter chip on the far right of the chip row is cut off with no visible label, appearing as an empty sliver.",
+        "suggestion": "Adjust chip spacing/peek amount so partially visible chips still show part of their label, signaling horizontal scrollability more clearly."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last pizza card ('-20%') at the bottom is abruptly clipped by the bottom navigation bar without any fade or padding, and its title/details are not visible.",
+        "suggestion": "Add bottom padding/safe-area inset to the scroll content so cards aren't hard-clipped behind the nav bar, or ensure the card's metadata is reachable on scroll."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 721,
+    "estimatedCost": 0.05579,
+    "durationSeconds": 14.141695208999998
+  }
+}

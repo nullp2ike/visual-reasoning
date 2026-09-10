@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_09",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:00:57.539Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 4 issues: layout cutoff on the horizontal scroll section, a category chip cut off at edge, and minor content/text truncation issues.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Fastest near you' row is cut off at the right edge, showing a partial third card (Trattoria Piccol...) with truncated text, indicating the horizontal scroll container is clipped by the screen boundary without clear affordance to scroll.",
+        "suggestion": "Add a partial-card preview with a soft fade/gradient edge or ensure consistent card width so the cutoff looks intentional and signals scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chips ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') are cut off at the right edge with an additional partially visible chip, making it unclear if more categories exist.",
+        "suggestion": "Add a fade gradient or partial visible chip indicator to clarify horizontal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated/cut off due to the card being clipped at the screen edge.",
+        "suggestion": "Ensure text truncation uses ellipsis consistently, or reveal more of the card so full restaurant names are visible."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The heart/favorite icon for 'Tokumaru Ramen' is white on a busy food image background, which may reduce visibility while the second heart icon (on the pizza image below) is styled with a dark circular background, showing inconsistent icon styling across similar cards.",
+        "suggestion": "Standardize the favorite icon background (e.g., always use a semi-transparent dark circle) across all promotional/restaurant cards for consistency and better contrast."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 680,
+    "estimatedCost": 0.016122,
+    "durationSeconds": 9.60354541599995
+  }
+}

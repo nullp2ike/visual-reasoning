@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The pizza restaurant card in 'Popular right now' shows a '–0%' discount badge, which is meaningless — a 0% discount should not be displayed at all.",
+    "In 'Fastest near you', the third restaurant name reads 'Trattoria Piccol' — the text is clipped at the screen edge without an ellipsis, making it look broken rather than intentionally truncated.",
+    "The rightmost category filter chip (after 'Healthy') is cut off at the screen edge showing only an empty pill sliver with no readable label, giving no hint of its content.",
+    "The third card image and delivery fee ('€1.90 delivery') in 'Fastest near you' are partially cut off, and unlike the other cards its full name and delivery time badge extend beyond the viewport."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Report 0 describes a pizza restaurant card showing a '–0%' discount badge that is meaningless and should not be displayed, exactly matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

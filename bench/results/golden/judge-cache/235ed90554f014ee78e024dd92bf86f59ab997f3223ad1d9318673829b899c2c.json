@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Picco' in the 'Fastest near you' section is truncated, indicating the card width or text handling is insufficient to display the full name.",
+    "The second restaurant card in the 'Popular right now' section (pizza image) is cut off at the bottom of the screen, hiding the restaurant name, rating, delivery cost, and cuisine information.",
+    "The pizza card displays a '-100%' badge, which is mathematically unusual and likely confusing to users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.69 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

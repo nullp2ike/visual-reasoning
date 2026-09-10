@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The category carousel and the “Fastest near you” restaurant carousel are cut off at the right edge, leaving partial pills and a partially visible restaurant card without an obvious carousel affordance.",
+    "The fixed bottom navigation overlaps the lower restaurant card, obscuring part of its content and making it appear truncated.",
+    "The first two “Fastest near you” cards appear identical, including the restaurant name, image, delivery time, and delivery fee, which may indicate duplicated content."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.62 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

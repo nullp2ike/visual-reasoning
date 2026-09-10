@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:59:46.692Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely intact, but the horizontally scrolling sections clip content at the viewport edges, most noticeably truncating a restaurant name in the “Fastest near you” row and leaving only a sliver of the next category chip visible. No critical blockers are apparent.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the “Fastest near you” carousel, the third card is cut off at the right edge and the restaurant name is truncated mid-word as “Trattoria Piccol…”, making the merchant unidentifiable without scrolling.",
+        "suggestion": "Add clearer carousel affordance such as peek padding sized to show a consistent portion of the next card, and apply ellipsis truncation with enough card width so names remain readable rather than clipping at the screen edge."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row shows “Healthy” near the right edge with only a tiny fragment of the next filter visible, which looks like accidental overflow rather than an intentional scroll hint.",
+        "suggestion": "Use consistent horizontal padding and a fade/gradient edge or half-chip peek to signal scrollability deliberately."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second “Popular right now” card is sliced by the bottom of the viewport above the tab bar, showing only the top of the pizza image with no title or metadata.",
+        "suggestion": "This is expected during scrolling, but consider increasing bottom spacing or snapping card boundaries so partially exposed cards still reveal useful context."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary metadata such as delivery fees and time/category text uses small gray type that may be hard to read for low-vision users.",
+        "suggestion": "Increase text size slightly and verify contrast meets WCAG AA, especially for gray-on-white metadata."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 879,
+    "reasoningTokens": 427,
+    "estimatedCost": 0.019491,
+    "reportedCost": 0.019491,
+    "durationSeconds": 32.98154387499997
+  }
+}

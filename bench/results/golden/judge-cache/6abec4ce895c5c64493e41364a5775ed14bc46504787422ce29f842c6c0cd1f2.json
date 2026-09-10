@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "Right edge content is clipped: the last category chip is half-visible and the third 'Fastest near you' card name is truncated to 'Trattoria Piccol'",
+    "Second card under 'Popular right now' (pizza image with -20% badge) is abruptly cut off by the bottom tab bar with no restaurant name or details visible"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.66 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

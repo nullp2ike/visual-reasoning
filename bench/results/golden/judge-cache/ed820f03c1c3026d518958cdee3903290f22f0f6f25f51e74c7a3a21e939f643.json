@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel the three cards are not aligned: the first card's image is shorter and starts higher, the second card's image is taller and pushed down, so the restaurant names ('Green Bowl Poké', 'Smash Bros Burgers', 'Trattoria Piccol…') and the delivery prices sit at three different vertical positions. The time badges are also at different heights.",
+    "The third card's title 'Trattoria Piccol' is hard-cut at the screen edge with no ellipsis, making the name unreadable and looking like broken text rather than intentional truncation.",
+    "Card imagery is inconsistent: the first card uses a very light grey/placeholder-looking background while the other cards use dark photographic backgrounds, which makes the first card read as a missing image.",
+    "Favorite (heart) buttons in 'Popular right now' are styled differently: the first card has an outline heart with no background, while the second sits on a dark circular chip.",
+    "The second 'Popular right now' card is cut off abruptly by the bottom tab bar with no visible fade or bottom padding, so it looks clipped rather than scrollable.",
+    "The category chip row is clipped mid-chip at the right edge with no affordance indicating it scrolls horizontally."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the exact same problem: cards in the 'Fastest near you' carousel are misaligned with restaurant names and badges at different vertical positions."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

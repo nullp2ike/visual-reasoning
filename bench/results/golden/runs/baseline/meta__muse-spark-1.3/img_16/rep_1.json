@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "meta/muse-spark-1.3",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-03T19:39:34.520Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 issues: active Pizza filter does not match displayed restaurants, truncated restaurant name in carousel, and low-contrast secondary text.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "Category chip 'Pizza' is visually selected/active but the lists below show non-pizza venues: Green Bowl Poké, Smash Bros Burgers, Trattoria and Tokumaru Ramen Bar",
+        "suggestion": "Sync displayed results with the active filter, or reset filter to 'All' when showing mixed cuisines"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Third card in 'Fastest near you' row shows restaurant name clipped mid-word as 'Trattoria Piccol' at screen edge without ellipsis handling",
+        "suggestion": "Ensure card text truncates with ellipsis inside card bounds and add end padding for horizontal scroll list"
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Search placeholder 'Restaurants, dishes, groceries' and secondary delivery fee text have low contrast on light grey background",
+        "suggestion": "Darken secondary and placeholder text to meet WCAG contrast ratios"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1739,
+    "outputTokens": 2190,
+    "reasoningTokens": 1892,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.01148125,
+    "reportedCost": 0.01148125,
+    "durationSeconds": 29.58892074999999
+  }
+}

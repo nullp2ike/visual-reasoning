@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_02",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:25:03.644Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed, but there is one clear data/rendering defect: the 'Smash Bros Burgers' card displays '€NaN delivery', indicating an unhandled missing or non-numeric delivery fee value.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Smash Bros Burgers' card in the 'Fastest near you' section shows '€NaN delivery' instead of a valid delivery fee, exposing a raw JavaScript NaN value to users.",
+        "suggestion": "Fix the data pipeline or number formatting so the delivery fee is parsed correctly, and add a fallback (e.g., hide the fee, show 'Free delivery', or 'Fee unavailable') when the value is missing or non-numeric."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 344,
+    "estimatedCost": 0.03807000000000001,
+    "durationSeconds": 23.585385125000002
+  }
+}

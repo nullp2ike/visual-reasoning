@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The bottom navigation bar is not correctly padded for devices with a home indicator, causing the icons to be positioned too low and partially overlapping with the bottom system gesture area.",
+    "The '-0%' badge on the bottom-most pizza restaurant item is redundant and visually confusing as it implies a discount where there is none."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 directly describes the −0% badge displaying on a pizza restaurant item, identifying it as redundant and confusing."
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

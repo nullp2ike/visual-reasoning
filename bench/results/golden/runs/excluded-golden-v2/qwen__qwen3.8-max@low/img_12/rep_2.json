@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:36:59.675Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed, but there is one clear visual defect: in the 'Popular right now' section, the restaurant metadata line has overlapping text where the delivery time range and the '€0 delivery' label are rendered on top of each other, producing an unreadable garbled string.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Under 'Tokumaru Ramen Bar', the meta row shows overlapping text: the delivery time range (e.g. '25–35 min') and the '€0 delivery' label are stacked/overprinted on the same line, resulting in a garbled, unreadable string like '25–3€0 delivery'.",
+        "suggestion": "Fix the layout of the metadata row so each element (delivery time, delivery fee, cuisine tag) occupies its own space with proper spacing or separators, and ensure text does not overlap. Verify the container width and flex/spacing rules so long strings wrap or truncate instead of colliding."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The same meta row also appears to merge the delivery fee with the cuisine tag ('Ramen') without a clear separator, making the line harder to scan.",
+        "suggestion": "Use consistent bullet separators and spacing between metadata items (time • fee • cuisine) to improve readability."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 851,
+    "reasoningTokens": 513,
+    "estimatedCost": 0.008694,
+    "reportedCost": 0.007574,
+    "durationSeconds": 48.86278729200002
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccol' is cut off mid-word under the third 'Fastest near you' card, making the name unreadable.",
+    "Under the third 'Fastest near you' card, the delivery fee text appears incomplete as '€1.90 deliverv' (or similarly truncated), so users cannot read the full fee information.",
+    "The pizza card shows a green badge reading '-100%', which looks broken or nonsensical as a discount (implying free or negative price) rather than a clear offer.",
+    "Category filter chips extend past the right edge with only a partial next chip visible, which can feel unfinished even if horizontal scrolling is intended."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Reported issue 2 describes the pizza card's green '-100%' discount badge, matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The 'Smash Bros Burgers' card displays '€NaN delivery' instead of a valid price or 'Free delivery'. 'NaN' (Not a Number) is a raw programming error leaking into the UI, suggesting the delivery fee value is undefined or failed to parse."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The reported issue describes the same €NaN delivery fee displayed in the UI."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The bottom navigation bar highlights 'Profile' as the active tab (green icon and label), but the content displayed is the Home screen (delivery address, search, promos, restaurant feed). 'Home' should be the active tab.",
+    "The 'Home' tab icon/label is greyed out like the other inactive tabs, which combined with the wrong Profile highlight gives no correct indication of the user's current location in the app."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 directly describes Profile being highlighted in bottom nav while Home feed is displayed, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

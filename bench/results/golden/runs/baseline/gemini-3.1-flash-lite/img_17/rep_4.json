@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "gemini-3.1-flash-lite",
+  "provider": "google",
+  "imageId": "img_17",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:56:56.816Z",
+  "status": "ok",
+  "result": {
+    "summary": "The main issue is the overlapping UI elements in the bottom navigation bar and the footer, caused by a lack of proper safe area padding or layout clipping.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom navigation bar and the content (specifically the pizza item card) overlap with the home indicator area of the device, causing visual clutter and potential touch issues.",
+        "suggestion": "Implement system safe area insets at the bottom of the screen to ensure the bottom navigation bar is not obscured by or overlapping with the device's home indicator."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The bottom navigation items (Home, Search, Orders, Profile) appear to be slightly cut off or lack sufficient padding at the bottom.",
+        "suggestion": "Adjust the bottom padding of the navigation bar container to ensure all icons and labels are fully visible above the system interface."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1425,
+    "outputTokens": 230,
+    "estimatedCost": 0.0007012499999999999,
+    "durationSeconds": 1.707752582999994
+  }
+}

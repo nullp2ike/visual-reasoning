@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers shows '€NaN delivery' instead of a valid delivery fee, indicating a data formatting or null-handling bug.",
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you carousel card.",
+    "Category filter chips row shows a partial empty chip on the far right, suggesting awkward overflow beyond the intentional partial last item."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes the same defect: delivery fee displaying as '€NaN' due to data formatting or null-handling."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

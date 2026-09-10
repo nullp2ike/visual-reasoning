@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The 'Fastest near you' restaurant card 'Trattoria Piccolo' is cut off at the right edge of the screen, showing only a partial image and truncated name.",
+    "The category filter row (All, Pizza, Sushi, Burgers, Healthy) shows a partially visible additional category chip cut off at the right edge.",
+    "The 'Profile' tab icon and label are highlighted green in the bottom navigation, but the visible page content is the Home/Discovery screen, creating inconsistency between active tab state and displayed content.",
+    "The second promotional restaurant card at the bottom (pizza image with -20% badge) is cut off with no visible restaurant name or details before the screen ends."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "cosine 0.78 >= 0.69 threshold (reported #2)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

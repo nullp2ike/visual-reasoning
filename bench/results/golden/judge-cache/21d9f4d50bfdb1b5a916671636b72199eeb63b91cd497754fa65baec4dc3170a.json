@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Under 'Tokumaru Ramen Bar', the metadata line renders overlapping text: '25–35 min' and '€0 delivery' are drawn on top of one another ('25–3€0mdielivery'), making the line illegible.",
+    "The favorite (heart) button styling is inconsistent between cards: the Tokumaru card uses a white circular background while the pizza card below uses a dark/transparent circle, reducing visual consistency and contrast.",
+    "Cards in the 'Fastest near you' carousel have inconsistent image treatment — the first (Green Bowl Poké) has a light background while the others are dark, which makes the row look unbalanced."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 describes the exact same defect: delivery fee text ('€0 delivery') overlapping with delivery time text ('25–35 min') under Tokumaru Ramen Bar, resulting in illegible combined text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

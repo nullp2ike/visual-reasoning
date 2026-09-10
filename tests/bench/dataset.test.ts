@@ -19,9 +19,8 @@ import { benchConfig } from "../../bench/bench.config.js";
 const originalEnv = process.env[DATASET_ENV_VAR];
 
 /**
- * A throwaway directory that passes as a screenshot dataset. No dataset is
- * committed, so anything asserting on a real one would only pass on the
- * machine that happens to have it.
+ * A throwaway directory that passes as a screenshot dataset. Keeps these tests
+ * off the repo's real datasets, whose contents are not theirs to depend on.
  */
 function tempScreenshotDataset(): string {
   const dir = mkdtempSync(join(tmpdir(), "bench-dataset-"));
@@ -90,8 +89,8 @@ describe("resolveDatasetRef", () => {
 
 describe("listDatasetIds", () => {
   it("lists only directories carrying the requested ground-truth file", () => {
-    // Datasets are gitignored, so which ones exist is per-machine (and none do
-    // on a fresh clone). Assert the filter rather than any particular id.
+    // Which datasets exist varies by checkout (`primary` is gitignored), so
+    // assert the filter rather than any particular id.
     for (const id of listDatasetIds()) {
       expect(existsSync(join(DATASETS_DIR, id, "issues_per_file.md"))).toBe(true);
     }

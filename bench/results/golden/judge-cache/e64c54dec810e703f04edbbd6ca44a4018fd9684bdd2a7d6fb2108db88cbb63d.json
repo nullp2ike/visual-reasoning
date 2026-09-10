@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Promo banner text is unreadable, white text on a pale mint background"],
+  "reportedIssues": [
+    "In the '3 free deliveries for you' banner, the white heading and subtext ('Use code TALLINN3 at checkout · min. order €10') sit on a very light mint-green background, resulting in very low contrast that is hard to read and fails WCAG contrast guidelines.",
+    "The 'Fastest near you' horizontal carousel cuts off the third card ('Trattoria Piccol...') at the right screen edge with no scroll indicator, gradient fade, or peeking affordance beyond the hard crop.",
+    "The third restaurant name 'Trattoria Piccol...' is truncated mid-word without an ellipsis styling that signals truncation clearly, which can look like a rendering glitch."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the same white banner text on a pale mint background causing unreadable low contrast."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

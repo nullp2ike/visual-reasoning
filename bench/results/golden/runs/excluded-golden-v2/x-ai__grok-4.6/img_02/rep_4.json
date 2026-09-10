@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T12:33:54.411Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: a critical data-display bug showing €NaN for delivery, and a major layout overflow clipping a restaurant name.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "Smash Bros Burgers shows “€NaN delivery” instead of a valid price, indicating a missing or failed numeric value.",
+        "suggestion": "Handle missing/invalid delivery fees with a fallback (e.g. “Free”, “Price unavailable”, or omit the fee) and never render NaN to users."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third “Fastest near you” card title is clipped: “Trattoria Piccol” is cut off at the right edge of the card.",
+        "suggestion": "Constrain the title with wrapping, ellipsis, or a smaller type size so the full restaurant name stays visible within the card."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 195,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1920,
+    "estimatedCost": 0.005094,
+    "reportedCost": 0.002214,
+    "durationSeconds": 9.190422625
+  }
+}

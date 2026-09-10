@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you section",
+    "A large loading spinner is overlaid on the Tokumaru Ramen Bar promo image, obscuring the food photo",
+    "Horizontal restaurant cards are clipped at the right edge (third card only partially visible)",
+    "Bottom pizza card and category chips appear cut off by the screen edge",
+    "Category filter row ends with a partially visible empty/white chip on the right"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Loading spinner overlays already-loaded content (promo image), matching the expected defect of spinner shown on top of loaded content."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3, 4]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "The third 'Fastest near you' card and its title are clipped by the screen edge, leaving the name as 'Trattoria Piccol' mid-word with no ellipsis inside the card bounds.",
+    "The top-right profile control is an empty gray circle with only a red notification dot, so it looks unfinished or broken rather than like a profile entry point.",
+    "The category chip row ends with a thin sliver of the next pill on the right, which looks like a broken or half-rendered control rather than intentional overflow.",
+    "Restaurant titles in the horizontal list can be cut off without a consistent truncation pattern, which hurts scannability next to fully visible neighbors."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "The report describes the top-right profile icon being absent, leaving only a red notification dot visible."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3]
+  }
+}

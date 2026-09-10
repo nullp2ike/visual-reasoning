@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you row.",
+    "Pizza card shows a nonsensical '-0%' badge, which looks like a broken or missing discount value.",
+    "Category filter chips and 'Fastest near you' cards are clipped at the right edge with no clear fade or peek of the next item.",
+    "Bottom popular card (pizza) is partially cut off by the tab bar, so content feels incomplete on first view.",
+    "Delivery fee text uses a very light gray that may be hard to read and looks washed out next to bold titles."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.82 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3, 4]
+  }
+}

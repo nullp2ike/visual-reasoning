@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "meta/muse-spark-1.3-contributor",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-03T11:39:05.720Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: a stuck loading indicator blocking the Tokumaru Ramen Bar image and inconsistent styling of the favorite heart button background.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "performance",
+        "description": "White circular loading spinner is stuck overlaying the center of the Tokumaru Ramen Bar cover image in the 'Popular right now' section, indicating the image did not finish loading",
+        "suggestion": "Ensure restaurant cover images load completely and dismiss the loading indicator; add proper loading state handling, retry logic, or a fallback image"
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Favorite heart icon on the Tokumaru Ramen Bar card lacks the dark circular background/scrim that is present behind the heart icon on the pizza card below it",
+        "suggestion": "Apply a consistent dark scrim/circular background to all favorite buttons on restaurant cards for visibility and visual consistency"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1818,
+    "outputTokens": 1461,
+    "reasoningTokens": 1206,
+    "cachedInputTokens": 1790,
+    "estimatedCost": 0.00047400000000000003,
+    "reportedCost": 0.00029858,
+    "durationSeconds": 19.477636332999975
+  }
+}

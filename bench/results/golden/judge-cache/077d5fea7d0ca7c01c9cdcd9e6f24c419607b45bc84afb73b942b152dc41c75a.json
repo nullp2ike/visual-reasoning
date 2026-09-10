@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The 'Pizza' category chip is shown as selected (black/active), yet the content below is unfiltered — 'Fastest near you' shows a poké bowl and a burger joint, and 'Popular right now' leads with a ramen bar. The selected filter state does not match the displayed results.",
+    "The favorite (heart) buttons on the two 'Popular right now' cards are styled differently: the ramen card has a white circular button with a dark outline heart, while the pizza card has a dark/translucent circle with a white heart. This looks like an unintended inconsistency rather than a state difference (neither appears favorited).",
+    "In the 'Fastest near you' carousel, the 'Green Bowl Poké' thumbnail has a light gray background while the adjacent burger and pasta thumbnails have dark backgrounds, making the row look visually uneven; the white time badge also has weaker contrast on the light image.",
+    "Cards in the 'Fastest near you' row omit rating information that the 'Popular right now' cards display, creating inconsistent card metadata across the page."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the Pizza category appearing selected while the feed remains unfiltered with other cuisines shown."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers shows “€NaN delivery” instead of a real fee. NaN is a failed number format and looks broken.",
+    "The last “Fastest near you” card is clipped: the restaurant name reads “Trattoria Piccol” and the image is cut off at the right edge.",
+    "Category chips overflow the screen (“Healthy” and the next chip are cut off) with no clear hint that the row scrolls.",
+    "The Green Bowl Poké thumbnail is very washed out against the light card, so the dish is hard to see compared with the other tiles."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the delivery fee displaying €NaN instead of a valid amount."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

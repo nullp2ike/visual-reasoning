@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_13",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:44.889Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and styling issues: truncated restaurant names and category chips, a likely overlapping status/profile control, and a cut-off promotional card at the bottom.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card in 'Fastest near you' (Trattoria Piccol…) is clipped on the right, cutting off the name and part of the image.",
+        "suggestion": "Ensure horizontal carousels fully show the last visible card or add peek/padding so names and images are not truncated."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last category chip ('Healthy') is cut off at the right edge of the screen.",
+        "suggestion": "Add trailing padding or allow the chip row to scroll fully so all labels are fully visible."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom restaurant promo card is cut off by the tab bar, hiding the restaurant name and details.",
+        "suggestion": "Add bottom content inset equal to the tab bar height so cards are fully visible when scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The circular control in the top-right (profile/notifications) appears to overlap or sit too close to the status-bar area, with a small red badge that may be hard to tap or see.",
+        "suggestion": "Give the header more top padding and ensure the badge is fully inside a tappable hit target."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated without ellipsis treatment that still communicates the full name.",
+        "suggestion": "Use consistent ellipsis or two-line wrapping so names remain readable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 369,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.005978000000000001,
+    "reportedCost": 0.00329,
+    "durationSeconds": 8.438580709000002
+  }
+}

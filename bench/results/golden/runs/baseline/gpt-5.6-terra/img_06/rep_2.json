@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_06",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:34:09.987Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished, but horizontal content is visibly clipped at the right edge and the lower restaurant card is obstructed by the fixed bottom navigation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The horizontal category row extends beyond the right edge, leaving a partially visible next category chip with no clear end padding or scroll affordance.",
+        "suggestion": "Make the category carousel intentionally horizontally scrollable with consistent right padding and an affordance, or constrain/reflow the chips so no item is awkwardly cut off."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third card in the \"Fastest near you\" carousel is clipped on the right, truncating the restaurant name (\"Trattoria Piccol...\") and its content.",
+        "suggestion": "Use a clearly designed horizontal carousel with appropriate viewport padding and card width, or show complete cards in a responsive grid/list."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The second \"Popular right now\" restaurant card is covered by the fixed bottom navigation; only its image top is visible and its restaurant details cannot be seen.",
+        "suggestion": "Add sufficient bottom content padding/safe-area inset so the final scrolling content can clear the fixed navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 264,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.00679,
+    "durationSeconds": 6.777145125000039
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccol' in the 'Fastest near you' carousel is cut off at the screen edge without an ellipsis, making the name unreadable and looking broken rather than intentionally scrollable.",
+    "A filter chip after 'Healthy' is partially visible at the right edge but shows no label text at all, appearing as an empty gray pill fragment.",
+    "The pizza restaurant card at the bottom is abruptly clipped by the bottom navigation bar, hiding its name, rating, and delivery info with no scroll affordance or fade.",
+    "Delivery fee and metadata text (e.g., '€0.90 delivery', '25–35 min') uses light gray that may have insufficient contrast against the white background.",
+    "The profile avatar in the top right appears as an empty gray circle with only a red notification dot, suggesting the avatar image or initials failed to load."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [4],
+        "reasoning": "cosine 0.74 >= 0.69 threshold (reported #4)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

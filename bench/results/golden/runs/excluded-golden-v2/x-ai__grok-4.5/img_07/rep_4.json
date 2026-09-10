@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:29:33.467Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several visual issues: a loading spinner stuck over content, truncated restaurant names, and an incomplete category chip row that looks cut off.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "A circular loading spinner is permanently overlaid on the Tokumaru Ramen Bar card image, obscuring the dish photo and looking like a stuck or broken load state.",
+        "suggestion": "Hide the spinner once the image has loaded, or only show it during actual loading; ensure the image load completes and the overlay is removed."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third 'Fastest near you' card title is truncated to 'Trattoria Piccol' with no ellipsis, cutting off the restaurant name.",
+        "suggestion": "Allow the title to wrap to two lines, shrink font slightly, or use text-overflow: ellipsis so truncation is intentional and readable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chips row ends with a partially visible empty/white chip on the far right, which looks like a broken or unfinished UI element rather than a normal scroll peek.",
+        "suggestion": "Ensure only real category chips are rendered, or style the trailing peek so it clearly belongs to the next chip (e.g. show partial label) instead of a blank pill."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery fee text under the fastest restaurants uses a very light gray that may be hard to read on white, especially for '€0.90 delivery' and similar lines.",
+        "suggestion": "Increase contrast of secondary meta text (darker gray) to meet readability guidelines."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 425,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006474,
+    "reportedCost": 0.00321,
+    "durationSeconds": 37.49371862499998
+  }
+}

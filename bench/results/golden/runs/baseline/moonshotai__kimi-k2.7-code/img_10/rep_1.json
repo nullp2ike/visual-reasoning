@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:03:03.556Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page has a few visually broken elements: duplicate identical restaurant cards in the 'Fastest near you' section, a truncated restaurant name, and partial clipping of the bottom popular card by the fixed navigation bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Fastest near you' horizontal list shows two identical 'Green Bowl Poké' cards side-by-side with the same image and delivery time, making the list look duplicated or like placeholder content.",
+        "suggestion": "Remove the duplicate entry or ensure the list renders unique restaurants/cards."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third item in the 'Fastest near you' list displays the restaurant name as 'Smash Bros Bu', which is truncated and the full name is unreadable.",
+        "suggestion": "Apply text truncation with ellipsis, wrap the title, or adjust the card width so the full restaurant name is visible."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom card in 'Popular right now' (pizza image) is partially cut off by the bottom navigation bar with no visible padding, making the section feel cramped and clipped.",
+        "suggestion": "Add bottom padding or safe-area spacing below the last card so content is not obscured by the fixed navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 1179,
+    "reasoningTokens": 856,
+    "estimatedCost": 0.00606617,
+    "reportedCost": 0.01323428,
+    "durationSeconds": 8.406904500000062
+  }
+}

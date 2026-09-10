@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_04",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:27:12.379Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual issues: a restaurant name truncated in the Fastest section and a broken discount badge showing “-0%” on a Popular card.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The third restaurant name in “Fastest near you” is cut off mid-word (“Trattoria Piccol”), so the full name is unreadable.",
+        "suggestion": "Allow the title to wrap to two lines, use a smaller font, or truncate with an ellipsis only after a complete word so the name remains understandable."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza card under “Popular right now” shows a “-0%” badge, which looks broken or like missing promo data rather than a real offer.",
+        "suggestion": "Hide the discount badge when the value is 0%, or only show it when there is a meaningful non-zero discount."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 202,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005136,
+    "reportedCost": 0.001872,
+    "durationSeconds": 35.13262487500001
+  }
+}

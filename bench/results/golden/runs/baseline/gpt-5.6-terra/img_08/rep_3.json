@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_08",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:34:23.612Z",
+  "status": "ok",
+  "result": {
+    "summary": "The main visual defect is horizontal content overflow in the restaurant carousel, which cuts off the rightmost card and disrupts the page edge. A second restaurant promotion card is also visibly truncated by the bottom navigation area.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The \"Fastest near you\" horizontal restaurant list overflows the viewport: the third card is cut off at the right edge, with its image, title (\"Trattoria Picco...\"), and delivery text clipped rather than contained within a clearly managed carousel viewport.",
+        "suggestion": "Constrain the carousel to the viewport with intentional horizontal scrolling and edge padding, or resize cards/gaps so the visible layout does not expose abruptly clipped content."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The next \"Popular right now\" restaurant card is obscured at the bottom by the fixed navigation bar, leaving only its upper image area visible and hiding its associated details.",
+        "suggestion": "Add sufficient bottom content padding or account for the fixed tab bar height so the final cards can scroll fully above the navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is also partially cut off on the right, showing only part of an additional chip without a clear scroll affordance.",
+        "suggestion": "Use a deliberate horizontally scrollable chip list with a visible affordance/fade, or ensure all chips fit within the available width."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 302,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.007246,
+    "durationSeconds": 4.809845624999958
+  }
+}

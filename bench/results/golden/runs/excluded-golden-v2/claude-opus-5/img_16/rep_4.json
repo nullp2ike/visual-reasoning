@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_16",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:51:23.754Z",
+  "status": "ok",
+  "result": {
+    "summary": "The screen is largely coherent, but there are a few visual/behavioral inconsistencies: the active 'Pizza' category filter does not appear to filter the listings, the favorite (heart) buttons are styled inconsistently between cards, and one carousel card uses a mismatched light image background.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The 'Pizza' category chip is shown as selected (black/active), yet the content below is unfiltered — 'Fastest near you' shows a poké bowl and a burger joint, and 'Popular right now' leads with a ramen bar. The selected filter state does not match the displayed results.",
+        "suggestion": "Either apply the filter so only pizza restaurants are listed when 'Pizza' is active, or default the selection to 'All' so the chip state matches the content."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) buttons on the two 'Popular right now' cards are styled differently: the ramen card has a white circular button with a dark outline heart, while the pizza card has a dark/translucent circle with a white heart. This looks like an unintended inconsistency rather than a state difference (neither appears favorited).",
+        "suggestion": "Use one consistent button treatment for the favorite icon across all cards, reserving a distinct style only for the active/favorited state."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "In the 'Fastest near you' carousel, the 'Green Bowl Poké' thumbnail has a light gray background while the adjacent burger and pasta thumbnails have dark backgrounds, making the row look visually uneven; the white time badge also has weaker contrast on the light image.",
+        "suggestion": "Normalize image backgrounds (or add a consistent gradient overlay) across carousel thumbnails and ensure the time badge keeps sufficient contrast on light imagery."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Cards in the 'Fastest near you' row omit rating information that the 'Popular right now' cards display, creating inconsistent card metadata across the page.",
+        "suggestion": "Include the same core metadata (rating, cuisine) on carousel cards, or intentionally document the compact variant so the difference reads as deliberate."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 1133,
+    "estimatedCost": 0.03876,
+    "durationSeconds": 32.11545983299985
+  }
+}

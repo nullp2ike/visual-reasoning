@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "On the Tokumaru Ramen Bar card, the delivery info text ('25-30 delivery') overlaps and collides with itself, producing unreadable garbled characters (looks like '25-3Edelivery').",
+    "Restaurant name 'Trattoria Piccol...' is truncated mid-word in the Fastest near you row, with no ellipsis treatment that keeps the name readable.",
+    "Delivery time string under Tokumaru reads as '25-3Edelivery' / incomplete '25-30 delivery' and is missing units (min) and fee formatting consistency with other cards.",
+    "Category chips row shows a partial empty/white chip on the far right edge beyond 'Healthy', which can look like a clipped or broken control."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the delivery information text overlapping and becoming unreadable, matching the fee/time text collision."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

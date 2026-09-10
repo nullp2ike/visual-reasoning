@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section title 'home_feed.popular_title' appears to be an untranslated localization key instead of a human-readable string (e.g., 'Popular near you'). This is a clear i18n/localization failure exposed to end users.",
+    "The third restaurant card in the 'Fastest near you' section ('Trattoria Piccol...') is partially clipped, with the restaurant name truncated mid-word. While horizontal scrolling is implied, there is no visual affordance (e.g., a partial peek or scroll indicator) to clearly communicate this to users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.87 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

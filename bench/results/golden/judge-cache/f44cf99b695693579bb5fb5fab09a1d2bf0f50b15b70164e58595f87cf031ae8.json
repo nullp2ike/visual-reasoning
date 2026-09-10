@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The third card in the 'Fastest near you' horizontal carousel ('Trattoria Piccol...') is cut off at the right screen edge, with the restaurant name truncated mid-word and the card partially off-screen, giving a broken/unfinished appearance.",
+    "Restaurant title 'Trattoria Piccol' appears truncated without a visible ellipsis, making the text look clipped rather than intentionally shortened.",
+    "The category filter chips ('All', 'Pizza', 'Sushi', etc.) and the 'See all' links rely on color alone to indicate selection/state, and the heart/favorite icons have no visible labels.",
+    "The bottom navigation bar's center search icon overlaps the iOS home indicator bar, creating a slightly cramped/overlapping look at the bottom edge."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "Issue 3 describes the bottom navigation overlapping with the gesture bar (iOS home indicator), matching the expected defect about gesture bar overlap with bottom nav icons."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

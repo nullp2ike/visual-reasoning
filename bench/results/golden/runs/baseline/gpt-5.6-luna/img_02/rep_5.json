@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-luna",
+  "provider": "openai",
+  "imageId": "img_02",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:36:17.126Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished, but there are a few visible content and layout defects, most notably an invalid delivery price and horizontally clipped carousel content.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The Smash Bros Burgers card displays “€NaN delivery,” exposing an invalid or missing numeric value to the user.",
+        "suggestion": "Fix the delivery-fee data formatting and provide a valid price or a fallback such as “Delivery fee unavailable.”"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category carousel and the “Fastest near you” restaurant carousel are cut off at the right edge, leaving partial pills/cards visible.",
+        "suggestion": "Ensure the horizontal carousel has intentional overflow behavior, such as a visible scroll affordance, or adjust spacing so the clipped state looks deliberate."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The sticky bottom navigation overlaps the next popular restaurant card, obscuring part of its image/content near the bottom of the viewport.",
+        "suggestion": "Add sufficient bottom padding to the scrollable content so cards can be fully viewed above the fixed navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 428,
+    "reasoningTokens": 188,
+    "estimatedCost": 0.0008758,
+    "durationSeconds": 6.763629042000044
+  }
+}

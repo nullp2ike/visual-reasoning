@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "Items on the right edge are cut off: the third 'Fastest near you' card is partially outside the viewport and the restaurant name appears truncated as 'Trattoria Piccol...'.",
+    "A '-100%' badge is shown on the lower popular item, which reads as an unrealistic or broken discount value.",
+    "Favorite heart icons and the notification bell are icon-only controls with no visible labels or state indication in the UI."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 identifies the '-100%' discount badge as an unrealistic or broken value."
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

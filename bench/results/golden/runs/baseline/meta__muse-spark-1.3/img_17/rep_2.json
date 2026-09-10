@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "meta/muse-spark-1.3",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-03T19:40:04.154Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 visual issues: incorrect bottom-nav active state showing Profile instead of Home, popular content clipped behind the tab bar, and carousel truncation at the right edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "Bottom navigation shows Profile as active (green) while the screen displays the Home feed content",
+        "suggestion": "Set Home tab as active/selected when on home feed and Profile as inactive to reflect correct navigation state"
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Second card in Popular right now (pizza image) runs directly into the bottom tab bar with no spacing, hiding its restaurant name, metadata and rating",
+        "suggestion": "Add bottom content padding and safe-area inset so scrollable content ends above the fixed tab bar and is fully readable"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Third card in Fastest near you is cut off mid-image and mid-text showing 'Trattoria Piccol' without ellipsis or end padding",
+        "suggestion": "Add horizontal list end-padding and ensure truncated titles use ellipsis rather than mid-word clipping"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1739,
+    "outputTokens": 2453,
+    "reasoningTokens": 2114,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.012599,
+    "reportedCost": 0.012599,
+    "durationSeconds": 34.09768945900025
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_01",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:24:28.056Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 visual issues. The most obvious problem is a raw localization key displayed as a section title. There are also layout/clipping issues around carousel content and the fixed bottom navigation overlapping feed content.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section title displays the raw localization key “home_feed.popular_title” instead of a user-facing label.",
+        "suggestion": "Replace the missing translation key with the intended localized text, such as “Popular near you” or “Popular restaurants”."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation appears to overlap the restaurant feed content; the lower restaurant card image is partially hidden behind the tab bar.",
+        "suggestion": "Add sufficient bottom padding/safe-area spacing to the scrollable content so cards can scroll fully above the bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Several horizontal carousel items are visibly cut off at the right edge, including the category chips and the “Fastest near you” restaurant cards. This may be intentional scrolling, but it looks abrupt without a fade or spacing cue.",
+        "suggestion": "If horizontal scrolling is intended, add consistent right padding or a subtle fade/peek treatment. If not intended, resize cards/chips so they fit cleanly within the viewport."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 682,
+    "reasoningTokens": 403,
+    "estimatedCost": 0.029515,
+    "durationSeconds": 13.740164665999998
+  }
+}

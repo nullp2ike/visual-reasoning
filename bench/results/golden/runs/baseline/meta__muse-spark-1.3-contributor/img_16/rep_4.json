@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "meta/muse-spark-1.3-contributor",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-03T11:28:51.825Z",
+  "status": "ok",
+  "result": {
+    "summary": "Page renders but has a major filter mismatch with Pizza selected while showing non-pizza restaurants, plus minor carousel clipping and inconsistent thumbnail sizing.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "Category filter 'Pizza' is selected but 'Fastest near you' and 'Popular right now' show non-pizza venues like Green Bowl Poké, Smash Bros Burgers, Trattoria Piccolo and Tokumaru Ramen Bar",
+        "suggestion": "Ensure selecting a category filters the restaurant lists to matching cuisine or clear the selected state if filter is not applied"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Third card in 'Fastest near you' shows truncated name 'Trattoria Piccol' clipped at screen edge without ellipsis",
+        "suggestion": "Add proper card spacing and text truncation with ellipsis so names do not appear cut off mid-letter"
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Green Bowl Poké thumbnail illustration appears small and centered with large empty background while neighboring cards fill the image area, looking like an image fit or missing-image issue",
+        "suggestion": "Use consistent object-fit and sizing for carousel thumbnails so all images fill cards uniformly"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1739,
+    "outputTokens": 2343,
+    "reasoningTokens": 1989,
+    "cachedInputTokens": 1726,
+    "estimatedCost": 0.0006425000000000001,
+    "reportedCost": 0.000473352,
+    "durationSeconds": 27.44545000000001
+  }
+}

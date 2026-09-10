@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "A partially visible category pill appears on the far right after “Healthy,” but only the rounded edge is shown with no readable label. This can look like a broken or accidentally clipped UI element.",
+    "The horizontal restaurant carousel under “Fastest near you” cuts off the third card and its restaurant name at the right edge. While this may be intended to indicate horizontal scrolling, the clipped text looks visually awkward.",
+    "The lower restaurant card image is cut off directly behind the fixed bottom navigation area, making the page feel slightly cramped at the bottom."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.59 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

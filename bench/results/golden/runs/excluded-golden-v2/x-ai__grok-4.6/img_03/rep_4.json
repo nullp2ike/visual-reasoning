@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_03",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T12:33:56.848Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen has a broken restaurant card image (placeholder icon) and a few clipping/overflow issues on the popular listing.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The Popular right now card for Tokumaru Ramen Bar shows a broken-image placeholder instead of a restaurant photo, leaving a large empty gray area.",
+        "suggestion": "Load a valid restaurant image or provide a branded fallback so the card is not empty."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The €0 delivery badge on the Tokumaru card is clipped on the left by the card’s rounded corner.",
+        "suggestion": "Add inset/padding so the badge sits fully inside the rounded image container."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The favorite (heart) control on the Tokumaru card sits on a circular gray background that is cut off by the card’s top-right corner.",
+        "suggestion": "Inset the icon from the card edge so the full circle is visible."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 279,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1920,
+    "estimatedCost": 0.005598,
+    "reportedCost": 0.002718,
+    "durationSeconds": 10.374265292
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The discount badge on the second 'Popular right now' card displays '-100%', which is confusing and likely incorrect (a -100% discount implies the item is free and the negative sign is misleading).",
+    "The restaurant name 'Trattoria Piccolo' in the 'Fastest near you' list is truncated to 'Trattoria Piccol' because the card width is too narrow.",
+    "The favorite heart icon styling is inconsistent: the ramen card uses a plain outline heart while the pizza card uses a heart inside a dark circular button."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 directly describes the discount badge displaying '-100%' on a card, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

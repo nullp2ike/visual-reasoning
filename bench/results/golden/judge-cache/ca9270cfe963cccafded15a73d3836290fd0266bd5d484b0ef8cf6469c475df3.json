@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The 'Fastest near you' carousel shows two identical 'Green Bowl Poké' cards with the same image, 15–25 min ETA and €0.90 delivery, which looks like a duplicated data entry or repeated list rendering bug.",
+    "The third card in 'Fastest near you' ('Smash Bros Bu...') is hard-clipped at the screen edge and its title is cut mid-word with no ellipsis, making it look broken rather than scrollable.",
+    "The favorite (heart) buttons on the two 'Popular right now' cards use different treatments: a white circle with dark outline on the ramen card and a dark/translucent circle on the pizza card, so they appear inconsistent.",
+    "The category filter chip row is cut off at the right edge with a sliver of an additional chip visible, giving no clear affordance that the row scrolls.",
+    "The second 'Popular right now' card is truncated by the bottom navigation bar with none of its title or metadata visible, so the section's last item appears incomplete."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.83 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

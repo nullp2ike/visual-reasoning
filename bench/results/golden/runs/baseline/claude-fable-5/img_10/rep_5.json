@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_10",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:51:38.237Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there are a few visual defects: a duplicated restaurant card in the 'Fastest near you' carousel, truncated text on partially visible cards/chips, and a cut-off category filter chip at the screen edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Fastest near you' carousel shows two identical 'Green Bowl Poké' cards side by side (same image, same 15–25 min badge, same €0.90 delivery), which looks like a data duplication bug.",
+        "suggestion": "De-duplicate the restaurant list on the backend/client before rendering so each venue appears only once in the carousel."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in 'Fastest near you' is clipped and its title is truncated to 'Smash Bros Bu' without an ellipsis, making it look broken rather than intentionally scrollable.",
+        "suggestion": "Add text truncation with an ellipsis (…) and consider a slight peek/padding or fade to signal horizontal scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A sixth category filter chip after 'Healthy' is cut off at the right edge with no visible label, appearing as an empty gray sliver.",
+        "suggestion": "Ensure partially visible chips show at least part of their label, or add a gradient/fade edge to indicate the row scrolls horizontally."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The green promo banner has faint circular decorative shapes on the right side that overlap the edge and look like a rendering artifact rather than intentional decoration.",
+        "suggestion": "Clip the decorative circles cleanly within the banner's rounded corners or adjust their opacity/positioning so they read as deliberate design."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 751,
+    "estimatedCost": 0.05729,
+    "durationSeconds": 13.046350458000001
+  }
+}

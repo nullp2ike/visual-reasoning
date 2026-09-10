@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The restaurant name for the second 'Popular right now' card (showing pizza with -100% label) is completely cut off and not visible. Users cannot identify which restaurant this is.",
+    "The third restaurant card in the 'Fastest near you' section is partially cut off on the right edge. The restaurant name 'Trattoria Piccol' appears truncated (likely should be 'Trattoria Piccola').",
+    "The bottom restaurant card in 'Popular right now' overlaps with the bottom navigation bar, making content partially obscured."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.60 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

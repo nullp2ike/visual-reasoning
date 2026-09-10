@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "The third restaurant card in the 'Fastest near you' section is cut off — the restaurant name 'Trattoria Piccol...' is truncated and the card image is partially clipped at the right edge, suggesting a horizontal overflow or carousel layout issue where the last visible item is not fully rendered.",
+    "The bottom pizza restaurant card is cut off vertically at the bottom of the screen without any visual indicator that it continues, which may confuse users into thinking the page content ends there."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.63 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

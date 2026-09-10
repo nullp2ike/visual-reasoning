@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "imageId": "img_15",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:32:48.516Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visible issues: the bottom navigation is obstructed by a misplaced horizontal bar, and the second restaurant card appears incomplete.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "A thick dark horizontal bar overlays the bottom navigation, crossing the search and saved icons. It resembles a misplaced gesture indicator or selection marker and makes the controls look broken.",
+        "suggestion": "Position the system gesture indicator at the true bottom safe area, or correct/remove the navigation selection marker so it does not overlap multiple icons."
+      },
+      {
+        "priority": "minor",
+        "category": "missing-element",
+        "description": "The second card under “Popular right now” shows only its promotional image; the restaurant name and details are absent despite visible space above the bottom navigation.",
+        "suggestion": "Ensure the card’s title and metadata render directly below the image and add sufficient bottom padding so the fixed navigation cannot obscure them."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 920,
+    "reasoningTokens": 727,
+    "estimatedCost": 0.036655,
+    "durationSeconds": 32.70397041599994
+  }
+}

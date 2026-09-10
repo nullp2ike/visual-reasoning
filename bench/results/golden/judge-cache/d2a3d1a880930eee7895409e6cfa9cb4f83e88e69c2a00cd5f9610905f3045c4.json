@@ -1,0 +1,25 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The bottom navigation bar has a long black horizontal bar/line running across it, overlapping and obscuring the middle (search) and third (bookmark/orders) icons. Labels are also missing and the icons appear misaligned/greyed.",
+    "The second card in 'Popular right now' (pizza image) has no restaurant name, rating, delivery time, or cuisine below it, unlike the Tokumaru Ramen Bar card above it.",
+    "The third card in the 'Fastest near you' carousel is cut off at the right screen edge and its name is hard-clipped to 'Trattoria Piccol' with no ellipsis, so content looks broken rather than scrollable.",
+    "The category chip row ('All, Pizza, Sushi, Burgers, Healthy…') is cut off mid-chip at the right edge with only a sliver of the next chip visible, giving no clear affordance that it scrolls.",
+    "Favorite (heart) buttons on the two 'Popular right now' cards use inconsistent styling: one has a white circular background, the other a dark/transparent circle, reducing visibility on light imagery."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 describes bottom navigation labels missing and icons obscured/overlapped, matching the expected defect of labels cut off and gesture bar overlapping."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

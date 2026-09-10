@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant title in the first 'Popular right now' card reads 'Tokumaru Ramei' — the text is cut off mid-character (no ellipsis) where it collides with the right-aligned star rating '4.8 (500+)'. This is a full-width vertical card, not a horizontal carousel, so the truncation is a real layout bug.",
+    "The favourite heart button on the ramen card uses a white/light circular background with a dark outline, while the heart button on the pizza card below uses a dark/black circular background. The inconsistent treatment makes the second button low-contrast and looks unintentional.",
+    "The 'Green Bowl Poké' thumbnail has a very light grey background while the neighbouring thumbnails are dark, making the row look visually inconsistent and the light image appear unloaded/placeholder-like."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the exact same defect: 'Tokumaru Ramei' text cut off mid-word with no ellipsis due to collision with the star rating on the right."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

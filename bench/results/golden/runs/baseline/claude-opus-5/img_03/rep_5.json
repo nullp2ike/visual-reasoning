@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_03",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:54:11.502Z",
+  "status": "ok",
+  "result": {
+    "summary": "The food delivery home screen is mostly well structured, but there is a clearly broken image in the 'Popular right now' section (Tokumaru Ramen Bar card shows a grey placeholder with a broken-image icon), and several layout/overflow problems: the 'Fastest near you' carousel card is clipped at the right edge with truncated text ('Trattoria Piccol...'), the category chip row is cut off mid-chip, and the second popular card (pizza) is cropped by the bottom navigation bar without visible title/metadata. Found 6 issues.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The hero image for the 'Tokumaru Ramen Bar' card in 'Popular right now' failed to load and renders as an empty grey box with a broken-image glyph, unlike all other cards which show artwork.",
+        "suggestion": "Fix the image URL/asset for this restaurant and add a branded fallback placeholder (e.g. cuisine icon or restaurant initial) plus a loading skeleton so failures degrade gracefully instead of showing a broken-image icon."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' horizontal carousel, the third card ('Trattoria Piccol…') is hard-clipped at the screen edge and its name and delivery price are cut off with no ellipsis, making it look broken rather than scrollable.",
+        "suggestion": "Add consistent horizontal padding/peek so the next card is partially but deliberately visible, and truncate labels with an ellipsis; ensure the card content is not sliced mid-glyph."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chip row is clipped mid-chip after 'Healthy', showing only a sliver of the next chip, giving no clear affordance that the row scrolls.",
+        "suggestion": "Reveal a consistent partial chip or add a fade/gradient mask and scroll indicator at the right edge of the chip row."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The pizza card at the bottom is cut off by the bottom navigation bar; its restaurant name, rating and delivery info are not visible, and the content appears to slide under the nav rather than stopping above it.",
+        "suggestion": "Add bottom content inset/padding equal to the nav bar height (plus safe area) so the last card can scroll fully into view."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Favourite (heart) button styling is inconsistent between cards: the ramen card uses a light grey circle on the grey placeholder (low contrast, nearly invisible) while the pizza card uses a dark circle.",
+        "suggestion": "Use a single consistent heart button treatment with a semi-opaque dark scrim or drop shadow so it is legible on any background, including empty placeholders."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary metadata text such as '€0.90 delivery', '25–35 min • €0 delivery • Ramen' and the 'DELIVER TO' label uses light grey on white, which may fall below the 4.5:1 contrast requirement.",
+        "suggestion": "Darken the secondary text colour to meet WCAG AA contrast, and verify the green 'See all' links against the white background as well."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 1080,
+    "estimatedCost": 0.03687,
+    "durationSeconds": 17.590304416
+  }
+}

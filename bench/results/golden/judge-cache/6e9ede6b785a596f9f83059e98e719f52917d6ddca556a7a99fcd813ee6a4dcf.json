@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The third restaurant card in 'Fastest near you' (Trattoria Piccol...) is cut off at the right edge with truncated text, which may look like a broken layout rather than an intentional horizontal scroll indicator.",
+    "The favorite (heart) icons are styled inconsistently: the Tokumaru Ramen card has an outlined heart on a white circle, while the pizza card below has an outlined heart on a dark circle.",
+    "The category filter row (All, Pizza, Sushi, Burgers, Healthy) appears cut off at the right edge, suggesting more categories exist but the scroll affordance is unclear."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.67 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

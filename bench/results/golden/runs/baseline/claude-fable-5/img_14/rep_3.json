@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_14",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:52:22.256Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there are a few visual defects: truncated text on the right-edge restaurant card, misaligned card heights in the 'Fastest near you' carousel, and a partially cut-off category chip. Overall 4 issues found (2 major, 2 minor).",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the middle card (Smash Bros Burgers) has a larger image and sits lower than the adjacent cards (Green Bowl Poké, Trattoria Piccol...), causing uneven vertical alignment of images, titles, and delivery prices across the row.",
+        "suggestion": "Standardize card image dimensions and use consistent top alignment so all carousel cards share the same height and baseline for titles and prices."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The restaurant name 'Trattoria Piccol...' on the right edge is clipped by the screen boundary with no visible ellipsis or clear peek affordance, making the name unreadable.",
+        "suggestion": "Add proper text truncation with an ellipsis within the card width, or adjust carousel item widths/peek amount so partially visible cards clearly indicate horizontal scrollability without cutting text awkwardly."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category chip after 'Healthy' is cut off at the right edge showing only a small sliver, which looks like a rendering artifact rather than an intentional scroll hint.",
+        "suggestion": "Increase the visible peek of the next chip (e.g., show ~30–40% of it) or add a subtle edge fade to communicate horizontal scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The pizza card at the bottom ('−20%') is abruptly cut off by the bottom navigation bar, with its title and details hidden, and the nav bar lacks a clear separator/shadow over the content.",
+        "suggestion": "Add bottom padding to the scroll container equal to the nav bar height and/or a top border or shadow on the bottom navigation so clipped content reads as scrollable rather than broken."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 888,
+    "estimatedCost": 0.06414,
+    "durationSeconds": 17.11404920899999
+  }
+}

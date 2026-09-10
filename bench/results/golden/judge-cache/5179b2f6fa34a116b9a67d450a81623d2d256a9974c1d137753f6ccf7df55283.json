@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "Discount badge on second Popular card shows '-100%' which looks like an erroneous or placeholder promotion value",
+    "Third card in 'Fastest near you' is abruptly clipped mid-card at the right viewport edge, cutting the title to 'Trattoria Piccol' and clipping delivery price",
+    "Delivery time badges use inconsistent formatting: '15-25 min' vs '20-30 min' vs '20-30 min' with different dash and spacing"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.89 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

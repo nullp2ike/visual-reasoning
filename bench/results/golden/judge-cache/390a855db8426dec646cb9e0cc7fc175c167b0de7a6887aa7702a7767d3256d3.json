@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Restaurant cover image failed to load"],
+  "reportedIssues": [
+    "The Tokumaru Ramen Bar card shows a large empty gray area with only a generic image placeholder icon instead of the restaurant photo.",
+    "Restaurant name 'Trattoria Piccol' is truncated and cut off at the edge of the card.",
+    "The Popular right now section has a large blank gray block with a broken image icon, making the layout look incomplete and broken.",
+    "Category filter chips on the right (after Healthy) are partially cut off, indicating horizontal overflow without clear affordance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0, 2],
+        "reasoning": "Both reported issues 0 and 2 describe gray placeholder areas with broken/missing images for restaurant content, matching the failed cover image load defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 3]
+  }
+}

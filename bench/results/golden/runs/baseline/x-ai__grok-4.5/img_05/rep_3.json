@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_05",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:52:22.279Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and styling issues are present: truncated restaurant names and category chips, overlapping or cut-off content in horizontal carousels, and incomplete visual hierarchy on cards.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you carousel, making the full name unreadable.",
+        "suggestion": "Allow text wrapping, reduce font size on long names, or ensure cards have enough width/ellipsis with tooltip so full names are accessible."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Category filter chips (Healthy and beyond) and restaurant cards in 'Fastest near you' are clipped at the right edge with no clear peek of the next item, indicating poor horizontal scroll affordance.",
+        "suggestion": "Add consistent right padding and show a partial next card/chip so users know the row is scrollable; ensure last visible items are not hard-clipped."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom restaurant card (pizza) is partially cut off by the tab bar, so key promo badge and image content are incomplete without scrolling.",
+        "suggestion": "Add bottom content inset/padding equal to the tab bar height so cards are fully visible when scrolled into view."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery time badges sit over food images with varying contrast; on lighter images the white pill may reduce legibility of the time text.",
+        "suggestion": "Add a subtle shadow or semi-opaque backdrop behind badges to keep text readable on all image backgrounds."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Promo banner text '3 free deliveries for you' uses a light green on light green background, which may be hard to read for some users.",
+        "suggestion": "Increase contrast between promotional headline and banner background to meet accessibility contrast guidelines."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 488,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006692,
+    "reportedCost": 0.0036456,
+    "durationSeconds": 9.609506167
+  }
+}

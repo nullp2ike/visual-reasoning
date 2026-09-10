@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel, the middle card (Smash Bros Burgers) is vertically misaligned — its image starts lower and its title/price sit lower than the adjacent cards (Green Bowl Poké and Trattoria), making the row look broken.",
+    "Card thumbnails in 'Fastest near you' have inconsistent heights/aspect ratios (the poké image is taller than the burger image), contributing to the uneven row.",
+    "The third card title is hard-clipped as 'Trattoria Piccol' with no ellipsis, which looks like broken text rather than intentional carousel overflow.",
+    "A category filter chip after 'Healthy' is cut off at the right screen edge with only a sliver visible, giving little affordance of what it is.",
+    "The bottom pizza card in 'Popular right now' is abruptly cut off by the tab bar with no visual separation, so its content collides with the navigation area."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Report 0 directly describes the middle carousel card being vertically misaligned relative to the adjacent cards."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

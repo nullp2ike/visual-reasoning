@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "imageId": "img_12",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:29:21.982Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual issues: one significant text layout collision in the restaurant list and one minor content typo/label issue. The rest of the page appears generally coherent.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the \"Popular right now\" section, the restaurant details row is crowded: the delivery time/cuisine text on the left overlaps or runs too close to the rating on the right, making the information hard to read.",
+        "suggestion": "Rework the card metadata layout so the left and right fields have dedicated space, or stack the rating onto a separate line to prevent text collision."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The delivery line under the Tokumaru Ramen Bar card appears to contain a typo or clipped text (looks like \"deivery\" instead of \"delivery\").",
+        "suggestion": "Verify the label text and spacing in the card footer to ensure the full word renders correctly."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 721,
+    "reasoningTokens": 510,
+    "estimatedCost": 0.00460275,
+    "durationSeconds": 6.446717124999966
+  }
+}

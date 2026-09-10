@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The third restaurant name in 'Fastest near you' is truncated to 'Trattoria Piccol' with no ellipsis or full label visible.",
+    "The bottom pizza promo card is cut off by the fixed bottom navigation bar, hiding part of the image and content.",
+    "Category filter chips overflow horizontally; the rightmost chip is partially clipped and there is no clear affordance that the row scrolls.",
+    "Delivery fee text under the clipped restaurant name is also incomplete in the visible area of the third card."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "No reported issue describes a pizza category filter being selected while the feed still displays all cuisines instead of filtered results."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

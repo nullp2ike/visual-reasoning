@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:13.436Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen has several visual/layout problems: duplicated restaurant cards, truncated names, a clipped category chip, a promo banner that overflows, and a last featured card cut off by the tab bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The first two cards in 'Fastest near you' are identical (same Green Bowl Poké image, name, time, and delivery fee).",
+        "suggestion": "Load unique nearby restaurants and add a uniqueness check so the same venue is not shown twice in the carousel."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third 'Fastest near you' card title is truncated to 'Smash Bros Bu' and the image is cut off at the right edge.",
+        "suggestion": "Give cards a consistent width, allow two-line titles or ellipsis, and add enough right padding/peek so the last visible card is not clipped."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last 'Popular right now' card is cut off by the bottom tab bar, so the restaurant name, rating, and details are not visible.",
+        "suggestion": "Add bottom content inset equal to the tab bar height (plus safe area) so cards can scroll fully above the navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is clipped on the right (Healthy is cut off, next chip only a sliver).",
+        "suggestion": "Add horizontal padding and a clear peek/fade so users can tell the list is scrollable, and avoid cutting chip labels."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The green promo banner’s right side and rounded corner appear slightly cropped against the screen edge.",
+        "suggestion": "Increase horizontal margin or constrain the banner so the full border-radius and artwork stay inside the safe area."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The search field placeholder is very light gray on a light background, so 'Restaurants, dishes, groceries' has weak contrast.",
+        "suggestion": "Darken the placeholder color to meet WCAG contrast guidelines while keeping it distinct from entered text."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The notifications bell badge is a tiny red dot with no count or accessible name visible.",
+        "suggestion": "Use a numbered badge if there are unread items and provide an accessibility label such as 'Notifications, 1 unread'."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 521,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.00689,
+    "reportedCost": 0.004202,
+    "durationSeconds": 14.407539832999989
+  }
+}

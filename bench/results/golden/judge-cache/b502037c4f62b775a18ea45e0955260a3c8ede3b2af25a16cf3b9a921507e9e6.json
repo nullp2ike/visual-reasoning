@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The 'Fastest near you' carousel shows the same restaurant twice: two identical 'Green Bowl Poké' cards with the same image, '15–25 min' badge, and '€0.90 delivery' price appear side by side.",
+    "Favorite (heart) buttons appear on the large 'Popular right now' cards but are absent from the 'Fastest near you' cards, creating inconsistent interaction affordances across restaurant cards.",
+    "The second 'Popular right now' card (pizza, −20% badge) shows no restaurant name, rating, or delivery info visible before the viewport cutoff, and its heart icon sits on a dark circle unlike the ramen card's plain heart, making the two cards look inconsistent."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the exact same defect: Green Bowl Poké card appearing twice consecutively in the 'Fastest near you' carousel."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

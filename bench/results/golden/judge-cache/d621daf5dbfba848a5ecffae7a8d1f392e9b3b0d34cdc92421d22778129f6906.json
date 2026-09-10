@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "The search bar placeholder reads 'Restarants, dishes, groceries' — 'Restarants' is a misspelling of 'Restaurants'.",
+    "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' carousel is hard-clipped at the screen edge with no ellipsis, making it look broken rather than scrollable.",
+    "A category chip after 'Healthy' is cut off at the right edge showing only a thin sliver, which looks like a rendering glitch rather than an affordance for more chips.",
+    "The delivery fee text (e.g., '€0.90 delivery') and meta info under restaurant names is rendered in light gray, giving low contrast against the white background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the exact same misspelling of 'Restarants' in the search bar placeholder text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

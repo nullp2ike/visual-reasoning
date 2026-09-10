@@ -1,0 +1,27 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The second 'Popular right now' card (the pizza image with the '-20%' badge) has no restaurant name, rating, delivery time or cuisine text beneath it, unlike the Tokumaru Ramen Bar card above it. The card ends abruptly at the bottom of the scroll area.",
+    "The bottom tab bar looks broken: a thick dark horizontal line runs across the bar and overlaps/cuts through the search and bookmark icons, and the icons are misaligned (search and bookmark sit adjacent instead of evenly spaced with home and profile).",
+    "In the 'Fastest near you' carousel the third card ('Trattoria Piccol…') is cut off by the viewport edge with its name and delivery price truncated mid-word, and there is no visual affordance (peek/gradient) indicating the row scrolls.",
+    "The category filter chip row is also clipped at the right edge, showing only a sliver of the next chip, which reads as a rendering glitch rather than scrollable content.",
+    "Bottom navigation tabs have icons only with no text labels, and the notification bell with a red dot has no accessible label or count, making state unclear for screen-reader and low-vision users.",
+    "Favourite (heart) buttons are inconsistently styled: the first card uses a white circle with dark outline heart while the second uses a dark translucent circle with white heart.",
+    "Card metadata is inconsistent: 'Fastest near you' items show only delivery fee, while 'Popular right now' items include rating, time and cuisine, and delivery badges ('€0 delivery', '-20%') duplicate information also shown in the text row."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1, 4],
+        "reasoning": "Issue 1 describes the bottom tab bar being broken with overlapping elements and misalignment; issue 4 describes bottom navigation tabs lacking text labels and accessibility problems—both address the same bottom nav defect of labels being cut off and gesture bar overlap."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3, 5, 6]
+  }
+}

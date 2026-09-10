@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:00:24.951Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally usable, but there are a few visual polish issues: horizontal content is clipped at the right edge, some metadata text is low-contrast, and image-card action icons may be hard to see over artwork.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Right-edge content is visibly cut off: the category row shows a partially clipped pill after “Healthy,” and the “Fastest near you” carousel truncates the third restaurant card/name (“Trattoria Piccol…”).",
+        "suggestion": "Add clearer horizontal-scroll affordance, edge fade, or adjust card widths/padding so partially visible items look intentional and restaurant names are not awkwardly truncated."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary metadata such as delivery fees, time ranges, and cuisine labels use small gray text that may be difficult to read for low-vision users.",
+        "suggestion": "Increase font size slightly and/or darken the gray to meet WCAG contrast guidance against the white background."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Favorite heart icons are placed directly over dark/busy food imagery with only a thin outline, making the control boundary and state less obvious.",
+        "suggestion": "Give the favorite button a consistent circular background with sufficient contrast and a clearer selected/unselected state."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The notification bell shows a red dot but no count or context, which can be ambiguous about whether there is a new notification or a persistent indicator.",
+        "suggestion": "Use a numeric badge when applicable or remove the dot when there are no actionable notifications."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 771,
+    "reasoningTokens": 358,
+    "estimatedCost": 0.017871,
+    "reportedCost": 0.0176982,
+    "durationSeconds": 13.136457167000044
+  }
+}

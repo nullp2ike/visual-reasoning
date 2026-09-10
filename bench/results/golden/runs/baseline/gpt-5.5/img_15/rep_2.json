@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_15",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:27:36.355Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual issues, mainly a prominent overlay/glitch in the bottom navigation and minor right-edge clipping from horizontal carousel content.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "A black horizontal bar is incorrectly positioned across the bottom navigation area, overlapping the Search and Saved/Bookmark icons. It looks like a misplaced gesture/home indicator or rendering artifact.",
+        "suggestion": "Move the gesture/home indicator outside the app navigation area or adjust the bottom safe-area padding so it sits below the tab bar and does not obscure icons."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Several horizontally scrollable items are visibly clipped at the right edge, including a category chip and restaurant cards. This may be intentional carousel behavior, but the clipped text/card content can look abrupt.",
+        "suggestion": "Add clearer carousel spacing, partial-card treatment, or fade/peek styling so the clipping feels intentional and does not cut important text."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 721,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.030685,
+    "durationSeconds": 17.840583958000003
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_14",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:33:21.764Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed, but the 'Fastest near you' carousel shows a noticeable vertical misalignment between cards: the middle card (Smash Bros Burgers) is offset lower than its neighbors, causing inconsistent image tops and staggered text baselines. A few minor styling inconsistencies were also found.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Cards in the 'Fastest near you' carousel are not vertically aligned: the Smash Bros Burgers card's image starts lower than the Green Bowl Poké and Trattoria cards, and its title/delivery-fee text sits noticeably below the text of adjacent cards, creating a staggered, broken-looking row.",
+        "suggestion": "Align all carousel card images to a common top edge with equal image heights, so titles and delivery-fee labels share the same baseline across the row."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The card images in the 'Fastest near you' row have inconsistent heights/aspect ratios (the burger card image is shorter than the poké and pasta card images), which contributes to the ragged appearance of the row.",
+        "suggestion": "Use a fixed, uniform image height and aspect ratio for all cards in the carousel."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The delivery-time pill badges sit at slightly different vertical positions within each card image (e.g., the '20–30 min' badge on the burger card appears lower relative to its image than the badges on neighboring cards).",
+        "suggestion": "Anchor the time badge to a consistent position (e.g., fixed offset from the bottom-left corner of the image) across all cards."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 815,
+    "estimatedCost": 0.06162000000000001,
+    "durationSeconds": 36.44096349999995
+  }
+}

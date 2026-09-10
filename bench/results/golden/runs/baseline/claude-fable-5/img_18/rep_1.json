@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_18",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:24:13.138Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed, but there are a few visual issues: a category filter chip is cut off at the screen edge as an awkward sliver, the third restaurant card's name is truncated without an ellipsis, and the bottom promo card overlaps into the tab bar area.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A sixth category filter chip after 'Healthy' is clipped at the right screen edge, showing only a thin sliver of the pill with no visible label.",
+        "suggestion": "Adjust horizontal scroll padding/peek amount so partially visible chips show enough of their label to hint at scrollability, or add a fade gradient at the edge."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third card in 'Fastest near you' shows the name 'Trattoria Piccol' — the restaurant name is truncated by the screen edge without an ellipsis, which reads as broken text.",
+        "suggestion": "Apply text truncation with an ellipsis within the card width, or ensure the card layout wraps/limits the label instead of letting it be hard-clipped by the viewport."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last pizza card in 'Popular right now' is cut off by the bottom tab bar and its image appears to extend behind/under the navigation, with insufficient bottom padding in the scroll view.",
+        "suggestion": "Add bottom content inset equal to the tab bar height so the last card is not visually clipped by the fixed bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Fastest near you' card thumbnails have inconsistent visual treatment — the first card has a light gray background while the others use dark blurred backgrounds, making the row look uneven.",
+        "suggestion": "Standardize thumbnail backgrounds or apply a consistent image treatment (e.g., same overlay/blur style) across all cards in the carousel."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 758,
+    "estimatedCost": 0.057640000000000004,
+    "durationSeconds": 14.8786105
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section heading shows the raw localization key 'home_feed.popular_title' instead of a human-readable translated title (e.g. 'Popular near you'). This indicates a missing translation string or a failed i18n lookup.",
+    "The third restaurant card in the 'Fastest near you' carousel ('Trattoria Piccol...') is cut off at the right edge with the name truncated mid-word and no visible scroll affordance or padding.",
+    "The notification bell icon in the top-right has a red badge dot but no visible text label or apparent accessible name, which may be unclear to screen-reader users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe the same issue: a section title displaying the raw translation key 'home_feed.popular_title' instead of the translated text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

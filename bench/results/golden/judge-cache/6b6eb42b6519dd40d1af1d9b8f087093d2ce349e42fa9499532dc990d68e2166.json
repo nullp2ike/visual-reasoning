@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The third restaurant in “Fastest near you” has its name truncated (“Trattoria Piccol”) because the card is cut off at the screen edge.",
+    "The pizza card shows a “-0%” badge, which looks like a broken or empty discount.",
+    "The last restaurant card is clipped by the bottom tab bar, so the image and details are only partly visible.",
+    "The category chips row is cut off on the right (partial “Healthy” chip and next item).",
+    "Notification bell has a red badge with no visible count, so the alert is unclear."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 describes the pizza card showing a “-0%” discount badge, matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3, 4]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The 'Green Bowl Poké' thumbnail in 'Fastest near you' shows a small centered illustration with large empty beige space, while neighboring cards are filled edge-to-edge, creating inconsistent visual weight.",
+    "The second card under 'Popular right now' shows a '-100%' badge which looks like an erroneous or placeholder promotion value."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.79 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

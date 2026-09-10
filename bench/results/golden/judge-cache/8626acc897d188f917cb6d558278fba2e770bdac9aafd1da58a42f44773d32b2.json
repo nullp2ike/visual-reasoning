@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The last restaurant card in 'Fastest near you' is cut off at the right edge, and the restaurant name 'Trattoria Piccol' is truncated.",
+    "The cuisine filter chips overflow the screen; 'Healthy' is clipped and the next chip is only partially visible with no clear scroll affordance.",
+    "A large circular loading spinner sits on top of the Tokumaru Ramen Bar image, covering the dish photo.",
+    "The bottom pizza card is cropped by the tab bar, so only the top of the dish and discount badge are visible.",
+    "Notification badge on the bell icon is a small red dot without a count, and it sits tightly on the icon circle."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Reported issue 2 describes a loading spinner displayed over already loaded restaurant image content."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3, 4]
+  }
+}

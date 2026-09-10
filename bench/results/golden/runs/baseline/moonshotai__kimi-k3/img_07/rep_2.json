@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:56:37.917Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly intact, but the main 'Popular right now' card appears to have an image stuck in a loading state, and a few carousel/text elements are visually clipped or low-contrast.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "performance",
+        "description": "The Tokumaru Ramen Bar card shows a circular loading spinner over the food image, suggesting the image is still loading or failed to render while the rest of the card is visible.",
+        "suggestion": "Verify image loading behavior, add a retry/error state, and ensure the spinner is removed once the image loads or replaced with a fallback."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' horizontal list, the third restaurant card and name 'Trattoria Piccol...' are cut off at the right edge, which can look like truncated content rather than an intentional carousel peek.",
+        "suggestion": "Increase right-side peek spacing or add an edge fade/scroll indicator so the cutoff reads clearly as intentional horizontal scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary metadata such as delivery fees and time/rating details use small gray text that may be hard to read for low-vision users.",
+        "suggestion": "Increase font size slightly and/or darken the gray to meet stronger contrast guidance while preserving hierarchy."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 533,
+    "reasoningTokens": 245,
+    "estimatedCost": 0.014301000000000001,
+    "reportedCost": 0.0141282,
+    "durationSeconds": 13.105888750000043
+  }
+}

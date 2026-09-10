@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_05",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:27:24.224Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several layout and styling issues: truncated restaurant names in the Fastest carousel, a misaligned delivery badge on the ramen card, and a cut-off category chip.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you section, making the full name unreadable.",
+        "suggestion": "Allow multi-line titles, reduce font size, or ensure cards and text have enough width so names are not clipped."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The '€0 delivery' badge on the Tokumaru Ramen Bar card sits awkwardly over the image edge and may collide with the food illustration.",
+        "suggestion": "Reposition or restyle the badge with consistent padding/margin so it sits cleanly within the image bounds."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Category filter chips row ends with a partially visible empty/white chip on the far right, looking unfinished.",
+        "suggestion": "Ensure proper horizontal padding or fade so partial empty chips are not shown, or clip cleanly at the last full chip."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 255,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005454,
+    "reportedCost": 0.00219,
+    "durationSeconds": 86.774750792
+  }
+}

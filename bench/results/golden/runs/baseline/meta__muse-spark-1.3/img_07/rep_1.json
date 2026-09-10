@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "meta/muse-spark-1.3",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-03T19:34:34.562Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found a stuck loading indicator blocking the Tokumaru Ramen Bar image and bottom content clipped by the tab bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "performance",
+        "description": "A large white circular loading spinner is stuck in the center of the Tokumaru Ramen Bar cover image, obscuring the food photo and looking like a failed or stalled load.",
+        "suggestion": "Fix image loading so the spinner dismisses once loaded; show the full cover image with a fallback if loading fails"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second card under Popular right now (pizza with -20% badge) is cut off abruptly at the bottom tab bar with no padding, so its name, rating and delivery info are not visible.",
+        "suggestion": "Add bottom content padding / safe-area spacing so cards scroll fully above the fixed Home/Search/Orders/Profile bar"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1739,
+    "outputTokens": 1387,
+    "reasoningTokens": 1150,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0080685,
+    "reportedCost": 0.0080685,
+    "durationSeconds": 19.741797709000007
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_14",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:56:54.435Z",
+  "status": "ok",
+  "result": {
+    "summary": "The screen is mostly coherent, but the two horizontal/vertical card lists have clear layout defects: the 'Fastest near you' cards are vertically misaligned with inconsistent image heights, badge positions and one card appears to be showing a placeholder instead of a photo; the third card's title/price are clipped at the viewport edge, and the second 'Popular right now' card is cut off by the bottom nav with inconsistent favorite-icon styling.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel the cards are not aligned on a common baseline: the 'Green Bowl Poké' image block is shorter and sits higher, 'Smash Bros Burgers' is shifted ~40px lower, so titles and delivery-fee lines appear at three different vertical positions.",
+        "suggestion": "Give all carousel items a fixed image aspect ratio/height and align items to the top of the row (align-items: flex-start with equal card heights) so titles and prices line up."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third card ('Trattoria Piccol…', '€1.90 delivery') is hard-clipped at the right edge of the screen with no ellipsis or partial-card peek styling, making it look broken rather than scrollable.",
+        "suggestion": "Add horizontal padding/peek offset to the carousel and truncate long restaurant names with an ellipsis inside the card width."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The second 'Popular right now' card (pizza with −20% badge) is cut off by the fixed bottom navigation bar; its name, rating and delivery info are not visible, so the list appears to end mid-card.",
+        "suggestion": "Add bottom padding/inset equal to the nav bar height to the scroll container so the last card can scroll fully into view."
+      },
+      {
+        "priority": "major",
+        "category": "styling",
+        "description": "Inconsistent image treatment: the 'Green Bowl Poké' tile has a flat light-gray background with a centered illustration while sibling tiles use dark photographic imagery, suggesting a failed image load or fallback placeholder.",
+        "suggestion": "Ensure the real restaurant image loads, or standardize the fallback placeholder styling (same dark overlay/aspect ratio) across all cards."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) buttons differ between the two 'Popular right now' cards: the first is an unfilled outline with no background, the second sits on a dark filled circle.",
+        "suggestion": "Use one shared favorite-button component with a consistent scrim/background for legibility over any image."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The time badges ('15–25 min', '20–30 min') sit at different vertical offsets within their cards and one overlaps the card's bottom edge, breaking visual rhythm.",
+        "suggestion": "Anchor badges with a fixed absolute offset from the bottom-left of each image container."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is clipped mid-chip at the right edge with no fade or partial-chip affordance, so users may not realize more filters exist.",
+        "suggestion": "Add a right-edge gradient fade or consistent peek spacing to signal horizontal scrollability."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 1633,
+    "estimatedCost": 0.050695000000000004,
+    "durationSeconds": 22.151219374999986
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_07",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:51:04.294Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there are a few visual defects: a loading spinner stuck on top of an already-visible restaurant image, truncated text on a restaurant card, and a partially clipped filter chip at the screen edge. Found 4 issues total (2 major, 2 minor).",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "A loading spinner is displayed on top of the 'Tokumaru Ramen Bar' hero image even though the image appears fully loaded, making the card look stuck in a loading state.",
+        "suggestion": "Ensure the loading indicator is removed once the image finishes loading, or hide the underlying image until loading completes so the states don't overlap."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The third restaurant name in 'Fastest near you' is cut off ('Trattoria Piccol...') with no ellipsis, and its card is clipped at the right edge of the screen.",
+        "suggestion": "Apply text truncation with an ellipsis for long names, and verify the horizontal carousel shows a clear visual affordance (peek) rather than awkwardly clipping the title text."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category filter chip on the right (after 'Healthy') is clipped at the screen edge, showing only a small sliver with no readable label.",
+        "suggestion": "Adjust chip spacing/padding so partially visible chips show enough of their label to indicate scrollability, or add a fade/gradient hint at the edge."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Green Bowl Poké' card image uses a plain light gray background, inconsistent with the darker, richer photographic styling of the neighboring restaurant cards.",
+        "suggestion": "Use a consistent image treatment (background, framing) across all restaurant thumbnails, or provide a proper photo/placeholder for that restaurant."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 863,
+    "estimatedCost": 0.06289,
+    "durationSeconds": 15.885627125000001
+  }
+}

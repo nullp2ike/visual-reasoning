@@ -1,0 +1,25 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "'Fastest near you' carousel shows two identical 'Green Bowl Poké' cards (same image placeholder, same 15–25 min, same €0.90 delivery), suggesting duplicated data in the list.",
+    "The third carousel card ('Smash Bros Bu...') is cut off at the right screen edge with its title truncated mid-word and no ellipsis, and the card image is clipped hard against the viewport.",
+    "The second 'Popular right now' card (pizza, −20% badge) is cut in half by the bottom navigation bar, hiding its name, rating and delivery info with no visible scroll affordance.",
+    "The favorite (heart) buttons are styled inconsistently: white circular background on the ramen card, dark/transparent background on the pizza card.",
+    "The category filter row ends with a partially visible sliver of a chip at the right edge, which looks like a rendering glitch rather than an intentional scroll hint.",
+    "Poké restaurant cards use a generic gray placeholder-looking illustration while other cards have rich photography, making them appear like failed image loads.",
+    "Secondary metadata (e.g. '€0.90 delivery', '25–35 min • €0 delivery • Ramen') uses light gray text that may fall below the 4.5:1 contrast ratio."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 explicitly describes two identical Green Bowl Poké cards in the carousel, matching the duplicated card defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5, 6]
+  }
+}

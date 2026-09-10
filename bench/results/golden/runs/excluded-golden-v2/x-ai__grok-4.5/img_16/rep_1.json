@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:35:35.067Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 layout issues: truncated restaurant names in the horizontal carousel and a clipped promo badge on the pizza card.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant name in 'Fastest near you' is truncated to 'Trattoria Piccol' with no ellipsis or full visibility, making the listing unreadable.",
+        "suggestion": "Ensure card titles wrap to two lines, use ellipsis with full name on tap, or widen cards so names like 'Trattoria Piccolo' display completely."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The '-20%' discount badge on the bottom pizza card is cut off on the left edge, so only part of the pill is visible.",
+        "suggestion": "Add consistent left padding/margin to promo badges so the full badge stays inside the card bounds."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 226,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.00528,
+    "reportedCost": 0.0046272,
+    "durationSeconds": 46.3252908340001
+  }
+}

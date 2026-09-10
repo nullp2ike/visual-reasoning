@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "A circular loading spinner is centered on the Tokumaru Ramen Bar image in the 'Popular right now' section while the rest of the page appears loaded, making the card look stuck or broken.",
+    "The right-most items in the category chips and 'Fastest near you' carousel are visibly cut off at the screen edge, including the partially visible 'Healthy' chip and truncated 'Trattoria Piccol...' card.",
+    "Favorite heart icons and the notification bell appear as icon-only controls with no visible labels."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.71 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

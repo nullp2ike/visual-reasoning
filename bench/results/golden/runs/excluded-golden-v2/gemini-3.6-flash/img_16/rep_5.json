@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gemini-3.6-flash",
+  "provider": "google",
+  "imageId": "img_16",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T10:32:37.191Z",
+  "status": "ok",
+  "result": {
+    "summary": "UI evaluation found 2 issues related to category filter consistency and text truncation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Active 'Pizza' filter chip does not filter displayed items, showing burgers and poké bowls instead.",
+        "suggestion": "Ensure feed updates dynamically based on the selected category filter."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol...' is truncated prematurely.",
+        "suggestion": "Increase text area or allow multi-line titles to prevent text clipping."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1508,
+    "outputTokens": 1265,
+    "reasoningTokens": 1158,
+    "estimatedCost": 0.0117495,
+    "durationSeconds": 9.866780833000318
+  }
+}

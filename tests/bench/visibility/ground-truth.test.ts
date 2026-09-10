@@ -290,8 +290,8 @@ describe("loadVisibilityGroundTruth", () => {
 
 describe("resolveVisibilityDataset", () => {
   it("defaults to the configured visibility dataset", () => {
-    // No dataset is committed, so the configured default exists on some
-    // machines and not others. Either way it is the id resolution reaches for.
+    // The configured default is normally on disk, but a checkout may lack it.
+    // Either way it is the id resolution reaches for.
     try {
       expect(resolveVisibilityDataset().id).toBe(visibilityBenchConfig.dataset);
     } catch (error) {
@@ -313,7 +313,7 @@ describe("resolveVisibilityDataset", () => {
 
 describe("listVisibilityDatasetIds", () => {
   it("lists only datasets carrying visibility_per_file.md", () => {
-    // Datasets are gitignored, so assert the filter rather than any id.
+    // Which datasets exist varies by checkout; assert the filter, not an id.
     for (const id of listVisibilityDatasetIds()) {
       expect(existsSync(join(datasetFrom(id).dir, VISIBILITY_FILE))).toBe(true);
     }

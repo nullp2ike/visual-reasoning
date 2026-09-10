@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_06",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:31:47.414Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and styling problems: category pills and restaurant cards are clipped, a popular restaurant card is cut off, and the bottom tab bar is missing an icon.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last category filter chip is cut off at the right edge of the screen, so the full set of categories is not visible.",
+        "suggestion": "Allow the category row to scroll horizontally with padding or fade so the last chip is fully readable, or wrap/resize chips to fit."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in “Fastest near you” (Trattoria Piccol) is cropped so the name and image are truncated.",
+        "suggestion": "Give cards consistent width with horizontal scroll, or scale the grid so names and images are fully visible."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The second “Popular right now” restaurant card is cut off at the bottom of the viewport, hiding the restaurant name and details.",
+        "suggestion": "Add bottom padding above the tab bar so the last card can scroll fully into view."
+      },
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The Orders tab in the bottom navigation has a label but no icon, unlike Home, Search, and Profile.",
+        "suggestion": "Add a matching bag/receipt icon for Orders so the tab bar is consistent."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The “See all” links sit far to the right of their section titles with a large empty gap.",
+        "suggestion": "Tighten the header alignment so the title and action feel like one row."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 360,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.0059240000000000004,
+    "reportedCost": 0.003236,
+    "durationSeconds": 7.705179999999993
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "Second card in 'Popular right now' (pizza image with -100% badge) is cut off mid-image by the bottom tab bar, with no restaurant name, delivery time or rating visible",
+    "Third card in 'Fastest near you' shows restaurant name as 'Trattoria Piccol' clipped off-screen without ellipsis",
+    "Green discount badge shows '-100%' on pizza card which looks like erroneous or misleading data",
+    "Delivery time badges use inconsistent formatting: '15-25 min' and '20-30 min' vs '20-30 min' with spaces around hyphen"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Reported issue 2 identifies the green pizza-card discount badge displaying '-100%'."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

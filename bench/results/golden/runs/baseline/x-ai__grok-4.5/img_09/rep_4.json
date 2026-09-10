@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:53:02.223Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual/layout problems: truncated restaurant names and cards cut off at edges, plus incomplete category chips and a partially cropped bottom listing.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third 'Fastest near you' card (Trattoria Piccol...) is clipped on the right edge, and its name is truncated.",
+        "suggestion": "Ensure horizontal scroll cards have proper peek/padding and use ellipsis or multi-line titles so names and images are not cut off."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom pizza restaurant card is heavily cropped by the bottom navigation, so most of the image and details are not visible.",
+        "suggestion": "Add bottom content padding equal to the tab bar height so the last list item can scroll fully into view."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips overflow the screen; the chip after 'Healthy' is only partially visible with no clear scroll affordance.",
+        "suggestion": "Add horizontal scroll inset/fade or ensure the last visible chip isn’t half-cut off."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant title 'Trattoria Piccol' appears truncated mid-word.",
+        "suggestion": "Use text overflow ellipsis or allow wrapping so full names remain readable."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Promo banner decorative circles are cut off at the right edge in a way that looks unfinished.",
+        "suggestion": "Adjust banner artwork/masking so decorative elements don’t appear accidentally clipped."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 340,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005804,
+    "reportedCost": 0.0027576,
+    "durationSeconds": 8.686841916999997
+  }
+}

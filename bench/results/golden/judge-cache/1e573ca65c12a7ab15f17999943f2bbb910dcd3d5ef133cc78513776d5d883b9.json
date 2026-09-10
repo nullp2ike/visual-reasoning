@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The third restaurant card in the 'Fastest near you' section is partially cut off — both the image and the restaurant name 'Smash Bros Bu...' are truncated at the right edge of the screen, giving an incomplete and broken appearance.",
+    "The 'Fastest near you' section shows two identical 'Green Bowl Poké' restaurant cards with the same delivery time (15-25 min) and the same delivery price (€0.90), suggesting duplicate data or a rendering/data fetch issue.",
+    "The bottom pizza restaurant card is cut off at the bottom of the screen with no visible restaurant name or details, making it unclear if it is a scrollable item or broken content."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.74 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The 'Fastest near you' section shows 'Green Bowl Poké' listed twice with identical images, ratings, delivery time, and price, suggesting a data duplication bug.",
+    "The third card 'Smash Bros Bu...' in the 'Fastest near you' row is cut off at the right edge of the screen with no visual indication (like a partial peek or scroll hint) that more content is scrollable.",
+    "The category filter row (All, Pizza, Sushi, Burgers, Healthy) is cut off on the right edge, showing a partial pill/chip, which could look like a rendering error.",
+    "The heart/favorite icon on the Tokumaru Ramen Bar image is white and blends into lighter parts of the food image, reducing visibility."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.78 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

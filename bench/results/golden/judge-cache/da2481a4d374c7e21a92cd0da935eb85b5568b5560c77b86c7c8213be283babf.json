@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "The 'Fastest near you' carousel cuts off the third card at the right edge, truncating the restaurant name to 'Trattoria Piccol...' and making the row look broken rather than intentionally scrollable.",
+    "The category filter row clips the next chip after 'Healthy' at the screen edge with little visual indication that more categories are available.",
+    "Favorite heart icons are placed directly over dark food photography and may have inconsistent contrast depending on the image behind them.",
+    "The lower 'Popular right now' pizza card is partially cut off by the bottom of the viewport, which is expected for scrolling but can look like an incomplete render at first glance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "No reported issue describes misalignment of the middle card specifically; reported issues describe edge truncation/clipping of carousels, not middle card alignment problems."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

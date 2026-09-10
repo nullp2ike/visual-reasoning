@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_05",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:54:42.418Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page layout is mostly intact, but the promotional banner has near-illegible white-on-light-green text, and several horizontally scrolling sections are clipped hard at the screen edge without any trailing padding. Favourite (heart) buttons also use inconsistent styling between cards.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "accessibility",
+        "description": "The '3 free deliveries for you' promo banner uses white text on a pale mint green background. The headline, subtext ('Use code TALLINN3 at checkout · min. order €10') fail contrast requirements and are barely readable.",
+        "suggestion": "Switch the banner copy to a dark green/near-black text colour, or darken the banner background so text meets at least 4.5:1 contrast."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Fastest near you' carousel's third card ('Trattoria Piccol…') is cut flush against the right screen edge — image, title and delivery price are all sliced with no gutter, making it look broken rather than scrollable.",
+        "suggestion": "Add trailing/leading padding (e.g. 16px) to the carousel content inset so partially visible cards are clearly peeking rather than clipped at 0px, and allow the card title to ellipsize cleanly."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The category chip row ('All, Pizza, Sushi, Burgers, Healthy, …') is also clipped at the right edge with a sliver of the next chip visible, giving no clear affordance that the row scrolls.",
+        "suggestion": "Apply the same horizontal content inset and consider a fade/gradient mask at the edge to signal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Favourite heart buttons are styled inconsistently: the Tokumaru Ramen card uses a white circular background with dark outline, while the pizza card below uses a dark translucent circle with white outline.",
+        "suggestion": "Standardise the favourite button to a single treatment (e.g. white circle with dark icon) across all restaurant cards regardless of image brightness, or apply a consistent scrim."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second 'Popular right now' card is abruptly truncated by the bottom navigation bar with no card metadata visible, and the divider above the tab bar cuts through the image.",
+        "suggestion": "Add bottom content padding equal to the tab bar height so the last card can scroll fully clear of the navigation, and use a solid/blurred tab bar background instead of a thin line over content."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 1001,
+    "estimatedCost": 0.034895,
+    "durationSeconds": 19.204196916999994
+  }
+}

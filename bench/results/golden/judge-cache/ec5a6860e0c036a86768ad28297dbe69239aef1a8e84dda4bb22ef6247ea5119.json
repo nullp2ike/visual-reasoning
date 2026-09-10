@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The category filter row has a partially cut-off chip at the far right edge after “Healthy,” with no clear fade or scroll affordance.",
+    "In “Fastest near you,” the third restaurant card is clipped and the name appears truncated as “Trattoria Piccol…,” making it look broken in a static view.",
+    "The next “Popular right now” card at the bottom is cropped by the viewport, showing only the top of the pizza image and discount badge."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.61 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

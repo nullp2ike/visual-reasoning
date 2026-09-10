@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T13:20:42.760Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed and functional. The main visual issue is horizontal content clipping in the 'Fastest near you' carousel, where the third restaurant card ('Trattoria Piccol...') is cut off at the right edge with its name truncated and no visible scroll affordance. Other observations are minor cosmetic/contrast notes.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' horizontal carousel, the third card ('Trattoria Piccol...') is clipped at the right viewport edge: the restaurant name is truncated mid-word and the card is partially cut off, with no visible scroll indicator or peek padding to signal that the row is scrollable.",
+        "suggestion": "Add right-edge padding or a partial 'peek' of the next card plus a subtle scroll hint (e.g., gradient fade or scroll indicator) so users understand the row scrolls horizontally, and ensure card titles ellipsize gracefully rather than cutting off mid-word at the screen edge."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The 'See all' links (green text on white) and the gray delivery-fee/meta text (e.g., '€0.90 delivery', '25–35 min') use relatively low-contrast color combinations that may fall below WCAG AA contrast ratios for small text.",
+        "suggestion": "Darken the green link color and the gray meta text to meet at least 4.5:1 contrast against the white background."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The selected category pill 'Pizza' is active, yet the 'Fastest near you' section shows non-pizza restaurants (Poké, Burgers, Ramen), which can look inconsistent with the active filter.",
+        "suggestion": "Either filter the displayed restaurant cards by the selected 'Pizza' category or clarify that these sections show all cuisines regardless of the active pill."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1711,
+    "outputTokens": 1040,
+    "reasoningTokens": 561,
+    "estimatedCost": 0.009662,
+    "reportedCost": 0.008542,
+    "durationSeconds": 31.25940633299999
+  }
+}

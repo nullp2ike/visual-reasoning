@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The 'Popular right now' section shows a loading spinner overlaid on the Tokumaru Ramen Bar image, indicating the image has not fully loaded or is stuck in a loading state.",
+    "The restaurant name 'Trattoria Piccol' in the 'Fastest near you' carousel appears to be truncated mid-word (likely 'Trattoria Piccolo' or similar), cutting off the name abruptly below the card."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The reported spinner is overlaid on an already visible restaurant image, matching a loading spinner shown on loaded content."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

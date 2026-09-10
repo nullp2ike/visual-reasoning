@@ -1,0 +1,26 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The 'Popular right now' restaurant title 'Tokumaru Ramen' is hard-clipped ('Ramer') where it meets the '4.8 (500+)' rating block on the same row, with no ellipsis or spacing.",
+    "In the 'Fastest near you' carousel the third card's name ('Trattoria Piccol...') and its delivery fee are sliced off by the viewport edge without truncation, making it look broken rather than scrollable.",
+    "The category filter chip row is cut mid-chip at the right edge with no visible indication that it scrolls or fades.",
+    "The favorite (heart) buttons are styled inconsistently — white circular background on the ramen card versus a dark/transparent circle on the pizza card.",
+    "The bottom pizza card is cut by the fixed bottom navigation bar, hiding its name, rating and delivery info with no visible scroll padding.",
+    "Cards in 'Fastest near you' show delivery time and fee but no rating, while the 'Popular right now' cards do, creating inconsistent information density."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.71 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

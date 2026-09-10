@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:35:29.268Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed. The main visual/functional inconsistency is that the bottom navigation highlights the 'Profile' tab even though the screen shown is clearly the Home feed. No other significant defects found beyond permitted scroll clipping behaviors.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom navigation bar highlights 'Profile' as the active tab (green icon and label), but the content displayed is the Home screen (delivery address, search, promos, restaurant feed). 'Home' should be the active tab.",
+        "suggestion": "Fix the active-tab state logic so the highlighted tab matches the currently displayed screen; on the Home feed, the 'Home' icon and label should be highlighted instead of 'Profile'."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Home' tab icon/label is greyed out like the other inactive tabs, which combined with the wrong Profile highlight gives no correct indication of the user's current location in the app.",
+        "suggestion": "Ensure the active tab styling (green color) is applied to 'Home' when the Home screen is shown, and inactive styling to all other tabs."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 520,
+    "estimatedCost": 0.04687000000000001,
+    "durationSeconds": 39.56118566700001
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:03:05.586Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several visual issues including duplicate restaurant cards, truncated text, a partially cut-off card, and a low-contrast favorite icon.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Two identical 'Green Bowl Poké' cards appear side by side in the 'Fastest near you' section with the same image, delivery time, and price.",
+        "suggestion": "Verify whether this is duplicate data; if so, remove the duplicate entry or differentiate the cards (e.g., by location, address, or branch name)."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' section shows a truncated name 'Smash Bros Bu' instead of the full name.",
+        "suggestion": "Allow the card title to wrap to a second line or widen the card so the full restaurant name is visible."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The second card in the 'Popular right now' section is partially cut off at the bottom of the screen, hiding its restaurant name, rating, and delivery details.",
+        "suggestion": "Add bottom padding or adjust the scroll container so the last visible card is fully rendered above the bottom navigation bar."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The heart/favorite icon on the Tokumaru Ramen Bar card is dark against a dark background, making it hard to see.",
+        "suggestion": "Add a semi-transparent circular background or use a lighter stroke/fill color to ensure the icon is clearly visible on dark images."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 1041,
+    "reasoningTokens": 652,
+    "estimatedCost": 0.00554867,
+    "reportedCost": 0.00606514,
+    "durationSeconds": 25.42125874999992
+  }
+}

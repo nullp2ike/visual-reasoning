@@ -1,0 +1,24 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "The last category chip ('Healthy') is clipped by the right edge of the screen, so the row looks broken and extra categories are not clearly discoverable.",
+    "The third 'Fastest near you' card (Trattoria Piccol…) is cut off on the right and its name is truncated.",
+    "The second Popular restaurant card is only partially visible at the bottom of the viewport, so the listing looks incomplete.",
+    "Restaurant title 'Trattoria Piccol' is cut off mid-word.",
+    "The profile/notification control in the top-right is a nearly empty circle with a tiny red badge, which looks unfinished.",
+    "Heart/favorite icons sit on dark food photos with limited contrast, which may make them hard to see."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [4],
+        "reasoning": "cosine 0.73 >= 0.69 threshold (reported #4)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 5]
+  }
+}

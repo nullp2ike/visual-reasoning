@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T13:19:04.800Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-designed, but there is a clear text overlap bug in the 'Popular right now' restaurant card where the delivery time and metadata text collide, plus a few minor polish issues.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Tokumaru Ramen Bar' card, the subtitle line shows overlapping/garbled text: '25–30 min' and '€0 delivery' are rendered on top of each other (appears as '25–30rdelivery'), making it unreadable.",
+        "suggestion": "Fix the layout of the metadata row so the delivery time, delivery fee, and cuisine tag are separate, non-overlapping elements (e.g., use a flex row with proper spacing or a separator dot between distinct text spans)."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The 'Fastest near you' horizontal carousel cuts off the third card ('Trattoria Piccol...') at the right edge with no visual affordance indicating more content is scrollable.",
+        "suggestion": "Add a subtle scroll indicator, gradient fade, or peek of the next card so users understand the row is horizontally scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The notification bell icon in the top-right has a red dot badge but no visible label or count, and the icon button may lack an accessible name.",
+        "suggestion": "Provide an accessible label (e.g., 'Notifications, 1 unread') and ensure the badge conveys the count to screen readers."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The category filter chips row ('All', 'Pizza', 'Sushi'...) is also cut off at the right edge with a partially visible chip, which can look unintentional.",
+        "suggestion": "Ensure horizontal scroll padding and a fade/peek affordance so the truncated chip reads as scrollable rather than broken."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1711,
+    "outputTokens": 1071,
+    "reasoningTokens": 574,
+    "estimatedCost": 0.009847999999999999,
+    "reportedCost": 0.008728,
+    "durationSeconds": 30.127948167000024
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_14",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:01:39.021Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 4 issues: content is cut off at the right edge of horizontal scroll sections, category filter chips are truncated, and there is inconsistent spacing/alignment in the food card sections.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Trattoria Piccolo' restaurant card in the 'Fastest near you' section is cut off at the right edge of the screen, showing only a partial view of the image and name.",
+        "suggestion": "Add proper padding/margin to the horizontal scroll container or add a visual indicator (fade/gradient) to signal more content is scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chips (All, Pizza, Sushi, Burgers, Healthy) are cut off on the right side, with an additional chip partially visible beyond the screen edge.",
+        "suggestion": "Add a fade gradient or partial visibility indicator at the edge of scrollable chip list to make it clearer the list is scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The heart/favorite icon on the Tokumaru Ramen Bar card is white/outlined while on the pizza card below it appears black/filled background, showing inconsistent icon styling across similar cards.",
+        "suggestion": "Standardize the favorite icon background and style across all promotional cards for visual consistency."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The bottom pizza promotion card is abruptly cut off at the bottom of the screen with no visible restaurant name or details, unlike the Tokumaru Ramen Bar card above it.",
+        "suggestion": "Ensure consistent card height and full content visibility before the scroll cutoff, or add scroll affordance so users know to scroll further."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 651,
+    "estimatedCost": 0.015687,
+    "durationSeconds": 8.412264457999962
+  }
+}

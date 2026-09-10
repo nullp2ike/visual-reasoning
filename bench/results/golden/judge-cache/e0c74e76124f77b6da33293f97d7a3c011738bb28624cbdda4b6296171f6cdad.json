@@ -1,0 +1,25 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "Search field placeholder is misspelled: 'Restarants, dishes, groceries' should be 'Restaurants'.",
+    "In the 'Fastest near you' carousel the third card's title is hard-cut at the screen edge ('Trattoria Piccol') with no ellipsis and the card image is clipped, making it look broken rather than scrollable.",
+    "Favorite (heart) buttons are inconsistent: the Tokumaru Ramen card uses a white circular button while the pizza card below uses a dark/transparent circle, so the same control looks different between cards.",
+    "The first 'Fastest near you' thumbnail (Green Bowl Poké) has a flat light-grey background while sibling thumbnails use dark photographic backgrounds, making the row look visually inconsistent.",
+    "The category chip row is clipped mid-chip at the right edge with no fade or partial-visibility cue, so the cut-off pill looks like a rendering error.",
+    "The second 'Popular right now' card is cut off by the bottom tab bar with no visible title, rating or bottom spacing, so the list appears to end abruptly.",
+    "Cards in 'Fastest near you' show delivery time and fee but no rating, while 'Popular right now' cards show ratings — inconsistent metadata across similar card types."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.82 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5, 6]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_15",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:35:40.188Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well rendered, but several horizontally scrollable elements are visibly clipped at the right edge and the bottom navigation is partially obstructed by the system gesture indicator.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The horizontal category row is cut off on the right: an unlabeled partial chip is visible after “Healthy,” making the carousel look abruptly clipped rather than intentionally scrollable.",
+        "suggestion": "Add appropriate right-side padding/peek treatment and ensure the next category chip is visibly identifiable, or constrain the row so it does not show an ambiguous clipped fragment."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The “Fastest near you” restaurant carousel is visibly cropped on the right. The third restaurant card and its title (“Trattoria Piccol…”) are truncated by the viewport edge.",
+        "suggestion": "Use consistent carousel spacing and a deliberate partial-card affordance, or resize cards so complete content is shown; ensure titles are ellipsized cleanly within their card rather than clipped by the screen."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom navigation bar overlaps the device gesture/home indicator area. The dark gesture bar crosses over the search tab icon and the nav labels/icons are cut off at the bottom.",
+        "suggestion": "Respect the device safe-area inset by increasing the bottom navigation’s padding/height or placing it above the system navigation area."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second “Popular right now” restaurant card is only partially visible at the bottom of the viewport, with no restaurant details shown before the navigation bar begins.",
+        "suggestion": "Adjust vertical spacing/list behavior so cards are either presented with their associated details or clearly continue below the fold without appearing obscured by the fixed navigation."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 372,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.008086,
+    "durationSeconds": 5.8681943749999625
+  }
+}

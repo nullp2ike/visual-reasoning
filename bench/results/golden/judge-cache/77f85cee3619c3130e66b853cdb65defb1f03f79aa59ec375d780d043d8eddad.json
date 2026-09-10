@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The 'Trattoria Piccol...' restaurant card in the 'Fastest near you' section is cut off at the right edge of the screen, and its name is truncated.",
+    "The category filter row (All, Pizza, Sushi, Burgers, Healthy) is cut off at the right edge, showing a partial pill with no visible label.",
+    "The '-100%' badge on the pizza promotion at the bottom is ambiguous and could be confused with a discount error (100% off suggests free item, which may be misleading).",
+    "The heart/favorite icon on the Tokumaru Ramen Bar card is white outline on a busy food image, making it slightly hard to see.",
+    "The pizza promotional card at the very bottom is cropped by the navigation bar, cutting off potential text/details below the image."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "cosine 0.83 >= 0.69 threshold (reported #2)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3, 4]
+  }
+}

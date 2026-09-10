@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The 'Pizza' category chip is shown as selected (active state), but the 'Fastest near you' and 'Popular right now' sections display non-pizza restaurants (Green Bowl Poké, Smash Bros Burgers, Trattoria pasta, Tokumaru Ramen Bar). The filter appears to have no effect on the content.",
+    "The last category chip after 'Healthy' is clipped at the right screen edge, showing only a sliver with no readable label.",
+    "The third card in 'Fastest near you' shows a truncated restaurant name ('Trattoria Piccol...') without an ellipsis, making it look cut off rather than intentionally scrollable.",
+    "The pizza restaurant card at the bottom (with the −20% badge) is cut off mid-image with no visible name, rating, or delivery info before the bottom navigation."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the Pizza filter being selected while non-pizza restaurants remain visible, so the feed still shows all cuisines."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

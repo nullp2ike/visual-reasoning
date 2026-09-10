@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "meta/muse-spark-1.3",
+  "provider": "openrouter",
+  "imageId": "img_05",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-03T19:33:52.255Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 visual issues: unreadable promo banner due to low contrast, heavily blurred restaurant images that look broken, and truncated restaurant name at the carousel edge.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "accessibility",
+        "description": "Promotional banner text '3 free deliveries for you' and subtext in white on very light mint background has extremely low contrast and is nearly unreadable",
+        "suggestion": "Use a darker text color or darker background to meet WCAG contrast requirements for readability"
+      },
+      {
+        "priority": "major",
+        "category": "styling",
+        "description": "All restaurant cover images in 'Fastest near you' and 'Popular right now' sections appear heavily blurred, pixelated and out of focus as if low-resolution placeholders failed to load",
+        "suggestion": "Ensure high-resolution images are loaded correctly and replace blurry placeholders with sharp images"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Third card in 'Fastest near you' shows truncated name 'Trattoria Piccol' cut off at the screen edge without ellipsis",
+        "suggestion": "Add proper text truncation with ellipsis or ensure card width and padding prevent mid-character cutoff"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1739,
+    "outputTokens": 1945,
+    "reasoningTokens": 1602,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.01044,
+    "reportedCost": 0.01044,
+    "durationSeconds": 25.346582708000003
+  }
+}

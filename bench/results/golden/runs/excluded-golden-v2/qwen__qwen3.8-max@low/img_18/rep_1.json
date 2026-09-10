@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:17:07.864Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-structured. One notable visual defect: the third card in the 'Fastest near you' carousel ('Trattoria Piccol...') has its title clipped by the right screen edge. Per instructions, edge-clipping in a horizontally scrollable carousel is treated as a feature, not a defect. No other visually broken elements were found; layout, contrast, and alignment are consistent.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' row is truncated at the right viewport edge. While this is expected behavior for a horizontal carousel, the truncation occurs mid-word without an ellipsis, which can look like a rendering glitch rather than intentional scroll affordance.",
+        "suggestion": "Apply a proper text-overflow ellipsis or add right-edge padding/fade mask to the carousel so clipped titles read as scrollable content rather than broken text."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 982,
+    "reasoningTokens": 741,
+    "estimatedCost": 0.00948,
+    "reportedCost": 0.00836,
+    "durationSeconds": 49.381557959000006
+  }
+}

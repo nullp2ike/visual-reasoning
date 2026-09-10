@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Restaurant cover image failed to load"],
+  "reportedIssues": [
+    "The 'Tokumaru Ramen Bar' card in the 'Popular right now' section displays a generic broken-image placeholder icon on a gray background instead of the restaurant photo.",
+    "The third restaurant card in 'Fastest near you' shows a truncated name ('Trattoria Piccol...') that is clipped by the screen edge without an ellipsis, making it look cut off rather than intentionally scrollable.",
+    "A category filter chip after 'Healthy' is clipped at the right edge, appearing as an empty partial pill with no visible label."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.63 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

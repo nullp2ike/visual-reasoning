@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Restaurant cover image failed to load"],
+  "reportedIssues": [
+    "The first card in the 'Popular right now' section (Tokumaru Ramen Bar) renders an empty grey block with a broken-image icon instead of the restaurant photo, unlike the other cards which show artwork.",
+    "The heart/favorite button on the broken-image card uses a light grey circle with a grey outline icon, whereas the equivalent button on the pizza card below uses a dark circle with a white icon — inconsistent styling and weaker contrast.",
+    "In the 'Popular right now' section the image block, title and metadata are not visually grouped into a bordered/elevated card as in the 'Fastest near you' row, making the broken grey area read as a page-level gap rather than part of a listing."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Report 0 directly describes the restaurant card's photo failing to load and appearing as a broken-image placeholder."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

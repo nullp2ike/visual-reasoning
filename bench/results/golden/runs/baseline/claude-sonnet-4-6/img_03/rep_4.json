@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_03",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:02:27.766Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: one major missing image and one minor text truncation issue.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The 'Popular right now' section shows a broken/missing image placeholder for Tokumaru Ramen Bar. The restaurant card displays a grey box with a broken image icon instead of an actual restaurant photo.",
+        "suggestion": "Ensure the image URL is valid and the image asset is properly loaded. Implement a proper fallback image for cases where the restaurant photo fails to load."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The restaurant name 'Trattoria Piccol' in the 'Fastest near you' section appears to be truncated, cutting off the full name of the restaurant.",
+        "suggestion": "Either allow text to wrap to a second line, reduce font size, or ensure the card width is sufficient to display the full restaurant name. At minimum, add an ellipsis (...) to indicate the text is truncated."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 270,
+    "estimatedCost": 0.009524999999999999,
+    "durationSeconds": 7.225613875000039
+  }
+}

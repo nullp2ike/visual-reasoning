@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "The last restaurant card in the 'Fastest near you' row is clipped on the right, cutting off the name 'Trattoria Piccol'.",
+    "On the Tokumaru Ramen Bar card, delivery time text is garbled/overlapping as '25-30elivery' instead of a clear time and delivery fee.",
+    "The category filter chips overflow the screen; 'Healthy' is cut off and the next chip is only partially visible.",
+    "The bottom pizza promo card is cropped by the tab bar, so most of the restaurant details below the image are not visible."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.81 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3]
+  }
+}

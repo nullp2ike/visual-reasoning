@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "The third restaurant card in the 'Fastest near you' section (Trattoria Piccol) is visually cut off on the right edge, making the card incomplete and difficult to read",
+    "The bottom restaurant card in the 'Popular right now' section is cut off at the bottom of the screen, leaving the card incomplete and unreadable",
+    "Restaurant name appears truncated as 'Trattoria Piccol' (likely should be 'Trattoria Piccola'), indicating text overflow without proper handling"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.65 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

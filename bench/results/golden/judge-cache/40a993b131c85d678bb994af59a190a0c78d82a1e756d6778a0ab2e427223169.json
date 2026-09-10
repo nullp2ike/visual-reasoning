@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccolo' is truncated as 'Trattoria Piccol...' in the 'Fastest near you' section.",
+    "The pizza card at the bottom of the screen appears incomplete as it lacks a title, rating, or delivery details and is partially cut off at the bottom of the viewport."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "Neither reported issue describes a category filter selection problem or feed showing wrong cuisines; both are about truncation and incomplete card display."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

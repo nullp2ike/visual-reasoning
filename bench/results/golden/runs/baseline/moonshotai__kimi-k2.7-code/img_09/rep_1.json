@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:02:53.308Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page appears mostly functional, but there are a few minor visual/content issues: a horizontally truncated restaurant card with an incomplete name, a suspected typo in a restaurant name, and the bottom list card being cropped by the viewport fold.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in the 'Fastest near you' horizontal list ('Trattoria Piccol...') is visibly cropped at the right screen edge and its name is truncated with an ellipsis, which can look like broken or clipped content in a static view.",
+        "suggestion": "Either add a peek/padding to the trailing card to clearly indicate horizontal scrolling, or allow the card to sit fully within the viewport; ensure long restaurant names have consistent truncation rules."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The restaurant name 'Tokumaru Ramei' is displayed while its cuisine category is listed as 'Ramen', suggesting a possible typo in the restaurant name.",
+        "suggestion": "Verify the restaurant name; if it should be 'Tokumaru Ramen', correct the spelling to match the cuisine category."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second card in the 'Popular right now' section (pizza) is cut off at the bottom of the screen, which is expected for scrollable content but can appear visually incomplete in a screenshot.",
+        "suggestion": "Ensure sufficient bottom padding on the scroll container so the last card is not obscured by the bottom navigation or screen edge."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 1786,
+    "reasoningTokens": 1420,
+    "estimatedCost": 0.00834242,
+    "reportedCost": 0.01809028,
+    "durationSeconds": 10.199933749999968
+  }
+}

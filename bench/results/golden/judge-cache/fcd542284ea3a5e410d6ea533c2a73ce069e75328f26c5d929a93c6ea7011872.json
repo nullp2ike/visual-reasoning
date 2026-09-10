@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "The 'Trattoria Piccol...' restaurant card and its title are cut off at the right screen edge, with the name truncated mid-word and no visible scroll indicator or fade gradient to signal that the row is horizontally scrollable.",
+    "The category filter chip row ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') is clipped at the right edge with a partially visible chip, again without a clear scroll affordance.",
+    "Inconsistent vertical alignment in the 'Fastest near you' row: the first card (Green Bowl Poké) has its image top-aligned differently and lacks the dark background treatment of the other two cards, making the row look visually uneven."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "cosine 0.70 >= 0.69 threshold (reported #2)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_07",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:25:30.570Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there are a few visual defects: a loading spinner stuck on top of an already-loaded restaurant image, a truncated restaurant name in the carousel, and a partially clipped filter chip with no visual affordance.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "A loading spinner is displayed in the center of the 'Tokumaru Ramen Bar' hero image even though the image content behind it appears fully loaded. This makes the card look broken or perpetually loading.",
+        "suggestion": "Hide the spinner once the image has finished loading, or ensure the loading state is properly cleared when the image render completes."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third restaurant name in the 'Fastest near you' carousel is cut off ('Trattoria Piccol...') without an ellipsis, making the text look abruptly clipped at the screen edge.",
+        "suggestion": "Apply text truncation with an ellipsis within the card bounds, or ensure the card layout keeps the title fully inside the visible card area even when partially scrolled."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A filter chip after 'Healthy' is clipped at the right edge showing only a small empty sliver, which looks like a stray UI fragment rather than an intentional scroll hint.",
+        "suggestion": "Adjust chip spacing/peek amount so the partially visible chip shows enough of its label to clearly signal horizontal scrollability."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 705,
+    "estimatedCost": 0.054990000000000004,
+    "durationSeconds": 15.144853082999994
+  }
+}

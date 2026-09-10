@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The horizontal category row is cut off at the right edge, leaving a partial pill visible with no clear indication that the row can scroll.",
+    "The third card in the “Fastest near you” carousel is clipped on the right, including its restaurant name and delivery details, which makes the content look truncated.",
+    "A circular loading spinner is centered over the “Tokumaru Ramen Bar” image, obscuring the food image and appearing stuck in the rendered state.",
+    "The second “Popular right now” restaurant card is partially hidden behind the fixed bottom navigation, making its image and content appear abruptly cut off."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Issue 2 describes a loading spinner displayed over already-loaded content (the restaurant image), matching the expected defect of a spinner overlaying loaded UI."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

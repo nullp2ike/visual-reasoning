@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_10",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:55:56.368Z",
+  "status": "ok",
+  "result": {
+    "summary": "The screen renders mostly correctly, but the 'Fastest near you' carousel shows a duplicated restaurant entry and clipped content, and there are minor inconsistencies in card styling and horizontal overflow handling.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Fastest near you' carousel shows 'Green Bowl Poké' twice with identical 15–25 min ETA, €0.90 delivery and identical placeholder imagery, suggesting duplicated data in the list.",
+        "suggestion": "De-duplicate results by restaurant ID before rendering the carousel, and verify the API is not returning the same venue twice."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third carousel card ('Smash Bros Bu...') is cut hard at the right screen edge with its title and delivery text truncated mid-word and no trailing gutter, so it looks broken rather than intentionally scrollable.",
+        "suggestion": "Add horizontal padding/peek offset to the scroll container so the next card is partially visible with rounded edges, and truncate titles with an ellipsis instead of a hard clip."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chip row is also clipped at the right edge, showing only a sliver of the next chip with no visual affordance that it scrolls.",
+        "suggestion": "Add end padding and/or a fade/gradient mask on the chip row to signal horizontal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Favorite (heart) buttons are styled inconsistently: the ramen card uses a white circular button while the pizza card below uses a dark circular button.",
+        "suggestion": "Use a single consistent favourite button style (e.g. translucent white background with dark icon) across all restaurant cards."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant images in the 'Fastest near you' row appear to be generic grey placeholder illustrations rather than real venue photos, and two are identical.",
+        "suggestion": "Load actual venue imagery, and provide distinct branded fallbacks when an image is unavailable."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary text such as '€0.90 delivery' and the 'DELIVER TO' label uses light grey on white, which may fall below the 4.5:1 contrast requirement.",
+        "suggestion": "Darken the muted grey text tone to meet WCAG AA contrast for small text."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 1098,
+    "estimatedCost": 0.037320000000000006,
+    "durationSeconds": 18.923492458999974
+  }
+}

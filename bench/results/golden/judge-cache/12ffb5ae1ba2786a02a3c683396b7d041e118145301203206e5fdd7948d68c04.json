@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Promo banner text is unreadable, white text on a pale mint background"],
+  "reportedIssues": [
+    "Promotional banner text '3 free deliveries for you' and subtext 'Use code TALLINN3 at checkout...' is white on a very light mint background, resulting in extremely low contrast and nearly unreadable text.",
+    "Restaurant thumbnails in 'Fastest near you' section appear blurry / low-resolution, especially the burger and poke bowl images, compared to sharp UI text around them.",
+    "Delivery time badges use inconsistent formatting: '15-25 min' and '20-30 min' vs '20-30 min' with spaces around hyphen on the third card."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.82 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

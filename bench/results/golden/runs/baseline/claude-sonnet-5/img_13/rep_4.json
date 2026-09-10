@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_13",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:01:34.062Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 issues: content is cut off at the horizontal edge of the screen in the 'Fastest near you' section, a restaurant name is truncated, and there's an unlabeled/empty circular avatar element in the top right.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Fastest near you' horizontal scroll section cuts off the third card (Trattoria Piccolo) at the screen edge, showing only a partial view which looks broken rather than indicating scrollability",
+        "suggestion": "Add a visual cue like a peek of the next card with proper padding or a fade gradient to indicate horizontal scrolling is available"
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol...' is truncated without ellipsis styling, cutting off mid-word at the screen edge",
+        "suggestion": "Ensure text truncation uses proper ellipsis or reflows within visible card boundaries"
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Empty gray circular avatar/profile icon in the top right corner has a small red dot notification but no visible icon or image inside it",
+        "suggestion": "Add a profile icon or user image placeholder inside the circle for clarity"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 423,
+    "estimatedCost": 0.012267,
+    "durationSeconds": 6.657576750000008
+  }
+}

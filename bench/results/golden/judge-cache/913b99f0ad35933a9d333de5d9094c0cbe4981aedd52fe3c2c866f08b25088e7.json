@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The 'Fastest near you' horizontal carousel shows a cut-off third item ('Smash Bros Bu...') with truncated restaurant name and image, which may look unintentional rather than clearly indicating scrollable content.",
+    "The restaurant name 'Smash Bros Bu...' is truncated abruptly without ellipsis styling that clearly indicates a scroll interaction.",
+    "The first two 'Green Bowl Poké' entries appear to be duplicate listings with identical images, delivery times, and prices, which may confuse users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Reported issue 2 directly identifies two duplicate Green Bowl Poké entries with identical details in the carousel."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

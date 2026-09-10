@@ -1,0 +1,24 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The third 'Fastest near you' card is clipped on the right, cutting off the restaurant name ('Trattoria Piccol...') and most of the image.",
+    "The lower popular listing (pizza with -20%) has no restaurant name, rating, or delivery metadata under the image.",
+    "The category chip row is clipped on the right (partial 'Healthy' chip and a cut-off next chip).",
+    "The ramen restaurant name appears to lose its last letter ('Tokumaru Ramer' vs expected 'Ramen')."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "cosine 0.71 >= 0.69 threshold (reported #3)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

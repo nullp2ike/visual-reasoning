@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_16",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:51:12.126Z",
+  "status": "ok",
+  "result": {
+    "summary": "The layout is largely intact, but there is a clearly broken favorite (heart) button on the second 'Popular right now' card, plus an inconsistency between the active 'Pizza' filter and the listings shown, and a mismatched thumbnail treatment in the 'Fastest near you' carousel.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "styling",
+        "description": "The favorite/heart button on the second 'Popular right now' card (the pizza card) uses a dark/near-black circular background with a dark outlined heart, making it nearly invisible against the dark food image. The equivalent button on the Tokumaru Ramen Bar card above uses a white circle with a dark heart, so the two are visually inconsistent and the second one fails contrast.",
+        "suggestion": "Apply the same white (or semi-transparent light) circular background and dark heart icon to every favorite button so the control is always legible over imagery."
+      },
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The 'Pizza' category chip is shown as selected (dark/active), yet the results below include poké, burgers, pasta and ramen restaurants, implying the filter is not being applied to the listings.",
+        "suggestion": "Either apply the selected category filter to the restaurant sections, or reset the chip to 'All' when unfiltered content is displayed."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "In the 'Fastest near you' carousel, the first thumbnail (Green Bowl Poké) has a light gray background while the neighbouring cards use dark photographic backgrounds, creating an inconsistent visual rhythm; the white '15–25 min' badge also has weak contrast on that light tile.",
+        "suggestion": "Normalise thumbnail backgrounds/treatments across carousel items and add a subtle scrim or darker badge background so the duration badge stays readable on light images."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 885,
+    "estimatedCost": 0.032560000000000006,
+    "durationSeconds": 35.69460679100011
+  }
+}

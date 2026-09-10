@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Promo banner text is unreadable, white text on a pale mint background"],
+  "reportedIssues": [
+    "Promo banner text '3 free deliveries for you' and 'Use code TALLINN3 at checkout' is white on very light mint green and is nearly unreadable due to extremely low contrast.",
+    "Bottom restaurant card with pizza image and -20% badge is abruptly cut off and hidden behind the bottom tab bar, with no restaurant name, rating or metadata visible.",
+    "Third item in 'Fastest near you' carousel is truncated mid-word as 'Trattoria Piccol' without ellipsis, and far-right category chip is half cut off.",
+    "Restaurant thumbnail images in 'Fastest near you' appear blurry and low-resolution, especially burger and right-side dish."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.84 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

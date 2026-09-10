@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:53:42.996Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely functional, but a raw localization key is rendered as a section heading, and there are minor inconsistencies in card styling and truncated content.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "The second section heading displays the raw i18n key 'home_feed.popular_title' instead of a translated label such as 'Popular near you'.",
+        "suggestion": "Add the missing translation string for the 'home_feed.popular_title' key and add a fallback so raw keys are never shown to users."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) buttons on the two restaurant cards use inconsistent backgrounds — the first is a light/white circle, the second is a dark circle — creating visual inconsistency and different contrast levels.",
+        "suggestion": "Standardize the favorite button treatment (e.g., always a semi-transparent dark scrim with a white icon) so it reads consistently over any image."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in the 'Fastest near you' carousel is clipped mid-title ('Trattoria Piccol') with no visual affordance that the row scrolls horizontally.",
+        "suggestion": "Add a peek/fade edge or partial card offset and ensure titles truncate with an ellipsis rather than being hard-cut by the viewport."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Category chips row ('All, Pizza, Sushi, Burgers, Healthy…') is cut off at the right edge with no scroll indicator, so additional categories may be missed.",
+        "suggestion": "Add a fade gradient or chevron affordance at the right edge to signal more filters are available."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 723,
+    "estimatedCost": 0.027945,
+    "durationSeconds": 12.848281832999985
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_07",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:02:52.794Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual issues on the page: a loading spinner visible on a restaurant image and a partially cut-off restaurant card.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "performance",
+        "description": "The 'Tokumaru Ramen Bar' restaurant image shows a loading spinner overlay, indicating the image has not fully loaded or is stuck in a loading state.",
+        "suggestion": "Ensure images are fully loaded before rendering, implement proper lazy loading with fallback states, or use skeleton screens to avoid showing raw spinners over content."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third restaurant card 'Trattoria Piccol...' in the 'Fastest near you' section is cut off both in its image and its name text, making it partially unreadable.",
+        "suggestion": "While horizontal scrolling carousels intentionally show partial cards as affordance, ensure the restaurant name is not clipped — consider truncating with an ellipsis or ensuring at least the full name is visible."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 269,
+    "estimatedCost": 0.009510000000000001,
+    "durationSeconds": 7.194566374999937
+  }
+}

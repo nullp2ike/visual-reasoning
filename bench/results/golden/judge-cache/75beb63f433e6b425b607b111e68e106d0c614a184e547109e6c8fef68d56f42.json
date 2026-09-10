@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "The bottom restaurant card (pizza) in the 'Popular right now' section is vertically cut off, with only the top portion visible within the viewport.",
+    "Search placeholder contains a typo: 'Restarants' instead of 'Restaurants'.",
+    "The third card in the 'Fastest near you' horizontal list is partially cut off at the right edge and the restaurant name 'Trattoria Piccol' appears truncated."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.81 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

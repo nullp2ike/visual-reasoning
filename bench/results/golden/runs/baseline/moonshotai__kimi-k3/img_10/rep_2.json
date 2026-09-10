@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:57:49.744Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly usable, but the clearest visual problem is a duplicated restaurant card in the “Fastest near you” row. A couple of minor contrast/clipping concerns are also present.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "“Green Bowl Poké” appears twice side-by-side with the same image, ETA, and delivery fee, making the carousel look like it is rendering duplicate data.",
+        "suggestion": "Deduplicate restaurant results before rendering and add a visual regression check for repeated cards in horizontal lists."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Small green text such as “See all”, “€0 delivery”, and “€0.90 delivery” may be hard to read for low-vision users, especially at small sizes.",
+        "suggestion": "Increase font size/weight or darken the green to meet WCAG contrast guidance for small text."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The rightmost category chip and parts of carousel cards are clipped at the screen edge; while this can indicate scrollability, the clipping looks slightly accidental where titles are cut off.",
+        "suggestion": "Add consistent edge padding and a clearer peek amount/fade so partially visible items look intentional."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 639,
+    "outputTokens": 807,
+    "reasoningTokens": 536,
+    "estimatedCost": 0.014022,
+    "reportedCost": 0.0137628,
+    "durationSeconds": 38.330691834
+  }
+}

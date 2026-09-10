@@ -1,0 +1,24 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The fixed bottom navigation overlaps the content. The second restaurant card in the “Popular right now” section is partially hidden behind the nav bar, making the card feel cut off.",
+    "Several horizontal carousel items are visibly cut off at the right edge, including the category chips and the “Fastest near you” restaurant cards. This may be intentional, but the partial unlabeled chip/card can look broken.",
+    "The restaurant name appears as “Tokumaru Ramei,” which looks like a typo or truncated version of “Tokumaru Ramen.”",
+    "The third card title in “Fastest near you” is clipped at the right edge without a visible ellipsis, making it look abruptly cut off."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "cosine 0.76 >= 0.69 threshold (reported #2)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

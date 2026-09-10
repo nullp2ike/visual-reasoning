@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The third restaurant card 'Trattoria Piccol' in the 'Fastest near you' section is partially cut off on the right side of the screen, making the full card content not visible",
+    "The second restaurant card in the 'Popular right now' section is cut off at the bottom of the screen, with only the promotional tag '-100%' and partial image visible, but restaurant name and details are hidden"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.61 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

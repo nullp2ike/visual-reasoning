@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_18",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:02:03.418Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual issues on the food delivery app page: one truncated restaurant card and one partially visible category filter.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' section ('Trattoria Piccol...') is cut off at the right edge of the screen, with the restaurant name truncated mid-word.",
+        "suggestion": "Ensure the horizontal scroll container shows a clear visual affordance (e.g., partial card peek) that is intentional, and make sure the restaurant name does not get cut in a confusing way — consider limiting the name to full words or adding an ellipsis properly."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category filter pill in the horizontal filter row (after 'Healthy') is partially visible and cut off, showing only a sliver of the next option.",
+        "suggestion": "This appears to be an intentional peek pattern to indicate scrollability, but consider adding a subtle fade/gradient on the right edge to make it clearer that the row is horizontally scrollable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 290,
+    "estimatedCost": 0.009825,
+    "durationSeconds": 9.387907541999942
+  }
+}

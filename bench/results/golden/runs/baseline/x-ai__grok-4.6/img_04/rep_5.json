@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_04",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:31:36.387Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content problems: restaurant names are clipped, a promo discount shows “-0%”, and the last restaurant card is cut off by the tab bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant in “Fastest near you” has its name truncated (“Trattoria Piccol”) because the card is cut off at the screen edge.",
+        "suggestion": "Allow the horizontal list to scroll fully or wrap/scale names so the full restaurant name is visible."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza card shows a “-0%” badge, which looks like a broken or empty discount.",
+        "suggestion": "Hide the badge when the discount is 0% or show a valid promotion value."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card is clipped by the bottom tab bar, so the image and details are only partly visible.",
+        "suggestion": "Add enough bottom padding/safe-area inset so cards sit fully above the tab bar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chips row is cut off on the right (partial “Healthy” chip and next item).",
+        "suggestion": "Make the chip row clearly scrollable with a peek of the next chip or add spacing so it doesn’t look accidentally cropped."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Notification bell has a red badge with no visible count, so the alert is unclear.",
+        "suggestion": "Show a number or provide an accessible label describing how many notifications there are."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 347,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.0058460000000000005,
+    "reportedCost": 0.003158,
+    "durationSeconds": 7.602076249999998
+  }
+}

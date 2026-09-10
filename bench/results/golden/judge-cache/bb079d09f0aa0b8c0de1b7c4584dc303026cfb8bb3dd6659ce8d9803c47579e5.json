@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "On the Tokumaru Ramen Bar card, the delivery time text ('25-30') overlaps and collides with the word 'delivery', producing unreadable garbled text ('25-30delivery').",
+    "The third restaurant in 'Fastest near you' has a truncated name: 'Trattoria Piccol' is cut off mid-word.",
+    "Tokumaru Ramen Bar shows delivery time but no delivery fee amount (unlike the cards above that show e.g. '€0.90 delivery'), leaving pricing incomplete."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 describes delivery time text ('25-30') overlapping with delivery fee text ('delivery'), causing garbled unreadable output, which matches the expected defect of delivery fee text overlapping delivery time text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

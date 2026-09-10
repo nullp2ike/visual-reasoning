@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The pizza restaurant card in the 'Popular right now' section displays a '–0%' discount badge, which is meaningless to the user (a zero-percent discount) and suggests a data or template bug where the discount value is missing or zero.",
+    "The favorite (heart) buttons on the two 'Popular right now' cards have inconsistent backgrounds: the first appears as a plain white heart with no visible circular background, while the second has a dark semi-transparent circular background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the exact same defect: a discount badge displaying '–0%' on a card in the 'Popular right now' section."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

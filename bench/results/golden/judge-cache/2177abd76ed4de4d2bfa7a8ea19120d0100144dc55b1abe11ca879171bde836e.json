@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The third card in the 'Fastest near you' horizontal carousel ('Trattoria Piccol...') is cut off at the right screen edge, with its name truncated and image partially off-screen. While horizontal scroll is expected, there is no visual affordance (e.g., fade, partial peek with padding) indicating more content, and the truncation looks abrupt.",
+    "A circular loading spinner is overlaid in the center of the Tokumaru Ramen Bar card image in the 'Popular right now' section, indicating the image is still loading or stuck in a loading state while the rest of the page is fully rendered.",
+    "The promo banner text 'Use code TALLINN3 at checkout · min. order €10' is small and light on the green background, which may reduce readability."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Issue 1 describes a loading spinner overlaid on top of already-loaded content (the card image and rest of page), matching the expected defect of a spinner shown over loaded content."
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

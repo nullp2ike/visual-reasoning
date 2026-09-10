@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:37:43.891Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed, but there is one clear visual defect: in the 'Popular right now' section, the delivery-time text and the '€0 delivery' label overlap each other below the Tokumaru Ramen Bar card, producing garbled, unreadable text. Other elements (carousel clipping, bottom card cut-off) are expected behaviors and not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Below the 'Tokumaru Ramen Bar' card, the metadata line shows overlapping text: the delivery-time range (e.g. '25–35 min') and the '€0 delivery' label are rendered on top of each other, producing an unreadable jumble ('25–3€0 delivery').",
+        "suggestion": "Ensure the delivery-time and delivery-fee labels are laid out in a proper horizontal row with adequate spacing (e.g. flex row with gap) instead of being absolutely positioned or stacked in the same space, so each string is fully legible."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 882,
+    "reasoningTokens": 629,
+    "estimatedCost": 0.008879999999999999,
+    "reportedCost": 0.00776,
+    "durationSeconds": 57.107204333
+  }
+}

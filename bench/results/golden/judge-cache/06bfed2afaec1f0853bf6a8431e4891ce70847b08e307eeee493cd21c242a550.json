@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Promo banner text is unreadable, white text on a pale mint background"],
+  "reportedIssues": [
+    "The second restaurant card in the 'Popular right now' section is cut off at the bottom of the viewport. Only the food image and the '-20%' badge are visible, while the restaurant name, rating, delivery time, and cuisine type are hidden behind the bottom edge.",
+    "The third card in the 'Fastest near you' horizontal list shows the truncated restaurant name 'Trattoria Picco' with the remainder cut off by the right screen edge.",
+    "The promotional banner subtext 'Use code TALLINN3 at checkout · min. order €10' appears in a very light color against the pale mint-green background, resulting in low readability."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "cosine 0.75 >= 0.69 threshold (reported #2)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

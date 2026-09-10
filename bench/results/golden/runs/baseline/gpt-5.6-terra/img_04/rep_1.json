@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_04",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:33:56.384Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well structured, but horizontal content is visibly clipped at the right edge and the bottom navigation overlaps the scrolling restaurant content.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The horizontal category row is cut off on the right: an unlabeled partial pill is visible after “Healthy,” rather than a complete item or a clear scroll affordance.",
+        "suggestion": "Constrain the carousel cleanly to the viewport, add appropriate end padding/fade or a visible horizontal-scroll cue, and ensure partially visible chips do not look truncated."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The “Fastest near you” restaurant carousel is clipped at the right edge, leaving the third card’s image and title (“Trattoria Piccol…”) visibly truncated.",
+        "suggestion": "Use deliberate carousel peeking with enough space for the partial card, or adjust card widths/padding so the viewport does not awkwardly crop restaurant titles and card content."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlays the second “Popular right now” restaurant card, obscuring a substantial portion of its content.",
+        "suggestion": "Add bottom safe-area/content padding equal to the navigation height so the final scrollable cards can be fully viewed above the fixed navigation."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 275,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006921999999999999,
+    "durationSeconds": 5.189799292000011
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:04:14.894Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page appears mostly polished, but one layout issue stands out: the bottom restaurant card is clipped by the bottom edge of the screen, making it look visually broken/incomplete. There is also minor text truncation on one of the horizontal restaurant cards.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom restaurant card (pizza with -20% badge) is cut off at the bottom edge of the screen and appears to extend behind the bottom navigation bar area, making the card look incomplete and potentially obscuring content.",
+        "suggestion": "Add sufficient bottom padding or safe-area inset to the scrollable content container so the last card is fully visible above the bottom navigation bar."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The restaurant name 'Trattoria Picco' in the 'Fastest near you' horizontal card is truncated with an ellipsis, so the full name is not visible.",
+        "suggestion": "Either widen the card, allow text to wrap to a second line, or use a shorter display name so the full restaurant name is readable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 2655,
+    "reasoningTokens": 2391,
+    "estimatedCost": 0.01160117,
+    "reportedCost": 0.02200228,
+    "durationSeconds": 14.557441417000023
+  }
+}

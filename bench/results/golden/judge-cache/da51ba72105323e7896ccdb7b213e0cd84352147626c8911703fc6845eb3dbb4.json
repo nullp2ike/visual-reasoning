@@ -1,0 +1,24 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The third restaurant card 'Trattoria Piccol...' in the 'Fastest near you' section is cut off at the edge of the screen, with the name and delivery info truncated.",
+    "The heart/favorite icon on the Tokumaru Ramen Bar image is white/outline while the one on the pizza image below is a solid dark circle with white heart, creating inconsistent styling between similar components.",
+    "The category filter row (All, Pizza, Sushi, Burgers, Healthy) appears to have an additional category cut off at the right edge, suggesting the scrollable row isn't fully indicating more content is available.",
+    "The bottom navigation bar's middle search icon appears to have an unusual elongated bar/slider shape instead of a standard search icon, which looks visually broken or inconsistent with typical navigation icon design."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "cosine 0.72 >= 0.69 threshold (reported #3)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

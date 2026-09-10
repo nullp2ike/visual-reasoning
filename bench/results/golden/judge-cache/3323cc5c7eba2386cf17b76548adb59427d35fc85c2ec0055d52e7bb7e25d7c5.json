@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "In the 'Popular right now' section, the Tokumaru Ramen Bar listing shows overlapping text: '25-35 min delivery' text appears to be rendering on top of or mixed with delivery time information, making it difficult to read clearly. The delivery time and category text appear jumbled together.",
+    "The third restaurant card in 'Fastest near you' section ('Trattoria Piccol...') has its name truncated without an ellipsis or proper overflow handling, cutting off mid-word."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe overlapping text involving delivery fee/time information in a restaurant listing, making the text difficult to read."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

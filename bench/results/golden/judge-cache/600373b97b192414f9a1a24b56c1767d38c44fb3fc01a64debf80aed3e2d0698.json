@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section title displays the raw localization key `home_feed.popular_title` instead of a user-facing label.",
+    "Several horizontally scrollable elements are cut off at the right edge, including the category chip row and the restaurant cards in the “Fastest near you” carousel. This may be intentional, but it looks slightly abrupt without a clear scroll affordance.",
+    "The lower restaurant card is partially obscured by the fixed bottom navigation area, making the visible content feel cramped at the bottom of the screen."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.92 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

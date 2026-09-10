@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off on the right edge of the Fastest near you carousel card.",
+    "The Fastest near you horizontal list clips the third restaurant card so only part of the image and text is visible, looking broken.",
+    "Category filter chips (e.g. Healthy) are cut off at the right edge with no clear affordance that the row scrolls.",
+    "The bottom Popular right now card (pizza image with -20%) is heavily cropped by the bottom navigation, so the offer looks incomplete.",
+    "Delivery fee on Green Bowl Poké shows '€0.90 delivery' while the promo banner emphasizes free deliveries, which can look inconsistent."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.67 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 4]
+  }
+}

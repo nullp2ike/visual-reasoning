@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The 'Pizza' category pill is selected as active, but the visible restaurants do not match: Green Bowl Poke, Smash Bros Burgers, and Tokumaru Ramen Bar (Ramen) are shown.",
+    "The third card in 'Fastest near you' shows the name truncated as 'Trattoria Piccol' with the final letter cut off at the screen edge without ellipsis.",
+    "Favorite heart icons are inconsistent: the Tokumaru Ramen Bar card shows a plain white outline with no background, while the pizza card below shows a heart inside a dark circular background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The report states that Pizza is selected but the feed shows restaurants from unrelated cuisines, matching the category filtering defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

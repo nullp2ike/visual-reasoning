@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The pizza restaurant card shows a '−100%' discount badge, which implies the order would be entirely free. This is almost certainly a data or calculation error.",
+    "In the 'Fastest near you' carousel, the third restaurant name is cut off as 'Trattoria Piccol' with no ellipsis, making it look broken rather than intentionally scrollable.",
+    "At the right edge of the category filter row there is a partially visible chip that appears completely empty (no text visible), which looks like a rendering glitch.",
+    "The bottom pizza card is abruptly cut off by the tab bar with no visual scroll affordance or fade, making the content boundary look clipped.",
+    "The placeholder text in the search field ('Restaurants, dishes, groceries') uses light gray on a light gray background, giving low contrast."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Report 0 explicitly describes a pizza restaurant card displaying a −100% discount badge as a data/calculation error."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

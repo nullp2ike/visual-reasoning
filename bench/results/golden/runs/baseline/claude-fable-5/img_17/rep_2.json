@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:53:08.919Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there is a notable state inconsistency in the bottom navigation, plus a few edge/cropping issues in horizontal carousels that hurt polish.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom navigation shows 'Profile' as the active (highlighted green) tab, but the screen displayed is clearly the Home/discovery feed. The 'Home' tab should be active.",
+        "suggestion": "Fix the active-tab state logic so the highlighted nav item matches the currently displayed screen (Home should be highlighted here)."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category chip in the filter row (after 'Healthy') is cut off at the right edge with no visible label, appearing as an empty sliver of a pill.",
+        "suggestion": "Adjust chip spacing/peek width so partially visible chips show at least part of their label, or add a gradient fade to clearly indicate horizontal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third restaurant card title 'Trattoria Piccol...' is truncated abruptly at the screen edge without an ellipsis, making the name unreadable.",
+        "suggestion": "Apply text ellipsis within the card bounds or ensure card text wraps inside the visible card area rather than being clipped by the viewport."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The pizza card in 'Popular right now' is cut off at the bottom by the navigation bar, hiding its title, rating, and delivery info.",
+        "suggestion": "If this is not just mid-scroll state, add bottom padding to the scroll container so the last card's metadata is fully visible above the tab bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 722,
+    "estimatedCost": 0.05584,
+    "durationSeconds": 14.539179707999995
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The restaurant discovery feed is displayed while the Profile tab in the bottom navigation is highlighted as active.",
+    "Horizontal content is visibly clipped at the right edge: the category row shows a partial next pill, and the third restaurant card and its name are cut off.",
+    "The fixed bottom navigation overlays the next restaurant card, cutting off its image/content without visible bottom spacing.",
+    "The partially visible category pill at the far right appears as an unlabeled light-gray sliver, which can look like an accidental rendering artifact."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the Profile tab highlighted while the restaurant discovery feed is displayed, matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

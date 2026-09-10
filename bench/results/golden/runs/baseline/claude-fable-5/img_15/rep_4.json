@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_15",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:52:39.751Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed, but there are several visual defects: a stray horizontal line runs across the bottom navigation bar, the bottom nav icons are cut off by the screen edge, a category chip on the right is clipped and appears empty, and the second restaurant card in 'Popular right now' shows an image with a discount badge but no visible restaurant name or details before the nav bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "styling",
+        "description": "A stray horizontal black line stretches across the bottom navigation bar, running through the search and orders icons. It does not look like an intentional design element and makes the icons appear struck-through.",
+        "suggestion": "Remove or fix the misrendered line/divider element in the bottom navigation; ensure icons render without overlapping artifacts."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom navigation icons (home, search, orders, profile) are partially cut off at the bottom edge of the screen, with no labels visible and the icons clipped mid-shape.",
+        "suggestion": "Add proper bottom padding / safe-area inset so the nav bar and its icons are fully visible above the screen edge."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category filter chip on the right side is clipped at the screen edge and appears as an empty pill with no visible label, which looks broken rather than like an intentional scroll hint.",
+        "suggestion": "Ensure the chip carousel shows a partial but readable label, or add a fade/gradient edge to clearly indicate horizontal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third card in 'Fastest near you' shows a truncated name ('Trattoria Piccol...') without an ellipsis, so the text is hard-clipped at the screen edge.",
+        "suggestion": "Apply text truncation with an ellipsis or constrain the label width to the visible card area."
+      },
+      {
+        "priority": "minor",
+        "category": "missing-element",
+        "description": "The second 'Popular right now' card (pizza image with −20% badge) shows no restaurant name, rating, or delivery info before being cut off by the bottom nav, unlike the Tokumaru Ramen Bar card above it.",
+        "suggestion": "Verify the card's metadata (name, rating, delivery time) renders below the image, and ensure content scrolls above the bottom navigation rather than being hidden behind it."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 1047,
+    "estimatedCost": 0.07209,
+    "durationSeconds": 20.342569749999996
+  }
+}

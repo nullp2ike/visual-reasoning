@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:31:01.171Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several layout and content clipping issues: truncated restaurant names, a partially cut-off category chip, and incomplete text on a popular restaurant card.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The restaurant name 'Trattoria Piccol' is truncated/cut off at the end of the card in the 'Fastest near you' section.",
+        "suggestion": "Allow the title to wrap to two lines, reduce font size, or ensure the card width accommodates the full name without clipping."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category filter chip ('Healthy') is only partially visible and cut off at the right edge of the screen.",
+        "suggestion": "Ensure horizontal scrolling affords a clear peek of the next chip, or add padding so chips aren't harshly clipped mid-label if more categories exist."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The second popular restaurant card (pizza) shows only a discount badge and image with no visible restaurant name, rating, or delivery info in the current viewport framing—name may be missing or pushed below.",
+        "suggestion": "Verify card layout so title and metadata remain visible with the image, or ensure consistent card structure matching the ramen card above."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 322,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005856,
+    "reportedCost": 0.002592,
+    "durationSeconds": 59.23507449999999
+  }
+}

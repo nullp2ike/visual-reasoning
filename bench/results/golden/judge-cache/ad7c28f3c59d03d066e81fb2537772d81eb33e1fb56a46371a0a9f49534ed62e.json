@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The 'Pizza' category chip is shown as active/selected, yet the results below are poké, burgers, pasta and ramen restaurants — the filter appears to have no effect on the listings.",
+    "In the 'Fastest near you' carousel the third card ('Trattoria Piccol...') is hard-cut by the screen edge and its name is truncated mid-word with no ellipsis, so it reads as broken text.",
+    "The favourite heart buttons use inconsistent styling: the Tokumaru card has a white circular button with a dark outline heart, while the pizza card below has a dark/transparent circle with a white heart.",
+    "The category chip row is clipped at the right edge with a partially visible chip, giving no clear affordance that the row scrolls.",
+    "The second 'Popular right now' card is cut off by the bottom navigation bar with no bottom spacing, so its content sits directly under the nav.",
+    "The notification bell badge and the promo banner's white-on-green secondary line ('Use code TALLINN3 ... min. order €10') are small/low-emphasis, risking readability for low-vision users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes Pizza category appearing selected while unfiltered results (poké, burgers, pasta, ramen) display below—exact match to the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

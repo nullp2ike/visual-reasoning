@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-4-5",
+  "provider": "anthropic",
+  "imageId": "img_14",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:06:21.054Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: a major text truncation problem in restaurant name and a minor layout issue with partially visible content at the bottom.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' appears truncated in the rightmost card under 'Fastest near you' section - the full name is likely 'Trattoria Piccolo' but the last character is cut off",
+        "suggestion": "Ensure restaurant names have sufficient space within their cards or use text ellipsis (...) if names are too long, rather than hard clipping"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom restaurant card (pizza with -20% discount) is partially cut off at the bottom of the screen, showing only the top portion of the card",
+        "suggestion": "Add bottom padding to the 'Popular right now' section or adjust card spacing to ensure complete card visibility without requiring scroll, or make the cut-off more intentionally designed"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1854,
+    "outputTokens": 1022,
+    "estimatedCost": 0.006964000000000001,
+    "durationSeconds": 12.225317583999946
+  }
+}

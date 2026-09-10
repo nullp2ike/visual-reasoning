@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:38:37.828Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 clear defect: an invalid delivery fee value rendered as €NaN on a restaurant card. Other clipped carousel items and bottom viewport cutoff are excluded per instructions.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Smash Bros Burgers' card in 'Fastest near you' displays '€NaN delivery', indicating the delivery price failed to resolve to a valid number.",
+        "suggestion": "Guard the delivery-fee formatting against null/undefined/NaN and either compute the fee correctly, show a fallback such as 'Delivery unavailable', or hide the card until pricing data loads."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2186,
+    "outputTokens": 317,
+    "reasoningTokens": 207,
+    "estimatedCost": 0.011313,
+    "reportedCost": 0.011313,
+    "durationSeconds": 68.544103916
+  }
+}

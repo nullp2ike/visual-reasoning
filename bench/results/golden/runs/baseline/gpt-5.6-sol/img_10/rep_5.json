@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "imageId": "img_10",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:31:49.880Z",
+  "status": "ok",
+  "result": {
+    "summary": "No critical breakage is visible. The main issues are awkward horizontal clipping at the right edge and content appearing beneath the fixed bottom navigation.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category selector ends with a partially visible, unlabeled pill at the right edge, which looks like a clipped or broken control.",
+        "suggestion": "Adjust the horizontal carousel padding or initial scroll position so the next category shows enough label to be recognizable, or hide it fully until scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in the “Fastest near you” row is heavily cut off, including its restaurant name, creating an abrupt edge rather than a clear carousel preview.",
+        "suggestion": "Use consistent card widths and right-side padding so a deliberate portion of the next card is visible without clipping its text awkwardly."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The lower restaurant card extends behind the fixed bottom navigation, making the content appear partially obscured.",
+        "suggestion": "Ensure the scrolling content has adequate bottom inset or padding equal to the navigation bar and device safe area."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 640,
+    "reasoningTokens": 398,
+    "estimatedCost": 0.028255000000000002,
+    "durationSeconds": 16.36472054100002
+  }
+}

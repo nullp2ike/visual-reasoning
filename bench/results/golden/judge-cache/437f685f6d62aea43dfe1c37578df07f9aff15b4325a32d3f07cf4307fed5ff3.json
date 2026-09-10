@@ -1,0 +1,25 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The bottom navigation highlights 'Profile' as the active tab, but the screen displayed is the Home/discovery feed (address, search, promo banner, restaurant lists).",
+    "The third card in 'Fastest near you' shows a hard-clipped title ('Trattoria Piccol') and clipped delivery text with no ellipsis, making it look broken rather than intentionally scrollable.",
+    "The second 'Popular right now' card (pizza) is cut off by the bottom navigation bar; its name, rating and metadata are not visible and the image is sliced mid-card.",
+    "The favorite (heart) buttons are styled inconsistently: white circular background on the ramen card, dark/translucent background on the pizza card.",
+    "Image treatment is inconsistent in the 'Fastest near you' row — the first card has a light gray background while the others use dark vignetted photos, making the row look unfinished.",
+    "The category chip row is clipped at the right edge with only a sliver of the next chip visible and no fade or arrow affordance.",
+    "Icon-only controls (notification bell with unread dot, heart favorite buttons) have no visible text labels, and accessible names cannot be inferred visually."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 directly describes the same defect: Profile tab is highlighted in bottom nav while Home feed is displayed."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5, 6]
+  }
+}

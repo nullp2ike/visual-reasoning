@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "imageId": "img_12",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:32:17.495Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visible layout issues, primarily in the restaurant listing metadata.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The metadata beneath “Tokumaru Ramen Bar” overlaps heavily. The delivery time and delivery-fee text render on top of each other, producing unreadable text such as “25–330delivery.”",
+        "suggestion": "Place each metadata item in a properly spaced flex row, prevent unintended negative spacing, and truncate or wrap content cleanly on narrow screens."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The rightmost cards and category chip are abruptly clipped at the screen edge, including the “Trattoria Picco…” card. Although this may be a horizontal carousel, the cutoff looks harsh and partially hides content.",
+        "suggestion": "Use consistent carousel gutters and card widths, with a deliberate partial-card preview or horizontal scroll affordance so the clipping appears intentional."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 437,
+    "reasoningTokens": 235,
+    "estimatedCost": 0.022165,
+    "durationSeconds": 12.742530999999959
+  }
+}

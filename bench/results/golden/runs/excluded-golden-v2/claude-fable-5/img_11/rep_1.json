@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_11",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:31:14.237Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed. The main visual/content anomaly is a '−100%' discount badge on the pizza restaurant card, which implies a completely free order and looks like a data or calculation error. A couple of minor cosmetic points were also noted.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza card in 'Popular right now' displays a '−100%' discount badge, which suggests everything is free. This is almost certainly a pricing/data error (or a mislabeled 'free delivery' promo) and undermines user trust.",
+        "suggestion": "Verify the discount value in the backend data. If the promo is actually free delivery, label it '€0 delivery' like the ramen card; otherwise cap or validate discount percentages so values like 100% are flagged before rendering."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Redundant '€0 delivery' information on the Tokumaru Ramen Bar card: it appears both as an overlay badge on the image and again in the metadata line below the title.",
+        "suggestion": "Show the free-delivery indicator only once (e.g., keep the badge on the image and drop it from the metadata row) to reduce visual clutter."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Inconsistent favorite (heart) button styling between cards: the ramen card uses a borderless white outline heart while the pizza card's heart sits in a dark translucent circle.",
+        "suggestion": "Apply a consistent heart-button treatment (same background chip and icon style) across all restaurant cards."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 706,
+    "estimatedCost": 0.05617000000000001,
+    "durationSeconds": 46.723823583999994
+  }
+}

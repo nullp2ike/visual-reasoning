@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:10.185Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content clipping issues: restaurant names and category chips are cut off, and a popular listing is missing its name/details.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third 'Fastest near you' card is clipped on the right, cutting off the restaurant name ('Trattoria Piccol...') and most of the image.",
+        "suggestion": "Ensure the last visible card has enough padding or a peek, and allow wrapping/ellipsis so names remain fully readable."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The lower popular listing (pizza with -20%) has no restaurant name, rating, or delivery metadata under the image.",
+        "suggestion": "Show the restaurant title, rating, time, and delivery info consistently like the ramen card above."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is clipped on the right (partial 'Healthy' chip and a cut-off next chip).",
+        "suggestion": "Add end padding and a clear scroll affordance so chips aren't hard-cut at the screen edge."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The ramen restaurant name appears to lose its last letter ('Tokumaru Ramer' vs expected 'Ramen').",
+        "suggestion": "Check typography/overflow so titles aren't truncated mid-character."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 362,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.005936,
+    "reportedCost": 0.003248,
+    "durationSeconds": 8.170852625
+  }
+}

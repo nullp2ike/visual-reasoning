@@ -1,0 +1,25 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The second 'Popular right now' card shows a '-100%' discount badge, which implies the entire order is free. This is almost certainly a data or formatting error (e.g. a discount fraction rendered as a percentage).",
+    "The third 'Fastest near you' card and its title ('Trattoria Piccol…') are cut off hard at the screen edge with no gutter, and the category chip row is likewise clipped mid-chip, making it unclear the rows are horizontally scrollable.",
+    "The favorite (heart) buttons on the two 'Popular right now' cards use different treatments: the first has a white filled circle with a dark outline heart, the second has a dark/transparent circle with a white heart. Inconsistent contrast also makes the second harder to see on the light pizza image.",
+    "On the Tokumaru Ramen Bar card, '€0 delivery' is shown both as an image badge and again in the metadata line, duplicating information.",
+    "The first 'Fastest near you' thumbnail has a pale grey background while the other thumbnails are dark, so the row looks visually uneven and the white time pill has weak contrast on the light image.",
+    "Cards in 'Fastest near you' show no rating, while 'Popular right now' cards do, making the two sections feel inconsistent in the information they provide.",
+    "Icon-only controls (notification bell with unread dot, heart favorite buttons) have no visible text label, so their purpose and state may not be conveyed to assistive technology."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.82 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5, 6]
+  }
+}

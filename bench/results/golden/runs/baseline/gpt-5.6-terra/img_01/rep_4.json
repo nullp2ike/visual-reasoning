@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_01",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:33:44.976Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well rendered, but it contains a prominent untranslated/localization key and horizontal content that is visibly clipped at the screen edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading displays the raw localization key \"home_feed.popular_title\" instead of a user-facing title.",
+        "suggestion": "Add or correct the localization entry for this key and render the translated section title (for example, \"Popular near you\")."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal category row and \"Fastest near you\" restaurant carousel are cut off at the right edge; the final category chip and Trattoria card are only partially visible.",
+        "suggestion": "Ensure the horizontal scrollers have deliberate end padding and/or a visible scroll affordance so the partial items read as intentional rather than clipped."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 186,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005854,
+    "durationSeconds": 5.107153500000015
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "imageId": "img_01",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:28:28.586Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found a visible content placeholder/debug string and a minor horizontal clipping issue in the restaurant carousel.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section header shows the raw localization key 'home_feed.popular_title' instead of a user-facing title.",
+        "suggestion": "Replace the untranslated key with the correct localized display text before releasing the page."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The restaurant carousel on the 'Fastest near you' row is cut off on the right edge, leaving the third card partially visible.",
+        "suggestion": "Adjust horizontal padding or carousel item sizing so the partial card looks intentional and doesn't appear clipped."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 278,
+    "reasoningTokens": 126,
+    "estimatedCost": 0.00260925,
+    "durationSeconds": 3.22393862500001
+  }
+}

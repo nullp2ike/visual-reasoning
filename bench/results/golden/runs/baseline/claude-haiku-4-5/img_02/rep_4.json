@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-4-5",
+  "provider": "anthropic",
+  "imageId": "img_02",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:04:38.849Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: a critical data display error and a major text truncation problem.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "functionality",
+        "description": "Smash Bros Burgers shows '€NaN delivery' instead of a valid delivery fee. NaN (Not a Number) indicates a data loading or calculation error.",
+        "suggestion": "Fix the backend logic that calculates delivery fees. Implement error handling to display a default value (e.g., '€0 delivery' or a loading state) if the delivery fee cannot be calculated."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated and doesn't display the full name (likely 'Trattoria Piccolo'). Users cannot see complete restaurant information.",
+        "suggestion": "Either increase the available space for restaurant names, use text ellipsis properly with a full name tooltip, or adjust the card layout to accommodate longer names."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1854,
+    "outputTokens": 696,
+    "estimatedCost": 0.005334,
+    "durationSeconds": 8.103589416999952
+  }
+}

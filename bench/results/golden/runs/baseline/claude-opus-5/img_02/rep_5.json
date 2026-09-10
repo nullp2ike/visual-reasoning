@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_02",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:53:57.152Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders mostly correctly, but there is a clear data-formatting bug in the 'Fastest near you' row (€NaN delivery) plus several smaller layout/styling inconsistencies around truncated card titles and mismatched favorite-button styling.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "The 'Smash Bros Burgers' card shows '€NaN delivery', indicating an unparsed/undefined delivery fee value leaking into the UI.",
+        "suggestion": "Validate the delivery-fee value before formatting; fall back to a placeholder like '—' or hide the line when the number is missing/NaN."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third card in the 'Fastest near you' carousel is clipped mid-title ('Trattoria Piccol') with no ellipsis or visible peek affordance, so it reads as broken text rather than scrollable content.",
+        "suggestion": "Apply text truncation with ellipsis to card titles and ensure the carousel shows a consistent partial-card peek with proper horizontal padding."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Favorite (heart) buttons are inconsistent: the ramen card uses a white circle with a dark outline heart, while the pizza card uses a dark circle with a white heart.",
+        "suggestion": "Standardize the favorite button style (same background, icon color, and size) across all restaurant cards, or reserve the filled variant strictly for the 'favorited' state."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The first card in 'Fastest near you' has a light gray image background while the other two are dark, making the row look visually uneven.",
+        "suggestion": "Normalize image aspect ratio/background treatment (or add a consistent gradient overlay) so all carousel thumbnails match."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second 'Popular right now' card is cut off by the bottom tab bar, hiding its name, rating, and delivery info without any indication that more content follows.",
+        "suggestion": "Add bottom padding to the scroll container equal to the tab bar height so the last card can be fully revealed on scroll."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 1070,
+    "estimatedCost": 0.03662,
+    "durationSeconds": 17.570253208999986
+  }
+}

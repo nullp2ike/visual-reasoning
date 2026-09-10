@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-luna",
+  "provider": "openai",
+  "imageId": "img_15",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:40:29.669Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well-structured, but there is a prominent visual artifact in the bottom navigation and some horizontally clipped content that may reduce clarity.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "styling",
+        "description": "A thick dark horizontal bar appears across the bottom navigation, overlapping the search icon and extending unusually far across the screen. It looks like a broken indicator, scrollbar, or rendering artifact.",
+        "suggestion": "Remove the stray bar or replace it with a properly sized tab-selection indicator that does not overlap navigation icons."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category carousel and the “Fastest near you” restaurant carousel are visibly cut off at the right edge, including a partially visible category chip and truncated restaurant card.",
+        "suggestion": "If these are intentional horizontal carousels, add a clearer overflow cue and ensure clipping is deliberate; otherwise constrain the content to the viewport or adjust card widths."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom navigation is very close to the screen edge, with some icon elements appearing visually cramped or partially clipped.",
+        "suggestion": "Add appropriate bottom safe-area padding and verify the navigation height across device sizes."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 669,
+    "reasoningTokens": 408,
+    "estimatedCost": 0.001165,
+    "durationSeconds": 7.978983291000011
+  }
+}

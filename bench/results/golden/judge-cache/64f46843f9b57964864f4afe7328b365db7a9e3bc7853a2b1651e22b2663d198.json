@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The 'Fastest near you' horizontal carousel clips the third card ('Trattoria Piccol...') at the right screen edge, truncating the restaurant name mid-word with no visible scroll indicator or fade-out hint.",
+    "The '-100%' discount badge on the second 'Popular right now' card is ambiguous and potentially misleading, as a 100% discount implies the item is free, which may not reflect the actual offer.",
+    "The category filter chips ('All', 'Pizza', 'Sushi', etc.) and the 'See all' links rely on color alone in some states, and the heart/favorite icons on cards have no visible text labels, which can be unclear for screen reader and low-vision users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 describes the '-100%' discount badge showing an ambiguous/misleading discount value, matching the expected defect of the discount badge displaying −100%."
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

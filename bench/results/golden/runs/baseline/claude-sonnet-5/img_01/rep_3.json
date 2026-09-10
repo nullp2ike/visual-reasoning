@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:59:57.258Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 issues: an untranslated placeholder key visible as section title, a cut-off card at the horizontal scroll edge, and minor category filter list appears clipped at screen edge.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "The section title displays raw localization key 'home_feed.popular_title' instead of translated text",
+        "suggestion": "Fix the localization binding so the proper translated string (e.g. 'Popular near you') is rendered instead of the raw key"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third restaurant card ('Trattoria Piccol...') under 'Fastest near you' is cut off at the right edge of the screen with no visual indication of scrollability",
+        "suggestion": "Add a partial fade/gradient or peek indicator to signal horizontal scrolling, or ensure consistent card cropping"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chips (All, Pizza, Sushi, Burgers, Healthy) are cut off at the right edge, showing a partially clipped next item",
+        "suggestion": "Add scroll affordance styling (fade edge) so users understand the list is scrollable"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 446,
+    "estimatedCost": 0.012612,
+    "durationSeconds": 6.672766165999929
+  }
+}

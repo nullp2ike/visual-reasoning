@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccol' is truncated/cut off at the end of the visible card in the Fastest near you row, making the full name unreadable.",
+    "The bottom pizza promotional card shows only the image and -20% badge with no restaurant name, delivery time, fee, or cuisine info (unlike the Tokumaru Ramen card above it)."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "Expected defect is about 'Tokumaru Ramen Bar' truncated to 'Tokumaru Ramei'; reported issues describe 'Trattoria Piccol' truncation and a pizza card missing text entirely, neither matching the specific element and defect."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

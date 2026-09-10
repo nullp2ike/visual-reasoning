@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_15",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:52:46.643Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is a food delivery app home screen that is mostly well-formed, but there are a few visual defects: a strange dark bar overlapping the bottom navigation icons, truncated restaurant/category labels at the right edge, and a bottom navigation lacking labels and clear active state.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the bottom navigation bar, a long dark horizontal line/bar stretches from the search icon to the receipt/orders icon, overlapping both icons. It looks like a rendering artifact or misplaced element (possibly a mispositioned home-indicator or progress bar) rather than intentional design.",
+        "suggestion": "Remove or reposition the stray bar element; if it is the device home indicator, it should be centered below the nav icons, not overlapping them."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third card in 'Fastest near you' shows a truncated restaurant name ('Trattoria Piccol...') because the card is clipped at the screen edge without an ellipsis or peek affordance styling.",
+        "suggestion": "Ensure the horizontal carousel clearly peeks the next card and truncate names with an ellipsis, or size cards so names fit within visible bounds."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category chip at the far right of the filter row (after 'Healthy') is cut off with no visible label, appearing as an empty gray sliver.",
+        "suggestion": "Adjust chip spacing/scroll padding so partially visible chips still show part of their label, signaling horizontal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Bottom navigation icons have no text labels and only the home icon appears highlighted; the search and orders icons are obscured, making the nav hard to interpret.",
+        "suggestion": "Add short text labels under each nav icon and a clear active-state indicator to improve clarity and accessibility."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 900,
+    "estimatedCost": 0.06474,
+    "durationSeconds": 17.062125249999998
+  }
+}

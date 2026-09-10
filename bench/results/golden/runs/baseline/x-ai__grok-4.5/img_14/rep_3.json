@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_14",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:53:43.580Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and truncation issues: restaurant names and cards are cut off, category chips overflow, and delivery time badges have weak contrast on light images.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated in the Fastest near you row, and the third card is partially clipped off-screen with no clear scroll affordance.",
+        "suggestion": "Ensure card titles use ellipsis or wrap fully, and show partial next cards with enough peek width or a clearer horizontal scroll indicator so names and content are not cut off."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The category filter row (All, Pizza, Sushi, Burgers, Healthy) overflows the screen edge with a clipped chip on the right and no visible scroll cue.",
+        "suggestion": "Add horizontal scroll with padding/peek of the next chip, or wrap/scroll chips so none are hard-clipped at the viewport edge."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The Popular right now section’s second promo card is cut off at the bottom by the tab bar, so users only see a partial image and badge.",
+        "suggestion": "Add bottom content padding above the tab bar so cards and text aren’t obscured, and ensure lists scroll fully into view."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery time badges (e.g. '15–25 min') sit on light food imagery with low contrast, making the white pill and dark text harder to read.",
+        "suggestion": "Use a stronger scrim/shadow behind badges or a consistently opaque background so label text remains readable on any image."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Promo banner and section headers are fine, but truncated names and clipped cards make key restaurant info incomplete at a glance.",
+        "suggestion": "Prefer shorter display names, responsive type, or two-line titles so primary labels stay fully legible in the card grid."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 507,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.0068059999999999996,
+    "reportedCost": 0.0037596,
+    "durationSeconds": 10.837233624999994
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel, the third restaurant name 'Trattoria Piccol...' is hard-clipped at the screen edge without an ellipsis, making the name unreadable and looking broken.",
+    "A category filter chip after 'Healthy' is cut off at the right edge showing only a sliver of an empty pill, which looks like a rendering glitch rather than an intentional scroll hint.",
+    "The profile avatar in the top-right corner is an empty gray circle with only a notification dot — no image, initials, or icon is displayed.",
+    "The bottom pizza card (with the −20% badge) is abruptly cut off by the tab bar with no visible restaurant name or details, making the last section look incomplete."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "cosine 0.75 >= 0.69 threshold (reported #2)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The second section heading displays the raw i18n key 'home_feed.popular_title' instead of a translated label such as 'Popular near you'. This is user-visible placeholder/debug text in a primary heading.",
+    "The favorite (heart) buttons on the two restaurant cards use inconsistent styling — the first has a white/light circular background while the second has a dark circular background.",
+    "The 'Fastest near you' carousel's third card ('Trattoria Piccol...') is clipped by the screen edge with its title truncated mid-word and no visible affordance that the row scrolls.",
+    "The category chip row is cut off at the right edge (a partial chip is visible past 'Healthy'), which can look like a rendering glitch rather than a scrollable row.",
+    "The bottom promo/pizza card is abruptly cut by the bottom navigation bar without any visible scroll indicator or bottom content inset."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the same section heading showing the raw home_feed.popular_title translation key instead of translated text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

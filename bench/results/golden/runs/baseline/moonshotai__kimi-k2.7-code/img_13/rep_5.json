@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_13",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:03:35.806Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly intact, but the horizontal restaurant list has a clear truncation problem where the last card and its restaurant name are clipped at the right edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' list is cut off on the right side, and its name is displayed as 'Trattoria Piccol' (missing final characters).",
+        "suggestion": "Increase the horizontal scroll padding, adjust card widths, or truncate with an ellipsis and ensure the full name is readable on the card or after scrolling into full view."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The 'Trattoria Piccol' restaurant name appears truncated because the card width is too narrow.",
+        "suggestion": "Allow the card to fully render the restaurant name, or use a smaller font size / multi-line text for longer names in fixed-width cards."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 1078,
+    "reasoningTokens": 867,
+    "estimatedCost": 0.00568742,
+    "reportedCost": 0.00938628,
+    "durationSeconds": 8.049197500000009
+  }
+}

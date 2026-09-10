@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Under “Tokumaru Ramen Bar”, the delivery time, delivery fee, and cuisine metadata are overlapping/garbled, rendering as something like “25–€0rdelivery” instead of separate readable tokens.",
+    "The category filter row and restaurant carousels are clipped at the right edge, e.g. “Healthy” and the next category card are partially cut off.",
+    "Restaurant names in horizontally scrolling cards are truncated, such as “Trattoria Piccol…”."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.75 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

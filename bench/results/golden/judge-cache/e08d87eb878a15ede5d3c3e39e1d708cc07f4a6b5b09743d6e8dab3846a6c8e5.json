@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccol' is cut off mid-word under the third card in the Fastest near you section.",
+    "A circular loading spinner is centered over the Tokumaru Ramen Bar card image, suggesting the image or card content failed to finish loading."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "The reported circular spinner overlays an otherwise displayed card image, matching a loading spinner shown on loaded content."
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

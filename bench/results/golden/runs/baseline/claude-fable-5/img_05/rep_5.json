@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_05",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:25:15.644Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-structured, but there are a few visual problems: the promotional banner text has very poor contrast (white/light text on a pale green background), a category chip is awkwardly clipped at the right edge, and horizontally scrolling content is truncated without clear affordance. Overall 4 issues found: 1 critical, 1 major, 2 minor.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "accessibility",
+        "description": "The promo banner text '3 free deliveries for you' and 'Use code TALLINN3 at checkout · min. order €10' is white/very light on a pale mint-green background, making it nearly unreadable and failing WCAG contrast requirements.",
+        "suggestion": "Change the banner text to a dark color (e.g., dark green or near-black) or darken the banner background so text meets at least a 4.5:1 contrast ratio."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the third restaurant name 'Trattoria Piccol...' is hard-clipped at the screen edge without ellipsis styling, making the name look broken rather than intentionally truncated.",
+        "suggestion": "Apply proper text truncation with an ellipsis within the card bounds, or add horizontal padding/peek spacing so partially visible cards look intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category filter chip after 'Healthy' is cut off at the right edge showing only a thin sliver, which looks like a rendering glitch.",
+        "suggestion": "Adjust chip spacing or add a fade/gradient edge on the horizontal chip list so partially visible chips clearly indicate scrollable content."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The star rating and review count '4.8 (500+)' for Tokumaru Ramen Bar sits on the same baseline as the restaurant name but is visually crowded against the right edge, and the '-20%' pizza card below is abruptly cut off by the bottom navigation bar.",
+        "suggestion": "Add bottom padding to the scroll container so the last card isn't obscured by the nav bar, and ensure consistent spacing between the rating block and the screen edge."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 887,
+    "estimatedCost": 0.06409000000000001,
+    "durationSeconds": 14.868915875000006
+  }
+}

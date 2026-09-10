@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:38:14.797Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally intact, but there is one clearly broken data display: a restaurant card renders an invalid delivery price as “€NaN”. Excluded carousel edge clipping and bottom viewport cutoff are not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The “Smash Bros Burgers” card shows “€NaN delivery”, indicating the delivery fee failed to load or was not formatted before rendering.",
+        "suggestion": "Guard against null/undefined delivery fees, format valid values as currency, and show a safe fallback such as “Free delivery”, “Delivery unavailable”, or hide the fee until data loads."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2186,
+    "outputTokens": 447,
+    "reasoningTokens": 384,
+    "estimatedCost": 0.013263,
+    "reportedCost": 0.0116001,
+    "durationSeconds": 32.393469042000014
+  }
+}

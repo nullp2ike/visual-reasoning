@@ -1,0 +1,19 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The 'Pizza' category pill is active, but unrelated items like Poké, Burgers, and Ramen are displayed below."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.69 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

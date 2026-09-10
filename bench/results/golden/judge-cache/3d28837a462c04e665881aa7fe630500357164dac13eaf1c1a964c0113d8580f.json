@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "The last restaurant card in Fastest near you is clipped on the right, cutting off the name 'Trattoria Piccol' and part of the image.",
+    "On the Tokumaru Ramen Bar card, '25–30' overlaps the word 'delivery', making the time and fee unreadable.",
+    "Category chips on the right (Healthy and the next item) are cut off by the screen edge.",
+    "The bottom popular card (pizza, −20%) is cropped by the tab bar so the restaurant name and details never appear.",
+    "The green promo banner’s circular decorations are cropped at the right edge.",
+    "The first popular card shows a leftover/overlapping fragment like '25-3' under the delivery time, which looks like a rendering glitch."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Issue 1 describes delivery time ('25–30') overlapping with delivery fee text ('delivery'), making both unreadable on a restaurant card."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3, 4, 5]
+  }
+}

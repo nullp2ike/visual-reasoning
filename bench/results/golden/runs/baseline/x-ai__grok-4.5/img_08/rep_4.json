@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_08",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:52:50.175Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual layout and content issues: truncated restaurant names, a cut-off category chip, and a partially cropped bottom card, plus incomplete delivery-time badges on some cards.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant name in 'Fastest near you' is truncated to 'Trattoria Piccol' with no ellipsis or full-name handling, so the brand is unreadable.",
+        "suggestion": "Allow multi-line titles, reduce font size on overflow, or use ellipsis with a tooltip/full name on tap so the full restaurant name is visible."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The horizontal category chips row is clipped on the right; only a sliver of the next pill is visible with no clear affordance that more categories exist.",
+        "suggestion": "Add consistent right padding/fade, ensure the last visible chip isn't cut mid-pill, and show a scroll indicator or partial next chip so users know the list is scrollable."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom promotional/restaurant card (pizza) is heavily cropped by the bottom navigation and screen edge, hiding most of the image and any title/metadata below it.",
+        "suggestion": "Add bottom content inset equal to the tab bar height so cards and text aren't obscured; ensure the last item can fully scroll into view."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Delivery time badges on the second and third 'Fastest near you' cards sit over dark imagery and use the same white pill style, but the first card's badge is clearer; overall badge contrast and placement feel inconsistent across cards.",
+        "suggestion": "Standardize badge background opacity/contrast and position so time labels remain legible on both light and dark food photos."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Search placeholder text appears slightly low-contrast gray on the light search field, which can reduce scannability.",
+        "suggestion": "Darken the placeholder color enough to meet readability expectations while still looking inactive."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 526,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.00692,
+    "reportedCost": 0.0038736,
+    "durationSeconds": 11.047523459000004
+  }
+}

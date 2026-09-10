@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:54:06.715Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content clipping issues are visible: truncated restaurant names, a cut-off category pill, and a partially obscured promo card at the bottom. These hurt scannability and make the feed feel unfinished.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third 'Fastest near you' card title is truncated to 'Trattoria Piccol' with no ellipsis or full name visible.",
+        "suggestion": "Allow multi-line titles, reduce font size on long names, or use ellipsis with a full name on the detail screen so names are not cut off mid-word."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom pizza promo card is heavily cropped by the bottom navigation, hiding most of the image and any title/metadata.",
+        "suggestion": "Add bottom content padding equal to the tab bar height so the last card can scroll fully into view, or reduce card height."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is clipped on the right—only a sliver of the next pill is visible with no clear affordance that the list scrolls.",
+        "suggestion": "Add a fade/peek of the next chip or a subtle scroll indicator so users know more categories are available."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Delivery fee on Green Bowl Poké is shown as '€0.90 delivery' while the popular card uses '€0 delivery'—inconsistent unit/label formatting across sections.",
+        "suggestion": "Standardize delivery fee labels (e.g. always '€X.XX delivery' or 'Free delivery') for visual consistency."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Heart/favorite icons sit on dark photo areas with limited contrast, especially on the ramen card.",
+        "suggestion": "Add a light circular backdrop or stronger stroke/shadow so the icon remains visible on any image."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 418,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006272,
+    "reportedCost": 0.0032256,
+    "durationSeconds": 9.994577166999981
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "The 'Fastest near you' carousel is cut off at the right edge, causing the third restaurant card and name ('Trattoria Piccol...') to be partially clipped/truncated.",
+    "The category filter row is also clipped at the right edge after 'Healthy', making the next chip only partially visible.",
+    "The top-right profile/avatar area is a plain gray circle with a small red dot, which reads like a broken image or unclear notification badge.",
+    "Promo text '3 free deliveries for you' and code details are readable, but the minimum-order condition is easy to miss because it is on the same line as the code."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "cosine 0.74 >= 0.69 threshold (reported #2)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

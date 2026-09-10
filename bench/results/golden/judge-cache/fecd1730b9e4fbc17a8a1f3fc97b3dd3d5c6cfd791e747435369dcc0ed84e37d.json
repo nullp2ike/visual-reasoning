@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section title displays the raw localization key “home_feed.popular_title” instead of a user-facing label.",
+    "The fixed bottom navigation appears to overlap the restaurant feed content; the lower restaurant card image is partially hidden behind the tab bar.",
+    "Several horizontal carousel items are visibly cut off at the right edge, including the category chips and the “Fastest near you” restaurant cards. This may be intentional scrolling, but it looks abrupt without a fade or spacing cue."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.92 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

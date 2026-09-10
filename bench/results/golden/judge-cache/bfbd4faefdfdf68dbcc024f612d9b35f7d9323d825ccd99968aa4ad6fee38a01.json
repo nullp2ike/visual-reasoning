@@ -1,0 +1,25 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The second section heading displays the raw i18n key 'home_feed.popular_title' instead of a localized title such as 'Popular near you'.",
+    "The favourite (heart) buttons on the two restaurant cards use inconsistent backgrounds — the first has a white/light circle, the second a dark circle — creating visual inconsistency and possible contrast issues over varied imagery.",
+    "In the 'Fastest near you' carousel the third card ('Trattoria Piccol…') is clipped by the screen edge with its title truncated mid-word and no visible padding, which can read as a layout bug rather than a scroll affordance.",
+    "The category chip row is also cut hard at the right edge, with a partial chip barely visible, giving no clear signal that it is horizontally scrollable.",
+    "The second popular card (pizza with -20% badge) is cut off by the bottom navigation bar with no title or metadata visible in the viewport."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes the same defect: a section heading (the second one, identified as 'home_feed.popular_title') displaying the raw i18n key instead of localized text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

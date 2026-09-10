@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "imageId": "img_02",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:28:34.261Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: one clear content/data error and one layout problem where the bottom navigation overlaps content.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The restaurant card for \"Smash Bros Burgers\" shows \"€NaN delivery,\" which is clearly invalid and looks like a failed price calculation.",
+        "suggestion": "Fix the delivery fee data binding/calculation and ensure a valid numeric price is rendered, or fall back to a safe placeholder if the value is unavailable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom navigation bar overlays the restaurant list, cutting off the next card at the bottom of the screen.",
+        "suggestion": "Add enough bottom padding/margin to the scrollable content so the fixed navigation bar does not obscure list items."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 593,
+    "reasoningTokens": 418,
+    "estimatedCost": 0.00402675,
+    "durationSeconds": 5.42414179199998
+  }
+}

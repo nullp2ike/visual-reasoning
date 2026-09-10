@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Promo banner text is unreadable, white text on a pale mint background"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you carousel, making the full name unreadable.",
+    "Category filter chips (Healthy and beyond) and restaurant cards in 'Fastest near you' are clipped at the right edge with no clear peek of the next item, indicating poor horizontal scroll affordance.",
+    "The bottom restaurant card (pizza) is partially cut off by the tab bar, so key promo badge and image content are incomplete without scrolling.",
+    "Delivery time badges sit over food images with varying contrast; on lighter images the white pill may reduce legibility of the time text.",
+    "Promo banner text '3 free deliveries for you' uses a light green on light green background, which may be hard to read for some users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [4],
+        "reasoning": "cosine 0.74 >= 0.69 threshold (reported #4)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

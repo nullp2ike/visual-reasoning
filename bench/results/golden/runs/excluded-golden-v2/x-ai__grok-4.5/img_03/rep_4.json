@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_03",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:26:16.526Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual defects stand out: a popular restaurant card is missing its image (broken placeholder), a restaurant name is truncated mid-word, and the promo banner text has weak contrast on the green background.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The 'Tokumaru Ramen Bar' card in Popular right now shows only a broken-image placeholder icon instead of a restaurant/food photo, leaving a large empty gray area.",
+        "suggestion": "Load the correct restaurant image or provide a proper fallback illustration so the card is not visually empty."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The third 'Fastest near you' card title is cut off as 'Trattoria Piccol' instead of the full name.",
+        "suggestion": "Allow the title to wrap to two lines, use a smaller font, or truncate with an ellipsis so the name remains readable."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary promo text ('Use code TALLINN3 at checkout · min. order €10') is light green on a green banner, giving poor contrast and reduced readability.",
+        "suggestion": "Use white or a much lighter shade for the secondary line to meet WCAG contrast requirements."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The notification bell badge (red dot) sits very close to the status bar and edge, risking a cramped or clipped appearance on some devices.",
+        "suggestion": "Add slightly more padding around the header icon so the badge has clear breathing room."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 403,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.0063419999999999995,
+    "reportedCost": 0.003078,
+    "durationSeconds": 67.66159083299999
+  }
+}

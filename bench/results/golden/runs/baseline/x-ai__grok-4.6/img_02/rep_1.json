@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:30:30.058Z",
+  "status": "ok",
+  "result": {
+    "summary": "The screen is mostly usable, but a broken delivery-fee value (€NaN) is clearly incorrect, and several list items clip names or sit too close to the screen edge.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "Smash Bros Burgers shows “€NaN delivery” instead of a real fee. NaN is a failed number format and looks broken.",
+        "suggestion": "Guard null/invalid fees and show a fallback such as “Free delivery”, “Delivery fee unavailable”, or a formatted euro amount."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last “Fastest near you” card is clipped: the restaurant name reads “Trattoria Piccol” and the image is cut off at the right edge.",
+        "suggestion": "Add consistent card width, padding, and text overflow (ellipsis or two-line wrap) so names stay readable in the horizontal list."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category chips overflow the screen (“Healthy” and the next chip are cut off) with no clear hint that the row scrolls.",
+        "suggestion": "Keep a peek of the next chip and enough end padding, or add a fade so the horizontal scroll is obvious."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The Green Bowl Poké thumbnail is very washed out against the light card, so the dish is hard to see compared with the other tiles.",
+        "suggestion": "Increase image contrast or use a slightly darker card/background so the food stays visible."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 1730,
+    "reasoningTokens": 1396,
+    "cachedInputTokens": 384,
+    "estimatedCost": 0.014144,
+    "reportedCost": 0.013568,
+    "durationSeconds": 48.628360916999995
+  }
+}

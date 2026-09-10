@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:42:09.086Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 likely visual defect: a restaurant image in the main “Popular right now” section appears stuck loading, while excluded carousel edge-clipping and bottom viewport cutoff are treated as expected behavior.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "performance",
+        "description": "The Tokumaru Ramen Bar card in “Popular right now” shows a circular loading spinner over the food image area instead of a fully loaded restaurant photo, making a prominent card look unfinished or broken.",
+        "suggestion": "Add a reliable image loading state with a static placeholder, timeout/retry behavior, and ensure the spinner is removed once the image loads or fails gracefully."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2186,
+    "outputTokens": 714,
+    "reasoningTokens": 729,
+    "estimatedCost": 0.017268000000000002,
+    "reportedCost": 0.0176076,
+    "durationSeconds": 39.59835870800004
+  }
+}

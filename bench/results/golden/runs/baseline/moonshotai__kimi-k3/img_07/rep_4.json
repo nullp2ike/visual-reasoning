@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:56:51.062Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly intact, but the most visible defect is a stuck loading spinner over the loaded “Tokumaru Ramen Bar” image. A few minor clipping/contrast issues are present in horizontally scrolling content and secondary text.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "A circular loading spinner remains centered on top of the Tokumaru Ramen Bar image even though the image and card content appear rendered, making the state look stuck or broken.",
+        "suggestion": "Hide the loading indicator once the image/content has loaded; if it is meant to be a video/play control, replace it with a clear play icon and proper pressed state."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The rightmost items in horizontal sections are clipped at the viewport edge, e.g. “Trattoria Piccol…” and the next category chip after “Healthy” are cut off.",
+        "suggestion": "Add consistent horizontal padding and a clearer peek/scroll affordance, or ensure partially visible cards have enough offset so clipping looks intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary metadata text such as delivery fees and time ranges uses light gray on white and may be hard to read for low-vision users.",
+        "suggestion": "Increase text contrast to meet WCAG AA, especially for delivery price, ETA, and category metadata."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 702,
+    "reasoningTokens": 406,
+    "estimatedCost": 0.016836,
+    "reportedCost": 0.01122,
+    "durationSeconds": 19.461461708999995
+  }
+}

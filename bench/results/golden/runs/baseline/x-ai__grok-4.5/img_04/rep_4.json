@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_04",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:52:15.485Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual and content issues: truncated restaurant names, a broken discount badge showing '-0%', and horizontal clipping on category chips and cards that make the UI look unfinished.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you row.",
+        "suggestion": "Allow wrapping, reduce font size, or use ellipsis with full name on detail; ensure card width accommodates typical names."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Pizza card shows a nonsensical '-0%' badge, which looks like a broken or missing discount value.",
+        "suggestion": "Hide the badge when discount is 0/null, or show a valid promo (e.g. '10% off'); never render '-0%'."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips and 'Fastest near you' cards are clipped at the right edge with no clear fade or peek of the next item.",
+        "suggestion": "Add consistent horizontal padding and a partial next-item peek or fade so scrollable rows don’t look cut off."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Bottom popular card (pizza) is partially cut off by the tab bar, so content feels incomplete on first view.",
+        "suggestion": "Add bottom content inset/padding so cards clear the tab bar, or ensure scroll position leaves a clear edge."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery fee text uses a very light gray that may be hard to read and looks washed out next to bold titles.",
+        "suggestion": "Darken secondary text for better contrast and visual hierarchy."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 451,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.00647,
+    "reportedCost": 0.0034236,
+    "durationSeconds": 9.739408167
+  }
+}

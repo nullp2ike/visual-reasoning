@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-4-5",
+  "provider": "anthropic",
+  "imageId": "img_10",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:05:51.185Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 issues: major layout problems with clipped/truncated content in carousel sections, and minor category filter overflow.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Smash Bros Bu' is truncated in the 'Fastest near you' section. The card appears to extend beyond the visible viewport, cutting off the full restaurant name.",
+        "suggestion": "Ensure carousel cards fit properly within the screen width, or implement text truncation with ellipsis (...) and tooltip on hover for full names. Adjust card width or spacing to prevent overflow."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The second restaurant card in 'Popular right now' section is cut off at the bottom of the screen. Only the pizza image is visible without restaurant name, rating, or delivery information.",
+        "suggestion": "Adjust spacing and padding in the Popular right now section to ensure complete cards are visible, or implement proper scrolling/carousel behavior with visible pagination."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row (All, Pizza, Sushi, Burgers, Healthy, etc.) appears to have cut-off content on the right edge. The last category or 'More' button is not fully visible.",
+        "suggestion": "Implement horizontal scrolling indicator or adjust category pill sizes to fit more filters within the viewport, or add a 'See more' button for additional categories."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1854,
+    "outputTokens": 1020,
+    "estimatedCost": 0.006954,
+    "durationSeconds": 12.448756125000072
+  }
+}

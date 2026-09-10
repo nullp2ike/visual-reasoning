@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_02",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:24:35.986Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-rendered, but there is one clear data rendering bug ('€NaN delivery') plus a few minor layout/content observations.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Smash Bros Burgers' card in 'Fastest near you' displays '€NaN delivery', indicating a failed number formatting or missing/invalid delivery fee value.",
+        "suggestion": "Guard against undefined/null delivery fees before formatting; show a fallback like '€0 delivery', 'Free delivery', or hide the fee line when the value is unavailable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The restaurant name 'Trattoria Piccol...' is cut off at the right edge without an ellipsis, and the last category chip after 'Healthy' is clipped to an unreadable sliver.",
+        "suggestion": "If these are horizontally scrollable carousels this may be intentional, but apply text truncation with ellipsis on names and ensure partially visible items clearly signal scrollability (e.g., consistent peek width)."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery fee formatting is inconsistent across cards: '€0.90', '€1.90', and '€0' (Tokumaru Ramen Bar) vs the broken '€NaN'.",
+        "suggestion": "Standardize currency formatting (e.g., always two decimals or use 'Free' for €0) across all restaurant cards."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The 'DELIVER TO' label and delivery metadata text use light gray on white, which may have insufficient contrast for some users.",
+        "suggestion": "Darken secondary text colors to meet WCAG AA contrast ratio (4.5:1 for normal text)."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 739,
+    "estimatedCost": 0.056690000000000004,
+    "durationSeconds": 12.216475542
+  }
+}

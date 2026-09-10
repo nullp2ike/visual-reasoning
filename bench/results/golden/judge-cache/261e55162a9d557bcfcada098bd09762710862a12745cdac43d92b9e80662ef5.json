@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section heading below 'Fastest near you' displays the untranslated i18n key 'home_feed.popular_title' instead of a human-readable title like 'Popular near you'.",
+    "The favorite heart buttons on the restaurant cards are inconsistently styled: the Tokumaru Ramen Bar card uses a white circular button with a dark heart, while the pizza card below uses a dark circular button with a white heart."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe the same section title displaying the raw i18n key 'home_feed.popular_title' instead of translated text."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

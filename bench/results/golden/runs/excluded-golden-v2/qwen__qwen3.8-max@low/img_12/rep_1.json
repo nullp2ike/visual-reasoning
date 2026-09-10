@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:36:32.130Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 issue: overlapping text in the restaurant metadata row under 'Tokumaru Ramen Bar', where the delivery time and delivery fee strings collide and become unreadable.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Popular right now' section, the metadata line under 'Tokumaru Ramen Bar' shows overlapping text: '25–30 min' and '€0 delivery' are rendered on top of each other (appearing as garbled text like '25–3€0 delivery'), making both the delivery time and the delivery fee unreadable.",
+        "suggestion": "Ensure the delivery-time and delivery-fee labels are laid out as separate, non-overlapping elements (e.g., flex row with a separator dot and proper spacing/truncation) so each string renders on its own without collision."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 792,
+    "reasoningTokens": 574,
+    "estimatedCost": 0.00834,
+    "reportedCost": 0.00834,
+    "durationSeconds": 70.28741379199992
+  }
+}

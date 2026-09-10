@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_04",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:31:34.322Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen has several layout and content problems: truncated restaurant names and category chips, a broken-looking 0% discount badge, and cards that are clipped at the edges.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card in Fastest near you is cut off on the right, and the name “Trattoria Piccol” is truncated without an ellipsis.",
+        "suggestion": "Ensure horizontal cards show a peek of the next item consistently and truncate names with an ellipsis so they remain readable."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last category chip (“Healthy”) is clipped by the screen edge, making the filter row look unfinished.",
+        "suggestion": "Add horizontal padding or a fade so chips aren’t cut off, or allow the row to scroll with a clear overflow affordance."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza card shows a “-0%” badge, which looks like a missing or zero discount rather than a real offer.",
+        "suggestion": "Hide the discount badge when the value is 0, or show a meaningful promotion instead of “-0%”."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom restaurant card is cut off by the tab bar, so the item is only partially visible.",
+        "suggestion": "Add bottom padding/safe-area spacing so the last card isn’t hidden behind the navigation bar."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The promo banner uses a long promo code and conditions that wrap awkwardly on the green card.",
+        "suggestion": "Shorten the copy or stack the code and min-order line so it remains easy to scan."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 373,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.006002,
+    "reportedCost": 0.003314,
+    "durationSeconds": 8.237054541999997
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_16",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:35:09.723Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed. The main defect is a content/state mismatch: the 'Pizza' filter chip is selected, but the displayed restaurants are mostly non-pizza venues (poké, burgers, ramen), suggesting the filter is not actually applied to the content. A few minor cosmetic points were also noted.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The 'Pizza' category chip is shown as active/selected, yet the sections below ('Fastest near you', 'Popular right now') display unrelated cuisines such as Green Bowl Poké, Smash Bros Burgers, and Tokumaru Ramen Bar. The selected filter appears to have no effect on the listed content.",
+        "suggestion": "Ensure selecting a category chip actually filters the restaurant lists, or reset the chip to 'All' if unfiltered content is intentionally shown."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The 'Fastest near you' section is inconsistent with its promise: the first card (Green Bowl Poké, 15–25 min) is faster, but the sorting/selection includes items with identical 20–30 min times, which is fine, yet none match the active 'Pizza' filter, compounding the filter mismatch.",
+        "suggestion": "Align section content with the active category filter or clearly indicate the section ignores filters."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The promo banner's 'Order now' button and text sit close to the decorative circles on the right; on smaller screens the subtitle 'Use code TALLINN3 at checkout · min. order €10' may run near the edge with tight padding.",
+        "suggestion": "Add responsive padding or text wrapping constraints in the banner to keep copy comfortably away from decorative elements and edges."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 730,
+    "estimatedCost": 0.057370000000000004,
+    "durationSeconds": 45.478149250000016
+  }
+}

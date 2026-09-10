@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:08.725Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content clipping issues: category chips, restaurant names, and a featured card are cut off, plus a likely truncated restaurant name.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card in the 'Fastest near you' row is clipped on the right, cutting off the image and the name 'Trattoria Piccol'.",
+        "suggestion": "Add right padding to the horizontal list and/or ensure the last card is fully visible, with a peek of the next item if intended."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom featured restaurant card is cut off by the tab bar, so the name, rating, and other details are not visible.",
+        "suggestion": "Add sufficient bottom content inset/padding so the last card sits fully above the navigation bar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chips row is clipped on the right (the next chip after 'Healthy' is only partially visible).",
+        "suggestion": "Allow horizontal scrolling with a clear peek of the next chip, or add end padding so the last visible chip isn't cut mid-shape."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The restaurant name 'Tokumaru Ramen' appears truncated as 'Tokumaru Ramer'.",
+        "suggestion": "Check the data source and text wrapping/ellipsis so the full name displays correctly."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 374,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.0060079999999999995,
+    "reportedCost": 0.00332,
+    "durationSeconds": 8.786357334
+  }
+}

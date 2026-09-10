@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The third restaurant in 'Fastest near you' is clipped: name shows as 'Trattoria Piccol' and part of the card is cut off at the right edge.",
+    "The Tokumaru Ramen Bar card shows a large loading spinner over the food image, so the hero image looks incomplete or broken.",
+    "The last restaurant card (pizza with -20%) is cut off at the bottom by the tab bar, hiding the name, rating, and delivery details.",
+    "The category chip row is cut off on the right (partial 'Healthy' and another chip), so the last filters are hard to read.",
+    "Notification bell has a red badge with no count or label, so the alert is unclear."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "The reported spinner overlays the restaurant card's already displayed food image, matching a loading spinner shown on loaded content."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3, 4]
+  }
+}

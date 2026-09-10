@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_14",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:59:12.583Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally usable, but the main visual problem is horizontal content being clipped at the right edge, making category chips and restaurant names look truncated. No critical blockers are visible.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Fastest near you' carousel cuts off the third card at the right edge, truncating the restaurant name to 'Trattoria Piccol...' and making the row look broken rather than intentionally scrollable.",
+        "suggestion": "Add clear horizontal scroll affordance such as edge fade, peek spacing consistent on both sides, or ensure truncated titles ellipsize within fully visible cards instead of being sliced by the viewport."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row clips the next chip after 'Healthy' at the screen edge with little visual indication that more categories are available.",
+        "suggestion": "Add a right-edge gradient/fade or increase end padding so users can tell the chip list scrolls horizontally."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Favorite heart icons are placed directly over dark food photography and may have inconsistent contrast depending on the image behind them.",
+        "suggestion": "Give the heart button a semi-transparent circular backdrop or stroke/shadow so it remains visible across all images."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The lower 'Popular right now' pizza card is partially cut off by the bottom of the viewport, which is expected for scrolling but can look like an incomplete render at first glance.",
+        "suggestion": "Ensure the bottom navigation does not overlap scroll content and keep enough bottom padding so the next card peeks cleanly above the nav bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 749,
+    "reasoningTokens": 393,
+    "estimatedCost": 0.017541,
+    "reportedCost": 0.011925,
+    "durationSeconds": 12.565595665999979
+  }
+}

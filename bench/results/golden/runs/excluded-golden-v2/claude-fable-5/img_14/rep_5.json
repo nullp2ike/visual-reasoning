@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_14",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:33:27.097Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well laid out, but there is a noticeable vertical misalignment in the 'Fastest near you' carousel where the middle card is offset compared to its neighbors, creating an uneven, visually broken row.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the middle card (Smash Bros Burgers) is vertically offset: its image starts lower than the Green Bowl Poké and Trattoria Piccola cards, so the image tops, titles, and delivery-fee lines do not align across the row.",
+        "suggestion": "Align all carousel cards to a common top edge and use a fixed image height so titles and metadata sit on the same baseline across every card."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The card images in the 'Fastest near you' row appear to have slightly different heights/aspect ratios (the burger image is taller than the poké image), which contributes to the ragged look of the row.",
+        "suggestion": "Enforce a consistent aspect ratio (e.g., via object-fit: cover on a fixed-height container) for all thumbnails in the carousel."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The delivery-time pill placement is inconsistent between cards: on the first card it sits near the bottom-left of the image, while on the middle card it sits lower relative to the image, reinforcing the misaligned appearance.",
+        "suggestion": "Anchor the time pill to the same position (e.g., fixed inset from the image's bottom-left corner) on every card."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 769,
+    "estimatedCost": 0.05932000000000001,
+    "durationSeconds": 52.057845417
+  }
+}

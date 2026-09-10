@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:02:59.291Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page shows several visual breaks: a card is heavily cut off at the bottom by the navigation bar, a restaurant name in the fastest-section carousel is truncated, and the rightmost carousel card is only partially visible.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The second item under 'Popular right now' is mostly cut off at the bottom of the screen, with only the top portion of its image visible above the bottom navigation bar.",
+        "suggestion": "Add enough bottom padding to the scrollable content area so the bottom navigation does not overlap cards, and ensure at least a clear peek of the next item is shown with room to scroll into view."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "In the 'Fastest near you' carousel, the restaurant name is truncated to 'Trattoria Picco', hiding the full name, and the rightmost card is partially clipped off-screen.",
+        "suggestion": "Use horizontal snapping so full cards fit within the viewport, truncate long names with an ellipsis and a tooltip, or allow two-line names where needed."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The rightmost card in the 'Fastest near you' section is only partially visible with no scroll indicator, making it unclear that the list is horizontally scrollable.",
+        "suggestion": "Either ensure cards fully fit the viewport on common screen sizes, or add a clear scroll affordance (e.g., peek + fade, scrollbar, or arrow) to indicate horizontal scrolling."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 1332,
+    "reasoningTokens": 996,
+    "estimatedCost": 0.0066399200000000005,
+    "reportedCost": 0.01141828,
+    "durationSeconds": 9.045307708000065
+  }
+}

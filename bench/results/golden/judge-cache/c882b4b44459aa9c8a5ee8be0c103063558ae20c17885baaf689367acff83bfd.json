@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Orders icon is missing from the bottom nav bar"],
+  "reportedIssues": [
+    "The category chip row overflows the viewport on the right; an additional chip is visible only as a cut-off grey sliver after “Healthy.”",
+    "The third restaurant card in “Fastest near you” is clipped by the right viewport edge, truncating the restaurant name (“Trattoria Picco...”), image, delivery-time pill, and delivery fee.",
+    "The next “Popular right now” card is partially hidden behind the fixed bottom navigation area, leaving the content visually cut off at the fold."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.52 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

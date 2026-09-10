@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:57:16.716Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally coherent, but a few visual/usability issues stand out: horizontally scrolling content is clipped at the right edge, some secondary text has low contrast, and small icon-only controls may be hard to use.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The right edge shows partially clipped category/restaurant items, including a sliver of a chip after “Healthy” and the “Trattoria Piccol…” card being cut off mid-name.",
+        "suggestion": "Add clearer carousel affordances such as edge fade, page dots, or adjusted card spacing so intentionally off-screen items look deliberate rather than broken."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Search placeholder text “Restaurants, dishes, groceries” appears light gray on a light background and may be difficult to read for low-vision users.",
+        "suggestion": "Increase placeholder contrast or use a darker gray that meets WCAG contrast guidance while still looking secondary."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The notification bell and favorite heart controls are icon-only and relatively small, which can make their purpose and hit targets less accessible.",
+        "suggestion": "Provide accessible labels and ensure touch targets are at least about 44x44 pt with sufficient contrast."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Secondary metadata such as delivery fees and time ranges uses pale gray text that may be hard to scan quickly, especially over light card backgrounds.",
+        "suggestion": "Darken secondary text slightly or increase font weight to improve readability without changing the visual hierarchy."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 639,
+    "outputTokens": 782,
+    "reasoningTokens": 446,
+    "estimatedCost": 0.013647000000000001,
+    "reportedCost": 0.0134742,
+    "durationSeconds": 32.98047558299999
+  }
+}

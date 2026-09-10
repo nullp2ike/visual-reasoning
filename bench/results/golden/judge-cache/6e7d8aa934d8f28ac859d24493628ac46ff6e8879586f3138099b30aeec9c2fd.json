@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The 'Smash Bros Burgers' card shows '€NaN delivery', indicating an unparsed/undefined delivery fee value leaking into the UI.",
+    "The third card in the 'Fastest near you' carousel is clipped mid-title ('Trattoria Piccol') with no ellipsis or visible peek affordance, so it reads as broken text rather than scrollable content.",
+    "Favorite (heart) buttons are inconsistent: the ramen card uses a white circle with a dark outline heart, while the pizza card uses a dark circle with a white heart.",
+    "The first card in 'Fastest near you' has a light gray image background while the other two are dark, making the row look visually uneven.",
+    "The second 'Popular right now' card is cut off by the bottom tab bar, hiding its name, rating, and delivery info without any indication that more content follows."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 explicitly describes the delivery fee showing '€NaN' on the Smash Bros Burgers card, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

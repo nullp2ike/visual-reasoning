@@ -1,0 +1,25 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The third card in the 'Fastest near you' carousel is hard-clipped by the screen edge and its title 'Trattoria Piccol...' is truncated without an ellipsis, so the restaurant name is unreadable. The card image also bleeds to the very edge with no gutter matching the left padding.",
+    "The category filter chip row is cut off mid-chip at the right edge (a partial rounded chip after 'Healthy'), making it ambiguous whether more filters exist.",
+    "The favourite (heart) buttons on the two 'Popular right now' cards use different styles: the first is a white circle with a dark outline heart, the second is a dark/translucent circle with a white heart. Inconsistent treatment looks like a bug and may also reduce contrast on light images.",
+    "The second 'Popular right now' card (pizza with -20% badge) is abruptly cut off by the bottom tab bar; its name, rating and delivery info are not visible, and there is no bottom spacing so the content appears clipped rather than scrollable.",
+    "Promo/label badges are inconsistent: delivery-time badges on carousel cards use white pills with dark text while the '€0 delivery' and '-20%' badges are also white pills, yet the discount badge lacks colour emphasis typically used for savings, and badge placement differs (some over dark imagery with weak separation).",
+    "'See all' links in green on white and the grey 'Restaurants, dishes, groceries' placeholder are low-emphasis; the green links may fall below 4.5:1 contrast and placeholder-only search has no visible label.",
+    "The notification bell shows a red dot indicator but no count, and it sits far from the address selector; unclear affordance for users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "No reported issue describes a category filter being selected while the feed still displays all cuisines; issues 0-6 address layout, styling, and accessibility problems but not filter functionality."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 4, 5, 6]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_13",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:33:59.703Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several layout and content clipping issues: restaurant names truncated in the horizontal carousel, a profile notification without a badge count, and a large empty gap above the bottom tab bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant names in the 'Fastest near you' row are truncated/cut off (e.g. 'Trattoria Piccol' is incomplete) even though card width appears fixed.",
+        "suggestion": "Allow multi-line titles, reduce font size, or ensure cards and text containers expand/ellipsis consistently so full names remain readable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Large empty white space between the last visible content (pizza card) and the bottom tab bar, making the layout feel sparse or broken.",
+        "suggestion": "Tighten vertical spacing or ensure the next content section flows closer to the tab bar without an oversized gap."
+      },
+      {
+        "priority": "minor",
+        "category": "missing-element",
+        "description": "Top-right profile avatar shows only a small red dot with no numeric badge or clear affordance.",
+        "suggestion": "Add a proper notification badge with count if there are alerts, or remove the orphaned red dot for a cleaner header."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Category chips row ends with a partially visible empty/white chip on the far right, which can look like a styling glitch beyond intentional peek.",
+        "suggestion": "Ensure horizontal padding and chip spacing so the peek of the next chip looks intentional, or hide overflow more cleanly."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 334,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005927999999999999,
+    "reportedCost": 0.002664,
+    "durationSeconds": 53.748389874999994
+  }
+}

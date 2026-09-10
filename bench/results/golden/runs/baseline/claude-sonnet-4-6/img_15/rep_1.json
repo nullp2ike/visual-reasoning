@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_15",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:03:57.270Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues on this food delivery app screen: one major content truncation issue and one minor layout observation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The third restaurant card in the 'Fastest near you' section shows the name truncated as 'Trattoria Piccol' without an ellipsis (...), making it look unintentionally cut off rather than indicating overflow.",
+        "suggestion": "Apply CSS text-overflow: ellipsis or limit the label to a fixed number of characters with a trailing '...' to clearly communicate the text is truncated."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in the horizontal 'Fastest near you' scroll row is partially clipped at the screen edge. While this can be an intentional affordance to hint at horizontal scrolling, there is no visual indicator (e.g., a scroll hint or peek shadow) to make this intentional.",
+        "suggestion": "Add a subtle gradient fade or shadow on the right edge of the horizontal scroll container to clearly communicate that more content is scrollable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 666,
+    "estimatedCost": 0.015465,
+    "durationSeconds": 14.073935416999971
+  }
+}

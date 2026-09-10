@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The Smash Bros Burgers card displays the invalid price text \"€NaN delivery\", indicating a failed or unformatted delivery-fee value.",
+    "The horizontal restaurant carousel is cut off on the right: the Trattoria Piccolo card, including its name and delivery text, is visibly clipped by the screen edge.",
+    "The category-chip row is also clipped at the right edge, showing part of an additional chip without enough spacing or a visible affordance that the row scrolls horizontally."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.74 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

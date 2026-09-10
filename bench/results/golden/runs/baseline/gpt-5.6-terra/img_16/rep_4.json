@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_16",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:35:46.199Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished, but horizontally scrollable content is visibly clipped at the right edge and the bottom navigation overlaps the scrolling content area.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The category chip row is cut off at the right edge: part of an additional chip is visible as a blank partial pill, making the horizontal carousel look unfinished.",
+        "suggestion": "Ensure the horizontal list has appropriate end padding and clear clipping behavior, or size the visible chips so the next item is not shown as an ambiguous sliver."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Fastest near you' restaurant carousel is clipped on the right: the third restaurant card and its text are truncated by the viewport edge.",
+        "suggestion": "Add right-side carousel padding and/or use intentional peek styling that keeps the partial card readable; avoid clipping restaurant names and delivery details."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlays the feed; the next restaurant promotion card continues underneath it and is partially obscured at the bottom.",
+        "suggestion": "Add sufficient bottom padding to the scrollable page content to account for the bottom navigation and safe-area inset."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 255,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.0066820000000000004,
+    "durationSeconds": 5.199071584000019
+  }
+}

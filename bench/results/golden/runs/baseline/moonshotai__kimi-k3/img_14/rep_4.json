@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_14",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:59:07.199Z",
+  "status": "ok",
+  "result": {
+    "summary": "No critical blockers are visible. The page generally renders correctly, with a few minor layout/accessibility concerns around horizontally clipped carousel content and small/secondary text clarity.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the “Fastest near you” carousel, the third restaurant card is clipped at the right edge and its name appears truncated as “Trattoria Piccol…” without a clear ellipsis or strong scroll affordance.",
+        "suggestion": "Add clearer horizontal scroll indication, increase the peek amount of the next card, or ensure truncated titles use ellipses consistently within the visible card area."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The notification bell shows a red unread dot but appears to rely on color/shape alone and may not expose an accessible label such as “Notifications, 1 unread.”",
+        "suggestion": "Add an accessible content description/label for the bell and include unread count semantics for assistive technologies."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Some secondary metadata text such as delivery fees, time ranges, and category chips is small and gray, which may be harder to read in bright outdoor conditions.",
+        "suggestion": "Slightly increase font size and/or contrast for secondary metadata while preserving the visual hierarchy."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 867,
+    "reasoningTokens": 586,
+    "estimatedCost": 0.019311000000000002,
+    "reportedCost": 0.019311,
+    "durationSeconds": 39.45539620799996
+  }
+}

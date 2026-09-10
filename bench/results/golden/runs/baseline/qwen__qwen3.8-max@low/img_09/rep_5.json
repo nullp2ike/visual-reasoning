@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T13:17:48.417Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed, but there are a few visual issues: horizontally scrollable content (category chips and the 'Fastest near you' carousel) is clipped at the right edge without clear scroll affordances, and the 'Tokumaru Ramen' restaurant name appears truncated/cut off by the rating block.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chips row ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') is cut off at the right edge with a partially visible chip, giving no clear visual cue that the row is horizontally scrollable.",
+        "suggestion": "Add a subtle fade/gradient at the right edge or a scroll indicator so users understand the chip row can be scrolled horizontally."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the third card ('Trattoria Piccol...') is clipped mid-word at the right screen edge, and the card title is truncated without an ellipsis in a controlled way.",
+        "suggestion": "Apply proper text truncation with an ellipsis for card titles and consider a right-edge fade or peeking-card affordance to signal horizontal scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The restaurant name 'Tokumaru Ramen' in the 'Popular right now' section appears cut off ('Tokumaru Rameı') where it meets the rating block on the right, suggesting the title container does not reserve enough space or lacks ellipsis handling.",
+        "suggestion": "Constrain the title width with text-overflow: ellipsis and ensure the rating block has a fixed reserved width so long names truncate gracefully instead of being clipped."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1711,
+    "outputTokens": 947,
+    "reasoningTokens": 515,
+    "estimatedCost": 0.009104000000000001,
+    "reportedCost": 0.007984,
+    "durationSeconds": 27.69984916699998
+  }
+}

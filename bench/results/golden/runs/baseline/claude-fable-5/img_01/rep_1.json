@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:24:13.139Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-rendered, but there is one clear defect: an untranslated localization key ('home_feed.popular_title') is displayed as a section heading instead of the actual localized text. Additionally, some horizontally scrolling cards are cut off at the screen edge, which is expected for carousels but the third card's title appears truncated without ellipsis.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading displays the raw localization key 'home_feed.popular_title' instead of translated text (e.g., 'Popular near you').",
+        "suggestion": "Add the missing translation string to the locale files and ensure a fallback language is used when a key is missing."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the third card's restaurant name 'Trattoria Piccol...' is clipped at the screen edge without an ellipsis or clear affordance.",
+        "suggestion": "Truncate the text with an ellipsis or ensure card widths allow full titles, and add a peek/gradient hint to indicate horizontal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is cut off on the right, showing a partial, unlabeled chip after 'Healthy'.",
+        "suggestion": "This is acceptable for a scrollable chip list, but consider adjusting spacing so the partially visible chip shows at least part of its label to signal scrollability."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 528,
+    "estimatedCost": 0.04614,
+    "durationSeconds": 11.434655833999999
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "A loading spinner is displayed in the center of the Tokumaru Ramen Bar card even though the image behind it has fully rendered, making the card look stuck in a loading state.",
+    "The third card in 'Fastest near you' is cut off at the screen edge with its name truncated ('Trattoria Piccol...') without an ellipsis or clear affordance, and the card image bleeds off-screen abruptly.",
+    "The last category chip after 'Healthy' is clipped at the right edge showing only a sliver of an empty pill, which looks broken rather than like a scroll hint.",
+    "The pizza card at the bottom ('–20%') is cut off by the bottom navigation bar mid-image, hiding its title, rating, and delivery info."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 describes a loading spinner displayed over fully rendered content (the Tokumaru Ramen Bar card image), matching the expected defect of a spinner shown on top of already loaded content."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

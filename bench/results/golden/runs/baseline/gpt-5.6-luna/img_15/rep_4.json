@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-luna",
+  "provider": "openai",
+  "imageId": "img_15",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:40:37.680Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally coherent, but the bottom navigation contains a prominent rendering artifact and several horizontal carousels appear to overflow the viewport.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "A thick dark horizontal bar runs behind and through the bottom navigation icons, obscuring the search and adjacent navigation controls. It looks like an accidental scrollbar, overlay, or incorrectly positioned active-state indicator.",
+        "suggestion": "Remove the stray bar or reposition it as an intentional navigation indicator so it does not overlap the icons."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row and the 'Fastest near you' restaurant row are cut off at the right edge of the screen. This may be intentional horizontal scrolling, but no clear scroll affordance is visible.",
+        "suggestion": "If these are carousels, ensure horizontal scrolling is deliberate and provide a visible partial-card cue or scrolling behavior; otherwise constrain the content to the viewport."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 729,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.001237,
+    "durationSeconds": 9.670039417000021
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The third restaurant card in 'Fastest near you' (Trattoria Piccol…) is clipped by the right edge, so the name and image are incomplete.",
+    "Restaurant name 'Trattoria Piccol' is truncated mid-word with no ellipsis or full-name affordance.",
+    "Category filter chips (All, Pizza, Sushi, Burgers, Healthy) overflow horizontally and the last chip is cut off with no clear scroll affordance.",
+    "The pizza promo card at the bottom is heavily cropped; only part of the image and no restaurant name/details are visible in the viewport.",
+    "Bottom tab bar icons look uneven: Home is green/selected while others are low-contrast gray, and a thick center indicator/line sits under the search icon area.",
+    "Delivery time and fee text (e.g. €0.90 delivery) is light gray on white, which likely has weak contrast."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [4],
+        "reasoning": "Issue 4 describes bottom tab bar styling problems including uneven icons and a center indicator, which aligns with the expected defect about bottom nav labels/icons and visual issues, though it doesn't explicitly mention the gesture bar overlap or label cutoff."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 5]
+  }
+}

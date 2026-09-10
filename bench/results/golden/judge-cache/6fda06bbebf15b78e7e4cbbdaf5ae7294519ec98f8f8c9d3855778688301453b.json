@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The third restaurant card in the 'Fastest near you' section shows the name truncated as 'Trattoria Piccol' without an ellipsis (...), making it look unintentionally cut off rather than indicating overflow.",
+    "The third card in the horizontal 'Fastest near you' scroll row is partially clipped at the screen edge. While this can be an intentional affordance to hint at horizontal scrolling, there is no visual indicator (e.g., a scroll hint or peek shadow) to make this intentional."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "Reported issues describe card text truncation and horizontal scroll clipping in content area, not bottom nav labels being cut off by gesture bar."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_11",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:51:44.091Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there are a few visual/content problems: a suspicious '−100%' discount badge, a restaurant card whose title is clipped at the screen edge, and an empty category chip cut off at the right side.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The bottom pizza card shows a '−100%' discount badge, which implies the item is completely free. This is likely a data or calculation error rather than an intended promotion.",
+        "suggestion": "Verify the discount value in the backend/data source; cap or validate discount percentages so implausible values like 100% are flagged or displayed correctly (e.g., 'Free delivery' if that's the intent)."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the third card's title is truncated mid-word ('Trattoria Piccol') with no ellipsis, making the clipping look accidental rather than a designed carousel peek.",
+        "suggestion": "Apply text truncation with an ellipsis (…) to card titles, or ensure the peeking card's text container is fully within its card bounds."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category filter chip at the far right of the chips row is cut off and appears as an empty sliver, giving a broken look to the filter bar.",
+        "suggestion": "Add appropriate right padding/inset to the horizontal chip list or a fade-out gradient so partially visible chips clearly read as scrollable content."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The pizza card at the bottom is abruptly cut off by the bottom navigation bar, with its image and text partially hidden behind the nav.",
+        "suggestion": "Add bottom padding equal to the nav bar height to the scroll container so content isn't obscured; if this is mid-scroll, consider a translucent nav or scroll inset to make the overlap look intentional."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 758,
+    "estimatedCost": 0.057640000000000004,
+    "durationSeconds": 14.884988249999996
+  }
+}

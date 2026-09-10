@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Restaurant cover image failed to load"],
+  "reportedIssues": [
+    "The first card in “Popular right now” (Tokumaru Ramen Bar) shows a broken-image placeholder instead of a restaurant photo.",
+    "The third “Fastest near you” card name is truncated to “Trattoria Piccol” with no ellipsis or wrap, so the restaurant name is incomplete.",
+    "The last category chip (“Healthy”) is cut off at the right edge of the screen, implying more filters exist but with no fade or chevron.",
+    "The bottom pizza promo card is cut off by the tab bar, so the rest of the offer and restaurant info are not visible."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.58 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

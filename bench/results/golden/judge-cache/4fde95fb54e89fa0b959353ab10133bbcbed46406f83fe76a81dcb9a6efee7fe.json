@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The third restaurant card in the 'Fastest near you' carousel is clipped at the right edge of the screen, and its name is truncated to 'Trattoria Piccol...', making the item hard to identify and the section look unfinished.",
+    "The 'Popular right now' pizza card displays a '-100%' badge, which is nonsensical as a discount value and looks like a data or formatting error.",
+    "The category filter chips run to the right edge of the screen and the last visible chip ('Healthy') appears cut off, giving no clear visual affordance that the list is horizontally scrollable."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 identifies the pizza card's nonsensical '-100%' discount badge, matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

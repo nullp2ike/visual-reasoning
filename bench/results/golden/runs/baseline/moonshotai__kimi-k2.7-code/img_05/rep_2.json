@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_05",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:02:03.015Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 major issues: the bottom restaurant card is visually truncated by the bottom navigation, and the promotional banner has poor text contrast.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card in the 'Popular right now' section (pizza image with -20% badge) is cut off at the bottom of the screen, hiding the restaurant name, delivery time, rating, and cuisine info.",
+        "suggestion": "Add sufficient bottom padding or safe-area inset to the scrollable content container so the last item is fully visible above the bottom navigation bar."
+      },
+      {
+        "priority": "major",
+        "category": "accessibility",
+        "description": "The promotional banner uses light/white text on a light mint-green background, resulting in insufficient color contrast that makes the offer details hard to read.",
+        "suggestion": "Use darker text (e.g., dark green or black) or a darker background color in the banner to meet minimum contrast requirements."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 2323,
+    "reasoningTokens": 2086,
+    "estimatedCost": 0.01035617,
+    "reportedCost": 0.01119314,
+    "durationSeconds": 62.517463666999944
+  }
+}

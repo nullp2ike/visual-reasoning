@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_06",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:25:25.069Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 visual issues: the bottom navigation is missing an Orders icon, page content is being obscured by the fixed bottom navigation, and one horizontal category chip appears as an unlabeled clipped pill at the right edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The bottom navigation item labeled “Orders” has no visible icon, while the other navigation items do. This makes the navigation look incomplete and inconsistent.",
+        "suggestion": "Add the Orders icon above the label, or ensure the icon asset is loading and aligned consistently with the other bottom navigation icons."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation bar overlaps the restaurant card content near the bottom of the screen, cutting into the pizza image/card area.",
+        "suggestion": "Add sufficient bottom padding or safe-area spacing to the scrollable content so cards do not sit underneath the fixed navigation bar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "At the far right of the category filter row, a partially visible gray pill appears with no readable label. It looks like a broken or empty filter chip.",
+        "suggestion": "Adjust the horizontal scroll position, spacing, or clipping so partially visible chips still show some label text, or hide the overflow more cleanly."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 788,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.032695,
+    "durationSeconds": 15.589180875000006
+  }
+}

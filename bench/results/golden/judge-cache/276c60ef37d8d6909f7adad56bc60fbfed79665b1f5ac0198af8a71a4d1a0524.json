@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The Tokumaru Ramen Bar card image shows a persistent circular loading spinner overlay in the center, suggesting the image failed to load or is stuck loading, leaving the food photo partially obscured.",
+    "The 'Fastest near you' horizontal carousel is clipped at the right edge (Trattoria Piccol... is cut off) with no visible scroll indicator or gradient hint that more content is available.",
+    "The restaurant name 'Trattoria Piccol...' is truncated mid-word without an ellipsis styling that signals truncation clearly."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.68 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

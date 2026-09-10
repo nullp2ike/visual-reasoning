@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccol' in the 'Fastest near you' section is truncated — the full name is cut off due to insufficient card width or text overflow handling.",
+    "The last category filter pill (after 'Healthy') is partially visible on the right edge of the screen, indicating a horizontally scrollable row but with no visual affordance (e.g., fade or scroll indicator) to hint at more options."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.50 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

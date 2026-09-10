@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_18",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:24:13.139Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed, but there are a few visual defects: a truncated restaurant name without ellipsis, awkwardly clipped carousel/chip elements at the right edge, and some minor contrast concerns.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "In the 'Fastest near you' carousel, the third restaurant name is hard-clipped mid-word ('Trattoria Piccol') with no ellipsis, making the name unreadable.",
+        "suggestion": "Apply text truncation with an ellipsis (e.g., 'Trattoria Piccol…') or allow the label to wrap/scroll with the card so the full name is discoverable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row after 'Healthy' shows a tiny sliver of a cut-off chip at the right edge, which looks like a rendering artifact rather than an intentional scroll affordance.",
+        "suggestion": "Adjust chip spacing or add a fade/gradient at the edge so partially visible chips clearly indicate horizontal scrollability instead of appearing broken."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in the 'Fastest near you' carousel is cut off at the screen edge, showing only part of its image and price, with the delivery time badge partially clipped.",
+        "suggestion": "Use consistent peek width for the last visible card and ensure badges/labels are not clipped, or add snap scrolling so partial cards look intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza card in 'Popular right now' is abruptly cut off by the bottom navigation bar, with the '−20%' badge visible but the restaurant name and details hidden.",
+        "suggestion": "Add bottom padding/safe-area inset below the last list item so scrolled content isn't obscured by the nav bar at rest positions."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Delivery time badges (e.g., '15–25 min') overlay light food imagery on some cards, and the dark-text-on-white pill sits directly over a very light plate image on the first card, reducing visual separation.",
+        "suggestion": "Add a subtle shadow or border to overlay badges to guarantee contrast against any background image."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 934,
+    "estimatedCost": 0.06644,
+    "durationSeconds": 18.991081458
+  }
+}

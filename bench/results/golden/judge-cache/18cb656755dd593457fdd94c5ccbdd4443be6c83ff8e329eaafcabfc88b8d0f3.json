@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The third 'Fastest near you' card shows a truncated restaurant name 'Trattoria Piccol' cut off at the edge, and the card itself is partially off-screen.",
+    "Category filter chips on the right (after 'Healthy') are cut off mid-pill, suggesting overflow without a clear scroll affordance.",
+    "The bottom restaurant card (pizza with '-20%') is heavily cropped—only the top portion is visible—making the section look incomplete or broken.",
+    "Restaurant title truncation loses meaningful words (e.g. 'Piccol' instead of full name), harming scannability.",
+    "Promo banner and large cards use heavy crop/overlap with decorative circles; combined with edge clipping it can feel unfinished on this viewport."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.53 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 4]
+  }
+}

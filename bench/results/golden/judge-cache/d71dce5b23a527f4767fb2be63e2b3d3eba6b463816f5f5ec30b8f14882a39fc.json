@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "In the 'Fastest near you' row, the third card ('Trattoria Piccol...') is cut off at the right screen edge and its title is truncated mid-word with no ellipsis, making it look broken rather than intentionally scrollable.",
+    "The category filter chip row ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') is also clipped at the right edge with a partially visible chip, giving an unfinished appearance.",
+    "The notification bell icon relies on a small red dot with no text or badge count, which may be missed by users and is not clearly announced to screen readers.",
+    "Delivery fee and time metadata use inconsistent formatting across cards (e.g., '€0.90 delivery' under the title vs. '€0 delivery' as a badge on the image), which can cause mild confusion."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "No reported issue describes a middle card in a carousel being misaligned; reported issues describe edge clipping and truncation, not center alignment problems."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

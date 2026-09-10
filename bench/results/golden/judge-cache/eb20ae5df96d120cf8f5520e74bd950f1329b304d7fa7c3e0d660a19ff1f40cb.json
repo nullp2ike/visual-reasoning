@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The 'Pizza' category filter is selected, but the feed displays non-pizza items like Poké, Burgers, and Ramen.",
+    "The restaurant name 'Trattoria Piccolo' is truncated abruptly on the right side without an ellipsis."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the exact same defect: Pizza category filter is selected but feed shows non-pizza items (all cuisines instead of filtered)."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

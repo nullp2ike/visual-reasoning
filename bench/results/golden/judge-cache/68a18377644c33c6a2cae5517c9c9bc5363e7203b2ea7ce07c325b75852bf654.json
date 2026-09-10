@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "In the 'Popular right now' section, the metadata line under 'Tokumaru Ramen Bar' shows two text strings rendered on top of each other ('25–35 min' and '€0 delivery' overlap, producing unreadable text like '25-3E0rdmivery • Ramen').",
+    "The Tokumaru Ramen Bar card shows a '€0 delivery' badge on the image, and the same fee appears (though overlapped) in the metadata line, creating redundant/conflicting presentation once the overlap is fixed."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes delivery fee text (€0 delivery) overlapping with delivery time text (25–35 min) in the metadata line, which matches the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

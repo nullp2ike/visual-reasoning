@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The 'Smash Bros Burgers' card in the 'Fastest near you' row displays '€NaN delivery' instead of a valid price, indicating an undefined/non-numeric delivery fee value leaking into the UI.",
+    "The favorite heart button on the pizza card in 'Popular right now' uses a dark/semi-opaque circular background while the equivalent button on the ramen card above uses a white circle, creating inconsistent control styling between identical card types."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes a delivery fee showing '€NaN' on a card, matching the expected defect of delivery fee showing €NaN."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

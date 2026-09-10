@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T13:14:39.198Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-designed, but there is a clear data/formatting bug in the 'Fastest near you' section where one restaurant shows '€NaN delivery', indicating a failed numeric calculation or missing data. Other than that, the layout is clean and consistent.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Under 'Smash Bros Burgers' the delivery fee displays as '€NaN delivery', which is a broken/undefined numeric value leaking into the UI.",
+        "suggestion": "Fix the data or calculation that produces NaN; guard against non-numeric values and fall back to a proper label such as 'Free delivery' or a valid euro amount."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in 'Fastest near you' ('Trattoria Piccol...') is cut off at the right screen edge with no visible scroll affordance or peeking gap, which can make the horizontal scrollability less obvious.",
+        "suggestion": "Add a subtle right-edge fade/gradient or ensure a partial card peek with consistent horizontal padding to signal that the row is scrollable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1711,
+    "outputTokens": 816,
+    "reasoningTokens": 525,
+    "estimatedCost": 0.008317999999999999,
+    "reportedCost": 0.007198,
+    "durationSeconds": 25.381516999999995
+  }
+}

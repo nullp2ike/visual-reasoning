@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The 'Smash Bros Burgers' card in the 'Fastest near you' section shows '€NaN delivery', indicating a failed numeric calculation or missing delivery fee value.",
+    "The last category chip in the filter row (after 'Healthy') is cut off at the screen edge with no visible label, making it look like a broken empty pill.",
+    "The third restaurant card ('Trattoria Piccol...') is truncated at the right edge, cutting both the image and the name text abruptly.",
+    "'Green Bowl Poké' shows an unusual delivery fee of '€0.90' while another card shows '€0 delivery' with different formatting ('€0' vs '€0.90'), leading to inconsistent price formatting."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the exact same defect: a card showing '€NaN delivery' due to a failed numeric calculation."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

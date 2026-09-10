@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_12",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:32:00.180Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there is one clear visual defect: overlapping text in the metadata line under the 'Tokumaru Ramen Bar' card, where the delivery time and delivery fee render on top of each other.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Under 'Tokumaru Ramen Bar', the delivery time ('25–35 min') and delivery fee ('€0 delivery') overlap each other, producing garbled text that reads like '25–3€0 mieliivery'. The information is unreadable.",
+        "suggestion": "Fix the layout of the metadata row so each text element occupies its own space (e.g., use a horizontal flex/stack layout with spacing and separator dots instead of absolute positioning), ensuring 'time • fee • cuisine' render sequentially without overlap."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 380,
+    "estimatedCost": 0.03987,
+    "durationSeconds": 39.627856417000004
+  }
+}

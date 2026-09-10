@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:51:38.447Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual layout and truncation issues: restaurant names and category chips are cut off, and horizontal carousels appear clipped without clear affordance.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third 'Fastest near you' card is heavily clipped on the right; only part of the image and name ('Trattoria Piccol') is visible, so the card looks broken.",
+        "suggestion": "Ensure carousel cards have consistent width/padding and either fully show the last visible card or add clearer horizontal scroll peek with proper clipping margins."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated mid-word with no ellipsis treatment that preserves readability.",
+        "suggestion": "Use a proper text overflow style (ellipsis) and/or allow two-line names so titles remain understandable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips row is cut off on the right (partial chip visible), which looks unfinished and may hide more filters.",
+        "suggestion": "Add end padding to the horizontal scroller and a visible peek of the next chip so truncation looks intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom 'Popular right now' pizza card is cut off by the tab bar, so the offer image and content feel incomplete on first view.",
+        "suggestion": "Add bottom content inset/padding so cards clear the fixed tab bar, or ensure the first card fully fits above the nav."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery time badges sit over food imagery with soft contrast on light plates (e.g. poke bowl), slightly reducing legibility.",
+        "suggestion": "Add a stronger scrim, border, or darker badge background so time labels stay readable on all images."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 473,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006602,
+    "reportedCost": 0.0059492,
+    "durationSeconds": 13.706302458
+  }
+}

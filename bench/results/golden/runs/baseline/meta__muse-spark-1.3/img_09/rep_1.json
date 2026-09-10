@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "meta/muse-spark-1.3",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-03T19:35:15.319Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 layout issues: the 'Tokumaru Ramen' title is clipped to 'Tokumaru Ramer' due to collision with the rating, and right-edge carousel content is partially cut off.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant title under 'Popular right now' is clipped and reads as 'Tokumaru Ramer' with the final 'n' cut off where the title meets the '4.8 (500+)' rating on the same line.",
+        "suggestion": "Fix the row layout with proper flex constraints, gap between title and rating, and correct text-overflow with ellipsis or wrapping so the full name is visible and does not collide with the rating."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Right-edge content appears cut off: the far-right category pill is half-visible and the third 'Fastest near you' card shows as 'Trattoria Piccol' half off-screen.",
+        "suggestion": "Add trailing scroll padding and ensure carousel peek intent is clear so partial cut-off looks like intentional horizontal scroll rather than broken layout."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1739,
+    "outputTokens": 1903,
+    "reasoningTokens": 1596,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0102615,
+    "reportedCost": 0.0102615,
+    "durationSeconds": 27.62343895899999
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:58:21.202Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely functional, but a few horizontal-scroll clipping/truncation artifacts make content look unfinished, plus one suspicious promo label.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the third restaurant card is cut off at the right edge and its title is visibly truncated as 'Trattoria Piccol' rather than fully ellipsized or intentionally peeked.",
+        "suggestion": "Add consistent carousel peek padding and ensure off-screen cards clip only the image/card container, while text uses ellipsis or remains fully readable within visible bounds."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row shows a tiny sliver of the next pill at the far right edge after 'Healthy', which can read as a rendering artifact.",
+        "suggestion": "Use right-edge padding, a fade mask, or snap behavior so the next category either peeks deliberately or is fully hidden."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The bottom visible popular item shows a '-100%' badge, which is visually prominent but ambiguous/unusual for a discount and may look like an incorrect promo value.",
+        "suggestion": "Verify the promo formatting and display a clearer label such as 'Free delivery', '-50%', or the intended discount text."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 986,
+    "reasoningTokens": 651,
+    "estimatedCost": 0.021096,
+    "reportedCost": 0.021096,
+    "durationSeconds": 45.95145925000001
+  }
+}

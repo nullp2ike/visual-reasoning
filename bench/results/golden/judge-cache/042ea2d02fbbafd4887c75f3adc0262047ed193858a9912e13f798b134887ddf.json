@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The pizza card shows a '-100%' discount badge, which is ambiguous/implausible as a discount value (it implies a free item) and may be a data or formatting error.",
+    "Secondary metadata text such as delivery fees and '25–35 min · €0 delivery · Ramen' uses light gray on white/dark imagery and may be hard to read for low-vision users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 directly describes the -100% discount badge appearing on a pizza card, matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "imageId": "img_17",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:33:18.874Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visible issues: the bottom navigation indicates the wrong active section, and inactive navigation labels have weak contrast.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The Profile tab is highlighted in green even though the screen is clearly the Home restaurant feed. This makes the current navigation state inconsistent with the displayed page.",
+        "suggestion": "Highlight Home as the active tab and render Profile in the inactive style."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Inactive bottom-navigation icons and labels use a very light gray on white, making them harder to distinguish.",
+        "suggestion": "Darken the inactive navigation color to meet WCAG contrast guidance while keeping it visually secondary to the active tab."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 666,
+    "reasoningTokens": 504,
+    "estimatedCost": 0.029035000000000002,
+    "durationSeconds": 17.776361916000024
+  }
+}

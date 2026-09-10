@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_08",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:01.479Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen is mostly usable, but several layout and content bugs cut off text, hide a category chip, and show a typo in search.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card in “Fastest near you” (Trattoria Piccol…) is clipped on the right, so the name and part of the image are cut off.",
+        "suggestion": "Give the horizontal list enough padding/peek so the last card is fully visible, or make the row scroll with a clear overflow affordance."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The “Healthy” category chip is cut off at the right edge of the screen, so the filter list looks incomplete.",
+        "suggestion": "Add end padding or a fade/scroll hint so the last chip is fully readable, and allow horizontal scrolling if there are more categories."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Search placeholder is misspelled as “Restarants, dishes, groceries”.",
+        "suggestion": "Correct the placeholder to “Restaurants, dishes, groceries”."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second Popular card (pizza with −20%) is cropped by the bottom navigation, so the restaurant name and details are not visible.",
+        "suggestion": "Add bottom padding/safe-area inset so content can scroll fully above the tab bar."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Promo banner copy “3 free deliveries for you” sits very close to the top edge of the green card.",
+        "suggestion": "Increase top padding inside the banner so the headline is not cramped."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 362,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.005936,
+    "reportedCost": 0.003248,
+    "durationSeconds": 8.668459834000009
+  }
+}

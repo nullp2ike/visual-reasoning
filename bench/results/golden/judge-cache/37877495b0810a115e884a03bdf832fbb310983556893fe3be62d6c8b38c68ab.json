@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Promo banner text is unreadable, white text on a pale mint background"],
+  "reportedIssues": [
+    "Promotional banner '3 free deliveries for you' and 'Use code TALLINN3 at checkout...' uses white text on a very light mint background, making the text nearly invisible and unreadable due to extremely low contrast.",
+    "Delivery time badges use inconsistent formatting: '15-25 min' and '20-30 min' without spaces vs '20-30 min' with spaces on the third card."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.84 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

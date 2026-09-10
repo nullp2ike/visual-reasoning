@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The third restaurant card in Fastest near you (Trattoria Piccol…) is cut off on the right so the restaurant name is incomplete, not just a peek of the next carousel item.",
+    "A circular loading spinner overlays the Tokumaru Ramen Bar image while the rest of that card (title, rating, delivery info) is already fully rendered, which looks like a stuck or misplaced loader."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Issue 1 describes a loading spinner overlaid on already-loaded content (the card title, rating, and delivery info are fully rendered), matching the expected defect of a spinner shown on top of loaded content."
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

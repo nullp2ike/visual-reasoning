@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "Cards in the 'Fastest near you' carousel are vertically misaligned: the 'Smash Bros Burgers' card image starts lower than the 'Green Bowl Poké' and 'Trattoria Piccol...' cards, causing uneven baselines for restaurant names and delivery prices.",
+    "The third carousel item's name is truncated as 'Trattoria Piccol' with the card cut off at the screen edge without a proper truncation treatment (no ellipsis).",
+    "A category filter chip after 'Healthy' is clipped at the right edge, showing only a sliver of the pill with no visible label.",
+    "The 'Green Bowl Poké' card image has visibly different padding/aspect ratio (plate floats on a light gray background) compared to the full-bleed images of adjacent cards, making the row look inconsistent.",
+    "The pizza card at the bottom is abruptly cut off by the tab bar with only the '-20%' badge and favorite icon visible, and no restaurant details shown."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 describes the middle card ('Smash Bros Burgers') in the carousel being vertically misaligned with uneven baselines, matching the expected defect about middle card alignment."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

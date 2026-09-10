@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Under 'Tokumaru Ramen Bar', the metadata line reads '25–3€0 delivery' — the delivery time ('25–35 min') and delivery fee ('€0 delivery') labels overlap each other, making both unreadable.",
+    "The Tokumaru Ramen Bar card shows '€0 delivery' as a badge on the image, and the same fee also appears (overlapped) in the metadata line, which is redundant duplication."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0, 1],
+        "reasoning": "Both reports identify the delivery time and delivery fee overlapping in the metadata line."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

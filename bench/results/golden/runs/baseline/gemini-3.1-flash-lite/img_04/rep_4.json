@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "gemini-3.1-flash-lite",
+  "provider": "google",
+  "imageId": "img_04",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:56:38.443Z",
+  "status": "ok",
+  "result": {
+    "summary": "The screen appears mostly functional, but there is a major UI alignment issue with the bottom navigation bar where the 'Profile' icon is cut off by the home indicator bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom navigation bar is not correctly padded for devices with a home indicator, causing the icons to be positioned too low and partially overlapping with the bottom system gesture area.",
+        "suggestion": "Add bottom padding or safe area constraints to the tab bar container to ensure icons are fully visible and tappable."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The '-0%' badge on the bottom-most pizza restaurant item is redundant and visually confusing as it implies a discount where there is none.",
+        "suggestion": "Remove the '-0%' badge entirely if no actual discount applies to the item."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1425,
+    "outputTokens": 219,
+    "estimatedCost": 0.00068475,
+    "durationSeconds": 1.6587072920000063
+  }
+}

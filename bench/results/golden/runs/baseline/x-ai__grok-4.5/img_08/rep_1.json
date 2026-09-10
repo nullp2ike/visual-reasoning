@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_08",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:52:46.887Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content clipping issues make restaurant names and category chips appear broken or cut off, plus minor truncation on delivery info.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third 'Fastest near you' card is clipped on the right edge; restaurant name shows as 'Trattoria Piccol' and the card/image is only partially visible.",
+        "suggestion": "Ensure horizontal carousels fully show cards or use consistent peek/padding so names and images are not cut mid-word."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Category filter chips overflow the screen; the chip after 'Healthy' is only a partial oval with no label visible.",
+        "suggestion": "Add horizontal scroll with proper end padding, or wrap/resize chips so none are cut off at the viewport edge."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant title under the pizza card is missing or scrolled out of view while the image and -20% badge are shown, creating an incomplete listing.",
+        "suggestion": "Keep title, meta row, and image together in each list item so content is not partially off-screen on initial load."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Search placeholder text appears slightly cramped/low-contrast in the pill field and could be harder to read at a glance.",
+        "suggestion": "Increase placeholder contrast and vertical padding inside the search field for clearer readability."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 315,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005654,
+    "reportedCost": 0.0050012,
+    "durationSeconds": 8.476420165999997
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_08",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T13:17:21.304Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed, but the horizontal carousels in 'Fastest near you' and the category filter row clip content at the right edge without a clear scroll affordance, and the promo banner text has borderline contrast on the green background.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Fastest near you' carousel cuts off the third card ('Trattoria Piccol...') mid-word at the right screen edge with no visible scroll indicator or peek padding, making it unclear that the row is horizontally scrollable.",
+        "suggestion": "Add right-edge padding or a partial-card peek plus a subtle scroll hint (e.g., gradient fade or chevron) so users understand the row scrolls horizontally."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chips row ('All', 'Pizza', 'Sushi'...) is also clipped at the right edge with a partially visible chip, lacking a clear affordance that more categories exist.",
+        "suggestion": "Provide a slight peek of the next chip and/or a fade-out gradient on the right edge to signal horizontal scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The subtext 'Use code TALLINN3 at checkout · min. order €10' on the green promo banner uses a lighter green/white tone that may fall below the recommended 4.5:1 contrast ratio for small text.",
+        "suggestion": "Increase the text color contrast (e.g., pure white or a lighter tint) against the green background to meet WCAG AA for small text."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The restaurant name 'Trattoria Piccol...' is truncated without an ellipsis-aware layout in the visible card, reducing readability of the listing title.",
+        "suggestion": "Ensure truncated titles use a proper ellipsis and consider a two-line clamp or smaller font so names remain legible in carousel cards."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1711,
+    "outputTokens": 1397,
+    "reasoningTokens": 898,
+    "estimatedCost": 0.011804,
+    "reportedCost": 0.010684,
+    "durationSeconds": 36.814700249999994
+  }
+}

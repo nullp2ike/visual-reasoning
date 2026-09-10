@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The category chip row ends with a partially visible, unlabeled chip at the right edge, which can look like accidental horizontal clipping rather than an intentional carousel continuation.",
+    "In the “Fastest near you” row, the third restaurant card is clipped by the viewport, including its restaurant name and delivery text.",
+    "The next “Popular right now” restaurant card is partially hidden underneath the fixed bottom navigation, making the visible content appear cut off."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.60 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

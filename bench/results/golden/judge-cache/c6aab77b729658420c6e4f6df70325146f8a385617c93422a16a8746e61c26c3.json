@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The 'Smash Bros Burgers' restaurant card displays '€NaN delivery' as its delivery fee. 'NaN' (Not a Number) is a raw programming error value leaking into the UI, which looks broken and unprofessional and confuses users about the actual delivery cost.",
+    "In the 'Fastest near you' row, the third card ('Trattoria Piccol...') and its title are clipped at the right screen edge. While this may be an intentional horizontal-scroll carousel affordance, there is no visible scroll indicator or peek padding cue beyond the cut-off card.",
+    "The favorite/heart buttons on the 'Popular right now' cards rely on an icon-only control with no visible text label, which can be ambiguous for screen-reader and assistive-technology users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.74 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

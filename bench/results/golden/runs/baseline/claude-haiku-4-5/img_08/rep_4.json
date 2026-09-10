@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-4-5",
+  "provider": "anthropic",
+  "imageId": "img_08",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:05:27.893Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual issues: truncated text in the restaurant listing and an incomplete card at the bottom of the page that is cut off.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Third restaurant name in 'Fastest near you' section is truncated - displays 'Trattoria Piccol' instead of full name",
+        "suggestion": "Adjust text overflow handling to either show full name on single line, use ellipsis properly, or allow text wrapping to display complete restaurant name"
+      },
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "Bottom restaurant card (with -20% discount badge) is cut off at the bottom of the page - restaurant name and delivery details are not visible",
+        "suggestion": "Ensure the complete card including restaurant name and delivery information is visible before the page ends, or adjust spacing/padding to prevent content cutoff"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1854,
+    "outputTokens": 629,
+    "estimatedCost": 0.004999,
+    "durationSeconds": 18.117304542000056
+  }
+}

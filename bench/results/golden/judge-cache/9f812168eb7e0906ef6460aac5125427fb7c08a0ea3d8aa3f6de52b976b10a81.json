@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The pizza card in 'Popular right now' shows a discount badge reading '-100%', which implies the order is entirely free and is almost certainly a data/formatting error (or an unbounded discount value).",
+    "Favorite (heart) buttons are styled inconsistently between the two 'Popular right now' cards: the first uses a white circle with a dark outlined heart, the second uses a dark circle with a white heart.",
+    "The 'Green Bowl Poké' thumbnail in the 'Fastest near you' carousel renders on a very light gray background while sibling cards use dark imagery, making the white '15–25 min' badge low contrast and the card look unfinished."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 identifies the pizza card's discount badge displaying '-100%', matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

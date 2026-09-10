@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "meta/muse-spark-1.3-contributor",
+  "provider": "openrouter",
+  "imageId": "img_06",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-03T11:26:11.086Z",
+  "status": "ok",
+  "result": {
+    "summary": "Page is largely intact with no critical breakage. Found 3 issues: truncated restaurant name at carousel edge, inconsistent time-badge formatting, and bottom card clipped by the tab bar.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Third card in 'Fastest near you' shows restaurant name truncated mid-word as 'Trattoria Piccol' at the screen edge",
+        "suggestion": "Add horizontal list end-padding and use ellipsis truncation so names don't appear cut off mid-character"
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Delivery time badges use inconsistent formatting: '15-25 min' and '20-30 min' without spaces vs '20-30 min' with spaces",
+        "suggestion": "Standardize to one format with spaces around the dash, e.g. '20 - 30 min' or '20–30 min', across all badges"
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Bottom 'Popular right now' pizza card with '-20%' badge is flush against and clipped by the bottom tab bar with no padding, hiding its restaurant name and details",
+        "suggestion": "Add bottom content padding / safe-area inset above the fixed tab bar so cards are fully visible when scrolled into view"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1739,
+    "outputTokens": 2459,
+    "reasoningTokens": 2098,
+    "cachedInputTokens": 1726,
+    "estimatedCost": 0.0006657000000000001,
+    "reportedCost": 0.000496552,
+    "durationSeconds": 26.38872529199999
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The 'Fastest near you' carousel shows two identical 'Green Bowl Poké' cards side-by-side with the same image, same '15-25 min' badge and same '€0.90 delivery' text",
+    "The second card in 'Popular right now' (pizza image with -20% badge) is cut off mid-image by the bottom tab bar with no restaurant name, rating or metadata visible and no spacing above navigation",
+    "Favorite heart icons in 'Popular right now' are inconsistent: first card shows white outline with no background, second card shows white outline on a dark circular background"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.81 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

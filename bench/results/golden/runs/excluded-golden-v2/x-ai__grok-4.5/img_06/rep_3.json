@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_06",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:28:27.221Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several layout and content issues: truncated restaurant names, a cut-off category chip, and incomplete bottom navigation icons/labels.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you section.",
+        "suggestion": "Allow wrapping, reduce font size, or use ellipsis with full name on detail view; ensure cards allocate enough width for typical names."
+      },
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "Bottom navigation is missing the Orders icon; only the label 'Orders' appears with a blank space where the icon should be.",
+        "suggestion": "Add the appropriate orders/receipt icon above the Orders label to match Home, Search, and Profile."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chip on the far right is only partially visible (edge of next chip shown), which can look unfinished even if horizontal scroll is intended.",
+        "suggestion": "Ensure adequate peek of the next chip or add padding so the scroll affordance is clearer without a harsh crop."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Promo banner and section cards use illustration-style images; one popular card shows only food with no restaurant name visible above the fold cut for the second card title area—second popular item name is not shown in the visible area (only image).",
+        "suggestion": "Ensure each restaurant card consistently shows name, meta, and rating without relying on scroll; keep title always visible with the image."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 335,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005934,
+    "reportedCost": 0.00267,
+    "durationSeconds": 77.13374462499999
+  }
+}

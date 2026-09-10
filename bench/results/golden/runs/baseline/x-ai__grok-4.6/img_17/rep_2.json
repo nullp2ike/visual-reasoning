@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:33:27.349Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and styling problems: truncated restaurant names, clipped category chips, a cut-off promo card, and a bottom nav that highlights Profile instead of Home.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card in 'Fastest near you' is clipped at the right edge so the name reads as 'Trattoria Piccol' and the image is cut off.",
+        "suggestion": "Give the horizontal list enough end padding or allow full-width cards so names and images are fully visible, or add a peek affordance that doesn't truncate content."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last category chip ('Healthy') is cut off at the right edge of the screen, implying more categories exist but they aren't fully shown.",
+        "suggestion": "Add trailing inset to the chip scroller or scale chips so the last visible chip isn't cropped."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The second 'Popular right now' card is cropped by the bottom navigation bar, hiding restaurant details.",
+        "suggestion": "Add bottom padding equal to the tab bar height so the last card can scroll fully above the nav."
+      },
+      {
+        "priority": "minor",
+        "category": "functionality",
+        "description": "The bottom tab bar highlights Profile (green) while this screen is clearly the Home feed.",
+        "suggestion": "Set the Home tab as selected on this screen and use the inactive style for Profile."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The promo banner's decorative circles and right edge look tightly cropped against the card bounds.",
+        "suggestion": "Inset the illustration or allow it to bleed with consistent padding so the graphic isn't clipped."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 445,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 384,
+    "estimatedCost": 0.0064340000000000005,
+    "reportedCost": 0.005858,
+    "durationSeconds": 11.962980707999987
+  }
+}

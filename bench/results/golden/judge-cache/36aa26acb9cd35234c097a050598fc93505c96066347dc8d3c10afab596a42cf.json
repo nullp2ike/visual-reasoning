@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccol' is cut off mid-word at the edge of its card container in the Fastest near you row (likely meant to be Piccolo or similar).",
+    "On the Tokumaru Ramen Bar card, the delivery time reads as overlapping/garbled text '25-30delivery' (minutes unit missing and characters colliding with 'delivery')."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "The garbled “25-30delivery” text describes the delivery-related text overlapping the delivery time."
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

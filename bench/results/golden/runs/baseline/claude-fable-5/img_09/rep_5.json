@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_09",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:51:30.884Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there is one clear visual defect: the restaurant name 'Tokumaru Ramen' is truncated mid-character ('Tokumaru Rameı') even though there appears to be enough horizontal space before the rating. A few other elements are clipped at screen edges, which may be intentional carousel behavior but could be improved for clarity.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The restaurant title under the ramen card reads 'Tokumaru Rameı' — the final 'n' is clipped mid-character, despite there appearing to be ample whitespace between the title and the 4.8 rating on the right.",
+        "suggestion": "Fix the text container width or truncation logic so the full name 'Tokumaru Ramen' renders; if truncation is required, use a proper ellipsis (…) instead of clipping mid-glyph."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the third restaurant name is cut off as 'Trattoria Piccol' with no ellipsis, making it look accidentally clipped rather than intentionally scrollable.",
+        "suggestion": "Add an ellipsis for truncated names or add right-edge padding/peek styling so it's clear the row scrolls horizontally."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category chip in the filter row (right of 'Healthy') is cut off at the screen edge showing only a sliver, which looks broken.",
+        "suggestion": "Adjust spacing so a partially visible chip shows enough content to signal horizontal scrolling, or add a fade/gradient at the edge."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The pizza restaurant card at the bottom is cut off by the tab bar with no visible title or details, and its bottom corners are clipped abruptly.",
+        "suggestion": "This is likely normal scroll behavior, but consider adding bottom content padding so cards don't sit flush against the navigation bar mid-scroll."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 903,
+    "estimatedCost": 0.06489,
+    "durationSeconds": 16.261141249999998
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:37:03.980Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-structured, but there is one clear visual defect: in the 'Popular right now' section, the restaurant meta line ('25–30 min', '€0 delivery', 'Ramen') has overlapping/colliding text where the delivery time and delivery fee strings are rendered on top of each other, producing unreadable garbled text ('25–3€0 delivery' / '30 min' overlapping). Other partially-clipped elements (right-edge carousel card, bottom-cut pizza card) are expected scroll/viewport behavior and not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Popular right now' list, the meta row under 'Tokumaru Ramen Bar' shows overlapping text: the delivery-time range ('25–30 min') and the delivery fee ('€0 delivery') are rendered on top of one another, producing garbled, unreadable text like '25–3€0 delivery' with '30 min' colliding beneath it.",
+        "suggestion": "Lay out the meta items in a single horizontal flex row with proper spacing/separators (e.g. '25–30 min • €0 delivery • Ramen') and ensure each label occupies its own space (no absolute positioning or negative margins causing overlap). Verify the container width and text truncation rules so segments never stack on top of each other."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 843,
+    "reasoningTokens": 506,
+    "estimatedCost": 0.008646000000000001,
+    "reportedCost": 0.007526,
+    "durationSeconds": 95.59028437500005
+  }
+}

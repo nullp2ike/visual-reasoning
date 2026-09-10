@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:54:04.616Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and clipping issues: truncated restaurant names, cut-off category pills, and partially visible cards indicate overflow/horizontal scroll problems that hurt readability and polish.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you row, so the full name is not readable.",
+        "suggestion": "Allow multi-line titles, reduce font size on small cards, or ensure the horizontal scroller fully reveals names without clipping mid-word."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Category filter chips are cut off on the right (Healthy is partial and another pill is barely visible), suggesting overflow without a clear scroll affordance.",
+        "suggestion": "Add proper horizontal scrolling with padding/fade, or wrap/resize chips so all labels remain fully visible."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third Fastest near you card is only partially on-screen, making the section feel unfinished and harder to browse.",
+        "suggestion": "Tighten card widths/gaps or show a clearer peek of the next card so users understand they can scroll."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom Popular item (pizza) is heavily cropped by the bottom nav, so key promo content is hard to see without scrolling.",
+        "suggestion": "Add bottom content padding above the tab bar so cards aren’t obscured when the section comes into view."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery time badges sit over food images with soft contrast on light plates, which can reduce legibility.",
+        "suggestion": "Increase badge opacity/shadow or use a consistent high-contrast pill style on all cards."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 456,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006500000000000001,
+    "reportedCost": 0.0058472,
+    "durationSeconds": 10.844707916999992
+  }
+}

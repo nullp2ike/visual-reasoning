@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:54:27.378Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally clean and usable, but there are visible clipping/truncation issues in horizontally scrolling content and a few minor contrast/tap-target concerns.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The right-most category chip after “Healthy” is partially cut off at the screen edge, making the filter row feel broken or overly cropped.",
+        "suggestion": "Add right padding, a fade/scroll indicator, or ensure the final visible chip is not clipped unless clearly part of a carousel."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In “Fastest near you,” the third restaurant card is cut off at the right edge and its name is truncated (“Trattoria Piccol…”), reducing readability.",
+        "suggestion": "Use consistent card widths, ellipsis only within fully visible cards, and/or add an edge fade to communicate horizontal scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Search placeholder text (“Restaurants, dishes, groceries”) is light gray and may be hard to read for low-vision users.",
+        "suggestion": "Increase placeholder contrast or use a darker secondary text color while preserving placeholder styling."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The notification bell’s red badge is very small and may be easy to miss or difficult to perceive.",
+        "suggestion": "Increase badge size slightly and ensure it has sufficient contrast and an accessible label for the notification state."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The lower “Popular right now” card is heavily cropped by the bottom of the viewport, showing only the top of the pizza image with no context.",
+        "suggestion": "Adjust section spacing or card peek height so the next item is hinted without appearing abruptly sliced."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 672,
+    "reasoningTokens": 297,
+    "estimatedCost": 0.016386,
+    "reportedCost": 0.016386,
+    "durationSeconds": 31.05585045900001
+  }
+}

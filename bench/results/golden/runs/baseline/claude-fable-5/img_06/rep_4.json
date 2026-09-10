@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_06",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:25:29.668Z",
+  "status": "ok",
+  "result": {
+    "summary": "Overall the page renders cleanly with a coherent layout. A few minor visual defects were found, mostly related to truncated or clipped content at screen edges. No critical breakage detected.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third restaurant card in 'Fastest near you' shows a truncated name 'Trattoria Piccol' with no ellipsis, making the text look cut off rather than intentionally clipped.",
+        "suggestion": "Apply text-overflow: ellipsis (or platform equivalent) so truncated names end with '…', or reduce font size / allow two lines for restaurant names."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category chip after 'Healthy' is clipped at the right edge with only a tiny sliver visible, giving no hint of its label.",
+        "suggestion": "Adjust chip spacing/peek amount so partially visible chips show enough of the label to indicate scrollability, or add a fade gradient at the edge."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary text such as '€0.90 delivery' and the search placeholder use light gray on white, which may fall below WCAG contrast requirements.",
+        "suggestion": "Darken secondary text color to meet at least 4.5:1 contrast ratio for small text."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery time badges on the food cards ('15–25 min', '20–30 min') sit over busy imagery; on the light poké card the white pill has low separation from the pale background.",
+        "suggestion": "Add a subtle shadow or border to the time badges to ensure they remain distinct on light images."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 704,
+    "estimatedCost": 0.05494,
+    "durationSeconds": 12.78745483300001
+  }
+}

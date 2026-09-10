@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T13:18:48.555Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-structured, but there is a clear text overlap defect in the 'Popular right now' section where the delivery time and '€0 delivery' metadata strings collide, plus a couple of minor polish issues.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Under 'Tokumaru Ramen Bar', the metadata line shows overlapping text: '25–30 min' and '€0 delivery' are rendered on top of each other (appearing as garbled '25–30rdelivery'), making both pieces of information unreadable.",
+        "suggestion": "Fix the layout so the delivery time and delivery fee are separate, non-overlapping elements (e.g. flex row with a separator dot and proper spacing, or stack them). Ensure text containers size to their content instead of overlapping."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third card in 'Fastest near you' ('Trattoria Piccol...') is cut off at the right screen edge with no visual affordance indicating horizontal scrollability.",
+        "suggestion": "Add a scroll hint such as a peeking card edge with padding, a fade gradient, or a horizontal scroll indicator so users know more items are available."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The notification bell icon in the top-right has a red badge dot with no numeric count or text alternative, so the meaning of the badge is unclear to screen reader users.",
+        "suggestion": "Provide an accessible label like 'Notifications, 1 unread' and ensure the badge conveys its count programmatically."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1711,
+    "outputTokens": 983,
+    "reasoningTokens": 581,
+    "estimatedCost": 0.00932,
+    "reportedCost": 0.0082,
+    "durationSeconds": 28.204901166999946
+  }
+}

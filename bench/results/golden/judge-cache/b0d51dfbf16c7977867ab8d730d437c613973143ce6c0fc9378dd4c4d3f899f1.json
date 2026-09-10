@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "A circular loading spinner is displayed in the center of the Tokumaru Ramen Bar hero image even though the image appears fully rendered underneath, suggesting the loading state never resolves/hides.",
+    "The favorite heart button on the second 'Popular right now' card uses a dark/opaque circular background with a dark outline heart, giving very low contrast, while the card above uses a white circle with a dark heart. The two controls look like different components.",
+    "The first 'Fastest near you' thumbnail (Green Bowl Poké) renders on a flat light-gray background unlike the other dark, photo-style cards, making it look like a broken/placeholder image.",
+    "Interactive icon-only controls (notification bell, favorite hearts) have no visible labels; if accessible names are missing they will be unusable with screen readers."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 describes a loading spinner displayed over fully rendered content that fails to hide, matching the expected defect of a spinner shown on top of already loaded content."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Restaurant cover image failed to load"],
+  "reportedIssues": [
+    "The hero image for 'Tokumaru Ramen Bar' in the 'Popular right now' section failed to load, showing a gray broken-image placeholder icon instead of a photo.",
+    "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' carousel is clipped at the right screen edge without an ellipsis, making the name unreadable.",
+    "An extra category filter chip after 'Healthy' is cut off at the right edge and appears as an empty sliver, giving an unfinished look.",
+    "The '€0 delivery' badge and heart button on the Tokumaru card sit on a plain gray placeholder background, which combined with the broken image makes the whole card look unstyled."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.74 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

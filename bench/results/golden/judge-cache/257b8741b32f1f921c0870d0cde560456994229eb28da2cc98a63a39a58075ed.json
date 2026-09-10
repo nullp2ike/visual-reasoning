@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "The 'Fastest near you' carousel cuts off the third card ('Trattoria Piccol...') mid-word at the right screen edge with no visible scroll indicator or peek padding, making it unclear that the row is horizontally scrollable.",
+    "The category filter chips row ('All', 'Pizza', 'Sushi'...) is also clipped at the right edge with a partially visible chip, lacking a clear affordance that more categories exist.",
+    "The subtext 'Use code TALLINN3 at checkout · min. order €10' on the green promo banner uses a lighter green/white tone that may fall below the recommended 4.5:1 contrast ratio for small text.",
+    "The restaurant name 'Trattoria Piccol...' is truncated without an ellipsis-aware layout in the visible card, reducing readability of the listing title."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.67 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

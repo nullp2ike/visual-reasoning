@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The 'Smash Bros Burgers' card shows '€NaN delivery' instead of a valid delivery fee, indicating an undefined/non-numeric value is being passed into the currency formatter.",
+    "The third card in the 'Fastest near you' carousel ('Trattoria Piccol...') is clipped at the right screen edge and its title is cut off without visible ellipsis, so the item looks broken rather than scrollable.",
+    "The favorite (heart) buttons on the two 'Popular right now' cards are styled inconsistently — one has a white/light circular background with a dark outline heart, the other has a dark translucent circle with a white heart.",
+    "The second 'Popular right now' card (pizza with -20% badge) is cut off by the bottom navigation bar with no visible title or metadata, making the section end abruptly.",
+    "The notification bell and heart icon buttons are icon-only with no visible label; the red dot badge conveys state by color/shape alone."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.78 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

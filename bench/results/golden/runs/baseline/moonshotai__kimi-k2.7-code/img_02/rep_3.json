@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:01:24.985Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 issues: a critical data rendering bug showing an invalid delivery price, plus two minor layout/content issues.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "The delivery fee for 'Smash Bros Burgers' displays as '€NaN' (Not a Number), indicating a broken data/formatting value.",
+        "suggestion": "Fix the delivery price calculation or fallback to a formatted currency value, e.g., '€0.00' or 'Free delivery', and add a default for missing/invalid numeric data."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The restaurant name 'Trattoria Picco' in the 'Fastest near you' section appears truncated, likely missing the last word(s).",
+        "suggestion": "Allow the card width to accommodate the full name, truncate with an ellipsis, or use a smaller font size for long names."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza restaurant card in the 'Popular right now' section is partially cut off at the bottom edge of the screen.",
+        "suggestion": "Add sufficient bottom padding or margin so the last card is fully visible above the bottom navigation bar and home indicator."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 754,
+    "reasoningTokens": 450,
+    "estimatedCost": 0.00447242,
+    "reportedCost": 0.00679428,
+    "durationSeconds": 5.47284745900007
+  }
+}

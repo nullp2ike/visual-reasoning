@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The 'Pizza' filter chip is selected (highlighted dark), but the visible results are mostly non-pizza restaurants: Green Bowl Poké, Smash Bros Burgers, and Tokumaru Ramen Bar. Only one pizza item appears at the bottom.",
+    "The third card title in 'Fastest near you' is truncated ('Trattoria Piccol...') and the card itself is cut off at the right edge with no visual scroll indicator.",
+    "A category chip after 'Healthy' is clipped at the right edge of the screen, showing only a small sliver of the pill.",
+    "'Popular right now' shows Tokumaru Ramen Bar prominently with a '€0 delivery' badge duplicated in both the image overlay and the metadata line, which is redundant."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes the Pizza filter being selected (highlighted) while non-pizza restaurants are shown in results, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

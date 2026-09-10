@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_16",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:34:41.883Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed. The main problem found is a filter/content mismatch: the 'Pizza' category chip is shown as selected, but the displayed restaurants are mostly non-pizza venues (poké, burgers, ramen), suggesting the filter is not actually applied.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The 'Pizza' filter chip is visually active (dark/selected state), but the content below does not reflect a pizza-only filter — 'Fastest near you' shows Green Bowl Poké and Smash Bros Burgers, and 'Popular right now' leads with Tokumaru Ramen Bar (tagged 'Ramen').",
+        "suggestion": "Either apply the pizza filter to all sections when the chip is selected, or reset the chip to 'All' so the selected state matches the displayed content."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Redundant '€0 delivery' information on the Tokumaru Ramen Bar card — it appears both as a badge on the image and again in the metadata line below the title.",
+        "suggestion": "Show the free-delivery indicator only once (e.g., keep the badge and omit it from the metadata line) to reduce visual clutter."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 568,
+    "estimatedCost": 0.04927000000000001,
+    "durationSeconds": 35.41863620800001
+  }
+}

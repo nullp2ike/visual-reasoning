@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_02",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:24:41.836Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visually broken issues: one clear data/content bug and one layout issue where content appears obscured by the fixed bottom navigation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The delivery fee for “Smash Bros Burgers” is displayed as “€NaN delivery”, indicating a broken or missing numeric value.",
+        "suggestion": "Add validation/fallback handling for missing delivery-fee data, such as showing “Free delivery”, “Delivery fee unavailable”, or hiding the fee until a valid value is returned."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom navigation bar overlaps the lower restaurant card, cutting off the pizza image/content at the bottom of the screen.",
+        "suggestion": "Add sufficient bottom padding or safe-area spacing to the scrollable content so cards are not hidden behind the fixed bottom navigation."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 479,
+    "reasoningTokens": 291,
+    "estimatedCost": 0.023425,
+    "durationSeconds": 10.935010375000001
+  }
+}

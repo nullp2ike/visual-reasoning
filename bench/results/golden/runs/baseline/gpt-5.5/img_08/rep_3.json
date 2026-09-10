@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_08",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:25:56.133Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished and usable, but there are a few visual/layout issues related to clipped horizontally scrolling content and content being obscured near the bottom navigation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom navigation bar overlaps the main content. The second restaurant card is partially hidden behind the fixed tab bar, making the image/card feel cut off.",
+        "suggestion": "Add sufficient bottom padding or safe-area spacing to the scrollable content so cards can scroll fully above the bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Horizontal carousel content is visibly clipped on the right side. In the category chips and the 'Fastest near you' row, the next item is partially cut off at the screen edge.",
+        "suggestion": "If this is intentional as a scroll hint, ensure the clipping is consistent and clean. Otherwise, adjust carousel spacing or item widths so visible items fit within the viewport."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The restaurant name in the third 'Fastest near you' card is cut off at the right edge, making it hard to read.",
+        "suggestion": "Constrain text within the card width with ellipsis, or avoid showing a partially visible card with readable text outside the viewport."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 572,
+    "reasoningTokens": 297,
+    "estimatedCost": 0.026215000000000002,
+    "durationSeconds": 11.575914917000002
+  }
+}

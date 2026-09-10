@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Under “Tokumaru Ramen Bar”, the delivery time, delivery fee, and cuisine metadata appear collided/garbled, showing text like “25–€0delivery” instead of separated “25–30 min · €0 delivery · Ramen”.",
+    "The horizontal category filter row shows the next chip partially cut off at the right edge with no clear scroll affordance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes delivery fee text overlapping/colliding with delivery time text, resulting in garbled display like '25–€0delivery', which matches the expected defect of delivery fee overlapping delivery time."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

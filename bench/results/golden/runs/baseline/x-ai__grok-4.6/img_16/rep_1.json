@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:33:08.457Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen has several layout/overflow problems: category chips and restaurant cards are clipped, a restaurant name is truncated, and the last popular card is cut off at the bottom.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last category chip on the right is cut off by the screen edge, so users cannot see the full label or that more categories exist.",
+        "suggestion": "Add end padding and a visible peek of the next chip, or a fade/scroll indicator so the horizontal category list is clearly scrollable."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third 'Fastest near you' card (Trattoria Piccol…) is clipped on the right and the restaurant name is truncated.",
+        "suggestion": "Give the last visible card enough peek/padding, allow wrapping or a slightly smaller type size, and ensure names are not cut mid-word."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The second 'Popular right now' card is cut off at the bottom by the tab bar, hiding the restaurant name and details.",
+        "suggestion": "Add bottom content inset/padding so the last card can scroll fully above the tab bar."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Promo banner text sits over decorative circles with uneven contrast, especially the smaller subtitle.",
+        "suggestion": "Increase overlay contrast or keep key text on a solid area so the offer and code stay easy to read."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The notifications bell with a red badge has no visible count or label in the screenshot.",
+        "suggestion": "Expose an accessible name and badge count so the alert is understandable to all users."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 373,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 384,
+    "estimatedCost": 0.006002,
+    "reportedCost": 0.005426,
+    "durationSeconds": 10.687961291999994
+  }
+}

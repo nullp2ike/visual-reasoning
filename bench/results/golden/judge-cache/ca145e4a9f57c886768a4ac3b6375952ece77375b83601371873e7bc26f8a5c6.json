@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "Restaurant names are truncated in the 'Fastest near you' carousel ('Trattoria Piccol...') and the 'Popular right now' section ('Tokumaru Ramei' appears cut off), making it hard to read full names.",
+    "The third card in the 'Fastest near you' row is cut off at the right edge with no visible partial-card indicator or padding, which may confuse users about scrollability.",
+    "The favorite (heart) icons are styled inconsistently — one appears on a white circular background while the other is on a dark/transparent background, creating visual inconsistency between cards."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 explicitly identifies the 'Tokumaru Ramei' restaurant name as cut off, matching the expected heading truncation."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

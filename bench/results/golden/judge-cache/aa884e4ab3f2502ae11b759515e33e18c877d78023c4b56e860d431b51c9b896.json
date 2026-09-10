@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The 'Smash Bros Burgers' card in 'Fastest near you' displays '€NaN delivery', indicating a failed number formatting or missing/invalid delivery fee value.",
+    "The restaurant name 'Trattoria Piccol...' is cut off at the right edge without an ellipsis, and the last category chip after 'Healthy' is clipped to an unreadable sliver.",
+    "Delivery fee formatting is inconsistent across cards: '€0.90', '€1.90', and '€0' (Tokumaru Ramen Bar) vs the broken '€NaN'.",
+    "The 'DELIVER TO' label and delivery metadata text use light gray on white, which may have insufficient contrast for some users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0, 2],
+        "reasoning": "Reports 0 and 2 both identify the broken €NaN delivery fee display."
+      }
+    ],
+    "extraReportedIndexes": [1, 3]
+  }
+}

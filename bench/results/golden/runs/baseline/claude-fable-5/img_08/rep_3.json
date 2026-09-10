@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_08",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:51:04.295Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed, but there is a clear typo in the search placeholder and a few edge-truncation issues on carousels that make content appear clipped rather than intentionally scrollable.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The search bar placeholder reads 'Restarants, dishes, groceries' — 'Restarants' is a misspelling of 'Restaurants'.",
+        "suggestion": "Correct the placeholder text to 'Restaurants, dishes, groceries'."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' carousel is hard-clipped at the screen edge with no ellipsis, making it look broken rather than scrollable.",
+        "suggestion": "Truncate the name with an ellipsis within the card width, or add right padding/peek spacing so partial cards clearly indicate horizontal scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category chip after 'Healthy' is cut off at the right edge showing only a thin sliver, which looks like a rendering glitch rather than an affordance for more chips.",
+        "suggestion": "Adjust chip spacing so a larger, recognizable portion of the next chip peeks into view, or add a fade/gradient edge to signal horizontal scroll."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The delivery fee text (e.g., '€0.90 delivery') and meta info under restaurant names is rendered in light gray, giving low contrast against the white background.",
+        "suggestion": "Darken the secondary text color to meet WCAG AA contrast (at least 4.5:1 for small text)."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 698,
+    "estimatedCost": 0.05464,
+    "durationSeconds": 12.748214833
+  }
+}

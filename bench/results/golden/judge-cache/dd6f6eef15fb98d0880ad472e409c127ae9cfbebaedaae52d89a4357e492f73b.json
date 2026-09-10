@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Under 'Tokumaru Ramen Bar' the metadata line renders two overlapping strings ('25–35 min' and '€0 delivery' printed on top of each other), making the delivery time and fee illegible.",
+    "The second 'Popular right now' card (pizza) is cut off by the bottom tab bar with no visible name, rating or padding, so the card looks broken rather than scrollable.",
+    "The favourite (heart) icon on the pizza card uses a dark, nearly opaque circle on a dark image, giving very low contrast, while the same icon on the ramen card is white — inconsistent and hard to see.",
+    "The 'Fastest near you' carousel clips the third card's title ('Trattoria Piccol…') at the screen edge with no peek affordance, and the category chip row is also cut mid-chip.",
+    "The 'Green Bowl Poké' thumbnail has a light grey background while sibling thumbnails are dark, making the row look visually inconsistent."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 describes delivery fee and delivery time text overlapping and becoming illegible under a restaurant entry, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

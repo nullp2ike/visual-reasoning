@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_15",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:03:56.828Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly polished, but two visual issues stand out: a misplaced bottom-navigation active indicator and a truncated/clipped third card in the 'Fastest near you' carousel.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The active tab indicator in the bottom navigation appears as a thick dark horizontal bar under/around the search icon instead of a small line beneath the selected Home icon, making the current selection look incorrect.",
+        "suggestion": "Align and scale the active indicator so it sits cleanly under the currently selected tab (Home) and does not overlap adjacent icons."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third restaurant card in the 'Fastest near you' carousel ('Trattoria Piccol...') is cut off at the right edge of the screen and its name is truncated without an ellipsis, so it is not obvious that the list is horizontally scrollable.",
+        "suggestion": "Apply consistent peek styling for partially visible cards and use text-overflow ellipsis for truncated restaurant names."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 1871,
+    "reasoningTokens": 1640,
+    "estimatedCost": 0.00866117,
+    "reportedCost": 0.01573028,
+    "durationSeconds": 12.287636667000013
+  }
+}

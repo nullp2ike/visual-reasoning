@@ -1,0 +1,24 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The last restaurant card in the 'Fastest near you' row is cut off at the right edge (image and name 'Trattoria Piccol' are clipped).",
+    "Category filter chips overflow the screen: 'Healthy' is clipped and a partial next chip is visible with no clear scroll affordance.",
+    "Restaurant name 'Tokumaru Ramen' is truncated to 'Tokumaru Ramer' under the featured card.",
+    "The bottom pizza card is cropped by the tab bar, so only part of the image and the discount badge are visible."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "cosine 0.76 >= 0.69 threshold (reported #2)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

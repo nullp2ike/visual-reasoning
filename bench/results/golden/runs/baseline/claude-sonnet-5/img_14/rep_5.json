@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_14",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:01:40.768Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 4 issues: content is cut off at the right edge in horizontally scrolling sections, and category filter tabs are truncated at the screen edge, indicating layout/overflow problems.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Fastest near you' section shows a third card (Trattoria Piccolo) cut off abruptly at the right edge of the screen with no clear scroll indicator or fade effect.",
+        "suggestion": "Add a fade/gradient overlay at the edge to indicate scrollability, or ensure cards are fully visible with proper peek amount."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row (All, Pizza, Sushi, Burgers, Healthy) has an additional category cut off at the right edge, only partially visible.",
+        "suggestion": "Add a subtle fade gradient or arrow indicator to signal more scrollable content."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccolo' appears truncated ('Piccol') due to the card being cut off by the screen edge.",
+        "suggestion": "Ensure text truncation uses ellipsis styling consistently, or adjust card width so text isn't awkwardly cut mid-word."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second promotional item below 'Popular right now' (pizza image with -20% badge) is cut off at the bottom of the visible screen with no clear indication of additional scrollable content beyond the fold.",
+        "suggestion": "Consider adding a visual cue (like a partial card reveal) to signal scrollability, or ensure consistent spacing so content isn't harshly clipped by the viewport."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 634,
+    "estimatedCost": 0.015432000000000001,
+    "durationSeconds": 8.029868708000052
+  }
+}

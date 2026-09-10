@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant name under the ramen card is truncated mid-word ('Tokumaru Rameı' with the final letter cut off) even though there is empty horizontal space to the right before the rating badge. The title container does not use the available width or apply a proper ellipsis, so the name appears visually broken.",
+    "The truncated title shows an unusual character ('ı' dotless i) at the cut point, suggesting the truncation happens at a raw glyph boundary rather than a clean ellipsis, which looks like a rendering glitch."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe the same defect: 'Tokumaru Ramen Bar' heading truncated mid-word without proper ellipsis, with the element not utilizing available horizontal space."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_06",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:25:15.763Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed; most findings are minor edge clipping and text truncation issues typical of horizontal carousels, plus one content truncation that lacks proper ellipsis handling.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third restaurant name in 'Fastest near you' is truncated as 'Trattoria Piccol' with no ellipsis, making the name look cut off/broken rather than intentionally clipped.",
+        "suggestion": "Apply text-overflow: ellipsis (or platform equivalent) so truncated names render as 'Trattoria Piccol…', or wrap to a second line."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category filter chip on the right edge (after 'Healthy') is clipped so severely that its label is completely invisible, appearing as an empty gray sliver.",
+        "suggestion": "Adjust the horizontal chip carousel spacing or add a peek amount that shows enough of the next chip's label to indicate it is scrollable content, not a rendering glitch."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza card ('-20%') is abruptly cut off by the bottom navigation bar with no visible restaurant name or details, which can look broken on first load.",
+        "suggestion": "Ensure content has adequate bottom padding/safe-area inset so the last card isn't awkwardly bisected by the nav bar, or let a natural fold point show partial image with a hint of the title."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The 'See all' links and delivery fee/metadata text use light gray/green on white that may fall below WCAG contrast recommendations for small text.",
+        "suggestion": "Darken the secondary text and link colors slightly to meet at least 4.5:1 contrast ratio for body-size text."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 761,
+    "estimatedCost": 0.05779,
+    "durationSeconds": 15.515607083999996
+  }
+}

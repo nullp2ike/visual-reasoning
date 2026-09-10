@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_09",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:30:19.757Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed, but there is one notable visual defect: the 'Tokumaru Ramen' restaurant title in the 'Popular right now' section is truncated mid-word ('Tokumaru Ramei') even though there appears to be ample horizontal space before the rating element, and no ellipsis is shown to indicate truncation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The restaurant name 'Tokumaru Ramen' is clipped to 'Tokumaru Ramei' (the final 'n' is cut off) despite visible empty space between the title and the 4.8 rating on the right. The text is hard-clipped with no ellipsis, making it look broken rather than intentionally truncated.",
+        "suggestion": "Fix the title container's width constraint so the full name fits when space is available, and apply text-overflow: ellipsis (or platform equivalent) as a fallback for genuinely long names instead of hard clipping."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The rightmost category chip after 'Healthy' is visible only as a tiny sliver at the screen edge with no readable content, which can look like a rendering artifact rather than a scroll affordance.",
+        "suggestion": "Adjust chip spacing/peek width so the next chip shows enough of its label (e.g., 20–30% visible) to clearly signal horizontal scrollability."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 604,
+    "estimatedCost": 0.051070000000000004,
+    "durationSeconds": 54.43493137500004
+  }
+}

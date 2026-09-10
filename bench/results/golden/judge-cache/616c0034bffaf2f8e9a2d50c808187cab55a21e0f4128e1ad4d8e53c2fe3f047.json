@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The third restaurant card 'Trattoria Piccol...' in the 'Fastest near you' section is cut off — both the image and the restaurant name are truncated at the right edge of the screen with no visual indication of scrollability (no scroll indicator or partial reveal cue).",
+    "The last visible restaurant card at the bottom of the screen shows a '-0%' badge, which is semantically meaningless and likely a placeholder or data error (a 0% discount badge serves no purpose)."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 directly describes a discount badge showing '-0%', matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

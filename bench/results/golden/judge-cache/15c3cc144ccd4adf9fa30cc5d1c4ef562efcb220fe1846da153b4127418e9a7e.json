@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The horizontal category row extends beyond the right edge, leaving a partially visible next category chip with no clear end padding or indication that the row can scroll.",
+    "The \"Fastest near you\" restaurant carousel is clipped at the right edge: the third card's image, title (\"Trattoria Piccol…\"), and delivery text are truncated by the viewport.",
+    "The fixed bottom navigation overlays the scrolling feed, obscuring the lower portion of the next restaurant card instead of reserving safe bottom space."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "No reported issue describes the Profile navigation item being highlighted while the home feed is displayed; reported issues focus on layout/clipping problems, not navigation state."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

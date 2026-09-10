@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_03",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:30:56.799Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual and layout problems: a missing restaurant image, a cut-off restaurant name, a clipped category chip, and a promo card that is cropped at the bottom.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The first card in “Popular right now” (Tokumaru Ramen Bar) shows a broken-image placeholder instead of a restaurant photo.",
+        "suggestion": "Load a valid image (or a proper fallback) so the card matches the rest of the list."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third “Fastest near you” card name is truncated to “Trattoria Piccol” with no ellipsis or wrap, so the restaurant name is incomplete.",
+        "suggestion": "Allow the title to wrap to two lines or truncate with an ellipsis so the full name is indicated."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category chip (“Healthy”) is cut off at the right edge of the screen, implying more filters exist but with no fade or chevron.",
+        "suggestion": "Add overflow fade, a peek of the next chip, or a scroll indicator so the row doesn’t look clipped."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza promo card is cut off by the tab bar, so the rest of the offer and restaurant info are not visible.",
+        "suggestion": "Add bottom padding so the last card can scroll fully above the navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 322,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 384,
+    "estimatedCost": 0.005696,
+    "reportedCost": 0.00512,
+    "durationSeconds": 31.089900582999995
+  }
+}

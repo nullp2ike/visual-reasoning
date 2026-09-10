@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The 'Pizza' category chip is shown as active/selected, yet the sections below ('Fastest near you', 'Popular right now') display unrelated cuisines such as Green Bowl Poké, Smash Bros Burgers, and Tokumaru Ramen Bar. The selected filter appears to have no effect on the listed content.",
+    "The 'Fastest near you' section is inconsistent with its promise: the first card (Green Bowl Poké, 15–25 min) is faster, but the sorting/selection includes items with identical 20–30 min times, which is fine, yet none match the active 'Pizza' filter, compounding the filter mismatch.",
+    "The promo banner's 'Order now' button and text sit close to the decorative circles on the right; on smaller screens the subtitle 'Use code TALLINN3 at checkout · min. order €10' may run near the edge with tight padding."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0, 1],
+        "reasoning": "Both reports state that the active Pizza filter does not restrict the displayed feed to pizza items."
+      }
+    ],
+    "extraReportedIndexes": [2]
+  }
+}

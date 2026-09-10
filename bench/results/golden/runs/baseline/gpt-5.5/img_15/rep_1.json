@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_15",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:27:34.184Z",
+  "status": "ok",
+  "result": {
+    "summary": "The main visually broken area is the bottom navigation: an unexpected dark horizontal bar overlaps the navigation icons and the nav appears too low/cropped. Other visible clipping appears mostly related to horizontal carousels and may be intentional, but it should be checked.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "A thick dark horizontal bar is drawn across the bottom navigation area, overlapping the Search and saved/bookmark icons. This makes the nav look broken and may interfere with tapping or readability.",
+        "suggestion": "Check the bottom navigation safe-area handling, z-index, and any gesture/home-indicator overlay. Ensure the nav bar sits above system UI and no debug/overlay element is rendered across it."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom navigation icons appear positioned very close to the bottom edge, with parts of the icons visually cramped or partially obscured. Labels, if expected, are not visible.",
+        "suggestion": "Add proper bottom padding using the device safe area inset and verify the nav bar height across screen sizes. Ensure icons and labels are fully visible and centered vertically."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Several horizontally scrollable cards/chips are cut off at the right edge, such as the category chip row and the third restaurant card in 'Fastest near you'. This may be intentional carousel behavior, but it looks abrupt in the screenshot.",
+        "suggestion": "If intentional, consider adding consistent side padding or a fade/partial-card treatment. If not intentional, constrain carousel content so cards do not appear awkwardly clipped."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 850,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.034555,
+    "durationSeconds": 17.82774558299998
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:54:30.752Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely functional, but horizontal carousel content is clipped at the right viewport edge, causing truncated restaurant/category text that looks broken. Found 2 notable layout issues and 1 minor styling concern.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third 'Fastest near you' card is cut off at the right edge and its title is truncated as 'Trattoria Piccol', making the restaurant name unreadable.",
+        "suggestion": "Add right-edge padding/inset to the horizontal list or show a clearer peek gradient so partially visible cards do not appear abruptly clipped; ensure titles remain readable or fully hidden."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row shows a sliver of an additional chip at the far right edge after 'Healthy', creating an unfinished cropped look.",
+        "suggestion": "Add consistent end padding to the horizontally scrolling chip row or align the final visible chip so partial items are intentionally presented with edge fade."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The bottom pizza card is cut by the viewport above the tab bar with no clear continuation cue, which can look abruptly truncated on smaller screens.",
+        "suggestion": "Use a bottom fade, spacing, or snap behavior so partially visible content clearly indicates continued scrolling."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 707,
+    "reasoningTokens": 424,
+    "estimatedCost": 0.016911,
+    "reportedCost": 0.0113814,
+    "durationSeconds": 28.083414583000007
+  }
+}

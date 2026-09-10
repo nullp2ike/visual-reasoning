@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_07",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T10:32:46.656Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 major issue: a restaurant card image appears to be stuck in a loading state.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "performance",
+        "description": "The Tokumaru Ramen Bar card image in the 'Popular right now' section has a loading spinner overlaid on it, indicating the image failed to fully load or is indefinitely stuck in a loading state.",
+        "suggestion": "Implement a proper image loading fallback: show a skeleton placeholder while loading, and display a default/placeholder image if the load fails. Investigate the image CDN or network timeout settings to prevent images from getting stuck in a loading loop."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1910,
+    "outputTokens": 360,
+    "estimatedCost": 0.011130000000000001,
+    "durationSeconds": 9.603758083000779
+  }
+}

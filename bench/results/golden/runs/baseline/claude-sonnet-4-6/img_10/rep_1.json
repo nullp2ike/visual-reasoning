@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_10",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:03:16.817Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 issues: two major layout/content truncation problems and one minor duplicate content issue.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' section ('Smash Bros Bu...') is cut off at the right edge, truncating both the image and the restaurant name text.",
+        "suggestion": "Ensure the horizontal scroll container shows a proper peek of the next card or adjust card sizing so partial cards are clearly indicated as scrollable, and the name should not be clipped without ellipsis."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The restaurant name 'Smash Bros Bu...' is truncated mid-word without an ellipsis, making it unclear what the full name is.",
+        "suggestion": "Apply CSS text-overflow: ellipsis or ensure the card width is sufficient to show the full name or a properly truncated version with '...'."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Two identical 'Green Bowl Poké' restaurant cards with the same delivery time (15–25 min) and price (€0.90) appear side by side in the 'Fastest near you' section, which looks like a data duplication error.",
+        "suggestion": "Verify the data source to ensure distinct restaurant entries are being displayed. If these are two separate locations, differentiate them with location or branch identifiers."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 377,
+    "estimatedCost": 0.011130000000000001,
+    "durationSeconds": 11.651797791999998
+  }
+}

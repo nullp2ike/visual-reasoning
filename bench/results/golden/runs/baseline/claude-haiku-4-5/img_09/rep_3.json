@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-4-5",
+  "provider": "anthropic",
+  "imageId": "img_09",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:05:39.060Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 visual issues: a major issue with cut-off content at the bottom of the page, and two minor text truncation issues in the restaurant listings.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Bottom restaurant card is incomplete and cut off by the viewport, preventing users from seeing the full restaurant name and complete details",
+        "suggestion": "Ensure all card content is fully visible within the viewport or implement proper scrolling/pagination so users can see complete restaurant information"
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' in the third 'Fastest near you' card appears truncated, likely should be 'Trattoria Piccolo'",
+        "suggestion": "Use text truncation with ellipsis (...) or adjust card width to fully display restaurant names"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter pills on the right side are partially cut off, indicating there are more categories but the scroll affordance is not obvious",
+        "suggestion": "Add visual indicators (arrows or scroll hints) to show users that more categories are available, or implement horizontal scrolling with better visibility"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1854,
+    "outputTokens": 944,
+    "estimatedCost": 0.006574,
+    "durationSeconds": 10.38928820900002
+  }
+}

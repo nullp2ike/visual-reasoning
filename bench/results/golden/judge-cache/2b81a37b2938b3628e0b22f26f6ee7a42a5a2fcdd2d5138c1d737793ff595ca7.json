@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Under 'Tokumaru Ramen Bar', the delivery time and fee texts overlap each other, rendering as garbled text like '25–3€0dmilinvery • Ramen' instead of '25–35 min • €0 delivery • Ramen'.",
+    "The third restaurant card in 'Fastest near you' has its name truncated ('Trattoria Piccol') without an ellipsis, and it's unclear if this is intentional carousel cropping or a text overflow issue.",
+    "A filter chip at the far right of the category row is cut off with no visible label, which may look broken if the row isn't obviously scrollable."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.82 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

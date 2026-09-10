@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The fixed bottom navigation covers the lower portion of the second restaurant card, leaving its image and content visibly cut off at the bottom of the viewport.",
+    "The category row and the 'Fastest near you' restaurant carousel show partially clipped items at the right edge. This may be intentional for horizontal scrolling, but there is no visible scroll affordance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.59 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

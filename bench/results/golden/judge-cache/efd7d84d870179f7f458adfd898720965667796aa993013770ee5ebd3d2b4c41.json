@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The category chip row is horizontally cut off on the right: a partial next chip is visible at the viewport edge without a clear intentional continuation treatment.",
+    "The \"Fastest near you\" restaurant carousel is clipped at the right edge. The third card is only partially visible, including truncated restaurant and delivery text.",
+    "The third restaurant name in the fast-delivery row is visibly truncated as \"Trattoria Picco...\", which makes the listing label incomplete.",
+    "A loading spinner is displayed over the main \"Tokumaru Ramen Bar\" image while the full image and restaurant details are already visible, making the card look unfinished.",
+    "The second card in the \"Popular right now\" section is abruptly obscured by the fixed bottom navigation, leaving only part of the card visible."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "Reported issue 3 describes a loading spinner overlaying an already fully loaded restaurant image and details."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 4]
+  }
+}

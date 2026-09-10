@@ -1,0 +1,24 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant name 'Tokumaru Ramen' is clipped mid-glyph (renders as 'Tokumaru Ramei') even though there is ample horizontal space before the rating on the right. Text is being hard-clipped instead of ellipsized.",
+    "The 'Trattoria Piccol...' card title in the 'Fastest near you' carousel is cut off abruptly at the screen edge with no ellipsis, and the card image is partially clipped, which may look broken rather than like an intentional scroll affordance.",
+    "The last category filter chip after 'Healthy' is cut off at the right edge showing only a small sliver, making it look like a rendering artifact.",
+    "Delivery time badges ('15-25 min', '20-30 min') overlap the food images inconsistently — the badge on the third card sits partially off-screen due to the clipped card."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.82 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

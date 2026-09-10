@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_10",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:26:21.325Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly coherent, but there are a few layout problems: some horizontally scrollable content is awkwardly clipped, and the fixed bottom navigation appears to cover feed content.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlaps the restaurant feed content. The lower restaurant card image continues underneath the nav area, making the content feel cut off and partially hidden.",
+        "suggestion": "Add bottom padding or safe-area spacing to the scrollable content equal to the height of the bottom navigation so the last visible card is not obscured."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is clipped on the right edge, showing only a blank partial pill after “Healthy.” This looks like an unfinished or broken chip rather than an intentional carousel affordance.",
+        "suggestion": "Either ensure the next chip is partially visible with readable text, add right padding, or hide the overflow more cleanly."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The “Fastest near you” carousel cuts off the third restaurant card quite abruptly, including its title, which makes the item look broken or incomplete.",
+        "suggestion": "Adjust card widths, spacing, or scroll snapping so partially visible cards still look intentional, or show a clearer horizontal-scroll affordance."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 630,
+    "reasoningTokens": 352,
+    "estimatedCost": 0.027955,
+    "durationSeconds": 15.969381374999998
+  }
+}

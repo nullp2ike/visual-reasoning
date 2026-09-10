@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_14",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:53.372Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen has several layout problems: category chips and restaurant cards are clipped at the edges, restaurant names and times overflow their cards, and a promo card is cut off at the bottom.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last category chip ('Healthy') is cut off at the right edge, so users cannot see the full set of filters.",
+        "suggestion": "Add horizontal padding or a fade/scroll affordance so all category chips are fully visible or clearly scrollable."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third 'Fastest near you' card (Trattoria Piccol) is clipped on the right, and its name is truncated.",
+        "suggestion": "Give the horizontal carousel enough inset/padding so the last visible card is not cut off mid-content."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The delivery-time badge on Smash Bros Burgers overflows the image (the 'min' text sits outside the photo).",
+        "suggestion": "Constrain the badge within the image bounds and allow wrapping or a slightly smaller font so the full time range stays inside the card."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom promo card is cut off by the tab bar, so the restaurant name and details are not visible.",
+        "suggestion": "Add bottom content padding equal to the tab bar height so the last card can scroll fully into view."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Notification badge on the bell sits slightly outside the circular button.",
+        "suggestion": "Nudge the badge inward so it stays fully on the icon background."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 440,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.006404,
+    "reportedCost": 0.003716,
+    "durationSeconds": 9.075132582999998
+  }
+}

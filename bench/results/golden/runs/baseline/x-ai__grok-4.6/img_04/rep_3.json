@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_04",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:31:28.129Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content issues: category chips and restaurant cards are clipped, a pizza card shows a placeholder “-0%” discount, and the last restaurant name is truncated.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last category chip (“Healthy”) is cut off on the right, so the horizontal category list looks incomplete and may hide more options.",
+        "suggestion": "Add peek/fade, padding, or a scroll indicator so chips aren’t clipped at the screen edge."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third “Fastest near you” card (Trattoria Piccol…) is clipped on the right and the restaurant name is truncated.",
+        "suggestion": "Give cards consistent width/spacing or allow wrapping so names and cards aren’t cut off."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza card shows a “-0%” badge, which looks like a broken or empty discount.",
+        "suggestion": "Hide the discount badge when the value is 0% or show a real offer."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza card is cut off by the tab bar, so the restaurant name and details are not visible.",
+        "suggestion": "Add bottom padding/safe-area spacing so content isn’t hidden behind the tab bar."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The last visible category chip on the right is only a partial circle, which looks unfinished.",
+        "suggestion": "Ensure the last chip is fully visible or use a clearer overflow treatment."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 345,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.005834000000000001,
+    "reportedCost": 0.003146,
+    "durationSeconds": 11.192548625000011
+  }
+}

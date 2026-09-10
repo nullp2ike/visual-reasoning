@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "In the 'Fastest near you' horizontal carousel, the third card ('Trattoria Piccol...') is cut off at the right screen edge, truncating the restaurant name. While this can signal scrollability, the abrupt clipping of text looks broken.",
+    "The bottom navigation bar icons (home, search, bookmark, profile) sit very close to the device home indicator / gesture bar, with the indicator line overlapping the icon row, making the bar feel cramped and partially obscured.",
+    "The category filter chips row ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') is also clipped at the right edge with a partially visible chip, which is consistent with horizontal scroll but lacks a visual scroll hint."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Issue 1 describes bottom navigation icons overlapping with the device gesture bar and being obscured, matching the expected defect of gesture bar overlap and nav bar issues."
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

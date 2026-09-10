@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T13:20:56.889Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed and functional. The main visual issue is horizontal truncation of restaurant names in the 'Fastest near you' carousel (e.g. 'Trattoria Piccol...' is cut off at the right edge), which is partly expected for a scrollable carousel but the card is clipped mid-word without a clear visual affordance. Other than that, layout, contrast, and hierarchy look consistent.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' horizontal carousel, the third card ('Trattoria Piccol...') is clipped at the right screen edge with the restaurant name truncated mid-word and no visible scroll indicator or peeking gap that clearly signals more content is available.",
+        "suggestion": "Add a small right-edge fade/gradient or ensure a partial 'peek' of the next card with consistent padding so users understand the row is horizontally scrollable; consider ellipsizing the title cleanly rather than cutting it at the viewport edge."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The selected category filter is 'Pizza', yet the 'Fastest near you' section shows Poké and Burgers restaurants, which can feel inconsistent with the active filter.",
+        "suggestion": "Either filter the 'Fastest near you' results to match the selected 'Pizza' category, or label the section to clarify it is not bound to the active filter (e.g. 'Fastest near you (all categories)')."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1711,
+    "outputTokens": 1041,
+    "reasoningTokens": 678,
+    "estimatedCost": 0.009668,
+    "reportedCost": 0.008548,
+    "durationSeconds": 33.224502041
+  }
+}

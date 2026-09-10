@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_10",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:03:24.509Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 visual issues on the food delivery app page, including a truncated restaurant card, a duplicate listing, and a partially visible category filter.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' section ('Smash Bros Bu...') is cut off on the right side, truncating both the image and the restaurant name text.",
+        "suggestion": "Ensure the horizontal scroll container shows a clear peek of the next card without cutting off text. Add proper padding or adjust card width so the truncation is more intentional and readable."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Fastest near you' section shows two identical 'Green Bowl Poké' listings with the same delivery time (15-25 min) and price (€0.90), which appears to be a duplicate entry rather than intentional.",
+        "suggestion": "Verify the data source to ensure duplicate restaurant entries are not being rendered. If these are different branches, differentiate them with branch names or addresses."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category filter pill in the horizontal filter row (after 'Healthy') is partially visible and cut off, with no visual indicator (like a fade or arrow) to hint that the list is scrollable.",
+        "suggestion": "Add a fade gradient or a visible scroll indicator at the edge of the filter row to communicate that more categories are available by scrolling."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 386,
+    "estimatedCost": 0.011265,
+    "durationSeconds": 11.422651416999987
+  }
+}

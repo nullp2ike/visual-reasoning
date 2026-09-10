@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The second popular card shows a discount badge of '−100%', which implies the item is entirely free and is almost certainly a data or formatting error (e.g. a raw value mis-mapped into the percent-off field).",
+    "The favorite (heart) button on the pizza card uses a dark filled circle with a dark heart outline, unlike the white circle with dark heart on the ramen card above; the icon is barely visible against its own background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 explicitly identifies a discount badge showing −100%."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

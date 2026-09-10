@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_15",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:59:14.258Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly usable, but the bottom tab bar is visually obstructed by the system navigation/gesture bar, and a few low-contrast/small-text elements may be hard to read. Horizontal card clipping appears consistent with scrollable carousels rather than a defect.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom app navigation icons are overlapped by a thick black system navigation/gesture bar, partially striking through the search and cart icons and making the tab bar look broken.",
+        "suggestion": "Add proper bottom inset/safe-area padding and edge-to-edge handling so the app tab bar sits above the system navigation area without overlap."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary metadata such as delivery fees and time ranges uses small gray text that may be difficult to read for low-vision users.",
+        "suggestion": "Increase font size and/or contrast for metadata text to meet WCAG contrast guidance."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Favorite heart icons on restaurant cards appear to be icon-only controls with no visible label.",
+        "suggestion": "Provide accessible labels such as 'Save Tokumaru Ramen Bar to favorites' and ensure focus/touch targets are at least 44dp."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 639,
+    "outputTokens": 616,
+    "reasoningTokens": 342,
+    "estimatedCost": 0.011157,
+    "reportedCost": 0.0109842,
+    "durationSeconds": 19.065052666999982
+  }
+}

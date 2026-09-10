@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:36:09.251Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-structured, but there is a clear untranslated localization key rendered as a section heading, plus a couple of smaller inconsistencies in the favorite-button styling and carousel card labeling.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The second section heading displays the raw localization key 'home_feed.popular_title' instead of a human-readable title such as 'Popular near you'.",
+        "suggestion": "Add the missing translation string for the 'home_feed.popular_title' key and ensure a sensible fallback (e.g. the English label) is shown when a key is missing."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The heart/favorite buttons on the two popular restaurant cards use inconsistent styling: the first has a white circular background with a dark outline heart, while the second has a dark/transparent background with a white heart, making the control look accidental rather than intentional.",
+        "suggestion": "Standardize the favorite button treatment (same background, icon color and opacity) across all restaurant cards regardless of the underlying image."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Cards in the 'Fastest near you' carousel have inconsistent image backgrounds — the first card (Green Bowl Poké) has a light grey background while the others use dark photographic backgrounds, so its white time badge has low contrast against the light area.",
+        "suggestion": "Apply a consistent image treatment or a subtle dark gradient scrim behind badges so the delivery-time text remains legible on all card artwork."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 503,
+    "estimatedCost": 0.023010000000000003,
+    "durationSeconds": 61.486671082999905
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:09:30.637Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 layout/content issues: restaurant names truncated in the Fastest near you carousel and incomplete delivery fee text under one card.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' section, the third restaurant name is cut off mid-word ('Trattoria Piccol'), making the full name unreadable even though the card image and delivery time are fully shown.",
+        "suggestion": "Allow restaurant titles to wrap to two lines, use a smaller font, or ensure card width and truncation (e.g. ellipsis) keep the name identifiable without mid-word clipping."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The delivery fee under Green Bowl Poké shows '€0.90 delvery' with 'delivery' misspelled/truncated as 'delvery'.",
+        "suggestion": "Correct the label to the full word 'delivery' and ensure text is not truncated on the card."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 212,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005195999999999999,
+    "reportedCost": 0.0049784,
+    "durationSeconds": 41.228265167
+  }
+}

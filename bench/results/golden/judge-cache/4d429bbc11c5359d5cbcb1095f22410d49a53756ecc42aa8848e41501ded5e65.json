@@ -1,0 +1,26 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "In the bottom navigation bar, a solid horizontal black bar stretches between the search icon and the receipt/orders icon, making them look merged and broken rather than separate tab items.",
+    "The last category chip after 'Healthy' is clipped at the right edge of the screen with no visible label, appearing as an empty broken pill.",
+    "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' carousel is cut off at the screen edge without an ellipsis or truncation treatment.",
+    "The pizza card at the bottom (with the −20% badge) shows no restaurant name, rating, or delivery info, unlike the Tokumaru Ramen Bar card above it.",
+    "Bottom navigation icons have no text labels, and the active-state indication (green home icon) is conveyed by color alone.",
+    "The decorative circles in the green promo banner are abruptly clipped at the top-right corner, looking slightly unfinished."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.77 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

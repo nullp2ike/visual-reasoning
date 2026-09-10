@@ -1,0 +1,24 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The Tokumaru Ramen Bar card shows a spinner overlaid in the centre of an already-rendered image, suggesting a stuck/duplicated loading indicator or an image that never finished loading.",
+    "In the 'Fastest near you' carousel the third item's title ('Trattoria Piccol…') and its delivery price are hard-cut by the screen edge with no ellipsis or fade, making the card look broken rather than scrollable.",
+    "The favorite (heart) buttons are styled inconsistently: the ramen card uses a white circular button with a dark outline heart, while the pizza card below uses a dark/translucent circle.",
+    "The 'Green Bowl Poké' thumbnail has a light grey background while adjacent thumbnails in the same row are dark, creating an uneven visual rhythm and lower contrast for the white '15–25 min' badge.",
+    "The second 'Popular right now' card is cropped abruptly by the bottom tab bar with no visible name or metadata, so it can look like a clipped/broken tile.",
+    "Icon-only controls (notification bell with unread dot, heart favorite buttons) have no visible text label, and the bell's red dot conveys state by colour alone."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.70 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

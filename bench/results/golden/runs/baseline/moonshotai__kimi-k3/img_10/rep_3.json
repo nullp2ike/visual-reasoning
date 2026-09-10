@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:57:50.526Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally usable, but there are a few visual/content issues: duplicated restaurant cards, horizontally clipped items at the right edge, a bottom card cut off by the viewport/nav area, and some low-contrast placeholder text.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Fastest near you' section shows two identical 'Green Bowl Poké' cards side by side with the same image, time, and delivery fee, which looks like duplicated or placeholder content.",
+        "suggestion": "Deduplicate the carousel data or ensure distinct nearby restaurants are rendered; if only one result exists, adjust the section layout instead of repeating the card."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row and restaurant carousels are clipped at the right edge ('Healthy' and the burger card are partially cut off), which can look broken even if horizontal scrolling is intended.",
+        "suggestion": "Add clearer scroll affordance, edge fading, padding, or snap behavior so partially visible items feel intentional rather than truncated."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The lower 'Popular right now' card is cut off at the bottom of the visible area above the tab bar, making the page feel abruptly cropped.",
+        "suggestion": "Increase bottom spacing or ensure the list scrolls far enough that cards are not visually jammed against the bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search placeholder text 'Restaurants, dishes, groceries' appears light gray on a light background and may have weak contrast for some users.",
+        "suggestion": "Darken the placeholder text or increase field contrast while keeping it visually secondary to entered text."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 632,
+    "reasoningTokens": 270,
+    "estimatedCost": 0.015786,
+    "reportedCost": 0.0156132,
+    "durationSeconds": 14.385025709000008
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant title under the ramen card reads 'Tokumaru Rameı' — the final 'n' is clipped mid-character, despite there appearing to be ample whitespace between the title and the 4.8 rating on the right.",
+    "In the 'Fastest near you' carousel, the third restaurant name is cut off as 'Trattoria Piccol' with no ellipsis, making it look accidentally clipped rather than intentionally scrollable.",
+    "The last category chip in the filter row (right of 'Healthy') is cut off at the screen edge showing only a sliver, which looks broken.",
+    "The pizza restaurant card at the bottom is cut off by the tab bar with no visible title or details, and its bottom corners are clipped abruptly."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe the 'Tokumaru Ramen' heading being cut off mid-word (ramen → rameı/ramei) with no ellipsis, despite available space."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

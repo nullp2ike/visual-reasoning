@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The second restaurant card in 'Popular right now' shows a discount badge reading '-0%', which communicates no discount at all and looks like a data/formatting bug.",
+    "The favorite (heart) button styling is inconsistent between the two 'Popular right now' cards: the first uses a white circle with a dark outline heart, the second uses a dark/translucent circle with a white heart.",
+    "The 'Green Bowl Poké' thumbnail in the 'Fastest near you' row has a light grey background while the neighbouring thumbnails are dark, making the row look visually uneven and the white time pill harder to read.",
+    "The 'Tokumaru Ramen Bar' card shows a '€0 delivery' badge on the image and repeats '€0 delivery' in the metadata line directly below, duplicating the same information."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 identifies the second restaurant card's discount badge displaying '-0%', matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

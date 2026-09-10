@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "The \"Fastest near you\" horizontal restaurant list overflows the viewport: the third card is cut off at the right edge, with its image, title (\"Trattoria Picco...\"), and delivery text clipped rather than contained within a clearly managed carousel viewport.",
+    "The next \"Popular right now\" restaurant card is obscured at the bottom by the fixed navigation bar, leaving only its upper image area visible and hiding its associated details.",
+    "The category chip row is also partially cut off on the right, showing only part of an additional chip without a clear scroll affordance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.56 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

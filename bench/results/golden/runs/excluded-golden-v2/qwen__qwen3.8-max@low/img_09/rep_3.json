@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:34:06.533Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed, but one restaurant title in the 'Popular right now' section is truncated with a hard clip ('Tokumaru Rameı') rather than a clean ellipsis, which looks visually broken.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The restaurant name 'Tokumaru Rameı' is cut off mid-word at the right edge of its text container without an ellipsis, making the title look clipped/broken even though there is empty space to its right before the rating.",
+        "suggestion": "Allow the title to use the available horizontal space up to the rating block, or apply text-overflow: ellipsis with a max-width so truncation is intentional and clean."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 1060,
+    "reasoningTokens": 869,
+    "estimatedCost": 0.009948,
+    "reportedCost": 0.008828,
+    "durationSeconds": 67.17666829200002
+  }
+}

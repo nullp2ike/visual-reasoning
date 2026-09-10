@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The 'Tokumaru Ramen Bar' hero card shows a circular loading spinner in the center even though the image behind it has clearly already rendered. This makes the card look stuck/broken and obscures the food photo.",
+    "In the 'Fastest near you' carousel, the third card's title 'Trattoria Piccol...' is cut off by the screen edge with no ellipsis, and the card itself is clipped mid-image, giving no clear affordance that it scrolls.",
+    "The favorite heart buttons are styled inconsistently: the ramen card uses a white circular background with a dark outline heart, while the pizza card uses a dark/transparent circle with a white heart.",
+    "The second promoted card (pizza, −20%) is cut off abruptly by the bottom tab bar with no visible name, rating, or spacing, making the page look truncated rather than scrollable.",
+    "The '€0.90 delivery' / '€2.40 delivery' subtitles and 'See all' green links are low-contrast light gray/green on white, which may fall below WCAG AA for small text.",
+    "The notification bell shows a red dot badge with no accessible label or count, so screen reader users get no indication of unread notifications."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 describes a circular loading spinner displayed on top of an already-rendered hero card image, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

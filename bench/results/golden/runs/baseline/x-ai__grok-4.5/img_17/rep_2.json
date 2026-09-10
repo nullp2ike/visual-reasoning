@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:54:16.757Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several visual issues: truncated restaurant names and cut-off category chips, partially clipped promo and restaurant cards, and incomplete bottom content that make the layout look broken.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third 'Fastest near you' card shows a truncated restaurant name 'Trattoria Piccol' cut off at the edge, and the card itself is partially off-screen.",
+        "suggestion": "Ensure horizontal scroll cards have enough padding/margin and that titles wrap or ellipsize cleanly without clipping mid-word; show partial next card intentionally with consistent spacing."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Category filter chips on the right (after 'Healthy') are cut off mid-pill, suggesting overflow without a clear scroll affordance.",
+        "suggestion": "Add proper horizontal scrolling with peek of the next chip and consistent end padding so chips are not abruptly clipped."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom restaurant card (pizza with '-20%') is heavily cropped—only the top portion is visible—making the section look incomplete or broken.",
+        "suggestion": "Adjust vertical spacing/scroll so full cards (or a clear partial peek) are visible above the tab bar, and ensure content isn't hidden under the bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant title truncation loses meaningful words (e.g. 'Piccol' instead of full name), harming scannability.",
+        "suggestion": "Use multi-line titles or ellipsis after full words, and verify long names in the design."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Promo banner and large cards use heavy crop/overlap with decorative circles; combined with edge clipping it can feel unfinished on this viewport.",
+        "suggestion": "Tighten banner internal padding and test safe areas so CTAs and key imagery stay fully inside rounded containers."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 494,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006728,
+    "reportedCost": 0.0036816,
+    "durationSeconds": 10.574662708999996
+  }
+}

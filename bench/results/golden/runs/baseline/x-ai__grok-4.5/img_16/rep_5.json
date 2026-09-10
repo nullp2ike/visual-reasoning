@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:54:13.479Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content clipping issues are visible: restaurant names and category chips are cut off, and a bottom card is partially obscured by the tab bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant name in 'Fastest near you' is truncated to 'Trattoria Piccol' with no ellipsis or full label visible.",
+        "suggestion": "Allow two-line titles, reduce font size, or add ellipsis/tooltip so the full restaurant name is readable."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom pizza promo card is cut off by the fixed bottom navigation bar, hiding part of the image and content.",
+        "suggestion": "Add sufficient bottom padding/safe-area inset to the scroll content so cards clear the tab bar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips overflow horizontally; the rightmost chip is partially clipped and there is no clear affordance that the row scrolls.",
+        "suggestion": "Ensure horizontal scroll with peek of the next chip and/or fade/scroll indicators so users know more categories exist."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Delivery fee text under the clipped restaurant name is also incomplete in the visible area of the third card.",
+        "suggestion": "Keep fee labels fully visible within the card bounds when titles wrap or truncate."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 299,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.0055580000000000004,
+    "reportedCost": 0.0025116,
+    "durationSeconds": 7.0386483749999895
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "The delivery-time and delivery-fee text beneath “Tokumaru Ramen Bar” overlap, making the metadata unreadable.",
+    "The card’s image badge says “€0 delivery,” while the metadata below appears to show a €3 delivery fee."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 explicitly describes the delivery-time and delivery-fee text overlapping."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

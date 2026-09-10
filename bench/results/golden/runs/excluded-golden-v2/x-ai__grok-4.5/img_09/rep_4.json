@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:31:09.278Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several layout and content issues: truncated restaurant names, incomplete promo banner text, and inconsistent card image framing that make the home screen look broken.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' has its name truncated to 'Trattoria Piccol' with no ellipsis, so the title is cut off mid-word at the card edge.",
+        "suggestion": "Constrain title width to the card, use text truncation with ellipsis (e.g. line-clamp), or allow wrapping so the full name is readable."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Promo banner body copy is incomplete: 'Use code TALLINN3 at checkout · min. order €10' ends abruptly with no closing context or period, looking like cut-off text.",
+        "suggestion": "Complete the sentence (e.g. 'min. order €10') and ensure the full string fits within the banner without being clipped."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips overflow the right edge with a partially visible chip after 'Healthy', and the row has no clear fade or affordance that more filters exist beyond the edge.",
+        "suggestion": "Add a subtle gradient fade on the trailing edge or ensure chips scroll with a clear peek of the next item; keep this as intentional carousel behavior if designed that way."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Restaurant images in the 'Fastest near you' row have uneven padding and soft edges; the leftmost plate image sits in a much lighter, washed-out container compared to the darker burger and pasta cards.",
+        "suggestion": "Standardize card image backgrounds, border-radius, and overlay contrast so all tiles in the carousel share the same visual treatment."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Delivery fee on Green Bowl Poké shows '€0.90 delivery' while the popular ramen card emphasizes '€0 delivery', making the fee labeling inconsistent and slightly harder to scan.",
+        "suggestion": "Use a consistent format for delivery cost (e.g. always '€X.XX delivery' or a badge) across list and featured cards."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 560,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.007284,
+    "reportedCost": 0.00402,
+    "durationSeconds": 45.166802167000014
+  }
+}

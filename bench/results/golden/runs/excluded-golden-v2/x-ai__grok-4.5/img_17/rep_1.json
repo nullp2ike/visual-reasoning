@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:36:25.775Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 layout/content clipping issues: restaurant names and details cut off in the Fastest near you carousel and incomplete category chip visibility beyond expected partial last item.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' section, the third restaurant card title is truncated mid-word ('Trattoria Piccol') and the delivery fee line may also be incomplete due to fixed card width or insufficient text wrapping/truncation handling.",
+        "suggestion": "Allow multi-line titles, use ellipsis with full name on a secondary line, or widen cards / reduce font so names and fees display fully without cutting words."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips row shows a partial empty/white chip on the far right with no label visible, which can look like a broken or unfinished control rather than a natural scroll peek.",
+        "suggestion": "Ensure partial chips still show meaningful content, add fade/scroll affordance, or pad the row so only intentional content peeks at the edge."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 232,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.0053159999999999995,
+    "reportedCost": 0.002052,
+    "durationSeconds": 60.03506983299996
+  }
+}

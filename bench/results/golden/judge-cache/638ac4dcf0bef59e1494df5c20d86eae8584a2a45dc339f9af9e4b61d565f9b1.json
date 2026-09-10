@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The third card in the 'Fastest near you' carousel (Trattoria Piccol...) is cut off at the right edge with truncated text.",
+    "The favorite (heart) icons have inconsistent styling between cards—one appears as an outlined heart on a white/light background and another on a dark circular background.",
+    "The 'Popular right now' pizza card at the bottom is partially cut off by the fold, showing only the top portion of the item."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.61 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

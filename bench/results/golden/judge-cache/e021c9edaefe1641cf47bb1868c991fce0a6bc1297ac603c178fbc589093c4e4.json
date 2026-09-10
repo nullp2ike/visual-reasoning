@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccol...' is truncated in the 'Fastest near you' section, which may confuse users about the full name.",
+    "The '-0%' discount badge on the bottom pizza card seems unusual and potentially misleading, as 0% implies no discount.",
+    "The promotional banner '3 free deliveries for you' has a large empty space on the right side which could be utilized better."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.82 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

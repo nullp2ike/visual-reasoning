@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The pizza restaurant card in 'Popular right now' displays a '−100%' badge, implying the food is completely free. This is almost certainly a data error or a misconfigured promotion, and it undermines trust in the displayed pricing.",
+    "On the Tokumaru Ramen Bar card, '€0 delivery' is shown twice — once as a badge on the image and again in the metadata line below — which is redundant."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 identifies the −100% discount badge on a restaurant card, matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

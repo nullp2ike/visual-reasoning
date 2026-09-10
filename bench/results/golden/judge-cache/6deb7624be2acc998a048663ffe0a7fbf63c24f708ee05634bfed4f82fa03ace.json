@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The second promoted restaurant card shows a '-100%' discount badge, implying the order is entirely free. This is almost certainly a data/formatting error (e.g. a raw or miscalculated discount value) rather than a real offer.",
+    "The favorite (heart) button on the second 'Popular right now' card uses a dark/near-black circular background with a white outline heart, while the identical button on the card above uses a white circle with a dark outline. The inconsistent treatment makes the second heart hard to see against the dark image and looks broken.",
+    "The 'Green Bowl Poké' thumbnail in the 'Fastest near you' carousel has a light gray background while the neighbouring thumbnails use dark photographic backgrounds, so the row looks visually uneven and the white duration pill on it has weak contrast."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 directly describes a discount badge showing −100% on a promoted restaurant card, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The pizza card shows a green badge reading '-100%' which looks like broken or incorrect discount/promo labeling rather than a meaningful offer.",
+    "The restaurant name 'Trattoria Piccol' is truncated mid-word in the Fastest near you row, making the full name unreadable.",
+    "The rightmost category chip appears cut off with only a partial pill visible and no full label, which can look unfinished even if the row is scrollable."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the exact same problem: a green badge showing '-100%' on a pizza card, identified as incorrect discount labeling."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

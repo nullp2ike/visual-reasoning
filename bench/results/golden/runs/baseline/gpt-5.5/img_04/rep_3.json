@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_04",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:25:04.792Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly polished, but a few elements look clipped or overlapped, especially around horizontally scrolling sections and the fixed bottom navigation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlaps the feed content. The second restaurant card/image is partially hidden behind the bottom tab bar, making the content feel cut off.",
+        "suggestion": "Add sufficient bottom padding or safe-area spacing to the scrollable content so cards can scroll fully above the bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip carousel is cut off on the right edge, leaving a partially visible blank pill with no readable label.",
+        "suggestion": "Ensure partially visible carousel items still show enough content to indicate they are scrollable, or add right padding/fade treatment to make the clipping feel intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal restaurant carousel under “Fastest near you” shows the third card heavily clipped at the right edge, including truncated restaurant text.",
+        "suggestion": "Use consistent card spacing and a visible carousel affordance, or align the partial card so it looks intentionally scrollable rather than accidentally cropped."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 545,
+    "reasoningTokens": 293,
+    "estimatedCost": 0.025405,
+    "durationSeconds": 12.392355167000002
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The second 'Popular right now' restaurant card (pizza) is cut off at the bottom of the screen, which can look broken in a static screenshot even though it signals scrollable content.",
+    "The 'Trattoria Piccol' restaurant name in the 'Fastest near you' carousel is truncated with an ellipsis, losing the end of the name."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "Neither reported issue describes a filtering or category selection problem; both concern UI truncation/layout issues unrelated to cuisine filtering."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

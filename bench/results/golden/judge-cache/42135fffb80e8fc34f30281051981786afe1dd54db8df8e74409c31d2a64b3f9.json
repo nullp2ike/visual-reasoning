@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "In the “Fastest near you” carousel, the third restaurant card is clipped at the right edge and its name appears truncated as “Trattoria Piccol…” without a clear ellipsis or strong scroll affordance.",
+    "The notification bell shows a red unread dot but appears to rely on color/shape alone and may not expose an accessible label such as “Notifications, 1 unread.”",
+    "Some secondary metadata text such as delivery fees, time ranges, and category chips is small and gray, which may be harder to read in bright outdoor conditions."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.71 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

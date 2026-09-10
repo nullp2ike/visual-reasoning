@@ -1,0 +1,24 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "Raw localization key 'home_feed.popular_title' is displayed as a section heading instead of the translated string (e.g., 'Popular near you').",
+    "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' carousel appears cut off at the screen edge without an ellipsis or clear indication of truncation.",
+    "The last category filter chip after 'Healthy' is cut off at the right edge, showing only a sliver, which may not clearly signal that the row scrolls.",
+    "The bottom pizza card is cut off by the viewport with only the '-20%' badge and favorite icon visible, and no restaurant details yet shown (expected for scroll position, but worth verifying it renders fully on scroll)."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the section heading displaying the raw home_feed.popular_title localization key instead of translated text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

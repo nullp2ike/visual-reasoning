@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:31:55.161Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content clipping issues: category chips and restaurant cards overflow the screen, names are truncated, a loading spinner sits on a restaurant image, and the last card is cut off by the tab bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last category chip ('Healthy') is clipped at the right edge and a partial next chip is visible, with no clear indication that the row is scrollable.",
+        "suggestion": "Add horizontal scroll with fade/peek affordance or wrap chips so all labels are fully visible."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third 'Fastest near you' card is cut off on the right and the restaurant name is truncated ('Trattoria Piccol').",
+        "suggestion": "Ensure cards fit the viewport or show a clear horizontal-scroll peek, and prevent name truncation (wrap or ellipsis with full name on tap)."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom restaurant card (pizza with -20%) is cut off by the tab bar, hiding the restaurant name and details.",
+        "suggestion": "Add enough bottom padding/safe-area inset so content can scroll fully above the tab bar."
+      },
+      {
+        "priority": "minor",
+        "category": "functionality",
+        "description": "A loading spinner is overlaid on the Tokumaru Ramen Bar image, making the listing look incomplete or broken.",
+        "suggestion": "Hide the spinner once the image is loaded, or use a dedicated skeleton/placeholder instead of covering the photo."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Favorite (heart) icons sit on the restaurant images without a strong contrast background, so they can be hard to see.",
+        "suggestion": "Add a semi-opaque circular backdrop or increase icon contrast so the control is always visible."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 391,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.00611,
+    "reportedCost": 0.003422,
+    "durationSeconds": 8.417403250000003
+  }
+}

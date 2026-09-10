@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-4-5",
+  "provider": "anthropic",
+  "imageId": "img_15",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:06:27.657Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: a major text truncation problem in the restaurant listings and a minor layout issue with overflow content.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is cut off in the 'Fastest near you' section. The text appears truncated and the full restaurant name is not visible.",
+        "suggestion": "Ensure the restaurant card has adequate width and implement text truncation with ellipsis (...) if needed, or use a scrollable horizontal layout to show the full name or allow the card to resize properly"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter buttons on the top (All, Pizza, Sushi, Burgers, Healthy) have a partially visible/cut-off button on the far right edge, indicating horizontal overflow.",
+        "suggestion": "Ensure all filter buttons are fully visible, use a scrollable carousel for category filters, or adjust button sizing and spacing to fit all categories within the viewport"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1854,
+    "outputTokens": 931,
+    "estimatedCost": 0.006509,
+    "durationSeconds": 10.53450645799993
+  }
+}

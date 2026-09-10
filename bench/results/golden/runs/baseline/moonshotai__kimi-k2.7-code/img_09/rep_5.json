@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:03:00.647Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page looks mostly polished, but there are two noticeable visual defects: a restaurant name is truncated in the horizontal list, and the last item in the vertical list is clipped by the bottom navigation area.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The third 'Fastest near you' card shows the restaurant name as 'Trattoria Piccol', which appears truncated (likely missing the final letter(s) such as 'o'). This makes the listing look broken and hard to read.",
+        "suggestion": "Increase the card width, allow the title to wrap to a second line, or use an ellipsis ('Trattoria Picc...') to indicate truncation instead of cutting off mid-word."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second 'Popular right now' card (pizza with -20% badge) is partially cut off at the bottom of the screen by the bottom navigation bar, so users cannot see the full card or its details without scrolling.",
+        "suggestion": "Add enough bottom padding or safe-area inset to the scrollable feed so the last card is fully visible above the bottom navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 1593,
+    "reasoningTokens": 1315,
+    "estimatedCost": 0.00761867,
+    "reportedCost": 0.01350628,
+    "durationSeconds": 11.529459000000031
+  }
+}

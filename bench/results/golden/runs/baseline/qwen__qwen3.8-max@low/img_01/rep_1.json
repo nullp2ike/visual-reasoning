@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T13:13:23.705Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-designed, but there is one clear content bug: an untranslated localization key 'home_feed.popular_title' is displayed as a section heading instead of the actual translated title. Other observations are minor cosmetic/truncation issues.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading shows the raw localization key 'home_feed.popular_title' instead of a human-readable translated title (e.g. 'Popular near you'). This indicates a missing translation string or a failed i18n lookup.",
+        "suggestion": "Add the proper translation for the 'home_feed.popular_title' key in the localization files and ensure the i18n fallback resolves to a readable string rather than the raw key."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' carousel ('Trattoria Piccol...') is cut off at the right edge with the name truncated mid-word and no visible scroll affordance or padding.",
+        "suggestion": "Add right-edge padding or a peek/fade indicator so users understand the row is horizontally scrollable, and ensure card titles truncate gracefully with an ellipsis."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The notification bell icon in the top-right has a red badge dot but no visible text label or apparent accessible name, which may be unclear to screen-reader users.",
+        "suggestion": "Provide an accessible label (e.g. aria-label='Notifications') and consider a text or count indicator for the badge."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1711,
+    "outputTokens": 916,
+    "reasoningTokens": 520,
+    "estimatedCost": 0.008917999999999999,
+    "reportedCost": 0.008918,
+    "durationSeconds": 32.230422542
+  }
+}

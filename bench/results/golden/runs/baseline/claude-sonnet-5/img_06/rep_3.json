@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_06",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:00:32.971Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 4 issues, mainly related to content clipping and horizontal scroll layout at the screen edge, plus a cut-off restaurant name.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Trattoria Piccol...' restaurant card in the 'Fastest near you' row is cut off at the right edge of the screen, indicating horizontal overflow not clearly designed as a scrollable carousel.",
+        "suggestion": "Add a visible edge fade or partial card preview indicator to signal horizontal scrolling, or ensure cards are fully visible with proper padding."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' appears truncated with no ellipsis or clear indication of cut-off text.",
+        "suggestion": "Use ellipsis (...) for truncated text or ensure enough card width to display full name."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row (All, Pizza, Sushi, Burgers, Healthy) appears to have another category partially cut off at the right edge, similar to the restaurant card issue.",
+        "suggestion": "Add scroll affordance (fade gradient or arrow) to indicate more filter options are available."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The second promotional card (pizza with -20% discount) at the bottom is abruptly cut off by the navigation bar, making it look unfinished.",
+        "suggestion": "Adjust spacing or scroll padding so cards are not awkwardly cut by the bottom navigation, or add fade-out effect."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 557,
+    "estimatedCost": 0.014277,
+    "durationSeconds": 8.102065792000037
+  }
+}

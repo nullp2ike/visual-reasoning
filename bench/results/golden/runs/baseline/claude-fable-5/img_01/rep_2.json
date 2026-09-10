@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:24:24.769Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page mostly renders correctly, but there is one clear defect: an untranslated localization key ('home_feed.popular_title') is shown as a section heading instead of actual text. A few minor layout/truncation issues are also present.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading displays the raw localization key 'home_feed.popular_title' instead of the translated title (e.g., 'Popular near you').",
+        "suggestion": "Add the missing translation string for this key in the localization files and provide a fallback (e.g., default English string) when a key is missing."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in the 'Fastest near you' carousel is cut off and its name is truncated ('Trattoria Piccol...') without an ellipsis or clear affordance.",
+        "suggestion": "This is expected for a horizontal carousel, but ensure truncated names use ellipsis styling and the partial card visibly hints at scrollability (e.g., peek width tuned consistently)."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is cut off at the right edge, showing a sliver of an empty chip after 'Healthy'.",
+        "suggestion": "Adjust chip spacing/peek so the next chip shows enough of its label to indicate more categories are available."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 485,
+    "estimatedCost": 0.04399,
+    "durationSeconds": 11.183842333
+  }
+}

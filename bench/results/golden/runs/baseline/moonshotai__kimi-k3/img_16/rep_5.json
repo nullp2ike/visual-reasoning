@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:00:07.631Z",
+  "status": "ok",
+  "result": {
+    "summary": "No critical blockers are visible, but a few carousel/edge-clipping issues make the page look unfinished in places.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row has a partially cut-off chip at the far right edge after “Healthy,” with no clear fade or scroll affordance.",
+        "suggestion": "Add an edge fade/gradient, padding, or a clearer horizontal scroll indicator so the clipped chip looks intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "In “Fastest near you,” the third restaurant card is clipped and the name appears truncated as “Trattoria Piccol…,” making it look broken in a static view.",
+        "suggestion": "Ensure card titles ellipsize cleanly within the visible card area or adjust card spacing so partially visible cards still read as intentional carousel items."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The next “Popular right now” card at the bottom is cropped by the viewport, showing only the top of the pizza image and discount badge.",
+        "suggestion": "This is expected for scrollable content, but adding slightly more bottom spacing above the tab bar can reduce the abrupt cut-off appearance."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 827,
+    "reasoningTokens": 566,
+    "estimatedCost": 0.018711000000000002,
+    "reportedCost": 0.013095,
+    "durationSeconds": 17.28270333300001
+  }
+}

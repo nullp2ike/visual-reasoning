@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "Section heading displays the untranslated localization key 'home_feed.popular_title' instead of a human-readable title.",
+    "The third 'Fastest near you' card is clipped: restaurant name is cut off as 'Trattoria Piccol' and part of the image is off-screen.",
+    "The last restaurant card (pizza with -20%) is cut off at the bottom by the tab bar, so the restaurant name and details are missing.",
+    "The category chip row is clipped on the right; the last chip is only partially visible with no clear scroll affordance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe a section title displaying the raw translation key 'home_feed.popular_title' instead of the translated text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

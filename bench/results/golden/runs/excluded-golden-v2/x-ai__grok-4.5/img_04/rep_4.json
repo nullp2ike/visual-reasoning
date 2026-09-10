@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_04",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:27:10.391Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several visual defects: a nonsensical '-0%' badge, truncated restaurant names, and uneven image treatment that make the feed look broken.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza card shows a white badge reading '-0%', which is meaningless as a discount or promo and looks like bad or missing data.",
+        "suggestion": "Hide the badge when the discount is 0, or show a real promo (e.g. '-20%') / remove the overlay entirely if there is no offer."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is cut off mid-word under the third 'Fastest near you' card, so the full name is unreadable.",
+        "suggestion": "Allow the title to wrap to two lines, use a smaller font, or truncate with an ellipsis only after a complete word."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Fastest-near-you card images are inconsistent: the poke bowl is washed out/low contrast while the burger and pasta look sharp, making the row look unfinished.",
+        "suggestion": "Use a consistent image treatment (same crop, contrast, and overlay style) for all cards in the carousel."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category chips row ends with a partial empty/white chip on the right, which reads as a broken or incomplete control rather than intentional scroll affordance.",
+        "suggestion": "Ensure chip padding and snap behavior so the last visible chip isn’t a blank fragment, or add clearer fade/scroll hinting."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 417,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006425999999999999,
+    "reportedCost": 0.003162,
+    "durationSeconds": 111.49097833400002
+  }
+}

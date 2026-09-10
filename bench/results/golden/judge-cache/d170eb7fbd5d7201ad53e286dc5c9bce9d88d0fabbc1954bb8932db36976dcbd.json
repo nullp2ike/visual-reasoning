@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The last restaurant card in 'Fastest near you' is clipped at the right edge so the name reads as 'Trattoria Piccol' and the image is cut off.",
+    "The last category chip ('Healthy') is cut off at the right edge of the screen, implying more categories exist but they aren't fully shown.",
+    "The second 'Popular right now' card is cropped by the bottom navigation bar, hiding restaurant details.",
+    "The bottom tab bar highlights Profile (green) while this screen is clearly the Home feed.",
+    "The promo banner's decorative circles and right edge look tightly cropped against the card bounds."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "Issue 3 directly describes the Profile tab being highlighted in the bottom nav while on the Home feed screen."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 4]
+  }
+}

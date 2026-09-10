@@ -1,0 +1,25 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The Tokumaru Ramen Bar hero image still shows a centered loading spinner overlaying the artwork, suggesting the image load never resolved (or the spinner is not dismissed once the image renders).",
+    "The third 'Fastest near you' card ('Trattoria Piccol...') is cut off at the right screen edge and its title is hard-truncated with no ellipsis, so the name is unreadable.",
+    "The second card in 'Popular right now' (the pizza, −20%) is clipped by the fixed bottom navigation bar; its title, rating and delivery info are not visible and the list appears to end abruptly.",
+    "The favorite (heart) button on the pizza card uses a dark translucent circle with a dark outline icon, giving poor contrast, while the ramen card uses a white circle — inconsistent treatment.",
+    "The category chip row is clipped mid-chip at the right edge with no visible affordance (fade or arrow) indicating it scrolls horizontally.",
+    "The '€0 delivery' badge on the ramen image duplicates the '€0 delivery' text in the card metadata line, creating redundant information.",
+    "The notification bell shows an unlabeled red dot and the icon-only buttons (bell, hearts) have no visible text label, which may lack accessible names for screen readers."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The report explicitly describes a loading spinner remaining over already rendered image content."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5, 6]
+  }
+}

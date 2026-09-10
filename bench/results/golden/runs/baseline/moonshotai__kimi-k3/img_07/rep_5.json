@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:56:51.170Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly intact, but the main “Popular right now” restaurant image appears stuck behind a loading spinner, and some horizontally scrolling content is visibly clipped at the right edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The Tokumaru Ramen Bar card shows a circular loading spinner centered over the food image while surrounding content is already rendered, suggesting the image is stuck loading or failed to resolve.",
+        "suggestion": "Add a timeout/fallback for the image, show a placeholder or error state after loading fails, and remove the spinner once the image resolves."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The rightmost items in the category chip row and “Fastest near you” carousel are cut off at the screen edge, including the partially visible “Healthy” chip and “Trattoria Piccol…” card.",
+        "suggestion": "This may be intentional for horizontal scrolling, but add clearer edge fade/peek spacing or ensure the clipped content is consistently partially visible rather than looking accidentally cropped."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name “Trattoria Piccol…” is truncated due to the card being off-screen, making the full name unreadable in the current viewport.",
+        "suggestion": "If the card is meant to be browsable without scrolling, reduce card width or font size; otherwise ensure horizontal scroll affordance is obvious."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 639,
+    "outputTokens": 572,
+    "reasoningTokens": 270,
+    "estimatedCost": 0.010497000000000001,
+    "reportedCost": 0.0103242,
+    "durationSeconds": 25.511203125
+  }
+}

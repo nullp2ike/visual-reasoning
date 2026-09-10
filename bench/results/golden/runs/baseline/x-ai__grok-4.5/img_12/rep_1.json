@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:53:21.453Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several visual issues: truncated restaurant names and delivery text, overlapping/garbled delivery time on a popular listing, and cut-off category chips and cards at the screen edges.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Delivery info under Tokumaru Ramen Bar is garbled/overlapping as '25-30delivery' with the time range and 'delivery' running together and partially obscured.",
+        "suggestion": "Fix layout so delivery time and label have proper spacing (e.g. '25–30 min · delivery') and do not overlap or clip."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated on the Fastest near you card, cutting off the full name.",
+        "suggestion": "Allow wrapping, reduce font size, or ensure cards show full names with ellipsis only when necessary and consistent truncation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips are cut off on the right (partial chip visible after Healthy), suggesting horizontal scroll without clear affordance.",
+        "suggestion": "Ensure adequate padding/fade hint for scrollable chips or fit primary filters without harsh clipping."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Rightmost 'Fastest near you' card is partially cut off at the screen edge.",
+        "suggestion": "Add consistent horizontal padding and peek of the next card so the carousel does not look broken."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Bottom popular pizza card is heavily cropped with only the top portion visible, which can look incomplete.",
+        "suggestion": "Adjust scroll/viewport so cards have balanced visible height or clearer section spacing above the tab bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 454,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006488,
+    "reportedCost": 0.0058352,
+    "durationSeconds": 10.667570458999995
+  }
+}

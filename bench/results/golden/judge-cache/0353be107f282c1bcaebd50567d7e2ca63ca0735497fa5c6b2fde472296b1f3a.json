@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Under 'Tokumaru Ramen Bar', the subtitle line shows overlapping text: the delivery time '25–35 min' and '€0 delivery' are drawn on top of each other ('25–3​5min​delivery'), rendering the metadata unreadable before the '· Ramen' separator.",
+    "The favourite (heart) button styling is inconsistent between the two 'Popular right now' cards: the first has a white circular background with a dark outline heart, the second has a dark/transparent background with a white heart.",
+    "The '€0 delivery' and '−20%' badges plus the promo banner subtext rely on small light text over busy imagery/green backgrounds, which may reduce readability and contrast."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the delivery fee and delivery time text overlapping in the same metadata line."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_06",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:25:27.111Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual issues, mainly in the bottom navigation and horizontally clipped content.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The bottom navigation item labeled “Orders” is missing its icon, while Home, Search, and Profile all have icons. This makes the navigation look incomplete and inconsistent.",
+        "suggestion": "Add the Orders icon above the label and align it consistently with the other bottom navigation items."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Some horizontally scrollable content is visibly cut off at the right edge, including the last category chip and the third restaurant card in “Fastest near you.” While peeking can indicate scrollability, the clipped text/card edge looks slightly abrupt.",
+        "suggestion": "Add a bit more right padding, a fade/scroll affordance, or adjust card widths so the clipping feels intentional."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 707,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.030265,
+    "durationSeconds": 14.703172999999996
+  }
+}

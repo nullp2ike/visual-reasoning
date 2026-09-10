@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "imageId": "img_10",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:31:36.769Z",
+  "status": "ok",
+  "result": {
+    "summary": "No critical breakage is visible. The main issues are edge-clipped carousel content and feed content being obscured by the fixed bottom navigation.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal category and “Fastest near you” carousels leave partially visible items cut off at the right edge, including a nearly blank category pill and the truncated “Smash Bros Bu…” card title.",
+        "suggestion": "Adjust carousel item widths, spacing, and right padding so the next item is shown as a clearer scroll affordance without awkwardly clipping its label."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlays the restaurant feed, visibly cutting across the pizza card image.",
+        "suggestion": "Add bottom safe-area padding to the scrollable content equal to the navigation height so cards can scroll fully above the fixed bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 613,
+    "reasoningTokens": 421,
+    "estimatedCost": 0.027445,
+    "durationSeconds": 13.374894208999992
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_03",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:52:07.680Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual/layout problems: a missing restaurant image with broken placeholder, truncated restaurant names, and incomplete category chips that cut off at the screen edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The 'Popular right now' card for Tokumaru Ramen Bar shows a broken/empty image placeholder (gray box with mountain icon) instead of a food photo.",
+        "suggestion": "Load the correct restaurant image or provide a proper fallback image so the card does not appear broken."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated with the end cut off in the Fastest near you row.",
+        "suggestion": "Allow wrapping, reduce font size, or use ellipsis with full name on a second line / detail view so names are fully readable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips (Healthy and beyond) are clipped at the right edge with no clear affordance that the row scrolls.",
+        "suggestion": "Add horizontal scroll padding/fade or ensure the last visible chip is not hard-clipped so users know more categories exist."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Large empty gray area above the Tokumaru Ramen Bar title makes the Popular section look incomplete or broken compared to the illustrated cards above.",
+        "suggestion": "Reserve consistent card image height and always show imagery (or a branded empty state) to keep section rhythm consistent."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 324,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.0057079999999999995,
+    "reportedCost": 0.0026616,
+    "durationSeconds": 7.762894749999999
+  }
+}

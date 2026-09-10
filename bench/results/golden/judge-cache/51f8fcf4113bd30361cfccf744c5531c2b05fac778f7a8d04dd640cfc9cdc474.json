@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "The third restaurant card 'Trattoria Piccol...' in the 'Fastest near you' section is cut off at the edge of the screen, with its name truncated and delivery info missing.",
+    "Category filter chips (Pizza, Sushi, Burgers, Healthy) have inconsistent widths and the last visible chip is cut off at the right edge, suggesting more categories exist off-screen without a clear scroll indicator.",
+    "Heart/favorite icon on Tokumaru Ramen Bar card is white outline on a busy food image background, while the pizza card below uses a solid dark circle background for the same icon, showing inconsistent icon treatment.",
+    "The bottom pizza promotional card is abruptly cut off by the screen/navigation bar with no visible restaurant name or details, unlike the Tokumaru card above it.",
+    "The green promotional banner has decorative overlapping circles that appear as unintentional artifacts rather than an intentional design pattern."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.62 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 4]
+  }
+}

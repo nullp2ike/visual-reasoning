@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_06",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:27:58.178Z",
+  "status": "ok",
+  "result": {
+    "summary": "Reviewed the food delivery home screen for visual defects. Overall the layout is clean and well-aligned: the header, search bar, category chips, promo banner, carousels, and bottom navigation all render correctly. No broken layouts, overlapping elements, missing images, or truncation defects (beyond expected carousel/viewport clipping) were found. Only minor cosmetic observations were noted.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery fee text under restaurant names (e.g. '€0.90 delivery') uses light gray on white, which may fall below recommended contrast ratios for small text.",
+        "suggestion": "Darken the secondary text color slightly to meet WCAG AA contrast (4.5:1) for small text."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The rating '4.8 (500+)' for Tokumaru Ramen Bar sits on the same baseline as the restaurant title and nearly reaches the right screen edge, leaving very little breathing room compared to the padding used elsewhere.",
+        "suggestion": "Ensure the rating block respects the same right-side content margin as other elements, and add ellipsis handling on the title so long restaurant names won't collide with the rating."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 738,
+    "estimatedCost": 0.05777,
+    "durationSeconds": 36.33524674999999
+  }
+}

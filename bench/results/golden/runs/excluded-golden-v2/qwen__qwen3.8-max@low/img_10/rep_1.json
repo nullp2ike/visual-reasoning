@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:34:49.946Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed, but there is a content/data issue in the 'Fastest near you' carousel where the same restaurant (Green Bowl Poké) appears twice consecutively with identical imagery, delivery time, and fee, which looks like duplicated or broken data. Other partially-visible edge items (clipped carousel card, bottom-cut pizza card) are expected scroll/viewport behavior and not defects.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "In the 'Fastest near you' horizontal carousel, the first two cards are identical duplicates: both show 'Green Bowl Poké' with the same food image, the same '15–25 min' badge, and the same '€0.90 delivery' fee. This looks like duplicated/broken data rather than two distinct restaurants.",
+        "suggestion": "Deduplicate the carousel data source so each restaurant appears only once, or ensure distinct restaurants/dishes are shown in adjacent cards."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The two identical 'Green Bowl Poké' cards use a plain light-grey placeholder-style background while neighboring cards (e.g. Smash Bros) use rich photographic backgrounds, making the row look inconsistent and unfinished.",
+        "suggestion": "Provide proper restaurant/food imagery for these cards to match the visual treatment of the other carousel items."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 1080,
+    "reasoningTokens": 740,
+    "estimatedCost": 0.010068,
+    "reportedCost": 0.010068,
+    "durationSeconds": 74.22018662499997
+  }
+}

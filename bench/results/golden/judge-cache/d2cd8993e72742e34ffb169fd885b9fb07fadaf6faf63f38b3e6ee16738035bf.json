@@ -1,0 +1,25 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The category filter row is cut off on the right; only a sliver of the next pill is visible after 'Healthy', with no clear indication of more options or proper scrolling affordance.",
+    "In 'Fastest near you', the third restaurant card (Trattoria Picco...) is heavily truncated—both the image and the name are cut mid-word at the screen edge.",
+    "Restaurant name 'Trattoria Piccol...' is truncated mid-word with no ellipsis treatment, making the label look broken and hard to read.",
+    "The bottom 'Popular right now' pizza card is partially cut off by the bottom navigation bar, so the offer appears incomplete on first view.",
+    "Delivery time badges sit overlapping the food images with uneven placement and strong white pills that can obscure dish imagery."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.66 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 4]
+  }
+}

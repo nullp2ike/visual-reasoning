@@ -6,9 +6,10 @@ harness runs every model under test against every screenshot several times,
 grades the answers with a judge, and emits a leaderboard, a screenshot × model
 matrix, and an interactive HTML report.
 
-Nothing here is specific to any one dataset, and no dataset is committed —
-screenshots under test are usually private product UI. See
-[`datasets/README.md`](datasets/README.md) for the format to put yours in.
+Nothing here is specific to any one dataset. `golden` (18 screenshots, one
+seeded defect each plus a clean control) is tracked and is the default; the
+`primary` dataset is gitignored, being private product UI. See
+[`datasets/README.md`](datasets/README.md) for the format to add your own.
 
 For **video** input — asking a model to list the bugs it sees in a screen
 recording — see [`video/README.md`](video/README.md), a separate harness that
@@ -23,12 +24,12 @@ not there.
 ## Quick start
 
 ```bash
-pnpm bench:run --models claude-haiku-4-5 --dataset my-set
-pnpm bench:score --dataset my-set
-pnpm bench:report --dataset my-set
+pnpm bench:run --models claude-haiku-4-5 --dataset golden
+pnpm bench:score --dataset golden
+pnpm bench:report --dataset golden
 ```
 
-Then open `bench/results/my-set/report.html`.
+Then open `bench/results/golden/report.html`.
 
 Set `BENCH_DATASET` in `.env` to avoid passing `--dataset` every time.
 
@@ -84,7 +85,7 @@ so you can see how much the grading choice moves the ranking.
 
 ## Output
 
-Everything lands in `bench/results/<dataset-id>/` (gitignored):
+Everything lands in `bench/results/<dataset-id>/`:
 
 ```
 manifest.json                    image ids, hashes, expected issues

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_04",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:00:17.227Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 4 issues including a cut-off content card, truncated text, and layout overflow problems affecting the horizontal scrolling sections.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' section (Trattoria Piccolo) is cut off at the right edge of the screen, showing only partial content",
+        "suggestion": "Ensure horizontal scroll indicators are visible or adjust card width/spacing so cards are either fully visible or clearly indicate scrollability"
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccolo' appears truncated at the edge of the screen without ellipsis or proper text wrapping",
+        "suggestion": "Add text truncation with ellipsis (...) or ensure the card container properly clips/wraps text"
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The promotional banner with '-0%' badge shows a discount of 0%, which is confusing/meaningless to display",
+        "suggestion": "Remove the badge if there's no actual discount, or only show promotional badges when there's a genuine discount value"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Bottom pizza promotional card is abruptly cut off at the bottom of the visible screen without clear indication of additional scrollable content",
+        "suggestion": "Add fade gradient or visual cue at the bottom edge to indicate more content is available below"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 548,
+    "estimatedCost": 0.014142,
+    "durationSeconds": 13.614509207999916
+  }
+}

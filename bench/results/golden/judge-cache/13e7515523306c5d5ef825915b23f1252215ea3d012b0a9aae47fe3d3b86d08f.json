@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' section is truncated and cut off, suggesting the card layout is not properly handling text overflow or the card width is too narrow.",
+    "The last visible restaurant card at the bottom of the screen shows a '-0%' discount badge, which appears to be a data or formatting error since a 0% discount is meaningless and the minus sign makes it look like a bug."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.84 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

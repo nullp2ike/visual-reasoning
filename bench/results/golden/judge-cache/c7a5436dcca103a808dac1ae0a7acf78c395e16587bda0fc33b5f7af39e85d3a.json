@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "In the 'Popular right now' section, the restaurant name 'Tokumaru Ramen' is clipped mid-character where it collides with the right-aligned rating ('4.8 (500+)'). This is a full-width vertical list card, so the title should not be truncated abruptly without an ellipsis.",
+    "The favorite (heart) buttons on the two 'Popular right now' cards use different styles — the first has a white/light circular background while the second has a dark circular background.",
+    "The first card in 'Fastest near you' (Green Bowl Poké) has a light gray image background while the neighboring cards use dark imagery, creating an inconsistent visual rhythm in the carousel.",
+    "The white '15–25 min' badge on the light gray Green Bowl Poké thumbnail has low contrast against its background, making the badge edge hard to distinguish."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe the 'Tokumaru Ramen' restaurant name being clipped/cut off mid-word without ellipsis, though the reported issue says 'Tokumaru Ramen' while expected says 'Tokumaru Ramei' — this is the same truncation defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

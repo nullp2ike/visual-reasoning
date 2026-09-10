@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_01",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:33:42.734Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly visually coherent, but it contains a prominent untranslated/placeholder section title and several horizontally clipped items that make the feed feel unfinished.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading displays the raw localization key \"home_feed.popular_title\" instead of a user-facing title.",
+        "suggestion": "Provide the missing translation/localized string (for example, \"Popular near you\") and ensure localization keys cannot render directly in production."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The rightmost category chip is visibly cut off at the screen edge, with only part of an additional pill shown after \"Healthy.\"",
+        "suggestion": "Use a deliberate horizontally scrollable chip row with appropriate edge padding/fade treatment, or constrain the list so partially rendered chips are not shown unintentionally."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third restaurant card in the \"Fastest near you\" carousel is cut off on the right, including its title and content.",
+        "suggestion": "Confirm this is an intentional horizontal carousel; add clear scroll affordance and consistent trailing padding, or resize cards so complete cards fit within the viewport."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The next promotional restaurant card is cropped by the fixed bottom navigation, leaving only its image visible and making the scrolling content feel abruptly obscured.",
+        "suggestion": "Add sufficient bottom content inset/padding so the final visible feed content clears the persistent bottom navigation."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 313,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.007378,
+    "durationSeconds": 4.87849433399993
+  }
+}

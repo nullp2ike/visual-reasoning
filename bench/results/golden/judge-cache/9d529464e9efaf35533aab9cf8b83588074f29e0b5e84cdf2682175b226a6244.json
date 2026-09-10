@@ -1,0 +1,25 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "A stray horizontal black line stretches across the bottom navigation bar, running through the search and orders icons. It does not look like an intentional design element and makes the icons appear struck-through.",
+    "The bottom navigation icons (home, search, orders, profile) are partially cut off at the bottom edge of the screen, with no labels visible and the icons clipped mid-shape.",
+    "The last category filter chip on the right side is clipped at the screen edge and appears as an empty pill with no visible label, which looks broken rather than like an intentional scroll hint.",
+    "The third card in 'Fastest near you' shows a truncated name ('Trattoria Piccol...') without an ellipsis, so the text is hard-clipped at the screen edge.",
+    "The second 'Popular right now' card (pizza image with −20% badge) shows no restaurant name, rating, or delivery info before being cut off by the bottom nav, unlike the Tokumaru Ramen Bar card above it."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Issue 1 describes bottom navigation icons being partially cut off at the screen edge with no visible labels, matching the expected defect about labels being cut off below the screen edge."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3, 4]
+  }
+}

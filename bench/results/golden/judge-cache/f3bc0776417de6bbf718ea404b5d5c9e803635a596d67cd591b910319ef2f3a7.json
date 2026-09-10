@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "The metadata beneath “Tokumaru Ramen Bar” is visibly overlapping: the delivery-time text collides with the delivery/category line, making the information difficult to read.",
+    "The third card in the “Fastest near you” carousel is cut off at the right edge, with part of the restaurant name and image outside the viewport.",
+    "The next restaurant card near the bottom is partially obscured by the fixed bottom navigation, so its content is cut off by the viewport/navigation area."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the delivery-time metadata overlapping the adjacent delivery information, matching the delivery fee/time text collision."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

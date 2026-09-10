@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T09:01:37.891Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 significant issue: the bottom navigation active state does not match the displayed page content. Excluded scroll-clipped carousel items and bottom viewport cutoff per instructions.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom navigation shows the 'Profile' tab as active (highlighted green), while the visible content is clearly the Home feed (delivery address, search, category chips, promo banner, restaurant sections). This creates a misleading navigation state and can confuse users about which section they are in.",
+        "suggestion": "Set the active bottom-nav tab to 'Home' when the Home/feed content is displayed, or ensure tab selection state is synchronized with the current route/screen."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2186,
+    "outputTokens": 520,
+    "reasoningTokens": 404,
+    "estimatedCost": 0.014358000000000001,
+    "reportedCost": 0.0132426,
+    "durationSeconds": 82.8411867089998
+  }
+}

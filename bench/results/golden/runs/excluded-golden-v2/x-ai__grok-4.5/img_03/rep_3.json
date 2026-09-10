@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_03",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:26:09.612Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several visual issues: a broken/missing restaurant image placeholder, truncated restaurant names, and a partially visible category chip that appears cut off beyond normal carousel behavior.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The 'Tokumaru Ramen Bar' card under 'Popular right now' shows a large empty gray area with only a generic image-broken icon placeholder instead of a food photo.",
+        "suggestion": "Load the correct restaurant/cover image for this listing, or show a proper fallback illustration and ensure image URLs are valid."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The restaurant name 'Trattoria Piccol' is truncated/cut off on the right in the 'Fastest near you' row.",
+        "suggestion": "Allow the name to wrap to two lines, use a shorter display name, or ensure card width accommodates typical restaurant name lengths with ellipsis only when necessary."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chips row ends with a partially visible empty/white pill on the far right, which looks like a broken or incomplete chip rather than a normal peek of the next category label.",
+        "suggestion": "Ensure each chip has proper content and padding, and that horizontal scroll peeks show a recognizable portion of the next labeled category."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 340,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005964,
+    "reportedCost": 0.0027,
+    "durationSeconds": 60.74970020800001
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:00:02.421Z",
+  "status": "ok",
+  "result": {
+    "summary": "No critical or major visual defects are apparent; the page looks like a normal scrollable food-delivery home screen. The main concerns are minor layout affordances where horizontally scrollable content is clipped at the right edge without clear scroll indication.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is clipped at the right edge, with an additional chip only partially visible after “Healthy,” which can look like accidental overflow rather than intentional horizontal scrolling.",
+        "suggestion": "Add edge fade, more consistent peek spacing, or a scroll indicator to make the horizontal overflow clearly intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In “Fastest near you,” the third restaurant card is cut off at the viewport edge and its name appears truncated as “Trattoria Piccol…”, which may read as broken text if users do not realize the row scrolls.",
+        "suggestion": "Ensure card peek width and truncation are deliberate, use ellipsis consistently, and consider a subtle carousel/scroll affordance."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The lower “Popular right now” pizza card is abruptly cropped by the bottom of the visible area, which is expected on a scrolling screen but can appear unfinished in a static view.",
+        "suggestion": "No functional fix needed; if screenshots are used for review, capture with safe-area padding or show the next card boundary more gracefully."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 690,
+    "reasoningTokens": 385,
+    "estimatedCost": 0.016656,
+    "reportedCost": 0.0164832,
+    "durationSeconds": 15.77946558399999
+  }
+}

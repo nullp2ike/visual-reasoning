@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_18",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:24:13.139Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there are a few visual defects: a filter chip is cut off with no visible label, a restaurant name is truncated without ellipsis, and the last pizza card is clipped in a way that hides key information. Overall 4 issues found (2 major, 2 minor).",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The third restaurant card in 'Fastest near you' shows a truncated name 'Trattoria Piccol' with the text hard-clipped at the screen edge and no ellipsis, making the name unreadable.",
+        "suggestion": "Apply text truncation with an ellipsis constrained to the card width, or ensure card text wraps within the visible card bounds rather than being clipped by the viewport."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last category filter chip on the right side of the chip row ('All / Pizza / Sushi / Burgers / Healthy / …') is rendered as an almost empty sliver with no visible label, which looks broken rather than like an intentional scroll affordance.",
+        "suggestion": "Adjust chip spacing/peek amount so the partially visible chip shows at least part of its label, or add a fade/gradient edge to clearly indicate horizontal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza card in 'Popular right now' is cut off mid-image by the bottom navigation bar, hiding the restaurant name, rating, and delivery info entirely; only the '-20%' badge and heart icon are visible.",
+        "suggestion": "This may be normal scroll clipping, but consider adding a subtle gradient or ensuring card metadata loads with the card so partially visible cards still convey identity; verify content is reachable on scroll."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "In the 'Fastest near you' row, the delivery prices are misaligned vertically because the first card's title wraps to one line while others may differ, and the price rows don't share a consistent baseline (e.g., '€0.90 delivery' vs '€2.40 delivery' sit at slightly different visual weights/positions relative to card images).",
+        "suggestion": "Use a fixed-height title area or align card metadata to a common baseline so prices line up consistently across the carousel."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 984,
+    "estimatedCost": 0.06894,
+    "durationSeconds": 17.441792
+  }
+}

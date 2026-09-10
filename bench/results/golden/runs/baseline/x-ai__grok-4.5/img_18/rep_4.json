@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:51:38.447Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content clipping issues are visible: restaurant names and category chips are truncated, and a bottom card is cut off by the navigation bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant name in 'Fastest near you' is truncated to 'Trattoria Piccol' instead of showing the full name.",
+        "suggestion": "Allow multi-line titles, reduce font size, or ensure cards have enough width so full restaurant names are visible."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom restaurant/promo card (pizza image) is partially cut off by the bottom tab bar, hiding part of the content.",
+        "suggestion": "Add sufficient bottom padding/safe-area inset to the scroll content so cards clear the fixed navigation bar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal category chip row is clipped on the right (partial chip visible after 'Healthy'), with no clear affordance that more options exist.",
+        "suggestion": "Add fade/peek of the next chip, a chevron, or ensure proper horizontal scroll padding so overflow is intentional and discoverable."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Delivery fee text under the truncated card ('€1.90 delivery') is fine, but the incomplete name harms scannability of the list.",
+        "suggestion": "Pair truncation fix with consistent card width and optional ellipsis only when necessary after layout adjustments."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 318,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005672,
+    "reportedCost": 0.0054544,
+    "durationSeconds": 9.406922208
+  }
+}

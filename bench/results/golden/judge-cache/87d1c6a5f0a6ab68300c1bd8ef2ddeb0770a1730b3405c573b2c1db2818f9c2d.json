@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The 'Tokumaru Ramen Bar' card in the 'Popular right now' section shows a circular loading spinner overlaying the food image, suggesting the image failed to load or is stuck loading.",
+    "The restaurant title 'Trattoria Piccol...' in the 'Fastest near you' carousel is truncated mid-word. While edge-clipping of the last carousel item is out of scope, this title appears cut off within its own text container rather than cleanly ellipsized."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The reported spinner overlays an already visible food image, matching a loading spinner shown on top of loaded content."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

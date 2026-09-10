@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_11",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:51:47.189Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there are a few visual/content problems: an implausible '-100%' discount badge, a truncated restaurant name in the carousel, a partially cut-off category chip, and the bottom restaurant card is clipped by the tab bar without visual separation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "A promo badge on the pizza restaurant card reads '−100%', implying the entire order is free, which is almost certainly a data or calculation error.",
+        "suggestion": "Validate discount values before rendering; cap or hide badges with implausible values (e.g., ≥100%) and show the correct promotion instead."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The restaurant name 'Trattoria Piccol…' in the 'Fastest near you' carousel is hard-cut at the screen edge without an ellipsis, making it look clipped rather than intentionally truncated.",
+        "suggestion": "Apply text truncation with an ellipsis within the card bounds, or ensure the carousel peek reveals the full card title on scroll."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category filter chip at the far right of the chip row is cut off mid-shape with no visible label, appearing broken rather than scrollable.",
+        "suggestion": "Adjust chip spacing so a partially visible chip clearly shows some of its label, or add a fade/gradient edge to signal horizontal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The pizza restaurant card at the bottom is abruptly clipped by the bottom navigation bar, with the heart icon and image cut off and no padding or fade separating content from the nav.",
+        "suggestion": "Add bottom padding equal to the nav bar height to the scroll container, or apply a subtle gradient/elevation on the tab bar so clipped content looks intentional."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 743,
+    "estimatedCost": 0.05689,
+    "durationSeconds": 14.454080709000001
+  }
+}

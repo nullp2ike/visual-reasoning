@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_16",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:35:46.090Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well-formed, but several horizontally scrollable elements are visibly clipped at the right edge, making the layout appear cut off rather than intentionally contained.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The cuisine filter row is clipped on the right: a partial next category pill is visible with no clear right-side padding or scroll affordance.",
+        "suggestion": "Ensure the horizontal filter scroller has appropriate end padding and consider a fade/chevron cue so partially visible items look intentional."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Fastest near you' restaurant carousel is cut off at the right edge. The third card and its restaurant name are visibly truncated ('Trattoria Piccol...').",
+        "suggestion": "Add trailing padding to the carousel and size cards so the partial next card is deliberate; avoid truncating essential restaurant names in the visible viewport."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The next restaurant promotion card at the bottom is abruptly obscured by the fixed bottom navigation, leaving only part of the image visible.",
+        "suggestion": "Add sufficient bottom content inset/padding so scrolling content can clear the fixed navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 256,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006694,
+    "durationSeconds": 5.12890387499996
+  }
+}

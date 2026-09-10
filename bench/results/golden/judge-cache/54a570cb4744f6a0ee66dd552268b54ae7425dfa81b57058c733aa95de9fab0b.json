@@ -1,0 +1,25 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant title 'Tokumaru Ramen' is truncated mid-glyph (renders as 'Tokumaru Ramei') where it runs into the star rating on the same row. No ellipsis is shown, so the truncation looks like a rendering bug.",
+    "The second 'Popular right now' card (the -20% pizza) is cut off by the bottom navigation bar; its name, rating and delivery info are not reachable, making the list feel broken rather than scrollable.",
+    "The favorite (heart) buttons are inconsistent: the first card uses a white circular button with a dark outline heart, while the second card uses a dark/translucent circle with a white heart.",
+    "Horizontally scrolling rows (category chips and 'Fastest near you') clip their last items ('Healthy'/next chip, 'Trattoria Piccol…') right at the screen edge with no visual affordance, so it is unclear the rows scroll.",
+    "Icon-only controls (notification bell with unread dot, heart favorite buttons) have no visible text label; if they also lack accessible names, screen-reader users get no context."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe the 'Tokumaru Ramen' heading truncated mid-word as 'Tokumaru Ramei' without ellipsis due to collision with the star rating."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The restaurant card near the bottom is partially hidden behind the fixed bottom navigation bar. The image continues underneath the nav, making the content look cut off and potentially blocking interaction with lower cards.",
+    "The category filter row shows a partially visible pill clipped on the far right with no readable label, which can look like a broken element.",
+    "The horizontal restaurant carousel under “Fastest near you” cuts off the third card and its restaurant name at the right edge."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.57 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "In the 'Fastest near you' horizontal carousel, the third card ('Trattoria Piccol...') is clipped at the right screen edge with the restaurant name truncated mid-word and no visible scroll indicator or peeking gap that clearly signals more content is available.",
+    "The selected category filter is 'Pizza', yet the 'Fastest near you' section shows Poké and Burgers restaurants, which can feel inconsistent with the active filter."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Issue 1 directly describes Pizza category being selected but the feed showing non-Pizza cuisines (Poké and Burgers), matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

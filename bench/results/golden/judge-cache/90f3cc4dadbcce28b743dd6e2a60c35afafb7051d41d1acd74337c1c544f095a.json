@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Promo banner text is unreadable, white text on a pale mint background"],
+  "reportedIssues": [
+    "The fixed bottom navigation bar overlaps the second restaurant card, cutting off its image and likely hiding the card's remaining content.",
+    "The category chips and restaurant carousel cards are visibly cut off at the right edge, including a partial category chip and truncated restaurant title.",
+    "The white promotional text on the very pale green banner has low visual contrast, especially the secondary line."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "cosine 0.75 >= 0.69 threshold (reported #2)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

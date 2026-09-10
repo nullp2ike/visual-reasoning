@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:00:48.075Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 minor visual issues: a truncated restaurant name in the horizontal carousel and a partially off-screen card at the bottom of the viewport.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third restaurant name in the 'Fastest near you' carousel is truncated ('Trattoria Piccol' is cut off) and the right edge of the card appears clipped, indicating the list overflows its container.",
+        "suggestion": "Add horizontal padding or a scroll indicator, and ensure long restaurant names truncate gracefully with an ellipsis or wrap instead of clipping."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second 'Popular right now' card (pizza image) is clipped at the bottom of the screen, so its title, delivery info, and rating are not visible.",
+        "suggestion": "Allow the scrollable content area to extend above the bottom navigation or reduce vertical spacing so the last card can be fully scrolled into view."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1802,
+    "outputTokens": 2287,
+    "reasoningTokens": 2317,
+    "estimatedCost": 0.010053890000000001,
+    "reportedCost": 0.0108599,
+    "durationSeconds": 23.252943667000043
+  }
+}

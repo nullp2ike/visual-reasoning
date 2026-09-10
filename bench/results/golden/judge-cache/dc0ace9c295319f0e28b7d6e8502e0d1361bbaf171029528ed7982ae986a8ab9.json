@@ -1,0 +1,25 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The 'Fastest near you' carousel shows two identical 'Green Bowl Poké' cards with the same 15–25 min ETA and €0.90 delivery fee, suggesting duplicated data or a rendering key bug.",
+    "The third carousel item ('Smash Bros Bu…') is hard-clipped at the screen edge, and its title and price text are truncated mid-word without an ellipsis, making the item look broken rather than scrollable.",
+    "The second 'Popular right now' card (pizza) is abruptly cut off by the bottom tab bar; its name, rating and metadata row are not visible, so the list appears to end mid-card.",
+    "Favourite (heart) buttons are styled inconsistently: the Tokumaru card uses a white circular button with a dark outline heart, while the pizza card uses a dark/translucent circle with a white heart.",
+    "The category chip row is clipped at the right edge with only a sliver of the next chip visible, giving no clear affordance that the row scrolls.",
+    "The notification bell with a red badge and the heart favourite buttons are icon-only controls with no visible text label, so their purpose and state may not be conveyed to screen readers.",
+    "Placeholder-looking flat illustrations are used as restaurant imagery in the carousel, and the same illustration repeats, which reads as unloaded/mock content."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes the Green Bowl Poké card appearing twice in the carousel with identical details."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5, 6]
+  }
+}

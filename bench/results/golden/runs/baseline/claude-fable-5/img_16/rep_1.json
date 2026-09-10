@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_16",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:52:48.674Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed, but there is a notable mismatch between the active 'Pizza' filter and the displayed content, plus a few minor carousel/truncation concerns.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Pizza' filter chip is selected (highlighted dark), yet the visible results include non-pizza venues: Green Bowl Poké, Smash Bros Burgers, and Tokumaru Ramen Bar (tagged 'Ramen'). The filter appears to have no effect on the listings.",
+        "suggestion": "Ensure the selected category filter actually filters the 'Fastest near you' and 'Popular right now' sections, or visually reset the chip to 'All' if the sections are not filterable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in 'Fastest near you' is cut off mid-word ('Trattoria Piccol...') with no ellipsis or visual affordance indicating horizontal scrolling.",
+        "suggestion": "Add a peeking-card gradient/fade or truncate the name with an ellipsis so users understand the row scrolls horizontally."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category chip after 'Healthy' is clipped at the right screen edge with almost no visible content, making it look like a rendering glitch rather than a scrollable list.",
+        "suggestion": "Adjust chip spacing so a meaningful portion of the next chip peeks into view, or add a fade edge to signal horizontal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The heart (favorite) icon on the Tokumaru Ramen Bar image sits on a variable dark photo background without a consistent backing, risking low contrast on lighter images (the pizza card below uses a dark circle backing, creating inconsistency).",
+        "suggestion": "Apply the same semi-opaque circular backing behind all favorite icons for consistent contrast and styling across cards."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 930,
+    "estimatedCost": 0.06624,
+    "durationSeconds": 17.078544416000003
+  }
+}

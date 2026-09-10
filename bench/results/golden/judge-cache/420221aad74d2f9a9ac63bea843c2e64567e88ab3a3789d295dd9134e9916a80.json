@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers shows “€NaN delivery” instead of a valid price, indicating a missing or failed numeric value.",
+    "The third “Fastest near you” card title is clipped: “Trattoria Piccol” is cut off at the right edge of the card."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe a delivery fee displaying €NaN due to a missing or invalid numeric value."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

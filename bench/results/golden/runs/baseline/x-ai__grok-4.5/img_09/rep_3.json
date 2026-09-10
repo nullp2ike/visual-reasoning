@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:53:01.274Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual/layout issues are present: truncated restaurant names, a cut-off category pill, overlapping/crowded time badges on cards, and incomplete bottom content that suggests clipping.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated with missing characters at the end of the Fastest near you row.",
+        "suggestion": "Allow multi-line titles, reduce font size on smaller cards, or ensure horizontal scroll/card width accommodates full names without ellipsis cut-off mid-word."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The category filter row is cut off on the right; a partial pill is visible after 'Healthy', indicating overflow without clear affordance.",
+        "suggestion": "Ensure horizontal scroll is obvious (fade/gradient or peek of next item) or wrap/resize chips so all primary categories are fully visible."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Delivery time badges (e.g. '15–25 min', '20–30 min') sit tightly on food images and can feel overlaid/crowded against the artwork.",
+        "suggestion": "Add consistent padding/margin and stronger contrast or shadow so badges remain legible and don’t collide with key parts of the illustration."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The bottom pizza promo card is partially clipped by the viewport/tab bar, so the offer and restaurant details below the image are not fully shown.",
+        "suggestion": "Add bottom content padding above the tab bar and ensure cards aren’t cut mid-image when scrolling stops."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Heart/favorite icons on dark food images have low visual separation and may be hard to notice.",
+        "suggestion": "Use a higher-contrast icon treatment (filled circle background or stronger stroke) for better visibility."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 487,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006686,
+    "reportedCost": 0.0036396,
+    "durationSeconds": 10.038533500000005
+  }
+}

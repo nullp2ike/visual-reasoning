@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_03",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:31:26.783Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual and content issues: a broken/missing restaurant image, a truncated restaurant name, a clipped category chip, and a bottom promo card cut off by the tab bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The first card in Popular right now (Tokumaru Ramen Bar) shows a broken-image placeholder instead of a restaurant photo.",
+        "suggestion": "Load a valid image for this restaurant or show a designed fallback so the card matches the rest of the list."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card in Fastest near you (Trattoria Piccol…) is cut off on the right, so the name and part of the image are truncated.",
+        "suggestion": "Add enough horizontal padding or peek/scroll affordance so names and images aren’t clipped at the screen edge."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chips row is cut off on the right (Healthy is clipped, next chip barely visible), with no clear indication of more categories.",
+        "suggestion": "Leave a visible peek of the next chip or add a fade/scroll hint so users know the row is scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The pizza promo card at the bottom is partially hidden behind the tab bar, so the offer and restaurant details are incomplete.",
+        "suggestion": "Add bottom content padding equal to the tab bar height so cards can fully scroll into view."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name “Trattoria Piccol” appears truncated without an ellipsis or wrap, making the full name unreadable.",
+        "suggestion": "Show an ellipsis on overflow or allow two lines so the full restaurant name is identifiable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 386,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.00608,
+    "reportedCost": 0.003392,
+    "durationSeconds": 7.502984125000003
+  }
+}

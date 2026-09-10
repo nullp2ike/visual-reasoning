@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The last category chip ('Healthy') is cut off at the right edge of the screen, so the full label and remaining categories are not visible.",
+    "The third 'Fastest near you' card (Trattoria Piccol…) is cropped on the right, cutting off the restaurant name and part of the image.",
+    "The bottom popular restaurant card (pizza with '-100%' badge) is cut off by the tab bar, hiding the restaurant name and details.",
+    "The restaurant name 'Trattoria Piccol' appears truncated without an ellipsis or wrap, making the name incomplete."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Issue 2 directly describes a card with a −100% badge being cut off, matching the expected discount badge defect."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

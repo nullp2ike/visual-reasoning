@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_10",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:51:36.501Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-rendered, but there are a few visual defects: a duplicated restaurant card in the 'Fastest near you' carousel, truncated text on the third carousel card, and a partially clipped category chip. Overall functionality appears intact.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Fastest near you' carousel shows two identical 'Green Bowl Poké' cards side by side with the same image, delivery time (15–25 min), and delivery fee (€0.90), which looks like a data duplication bug.",
+        "suggestion": "Deduplicate restaurant entries in the carousel data source so each restaurant appears only once."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third carousel card's title 'Smash Bros Bu…' is cut off at the right screen edge with no visible ellipsis handling, making the restaurant name unreadable.",
+        "suggestion": "Apply proper text truncation with an ellipsis within the card bounds, or ensure card peeking still leaves the title legible after horizontal scroll."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category filter chip after 'Healthy' is clipped at the right edge, showing only a small sliver, which looks broken rather than like an intentional scroll affordance.",
+        "suggestion": "Adjust chip spacing/padding so the partially visible chip shows enough content (e.g., a letter or two) to clearly indicate horizontal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Fastest near you' cards use identical placeholder-looking food illustrations rather than real restaurant photos, which appears inconsistent with the photo-based cards elsewhere (e.g., Tokumaru Ramen Bar).",
+        "suggestion": "Use actual restaurant imagery or a consistent fallback image style so placeholder graphics don't stand out as broken content."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 785,
+    "estimatedCost": 0.05899,
+    "durationSeconds": 13.035477292
+  }
+}

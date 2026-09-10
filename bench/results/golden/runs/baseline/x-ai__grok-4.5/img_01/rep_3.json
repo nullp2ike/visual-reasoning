@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:51:47.986Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual/content bugs: a raw localization key shown as a section title, truncated restaurant names, and a partially cut-off category chip. These make the feed look broken and unfinished.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "Section heading displays the raw i18n/localization key 'home_feed.popular_title' instead of a human-readable title.",
+        "suggestion": "Replace the key with the proper localized string (e.g. 'Popular near you') and add a fallback so missing translations never render the key."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol...' is truncated/cut off in the Fastest near you row.",
+        "suggestion": "Allow wrapping, use a shorter display name, or ensure the card width and typography accommodate full names without ellipsis clipping mid-word awkwardly."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category filter chip ('Healthy') is partially clipped at the right edge, suggesting incomplete horizontal scroll affordance.",
+        "suggestion": "Add consistent end padding/inset to the horizontal chip list so the last item is fully visible or clearly scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Bottom restaurant card (pizza) is heavily cropped by the bottom nav, so the offer/content feels incomplete on first view.",
+        "suggestion": "Ensure adequate bottom content padding above the tab bar so cards aren’t awkwardly cut off when the feed loads."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 328,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005732,
+    "reportedCost": 0.0026856,
+    "durationSeconds": 9.272842625
+  }
+}

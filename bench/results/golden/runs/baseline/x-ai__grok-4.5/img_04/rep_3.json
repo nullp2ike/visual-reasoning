@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_04",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:52:15.249Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual bugs stand out: a nonsensical -0% discount badge, a truncated restaurant name in the horizontal list, and a cut-off category chip that looks unfinished.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The lower food card shows a discount badge labeled \"-0%\", which is meaningless and looks like broken or missing promotional data.",
+        "suggestion": "Hide the discount badge when the value is 0, or only render it when a real positive discount percentage is available."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third \"Fastest near you\" card title reads \"Trattoria Piccol\" and is visibly cut off at the edge without a proper ellipsis or full-name treatment.",
+        "suggestion": "Ensure card titles truncate with an ellipsis within the card bounds, and/or add peek/fade styling so partial carousel cards don’t clip mid-word awkwardly."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row ends with a partially visible empty pill on the right, which looks like a clipping or layout glitch rather than a clear scroll affordance.",
+        "suggestion": "Add a fade edge or consistent peek of the next chip, and ensure chips aren’t rendered as empty/broken fragments off-screen."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Horizontal restaurant cards in \"Fastest near you\" are clipped mid-card at the screen edge with no gradient mask, making the section feel abruptly cut off.",
+        "suggestion": "Apply a right-edge fade or padding so the carousel truncation feels intentional and polished."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 1590,
+    "reasoningTokens": 1238,
+    "estimatedCost": 0.013304,
+    "reportedCost": 0.0102576,
+    "durationSeconds": 32.476005208000004
+  }
+}

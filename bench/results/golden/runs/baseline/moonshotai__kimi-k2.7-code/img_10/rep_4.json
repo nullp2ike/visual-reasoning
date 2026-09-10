@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:03:08.382Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly intact, but the 'Fastest near you' carousel has two identical restaurant cards and a truncated restaurant name, which makes the content look broken or poorly prepared.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Two consecutive 'Green Bowl Poké' cards in the 'Fastest near you' section are identical (same image, name, delivery fee, and time), making the list appear duplicated or buggy.",
+        "suggestion": "Deduplicate the list or add distinguishing details such as branch name, distance, or a unique promo so the duplicate entries look intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card title in the 'Fastest near you' section reads 'Smash Bros Bu' because the restaurant name is cut off without an ellipsis.",
+        "suggestion": "Apply text-overflow ellipsis or increase the available title width so long names are clearly truncated (e.g., 'Smash Bros Bu...')."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza card in the 'Popular right now' list is partially cut off by the bottom navigation bar, hiding its title and details.",
+        "suggestion": "Add enough bottom padding or safe-area inset so the last list item is fully visible above the tab bar when scrolling."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 908,
+    "reasoningTokens": 615,
+    "estimatedCost": 0.00504992,
+    "reportedCost": 0.00802628,
+    "durationSeconds": 6.932091375000076
+  }
+}

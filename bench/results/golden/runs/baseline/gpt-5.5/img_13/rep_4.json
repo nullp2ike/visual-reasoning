@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_13",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:27:07.537Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly visually coherent, but a few elements look incomplete or awkwardly clipped, especially the top-right circular control and horizontally scrolling content at the screen edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The top-right circular button appears blank except for a small red dot, making it look like an icon or avatar failed to load.",
+        "suggestion": "Add the intended icon/avatar inside the circle, or remove the button if it is not actionable. If the red dot is a notification indicator, anchor it to a visible icon."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal category chips are cut off on the right edge, with only a sliver of the next chip visible. This can look visually broken rather than intentionally scrollable.",
+        "suggestion": "Add more right padding, show a clearer partial chip, or provide a fade/scroll affordance to indicate horizontal scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' row is partially clipped at the right edge, including its title text. While likely a carousel, it appears abrupt in the screenshot.",
+        "suggestion": "Ensure carousel spacing and clipping are intentional, or add a subtle edge fade/peek layout so users understand more items are horizontally scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom navigation bar overlays the lower portion of the restaurant list, cutting off the next card image near the bottom of the screen.",
+        "suggestion": "Add sufficient bottom padding to the scrollable content so cards are not visually hidden behind the fixed bottom navigation."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 860,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.034855,
+    "durationSeconds": 20.302011540999985
+  }
+}

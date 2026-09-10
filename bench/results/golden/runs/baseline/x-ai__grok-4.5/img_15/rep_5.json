@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_15",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:54:00.630Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and truncation problems are visible: restaurant names and cards are cut off, category chips overflow, and the bottom nav appears incomplete. These hurt scannability and polish on the home feed.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' (Trattoria Piccol…) is clipped by the right edge, so the name and image are incomplete.",
+        "suggestion": "Ensure horizontal carousels show partial next cards intentionally with proper padding, or fully contain cards within the viewport with consistent end spacing."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated mid-word with no ellipsis or full-name affordance.",
+        "suggestion": "Use multi-line names, ellipsis truncation, or a tooltip/detail view so full names remain readable."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Category filter chips (All, Pizza, Sushi, Burgers, Healthy) overflow horizontally and the last chip is cut off with no clear scroll affordance.",
+        "suggestion": "Add horizontal scroll with fade/peek of the next chip, or wrap/resize chips so all filters are discoverable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The pizza promo card at the bottom is heavily cropped; only part of the image and no restaurant name/details are visible in the viewport.",
+        "suggestion": "Adjust section spacing and card height so key content (image, title, meta) isn’t cut off above the tab bar."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Bottom tab bar icons look uneven: Home is green/selected while others are low-contrast gray, and a thick center indicator/line sits under the search icon area.",
+        "suggestion": "Align tab icon strokes/sizes, clarify selected vs unselected states, and remove or refine the stray center bar so navigation looks intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Delivery time and fee text (e.g. €0.90 delivery) is light gray on white, which likely has weak contrast.",
+        "suggestion": "Darken secondary text to meet WCAG AA contrast ratios for small UI copy."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 486,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.00668,
+    "reportedCost": 0.0036336,
+    "durationSeconds": 12.803274708000012
+  }
+}

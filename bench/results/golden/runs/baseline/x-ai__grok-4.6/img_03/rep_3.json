@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_03",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:31:18.731Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen has several visual problems: a missing restaurant image, a cut-off restaurant name, an overlapping category chip, and a promo card that is clipped by the tab bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The first card in Popular right now (Tokumaru Ramen Bar) shows a broken-image placeholder instead of a restaurant photo.",
+        "suggestion": "Load a valid restaurant image or a branded fallback so the card is not empty."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant in Fastest near you (Trattoria Piccol…) is clipped on the right, cutting off both the photo and the name.",
+        "suggestion": "Give the horizontal list enough padding or peek so the last card and title remain fully readable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The Healthy category chip is cut off at the right edge of the screen, so the last filter is only partially visible.",
+        "suggestion": "Add horizontal inset or a fade so the last chip is fully readable or clearly scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The pizza promo card at the bottom is overlapped by the tab bar, hiding the lower part of the image and content.",
+        "suggestion": "Add bottom content inset so the last card sits fully above the navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 300,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.0055639999999999995,
+    "reportedCost": 0.002876,
+    "durationSeconds": 9.101335665999999
+  }
+}

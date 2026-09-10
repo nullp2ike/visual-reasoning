@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The “Pizza” filter is visibly selected, but prominent results include poké, burgers, and ramen, making the page appear unfiltered or internally inconsistent.",
+    "The category row and “Fastest near you” carousel show partially cut-off items at the right edge, including an almost empty chip sliver and a truncated restaurant card/name. The clipping looks accidental rather than like a clear scrolling affordance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes Pizza selected while results show other cuisines, matching the filtering defect."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

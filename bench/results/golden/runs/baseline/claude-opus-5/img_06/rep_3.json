@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_06",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:54:52.548Z",
+  "status": "ok",
+  "result": {
+    "summary": "The layout is largely coherent, but several rendering inconsistencies stand out: restaurant names are hard-clipped at the viewport edge without ellipsis, the favorite (heart) buttons use inconsistent styling between cards, card thumbnails have inconsistent image treatment, and the bottom card is abruptly cut by the tab bar with its metadata hidden.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel the third item's title is hard-cut at the right screen edge ('Trattoria Piccol') with no ellipsis or fade, and its card/image is also sliced mid-frame, making it read as broken text rather than scrollable content.",
+        "suggestion": "Add horizontal padding/peek so the next card is intentionally partially visible, and truncate titles with an ellipsis (text-overflow: ellipsis) constrained to the card width."
+      },
+      {
+        "priority": "major",
+        "category": "styling",
+        "description": "The favorite heart buttons are styled inconsistently: the ramen card uses a white circular button with a dark outline heart, while the pizza card below uses a dark/translucent circle with a white heart.",
+        "suggestion": "Standardize the favorite button on one variant (e.g. semi-transparent dark scrim with white icon) across all cards for consistent affordance."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last 'Popular right now' card (−20% pizza) is cut off by the bottom tab bar, hiding its name, rating and delivery info; there is no bottom scroll padding so the content appears clipped rather than continuing.",
+        "suggestion": "Add bottom content inset equal to the tab bar height so the final card can scroll fully into view."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Thumbnail treatment is inconsistent within the same carousel: the first card (Green Bowl Poké) has a light grey background with a small centered illustration, while the neighbours use full-bleed dark photographic images, so the first looks like a missing-image placeholder.",
+        "suggestion": "Use uniform image aspect/crop and background treatment for all carousel thumbnails, or apply a consistent placeholder style when imagery is unavailable."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The metadata row '25–35 min • €0 delivery • Ramen' has uneven separator spacing — the first bullet sits with extra leading space and appears vertically misaligned with the text baseline.",
+        "suggestion": "Render separators as fixed-margin inline elements (equal left/right margin) and vertically center them with the text line-height."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chip row is clipped mid-chip at the right edge with no visual cue (fade/arrow) that it scrolls horizontally.",
+        "suggestion": "Add a gradient fade or trailing peek of the next chip to signal horizontal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary text such as '€0.90 delivery' and the '(500+)' review count is light grey on white and likely falls below 4.5:1 contrast; icon-only controls (bell, hearts) have no visible label.",
+        "suggestion": "Darken secondary text to meet WCAG AA and provide accessible names/aria-labels for the notification bell and favorite buttons."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 1702,
+    "estimatedCost": 0.05242000000000001,
+    "durationSeconds": 25.302005333000007
+  }
+}

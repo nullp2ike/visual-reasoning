@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "In the 'Fastest near you' horizontal carousel, the third card ('Trattoria Piccol...') is clipped at the right screen edge, cutting off the restaurant name mid-word with no ellipsis or visual cue that more content is scrollable.",
+    "The category filter chip row ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') shows a partially visible chip at the far right edge, which looks like an unintended clipping artifact rather than an intentional scroll hint.",
+    "The profile avatar in the top-right has a small red notification dot with no accompanying badge count, label, or accessible text, making its meaning unclear to users and invisible to screen readers."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Issue 2 describes a red notification dot in the top-right (profile avatar area) lacking accompanying information, matching the expected defect of a missing icon with only a red dot visible."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

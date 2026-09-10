@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "A thick horizontal black bar stretches across the middle of the bottom navigation, overlapping the search icon and the orders/receipt icon. It looks like a misplaced home-indicator or divider element rendered on top of the nav icons, making them appear struck through and hard to recognize.",
+    "The bottom navigation icons are clipped at the bottom edge of the bar and their text labels are cut off/not visible (e.g., the home and profile icons are partially truncated).",
+    "The orders/receipt icon in the bottom nav is barely visible because it is rendered behind/through the overlapping bar and appears partially cut, making it ambiguous which tab it represents."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0, 1, 2],
+        "reasoning": "All three reports describe the bottom navigation being obstructed or clipped, including the overlapping bar/home indicator and truncated labels or icons."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The pizza restaurant card in 'Popular right now' displays a '–0%' discount badge, which is meaningless — a 0% discount should not be shown as a promotion.",
+    "The third card in 'Fastest near you' shows a truncated restaurant name ('Trattoria Piccol...') without an ellipsis or clear truncation treatment, appearing cut off at the screen edge.",
+    "The category chip after 'Healthy' is clipped at the right edge and shows no visible label, making it look like an empty/broken pill rather than an intentional carousel peek.",
+    "Delivery cost information is inconsistent in emphasis: 'Tokumaru Ramen Bar' shows '€0 delivery' both as a badge and in the metadata line, which is redundant."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes a discount badge showing −0% on a restaurant card, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

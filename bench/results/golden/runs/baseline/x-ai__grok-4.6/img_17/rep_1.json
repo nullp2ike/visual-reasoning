@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:33:27.257Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home feed looks mostly complete, but the selected tab does not match the screen, and the Fastest near you row clips a restaurant name at the screen edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "Bottom navigation highlights Profile (green) while the visible screen is the Home/delivery feed.",
+        "suggestion": "Keep the Home tab selected on this screen and only highlight Profile on the profile view."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third Fastest near you card is clipped, and the name reads as “Trattoria Piccol” with no ellipsis.",
+        "suggestion": "Give the peeking card a consistent inset, and truncate overflowing titles with an ellipsis so names do not cut mid-word."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category chips run off the right edge (Healthy and the next pill are partially cut).",
+        "suggestion": "If this is a horizontal scroller, add end padding or a fade so the cut-off does not look accidental."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 1621,
+    "reasoningTokens": 1388,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.01349,
+    "reportedCost": 0.010802,
+    "durationSeconds": 38.719698250000015
+  }
+}

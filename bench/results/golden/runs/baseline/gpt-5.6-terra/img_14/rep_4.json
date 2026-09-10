@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_14",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:35:23.541Z",
+  "status": "ok",
+  "result": {
+    "summary": "The main visual defect is horizontal overflow: multiple horizontally scrolling sections are clipped at the right edge, leaving partial chips and restaurant cards visible. The page otherwise appears structurally intact.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The category chip row overflows the viewport on the right, showing a cut-off next chip with no clear trailing padding or scroll affordance.",
+        "suggestion": "Implement intentional horizontal scrolling with consistent end padding and a visible affordance, or constrain/wrap the category chips so no item is partially clipped."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Fastest near you' carousel extends beyond the right edge and cuts off the third restaurant card, including its image, title, and delivery information.",
+        "suggestion": "Use a properly padded horizontal carousel with full-card snap positions, or resize cards so the intended layout does not leave restaurant content abruptly truncated."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second card in the 'Popular right now' list is partially obscured by the fixed bottom navigation, so its content cannot be fully viewed in the captured viewport.",
+        "suggestion": "Add sufficient bottom content inset/padding above the fixed navigation bar so the last visible card can scroll fully clear of it."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 269,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.00685,
+    "durationSeconds": 5.101991125000058
+  }
+}

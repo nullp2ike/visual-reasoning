@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "Restaurant cards in the 'Fastest near you' horizontal carousel are cut off at the right edge (e.g. 'Trattoria Piccol...' name is truncated), suggesting the card widths or padding are not accounting for the viewport edge cleanly.",
+    "The restaurant name 'Trattoria Piccol' appears truncated without a clear ellipsis, making the full name unreadable at first glance.",
+    "The two discount/delivery badges use inconsistent formats ('€0 delivery' vs '-0%'), which may confuse users. The '-0%' badge in particular implies no actual discount."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "cosine 0.81 >= 0.69 threshold (reported #2)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

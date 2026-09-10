@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The pizza card in 'Popular right now' shows a '−100%' badge, implying the item is completely free. This is almost certainly a data or calculation error in the discount label.",
+    "In the 'Fastest near you' carousel, the third card's title 'Trattoria Piccol' is hard-clipped mid-word with no ellipsis, making the restaurant name unreadable.",
+    "A sixth category chip after 'Healthy' is partially visible as an empty pill with no readable label, which looks broken rather than like an intentional scroll affordance.",
+    "The last card ('−100%' pizza) is cut off at the bottom of the viewport with no visible restaurant name or details, so the discounted item cannot be identified without scrolling."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes a pizza card displaying a '−100%' discount badge, matching the expected defect about the discount badge showing −100%."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

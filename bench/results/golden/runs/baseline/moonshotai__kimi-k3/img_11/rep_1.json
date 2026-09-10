@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:58:04.481Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly functional, but there are a few visual/layout concerns: horizontally scrolling content is clipped at the right edge without clear affordance, some imagery has low-contrast overlay controls, and one promotional badge uses ambiguous wording.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The rightmost items in the category chips and 'Fastest near you' carousel are cut off at the viewport edge, and the restaurant name 'Trattoria Piccol...' is truncated without a clear ellipsis or fade affordance.",
+        "suggestion": "Add edge fades, partial-card peeking with consistent padding, or horizontal scroll indicators so clipped content reads as intentionally scrollable rather than broken."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The heart/favorite icons on dark restaurant images are thin dark outlines with limited contrast against the photo background.",
+        "suggestion": "Use a filled or higher-contrast icon style, add a subtle scrim behind overlay controls, or increase stroke/background contrast."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The '-100%' badge on the lower pizza card is ambiguous and may look like an error rather than a promotion.",
+        "suggestion": "Clarify the offer text, e.g. '100% off delivery' or 'Free item', and align badge styling with other promo labels."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 608,
+    "reasoningTokens": 317,
+    "estimatedCost": 0.015425999999999999,
+    "reportedCost": 0.0152532,
+    "durationSeconds": 17.067754084000015
+  }
+}

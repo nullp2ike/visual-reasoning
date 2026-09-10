@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "The category chip row is cut off at the right edge, with only part of the next chip visible. Without an obvious scroll cue, this can look like broken horizontal overflow.",
+    "The third card in the “Fastest near you” row is visibly clipped on the right, including truncated restaurant content.",
+    "The fixed bottom navigation overlays the next restaurant card, cutting off its lower content and making the page appear to end abruptly.",
+    "The visible restaurant name on the clipped third card is truncated (“Trattoria Picco…”), making the content difficult to read."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "No reported issue describes misalignment of the middle card; reported issues address clipping, truncation, and overlay problems in different elements."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

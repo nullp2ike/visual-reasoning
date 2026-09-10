@@ -1,0 +1,24 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "Search field placeholder misspells 'Restaurants' as 'Restarants'.",
+    "The favorite (heart) buttons on the two 'Popular right now' cards are styled differently: the Tokumaru Ramen card uses a white circular background with a dark outline heart, while the pizza card below uses a dark/translucent circle with a light heart, creating an inconsistent and lower-contrast control.",
+    "In the 'Fastest near you' carousel the third item's title is hard-clipped mid-word ('Trattoria Piccol') and the card image is cut off at the screen edge without a visual affordance or ellipsis.",
+    "The category chip row is cut flush at the right edge with a sliver of the next chip visible, which can look like a rendering glitch rather than a scrollable row.",
+    "The second 'Popular right now' card is cropped by the bottom navigation bar with no bottom content inset, so its title/details are hidden behind the nav area.",
+    "Icon-only controls (notification bell with red dot, heart buttons) have no visible text label, and the '-20%' / '€0 delivery' badges rely on color alone for emphasis."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 identifies the same misspelling of “Restaurants” as “Restarants” in the search placeholder."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

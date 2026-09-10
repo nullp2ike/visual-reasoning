@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:33:30.760Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and clipping issues: truncated restaurant names and category chips, a bottom card cut off by the tab bar, and the search field sitting under the status bar area. Also a likely nav-state mismatch (Profile highlighted on the home feed).",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant in “Fastest near you” (Trattoria Piccol…) is clipped on the right, so the name and card edge are cut off.",
+        "suggestion": "Add consistent horizontal padding and either fully show a peek of the next card or clip cards with enough inset so names and images are never truncated mid-character."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card (pizza, −20%) is cut off by the bottom tab bar, so the title, rating, and delivery info are not visible.",
+        "suggestion": "Add bottom padding/safe-area inset to the scroll content equal to the tab bar height so the last card can scroll fully into view."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The category chips row is cut off on the right (only a sliver of the next pill is visible) with no clear scroll affordance.",
+        "suggestion": "Give the last visible chip more peek or a fade/scroll indicator, and ensure chips aren’t flush against the screen edge."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The search field sits very close to the status bar / delivery header with little breathing room, making the top of the screen feel cramped.",
+        "suggestion": "Increase spacing below the address row so the search bar isn’t tight against the status/header cluster."
+      },
+      {
+        "priority": "minor",
+        "category": "functionality",
+        "description": "The bottom tab highlights Profile (green) while the screen is clearly the Home feed.",
+        "suggestion": "Keep the selected tab in sync with the current screen (Home should be active on this view)."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name “Trattoria Piccol” is truncated without an ellipsis, so it’s unclear the name is incomplete.",
+        "suggestion": "Use a single-line truncate with an ellipsis, or allow the name to wrap so the full title is readable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 484,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.006668,
+    "reportedCost": 0.00398,
+    "durationSeconds": 19.79912283399998
+  }
+}

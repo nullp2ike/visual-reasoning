@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "gemini-3.1-flash-lite",
+  "provider": "google",
+  "imageId": "img_04",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T10:40:04.366Z",
+  "status": "ok",
+  "result": {
+    "summary": "The main visual issue is a layout/content error on the bottom-most card in the list, which contains a discount label (-0%) that appears incorrect, and the card lacks a title or restaurant name compared to the other cards displayed.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The bottom card showing a pizza is missing its restaurant name/title, unlike all other cards on the page.",
+        "suggestion": "Ensure the restaurant name and relevant metadata (rating, delivery time) are dynamically populated for this card."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The discount tag on the pizza card displays '-0%', which provides no meaningful information to the user and appears to be a data rendering error.",
+        "suggestion": "Hide the discount label if the discount value is 0 or invalid."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1508,
+    "outputTokens": 218,
+    "estimatedCost": 0.000704,
+    "durationSeconds": 3.2729587500002237
+  }
+}

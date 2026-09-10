@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:53:11.347Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content clipping issues are visible: restaurant names and category chips are cut off, a promo badge shows a nonsensical '-100%' label, and horizontal carousels lack clear overflow affordances.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you row, and the third card is partially off-screen without a clear way to see the full name.",
+        "suggestion": "Ensure card titles wrap to two lines or scale/truncate with ellipsis consistently, and give horizontal lists enough padding and a peek of the next card so names remain readable."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza card shows a green badge reading '-100%', which looks like a broken or incorrect discount label rather than a meaningful offer (e.g. 100% off or free item).",
+        "suggestion": "Correct the badge copy to a valid promotion (e.g. '-50%' or '100% off') or hide the badge when the value is invalid."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips (All, Pizza, Sushi, Burgers, Healthy) overflow horizontally and the last chip is clipped at the right edge with no clear scroll indicator.",
+        "suggestion": "Add horizontal scroll with padding and a subtle fade or partial next-chip peek so users know more categories exist."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery time pills on the Fastest near you cards sit over the images with heavy white fills that can clash with varied food photography and reduce visual polish.",
+        "suggestion": "Use a semi-transparent or frosted pill style and consistent positioning so overlays remain legible without dominating the image."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Bottom navigation labels and icons rely mainly on color for the selected Home state; Search/Orders/Profile are low-contrast gray and may be harder to distinguish for some users.",
+        "suggestion": "Increase contrast for unselected tab labels and ensure selected state is not conveyed by color alone (e.g. weight or icon fill)."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 546,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.00704,
+    "reportedCost": 0.0063872,
+    "durationSeconds": 11.855546417000005
+  }
+}

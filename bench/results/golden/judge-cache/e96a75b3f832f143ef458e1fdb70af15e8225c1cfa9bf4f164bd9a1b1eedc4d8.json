@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Restaurant cover image failed to load"],
+  "reportedIssues": [
+    "The 'Tokumaru Ramen Bar' card shows a grey broken-image placeholder instead of a restaurant photo, while the card below renders a full image.",
+    "The favourite (heart) button on the broken-image card uses a light grey circle with a white outline icon on an equally light grey background, making it nearly invisible; the same button on the pizza card is dark and clearly visible.",
+    "In 'Fastest near you' the third card ('Trattoria Piccol…') and its image are hard-clipped by the viewport edge with the title cut mid-word and no ellipsis, so it is unclear the row is scrollable.",
+    "The category chip row is cut off at the right edge with only a sliver of the next chip visible, giving no clear scroll affordance.",
+    "The pizza card at the bottom is cut off by the fixed bottom navigation bar, hiding its title, rating and delivery info."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes a restaurant card showing a grey broken-image placeholder instead of the restaurant photo, which matches the expected defect of a failed cover image load."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

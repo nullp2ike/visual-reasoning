@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:55:07.957Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 clear visual/data bug: an invalid delivery price renders as “€NaN delivery” on a restaurant card. The rest of the page appears consistent with normal scrollable mobile UI patterns.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The “Smash Bros Burgers” card in the “Fastest near you” carousel shows “€NaN delivery”, indicating a missing/invalid delivery fee value being rendered into the UI.",
+        "suggestion": "Guard the delivery fee formatting so null/undefined/non-numeric values are not converted with Number/parseFloat without validation; show a fallback such as “Delivery unavailable”, hide the fee, or display the correct fee from the API."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 390,
+    "reasoningTokens": 223,
+    "estimatedCost": 0.012156,
+    "reportedCost": 0.0066264,
+    "durationSeconds": 32.418381874999994
+  }
+}

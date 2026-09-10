@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel, the third card is clipped at the right screen edge and its title is truncated to 'Trattoria Piccol' with no ellipsis, making the restaurant name unreadable.",
+    "The second card under 'Popular right now' (the -20% pizza) is cut off by the bottom tab bar; its name, rating and delivery info are not visible, and there is no visual cue that the list continues.",
+    "The favorite (heart) buttons are styled inconsistently: the ramen card uses a white circular background with dark outline heart, while the pizza card uses a dark/translucent circle with white heart.",
+    "The category chip row is clipped mid-chip at the right edge, showing a sliver of an unnamed chip with no scroll affordance.",
+    "Notification bell and heart icons are icon-only controls with no visible text label; the red notification dot also relies on color alone to convey unread state.",
+    "The promo banner's decorative overlapping circles are clipped abruptly at the banner's right/bottom edges, producing hard visible seams."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "No reported issue describes a filtering or category selection problem; all reported issues concern layout clipping, styling inconsistency, or accessibility of UI controls."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 4, 5]
+  }
+}

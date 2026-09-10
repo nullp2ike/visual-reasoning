@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T13:18:41.580Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 issue: a text overlap defect in the 'Popular right now' restaurant card where the delivery time and metadata line are rendered on top of each other, producing unreadable garbled text.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Tokumaru Ramen Bar' card under 'Popular right now', the delivery-time text and the metadata line ('€0 delivery • Ramen') overlap and render on top of each other, showing garbled text like '25-30rdelivery'. This makes the information unreadable.",
+        "suggestion": "Fix the layout so the delivery-time range and the 'delivery • Ramen' metadata are placed on separate lines or properly spaced elements (e.g., correct the flex/grid row or remove an absolute-position/line-height conflict) so each string renders cleanly without overlapping."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1711,
+    "outputTokens": 677,
+    "reasoningTokens": 465,
+    "estimatedCost": 0.007484,
+    "reportedCost": 0.007484,
+    "durationSeconds": 19.36242037499999
+  }
+}

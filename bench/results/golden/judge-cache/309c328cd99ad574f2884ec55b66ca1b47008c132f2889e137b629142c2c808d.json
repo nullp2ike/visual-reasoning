@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "On the Tokumaru Ramen Bar card, the delivery time text ('25-30') overlaps or collides with the word 'delivery', rendering as garbled text like '25-30delivery'.",
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you section.",
+    "On the Tokumaru Ramen Bar card, the cuisine type 'Ramen' sits too close to or collides with the delivery info on the same line."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes delivery time text overlapping with delivery fee/word 'delivery', causing garbled rendering."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

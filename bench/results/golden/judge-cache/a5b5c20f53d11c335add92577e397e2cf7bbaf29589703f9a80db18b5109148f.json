@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "Restaurant names and cards in the 'Fastest near you' horizontal list are cut off at the right edge (e.g. 'Trattoria Piccol...'), which may look like broken truncation.",
+    "The favorite (heart) icons are styled inconsistently: the ramen card has a white circular background while the pizza card has a dark/transparent background, causing visual inconsistency.",
+    "The second 'Popular right now' pizza card is missing its title, rating, and delivery metadata, leaving the card visually incomplete compared to the ramen card above it."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.65 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

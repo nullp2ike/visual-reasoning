@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_13",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:03:31.055Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page shows two main visual issues: a restaurant name is truncated in the horizontal list, and the last visible card in the vertical list is clipped by the bottom navigation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The restaurant name 'Trattoria Picco' in the 'Fastest near you' section is cut off at the right edge of the card, so the full name is not visible.",
+        "suggestion": "Increase card width, allow the name to wrap, or use an ellipsis (...) to indicate truncation instead of abrupt clipping."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The second card under 'Popular right now' is partially clipped at the bottom of the screen; its name, rating, and delivery details are hidden behind or below the bottom tab bar.",
+        "suggestion": "Add bottom padding to the scrollable content equal to the bottom navigation height so the last card is fully visible when scrolled."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The top-right profile/notification area uses a plain circular placeholder with a small red dot, which looks like a missing avatar or ambiguous indicator.",
+        "suggestion": "Load the actual user avatar or use a clearer, labeled icon/placeholder for the profile or notification state."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 1852,
+    "reasoningTokens": 1536,
+    "estimatedCost": 0.00858992,
+    "reportedCost": 0.00778914,
+    "durationSeconds": 44.122566375000055
+  }
+}

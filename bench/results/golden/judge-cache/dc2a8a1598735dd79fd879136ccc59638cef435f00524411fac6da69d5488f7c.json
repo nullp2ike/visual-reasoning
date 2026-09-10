@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The bottom navigation highlights “Profile” as the active tab, but the visible content is the home/restaurant discovery page. This creates a confusing mismatch between navigation state and page content.",
+    "The bottom navigation bar appears to overlay the restaurant list content; the lower pizza card is partially hidden behind the fixed nav area.",
+    "The category filter row is clipped on the right, showing only a small cut-off portion of the next pill after “Healthy,” which looks accidental."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.77 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

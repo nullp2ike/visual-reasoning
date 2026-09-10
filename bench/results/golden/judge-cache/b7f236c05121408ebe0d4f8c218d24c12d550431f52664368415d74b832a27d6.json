@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The Tokumaru Ramen Bar card shows a circular loading spinner centered over its hero image even though the image has clearly finished rendering behind it. The lingering overlay obscures the photo and suggests a broken image-load state.",
+    "The favorite heart buttons are inconsistent between the two 'Popular right now' cards: the first uses a white/transparent-outline heart with no visible container, while the second sits inside a dark filled circle.",
+    "The heart icon on the first card has very low contrast against the light noodle-bowl imagery, making the favorite control hard to see and tap-target unclear."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes a loading spinner lingering over content that has already finished rendering."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

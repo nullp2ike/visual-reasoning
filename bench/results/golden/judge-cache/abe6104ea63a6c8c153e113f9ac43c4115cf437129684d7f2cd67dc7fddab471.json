@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The delivery fee for 'Smash Bros Burgers' displays as '€NaN' (Not a Number), indicating a broken data/formatting value.",
+    "The restaurant name 'Trattoria Picco' in the 'Fastest near you' section appears truncated, likely missing the last word(s).",
+    "The bottom pizza restaurant card in the 'Popular right now' section is partially cut off at the bottom edge of the screen."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.77 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

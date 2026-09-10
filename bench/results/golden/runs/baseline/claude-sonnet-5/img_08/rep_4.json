@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_08",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:00:48.073Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several layout and content issues including cut-off cards, truncated text, and inconsistent element sizing.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Trattoria Piccolo' card in the 'Fastest near you' section is cut off at the right edge of the screen, with its name truncated ('Trattoria Piccol') and image partially hidden.",
+        "suggestion": "Ensure horizontal scrolling cards are properly clipped or add a visual indicator (like a partial peek with fade) to show more content is scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccolo' appears truncated as 'Trattoria Piccol' due to card width constraints.",
+        "suggestion": "Use text truncation with ellipsis (...) or adjust card width to prevent awkward mid-word cutoffs."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row (All, Pizza, Sushi, Burgers, Healthy) shows a partially visible additional category cut off at the right edge of the screen.",
+        "suggestion": "Add a fade-out gradient or ensure consistent padding so partially visible elements are intentional and not visually broken."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second promotional item in 'Popular right now' (pizza with -20% badge) is cut off at the bottom of the visible screen without clear indication of scrollability.",
+        "suggestion": "Consider adding a subtle scroll indicator or ensure the cut-off is clearly part of a scrollable list."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Inconsistent heart/favorite icon styling - white heart icon on Tokumaru Ramen Bar card differs slightly in visibility from the dark heart icon on the pizza card below it.",
+        "suggestion": "Standardize the favorite icon background/contrast treatment across all promotional cards for visual consistency."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 731,
+    "estimatedCost": 0.016887,
+    "durationSeconds": 10.158800792000024
+  }
+}

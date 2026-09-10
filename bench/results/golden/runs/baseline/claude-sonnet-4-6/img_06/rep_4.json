@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_06",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:02:51.523Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: one major layout truncation issue and one minor visual inconsistency.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' section ('Trattoria Piccol...') is clipped/truncated on the right edge, cutting off both the image and the restaurant name text.",
+        "suggestion": "Either implement a proper horizontal scroll container that clearly indicates scrollability (e.g., with a visible partial card peek), or adjust card widths/padding so truncation of text does not occur. The restaurant name should not be cut mid-word."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza restaurant card is partially cut off vertically at the bottom of the screen with no visual affordance indicating it continues below, which may confuse users into thinking the page has ended.",
+        "suggestion": "Ensure partially visible cards have enough of their content visible to clearly indicate they are scrollable, or add a subtle scroll indicator to guide users."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 274,
+    "estimatedCost": 0.009585,
+    "durationSeconds": 6.91558050000004
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Under 'Tokumaru Ramen Bar', the delivery time and delivery fee texts overlap, rendering as garbled text like '25–3€0rdelivery' instead of e.g. '25–35 min · €0 delivery · Ramen'. The two labels appear to be positioned on top of each other.",
+    "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' carousel is cut off at the screen edge without any ellipsis, so it's unclear if truncation is intentional carousel peeking or a clipping bug.",
+    "The '€0 delivery' info appears twice in different treatments (badge on the Tokumaru image and again in the overlapping metadata line), which is redundant and contributes to the cluttered look."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.81 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

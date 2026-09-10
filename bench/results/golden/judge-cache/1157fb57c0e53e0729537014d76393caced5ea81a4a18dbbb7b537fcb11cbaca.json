@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Promo banner text is unreadable, white text on a pale mint background"],
+  "reportedIssues": [
+    "The white promotional text, especially “Use code TALLINN3 at checkout · min. order €10,” has very low contrast against the pale mint banner and is difficult to read.",
+    "The category row shows a narrow, unidentified fragment of the next pill at the right edge, which looks accidentally cut off.",
+    "The third card in “Fastest near you” and its restaurant name are sharply clipped by the right edge without an ellipsis or comfortable inset."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.79 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

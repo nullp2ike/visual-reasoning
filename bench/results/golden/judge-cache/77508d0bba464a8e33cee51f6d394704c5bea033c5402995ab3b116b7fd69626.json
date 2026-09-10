@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "Raw i18n key 'home_feed.popular_title' is displayed instead of a translated string, indicating a missing localization entry",
+    "The third restaurant card in 'Fastest near you' section ('Trattoria Piccol...') is cut off at the right edge of the screen with truncated text",
+    "Category filter row ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') is clipped at the right edge, suggesting an additional category is cut off"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe the same defect: the section title 'home_feed.popular_title' displays as a raw translation key instead of localized text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

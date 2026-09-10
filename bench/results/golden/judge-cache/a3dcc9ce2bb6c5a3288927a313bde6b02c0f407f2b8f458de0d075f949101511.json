@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "Two identical 'Green Bowl Poké' cards appear side-by-side in 'Fastest near you' with the same image, 15–25 min time, and €0.90 delivery fee, suggesting duplicated or incorrectly rendered data.",
+    "The third 'Fastest near you' card is cut off at the right edge and its title is truncated as 'Smash Bros Bu…', making the entry feel broken.",
+    "The category filter row is clipped after 'Healthy' with the next chip only barely visible, so users may not realize more categories exist."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.74 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "In the bottom navigation bar, a long horizontal black line/bar stretches between the search icon and the receipt/orders icon, overlapping both. This looks like a rendering artifact or misplaced divider rather than an intentional element, making the middle nav items look struck-through and broken.",
+    "Bottom navigation icons appear vertically clipped by the bottom edge of the screen (home icon and profile icon are partially cut off), suggesting the nav bar height or safe-area inset is incorrect.",
+    "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' carousel is truncated without an ellipsis, appearing cut off mid-word.",
+    "The last filter chip at the top right edge is cut off and shows no visible label, appearing as an empty pill fragment.",
+    "Bottom navigation icons have no text labels, and the inactive icons are low-contrast gray, which reduces clarity of navigation destinations."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0, 1, 4],
+        "reasoning": "cosine 0.85 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [2, 3]
+  }
+}

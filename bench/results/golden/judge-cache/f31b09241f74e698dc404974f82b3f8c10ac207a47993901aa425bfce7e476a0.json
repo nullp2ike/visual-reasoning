@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The bottom tab bar highlights 'Profile' (green icon + label) even though the screen shown is the Home/discovery feed. The active tab does not match the visible content.",
+    "The third card in 'Fastest near you' ('Trattoria Piccol…') is hard-cut by the viewport edge with the title truncated mid-word and no ellipsis or peek affordance; the category chip row is similarly sliced mid-chip.",
+    "The two favorite buttons use inconsistent styling: the Tokumaru Ramen card has a white circle with a dark outlined heart, while the pizza card has a dark circle with a white heart.",
+    "The 'Green Bowl Poké' thumbnail has a near-white/light background while the sibling cards use dark photographic backgrounds, making the row look unfinished and reducing contrast for the white '15–25 min' badge.",
+    "The bottom pizza card is cut off by the bottom navigation bar with no visible name, rating or bottom spacing, so the list appears to end abruptly behind the nav.",
+    "The '€0 delivery' and '−20%' promo badges and the notification bell's red dot convey information by color/graphic only, and the heart buttons have no visible text label."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes the Profile tab being highlighted in the bottom nav while the Home feed is displayed, matching the exact defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

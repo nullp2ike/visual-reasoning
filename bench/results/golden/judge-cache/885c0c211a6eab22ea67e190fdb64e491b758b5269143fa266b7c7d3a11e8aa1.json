@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The favorite/heart buttons on the two 'Popular right now' cards are styled differently: the Tokumaru Ramen Bar card has a white circular button with a dark outlined heart, while the pizza card below it has a dark/black circular button with a white heart.",
+    "The 'Pizza' category chip is visually selected (active black state), yet the listings shown include poké, burgers and ramen restaurants, so the filter appears not to be applied to the content below.",
+    "In the 'Fastest near you' carousel, the first card (Green Bowl Poké) has a light gray image background while the neighbouring cards use dark imagery, making the row look visually uneven and causing the white time badge to have low contrast on the light background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Issue 1 directly describes the Pizza category chip being visually selected but the filter not applying to the restaurant listings shown below."
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

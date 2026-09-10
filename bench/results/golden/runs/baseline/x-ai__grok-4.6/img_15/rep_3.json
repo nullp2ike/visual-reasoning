@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_15",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:33:02.492Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content issues: restaurant cards and category chips are clipped, a popular listing is missing its name/details, and the last tab-bar icon is incomplete.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card in 'Fastest near you' (Trattoria Piccol) is cut off at the right edge, hiding part of the name and image.",
+        "suggestion": "Ensure the horizontal carousel has enough padding/peek or allow wrapping so the last card is fully visible."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The category filter chips overflow the screen; the last chip is only partially visible with no indication of more options.",
+        "suggestion": "Add horizontal scrolling affordance, fade, or wrap so all categories can be reached and the last chip isn't clipped."
+      },
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The second 'Popular right now' card shows only an image, discount badge, and favorite icon—no restaurant name, rating, delivery time, or cuisine.",
+        "suggestion": "Show the same metadata as the card above (name, ETA, delivery fee, cuisine, rating) so the listing is identifiable and tappable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The profile/account icon in the bottom tab bar is clipped on the right.",
+        "suggestion": "Increase tab-bar padding or scale icons so all four items sit fully inside the safe area."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name is truncated as 'Trattoria Piccol' without ellipsis or full title.",
+        "suggestion": "Use ellipsis or a two-line title so the full restaurant name is readable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 375,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.006014,
+    "reportedCost": 0.003326,
+    "durationSeconds": 11.93250429099999
+  }
+}

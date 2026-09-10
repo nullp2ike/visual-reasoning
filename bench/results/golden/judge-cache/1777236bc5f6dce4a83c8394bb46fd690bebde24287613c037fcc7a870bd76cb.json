@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "In the Tokumaru Ramen Bar card the metadata line renders two overlapping strings: '25–35 min' and '€0 delivery' are drawn on top of each other ('25–3⁠5⁠0⁠rd⁠elivery'), making both unreadable before the '• Ramen' tag.",
+    "The favourite (heart) buttons on the two 'Popular right now' cards use different styles: the first has a white circular background with a dark outline heart, the second has a dark/translucent circle with a white heart.",
+    "The third item in the 'Fastest near you' carousel is truncated mid-title ('Trattoria Piccol') at the screen edge, and the category chip row is similarly clipped ('Healthy' followed by a partially visible chip), giving the impression of cut-off content rather than a scrollable list.",
+    "The second 'Popular right now' card is cut off hard by the bottom navigation bar with no bottom padding, so its title and rating are entirely hidden.",
+    "Secondary metadata such as '€0.90 delivery' and the 'DELIVER TO' label are light grey on white, likely below the 4.5:1 contrast requirement."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the delivery fee and delivery time texts overlapping in the same metadata line."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

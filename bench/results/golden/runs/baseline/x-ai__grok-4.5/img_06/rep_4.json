@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_06",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:52:32.615Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual/layout problems: truncated restaurant names and category chips, a cut-off bottom card, and a bottom nav item with a missing icon.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol...' is truncated with ellipsis in the Fastest near you row, and the third card is partially clipped off-screen.",
+        "suggestion": "Give cards consistent width/spacing, allow 2-line titles, or use a horizontal scroll with full names visible on focus."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom pizza promotional card is cut off mid-image by the bottom navigation bar, so the offer is only partially visible.",
+        "suggestion": "Add sufficient bottom padding/safe-area inset to the scroll content so cards clear the tab bar."
+      },
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The Orders tab in the bottom navigation has no icon (only the label), unlike Home, Search, and Profile.",
+        "suggestion": "Add the missing Orders icon to match the other tab items."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips (e.g. Healthy) overflow and are cut off on the right edge with no clear affordance that the row scrolls.",
+        "suggestion": "Ensure the chip row scrolls horizontally with peek of the next chip or a fade, and avoid clipping the last visible label."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Delivery fee text under Fastest near you cards wraps awkwardly (e.g. '€0.90 delivery') and feels cramped under truncated titles.",
+        "suggestion": "Normalize card typography hierarchy and allow enough height for title + meta without crowding."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 378,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006032,
+    "reportedCost": 0.0029856,
+    "durationSeconds": 8.488348624999999
+  }
+}

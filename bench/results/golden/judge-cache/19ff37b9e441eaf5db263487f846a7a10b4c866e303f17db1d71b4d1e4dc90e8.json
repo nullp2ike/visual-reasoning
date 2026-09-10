@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "Second card in 'Popular right now' shows '-100%' badge which looks like a data or promo logic error implying free food",
+    "Favorite heart button styling is inconsistent: Tokumaru Ramen Bar card shows white outline heart directly on image with no circular background, while pizza card below shows white heart inside dark circular background",
+    "Delivery time badge formatting is inconsistent in 'Fastest near you' row: '15-25 min' and '20-30 min' without spaces vs '20-30 min' with spaces around hyphen"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.75 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

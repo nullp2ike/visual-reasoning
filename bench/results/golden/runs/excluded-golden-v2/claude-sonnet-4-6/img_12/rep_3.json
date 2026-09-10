@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_12",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T10:33:20.915Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 major issue: a text rendering/overlap bug in a restaurant card subtitle.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The subtitle text beneath 'Tokumaru Ramen Bar' appears corrupted or overlapping. The delivery time ('25–35 min') and the delivery cost label seem to be rendered on top of each other, producing garbled text that reads '25-3Ödelivery • Ramen' instead of two cleanly separated pieces of information.",
+        "suggestion": "Ensure the delivery time and delivery fee labels are rendered in separate, non-overlapping UI elements (e.g., distinct TextViews/Labels laid out in a horizontal stack), and verify that no z-index or absolute-positioning conflict causes them to overlap."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1910,
+    "outputTokens": 435,
+    "estimatedCost": 0.012255,
+    "durationSeconds": 11.823991375001148
+  }
+}

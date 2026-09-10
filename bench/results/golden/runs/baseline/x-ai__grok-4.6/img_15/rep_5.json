@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_15",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:33:05.685Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and clipping issues: restaurant cards and category chips are cut off, a promo restaurant card is missing its name/details, and the bottom navigation is cramped.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' (Trattoria Piccol) is clipped on the right, cutting off both the image and the restaurant name.",
+        "suggestion": "Add consistent horizontal padding and ensure the last visible card peeks enough to indicate scrolling, or use a layout that keeps full cards on screen."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The category filter chips row is cut off on the right (Healthy chip and next item are truncated), so users cannot see the full set of filters.",
+        "suggestion": "Add end padding and a clear peek of the next chip, or allow wrapping / a more complete scroll affordance."
+      },
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The second 'Popular right now' restaurant card shows an image and a -20% badge but has no restaurant name, delivery info, rating, or cuisine text below it.",
+        "suggestion": "Render the same metadata block as the card above (name, time, delivery fee, cuisine) so the listing is complete."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom tab bar icons sit very close to the screen edges and the home icon is tight against the left, making the nav look cramped.",
+        "suggestion": "Increase horizontal padding and spacing between tab items so icons have more breathing room."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The search field placeholder and icon are very light gray on a light background, reducing readability.",
+        "suggestion": "Darken the placeholder and icon color to improve contrast."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 391,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 128,
+    "estimatedCost": 0.00611,
+    "reportedCost": 0.005918,
+    "durationSeconds": 21.61855037499999
+  }
+}

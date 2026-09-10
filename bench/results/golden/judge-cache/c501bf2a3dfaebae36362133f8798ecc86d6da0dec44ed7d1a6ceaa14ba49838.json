@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "Restaurant names in the 'Fastest near you' carousel are truncated ('Smash Bros Bu...') due to the card extending beyond the visible screen area.",
+    "Two identical 'Green Bowl Poké' listings appear side by side with the same details (15-25 min, €0.90 delivery), which may confuse users.",
+    "The favorite (heart) icons have inconsistent styling — one appears with a dark filled background circle while another is white/outlined."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 explicitly describes two identical Green Bowl Poké listings appearing side by side."
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

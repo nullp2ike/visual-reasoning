@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' appears truncated in the 'Fastest near you' section. The full name is likely longer but is being cut off by the card container.",
+    "The category filter row on the right side shows a partially cut-off category button beyond 'Healthy', indicating horizontal scroll content that isn't fully visible."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.58 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

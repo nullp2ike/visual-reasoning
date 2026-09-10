@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Promo banner text is unreadable, white text on a pale mint background"],
+  "reportedIssues": [
+    "The '3 free deliveries for you' promo banner uses white text on a pale mint green background. The headline, subtext ('Use code TALLINN3 at checkout · min. order €10') fail contrast requirements and are barely readable.",
+    "The 'Fastest near you' carousel's third card ('Trattoria Piccol…') is cut flush against the right screen edge — image, title and delivery price are all sliced with no gutter, making it look broken rather than scrollable.",
+    "The category chip row ('All, Pizza, Sushi, Burgers, Healthy, …') is also clipped at the right edge with a sliver of the next chip visible, giving no clear affordance that the row scrolls.",
+    "Favourite heart buttons are styled inconsistently: the Tokumaru Ramen card uses a white circular background with dark outline, while the pizza card below uses a dark translucent circle with white outline.",
+    "The second 'Popular right now' card is abruptly truncated by the bottom navigation bar with no card metadata visible, and the divider above the tab bar cuts through the image."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.78 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

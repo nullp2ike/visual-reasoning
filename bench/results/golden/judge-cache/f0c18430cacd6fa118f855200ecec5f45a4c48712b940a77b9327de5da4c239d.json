@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "The circular control in the top-right appears blank except for a small red dot. It looks like an icon/avatar/notification button failed to load or is missing.",
+    "Several horizontally scrolling sections are clipped at the right edge, including the category chips and the restaurant cards in “Fastest near you.” This may be intentional carousel behavior, but it visually looks abruptly cut off.",
+    "The lower restaurant card appears to run underneath the fixed bottom navigation area, making the content feel partially obscured."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.82 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

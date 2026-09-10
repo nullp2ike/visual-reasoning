@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Delivery time text on Tokumaru Ramen Bar is garbled/overlapping: '25-30delivery' appears as broken text ('25-3Ddelivery' style) instead of clean '25-30 min delivery'.",
+    "Restaurant name 'Trattoria Piccol...' is truncated and cut off on the right edge of the Fastest near you row.",
+    "Category filter chips row is clipped on the right (Healthy and following chip partially off-screen) with no clear affordance that more categories exist.",
+    "Bottom promotional/popular card (pizza) is heavily cropped at the bottom of the viewport, hiding title, rating, and other details.",
+    "Fastest near you third card is only partially visible, cutting off image and text awkwardly.",
+    "Inconsistent delivery badge formatting (some '€x.xx delivery', popular card '€0 delivery', time badges over images) and tight spacing make the hierarchy slightly uneven."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 describes delivery fee/time text overlapping as '25-30delivery' appearing as garbled/broken text instead of properly separated, matching the expected defect of delivery fee overlapping delivery time text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

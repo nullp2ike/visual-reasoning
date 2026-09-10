@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "Restaurant name 'Smash Bros Bu' is truncated in the 'Fastest near you' section. The card appears to extend beyond the visible viewport, cutting off the full restaurant name.",
+    "The second restaurant card in 'Popular right now' section is cut off at the bottom of the screen. Only the pizza image is visible without restaurant name, rating, or delivery information.",
+    "The category filter row (All, Pizza, Sushi, Burgers, Healthy, etc.) appears to have cut-off content on the right edge. The last category or 'More' button is not fully visible."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.64 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_01",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:24:30.220Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several visual issues, mainly a visible localization key and some horizontally clipped content that makes the page look unfinished.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading displays the raw localization key \"home_feed.popular_title\" instead of a user-facing title.",
+        "suggestion": "Fix the missing translation/string mapping so this section shows the intended label, such as \"Popular near you\" or similar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row is cut off on the right, showing only part of the next pill without any label.",
+        "suggestion": "Add proper horizontal scroll behavior, padding, or a fade indicator so the clipped chip looks intentional rather than broken."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third restaurant card in the \"Fastest near you\" carousel is heavily clipped at the right edge, including its image and text.",
+        "suggestion": "Ensure carousel cards have consistent spacing and enough visible preview area, or add a clear scroll affordance/fade so partial cards look intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlaps the lower restaurant card content/image area, making the feed look abruptly cut off at the bottom.",
+        "suggestion": "Add bottom padding to the scrollable content equal to the height of the bottom navigation so cards are not hidden behind it."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 691,
+    "reasoningTokens": 398,
+    "estimatedCost": 0.029785000000000002,
+    "durationSeconds": 14.893253125
+  }
+}

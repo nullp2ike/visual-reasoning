@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_03",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:24:53.352Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 4 issues: one major broken/missing restaurant image, and several minor layout truncations at screen edges.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The 'Tokumaru Ramen Bar' card in the 'Popular right now' section shows a broken-image placeholder icon instead of an actual restaurant photo.",
+        "suggestion": "Fix the image URL or asset loading for this card, and provide a branded fallback image (e.g., logo or cuisine illustration) instead of a generic broken-image icon."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in 'Fastest near you' is clipped at the right edge, cutting off the restaurant name ('Trattoria Piccol…') with no visible truncation ellipsis handling in the title text.",
+        "suggestion": "If this is a horizontal carousel, ensure partial cards are an intentional affordance and apply proper text truncation with ellipsis; otherwise adjust card widths/margins so content isn't awkwardly cut."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category filter chip after 'Healthy' is cut off at the right screen edge, showing only a sliver of the pill with no visible label.",
+        "suggestion": "Adjust chip spacing or add a fade/gradient edge indicator to make it clear the row is horizontally scrollable rather than looking clipped."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The pizza restaurant card at the bottom is abruptly cut off by the bottom navigation bar, hiding its name, rating, and delivery info.",
+        "suggestion": "Add sufficient bottom padding/safe-area inset to the scrollable content so cards are not obscured by the fixed bottom navigation, or verify this is simply scroll position and content remains reachable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 780,
+    "estimatedCost": 0.05874,
+    "durationSeconds": 15.762409667
+  }
+}

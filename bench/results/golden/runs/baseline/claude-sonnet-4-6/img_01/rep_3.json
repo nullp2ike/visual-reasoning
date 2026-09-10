@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:02:12.852Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 critical issue: an untranslated localization key is being rendered directly on screen instead of the intended human-readable section title.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "The section heading 'home_feed.popular_title' is a raw localization/translation key being rendered as visible text instead of the actual translated string (e.g., 'Popular near you'). This indicates a missing or failed localization lookup.",
+        "suggestion": "Ensure the localization key 'home_feed.popular_title' has a corresponding translation entry for the active locale (likely English). Add a fallback string so that even if the key is missing, a human-readable default is displayed rather than the raw key."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' horizontal scroll list ('Trattoria Piccol...') is clipped and the restaurant name is cut off without an ellipsis indicator, making it unclear to the user that the name is truncated.",
+        "suggestion": "Apply text-overflow ellipsis styling to the restaurant name label, or ensure the card width allows enough space to display at least a recognizable portion of the name with a clear truncation indicator."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 511,
+    "estimatedCost": 0.013139999999999999,
+    "durationSeconds": 11.845133750000038
+  }
+}

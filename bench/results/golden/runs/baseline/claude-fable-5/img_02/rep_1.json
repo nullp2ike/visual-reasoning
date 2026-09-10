@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_02",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:24:30.695Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there is one clear data/rendering bug: a '€NaN delivery' price under Smash Bros Burgers. Additionally, a filter chip is cut off at the right edge, and a horizontal carousel card is truncated, which may be intentional but appears abrupt.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Smash Bros Burgers' card displays '€NaN delivery', indicating a failed numeric calculation or missing data for the delivery fee.",
+        "suggestion": "Fix the data source or formatting logic to handle missing/invalid fee values, and show a fallback like 'Free delivery' or hide the label when the fee is unavailable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category filter chip at the far right of the chips row is cut off with no visible label, and there is no clear affordance that the row scrolls horizontally.",
+        "suggestion": "Ensure chips are not clipped mid-shape or add a fade/gradient edge to indicate horizontal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in 'Fastest near you' ('Trattoria Piccol...') is truncated at the screen edge, cutting off both the image and the restaurant name.",
+        "suggestion": "If this is a carousel, add a scroll hint (peek spacing or gradient); also allow the name to wrap or truncate with an ellipsis inside the card bounds rather than at the viewport edge."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery fee formatting is inconsistent: '€0.90' and '€1.90' use a euro-first format while the ramen card shows '€0 delivery' without decimals.",
+        "suggestion": "Standardize fee formatting (e.g., 'Free delivery' instead of '€0 delivery', consistent decimal places) across all cards."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 693,
+    "estimatedCost": 0.05439,
+    "durationSeconds": 13.464483708
+  }
+}

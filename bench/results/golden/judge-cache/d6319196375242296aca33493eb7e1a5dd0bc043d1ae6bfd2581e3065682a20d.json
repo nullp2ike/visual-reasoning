@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The second card in \"Popular right now\" shows a promotional badge reading \"-0%\", which conveys no discount and looks like a data/formatting bug.",
+    "The favorite (heart) buttons are styled inconsistently: the first card uses a white circle with a dark outline heart, while the second uses a dark/transparent circle with a white heart, reducing recognizability and contrast against the light pizza image.",
+    "In the \"Fastest near you\" carousel, the third item's title \"Trattoria Piccol\" is hard-cut at the screen edge with no ellipsis, and the card image itself is sliced, making it ambiguous whether content is scrollable or broken.",
+    "The category chip row (All / Pizza / Sushi / Burgers / Healthy / …) is clipped at the right edge with a partially rendered chip and no scroll affordance.",
+    "The second \"Popular right now\" card is cut off by the bottom navigation bar, showing only the image with no name, rating, or delivery info, which reads as an incomplete component.",
+    "\"See all\" links and the green promo banner text rely on medium-contrast green tones; the €0.90/€2.40 delivery subtitles are light gray on white, which may fall below WCAG AA for small text."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes a promotional badge showing '-0%' on the second card in 'Popular right now', matching the discount badge defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

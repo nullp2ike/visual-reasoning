@@ -1,0 +1,27 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The bottom tab bar renders a thick dark horizontal bar that overlaps and obscures the middle icons (search/bookmark), and the icons are cut off at the bottom of the screen. Tab labels are missing entirely.",
+    "The second card in 'Popular right now' (the pizza image with a −20% badge) has no restaurant name, rating, delivery time, or price row, unlike the Tokumaru Ramen Bar card above it.",
+    "In 'Fastest near you' the third card is cut off mid-word ('Trattoria Piccol…') and its image is clipped by the viewport edge, with no visible affordance that the row scrolls horizontally.",
+    "The category chip row is also clipped at the right edge, with a partially visible chip after 'Healthy' that is unreadable.",
+    "The favorite (heart) buttons are styled inconsistently: the ramen card uses a white circle with dark outline heart while the pizza card uses a dark circle with white heart.",
+    "Secondary text such as '€0.90 delivery', '25–35 min • €0 delivery • Ramen' and the search placeholder use light grey on white, likely below the 4.5:1 contrast requirement.",
+    "The promo banner's decorative translucent circles are clipped awkwardly at the card's right edge and the banner's bottom corners appear square while other cards are rounded."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Report 0 describes the bottom navigation being obscured and cut off at the screen edge, including missing labels and overlapping icons."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5, 6]
+  }
+}

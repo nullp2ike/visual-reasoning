@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "The third card in 'Fastest near you' (Trattoria Piccolo) is cut off at the right edge of the screen, showing only a partial image and truncated name/price.",
+    "Restaurant name 'Trattoria Piccol...' is truncated and unreadable due to the card being cut off.",
+    "The pizza promotion image at the bottom is cropped abruptly by the bottom navigation bar, cutting off part of the pizza and hiding restaurant details.",
+    "The notification/profile icon in the top right shows a plain gray circle with a red dot but no avatar image or icon, making it look unfinished.",
+    "The category filter row (All, Pizza, Sushi, Burgers, Healthy) appears to cut off additional categories at the right edge without a clear scroll indicator."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "Issue 3 describes the notification/profile icon in the top right showing only a gray circle with a red dot and no actual icon, matching the missing icon with visible red dot."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 4]
+  }
+}

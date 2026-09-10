@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "The metadata under “Tokumaru Ramen Bar” is visually broken: the delivery time, delivery fee, and category text overlap or collide, making the line hard to read.",
+    "Some horizontally scrollable content is clipped at the right edge, including the category chips and the restaurant cards in “Fastest near you.” This may be intentional, but it looks abrupt because partial elements are visible without clear scroll affordance.",
+    "The bottom navigation bar cuts across the second restaurant card image, making the card look partially hidden behind the fixed navigation area."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 explicitly describes delivery fee and delivery time text overlapping in the metadata area under the restaurant name."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

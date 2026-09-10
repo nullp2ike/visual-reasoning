@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:24:29.870Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: a critical content bug showing an untranslated localization key as a section title, and a major layout issue with a truncated restaurant name.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "Section heading displays the raw localization/i18n key 'home_feed.popular_title' instead of human-readable text like 'Popular'.",
+        "suggestion": "Resolve the translation string so the correct localized title is shown to users."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated/cut off under the Fastest near you carousel card.",
+        "suggestion": "Allow the title to wrap to two lines, use a smaller font, or ensure adequate width so the full name is visible."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 212,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005195999999999999,
+    "reportedCost": 0.0049784,
+    "durationSeconds": 39.981414166
+  }
+}

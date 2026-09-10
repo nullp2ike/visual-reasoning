@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "A loading spinner is displayed over the Tokumaru Ramen Bar image even though the restaurant card content is already visible. This makes the card look stuck or partially failed to load.",
+    "The horizontal category and restaurant carousels are visibly clipped on the right edge, with partial pills/cards and truncated restaurant text visible.",
+    "The fixed bottom navigation overlaps the lower restaurant card area, making the bottom content feel crowded and partially hidden."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.73 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

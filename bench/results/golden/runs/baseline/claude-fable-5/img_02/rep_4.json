@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_02",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:24:40.884Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there is one clear data/rendering bug ('€NaN delivery') plus a few minor visual concerns around truncation and cut-off carousel items.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Smash Bros Burgers' card in the 'Fastest near you' section displays '€NaN delivery', indicating a failed numeric calculation or missing delivery fee value being formatted as a number.",
+        "suggestion": "Guard against null/undefined delivery fee values in the formatting logic; show 'Free delivery', a placeholder like '—', or hide the line entirely when the fee is unavailable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' carousel is cut off at the screen edge with no ellipsis styling, making it look abruptly clipped.",
+        "suggestion": "Apply proper text truncation with an ellipsis within the card bounds, or add peek/padding so partially visible carousel items look intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category filter chip after 'Healthy' is cut off at the right edge showing only a sliver of the pill, which can look broken rather than scrollable.",
+        "suggestion": "Adjust chip spacing so the next chip peeks in more clearly (e.g., ~30–50% visible) or add a fade/gradient at the edge to signal horizontal scrollability."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 664,
+    "estimatedCost": 0.05294,
+    "durationSeconds": 12.437589041999999
+  }
+}

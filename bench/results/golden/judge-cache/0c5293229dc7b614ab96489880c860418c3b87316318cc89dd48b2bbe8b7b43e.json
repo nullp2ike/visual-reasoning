@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "Restaurant name in the Fastest near you row is truncated (“Trattoria Piccol”), so the full name is unreadable.",
+    "Top-right profile/avatar control is a very light gray circle on a white background, making it almost invisible aside from the small red dot.",
+    "Category chip row clips a partial chip on the right edge with no clear fade/affordance that the list scrolls.",
+    "Third “Fastest near you” card is heavily clipped at the screen edge, which can feel broken rather than like a carousel peek.",
+    "Popular section’s lower card (pizza) is cut off mid-image at the bottom of the viewport with no strong scroll cue beyond the home indicator."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "The top-right avatar control is nearly invisible, with only the small red dot clearly visible, matching the missing icon defect."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3, 4]
+  }
+}

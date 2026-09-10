@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The category chip row ends with a partially visible, unlabeled pill at the right edge, making it look accidentally cut off.",
+    "The third card in “Fastest near you,” including its restaurant name and delivery text, is abruptly clipped by the right viewport edge.",
+    "The fixed bottom navigation overlays the next restaurant card, hiding a substantial portion of its image and content area."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.58 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

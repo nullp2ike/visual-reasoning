@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "A stray horizontal line is rendered across the bottom navigation bar, striking through the search (magnifier) icon and extending to the orders (receipt) icon. It looks like a broken divider or misplaced border element rather than intentional design.",
+    "The bottom navigation icons appear vertically clipped at the bottom edge of the bar, with no visible labels or safe-area padding beneath them.",
+    "Bottom navigation icons have no text labels, which can make their purpose ambiguous (especially the receipt/orders icon) and reduces accessibility for screen reader and low-vision users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "The report describes bottom-navigation content clipped at the bottom edge with missing labels and insufficient safe-area padding, matching the expected overlap and cutoff."
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "In the 'Fastest near you' horizontal carousel, the 'Smash Bros Burgers' card is offset roughly 25px lower than the adjacent 'Green Bowl Poké' and 'Trattoria Piccol...' cards. Its image top edge, the '20–30 min' badge and the restaurant name/delivery-fee lines all sit below the same elements on the neighbouring cards, giving the row a staggered, broken appearance.",
+    "Time-badge placement differs between cards in the same carousel: on the first card the '15–25 min' pill sits near the bottom-left of the image, while on the other cards it is positioned lower/overlapping differently, creating visual inconsistency.",
+    "Favourite (heart) buttons in the 'Popular right now' list are styled inconsistently — the Tokumaru Ramen Bar card shows a bare white outline heart, while the card below shows a heart inside a dark circular background.",
+    "The 'Green Bowl Poké' thumbnail uses a light grey background while all other food thumbnails use dark photographic backgrounds, making the first card look like a placeholder or failed image load."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 describes the 'Smash Bros Burgers' card being offset 25px lower than adjacent cards in the carousel, with all elements (image, badge, text) misaligned vertically — exactly matching the expected defect of a middle card not aligned with others."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The rightmost cards/chips are visibly cut off at the screen edge, especially the “Trattoria Piccol…” restaurant card and the category chip sliver after “Healthy”.",
+    "A promo badge on the lower popular item reads “-0%”, which is meaningless and looks like a formatting/data error.",
+    "Restaurant name “Trattoria Piccol…” is truncated abruptly in the fastest-near-you carousel."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Issue 1 directly describes a promo badge showing '-0%', which is the same discount badge formatting defect as expected defect 0."
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

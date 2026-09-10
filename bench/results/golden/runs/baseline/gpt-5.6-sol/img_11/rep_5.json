@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "imageId": "img_11",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:32:05.411Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 visible issues: horizontally clipped carousel content, an awkward partially visible category chip, and a questionable discount label.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The rightmost restaurant card in the “Fastest near you” row is cut off, including its restaurant name and delivery details.",
+        "suggestion": "Ensure the horizontal carousel has intentional peek spacing and adequate right padding, or snap cards so partially displayed text is not clipped."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A nearly empty fragment of the next category pill is visible at the far-right edge of the category row, making the row look accidentally cropped.",
+        "suggestion": "Adjust the carousel position, chip widths, or viewport padding so the next chip shows enough content to be recognizable or remains fully off-screen."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The “−100%” promotion badge is ambiguous and looks like an erroneous discount value.",
+        "suggestion": "Use clearer wording such as “100% off” or “Free,” and verify that the promotion data is correct."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 583,
+    "reasoningTokens": 348,
+    "estimatedCost": 0.026545000000000003,
+    "durationSeconds": 13.622741000000039
+  }
+}

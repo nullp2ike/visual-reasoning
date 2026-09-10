@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_17",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:35:51.259Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well laid out, but horizontally scrollable content is visibly clipped at the right edge and the bottom navigation sits very close to the system gesture area.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The horizontal category row is cut off at the right edge: part of an additional category pill is visible with no clear indication that the row can scroll.",
+        "suggestion": "Add intentional horizontal-scroll affordance (for example, a fade/chevron) and ensure the clipped next item has adequate edge spacing, or fit the categories within the viewport."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third card in the 'Fastest near you' carousel is heavily clipped, including its image, restaurant name, and delivery text, making the content look truncated rather than deliberately scrollable.",
+        "suggestion": "Use clearer carousel gutters/overflow treatment and provide a visible horizontal-scroll cue; alternatively adjust card widths so the visible partial card does not expose truncated text."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom navigation is positioned immediately above the gesture indicator with minimal safe-area separation, making the lower portion feel crowded.",
+        "suggestion": "Increase bottom safe-area padding for the navigation bar so its labels and icons have more visual breathing room above the system gesture area."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 277,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006946,
+    "durationSeconds": 6.6863754169999154
+  }
+}

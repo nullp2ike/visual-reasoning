@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_13",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:39.893Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and missing-element problems: content is clipped by the tab bar and screen edges, a header control has no visible icon, and a restaurant name is truncated mid-word.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The second Popular right now card (pizza) is cut off by the bottom tab bar, so the restaurant name, rating, and delivery details are not visible.",
+        "suggestion": "Add bottom safe-area / tab-bar padding so list cards can scroll fully above the navigation bar."
+      },
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The top-right circular control is an empty pale circle with only a red badge—no avatar or icon—so it looks broken and is hard to identify.",
+        "suggestion": "Add a clear profile, cart, or notification icon and increase contrast against the white background."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third Fastest near you card is clipped at the screen edge and the name reads “Trattoria Piccol” mid-word with no ellipsis.",
+        "suggestion": "Keep a peek of the next card for the carousel, but truncate titles with an ellipsis so names don’t cut off mid-letter."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category chips overflow the right edge (Healthy plus a partial next chip), which is expected for a scroller but looks abrupt.",
+        "suggestion": "Fade or inset the trailing chip so overflow reads as intentional horizontal scroll."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 1807,
+    "reasoningTokens": 1478,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.014606000000000001,
+    "reportedCost": 0.011918,
+    "durationSeconds": 34.070978833
+  }
+}

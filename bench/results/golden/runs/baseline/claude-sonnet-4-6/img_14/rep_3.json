@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_14",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:03:52.468Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual issues on the food delivery app page: one truncated restaurant name and one partially cut-off restaurant card in the horizontal scroll section.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' section shows a truncated name 'Trattoria Piccol' — the full name is cut off due to the card being partially outside the viewport. This is expected for a carousel, but the text truncation mid-word without an ellipsis looks broken.",
+        "suggestion": "Apply text-overflow: ellipsis and overflow: hidden to restaurant name labels within carousel cards so truncated names end gracefully with '...' instead of being cut mid-word."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza restaurant card is partially cropped at the bottom of the screen without any visual affordance (e.g., fade or shadow) indicating more content is available below.",
+        "suggestion": "Add a gradient fade or a subtle visual cue at the bottom of the scrollable content area to indicate that more items are available below the visible area, improving discoverability."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 300,
+    "estimatedCost": 0.009975000000000001,
+    "durationSeconds": 8.240203333000071
+  }
+}

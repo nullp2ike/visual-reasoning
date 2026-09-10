@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_06",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:31:47.539Z",
+  "status": "ok",
+  "result": {
+    "summary": "The food delivery home screen has several layout overflow issues: restaurant names and category chips are clipped, and the bottom tab bar is missing an Orders icon.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card in the 'Fastest near you' row is cut off at the right edge, truncating the name 'Trattoria Piccol' and hiding part of the image.",
+        "suggestion": "Ensure the horizontal carousel peeks enough of the next card without clipping text, or add padding so names fully wrap/ellipsis inside the visible card."
+      },
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The bottom navigation 'Orders' tab has no icon, only the label, unlike Home, Search, and Profile.",
+        "suggestion": "Add the matching Orders icon (e.g. receipt/bag) and align it with the other tab items."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chips overflow the right edge so 'Healthy' is only partially visible and the next chip is cut off.",
+        "suggestion": "Add horizontal scrolling with a fade/peek, or wrap/resize chips so all labels stay fully readable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second Popular restaurant card is clipped at the bottom of the viewport, cutting off the pizza image and any title/details below it.",
+        "suggestion": "Allow the list to scroll fully so cards aren’t cropped by the tab bar, or add bottom padding so the last visible card isn’t cut mid-image."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 337,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.0057859999999999995,
+    "reportedCost": 0.003098,
+    "durationSeconds": 8.03041633399998
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_14",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:59:05.408Z",
+  "status": "ok",
+  "result": {
+    "summary": "No critical blockers are visible, but the page has noticeable horizontal-scroll clipping: category chips and restaurant cards are cut off at the right edge, and one restaurant name is truncated mid-word. A couple of minor contrast/labeling improvements are also visible.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The horizontally scrolling category row is clipped at the right edge, with an additional chip only partially visible after “Healthy” and no clear fade/scroll affordance.",
+        "suggestion": "Add edge fading, padding, or a scroll indicator so clipped chips look intentional and users can tell more categories are available."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In “Fastest near you,” the third restaurant card is cut off by the viewport and its title appears truncated as “Trattoria Piccol…”, making the content look broken.",
+        "suggestion": "Adjust card widths/peek amount or add horizontal scroll cues so partially visible cards are clearly intentional and titles do not appear accidentally cut off."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Search placeholder text “Restaurants, dishes, groceries” is light gray on a light gray field and may be hard to read for low-vision users.",
+        "suggestion": "Increase placeholder contrast or darken the placeholder text while preserving placeholder styling."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Favorite heart icons overlaid on restaurant images appear to be icon-only controls with no visible label.",
+        "suggestion": "Provide accessible labels such as “Save Tokumaru Ramen Bar” and ensure sufficient touch target size."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 639,
+    "outputTokens": 888,
+    "reasoningTokens": 482,
+    "estimatedCost": 0.015237,
+    "reportedCost": 0.0150642,
+    "durationSeconds": 114.08230550000002
+  }
+}

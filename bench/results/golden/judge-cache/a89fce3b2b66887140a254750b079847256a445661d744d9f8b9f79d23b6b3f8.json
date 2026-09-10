@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The fixed bottom navigation overlays the second restaurant card, cutting off its image and hiding the card's remaining content.",
+    "The category row and “Fastest near you” carousel are visibly clipped at the right edge, showing partial chips and a partially visible restaurant card.",
+    "The third restaurant name is truncated at the viewport edge (“Trattoria Piccol…”), making the content look incomplete."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.51 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

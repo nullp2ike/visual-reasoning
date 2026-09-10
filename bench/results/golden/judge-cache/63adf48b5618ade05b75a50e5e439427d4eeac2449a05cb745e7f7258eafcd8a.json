@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "The search bar placeholder contains a typo: 'Restarants' is misspelled.",
+    "The restaurant name 'Trattoria Piccolo' is truncated abruptly to 'Trattoria Piccol'."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe the identical typo 'Restarants' instead of 'Restaurants', though the expected defect location is unspecified while the reported issue specifies the search bar placeholder."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

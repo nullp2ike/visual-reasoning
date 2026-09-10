@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The pizza restaurant card in the 'Popular right now' section displays a '–0%' discount badge. A zero-percent discount is meaningless and suggests a data or formatting bug (e.g., a missing discount value defaulting to 0).",
+    "In the 'Popular right now' section, Tokumaru Ramen Bar shows a rating (4.8, 500+) while the pizza card below shows no rating, making card metadata inconsistent.",
+    "The 'Fastest near you' card images have inconsistent visual treatments: the Green Bowl Poké image is on a light gray background while the other cards use dark, moody photo backgrounds, creating uneven visual weight across the row."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 explicitly describes the same defect: a discount badge displaying '–0%' on a pizza restaurant card, identified as a data/formatting bug."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

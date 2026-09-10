@@ -1,0 +1,24 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Orders icon is missing from the bottom nav bar"],
+  "reportedIssues": [
+    "The third 'Fastest near you' card (Trattoria Piccol…) is hard-clipped by the right edge: both its image and the title/delivery text are cut mid-character with no ellipsis or fade, making it look broken rather than scrollable.",
+    "Favorite (heart) buttons are styled inconsistently: the Tokumaru card uses a white circular background with dark outline, while the pizza card below uses a dark/transparent circle with white outline, so the same control looks different per card.",
+    "The 'Green Bowl Poké' thumbnail has a light grey background while the other two cards in the same row use dark backgrounds, breaking visual rhythm in the row.",
+    "The category chip row is cut off after 'Healthy' with a sliver of the next chip visible at the very edge, which reads as an overflow bug instead of a scrollable filter list.",
+    "The second 'Popular right now' card is truncated by the bottom tab bar with its name, rating and delivery info hidden, and there is no visible spacing between content and the fixed nav.",
+    "Icon-only controls (notification bell with red dot, heart favorite buttons, search icon) have no visible text labels; if accessible names are also missing, screen reader users get no context."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.65 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 4, 5]
+  }
+}

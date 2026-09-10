@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Under 'Tokumaru Ramen Bar', the delivery time ('25–35 min') and delivery fee ('€0 delivery') texts are rendered on top of each other, producing garbled overlapping text like '25–3€0mdeihivery'.",
+    "The third card in 'Fastest near you' ('Trattoria Piccol...') and the last category chip after 'Healthy' are cut off at the right screen edge with the chip showing almost no content.",
+    "The restaurant name 'Trattoria Piccol' appears truncated without an ellipsis, making it look accidentally clipped rather than deliberately shortened."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 explicitly describes the delivery time and delivery fee texts overlapping in the same area."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

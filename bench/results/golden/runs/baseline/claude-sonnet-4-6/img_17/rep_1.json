@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:04:18.477Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: one major layout truncation issue and one minor visual inconsistency.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' section ('Trattoria Piccol...') is cut off at the right edge of the screen, with both the image and the restaurant name truncated. This implies a horizontal scroll exists but there is no visual indicator (scroll hint, pagination dots, or arrow) to communicate that to the user.",
+        "suggestion": "Add a clear visual affordance such as a partially visible card edge with sufficient peek, a scroll indicator, or pagination dots to signal that the list is horizontally scrollable. Ensure the card label is not clipped mid-word."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza restaurant card is cut off vertically at the bottom of the screen with no label or metadata visible, making it unclear whether it is a fully loaded card or still loading.",
+        "suggestion": "Ensure partially visible cards at the bottom of a scroll view show at least the restaurant name and key metadata (delivery time, price) to communicate that more content exists below."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 304,
+    "estimatedCost": 0.010034999999999999,
+    "durationSeconds": 8.200365250000031
+  }
+}

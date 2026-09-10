@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "In the bottom navigation bar, the search (magnifier) icon is overlapped by the device home-indicator bar, and no text label is shown beneath it, unlike a typical tab bar where each tab has an icon plus label.",
+    "Bottom navigation tabs (home, search, bookmarks/orders, profile) show icons only with no visible text labels, which can reduce discoverability and screen-reader clarity if labels are not provided programmatically."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 identifies the bottom navigation labels as missing beneath the icons and the gesture bar overlapping the search icon, matching the expected bottom-edge clipping defect."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:54:23.819Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely intact, but there are a few minor visual/layout polish issues around horizontally scrolling content being clipped at the screen edge and some low-contrast secondary text.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is cut off at the right edge after “Healthy,” with only a sliver of the next chip visible and no clear scroll affordance.",
+        "suggestion": "Add edge padding, fade/scroll indicator, or ensure the next chip peeks enough to communicate horizontal scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In “Fastest near you,” the third card is partially clipped and the restaurant name appears truncated as “Trattoria Piccol…”, which can look broken even if the list is scrollable.",
+        "suggestion": "Increase card peek width, add a scroll indicator, or shorten/truncate titles more deliberately with consistent ellipsis."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary metadata such as delivery fees and time/category text uses light gray on white/image backgrounds and may be hard to read for low-vision users.",
+        "suggestion": "Raise contrast of secondary text to meet WCAG AA, especially over imagery by adding scrims or darker text tokens."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 683,
+    "reasoningTokens": 409,
+    "estimatedCost": 0.016551,
+    "reportedCost": 0.016551,
+    "durationSeconds": 32.43153729100001
+  }
+}

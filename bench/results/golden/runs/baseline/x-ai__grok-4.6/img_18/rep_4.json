@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:29:33.227Z",
+  "status": "ok",
+  "result": {
+    "summary": "The screen is mostly polished, but the Fastest near you row clips the third restaurant mid-name, which is the clearest broken-looking element. Horizontal chips also clip at the edge, and a few contrast/consistency nits remain.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third Fastest near you card is clipped by the screen edge, cutting the restaurant name mid-word to “Trattoria Piccol” with no ellipsis. It reads as broken/truncated text rather than a clean peek.",
+        "suggestion": "Keep a clearer peek of the next card, add a right fade or content inset, and ellipsize titles within the visible card so names are never sliced mid-character."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is hard-clipped on the right (Healthy plus a sliver of the next pill), which can look like overflow rather than an intentional scroller.",
+        "suggestion": "Use a consistent end peek, padding, or gradient fade so the cutoff reads as scrollable content."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The “DELIVER TO” label is very light and small, so it has weak contrast against the white background.",
+        "suggestion": "Darken the label and confirm it meets WCAG contrast against the page background."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Fastest near you cards only show name, ETA, and delivery fee, while Popular cards add ratings, cuisine, promo badges, and favorites—making the two rows feel inconsistent.",
+        "suggestion": "Align shared metadata (rating, cuisine, favorite) across restaurant card variants where space allows."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 5450,
+    "reasoningTokens": 5082,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.036463999999999996,
+    "reportedCost": 0.033776,
+    "durationSeconds": 126.188982125
+  }
+}

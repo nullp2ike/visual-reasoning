@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:33.099Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content issues: a category chip is clipped, a restaurant name is truncated, and delivery time text is overlapping on a popular listing.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "On the Tokumaru Ramen Bar card, the delivery time text overlaps itself, showing garbled content like '25-30elivery' instead of a readable time and fee.",
+        "suggestion": "Fix the overlapping/stacked text layers so delivery time and fee display as separate, fully visible labels (e.g. '25–30 min · €0 delivery')."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card in 'Fastest near you' is clipped on the right, cutting off the name 'Trattoria Piccol' and part of the image.",
+        "suggestion": "Ensure horizontal cards have enough padding or peek correctly without truncating names; allow wrapping or a fade/ellipsis that still keeps the name identifiable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row is cut off on the right (partial 'Healthy' chip and next chip), so users cannot see the full set of filters.",
+        "suggestion": "Add scroll affordance or ensure the last visible chip isn’t clipped mid-control; keep consistent end padding."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The pizza card at the bottom is cut off by the tab bar, hiding restaurant name and details.",
+        "suggestion": "Add bottom content inset so cards aren’t obscured by the navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 335,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.005774,
+    "reportedCost": 0.003086,
+    "durationSeconds": 11.742262292
+  }
+}

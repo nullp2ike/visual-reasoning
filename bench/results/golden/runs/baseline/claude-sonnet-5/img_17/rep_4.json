@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:01:58.172Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 4 issues: layout cutoff on the right edge, an inconsistent bottom navigation state, a truncated restaurant name, and minor spacing inconsistency in category filters.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Fastest near you' section's third card (Trattoria Piccolo) is cut off at the right edge of the screen, indicating horizontal scroll content is not properly contained or indicated.",
+        "suggestion": "Add a visual cue (partial card fade or scroll indicator) to show the row is scrollable, or adjust padding so cards are not abruptly clipped by the screen edge."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' appears truncated without ellipsis, making it look like a text/content error.",
+        "suggestion": "Add ellipsis truncation or ensure text wraps/scales appropriately so names are not abruptly cut off."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Profile' bottom navigation icon is highlighted in green while the current screen content shown resembles the Home feed, creating a mismatch between highlighted nav state and displayed content.",
+        "suggestion": "Ensure the active navigation tab accurately reflects the currently displayed screen/content."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row (Pizza, Sushi, Burgers, Healthy) is also clipped at the right edge, cutting off what appears to be an additional category option.",
+        "suggestion": "Add fade/scroll affordance or ensure enough right padding so the last item isn't partially hidden."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 613,
+    "estimatedCost": 0.015117,
+    "durationSeconds": 7.851457874999964
+  }
+}

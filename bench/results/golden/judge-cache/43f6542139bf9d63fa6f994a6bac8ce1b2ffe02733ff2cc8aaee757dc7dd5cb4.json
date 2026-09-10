@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The bottom-most card on the screen is empty, displaying only a pizza graphic and a '-0%' badge, with no store name, ratings, delivery time, or description.",
+    "The '-0%' badge on the bottom card appears redundant and potentially confusing as it conveys no meaningful value to the user."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 directly identifies the '-0%' badge as a redundant, meaningless value."
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:54:54.133Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 major visual/content bug: an untranslated localization key is shown as a section heading. A couple of minor carousel truncation issues are visible but likely expected from horizontal scrolling.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading displays the raw localization key \"home_feed.popular_title\" instead of a human-readable title such as \"Popular near you\".",
+        "suggestion": "Fix the missing i18n string/resource for home_feed.popular_title and add a fallback so raw keys are never rendered in production UI."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The right-most category chip and restaurant card are clipped at the screen edge.",
+        "suggestion": "If intentional for horizontal scroll, add edge fade/padding to make affordance clearer; otherwise adjust carousel peek spacing so partially visible items look deliberate."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 639,
+    "outputTokens": 336,
+    "reasoningTokens": 145,
+    "estimatedCost": 0.0069570000000000005,
+    "reportedCost": 0.0067842,
+    "durationSeconds": 13.777475040999997
+  }
+}

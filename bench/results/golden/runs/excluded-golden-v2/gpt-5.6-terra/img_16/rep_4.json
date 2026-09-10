@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_16",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T10:33:16.064Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well-structured, but the restaurant carousel and its timing badges have visible overlap/cropping issues.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third card in the “Fastest near you” carousel begins too far to the right, leaving its restaurant title and delivery text cut off. Although a partially visible final carousel card is expected, the card’s content is also visually competing with the viewport edge and feels abruptly truncated.",
+        "suggestion": "Ensure the horizontal carousel uses consistent card widths and end padding, so partially visible cards remain intentionally previewed without their internal text appearing awkwardly clipped."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The “20–30 min” ETA badge on the third Fastest near you card extends beyond the right edge and is visibly cut off.",
+        "suggestion": "Keep ETA badges within each card’s image bounds and apply sufficient internal/right-edge spacing or clipping to the card container."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1890,
+    "outputTokens": 209,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006288,
+    "durationSeconds": 4.251571041999385
+  }
+}

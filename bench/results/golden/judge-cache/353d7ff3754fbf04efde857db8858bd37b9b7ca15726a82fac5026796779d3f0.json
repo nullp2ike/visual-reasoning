@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Promo banner text is unreadable, white text on a pale mint background"],
+  "reportedIssues": [
+    "Promotional banner text '3 free deliveries for you' and 'Use code TALLINN3 at checkout...' is white on a very pale mint-green background with extremely low contrast and is barely readable.",
+    "Favorite heart icon on Tokumaru Ramen Bar card has no background container and floats directly on image, while the pizza card below shows a dark circular background behind the heart. Styling is inconsistent and first icon has poor visibility.",
+    "Third card in 'Fastest near you' shows truncated restaurant name as 'Trattoria Piccol' cut off at viewport edge without ellipsis."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.83 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-4-5",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:06:54.619Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: cards and content are being cut off horizontally, preventing users from seeing full restaurant names and complete card information.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' section shows truncated text - 'Trattoria Piccol' appears to be cut off (likely 'Trattoria Piccolo')",
+        "suggestion": "Ensure the horizontal scrolling container has proper overflow handling or adjust card width to prevent text truncation. Consider using text ellipsis or ensure full names are visible."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom restaurant card in 'Popular right now' section is partially cut off - only the pizza image and discount badge are visible, while the restaurant name, rating, and delivery details are missing or out of view",
+        "suggestion": "Fix the card layout to ensure all content (restaurant name, ratings, delivery time, and price) are fully visible. Check if the card is properly constrained within the viewport."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A partially visible category button appears on the far right of the category filter row, suggesting horizontal scroll content that's not fully accessible",
+        "suggestion": "Either hide the partially visible button or adjust the scrollable container so all options are fully visible or properly indicate there are more options to scroll to."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1854,
+    "outputTokens": 851,
+    "estimatedCost": 0.006109,
+    "durationSeconds": 9.176486374999978
+  }
+}

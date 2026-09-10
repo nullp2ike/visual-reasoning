@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-4-8",
+  "provider": "anthropic",
+  "imageId": "img_10",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:58:58.480Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is a food delivery app home screen that appears mostly functional. Found 3 minor to major issues related to content truncation and duplicate listings.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Two identical 'Green Bowl Poké' entries appear side by side in the 'Fastest near you' section with the same delivery time (15-25 min) and price (€0.90 delivery), which looks like a duplicate listing error.",
+        "suggestion": "Verify whether these are truly two distinct restaurants; if duplicated in error, deduplicate the listing."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third item in 'Fastest near you' ('Smash Bros Bu...') is cut off on the right edge, showing truncated restaurant name and image.",
+        "suggestion": "This is expected for a horizontal carousel, but ensure the truncation is intentional and the item is fully accessible via horizontal scroll."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The bottom pizza card in 'Popular right now' is partially cut off with no visible restaurant name or details visible above the bottom navigation.",
+        "suggestion": "Ensure the card content becomes fully visible on scroll and that partial card display is intentional preview behavior."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 471,
+    "estimatedCost": 0.021645,
+    "durationSeconds": 7.6972593329999945
+  }
+}

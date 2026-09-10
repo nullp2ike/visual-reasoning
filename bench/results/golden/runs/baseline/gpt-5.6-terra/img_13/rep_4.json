@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_13",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:35:10.361Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well laid out, but there are a few noticeable clipping and incomplete-state issues near the horizontal carousels and fixed bottom navigation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The next restaurant card in the “Fastest near you” carousel is visibly cut off at the right edge, including its title (“Trattoria Piccol...”) and delivery text. While a partially visible card can indicate horizontal scrolling, the text appears abruptly truncated and crowded against the viewport edge.",
+        "suggestion": "Ensure carousel cards have consistent side padding and intentional partial-card treatment, or clip card content cleanly so titles and metadata do not appear accidentally cut off."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is cut off on the right, with part of an additional chip visible but no clear continuation affordance.",
+        "suggestion": "Add right-edge padding, a subtle fade/scroll indicator, or use a layout that makes horizontal scrolling more obvious."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The next “Popular right now” card continues beneath the fixed bottom navigation, leaving the visible card content partially obscured at the bottom of the screen.",
+        "suggestion": "Add sufficient bottom content inset/padding for the fixed navigation bar so feed cards can scroll fully above it."
+      },
+      {
+        "priority": "minor",
+        "category": "missing-element",
+        "description": "The circular control at the upper-right only shows a small red dot and otherwise looks like an empty placeholder, making its purpose unclear.",
+        "suggestion": "Show the intended profile/avatar or notification icon, or replace the empty circle with a recognizable action icon and accessible label."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 565,
+    "reasoningTokens": 218,
+    "estimatedCost": 0.010402,
+    "durationSeconds": 23.005517790999964
+  }
+}

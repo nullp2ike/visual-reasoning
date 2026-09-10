@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers shows '€NaN delivery' instead of a valid delivery fee. NaN (Not a Number) indicates a data loading or calculation error.",
+    "Restaurant name 'Trattoria Piccol' is truncated and doesn't display the full name (likely 'Trattoria Piccolo'). Users cannot see complete restaurant information."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe a delivery fee displaying as €NaN due to a data/calculation error."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_07",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T10:32:43.628Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 major issue: a restaurant card image that is still in a loading state, displaying a spinner instead of the actual image.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "performance",
+        "description": "The 'Tokumaru Ramen Bar' card in the 'Popular right now' section shows a loading spinner overlay on its image, indicating the image has not fully loaded or failed to load.",
+        "suggestion": "Ensure images are preloaded or lazy-loaded correctly with proper fallback handling. Consider using a low-resolution placeholder or skeleton screen instead of a raw spinner, and implement error handling to show a fallback image if loading fails."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1910,
+    "outputTokens": 321,
+    "estimatedCost": 0.010544999999999999,
+    "durationSeconds": 10.763205582998692
+  }
+}

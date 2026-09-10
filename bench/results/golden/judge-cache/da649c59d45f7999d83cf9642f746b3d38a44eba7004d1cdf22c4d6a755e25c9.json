@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The Tokumaru Ramen Bar card shows a circular loading spinner centered over the food image while surrounding content is already rendered, suggesting the image is stuck loading or failed to resolve.",
+    "The rightmost items in the category chip row and “Fastest near you” carousel are cut off at the screen edge, including the partially visible “Healthy” chip and “Trattoria Piccol…” card.",
+    "Restaurant name “Trattoria Piccol…” is truncated due to the card being off-screen, making the full name unreadable in the current viewport."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.71 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

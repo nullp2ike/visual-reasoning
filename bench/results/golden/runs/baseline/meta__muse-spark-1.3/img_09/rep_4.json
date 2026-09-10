@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "meta/muse-spark-1.3",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-03T19:35:26.511Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 major text-clipping defect where the 'Tokumaru Ramen' title is truncated mid-character, plus minor bottom spacing issue where content sits flush against the tab bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name under first 'Popular right now' card reads as 'Tokumaru Ramer' with the final character clipped mid-glyph despite the row being fully on-screen",
+        "suggestion": "Fix title container constraints so the full name 'Tokumaru Ramen' displays; use proper truncation with ellipsis if space is limited by the rating on the right instead of clipping mid-character"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Bottom pizza card image is flush against the bottom tab bar with no visible spacing or info, making the card look cut off",
+        "suggestion": "Add bottom list padding / safe-area spacing above the tab bar so cards do not appear clipped by the navigation"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1739,
+    "outputTokens": 2439,
+    "reasoningTokens": 2125,
+    "cachedInputTokens": 1726,
+    "estimatedCost": 0.0125395,
+    "reportedCost": 0.0106409,
+    "durationSeconds": 30.989487500000017
+  }
+}

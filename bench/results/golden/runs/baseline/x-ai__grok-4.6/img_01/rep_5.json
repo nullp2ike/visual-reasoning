@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:30:25.861Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content bugs: a raw localization key is shown as a heading, restaurant names and category chips are clipped, and the last popular card is cut off at the bottom.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "The section heading displays the untranslated localization key 'home_feed.popular_title' instead of a human-readable title.",
+        "suggestion": "Replace the key with the localized string (e.g. 'Popular near you') and add a fallback so missing translations never render the raw key."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third 'Fastest near you' card is clipped on the right so the restaurant name 'Trattoria Piccol' is truncated and the card is only partially visible.",
+        "suggestion": "Give the horizontal carousel enough end padding or allow full-width scrolling so the last card (and its full name) is fully visible."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last popular restaurant card is cut off by the bottom tab bar, hiding most of the image and all of the restaurant details.",
+        "suggestion": "Add bottom padding/safe-area inset to the scroll content so cards can scroll fully above the tab bar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is cut off on the right (partial 'Healthy' chip and a sliver of the next chip).",
+        "suggestion": "Allow the chip row to scroll fully or add trailing inset so the last chips are not clipped."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 335,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.005774,
+    "reportedCost": 0.003086,
+    "durationSeconds": 17.89449575
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The 'Fastest near you' horizontal card list is cut off at the right edge, showing a partial third card (Trattoria Piccol...) with text and image abruptly clipped by the screen boundary",
+    "Restaurant name 'Trattoria Piccol...' is truncated and cut off by the screen edge, making it hard to read the full name",
+    "The pizza promotional banner at the bottom shows a '-0%' discount badge, which is confusing since a 0% discount is not a discount at all",
+    "The pizza promotional image/card at the bottom of the screen is cut off by the bottom navigation bar, making it look abruptly truncated"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Reported issue 2 directly describes the discount badge showing '-0%', which matches the expected defect of a discount badge showing −0%."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

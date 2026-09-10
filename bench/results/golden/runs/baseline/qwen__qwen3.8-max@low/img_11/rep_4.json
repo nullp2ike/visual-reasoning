@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T13:18:34.736Z",
+  "status": "ok",
+  "result": {
+    "summary": "The food delivery home screen is generally well-designed and functional. A few minor visual/layout issues were found, mainly around horizontal carousel content being clipped at the right edge without clear scroll affordance, and a promotional badge that may be misleading.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The 'Fastest near you' horizontal carousel clips the third card ('Trattoria Piccol...') at the right screen edge, truncating the restaurant name mid-word with no visible scroll indicator or fade-out hint.",
+        "suggestion": "Add a right-edge gradient fade or partial-card peek with consistent padding so users understand the row is horizontally scrollable, and ensure card text truncates with an ellipsis rather than cutting mid-word."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The '-100%' discount badge on the second 'Popular right now' card is ambiguous and potentially misleading, as a 100% discount implies the item is free, which may not reflect the actual offer.",
+        "suggestion": "Clarify the badge wording (e.g., 'Free item', '100% off delivery', or the specific promotion) so users understand the actual deal."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The category filter chips ('All', 'Pizza', 'Sushi', etc.) and the 'See all' links rely on color alone in some states, and the heart/favorite icons on cards have no visible text labels, which can be unclear for screen reader and low-vision users.",
+        "suggestion": "Add accessible labels (aria-label) to icon-only buttons such as the notification bell and favorite hearts, and ensure selected/unselected chip states differ by more than color (e.g., border or weight)."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1711,
+    "outputTokens": 1364,
+    "reasoningTokens": 931,
+    "estimatedCost": 0.011606,
+    "reportedCost": 0.010486,
+    "durationSeconds": 38.056241749999984
+  }
+}

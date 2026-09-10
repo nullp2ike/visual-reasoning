@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "On the Tokumaru Ramen Bar card, the delivery info text '25–30 delivery · Ramen' overlaps itself (garbled as '25-30delivery'), making the delivery time unreadable.",
+    "The third 'Fastest near you' restaurant name is truncated to 'Trattoria Piccol' with no ellipsis, so the full name is cut off.",
+    "Delivery line under Tokumaru Ramen Bar is missing units and separators (reads like '25-30delivery' instead of e.g. '25–30 min delivery · Ramen').",
+    "Category chips row and 'Fastest near you' cards intentionally peek off-screen, but the Healthy chip and third card title sit flush against the edge in a way that can look unfinished next to the broken text below."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes delivery info text overlapping and becoming garbled/unreadable on the Tokumaru Ramen Bar card."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

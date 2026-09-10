@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Orders icon is missing from the bottom nav bar"],
+  "reportedIssues": [
+    "Orders tab in bottom navigation shows label but no visible icon, while Home, Search and Profile all show icons above labels",
+    "Wishlist heart icon on Tokumaru Ramen Bar card lacks the dark circular scrim/background that is visible behind heart on pizza card below, looking inconsistent and low-contrast",
+    "Second card under Popular right now is cut off flush against top edge of bottom tab bar with no bottom padding, hiding restaurant name and details"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.85 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

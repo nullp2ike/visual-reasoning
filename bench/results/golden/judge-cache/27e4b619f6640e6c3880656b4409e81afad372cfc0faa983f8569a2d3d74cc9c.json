@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccol' is truncated/cut off in the 'Fastest near you' card, making the full business name unreadable.",
+    "The second 'Popular right now' card displays a '-0%' discount badge, which is meaningless and suggests bad promotion data or a rendering bug.",
+    "The 'Healthy' category chip is partially cut off at the right edge of the screen with no visible scroll indicator or affordance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.81 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

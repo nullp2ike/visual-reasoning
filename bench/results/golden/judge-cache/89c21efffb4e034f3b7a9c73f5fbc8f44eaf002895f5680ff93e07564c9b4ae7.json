@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "Cards in 'Fastest near you' row are vertically misaligned - the middle card (Smash Bros Burgers) sits lower than Green Bowl Pok\u0000e9 and Trattoria Piccolo, causing uneven image tops and uneven baselines for titles and delivery fees",
+    "Right-edge content is clipped without padding: the last category pill is cut off and the third restaurant name reads 'Trattoria Piccol' instead of full name",
+    "Bottom 'Popular right now' pizza card with '-20%' badge is cut off mid-image by the bottom tab bar with no restaurant name, metadata or spacing visible"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.72 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "imageId": "img_01",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:30:11.542Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely intact, but an untranslated localization key is prominently visible and some horizontally scrolling content is awkwardly clipped at the right edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading displays the raw localization key \"home_feed.popular_title\" instead of a user-facing title.",
+        "suggestion": "Add or correct the translation entry and render the intended localized heading, such as \"Popular near you\"."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category row and restaurant carousel are cut off at the right viewport edge, leaving a partial category pill and partially visible restaurant card/text that look unintentionally cropped.",
+        "suggestion": "Verify horizontal carousel behavior and add consistent trailing padding or a clearer scroll affordance so partial items appear intentional."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 439,
+    "reasoningTokens": 264,
+    "estimatedCost": 0.022225,
+    "durationSeconds": 11.004096541999955
+  }
+}

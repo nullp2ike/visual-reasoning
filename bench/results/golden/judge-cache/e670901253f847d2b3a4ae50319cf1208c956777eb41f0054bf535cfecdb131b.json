@@ -1,0 +1,24 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The last restaurant card in 'Fastest near you' (Trattoria Piccol) is clipped on the right, cutting off both the image and the restaurant name.",
+    "The second 'Popular right now' listing shows only a pizza image and a -20% badge; the restaurant name, rating, delivery time, and cuisine are missing.",
+    "The cuisine filter chips overflow the screen edge, with 'Healthy' cut off and the next chip only partially visible.",
+    "The notification bell badge sits very close to the status-bar battery/signal icons and could collide on some devices."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.60 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

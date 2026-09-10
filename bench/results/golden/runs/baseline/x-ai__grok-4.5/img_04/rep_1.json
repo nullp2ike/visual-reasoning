@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_04",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:52:08.143Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual/layout issues: truncated restaurant names and category chips, a broken discount badge showing “-0%”, and an incomplete horizontal list that cuts off content.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Discount badge on the pizza card displays “-0%”, which looks broken or like missing/erroneous data.",
+        "suggestion": "Hide the badge when there is no discount, or show a valid percentage (e.g. “-20%”) from real promo data."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name “Trattoria Piccol…” is truncated with no full name visible on the card.",
+        "suggestion": "Allow two-line titles, reduce font size, or ensure cards/text can show the full name (e.g. ellipsis only after a readable portion plus tooltip)."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips row is cut off on the right (partial chip visible), so users may not know more filters exist.",
+        "suggestion": "Add fade/peek of next chip, padding, or a clear scroll affordance so the row doesn’t look clipped."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "“Fastest near you” row clips the third card at the screen edge with no clear indication of more content.",
+        "suggestion": "Add consistent right padding/peek and ensure horizontal scroll is obvious."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Bottom card (pizza) is heavily cropped by the tab bar, so the offer looks incomplete on first view.",
+        "suggestion": "Add bottom content inset/padding so cards aren’t obscured by the navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 370,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005984,
+    "reportedCost": 0.0053312,
+    "durationSeconds": 9.793297083
+  }
+}

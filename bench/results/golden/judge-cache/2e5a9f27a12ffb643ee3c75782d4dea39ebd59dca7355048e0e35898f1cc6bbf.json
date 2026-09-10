@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated in the Fastest near you row, and the card is cut off at the right edge.",
+    "The bottom popular item card (pizza with -20% badge) is heavily clipped by the bottom navigation, so most of the image and content are not visible.",
+    "Category chips row (All, Pizza, Sushi, Burgers, Healthy) appears to cut off an additional chip on the right with no clear fade or affordance.",
+    "Delivery fee text under Fastest cards uses inconsistent emphasis and some names/fees may be hard to scan when cards are partially off-screen."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.63 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

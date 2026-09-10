@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The 'Fastest near you' horizontal carousel clips the third card ('Trattoria Piccol...') at the right screen edge, and the category filter chips row is also cut off mid-chip on the right. While this can indicate scrollability, there is no visual cue (fade gradient, peek spacing, or scroll indicator) and the card text is truncated awkwardly.",
+    "The restaurant name 'Tokumaru Ramen' is truncated to 'Tokumaru Rameı' / 'Tokumaru Rame' with the final letter cut off at the container boundary in the 'Popular right now' card."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.76 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

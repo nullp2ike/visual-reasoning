@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-4-5",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:50:36.948Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 major issues: an untranslated text key displayed as content and a layout problem with truncated restaurant cards.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section title shows 'home_feed.popular_title' which appears to be a raw translation key instead of actual translated text",
+        "suggestion": "Replace the translation key with the properly translated section title (e.g., 'Popular' or 'Popular Near You')"
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' section (Trattoria Piccol) is horizontally truncated and not fully visible",
+        "suggestion": "Adjust the carousel/horizontal scroll layout to ensure all cards are fully visible or properly scrollable without being cut off"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1854,
+    "outputTokens": 631,
+    "estimatedCost": 0.005009,
+    "durationSeconds": 8.086717542
+  }
+}

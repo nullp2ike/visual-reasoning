@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["An icon is missing from the top right corner, only a red dot is visible"],
+  "reportedIssues": [
+    "Top-right circular button appears empty/broken - light grey circle with only a small red notification dot and no avatar, profile icon, or initial inside.",
+    "Third card in 'Fastest near you' carousel is truncated mid-word as 'Trattoria Piccol' with image and '\u00020 delivery info' cut off at the screen edge.",
+    "Second card in 'Popular right now' section is cut off at the bottom - only partial pizza image with -20% badge and favorite heart are visible, with no restaurant name, delivery time or rating visible above the bottom tab bar."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.78 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

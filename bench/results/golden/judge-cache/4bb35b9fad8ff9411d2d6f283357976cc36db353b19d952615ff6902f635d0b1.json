@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "Restaurant name under the third 'Fastest near you' card is truncated ('Trattoria Piccol') with no ellipsis or wrapping, so the full name is unreadable.",
+    "Search field placeholder is misspelled: 'Restarants, dishes, groceries'.",
+    "Category chip row and 'Fastest near you' cards are hard-clipped at the right edge with no clear fade/peek affordance that more content scrolls horizontally.",
+    "Bottom 'Popular right now' pizza card is heavily cut off by the viewport/tab bar, which can feel broken if users don't realize the page scrolls."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 describes the exact misspelling 'Restarants' in the search field placeholder, matching the expected defect of the misspelled word."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:58:21.595Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly intact, but there is a clear text overlap in the “Popular right now” restaurant metadata and a minor clipped carousel/category edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Under “Tokumaru Ramen Bar”, the delivery time, delivery fee, and cuisine metadata appear collided/garbled, showing text like “25–€0delivery” instead of separated “25–30 min · €0 delivery · Ramen”.",
+        "suggestion": "Increase horizontal spacing, place metadata on separate lines, or constrain each metadata item with ellipsis so time, fee, and tags never overlap."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal category filter row shows the next chip partially cut off at the right edge with no clear scroll affordance.",
+        "suggestion": "Add edge fade/scroll indicator or adjust padding so partially visible items look intentionally scrollable rather than clipped."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 639,
+    "outputTokens": 762,
+    "reasoningTokens": 555,
+    "estimatedCost": 0.013347000000000001,
+    "reportedCost": 0.0131742,
+    "durationSeconds": 41.30833804200002
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T13:13:23.706Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-designed, but there is one clear bug: an untranslated localization key 'home_feed.popular_title' is displayed as a section heading instead of actual text. Other elements (delivery address, search, category chips, promo banner, restaurant cards, bottom nav) render correctly.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading shows the raw localization key 'home_feed.popular_title' instead of a human-readable title (e.g. 'Popular near you'). This indicates a missing/failed translation string.",
+        "suggestion": "Add the proper translation for the 'home_feed.popular_title' key in the localization files and ensure the i18n fallback resolves to a readable string rather than the raw key."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal 'Fastest near you' carousel and the category chip row are cut off at the right edge (e.g. 'Trattoria Piccol...' and a partially visible chip), with no visible scroll affordance or fade indicator.",
+        "suggestion": "Add a subtle right-edge fade gradient or scroll indicator so users understand these rows are horizontally scrollable, and ensure card titles truncate gracefully with ellipsis."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The notification bell icon relies only on a small red dot to convey unread status, with no text label or badge count, which can be hard to perceive.",
+        "suggestion": "Add an accessible label (e.g. 'Notifications, 1 unread') and consider a numeric badge for clarity."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1711,
+    "outputTokens": 793,
+    "reasoningTokens": 390,
+    "estimatedCost": 0.00818,
+    "reportedCost": 0.00818,
+    "durationSeconds": 25.260216416
+  }
+}

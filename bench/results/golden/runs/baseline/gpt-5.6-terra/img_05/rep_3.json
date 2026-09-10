@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_05",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:34:04.219Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well structured, but the promotional banner has a noticeable readability issue and some horizontally overflowing content feels visually cramped at the right edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "accessibility",
+        "description": "The promotional banner subtitle (“Use code TALLINN3 at checkout · min. order €10”) is rendered in very low-contrast white on a pale mint background, making it difficult to read. The headline is also somewhat washed out.",
+        "suggestion": "Use a darker green or near-black text color, or darken the banner background/overlay, to provide sufficient contrast for both lines."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The rightmost restaurant card in the “Fastest near you” carousel is cut off, including its restaurant name and delivery text. While this may indicate horizontal scrolling, the clipping makes the content appear incomplete.",
+        "suggestion": "Make the horizontal-scroll affordance clearer with more intentional partial-card spacing, a fade/gradient edge, or ensure enough of the next card is visible without cutting important text awkwardly."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category-chip row extends beyond the right screen edge with only a partial next chip visible, which can look like accidental overflow rather than an intentional scrollable control.",
+        "suggestion": "Add a subtle edge fade, scroll indicator, or adjust chip spacing so the horizontal carousel behavior is more obvious."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second card in “Popular right now” is largely obscured by the bottom navigation at the bottom of the screenshot, creating a crowded visual boundary during scrolling.",
+        "suggestion": "Ensure the scrollable content has adequate bottom padding equal to or greater than the fixed navigation height so cards can scroll fully above it."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 577,
+    "reasoningTokens": 187,
+    "estimatedCost": 0.010546,
+    "durationSeconds": 10.558760750000015
+  }
+}

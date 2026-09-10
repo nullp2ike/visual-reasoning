@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Promo banner text is unreadable, white text on a pale mint background"],
+  "reportedIssues": [
+    "The promotional banner text has very low contrast: white text is placed on a very pale mint background, making the heading and subtitle hard to read.",
+    "The bottom navigation appears to overlap the restaurant content. The lower popular item is partially hidden behind the fixed tab bar, which makes the card feel cut off.",
+    "A partial empty category pill is visible on the far right of the category row, which looks like a broken or blank filter chip.",
+    "Horizontal restaurant cards in the 'Fastest near you' section are heavily cropped at the right edge, including the restaurant name, which may look visually broken if not clearly intended as a carousel."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.85 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_04",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:02:30.319Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual issues on the food delivery app page: one truncated restaurant name and one partially visible category filter button.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The restaurant name 'Trattoria Piccol' in the 'Fastest near you' section is truncated/cut off. The full name is not visible due to insufficient card width or text overflow handling.",
+        "suggestion": "Either reduce the font size, allow text wrapping to a second line, or implement a tooltip/ellipsis that still shows the full name on hover or truncates gracefully with '...' to indicate more text exists."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category filter pill (rightmost) in the horizontal scroll row is partially cut off, showing only a sliver of a button after 'Healthy', giving no visual indication it is scrollable.",
+        "suggestion": "Add a subtle fade/gradient on the right edge of the filter row to indicate horizontal scrollability, or ensure the partial pill is more visible to hint at scrollable content."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 284,
+    "estimatedCost": 0.009735,
+    "durationSeconds": 12.966244457999943
+  }
+}

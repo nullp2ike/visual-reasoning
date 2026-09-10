@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Text overlap in 'Tokumaru Ramen Bar' card where '25-30' delivery time overlaps with '€0 delivery' text, making it unreadable ('25-3€0delivery')",
+    "The third card in 'Fastest near you' section (Trattoria Piccola) is cut off at the right edge of the screen, showing only partial content",
+    "The pizza restaurant card at the bottom of the screen is cut off by the bottom navigation bar, with no restaurant name or details visible"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.83 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

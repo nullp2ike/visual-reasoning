@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_05",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:25:09.156Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page mostly looks intact, but there are a few visual problems: the promotional banner has severely low-contrast white text on a pale mint background, a restaurant name is truncated without an ellipsis, and a category chip is clipped awkwardly at the screen edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "accessibility",
+        "description": "The promo banner text ('3 free deliveries for you' and 'Use code TALLINN3 at checkout · min. order €10') is white/very light on a pale mint-green background, making it nearly unreadable and failing contrast requirements.",
+        "suggestion": "Use a dark text color (e.g., dark green or near-black) on the light banner, or darken the banner background so white text meets WCAG AA contrast (4.5:1)."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third restaurant card title in 'Fastest near you' shows 'Trattoria Piccol' — the name is cut off at the screen edge without an ellipsis, appearing broken rather than intentionally truncated.",
+        "suggestion": "Apply text truncation with an ellipsis within the card width, or ensure the card title wraps/clips within the visible card boundary instead of the viewport edge."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category filter chip after 'Healthy' is clipped at the right edge showing only a thin sliver, which looks like a rendering glitch rather than an obvious scrollable carousel.",
+        "suggestion": "Adjust chip spacing so a partially visible chip shows enough content (e.g., 30–50% visible) to signal horizontal scrollability, or add a subtle edge fade gradient."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Order now' button on the promo banner is white-on-light-green with light green text, giving it weak visual affordance against the already pale banner.",
+        "suggestion": "Increase the button's contrast (e.g., solid dark green button with white label) so the primary CTA stands out from the banner background."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 837,
+    "estimatedCost": 0.061590000000000006,
+    "durationSeconds": 15.874592791999996
+  }
+}

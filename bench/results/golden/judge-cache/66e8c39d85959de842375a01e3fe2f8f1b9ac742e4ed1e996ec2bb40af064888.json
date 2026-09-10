@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "A long dark horizontal bar overlaps the center search icon in the bottom navigation and stretches across much of the screen, making the navigation look corrupted.",
+    "The second card in the “Popular right now” section shows only its image; its restaurant name, metadata, and rating are missing even though there is visible space before the bottom navigation.",
+    "The category carousel and the “Fastest near you” restaurant carousel are visibly clipped at the right edge, with partial pills and cards displayed."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.78 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

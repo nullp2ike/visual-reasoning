@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "Third card in 'Fastest near you' row is abruptly clipped at the right screen edge - the '20-30 min' pill is cut off and the name shows as 'Trattoria Piccol' mid-word without ellipsis or padding",
+    "Wishlist heart buttons in 'Popular right now' have inconsistent styling - the Tokumaru Ramen Bar card shows a white outline with no background scrim while the pizza card below shows a dark circular background",
+    "Second 'Popular right now' card shows a '-100%' badge which looks like a placeholder or data error and implies a free item"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "cosine 0.78 >= 0.69 threshold (reported #2)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

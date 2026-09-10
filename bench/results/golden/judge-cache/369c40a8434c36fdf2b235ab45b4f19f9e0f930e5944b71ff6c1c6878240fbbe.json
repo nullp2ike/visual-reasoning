@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' in the 'Fastest near you' section is truncated and incomplete, likely should be 'Trattoria Piccolo' or similar",
+    "The 'Popular right now' section at the bottom shows partially cut-off restaurant cards. The second restaurant's name and details are not fully visible, making it unclear what establishment is being shown",
+    "The horizontal scrolling in both 'Fastest near you' and category filter sections could have more obvious affordance to indicate more content is available"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.62 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

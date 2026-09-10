@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "In the 'Fastest near you' horizontal carousel, the cards are not vertically aligned: the 'Green Bowl Poké' card has a shorter image with the time badge overlapping the bottom-left, while 'Smash Bros Burgers' and 'Trattoria Piccol...' have taller images with the badge centered lower. As a result, the restaurant titles and delivery-fee lines start at different Y positions across cards, making the row look uneven.",
+    "The delivery-time badge placement is inconsistent within the 'Fastest near you' cards: on the first card the '15–25 min' badge sits at the bottom edge overlapping the image boundary, whereas on the second and third cards the badge floats lower/centered over the image, creating an inconsistent visual rhythm."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes the middle card ('Green Bowl Poké') not being vertically aligned with other cards in the carousel, with different Y positions for titles and fees."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

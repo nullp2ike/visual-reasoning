@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:42:00.167Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed and functional. The horizontally scrollable category chips and restaurant carousel (with the last card partially visible at the right edge) and the bottom-cut pizza card are intentional scroll patterns and are not reported. One minor content inconsistency was noted: the selected 'Pizza' filter does not appear to filter the displayed restaurant sections.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The 'Pizza' category chip is selected (highlighted dark), yet the visible sections ('Fastest near you' and 'Popular right now') show non-pizza restaurants such as Green Bowl Poké, Smash Bros Burgers, and Tokumaru Ramen Bar, which contradicts the active filter state.",
+        "suggestion": "When a category filter like 'Pizza' is active, filter the restaurant lists to match the selected category, or update the section headings to reflect that results are unfiltered. Alternatively, make the filter selection visually reflect the actual content shown."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 1058,
+    "reasoningTokens": 819,
+    "estimatedCost": 0.009936,
+    "reportedCost": 0.008816,
+    "durationSeconds": 83.522221625
+  }
+}

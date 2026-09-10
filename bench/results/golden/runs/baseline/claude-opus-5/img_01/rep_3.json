@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:53:41.570Z",
+  "status": "ok",
+  "result": {
+    "summary": "The screen is mostly well-structured, but one section header is rendering a raw localization key instead of translated text, which is the standout defect. A few secondary inconsistencies in the restaurant cards and carousel were also noted.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "The second section heading displays the raw i18n key 'home_feed.popular_title' instead of a human-readable title such as 'Popular near you'. The missing translation string is visible to end users.",
+        "suggestion": "Add the missing translation entry for 'home_feed.popular_title' in the active locale files and add a fallback so untranslated keys render a default English string rather than the key path."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) buttons on the two popular restaurant cards use different treatments: the ramen card has a white circular background with a dark outline heart, while the pizza card has a dark/transparent circle with a white heart. This inconsistency looks like a rendering bug.",
+        "suggestion": "Standardize the favorite button styling (same background, icon color, and opacity) across all cards, ideally with a translucent scrim that guarantees contrast over any image."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel the third card ('Trattoria Piccol…') is clipped mid-word at the screen edge with no visible affordance that the list scrolls horizontally.",
+        "suggestion": "Add consistent trailing padding/peek width so the cut-off card clearly reads as a scroll hint, and truncate the title with an ellipsis rather than letting it clip at the viewport edge."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The 'See all' links and promo body text are green/grey on white at small sizes; the secondary metadata ('€0.90 delivery', '25–35 min • €0 delivery • Ramen') is light grey and may fall below the 4.5:1 contrast ratio.",
+        "suggestion": "Darken secondary text colors to meet WCAG AA contrast and verify the green link color against white."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The notification bell has a red dot badge with no accompanying count or text label, so its state is conveyed by color alone.",
+        "suggestion": "Provide an accessible label such as 'Notifications, 1 unread' and consider showing a numeric badge."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 882,
+    "estimatedCost": 0.031920000000000004,
+    "durationSeconds": 15.537226666999981
+  }
+}

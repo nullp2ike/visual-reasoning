@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "The metadata beneath “Tokumaru Ramen Bar” overlaps heavily. The delivery time and delivery-fee text render on top of each other, producing unreadable text such as “25–330delivery.”",
+    "The rightmost cards and category chip are abruptly clipped at the screen edge, including the “Trattoria Picco…” card. Although this may be a horizontal carousel, the cutoff looks harsh and partially hides content."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes delivery time and delivery-fee text rendering on top of each other, producing overlapped unreadable text—exactly matching the expected defect of delivery fee text overlapping delivery time text."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

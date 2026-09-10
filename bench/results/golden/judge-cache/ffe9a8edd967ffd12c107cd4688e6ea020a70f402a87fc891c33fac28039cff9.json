@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated mid-word under the third Fastest near you card (likely 'Piccola' or similar), so the full name is unreadable.",
+    "On the Tokumaru Ramen Bar card, the delivery info reads as overlapping/garbled text '25-3€0delivery' (time range and €0 delivery run together), making the metadata unreadable."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 describes the delivery time and fee text overlapping and becoming garbled."
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

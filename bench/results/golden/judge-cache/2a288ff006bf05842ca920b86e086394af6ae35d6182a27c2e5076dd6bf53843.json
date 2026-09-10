@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "Section heading displays the raw i18n/localization key 'home_feed.popular_title' instead of a human-readable title.",
+    "Restaurant name 'Trattoria Piccol...' is truncated/cut off in the Fastest near you row.",
+    "The last category filter chip ('Healthy') is partially clipped at the right edge, suggesting incomplete horizontal scroll affordance.",
+    "Bottom restaurant card (pizza) is heavily cropped by the bottom nav, so the offer/content feels incomplete on first view."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe the same UI element (section heading/title) displaying a raw i18n key instead of translated text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

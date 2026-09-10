@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:29:33.227Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and clipping issues: category chips and restaurant cards overflow the screen, restaurant names are truncated, and the last popular card is cut off by the tab bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last restaurant card in “Fastest near you” (Trattoria Piccol…) is clipped on the right, and the restaurant name is truncated.",
+        "suggestion": "Add consistent horizontal padding/insets, allow the carousel to scroll fully, and use wrapping or an ellipsis so names stay readable."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom “Popular right now” card is cut off by the tab bar, so the restaurant name, rating, and details are not visible.",
+        "suggestion": "Add bottom padding/safe-area inset so list content clears the tab bar, or make the last card fully visible above it."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chips overflow the right edge (“Healthy” is cut off) with no clear indication of more options.",
+        "suggestion": "Ensure the chip row scrolls horizontally with enough end padding, and keep the last visible chip fully on-screen or add a fade/peek affordance."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The promo banner’s decorative circles are clipped by the rounded card corners, which looks unfinished.",
+        "suggestion": "Inset the decorative shapes so they sit fully inside the banner, or clip them more intentionally so they don’t look cropped."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 330,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 128,
+    "estimatedCost": 0.005744,
+    "reportedCost": 0.005552,
+    "durationSeconds": 29.483599917
+  }
+}

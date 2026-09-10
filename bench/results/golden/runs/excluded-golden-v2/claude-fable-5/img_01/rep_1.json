@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:24:29.869Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there is one clear defect: an untranslated localization key is displayed as a section title instead of human-readable text.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading displays the raw localization key 'home_feed.popular_title' instead of a translated string (e.g., 'Popular near you').",
+        "suggestion": "Add the missing translation for the 'home_feed.popular_title' key in the locale files, and implement a fallback (e.g., default English string) so raw keys are never shown to users."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 188,
+    "estimatedCost": 0.030270000000000005,
+    "durationSeconds": 53.45065725
+  }
+}

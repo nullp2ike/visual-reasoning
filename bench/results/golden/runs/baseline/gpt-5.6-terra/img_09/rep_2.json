@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_09",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:34:28.862Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well structured, but horizontal content is visibly clipped at the right edge and the bottom navigation overlaps the scrolling feed.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The horizontal category row is cut off on the right: a partial pill is visible after “Healthy,” with no clear end padding or scroll affordance.",
+        "suggestion": "Use consistent trailing padding and ensure the horizontal carousel clips cleanly; optionally add a fade or other indication that the row is scrollable."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Cards in the “Fastest near you” carousel are truncated at the right edge, including the third restaurant’s image, name (“Trattoria Picco...”), and delivery text.",
+        "suggestion": "Provide adequate end padding and card sizing so partial cards appear intentional, or use a carousel layout that keeps card content from being visibly cut off."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlays the content feed; the next popular restaurant card is hidden behind it at the bottom of the screen.",
+        "suggestion": "Add bottom content padding equal to the navigation bar and safe-area height so all feed items can scroll fully above the navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The promotional banner says “3 free deliveries for you,” while several restaurant cards advertise delivery fees; although potentially valid, the conditions are easy to miss and may feel contradictory.",
+        "suggestion": "Make the promotion’s eligibility clearer on affected restaurant cards or add a concise note that the code/offer applies only to eligible orders."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 334,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.00763,
+    "durationSeconds": 5.026607499999925
+  }
+}

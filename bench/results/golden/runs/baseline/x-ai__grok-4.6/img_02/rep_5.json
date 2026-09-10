@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:30:51.871Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several visual bugs: a broken delivery-fee value showing €NaN, a restaurant name truncated by the card edge, a cut-off category chip, and a second popular restaurant card cropped at the bottom.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "Smash Bros Burgers shows '€NaN delivery' instead of a valid price, indicating a failed number format or missing fee.",
+        "suggestion": "Guard against null/undefined delivery fees and format a fallback such as 'Free' or a numeric amount instead of NaN."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third 'Fastest near you' card title is clipped as 'Trattoria Piccol', so the restaurant name is unreadable.",
+        "suggestion": "Allow wrapping, ellipsis with full name on tap, or reduce type size so the full name fits the card."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last category chip is cut off at the right edge of the screen, so users cannot see or tap the full label.",
+        "suggestion": "Add horizontal padding or a fade/peek so the next chip is fully visible or clearly scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second Popular card (pizza, -20%) is cropped by the bottom tab bar, hiding title, rating, and delivery info.",
+        "suggestion": "Increase list bottom padding so the last card clears the tab bar when scrolling."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 386,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.00608,
+    "reportedCost": 0.003392,
+    "durationSeconds": 34.879196792
+  }
+}

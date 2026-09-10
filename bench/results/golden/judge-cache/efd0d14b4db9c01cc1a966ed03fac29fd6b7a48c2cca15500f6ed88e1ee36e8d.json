@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The third restaurant card in the 'Fastest near you' row shows a truncated name 'Trattoria Piccol' without an ellipsis, making it unclear the name is cut off. It reads as an incomplete word rather than a clearly truncated label.",
+    "The third card in the 'Fastest near you' horizontal scroll list is partially clipped at the right edge of the screen with no visual affordance (e.g., a gradient fade or partial card peek) to clearly communicate horizontal scrollability."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "Reported issue 0 describes truncation of 'Trattoria Piccol' (a different restaurant), not 'Tokumaru Ramen Bar'; reported issue 1 addresses clipping/scrollability affordance, not text truncation of the specific heading."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

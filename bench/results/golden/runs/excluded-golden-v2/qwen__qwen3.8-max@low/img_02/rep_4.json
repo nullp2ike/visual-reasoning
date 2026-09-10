@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:27:11.823Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed, but one restaurant card shows a broken/invalid delivery fee value ('€NaN'), indicating a data or formatting bug.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Smash Bros Burgers' card displays '€NaN delivery' instead of a valid price, indicating a failed numeric parse or missing data rendered as NaN.",
+        "suggestion": "Fix the data pipeline or formatting logic so the delivery fee renders a valid amount (e.g. '€1.50 delivery') or a proper fallback like 'Free delivery'; never surface 'NaN' to users."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 573,
+    "reasoningTokens": 402,
+    "estimatedCost": 0.007026,
+    "reportedCost": 0.005906,
+    "durationSeconds": 55.924941625
+  }
+}

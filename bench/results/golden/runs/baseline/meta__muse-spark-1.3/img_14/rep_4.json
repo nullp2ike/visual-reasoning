@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "meta/muse-spark-1.3",
+  "provider": "openrouter",
+  "imageId": "img_14",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-03T19:39:08.234Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual layout defects in the 'Fastest near you' row: the middle restaurant card is vertically misaligned and its delivery-time badge is clipped at the image edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel the middle card (Smash Bros Burgers) is vertically offset lower than the adjacent cards, breaking horizontal alignment.",
+        "suggestion": "Align all carousel cards to the same top baseline and ensure equal image heights and vertical padding in the horizontal scroll container."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The '20-30 min' delivery time badge on the Smash Bros Burgers card is clipped at the bottom edge of the image, while badges on neighboring cards are fully visible inset from the edge.",
+        "suggestion": "Ensure the time badge has consistent inset margins and is not clipped by the image container overflow; fix container overflow and badge positioning."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1739,
+    "outputTokens": 1752,
+    "reasoningTokens": 1479,
+    "cachedInputTokens": 1726,
+    "estimatedCost": 0.00961975,
+    "reportedCost": 0.00772115,
+    "durationSeconds": 23.586584875
+  }
+}

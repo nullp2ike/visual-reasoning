@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_15",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:46:15.517Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page layout is mostly coherent, but two clear rendering defects stand out: the second 'Popular right now' card is missing its restaurant name/rating/meta row entirely, and a stray black bar in the bottom navigation overlaps the middle tab icons. There are also smaller styling inconsistencies in card treatments.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The second card in 'Popular right now' (the pizza card with the -20% badge) shows only an image — the restaurant name, rating, delivery time/fee and cuisine metadata row that the Tokumaru Ramen Bar card has is absent, leaving blank space below the image.",
+        "suggestion": "Render the same title/rating/meta block for every card in the list, and add a fallback/skeleton if the data is still loading."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the bottom tab bar a thick black horizontal bar is drawn across the middle, overlapping and partially obscuring the search and bookmark/saved icons, so those tabs look broken and unreadable.",
+        "suggestion": "Remove or reposition the stray bar (likely a mis-sized gesture/indicator element or an active-tab indicator) so it sits below the icons and does not overlap them."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favourite (heart) buttons are styled inconsistently between the two 'Popular right now' cards: the first has a white circular background with a dark outline heart, the second has a dark circular background with a white heart.",
+        "suggestion": "Use a single consistent favourite-button style (same background, icon colour and size) across all cards."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The first 'Fastest near you' thumbnail (Green Bowl Poké) uses a light grey background while the sibling thumbnails use dark photographic backgrounds, making the row look uneven.",
+        "suggestion": "Normalise image treatment (consistent background/aspect ratio or an overlay) so thumbnails in the carousel match visually."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Bottom navigation icons have no text labels, making their purpose ambiguous, and there is no visible active-state indication for the current tab.",
+        "suggestion": "Add short text labels or accessible names to each tab and clearly highlight the active tab."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 1229,
+    "estimatedCost": 0.04116,
+    "durationSeconds": 296.5766247500002
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_08",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:26:02.499Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished, but a few elements look visually awkward or potentially broken, mostly around horizontal clipping and fixed bottom navigation overlap.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation appears to overlay the content. The second restaurant card is cut off behind the bottom nav, which can make content feel hidden or inaccessible.",
+        "suggestion": "Add sufficient bottom padding or safe-area spacing to the scrollable content so cards can scroll fully above the bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Several horizontal carousel items are partially clipped at the right edge, including the category chip row and the 'Fastest near you' restaurant cards. While this may be intentional, it looks slightly abrupt and unfinished.",
+        "suggestion": "Add a subtle fade, spacing, or clearer carousel affordance so users understand the row is horizontally scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third item in the 'Fastest near you' carousel is visibly cut off, including the restaurant name, making the text hard to read in the current viewport.",
+        "suggestion": "Ensure partially visible carousel cards are either intentionally previewed with enough width to show context, or snap cards cleanly into view when scrolled."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Some secondary text, such as delivery fees and inactive bottom navigation labels, uses light gray that may be low contrast on a white background.",
+        "suggestion": "Increase contrast for secondary labels to improve readability, especially on mobile screens."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 842,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.034315,
+    "durationSeconds": 15.845521083
+  }
+}

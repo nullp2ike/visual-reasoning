@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Restaurant cover image failed to load"],
+  "reportedIssues": [
+    "The Tokumaru Ramen Bar card in 'Popular right now' shows a generic broken-image icon on a grey block instead of the restaurant photo, making the card look unfinished compared to all other cards.",
+    "The third card in the 'Fastest near you' carousel is clipped by the viewport and its title reads 'Trattoria Piccol' with no ellipsis or fade, so it looks like broken text rather than a scrollable row.",
+    "The favorite (heart) button styling is inconsistent between the two 'Popular right now' cards: grey semi-transparent circle on the broken-image card versus dark circle on the pizza card, and the grey version has weak icon contrast.",
+    "The bottom pizza card is cut off abruptly by the bottom tab bar with no spacing, so the card appears sliced rather than scrolling under a bar.",
+    "Category filter chips row is cut mid-chip at the right edge with no visual affordance, which can hide available filters from users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Report 0 directly describes a restaurant card (Tokumaru Ramen Bar) displaying a broken-image icon instead of the restaurant photo, which is the same defect as a failed cover image load."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

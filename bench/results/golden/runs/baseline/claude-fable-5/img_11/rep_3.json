@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_11",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:51:46.634Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there are a few visual/content problems: a suspicious '−100%' discount badge that likely indicates a data error, a truncated restaurant name without ellipsis, and a partially visible empty category chip at the right edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza restaurant card in 'Popular right now' shows a '−100%' discount badge, which implies the order is completely free. This is almost certainly a data or calculation error (e.g., discount value misformatted).",
+        "suggestion": "Verify the discount data source; cap or validate discount percentages so implausible values like −100% are flagged or displayed correctly (e.g., '€0 delivery' if it refers to free delivery)."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the third card's name is cut off as 'Trattoria Piccol' with no ellipsis, making the truncation look accidental rather than intentional.",
+        "suggestion": "Apply text truncation with an ellipsis (…) to card titles, or ensure the peeking card is clearly styled as partially off-screen carousel content."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "At the right edge of the category chip row, a chip is clipped and appears empty (no visible label), which looks broken.",
+        "suggestion": "Adjust horizontal padding/peek amount so the next chip shows at least part of its label, or add a fade/gradient edge to signal scrollable content."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second 'Popular right now' card (pizza) is cut off by the bottom navigation bar with no visible title or details, so the '−100%' badge floats without context.",
+        "suggestion": "This may just be scroll position, but consider adding bottom padding so cards aren't awkwardly clipped behind the nav bar, and ensure content isn't obscured by the fixed bottom bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 873,
+    "estimatedCost": 0.06339,
+    "durationSeconds": 16.238071083
+  }
+}

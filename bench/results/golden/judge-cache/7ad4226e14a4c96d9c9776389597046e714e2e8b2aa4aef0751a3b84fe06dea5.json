@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "Category filter 'Pizza' is selected, but displayed restaurants include ramen, burgers, and poké.",
+    "Text 'Trattoria Piccol' in the horizontal carousel is cut off abruptly.",
+    "Food items use simplified vector placeholder graphics instead of actual food photography."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the Pizza filter being selected while the feed shows restaurants from other cuisines."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

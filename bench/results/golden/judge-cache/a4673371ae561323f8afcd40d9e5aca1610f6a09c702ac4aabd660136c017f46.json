@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "The third restaurant card title 'Trattoria Piccol' is truncated mid-word and the delivery fee line may also be incomplete, making the restaurant name unreadable.",
+    "The category filter row is cut off on the right with only a sliver of the next chip visible, and no clear affordance that more categories exist beyond 'Healthy'.",
+    "The favorite (heart) icon on the Tokumaru Ramen Bar card sits over the food image with low contrast and no strong circular background, making it harder to see and tap.",
+    "Search field placeholder reads 'Restarants, dishes, grocery' — 'Restarants' appears misspelled (should be 'Restaurants')."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "Reported issue 3 explicitly identifies the misspelling of 'Restarants' in the search field placeholder, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

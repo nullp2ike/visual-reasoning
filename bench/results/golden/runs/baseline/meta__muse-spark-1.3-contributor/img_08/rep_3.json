@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "meta/muse-spark-1.3-contributor",
+  "provider": "openrouter",
+  "imageId": "img_08",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-03T11:26:37.517Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 visual issues: a misspelled search placeholder, a truncated restaurant name in the horizontal carousel, and bottom content clipped by the navigation bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Search bar placeholder reads 'Restarants, dishes, groceries' - 'Restaurants' is misspelled.",
+        "suggestion": "Correct placeholder text to 'Restaurants, dishes, groceries'"
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Third card in 'Fastest near you' shows truncated name 'Trattoria Piccol' cut off mid-word at the screen edge without ellipsis.",
+        "suggestion": "Add horizontal list end-padding and apply proper text truncation with ellipsis so full name is accessible on scroll"
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Second card in 'Popular right now' (pizza with -20% badge) is clipped behind the bottom tab bar, hiding restaurant name, rating and delivery info.",
+        "suggestion": "Add bottom content padding / safe-area inset so scrollable content ends above the bottom navigation"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1739,
+    "outputTokens": 1656,
+    "reasoningTokens": 1371,
+    "cachedInputTokens": 1726,
+    "estimatedCost": 0.0005051000000000001,
+    "reportedCost": 0.000335952,
+    "durationSeconds": 16.9016875
+  }
+}

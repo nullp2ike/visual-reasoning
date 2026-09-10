@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The second 'Popular right now' card shows a discount badge reading '-100%', which implies the entire order is free and is almost certainly a data/formatting error (e.g. a percentage computed from a zero-price or a raw value rendered without validation).",
+    "The favorite (heart) buttons on the two 'Popular right now' cards use different treatments: the ramen card has a white circular button with a dark outline heart, while the pizza card has a dark/translucent circle with a white heart, creating visual inconsistency in the same list."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 identifies the second 'Popular right now' card's discount badge displaying '-100%,' matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "Tokumaru Ramen Bar card shows a loading spinner overlay on the image instead of the actual image content, suggesting the image failed to load or load state is stuck",
+    "The third card in 'Fastest near you' section (Trattoria Piccol...) is cut off at the right edge of the screen with truncated text",
+    "The category filter row (All, Pizza, Sushi, Burgers, Healthy) appears cut off on the right edge suggesting more categories exist but no visual scroll affordance is shown",
+    "Inconsistent heart/favorite icon styling - white heart icon on Tokumaru Ramen Bar card has no visible background circle while the pizza card below has a dark circular background"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.73 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

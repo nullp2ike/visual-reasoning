@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_18",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:24:13.139Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed, but there are a few visual defects: truncated text on a carousel card without an ellipsis, a category filter chip clipped at the screen edge with no visible label, and the last restaurant card is cut off by the bottom navigation without any visual scroll affordance. Overall these are minor-to-major polish issues rather than functional breakage.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The third restaurant card in 'Fastest near you' shows a truncated name 'Trattoria Piccol' with no ellipsis, making the label look broken rather than intentionally clipped.",
+        "suggestion": "Apply text truncation with an ellipsis (…) or allow the name to wrap to a second line within the card width."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category filter chip on the right edge (after 'Healthy') is clipped so severely that no label text is visible, appearing as an empty gray pill.",
+        "suggestion": "Adjust the horizontal chip list padding or peek amount so partially visible chips still show some readable text, signaling scrollability without looking broken."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza card in 'Popular right now' is abruptly cut off by the bottom navigation bar, hiding its name, rating, and delivery info with only the '-20%' badge and heart icon visible.",
+        "suggestion": "This is expected for scrollable content, but consider adding a subtle gradient fade or extra bottom padding so the clipped card reads as scrollable content rather than a rendering error."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Light gray placeholder and secondary text (e.g., 'Restaurants, dishes, groceries', delivery fees) may fall below recommended contrast ratios against the light background.",
+        "suggestion": "Darken secondary text colors to meet WCAG AA contrast (4.5:1 for normal text)."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 853,
+    "estimatedCost": 0.06239,
+    "durationSeconds": 17.363182292
+  }
+}

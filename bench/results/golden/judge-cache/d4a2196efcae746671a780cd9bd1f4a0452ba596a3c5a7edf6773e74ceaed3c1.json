@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The rightmost restaurant card in the “Fastest near you” row is clipped by the viewport, including its image, title (“Trattoria Piccol...”), and delivery price. The text is cut off without a clear truncation treatment.",
+    "The category chip row has a partially visible chip at the far right edge, which looks abruptly cropped.",
+    "A loading spinner is displayed in the center of the Tokumaru Ramen Bar image while the rest of the restaurant card is already visible, making the listing appear unfinished.",
+    "The next popular restaurant card is partially hidden behind the fixed bottom navigation area at the bottom of the screen."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "The report describes a loading spinner over a visible restaurant image while the rest of the card is already loaded."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

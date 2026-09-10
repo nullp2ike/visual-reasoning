@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-luna",
+  "provider": "openai",
+  "imageId": "img_02",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:36:13.191Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished, but one clear data-rendering error is visible, along with a couple of minor layout concerns related to horizontal scrolling and the fixed bottom navigation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The Smash Bros Burgers card displays the invalid delivery text “€NaN delivery,” indicating a failed or missing numeric value.",
+        "suggestion": "Fix the delivery-fee data or formatting fallback so a valid amount is shown, or display a meaningful label such as “Delivery fee unavailable.”"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal restaurant and category carousels are visibly clipped at the right edge, including a partially visible category pill and truncated restaurant card/title.",
+        "suggestion": "Ensure the clipping is intentional and provide a clear horizontal-scroll affordance, such as partial-card spacing, a carousel indicator, or accessible scrolling behavior."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlays the second popular restaurant card, obscuring part of its image and potentially its content.",
+        "suggestion": "Add sufficient bottom padding to the scrollable page content so cards can be fully scrolled above the navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 659,
+    "reasoningTokens": 406,
+    "estimatedCost": 0.001153,
+    "durationSeconds": 9.40635829100001
+  }
+}

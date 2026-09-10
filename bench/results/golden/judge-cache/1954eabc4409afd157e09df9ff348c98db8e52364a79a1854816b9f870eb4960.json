@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The bottom navigation bar highlights 'Profile' as the active tab, but the content shown is the Home feed, creating a mismatched UI state.",
+    "The third restaurant card in the 'Fastest near you' horizontal list is cut off at the right edge, and the restaurant name appears truncated as 'Trattoria Piccol'.",
+    "The pizza restaurant card at the bottom of the 'Popular right now' section is partially cut off by the bottom of the screen."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.86 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

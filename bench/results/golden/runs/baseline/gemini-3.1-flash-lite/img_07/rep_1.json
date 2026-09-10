@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "gemini-3.1-flash-lite",
+  "provider": "google",
+  "imageId": "img_07",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:56:41.961Z",
+  "status": "ok",
+  "result": {
+    "summary": "The application interface contains a major loading issue in the 'Popular right now' section where a generic loading spinner is persistently displayed over content, and a minor layout issue where the restaurant name is clipped.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "A persistent, semi-transparent loading spinner overlay is visible on top of the 'Tokumaru Ramen Bar' featured card, obscuring the image and potential user content.",
+        "suggestion": "Ensure the loading state completes correctly or times out; remove the overlay if the content beneath has finished loading."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The restaurant name 'Trattoria Piccolo' is truncated at the end due to limited container space.",
+        "suggestion": "Adjust the text styling or container width to ensure the full name is visible, or implement an ellipsis correctly if truncation is intended."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1425,
+    "outputTokens": 226,
+    "estimatedCost": 0.0006952499999999999,
+    "durationSeconds": 1.573685625000042
+  }
+}

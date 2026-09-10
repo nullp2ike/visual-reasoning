@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Restaurant cover image failed to load"],
+  "reportedIssues": [
+    "The Tokumaru Ramen Bar card in \"Popular right now\" shows a blank gray area with a broken-image glyph instead of the restaurant photo, while sibling cards (e.g. the pizza card below) load correctly.",
+    "The heart/favorite button on the broken-image card uses a light gray translucent circle with a gray outline icon, giving low contrast and an inconsistent look compared to the dark circle with white icon on the pizza card.",
+    "The empty image container for the ramen card is noticeably shorter than the neighbouring pizza card's image, causing uneven card heights in the vertical list."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The ramen restaurant card shows a broken image and blank area instead of its cover photo."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_12",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:31:50.785Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there is one clear visual defect: overlapping/garbled metadata text under the Tokumaru Ramen Bar listing. Everything else (carousels, chips, partially visible bottom card) appears intentional.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Popular right now' section, the metadata line under 'Tokumaru Ramen Bar' shows two text strings rendered on top of each other ('25–35 min' and '€0 delivery' overlap, producing unreadable text like '25-3E0rdmivery • Ramen').",
+        "suggestion": "Fix the layout so the delivery time, delivery fee, and cuisine tags are laid out sequentially (e.g., in a horizontal flex row with separators) instead of being absolutely positioned or stacked at the same coordinates."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The Tokumaru Ramen Bar card shows a '€0 delivery' badge on the image, and the same fee appears (though overlapped) in the metadata line, creating redundant/conflicting presentation once the overlap is fixed.",
+        "suggestion": "Show the delivery fee in only one place per card, or ensure the badge and metadata line don't duplicate the same information."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 541,
+    "estimatedCost": 0.047920000000000004,
+    "durationSeconds": 37.33003991599998
+  }
+}

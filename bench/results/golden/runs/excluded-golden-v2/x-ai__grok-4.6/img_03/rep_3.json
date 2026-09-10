@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_03",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T12:33:56.512Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page has two notable visual problems: a broken/missing restaurant image in Popular, and a promo card overlapping the restaurant below it. Category chips and carousels clipped at the right edge are treated as intended horizontal scroll.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The first Popular restaurant card (Tokumaru Ramen Bar) shows a broken-image placeholder instead of a food photo, leaving a large empty gray area.",
+        "suggestion": "Load a valid restaurant image or use a designed fallback (e.g. cuisine icon) so the card is not visually empty."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The large pizza promo card overlaps the Tokumaru Ramen Bar block: the restaurant name, rating, and meta sit above the image, and the card covers the lower part of that listing.",
+        "suggestion": "Give the Popular list item a proper stacked layout (image, then title/meta) and add spacing so the next card does not overlap."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 221,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1920,
+    "estimatedCost": 0.0052499999999999995,
+    "reportedCost": 0.00237,
+    "durationSeconds": 11.346557666
+  }
+}

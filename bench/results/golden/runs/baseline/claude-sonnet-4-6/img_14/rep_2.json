@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_14",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:03:52.120Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 visual issues: one major layout problem with truncated restaurant name text and two minor clipping/cutoff concerns in scrollable sections.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' carousel shows the name 'Trattoria Piccol' — the text is hard-cut mid-word without an ellipsis, making the name unreadable and unprofessional.",
+        "suggestion": "Apply CSS text-overflow: ellipsis (or equivalent) to truncate overflowing restaurant names gracefully, or increase the card width to accommodate the full name."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in the 'Fastest near you' horizontal carousel is awkwardly clipped — both the image and the text below it are cut off at the screen edge without a clear visual affordance indicating scrollability.",
+        "suggestion": "Ensure the peek of the third card is intentional and consistent (e.g., show exactly 50% of the card) to clearly signal horizontal scrolling to the user."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza restaurant card (with the -20% badge) is cut off abruptly at the screen bottom, with no gradient fade or visual cue indicating more content below.",
+        "suggestion": "Add a subtle gradient fade at the bottom of the list or ensure the card peek is consistent to better communicate vertical scrollability."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 881,
+    "estimatedCost": 0.018690000000000002,
+    "durationSeconds": 18.757299249999924
+  }
+}

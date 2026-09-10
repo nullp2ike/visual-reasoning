@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The category chip row is cut off at the right edge: part of an additional chip is visible as a blank partial pill, making the horizontal carousel look unfinished.",
+    "The 'Fastest near you' restaurant carousel is clipped on the right: the third restaurant card and its text are truncated by the viewport edge.",
+    "The fixed bottom navigation overlays the feed; the next restaurant promotion card continues underneath it and is partially obscured at the bottom."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "None of the reported issues describe filtering or feed content problems; all three are layout/clipping issues unrelated to category selection failing to filter cuisines."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

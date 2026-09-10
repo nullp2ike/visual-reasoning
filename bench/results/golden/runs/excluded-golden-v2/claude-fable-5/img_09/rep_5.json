@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_09",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:30:22.989Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed, but one visible rendering defect stands out: the 'Tokumaru Ramen' restaurant title is clipped mid-character, showing a partially cut-off letter with no ellipsis, even though this is not a scrollable-edge situation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The restaurant title in the 'Popular right now' section reads 'Tokumaru Rameı' — the final 'n' is clipped mid-glyph rather than being truncated cleanly with an ellipsis. There appears to be free horizontal space between the title and the rating badge, so the hard clipping looks like a layout/measurement bug rather than intentional truncation.",
+        "suggestion": "Allow the title label to use the available width up to the rating element, and if truncation is still needed, apply proper ellipsis truncation (e.g., text-overflow: ellipsis / TextOverflow.ellipsis) instead of clipping characters mid-glyph."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The heart (favorite) button on the Tokumaru Ramen card sits on a transparent background over a busy image, while the one on the pizza card below has a dark circular backdrop — the styling is inconsistent between cards.",
+        "suggestion": "Use a consistent semi-opaque circular backdrop behind the favorite icon on all cards to ensure visibility and visual consistency."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 625,
+    "estimatedCost": 0.05212,
+    "durationSeconds": 32.32660950000002
+  }
+}

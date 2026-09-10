@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_14",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:39:04.030Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed. One notable visual inconsistency exists in the 'Fastest near you' carousel where card heights and internal layouts are misaligned, causing restaurant names and delivery fees to sit at different vertical positions. Other edge-clipping and bottom-cutoff behaviors are treated as intended features.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' horizontal carousel, the cards are not vertically aligned: the 'Green Bowl Poké' card has a shorter image with the time badge overlapping the bottom-left, while 'Smash Bros Burgers' and 'Trattoria Piccol...' have taller images with the badge centered lower. As a result, the restaurant titles and delivery-fee lines start at different Y positions across cards, making the row look uneven.",
+        "suggestion": "Give all carousel cards a fixed, equal image height and a consistent badge position (e.g., always bottom-left), so titles and delivery fees align on the same baseline across cards."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The delivery-time badge placement is inconsistent within the 'Fastest near you' cards: on the first card the '15–25 min' badge sits at the bottom edge overlapping the image boundary, whereas on the second and third cards the badge floats lower/centered over the image, creating an inconsistent visual rhythm.",
+        "suggestion": "Standardize the badge to a single anchored position (e.g., bottom-left with consistent margin) on every card in the carousel."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 1412,
+    "reasoningTokens": 1037,
+    "estimatedCost": 0.012060000000000001,
+    "reportedCost": 0.01094,
+    "durationSeconds": 119.79722137499996
+  }
+}

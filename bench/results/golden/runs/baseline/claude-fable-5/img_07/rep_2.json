@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_07",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:25:31.312Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there are a few visual defects: a loading spinner is stuck on top of an already-loaded restaurant image, a restaurant name is truncated without ellipsis at the screen edge, and a category chip is cut off awkwardly.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "A loading spinner is displayed in the center of the Tokumaru Ramen Bar image even though the image appears fully loaded, suggesting a stuck/orphaned loading state.",
+        "suggestion": "Ensure the spinner is removed once the image finishes loading, or add a timeout/error fallback so the loader never persists over rendered content."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' carousel is hard-clipped at the screen edge without an ellipsis or fade, making it look broken rather than scrollable.",
+        "suggestion": "Truncate the title with an ellipsis within its card width, or add right-edge padding/fade to visually indicate horizontal scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category filter chip after 'Healthy' is cut off at the right edge showing only a small sliver of the pill, which looks like a rendering glitch.",
+        "suggestion": "Show a larger visible portion of the next chip or add an edge fade/gradient to signal that the chip row scrolls horizontally."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The pizza card at the bottom is cropped mid-image with its '-20%' badge visible but no title/metadata, which can appear incomplete if scrolling affordance isn't obvious.",
+        "suggestion": "This may just be scroll cutoff; if the layout is intended, ensure sufficient content peeks below the fold and verify the card renders fully on scroll."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 758,
+    "estimatedCost": 0.057640000000000004,
+    "durationSeconds": 22.991844125000004
+  }
+}

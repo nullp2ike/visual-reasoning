@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The third card in the 'Fastest near you' horizontal carousel ('Trattoria Piccol...') has its restaurant name truncated mid-word at the right screen edge, and the card itself is cut off by the viewport with no visible scroll affordance or padding.",
+    "The bottom navigation shows 'Profile' highlighted in green (active state) while the visible screen is clearly the Home feed, creating an inconsistent active-tab indication.",
+    "The second 'Popular right now' card (pizza with -20% badge) is abruptly cut off by the bottom navigation bar with no bottom content padding, making the list feel clipped."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Issue 1 directly describes Profile being highlighted in the bottom nav while Home feed is displayed, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

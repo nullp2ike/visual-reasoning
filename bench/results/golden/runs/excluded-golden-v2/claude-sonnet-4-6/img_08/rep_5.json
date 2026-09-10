@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_08",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T10:32:56.468Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well-structured, but one notable visual issue was found related to text truncation in a non-scrollable context.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The restaurant name 'Trattoria Piccol' in the 'Fastest near you' section is truncated without an ellipsis, cutting off mid-word. Unlike the partially visible card at the screen edge (which is an intentional carousel pattern), the name label below the card appears to be cut off abruptly without any visual indicator that the text continues, making it look broken rather than intentionally clipped.",
+        "suggestion": "Apply text-overflow: ellipsis with overflow: hidden and a defined width to restaurant name labels so truncated names show '...' instead of being cut off mid-word, clearly signaling to users that the name is longer."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1910,
+    "outputTokens": 221,
+    "estimatedCost": 0.009045000000000001,
+    "durationSeconds": 7.797281709000468
+  }
+}

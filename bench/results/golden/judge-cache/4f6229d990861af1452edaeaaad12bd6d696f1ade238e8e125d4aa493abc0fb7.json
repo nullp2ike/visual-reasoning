@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Restaurant cover image failed to load"],
+  "reportedIssues": [
+    "The first card under “Popular right now” shows a gray image placeholder with a broken/missing image icon instead of the restaurant image.",
+    "The lower restaurant card image is partially covered by the fixed bottom navigation bar, making the content look cut off.",
+    "Horizontal carousel items are visibly clipped at the right edge, including the category chips and the “Fastest near you” restaurant cards."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The first restaurant card shows a broken image placeholder instead of its cover image, matching the failed restaurant cover image defect."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

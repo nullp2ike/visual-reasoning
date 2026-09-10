@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:59:45.088Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally usable, but there are a few visual/accessibility concerns: icon-only controls lack clear labels, some secondary text is low contrast, and horizontally scrolling content is clipped at the right edge without a strong scroll affordance.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "accessibility",
+        "description": "Favorite heart buttons and the notification bell appear to be icon-only controls with no visible label or accessible name.",
+        "suggestion": "Add accessible labels such as 'Save Tokumaru Ramen Bar' and 'Notifications', and ensure focus states are visible."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary metadata like delivery fees and time ranges use small gray text that may be hard to read for low-vision users.",
+        "suggestion": "Increase font size and/or darken the gray to meet WCAG contrast guidance."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category chips and restaurant cards are cut off at the right edge; this helps imply scrolling but the clipped 'Healthy' chip and partially visible restaurant card can look unintentionally cropped.",
+        "suggestion": "Add a clearer scroll affordance, edge fade, or adjust card widths so truncation looks deliberate."
+      },
+      {
+        "priority": "minor",
+        "category": "functionality",
+        "description": "The 'Pizza' category is selected while visible recommendations include ramen, burgers, and poké, which may make the filter state feel inconsistent.",
+        "suggestion": "Either filter content to match the selected category or make clear that home sections remain personalized regardless of chip selection."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 718,
+    "reasoningTokens": 395,
+    "estimatedCost": 0.017076,
+    "reportedCost": 0.0169032,
+    "durationSeconds": 17.28672120800003
+  }
+}

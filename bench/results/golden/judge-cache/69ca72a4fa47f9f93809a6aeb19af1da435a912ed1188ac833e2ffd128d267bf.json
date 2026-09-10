@@ -1,0 +1,26 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The 'Tokumaru Ramen' title is cut off mid-character and runs into the star rating / '4.8 (500+)' block on the same row, with no ellipsis or gap between them.",
+    "In the 'Fastest near you' carousel the third card ('Trattoria Piccol…', '€1.90 delivery') is hard-clipped at the screen edge, making it ambiguous whether the row is scrollable or simply broken.",
+    "The favorite (heart) buttons are styled inconsistently: the ramen card uses a white circular button with a dark outline heart, while the pizza card uses a dark/translucent circle with a white heart.",
+    "The 'Green Bowl Poké' thumbnail has a light grey background while the sibling thumbnails are dark, so its white '15–25 min' time badge has very low contrast and the card looks unfinished/placeholder-like.",
+    "The category chip row ('All, Pizza, Sushi, Burgers, Healthy, …') is cut at the right edge with a barely visible sliver of the next chip, giving the impression of clipped rather than scrollable content.",
+    "The second 'Popular right now' card (pizza, −20%) is truncated by the bottom tab bar with no name or metadata visible, so the list ends abruptly with no scroll affordance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe the Tokumaru Ramen heading being cut off mid-text without an ellipsis."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The last restaurant card in the 'Fastest near you' row is clipped on the right, cutting off the image and the name 'Trattoria Piccol'.",
+    "The bottom featured restaurant card is cut off by the tab bar, so the name, rating, and other details are not visible.",
+    "The category chips row is clipped on the right (the next chip after 'Healthy' is only partially visible).",
+    "The restaurant name 'Tokumaru Ramen' appears truncated as 'Tokumaru Ramer'."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [3],
+        "reasoning": "Both describe the 'Tokumaru Ramen' restaurant name being truncated/cut off mid-word ('Ramei' vs 'Ramer' are slight variations in describing the same truncation defect)."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

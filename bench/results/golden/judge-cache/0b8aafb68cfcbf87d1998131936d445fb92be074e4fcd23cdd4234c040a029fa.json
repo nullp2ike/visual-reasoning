@@ -1,0 +1,25 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The third restaurant card in 'Fastest near you' is heavily clipped on the right edge, and the name 'Trattoria Piccol' is truncated mid-word.",
+    "The category filter chips row (All, Pizza, Sushi, Burgers, Healthy) overflows the screen with a partial chip visible on the right and no clear scroll affordance.",
+    "The second 'Popular right now' card (pizza) is cut off at the bottom of the viewport so only part of the image shows, with no clear continuation cue beyond the tab bar.",
+    "Bottom tab bar shows a short gray line under the search icon that looks like a broken or incomplete selection indicator rather than a polished active state.",
+    "Restaurant title 'Trattoria Piccol' appears truncated without ellipsis, which reads like a content/layout bug."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Issue 2 describes bottom nav area with content cut off at the bottom of viewport and overlapping with tab bar, matching the expected defect of labels cut off and gesture bar overlap."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3, 4]
+  }
+}

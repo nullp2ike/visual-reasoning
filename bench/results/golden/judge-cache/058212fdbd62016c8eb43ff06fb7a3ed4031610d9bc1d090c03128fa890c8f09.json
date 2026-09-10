@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Promo banner text is unreadable, white text on a pale mint background"],
+  "reportedIssues": [
+    "The promo banner text (“3 free deliveries for you” and code details) is very faint white on a pale mint background and is hard to read.",
+    "The rightmost category chip and fastest-near-you card are visibly cut off at the screen edge, making content feel cropped.",
+    "The restaurant name “Trattoria Piccol…” is truncated in the Fastest near you carousel."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.83 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

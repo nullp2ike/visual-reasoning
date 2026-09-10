@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_03",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T13:15:10.094Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed, but one restaurant card image failed to load (showing a broken-image placeholder), and the horizontally scrolling restaurant row has a card cut off at the right edge without a clear scroll affordance.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The 'Tokumaru Ramen Bar' card under 'Popular right now' shows a broken-image placeholder icon instead of an actual restaurant photo, while the €0 delivery badge and favorite button still render on top of an empty gray area.",
+        "suggestion": "Fix the image source or provide a fallback image/placeholder graphic that matches the brand style so the card does not appear broken."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' horizontal carousel, the third card ('Trattoria Piccol...') is clipped at the right screen edge with the title truncated and no visible scroll indicator or peeking affordance beyond the cut.",
+        "suggestion": "Add a subtle scroll hint (e.g., partial card peek with fade/gradient or pagination dots) and ensure titles truncate gracefully with ellipsis."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third restaurant name 'Trattoria Piccol' is cut off mid-word due to the card being clipped at the viewport edge.",
+        "suggestion": "Allow the name to ellipsize within the visible card width or ensure horizontal scroll reveals the full card."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1711,
+    "outputTokens": 866,
+    "reasoningTokens": 490,
+    "estimatedCost": 0.008618,
+    "reportedCost": 0.007498,
+    "durationSeconds": 32.154220542000004
+  }
+}

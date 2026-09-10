@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-4-5",
+  "provider": "anthropic",
+  "imageId": "img_12",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:06:01.968Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 major issues: malformed delivery time text and truncated restaurant name in the restaurant listings.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Delivery time under 'Tokumaru Ramen Bar' displays as '25-350delivery' with improper formatting and spacing, making it unclear whether this should be '25-35 min delivery' or another value",
+        "suggestion": "Fix the text formatting to properly display the delivery time range with appropriate spacing and unit (e.g., '25-35 min delivery')"
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol' in the 'Fastest near you' section is truncated and the full name is not visible",
+        "suggestion": "Ensure the full restaurant name is visible by adjusting text wrapping, card width, or font size to accommodate the complete name"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1854,
+    "outputTokens": 642,
+    "estimatedCost": 0.005064,
+    "durationSeconds": 7.37406954200007
+  }
+}

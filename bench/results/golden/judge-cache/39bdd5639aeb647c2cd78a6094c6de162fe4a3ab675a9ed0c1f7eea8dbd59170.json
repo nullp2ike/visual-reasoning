@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers displays “€NaN delivery”, indicating missing or invalid delivery fee data being rendered as Not-a-Number.",
+    "The third restaurant card in “Fastest near you” and the rightmost category chip are partially cut off at the viewport edge.",
+    "Restaurant name “Trattoria Piccol…” is truncated in the visible card area."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.75 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

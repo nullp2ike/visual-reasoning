@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:58:13.470Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally usable, but several horizontally scrolling elements are visibly clipped at the right edge, and icon-only controls create accessibility gaps.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Fastest near you' carousel cuts off the third restaurant card at the right edge, partially hiding the restaurant name and delivery price.",
+        "suggestion": "Add clearer carousel affordance, increase side padding, or ensure peeking cards keep key text readable when partially visible."
+      },
+      {
+        "priority": "major",
+        "category": "accessibility",
+        "description": "Favorite heart icons on restaurant cards appear to be icon-only buttons with no visible label or accessible name.",
+        "suggestion": "Provide accessible labels such as 'Save Tokumaru Ramen Bar to favorites' and ensure focus states are visible."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is clipped after 'Healthy', with the next chip only partly visible and no fade/scroll indicator.",
+        "suggestion": "Add an edge fade, horizontal scroll indicator, or adjust chip spacing so truncation looks intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The lower 'Popular right now' card is cut off at the bottom of the viewport, showing mostly image and discount badge without context.",
+        "suggestion": "Increase vertical spacing or reduce card height so at least the restaurant title/metadata remains partially visible while scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Promotional banner decorative circles sit close to the text block and slightly compete with the checkout code readability.",
+        "suggestion": "Reduce opacity or move decorative shapes further from the promo copy and CTA."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 829,
+    "reasoningTokens": 404,
+    "estimatedCost": 0.018741,
+    "reportedCost": 0.0184818,
+    "durationSeconds": 12.927653208000004
+  }
+}

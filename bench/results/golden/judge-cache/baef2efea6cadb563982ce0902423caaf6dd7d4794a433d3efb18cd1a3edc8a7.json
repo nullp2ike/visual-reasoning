@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The 'Fastest near you' horizontal carousel clips the third card ('Trattoria Piccol...') at the right screen edge, cutting off the restaurant name and image mid-content with no visible scroll affordance or peeking indicator.",
+    "The 'Tokumaru Ramen Bar' card in 'Popular right now' shows a perpetual circular loading spinner overlaid on the center of the image, suggesting the image failed to finish loading or the spinner state is stuck, blocking the visual content.",
+    "The restaurant name 'Trattoria Piccol' is truncated without an ellipsis, making the name appear broken rather than intentionally abbreviated."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Issue 1 describes a loading spinner overlaid on already-loaded image content, matching the expected defect of a spinner shown on top of loaded content."
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:42:54.549Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-structured and visually consistent. The horizontal carousels (category chips, 'Fastest near you' cards) and the bottom-cut pizza card are expected scroll/viewport behaviors and not defects. One minor content issue was found: the third restaurant card's title ('Trattoria Piccol...') is clipped by the right screen edge.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "In the 'Fastest near you' carousel, the third card's title 'Trattoria Piccol...' is truncated by the right screen edge. While partial visibility of the last carousel item is an accepted horizontal-scroll pattern, the title text itself is cut mid-word without an ellipsis, which looks slightly unpolished.",
+        "suggestion": "Apply text truncation with an ellipsis (e.g. 'Trattoria Piccol…') to card titles so any clipped text degrades gracefully, or ensure the carousel item width accounts for the title length."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 997,
+    "reasoningTokens": 751,
+    "estimatedCost": 0.00957,
+    "reportedCost": 0.00845,
+    "durationSeconds": 75.21526862499991
+  }
+}

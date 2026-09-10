@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers shows “€NaN delivery”, which is invalid/broken data instead of a real delivery fee.",
+    "Restaurant name “Trattoria Piccol” is truncated/cut off in the Fastest near you row.",
+    "Category filter chips (e.g. Healthy) and the third restaurant card are clipped on the right edge of the screen.",
+    "Delivery time badges and card images in “Fastest near you” have uneven cropping and alignment compared to neighboring cards."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.75 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-luna",
+  "provider": "openai",
+  "imageId": "img_17",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:41:07.954Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished, but it shows a likely navigation-state mismatch and several viewport/overflow issues that make content appear clipped or obscured.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The restaurant discovery feed is displayed while the Profile tab in the bottom navigation is highlighted as active.",
+        "suggestion": "Set Home as the active navigation item for this feed, or display the Profile screen when Profile is selected."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Horizontal content is visibly clipped at the right edge: the category row shows a partial next pill, and the third restaurant card and its name are cut off.",
+        "suggestion": "Implement a clearly intentional horizontal carousel with a visible scroll affordance, or constrain cards to the viewport and avoid awkward text clipping."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlays the next restaurant card, cutting off its image/content without visible bottom spacing.",
+        "suggestion": "Add sufficient bottom padding to the scrollable page so the final card can scroll fully above the fixed navigation bar."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The partially visible category pill at the far right appears as an unlabeled light-gray sliver, which can look like an accidental rendering artifact.",
+        "suggestion": "Show a deliberate portion of the next category with consistent spacing, or hide overflow until the user starts scrolling."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 702,
+    "reasoningTokens": 406,
+    "estimatedCost": 0.0012046000000000001,
+    "durationSeconds": 10.175918791000033
+  }
+}

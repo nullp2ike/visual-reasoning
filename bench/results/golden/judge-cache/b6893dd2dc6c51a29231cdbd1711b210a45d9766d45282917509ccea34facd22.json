@@ -1,0 +1,24 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "Section heading displays the raw localization/key string 'home_feed.popular_title' instead of a human-readable title.",
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off at the edge of the card in the 'Fastest near you' row.",
+    "The last category filter chip ('Healthy') is partially clipped off the right edge of the screen, suggesting overflow without enough scroll affordance.",
+    "Bottom restaurant card (pizza) is cut off mid-image by the bottom navigation, which can look unfinished on first paint."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the same section heading showing the raw home_feed.popular_title localization key instead of translated text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

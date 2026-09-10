@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "The Tokumaru Ramen Bar card in 'Popular right now' displays a loading spinner overlay on top of its hero image, and the image appears dimmed/blurred behind it, suggesting the image never finished loading or the loading state was not dismissed.",
+    "The favorite (heart) button on the '−20%' pizza card is rendered as a dark outline inside a dark circular background over a dark image, giving very low contrast compared to the white heart on the ramen card above it."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The ramen card shows a loading spinner overlaying content that has already loaded."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

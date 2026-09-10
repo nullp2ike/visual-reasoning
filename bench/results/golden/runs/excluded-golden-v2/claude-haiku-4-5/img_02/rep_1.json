@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-4-5",
+  "provider": "anthropic",
+  "imageId": "img_02",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T10:34:06.063Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 critical issue: invalid numeric value displayed in the delivery fee for Smash Bros Burgers.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "Smash Bros Burgers shows '€NaN delivery' instead of a valid delivery fee amount. NaN (Not a Number) is a programming error that should never be displayed to users.",
+        "suggestion": "Fix the data source or fallback logic to ensure a valid numeric delivery fee is always displayed, or handle missing data gracefully with a message like 'Delivery fee not available' or 'Free delivery'"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1939,
+    "outputTokens": 828,
+    "estimatedCost": 0.006079,
+    "durationSeconds": 10.632453624999151
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:02:45.647Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page generally looks polished, but two visual issues stand out: an apparent loading spinner is left sitting on top of a restaurant photo, and a restaurant name is truncated in the horizontal list.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "A circular loading/progress indicator is overlaid in the center of the Tokumaru Ramen Bar image, partially obscuring the food photo.",
+        "suggestion": "Ensure the spinner disappears once the image has loaded, or replace it with a non-blocking placeholder/_skeleton state."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The restaurant name 'Trattoria Piccol' is visibly truncated, missing the end of the word (likely 'Piccola' or 'Piccolo').",
+        "suggestion": "Increase the card width, allow text wrapping, or use a smaller font size so full names are readable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 650,
+    "reasoningTokens": 426,
+    "estimatedCost": 0.00408242,
+    "reportedCost": 0.00596228,
+    "durationSeconds": 5.545206666999962
+  }
+}

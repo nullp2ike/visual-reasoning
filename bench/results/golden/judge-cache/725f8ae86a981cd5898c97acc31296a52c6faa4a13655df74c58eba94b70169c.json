@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "A large circular loading spinner is centered over the Tokumaru Ramen Bar card image, obscuring the food photo and suggesting incomplete content load or a stuck state.",
+    "The third 'Fastest near you' card title is truncated to 'Trattoria Piccol' with no ellipsis, cutting off the restaurant name.",
+    "The category filter row shows a partial empty/white chip on the far right edge beyond 'Healthy', which looks like a broken or incomplete control.",
+    "Delivery fee text under the truncated card ('€1.90 delivery') aligns with the cut-off title and feels cramped next to the screen edge."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Report 0 describes a loading spinner overlaying already-visible content (the Tokumaru Ramen Bar card image), matching the expected defect of a spinner shown on top of loaded content."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

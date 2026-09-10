@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "The 'Trattoria Piccolo' card in the 'Fastest near you' section is cut off at the right edge of the screen, showing only a partial image and truncated name.",
+    "The category filter chips (Pizza, Sushi, Burgers, Healthy, and a partially visible one) are cut off at the right edge, with the last chip barely visible.",
+    "Restaurant name 'Trattoria Piccolo' appears truncated ('Trattoria Piccol') due to being cut off by the screen edge.",
+    "The pizza promotional card at the bottom of the screen is abruptly cropped by the bottom navigation bar, cutting off visual content."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.61 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

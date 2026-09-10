@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_02",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:33:48.088Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 visible issues: one major invalid delivery-price value and two minor horizontal clipping/layout problems.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The Smash Bros Burgers card displays the invalid price text \"€NaN delivery\", indicating a failed or unformatted delivery-fee value.",
+        "suggestion": "Validate and format the delivery-fee data before rendering. Show a valid monetary amount, \"Free delivery\", or a clear fallback such as \"Delivery fee unavailable\" when no value is supplied."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal restaurant carousel is cut off on the right: the Trattoria Piccolo card, including its name and delivery text, is visibly clipped by the screen edge.",
+        "suggestion": "Ensure carousel cards have appropriate trailing padding and use intentional partial-card peeking only if labels remain readable; otherwise size cards so the visible content is not truncated."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category-chip row is also clipped at the right edge, showing part of an additional chip without enough spacing or a visible affordance that the row scrolls horizontally.",
+        "suggestion": "Add right-side padding and an intentional scroll cue, or adjust chip sizing/spacing so the row does not appear accidentally cut off."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 273,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006898,
+    "durationSeconds": 4.867527707999922
+  }
+}

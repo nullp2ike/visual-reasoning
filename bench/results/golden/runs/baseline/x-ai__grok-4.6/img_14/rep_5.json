@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_14",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:53.771Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and overflow issues: category chips and restaurant cards are clipped at the screen edges, and one restaurant name is truncated.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The horizontal category chips (All, Pizza, Sushi, Burgers, Healthy) are cut off on the right, with a partial chip visible and no clear affordance that the list is scrollable.",
+        "suggestion": "Add padding and a fade or peek of the next chip so users can tell the row scrolls; ensure the last visible chip is not clipped."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third card in “Fastest near you” (Trattoria Piccol…) is clipped by the right edge of the screen, cutting off both the image and the restaurant name.",
+        "suggestion": "Give the carousel enough end padding so the last fully visible card isn’t cropped, or show a partial next card as a scroll hint without cutting text."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name “Trattoria Piccol” is truncated mid-word with no ellipsis, making the listing hard to read.",
+        "suggestion": "Use a single-line ellipsis or wrap the name so the full title remains identifiable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom “Popular right now” promo card is cut off by the tab bar, so the offer and favorite control are only partially visible.",
+        "suggestion": "Add bottom content inset equal to the tab bar height so cards aren’t hidden behind navigation."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 338,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.005792,
+    "reportedCost": 0.003104,
+    "durationSeconds": 8.968217166999995
+  }
+}

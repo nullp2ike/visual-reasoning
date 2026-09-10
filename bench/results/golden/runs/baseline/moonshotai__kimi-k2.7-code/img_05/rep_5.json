@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_05",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:02:13.801Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 visual issues: a major layout problem where content is clipped at the bottom of the screen, a minor truncation issue in the horizontal restaurant list, and a minor accessibility concern with low-contrast promotional text.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The second restaurant card in the 'Popular right now' section is cut off at the bottom of the viewport. Only the food image and the '-20%' badge are visible, while the restaurant name, rating, delivery time, and cuisine type are hidden behind the bottom edge.",
+        "suggestion": "Increase the bottom padding of the scrollable content area so the last card sits fully above the bottom navigation bar, or reduce the card height so all details remain visible."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The third card in the 'Fastest near you' horizontal list shows the truncated restaurant name 'Trattoria Picco' with the remainder cut off by the right screen edge.",
+        "suggestion": "Add a right margin to the last visible card and use text truncation (ellipsis) so the cut-off appears intentional, or ensure the full card is reachable by horizontal scroll."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The promotional banner subtext 'Use code TALLINN3 at checkout · min. order €10' appears in a very light color against the pale mint-green background, resulting in low readability.",
+        "suggestion": "Use a darker text color or a slightly darker background shade to improve contrast and meet basic readability standards."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 1835,
+    "reasoningTokens": 1463,
+    "estimatedCost": 0.00852617,
+    "reportedCost": 0.01544228,
+    "durationSeconds": 10.654151333000046
+  }
+}

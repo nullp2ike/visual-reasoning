@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The bottom navigation bar highlights 'Profile' (green icon and label) even though the screen currently displayed is the Home feed (delivery address, search bar, promotions, restaurant lists). The 'Home' tab should be the active/highlighted one.",
+    "Restaurant cards in the 'Fastest near you' section show delivery time and fee but no ratings, while the 'Popular right now' card shows a rating (4.8, 500+). This inconsistency reduces comparability across sections."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the exact same defect: Profile tab is highlighted in bottom nav while Home feed is displayed, when Home should be highlighted instead."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

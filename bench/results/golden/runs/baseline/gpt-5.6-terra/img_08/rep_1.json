@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_08",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:34:20.610Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well structured, but horizontally scrolling content is visibly cut off at the right edge and the fixed bottom navigation obscures part of the feed content.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The rightmost category chip and restaurant card in the “Fastest near you” carousel are clipped by the viewport. The third restaurant’s title and delivery fee are cut mid-text, which looks unfinished rather than clearly scrollable.",
+        "suggestion": "Add a clearer horizontal-scroll affordance and ensure partial cards do not expose abruptly truncated text; for example, use consistent card peeking, fade masks, or reserve text within the visible card area."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlays the second restaurant card in the “Popular right now” section, hiding a substantial portion of that card’s content in the current view.",
+        "suggestion": "Add sufficient bottom padding to the scrollable feed so the final visible content can scroll above the fixed navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 530,
+    "reasoningTokens": 309,
+    "estimatedCost": 0.009982,
+    "durationSeconds": 8.312149833999923
+  }
+}

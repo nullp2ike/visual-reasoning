@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The discount badge on the pizza restaurant card at the bottom displays '-0%', which is semantically meaningless and visually confusing. A zero-percent discount should not be displayed as a badge at all.",
+    "The third restaurant card in the 'Fastest near you' horizontal scroll section ('Trattoria Piccol...') is partially clipped without a visible ellipsis on the card image, making it unclear the name is truncated.",
+    "The partially visible third card in the horizontal carousel has its image abruptly cut off with no fade or gradient to indicate scrollability, which may confuse users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.80 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

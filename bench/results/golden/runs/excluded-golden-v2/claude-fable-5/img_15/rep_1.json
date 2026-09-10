@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_15",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:33:32.051Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed, but one clear visual defect stands out: a stray horizontal black bar is drawn across the bottom navigation, overlapping the search and orders icons. No other significant breakages were found beyond expected carousel/viewport clipping (excluded per instructions).",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "A stray horizontal black line/bar stretches across the bottom navigation, cutting through the search (magnifier) and orders (receipt) icons. It looks like a misplaced divider, progress bar, or home-indicator element rendered at the wrong position, obscuring the tab icons.",
+        "suggestion": "Remove or reposition the rogue bar element (e.g., fix its z-index/anchor so it doesn't overlay the tab bar), ensuring all navigation icons render cleanly and remain fully tappable."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Bottom navigation icons have no text labels and no visible active-state indicator besides the green home icon color, which may be ambiguous for users and low-vision accessibility.",
+        "suggestion": "Add short text labels under each tab icon or a clearer active-state treatment (pill background, label) to improve clarity and accessibility."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 667,
+    "estimatedCost": 0.054220000000000004,
+    "durationSeconds": 57.673481625000015
+  }
+}

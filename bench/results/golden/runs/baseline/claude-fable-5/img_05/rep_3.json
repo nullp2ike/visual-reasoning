@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_05",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:25:13.920Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed, but there are a few visual problems: the promotional banner text has very poor contrast (white text on a pale green background), a category chip on the right edge is cut off with no visible label, and a restaurant name in the horizontal carousel is truncated. The bottom pizza card is also clipped mid-image by the navigation bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "accessibility",
+        "description": "The promo banner text '3 free deliveries for you' and 'Use code TALLINN3 at checkout · min. order €10' is white/very light on a pale mint-green background, making it nearly unreadable and failing WCAG contrast requirements.",
+        "suggestion": "Use a dark text color (e.g., dark green or near-black) on the light green banner, or darken the banner background so the white text has at least a 4.5:1 contrast ratio."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category filter chip on the far right of the chip row ('Healthy' row) is cut off at the screen edge with no visible text, appearing as an empty pill fragment.",
+        "suggestion": "Ensure the horizontally scrollable chip list shows a partial chip with visible label text, or adjust padding/peek width so truncated chips still hint at their content."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' carousel is truncated abruptly at the screen edge without an ellipsis, and the card is partially clipped.",
+        "suggestion": "Apply text ellipsis within the card width rather than letting text run to the viewport edge, or adjust carousel item peek so truncation looks intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza card in 'Popular right now' is clipped mid-image by the bottom navigation bar, with no visible restaurant details, making it look abruptly cut.",
+        "suggestion": "Add sufficient bottom padding/scroll inset below the last content section so cards are not obscured by the fixed bottom navigation, or fade the content behind the nav bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 891,
+    "estimatedCost": 0.06429,
+    "durationSeconds": 15.703167041000007
+  }
+}

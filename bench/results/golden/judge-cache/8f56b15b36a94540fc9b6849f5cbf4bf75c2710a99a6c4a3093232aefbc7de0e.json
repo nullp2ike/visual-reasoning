@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The 'Fastest near you' carousel shows two identical 'Green Bowl Poké' cards side by side (same image, same 15–25 min badge, same €0.90 delivery), which looks like a data/rendering bug.",
+    "The third carousel card's title is truncated as 'Smash Bros Bu' with no ellipsis, making the name look abruptly cut off.",
+    "A sixth category chip after 'Healthy' is clipped at the right screen edge showing only a small empty sliver with no readable label.",
+    "The bottom pizza card (with the −20% badge) is cut off by the bottom navigation bar with no visible title, rating, or delivery info, so the promo lacks context in the current viewport."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the exact same defect: Green Bowl Poké card appearing twice in the carousel with identical content."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

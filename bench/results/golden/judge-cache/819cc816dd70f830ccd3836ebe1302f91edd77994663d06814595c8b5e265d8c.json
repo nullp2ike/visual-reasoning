@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "In the 'Fastest near you' horizontal carousel, the third card ('Trattoria Piccol...') is cut off at the right edge of the screen, with its name and delivery fee partially clipped. While this can signal scrollability, the text truncation looks abrupt.",
+    "The restaurant name 'Tokumaru Ramen' in the 'Popular right now' section appears truncated/clipped ('Tokumaru Rame...'), cutting off the final letter against the rating on the right.",
+    "The category filter chips row ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') is also clipped at the right edge with a partially visible chip, which is acceptable for a scrollable row but lacks a visual scroll affordance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.77 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

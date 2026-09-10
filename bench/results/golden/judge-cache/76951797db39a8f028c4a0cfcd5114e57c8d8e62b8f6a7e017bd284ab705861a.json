@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers shows delivery fee as '€NaN delivery', indicating a null/undefined price was formatted as currency.",
+    "Restaurant name 'Trattoria Piccol' is truncated with no ellipsis or full-name affordance in the Fastest near you row.",
+    "The category filter chips row is cut off on the right (partial 'Healthy' and next chip), with no clear scroll affordance.",
+    "Bottom of the pizza promo card and top content feel cramped against the tab bar; the last card is heavily cropped.",
+    "Promo banner decorative circles and green overlay make the secondary line slightly harder to scan, though still readable."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the exact same defect: delivery fee displaying as '€NaN' due to null/undefined price formatting."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

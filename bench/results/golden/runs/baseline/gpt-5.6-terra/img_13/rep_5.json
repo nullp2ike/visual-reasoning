@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_13",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:35:13.144Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well structured, but a few elements look visually incomplete or obscured, particularly at the right edge and above the fixed bottom navigation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The next restaurant card in the “Fastest near you” carousel is cut off at the right screen edge, including the restaurant name (“Trattoria Piccol…”). While this may imply horizontal scrolling, it appears clipped without a strong visual affordance.",
+        "suggestion": "Ensure partial carousel cards retain enough padding and readable content, or add a clearer horizontal-scroll cue such as a fade, arrow, or more intentional card peeking treatment."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The next “Popular right now” card/image continues underneath the fixed bottom navigation bar and is visibly covered by it.",
+        "suggestion": "Add bottom content inset/padding equal to the navigation height plus safe-area spacing so the final visible card is not obscured by the persistent navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "missing-element",
+        "description": "The top-right circular account/notification control appears empty: it is only a pale gray circle with a red notification dot and no visible profile avatar or icon.",
+        "suggestion": "Render the intended profile/avatar or notification icon, and keep the red badge positioned on that visible control."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is horizontally clipped after “Healthy,” leaving part of the next chip visible without a clear indication that the row can be scrolled.",
+        "suggestion": "Use intentional edge fading or a scroll indicator, or adjust chip sizing/spacing so the clipping reads clearly as a horizontal carousel."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 603,
+    "reasoningTokens": 251,
+    "estimatedCost": 0.010858,
+    "durationSeconds": 30.37095854100003
+  }
+}

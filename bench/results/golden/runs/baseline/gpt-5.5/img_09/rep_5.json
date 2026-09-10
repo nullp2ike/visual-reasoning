@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_09",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:26:10.570Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly usable, but there are a few visual issues around clipped/overlapped content and one likely text typo.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation appears to overlap the scrollable content. The lower pizza restaurant card is cut off behind the navigation bar instead of ending above it.",
+        "suggestion": "Add bottom padding or safe-area spacing to the scrollable content equal to the bottom nav height so cards are not hidden behind it."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Several horizontal carousel items are partially cut off at the right edge, including the category chip after “Healthy” and the third restaurant card in “Fastest near you.” This may be intentional, but it looks abrupt and unfinished in the screenshot.",
+        "suggestion": "Use carousel snapping, add right-side padding, or show a cleaner partial-card preview so the clipping feels intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The restaurant name appears as “Tokumaru Ramei,” which looks like a typo or truncation of “Tokumaru Ramen.”",
+        "suggestion": "Verify the restaurant name and ensure text is not accidentally clipped or misspelled."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 751,
+    "reasoningTokens": 488,
+    "estimatedCost": 0.031585,
+    "durationSeconds": 14.664405708000006
+  }
+}

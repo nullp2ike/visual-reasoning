@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_16",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:53:03.743Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-rendered, but there are a few visual/logical inconsistencies: the active 'Pizza' filter doesn't match the displayed content, and elements on the right edge appear awkwardly clipped.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The 'Pizza' category filter is selected (highlighted dark), but the results shown are unrelated to pizza — 'Green Bowl Poké', 'Smash Bros Burgers', and 'Tokumaru Ramen Bar' (Ramen) all appear in the lists. Only one pizza item is partially visible.",
+        "suggestion": "Ensure the selected filter actually filters the 'Fastest near you' and 'Popular right now' sections, or visually deselect the chip if filtering is not applied."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in 'Fastest near you' is clipped at the screen edge with its title truncated ('Trattoria Piccol...') without an ellipsis, making it look cut off rather than intentionally scrollable.",
+        "suggestion": "Add a visible truncation ellipsis or adjust card peek width so partially visible cards clearly indicate horizontal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category chip after 'Healthy' is cut off at the right edge showing only a small sliver, which looks broken rather than like a scroll affordance.",
+        "suggestion": "Adjust chip spacing/peek amount so the next chip is partially but recognizably visible, or add a fade gradient to indicate horizontal overflow."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Delivery fees are inconsistent across the page: the ramen bar shows '€0 delivery' while the promo banner advertises free deliveries via code, which could confuse users about which deliveries are actually free.",
+        "suggestion": "Clarify whether the €0 delivery is a standing offer or tied to the promo code, e.g., with a small label like 'Promo' on the badge."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 820,
+    "estimatedCost": 0.06074,
+    "durationSeconds": 19.026971791000005
+  }
+}

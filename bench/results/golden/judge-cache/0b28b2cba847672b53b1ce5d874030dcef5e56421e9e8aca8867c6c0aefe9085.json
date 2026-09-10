@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel, the 'Smash Bros Burgers' card is vertically offset compared to the adjacent 'Green Bowl Poké' and 'Trattoria Piccol...' cards — its image, title, and delivery price sit noticeably lower, breaking the row's baseline alignment.",
+    "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' section is hard-clipped by the screen edge with no ellipsis or fade, making the text appear cut off/broken rather than intentionally scrollable.",
+    "The last category filter chip (after 'Healthy') is cut off at the right edge showing only a tiny sliver, which can look like a rendering glitch rather than a scroll affordance.",
+    "The second 'Popular right now' card (pizza, −20%) is abruptly cut off by the bottom navigation bar, with its title and details hidden, which at first glance looks like missing content."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the middle carousel card being vertically offset from the adjacent cards."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

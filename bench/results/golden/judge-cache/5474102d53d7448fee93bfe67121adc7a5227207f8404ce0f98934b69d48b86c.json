@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Promo banner text is unreadable, white text on a pale mint background"],
+  "reportedIssues": [
+    "The promo banner text ('3 free deliveries for you' and 'Use code TALLINN3 at checkout · min. order €10') is white/very light on a pale mint-green background, making it barely readable and failing WCAG contrast requirements.",
+    "A category filter chip after 'Healthy' is clipped almost entirely off the right edge, appearing as a sliver of an empty pill with no visible label.",
+    "In the 'Fastest near you' carousel, the third restaurant name is cut off mid-word ('Trattoria Piccol...') without an ellipsis, looking abruptly clipped.",
+    "The '3 free deliveries' banner CTA area and text alignment feel unbalanced because the low-contrast text makes the 'Order now' button appear to float in an empty green block."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0, 3],
+        "reasoning": "cosine 0.81 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "Section heading displays the untranslated key 'home_feed.popular_title' instead of a human-readable title.",
+    "The third restaurant name in 'Fastest near you' ('Trattoria Piccol...') is truncated by the card edge.",
+    "The bottom restaurant promo card is cut off by the tab bar, hiding most of the listing.",
+    "Category chips on the right are clipped, implying more options without a clear scroll affordance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.92 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

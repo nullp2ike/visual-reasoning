@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_05",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:27:26.182Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed. The main visual defect is the promotional banner, where white text sits on a very light green background, making the headline and code instructions nearly unreadable. Minor contrast concerns also apply to some secondary text.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "accessibility",
+        "description": "The promo banner text ('3 free deliveries for you' and 'Use code TALLINN3 at checkout · min. order €10') is white on a pale mint-green background, resulting in extremely low contrast that makes the offer nearly illegible.",
+        "suggestion": "Use a dark text color (e.g., dark green or near-black) on the light banner, or darken the banner background so white text meets WCAG AA contrast ratio (4.5:1)."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Order now' button inside the promo banner uses green text on white, which is fine, but it visually clashes with the low-contrast banner text above it, making the banner hierarchy feel broken/washed out.",
+        "suggestion": "Once banner text contrast is fixed, ensure the button styling remains consistent with the corrected banner color scheme."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Light gray secondary text (e.g., '€0.90 delivery', '25–35 min · €0 delivery · Ramen') is fairly low contrast against the white background.",
+        "suggestion": "Darken the secondary text color slightly to improve readability while keeping the visual hierarchy."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 627,
+    "estimatedCost": 0.05222,
+    "durationSeconds": 74.96809308399999
+  }
+}

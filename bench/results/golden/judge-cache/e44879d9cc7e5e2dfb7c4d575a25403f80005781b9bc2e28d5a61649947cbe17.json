@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The second card under Popular right now (pizza image with -20% badge) is cut off at the bottom by the bottom tab bar. Its restaurant name, delivery time, and rating are not visible.",
+    "Third card in Fastest near you shows truncated name 'Trattoria Piccol' with text clipped mid-word at the screen edge.",
+    "Category filter row on the right edge shows a partially cut-off pill with no clear scroll affordance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.65 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

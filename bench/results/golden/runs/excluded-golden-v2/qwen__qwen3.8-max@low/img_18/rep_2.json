@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:17:07.865Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed with clear hierarchy, good contrast, and consistent spacing. One minor cosmetic issue was found: the delivery-time badge on the rightmost partially-visible carousel card ('Trattoria Piccol...') is clipped by the screen edge, which is slightly more intrusive than the expected title clipping because the badge is an overlay element. All other elements (header, search bar, category chips, promo banner, section cards, bottom navigation) render correctly. The partially visible carousel item and the card cut off at the bottom viewport edge are treated as intended features and not reported.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "On the 'Fastest near you' carousel, the rightmost card's '20–30 min' delivery-time badge is cut off by the right screen edge. While partial visibility of the last carousel item is expected, the badge overlay being clipped looks slightly more broken than a clipped text title.",
+        "suggestion": "Add right-edge padding or a fade/peek indicator so overlay badges on the last visible card are either fully shown or clearly signaled as scrollable content, avoiding a hard clip of the badge pill."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 971,
+    "reasoningTokens": 689,
+    "estimatedCost": 0.009414,
+    "reportedCost": 0.009414,
+    "durationSeconds": 50.276956083
+  }
+}

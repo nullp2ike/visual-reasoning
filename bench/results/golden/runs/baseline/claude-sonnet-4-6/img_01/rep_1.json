@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:02:10.254Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: one major content/localization bug and one minor truncation issue.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section title 'home_feed.popular_title' is displaying a raw localization key instead of the actual translated text. This indicates a missing or broken i18n/localization string.",
+        "suggestion": "Ensure the localization key 'home_feed.popular_title' has a corresponding translation value in all supported languages and that the localization system is correctly loading the strings at runtime."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' section is being truncated and cut off at the edge of the screen, making it unreadable.",
+        "suggestion": "Add ellipsis text overflow handling or adjust the card width/text wrapping so the full restaurant name is visible or clearly truncated with '...' to indicate more text exists."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 270,
+    "estimatedCost": 0.009524999999999999,
+    "durationSeconds": 7.517179457999998
+  }
+}

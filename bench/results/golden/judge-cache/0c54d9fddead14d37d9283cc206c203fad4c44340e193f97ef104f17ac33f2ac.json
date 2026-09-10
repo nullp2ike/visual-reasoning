@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "In the “Fastest near you” carousel, the third card is cut off at the right edge and the restaurant name is truncated mid-word as “Trattoria Piccol…”, making the merchant unidentifiable without scrolling.",
+    "The category chip row shows “Healthy” near the right edge with only a tiny fragment of the next filter visible, which looks like accidental overflow rather than an intentional scroll hint.",
+    "The second “Popular right now” card is sliced by the bottom of the viewport above the tab bar, showing only the top of the pizza image with no title or metadata.",
+    "Secondary metadata such as delivery fees and time/category text uses small gray type that may be hard to read for low-vision users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "No reported issue describes a filtering/content problem where Pizza category selection fails to filter the feed; all reported issues concern layout, truncation, and overflow problems."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

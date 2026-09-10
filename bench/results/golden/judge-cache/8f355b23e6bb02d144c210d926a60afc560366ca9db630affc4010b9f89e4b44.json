@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The 'Smash Bros Burgers' restaurant card displays '€NaN delivery' under the name. 'NaN' (Not a Number) is a raw programming value leaking into the UI, meaning the delivery fee failed to load or parse.",
+    "The third card in the 'Fastest near you' horizontal row ('Trattoria Piccol...') is cut off at the right screen edge with its title truncated mid-word and no visible scroll affordance or peek padding.",
+    "The notification bell icon in the top-right has a small red indicator dot but no visible label or badge count, and icon-only controls rely on shape alone."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the delivery fee displaying €NaN on a restaurant card."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

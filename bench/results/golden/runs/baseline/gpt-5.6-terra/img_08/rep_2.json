@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_08",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:34:22.763Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well structured, but horizontal carousels are visibly clipped at the right edge, making restaurant content look truncated and reducing readability.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third card in the “Fastest near you” row is cut off at the right screen edge. Its restaurant name (“Trattoria Piccol…”) and delivery-price text are visibly truncated, with no clear affordance that the row can be horizontally scrolled.",
+        "suggestion": "Use consistent carousel gutters and show a clearer partial-next-card treatment, add a scroll indicator, or constrain cards so their key text remains fully visible."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category-chip row ends with a partially visible chip on the right, which appears abruptly clipped and can look like unintended horizontal overflow.",
+        "suggestion": "Add right-side padding and a deliberate carousel fade/peek treatment, or ensure the final visible chip is fully displayed."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second restaurant card in “Popular right now” is largely hidden behind the fixed bottom navigation, leaving only the top of the image visible and making the content look cut off.",
+        "suggestion": "Add enough bottom content padding or safe-area spacing so the final visible card can scroll fully above the bottom navigation."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 385,
+    "reasoningTokens": 102,
+    "estimatedCost": 0.008242,
+    "durationSeconds": 6.060464334000018
+  }
+}

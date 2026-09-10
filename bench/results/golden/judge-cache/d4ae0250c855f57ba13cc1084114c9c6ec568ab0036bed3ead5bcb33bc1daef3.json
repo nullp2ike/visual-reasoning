@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The category filter row is clipped on the right edge, with the next chip after “Healthy” partially cut off and no clear fade/arrow affordance.",
+    "The “Fastest near you” carousel truncates the third restaurant card and name (“Trattoria Piccol…”) at the viewport edge, which can look like broken content rather than intentional scrolling.",
+    "Favorite heart icons are placed over food imagery with only a dark translucent backdrop, which may have inconsistent contrast depending on the photo."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.56 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

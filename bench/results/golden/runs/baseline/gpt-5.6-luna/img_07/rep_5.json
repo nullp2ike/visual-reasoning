@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-luna",
+  "provider": "openai",
+  "imageId": "img_07",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:37:19.994Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished and visually consistent. No critical issues are apparent, though a few carousel and overlay behaviors may feel visually incomplete or obstructive.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row is cut off on the right, leaving a partially visible next chip without an obvious scroll affordance.",
+        "suggestion": "Add a subtle fade, scrollbar, or other cue indicating the row is horizontally scrollable, while preserving the peek of the next item if intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third 'Fastest near you' restaurant card is visibly clipped at the right edge, making its name and image incomplete.",
+        "suggestion": "Confirm this is an intentional horizontal carousel and provide a clear scroll cue; otherwise constrain the cards to fit the viewport."
+      },
+      {
+        "priority": "minor",
+        "category": "functionality",
+        "description": "A loading spinner is displayed prominently over the Tokumaru Ramen Bar image, which may look like a stuck or incomplete card if it persists.",
+        "suggestion": "Remove the spinner once content loads, or use a less prominent loading placeholder/skeleton until the card is ready."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlaps the lower restaurant card image at the bottom of the viewport.",
+        "suggestion": "Add sufficient bottom content padding so scrolling can reveal the full card above the navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 495,
+    "reasoningTokens": 199,
+    "estimatedCost": 0.0009562,
+    "durationSeconds": 6.419194166000001
+  }
+}

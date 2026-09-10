@@ -1,0 +1,24 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Restaurant cover image failed to load"],
+  "reportedIssues": [
+    "The hero image for the 'Tokumaru Ramen Bar' card in 'Popular right now' failed to load and renders as an empty grey box with a broken-image glyph, unlike all other cards which show artwork.",
+    "In the 'Fastest near you' horizontal carousel, the third card ('Trattoria Piccol…') is hard-clipped at the screen edge and its name and delivery price are cut off with no ellipsis, making it look broken rather than scrollable.",
+    "The category filter chip row is clipped mid-chip after 'Healthy', showing only a sliver of the next chip, giving no clear affordance that the row scrolls.",
+    "The pizza card at the bottom is cut off by the bottom navigation bar; its restaurant name, rating and delivery info are not visible, and the content appears to slide under the nav rather than stopping above it.",
+    "Favourite (heart) button styling is inconsistent between cards: the ramen card uses a light grey circle on the grey placeholder (low contrast, nearly invisible) while the pizza card uses a dark circle.",
+    "Secondary metadata text such as '€0.90 delivery', '25–35 min • €0 delivery • Ramen' and the 'DELIVER TO' label uses light grey on white, which may fall below the 4.5:1 contrast requirement."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The report directly identifies the Tokumaru Ramen Bar hero/cover image as failed to load and replaced by an empty placeholder."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

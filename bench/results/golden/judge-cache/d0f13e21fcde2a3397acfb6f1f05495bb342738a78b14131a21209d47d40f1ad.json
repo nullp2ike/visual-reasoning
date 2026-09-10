@@ -1,0 +1,20 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The 'Pizza' category chip is selected, but the feed displays Poké, Burgers, and Ramen.",
+    "Delivery fee information is duplicated on the card badge and metadata line."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The reported issue describes Pizza selected while the feed shows other cuisines, matching the filtering defect."
+      }
+    ],
+    "extraReportedIndexes": [1]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Restaurant cover image failed to load"],
+  "reportedIssues": [
+    "The first card in 'Popular right now' (Tokumaru Ramen Bar) shows a grey broken-image placeholder instead of a restaurant photo, while the card below renders a proper image.",
+    "In 'Fastest near you' the third card is cut off mid-title ('Trattoria Piccol') with no ellipsis, so it reads as clipped text rather than an intentional peeking carousel item.",
+    "The category chip row is clipped at the right edge, showing a sliver of the next chip with no visible affordance that the row scrolls.",
+    "Favourite (heart) buttons are inconsistently styled: the top card uses a light grey semi-transparent circle with white heart (low contrast against the grey placeholder), the card below uses a dark circle.",
+    "The bottom pizza card is abruptly clipped by the bottom navigation bar with no visible bottom padding, making the list look cut off rather than scrollable.",
+    "The 'Popular right now' cards mix info inside the image (badges like '€0 delivery' and '−20%') with no visible text alternative, and the broken image gives no context for screen readers."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 describes a restaurant card showing a grey broken-image placeholder instead of the restaurant photo, which is the same cover image load failure."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

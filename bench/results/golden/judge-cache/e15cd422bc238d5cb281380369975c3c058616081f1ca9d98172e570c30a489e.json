@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The rightmost restaurant card in 'Fastest near you' is clipped so the name 'Trattoria Piccol' is truncated and the image is cut off at the screen edge.",
+    "The last item in the 'Popular right now' list is cut off by the bottom navigation bar, so the restaurant name, rating, and details are not visible.",
+    "The category chip row is clipped on the right; 'Healthy' is partially cut off with no clear indication of more categories.",
+    "The green promo banner uses very light/white body copy on a mid-green background, which may be hard to read."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.60 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

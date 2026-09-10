@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "Third card in 'Fastest near you' shows truncated name 'Trattoria Piccol' cut off at the screen edge without ellipsis.",
+    "'Smash Bros Burgers' wraps to two lines pushing '\u00182.40 delivery' lower than neighboring cards, causing vertical misalignment of titles and delivery fees.",
+    "Time badge on middle card '20-30 min' sits lower touching the bottom edge of the image while other badges are inset with padding.",
+    "Second card in 'Popular right now' pizza image with '-20%' is clipped behind the bottom tab bar with no name, rating or metadata visible."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.66 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

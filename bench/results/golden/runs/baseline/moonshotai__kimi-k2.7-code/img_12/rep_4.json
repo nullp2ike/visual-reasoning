@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:03:24.764Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page has two visible content/layout glitches: an awkward redundant 'delivery' label in a popular restaurant's metadata and a clipped restaurant name in the fastest carousel.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The 'Popular right now' card for Tokumaru Ramen Bar displays '25-35 min delivery · Ramen', where the word 'delivery' appears redundant and breaks the expected 'time · cuisine' format.",
+        "suggestion": "Remove the extra 'delivery' text so the line reads '25-35 min · Ramen' and keep delivery-fee information in its own badge or line."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in the 'Fastest near you' carousel shows the restaurant name 'Trattoria Picco' clipped at the right edge without an ellipsis, suggesting the text overflows its container.",
+        "suggestion": "Apply text-overflow ellipsis, increase the card width, or allow the title to wrap to a second line to avoid abrupt clipping."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 2938,
+    "reasoningTokens": 2683,
+    "estimatedCost": 0.012662419999999999,
+    "reportedCost": 0.02426628,
+    "durationSeconds": 18.376216040999978
+  }
+}

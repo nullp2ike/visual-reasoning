@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:35:13.747Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed. The main visual defect is duplicated restaurant cards in the 'Fastest near you' carousel, where the same 'Green Bowl Poké' entry appears twice consecutively with identical imagery, delivery time, and fee. Other elements (partially visible carousel items and bottom-cut card) are treated as intended features.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Fastest near you' carousel shows the exact same restaurant ('Green Bowl Poké', 15–25 min, €0.90 delivery) twice in a row with identical images, suggesting a data/deduplication error rather than two distinct venues.",
+        "suggestion": "Deduplicate the restaurant list or ensure each card represents a distinct venue; if two branches exist, differentiate them with branch names or distinct imagery."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The two identical 'Green Bowl Poké' cards use the same placeholder-style illustration on a plain grey background, which looks unfinished compared to the richer photography used in the 'Popular right now' section.",
+        "suggestion": "Use real restaurant/food photography or distinct branded illustrations for carousel cards to match the visual quality of the rest of the page."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 1096,
+    "reasoningTokens": 776,
+    "estimatedCost": 0.010164,
+    "reportedCost": 0.009044,
+    "durationSeconds": 56.896352041000036
+  }
+}

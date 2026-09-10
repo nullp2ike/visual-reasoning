@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "The rightmost restaurant card in 'Fastest near you' section (Trattoria Piccol) is horizontally clipped and not fully visible. The name also appears truncated.",
+    "A restaurant card below the Tokumaru Ramen Bar in 'Popular right now' section is vertically cut off, showing only a partial pizza image with a discount label visible at the bottom of the screen."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.65 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

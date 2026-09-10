@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_15",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T10:32:51.025Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 major issue: a misplaced dark horizontal bar appears inside the bottom navigation tab bar, making the navigation look visually broken.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "A thick dark grey horizontal bar is rendered inside the bottom navigation bar, positioned between the Search and Orders/Receipt tab icons. It looks like a misplaced active-state indicator, divider, or system gesture bar overlapping the tab bar, which disrupts the visual layout and may confuse users about which tab is selected.",
+        "suggestion": "Remove or correctly reposition the bar so it only indicates the active tab (e.g., a small pill directly under the selected icon) or, if it is the system home gesture bar, render it at the very bottom edge with proper safe-area insets so it does not overlap the tab bar icons."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 2416,
+    "reasoningTokens": 2217,
+    "estimatedCost": 0.01077134,
+    "reportedCost": 0.01006053,
+    "durationSeconds": 63.665059792000804
+  }
+}

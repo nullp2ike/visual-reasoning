@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:17.558Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen has several visual layout problems: truncated restaurant names, a cut-off category chip, duplicate nearby cards, and overlapping UI on the promo banner.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' is clipped at the right edge, cutting off the image, delivery time, and name ('Smash Bros Bu').",
+        "suggestion": "Add consistent card width, horizontal padding, and snap/peek so the last visible card is fully readable or clearly indicates more content."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The first two 'Fastest near you' cards appear identical (same photo, name, time, and delivery fee), which looks like a data or rendering bug.",
+        "suggestion": "Ensure each card maps to a unique restaurant and add a fallback if the feed returns duplicates."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chips row is cut off on the right, showing only a sliver of the next chip with no fade or chevron.",
+        "suggestion": "Add end padding or a fade/scroll hint so users can tell the row is horizontally scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The green promo banner's decorative circle overlaps the 'Order now' button and right edge, making the CTA feel cramped.",
+        "suggestion": "Give the button more right padding or clip/reposition the background graphic so it does not collide with interactive elements."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last popular restaurant card is cropped by the bottom tab bar, hiding most of the restaurant details.",
+        "suggestion": "Add bottom content inset equal to the tab bar height so cards are not hidden behind navigation."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 462,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.006536,
+    "reportedCost": 0.003848,
+    "durationSeconds": 9.973903542000015
+  }
+}

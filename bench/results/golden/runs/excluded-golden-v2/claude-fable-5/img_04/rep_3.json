@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_04",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:26:13.893Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well laid out. The main visual defect is a nonsensical discount badge showing '–0%' on the pizza restaurant card, which indicates broken promotional data or a formatting bug. A couple of minor consistency issues were also noted.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza restaurant card in the 'Popular right now' section displays a '–0%' discount badge. A zero-percent discount is meaningless and suggests a data or formatting bug (e.g., a missing discount value defaulting to 0).",
+        "suggestion": "Hide the discount badge when the discount value is 0 or missing, and validate promo data before rendering the badge."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "In the 'Popular right now' section, Tokumaru Ramen Bar shows a rating (4.8, 500+) while the pizza card below shows no rating, making card metadata inconsistent.",
+        "suggestion": "Ensure all restaurant cards display consistent metadata (rating, delivery info), or show a placeholder such as 'New' when a rating is unavailable."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Fastest near you' card images have inconsistent visual treatments: the Green Bowl Poké image is on a light gray background while the other cards use dark, moody photo backgrounds, creating uneven visual weight across the row.",
+        "suggestion": "Standardize image styling (background treatment, brightness, cropping) for cards in the same carousel to maintain visual consistency."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 624,
+    "estimatedCost": 0.052070000000000005,
+    "durationSeconds": 72.24954933299999
+  }
+}

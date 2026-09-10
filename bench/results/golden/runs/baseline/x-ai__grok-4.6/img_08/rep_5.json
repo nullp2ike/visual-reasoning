@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_08",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T11:32:03.624Z",
+  "status": "ok",
+  "result": {
+    "summary": "The food delivery home screen has several layout and content issues: a typo in search, truncated category and restaurant names, and overlapping/clipped UI at the bottom.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Search placeholder is misspelled as 'Restarants' instead of 'Restaurants'.",
+        "suggestion": "Correct the placeholder to 'Restaurants, dishes, groceries'."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The last category chip ('Healthy') is cut off at the right edge, so the category row looks incomplete.",
+        "suggestion": "Add peek/overflow affordance or padding so the last visible chip isn't clipped, and ensure horizontal scroll works clearly."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated in the Fastest near you row.",
+        "suggestion": "Allow wrapping, smaller type, or a two-line title so full names remain readable."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom pizza card is cut off by the tab bar, hiding the restaurant name and details.",
+        "suggestion": "Add bottom padding/safe-area inset so list content isn't obscured by the tab bar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The notification badge sits slightly outside the bell button circle.",
+        "suggestion": "Inset the badge so it stays fully within the icon button bounds."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 312,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1792,
+    "estimatedCost": 0.005636,
+    "reportedCost": 0.002948,
+    "durationSeconds": 6.5155320420000065
+  }
+}

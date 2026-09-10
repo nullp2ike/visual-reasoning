@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_11",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:01:11.008Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found several layout and content issues, mainly involving cut-off elements at the screen edge and category filter row.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Trattoria Piccolo' restaurant card and its details are cut off at the right edge of the screen in the 'Fastest near you' section.",
+        "suggestion": "Ensure horizontal scroll views clip properly or add partial-card indication so users know more content is scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row (All, Pizza, Sushi, Burgers, Healthy) is cut off on the right edge, hiding additional categories.",
+        "suggestion": "Add a fade/gradient edge or partial visible next item to indicate scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The '-100%' discount badge on the pizza promo at the bottom is ambiguous and could confuse users (100% off may look like a display error).",
+        "suggestion": "Clarify the promotion text, e.g. 'Free Delivery' or '100% off first order' with more context."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The heart/favorite icon on the ramen bar image has a white outline while the pizza promo below has a dark circular background, creating inconsistent icon styling across cards.",
+        "suggestion": "Standardize the favorite icon style (background, color, opacity) across all restaurant cards."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom pizza promotional card is abruptly cropped at the bottom of the screen without clear indication of scrollability.",
+        "suggestion": "Add a visual cue (e.g., partial fade) to indicate more content is below."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 559,
+    "estimatedCost": 0.014307,
+    "durationSeconds": 9.139319958999986
+  }
+}

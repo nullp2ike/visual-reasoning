@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The third restaurant card in 'Fastest near you' clips the name 'Trattoria Piccol' at the right edge of the screen.",
+    "The last category chip is only partially visible on the right, so users cannot tell what the next filter is.",
+    "The second popular restaurant card is cut off by the bottom tab bar, hiding most of the restaurant name and details.",
+    "The green promo banner sits very close to the search field with almost no gap, making the header feel cramped.",
+    "The pizza card shows a '-100%' badge, which looks like a broken or placeholder discount rather than a real offer."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [4],
+        "reasoning": "cosine 0.81 >= 0.69 threshold (reported #4)"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

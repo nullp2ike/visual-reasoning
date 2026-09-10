@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_12",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:35:02.963Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely intact, but the restaurant metadata in the “Popular right now” section is visibly broken due to overlapping text.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Under “Tokumaru Ramen Bar,” the delivery-time and cuisine/delivery metadata are rendered on top of each other. The line appears as overlapping text such as “25–35 min” and “Delivery • Ramen,” making it difficult to read.",
+        "suggestion": "Fix the metadata row’s layout constraints so each label has sufficient horizontal space. Use a single flex row with truncation/wrapping rules, or place the details on separate lines when space is limited."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal restaurant carousel and category row show partially clipped items at the right edge. While this can indicate scrollable content, there is no visible affordance that the rows can be swiped.",
+        "suggestion": "Add a subtle scroll cue, such as a fading edge, partial next-card spacing, or an onboarding hint, to make horizontal scrolling clearer."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 441,
+    "reasoningTokens": 203,
+    "estimatedCost": 0.008914,
+    "durationSeconds": 7.369226875000051
+  }
+}

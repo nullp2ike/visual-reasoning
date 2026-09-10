@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.6",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-14T12:34:37.798Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen is mostly coherent, but one restaurant card in the Fastest section has its name clipped by the viewport, and a loading spinner sits on top of a Popular card without a clear loading state.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in Fastest near you (Trattoria Piccol…) is cut off on the right so the restaurant name is incomplete, not just a peek of the next carousel item.",
+        "suggestion": "Give horizontal cards enough inset or wrapping so titles stay fully readable, or show an ellipsis only after a complete last word."
+      },
+      {
+        "priority": "minor",
+        "category": "functionality",
+        "description": "A circular loading spinner overlays the Tokumaru Ramen Bar image while the rest of that card (title, rating, delivery info) is already fully rendered, which looks like a stuck or misplaced loader.",
+        "suggestion": "Show a skeleton or spinner for the whole card until image and metadata are ready, or hide the spinner once the card content is visible."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1962,
+    "outputTokens": 225,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1920,
+    "estimatedCost": 0.005273999999999999,
+    "reportedCost": 0.002394,
+    "durationSeconds": 12.458563666000002
+  }
+}

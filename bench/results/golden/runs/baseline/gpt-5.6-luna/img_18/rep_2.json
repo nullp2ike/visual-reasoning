@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-luna",
+  "provider": "openai",
+  "imageId": "img_18",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:35:58.507Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished and consistent. The main visible issue is that the fixed bottom navigation overlays the next restaurant card, while horizontally scrolling carousels intentionally extend beyond the viewport.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The fixed bottom navigation bar covers the lower portion of the second restaurant card, leaving its image and content partially inaccessible at the current scroll position.",
+        "suggestion": "Add sufficient bottom padding to the scrollable page content so cards can be scrolled fully above the navigation bar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chips and restaurant carousel cards are clipped at the right edge, with only part of the next item visible.",
+        "suggestion": "If horizontal scrolling is intended, ensure the partial next item is clearly discoverable and provide suitable scroll affordance; otherwise constrain the row to fit the viewport."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 560,
+    "reasoningTokens": 368,
+    "estimatedCost": 0.0010341999999999999,
+    "durationSeconds": 6.7834222089999825
+  }
+}

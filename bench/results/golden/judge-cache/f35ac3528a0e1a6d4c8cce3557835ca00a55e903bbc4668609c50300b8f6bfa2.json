@@ -1,0 +1,19 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers displays '€NaN delivery' instead of a valid delivery price. 'NaN' (Not a Number) is a JavaScript rendering error that has leaked into the UI, indicating a failed or missing data value for the delivery fee."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Both describe the delivery fee displaying €NaN due to a missing or failed data value."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

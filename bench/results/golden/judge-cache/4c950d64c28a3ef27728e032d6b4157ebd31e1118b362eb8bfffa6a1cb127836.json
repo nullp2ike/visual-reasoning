@@ -1,0 +1,25 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you row, so the full name is not readable.",
+    "Category filter chips overflow the screen edge on the right (partial 'Healthy' and a cut-off chip), with no clear indication of horizontal scroll.",
+    "The second Popular right now card (pizza) shows the food image and -20% badge but has no restaurant name, delivery info, or rating below it—content appears missing or cut off by the bottom nav.",
+    "Fastest near you cards show only partial third item and tight spacing, making the horizontal list feel cramped and unfinished.",
+    "Promo banner and some labels use dense text; delivery fees and times are clear but the clipped names reduce scannability of the list."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.67 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 4]
+  }
+}

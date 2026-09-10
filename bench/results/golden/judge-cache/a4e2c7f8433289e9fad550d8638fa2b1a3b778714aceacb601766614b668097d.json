@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "Search placeholder is misspelled as 'Restarants' instead of 'Restaurants'.",
+    "The last category chip ('Healthy') is cut off at the right edge, so the category row looks incomplete.",
+    "Restaurant name 'Trattoria Piccol' is truncated in the Fastest near you row.",
+    "The bottom pizza card is cut off by the tab bar, hiding the restaurant name and details.",
+    "The notification badge sits slightly outside the bell button circle."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.87 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

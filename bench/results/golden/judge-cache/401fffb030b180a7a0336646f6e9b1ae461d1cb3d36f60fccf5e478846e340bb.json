@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The third restaurant card 'Trattoria Piccol...' in the 'Fastest near you' section is cropped off at the right edge of the screen, with its name truncated",
+    "The category filter row (All, Pizza, Sushi, Burgers, Healthy) appears cut off at the right edge, suggesting more categories exist but there's no clear scroll indicator",
+    "The heart/favorite icon on the Tokumaru Ramen Bar card is white outline on a busy food image background, making it harder to see, while the second promo card below uses a solid dark circle background for the same icon, creating inconsistency",
+    "Bottom promotional pizza card is cut off at the bottom of the visible screen with no visible text/label besides the '-20%' badge"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "No reported issue describes the Pizza category being selected while the feed still displays all cuisines; the reported issues focus on layout/cropping and styling problems, not filtering functionality."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

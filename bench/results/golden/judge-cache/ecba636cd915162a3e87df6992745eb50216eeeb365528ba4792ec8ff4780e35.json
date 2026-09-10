@@ -1,0 +1,20 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Orders icon is missing from the bottom nav bar"],
+  "reportedIssues": [
+    "The second restaurant card in the 'Popular right now' section (pizza with -20% badge) is partially cut off at the bottom by the fixed navigation bar, showing only the image without the restaurant name, rating, or delivery details.",
+    "The 'Orders' tab in the bottom navigation bar appears to be missing its icon, while Home, Search, and Profile all display icons above their labels."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "cosine 0.89 >= 0.69 threshold (reported #1)"
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

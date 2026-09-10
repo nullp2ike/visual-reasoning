@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "The third restaurant name in 'Fastest near you' is truncated to 'Trattoria Piccol' with no ellipsis or full-name handling, so the brand is unreadable.",
+    "The horizontal category chips row is clipped on the right; only a sliver of the next pill is visible with no clear affordance that more categories exist.",
+    "The bottom promotional/restaurant card (pizza) is heavily cropped by the bottom navigation and screen edge, hiding most of the image and any title/metadata below it.",
+    "Delivery time badges on the second and third 'Fastest near you' cards sit over dark imagery and use the same white pill style, but the first card's badge is clearer; overall badge contrast and placement feel inconsistent across cards.",
+    "Search placeholder text appears slightly low-contrast gray on the light search field, which can reduce scannability."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.64 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3, 4]
+  }
+}

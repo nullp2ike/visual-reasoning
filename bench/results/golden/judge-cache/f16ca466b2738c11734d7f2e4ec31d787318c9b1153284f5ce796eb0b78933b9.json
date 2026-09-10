@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The category filter chips row ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') is cut off at the right edge with a partially visible chip, giving no clear visual cue that the row is horizontally scrollable.",
+    "In the 'Fastest near you' carousel, the third card ('Trattoria Piccol...') is clipped at the right edge and its name is truncated mid-word without an ellipsis, which looks broken.",
+    "The '-100%' discount badge on the bottom pizza card is ambiguous and could be confusing (a 100% discount implies the item is free, which may be a data/promo error)."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Reported issue 2 directly describes the −100% discount badge display and its problematic nature."
+      }
+    ],
+    "extraReportedIndexes": [0, 1]
+  }
+}

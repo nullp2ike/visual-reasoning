@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Promo banner text is unreadable, white text on a pale mint background"],
+  "reportedIssues": [
+    "The last restaurant card in 'Fastest near you' (Trattoria Piccol…) is clipped on the right, cutting off both the image and the restaurant name.",
+    "The second 'Popular right now' card is cut off at the bottom by the tab bar, so the restaurant name, delivery info, and rating are not visible.",
+    "The cuisine category chips overflow the right edge (Healthy is clipped; another chip is only a sliver), so users cannot see all filters.",
+    "Restaurant name 'Trattoria Piccol' is truncated without an ellipsis or wrapping."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.50 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

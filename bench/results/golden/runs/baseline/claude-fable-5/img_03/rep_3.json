@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_03",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:24:48.248Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-rendered, but there is one clear visual defect: the hero image for 'Tokumaru Ramen Bar' in the 'Popular right now' section failed to load, showing a gray broken-image placeholder. A few smaller edge-truncation issues are also visible.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The restaurant image for 'Tokumaru Ramen Bar' in the 'Popular right now' section failed to load, displaying a gray broken-image placeholder icon instead of the actual photo.",
+        "suggestion": "Fix the image source URL or CDN reference, and implement a graceful fallback (e.g., branded placeholder or cuisine-type illustration) with retry logic for failed image loads."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in 'Fastest near you' is cut off at the right edge, truncating the restaurant name to 'Trattoria Piccol' with no visual ellipsis, which reads as broken text.",
+        "suggestion": "If this is a horizontal carousel, keep the peek but ensure the title within the card is truncated with an ellipsis (e.g., 'Trattoria Piccol…') or adjust card width/padding so the name isn't awkwardly clipped."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A sixth category chip after 'Healthy' is clipped at the right screen edge, showing only a thin sliver with no label.",
+        "suggestion": "Adjust chip spacing or scroll offset so partially visible chips show enough of their label to signal scrollability, or add a fade/gradient edge to indicate more content."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 705,
+    "estimatedCost": 0.054990000000000004,
+    "durationSeconds": 13.311814708999998
+  }
+}

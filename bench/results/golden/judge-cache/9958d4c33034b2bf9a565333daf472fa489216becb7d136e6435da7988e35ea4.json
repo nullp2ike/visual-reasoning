@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "The delivery-time text on the Tokumaru Ramen Bar card is visually corrupted, appearing as '25-35Drdelivery' instead of the expected '25-35 min delivery'. This makes the card's metadata unreadable and suggests a text-overlap or rendering bug.",
+    "The 'Trattoria Picco...' card in the 'Fastest near you' horizontal list is cut off on the right edge of the screen, showing only part of the card.",
+    "The pizza restaurant card in the 'Popular right now' section is cut off at the bottom of the screen, just above the bottom navigation bar."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The corrupted delivery-time text indicates it overlaps or merges with adjacent delivery-fee text."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

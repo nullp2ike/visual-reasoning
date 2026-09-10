@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_06",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:56:22.575Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly usable, but there are a few visual issues: the bottom Orders tab appears to be missing its icon, some horizontally scrolling content is clipped at the right edge, and favorite heart controls have weak contrast on dark food imagery.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The bottom navigation 'Orders' tab shows a label but no visible icon, making the tab bar look inconsistent and possibly broken.",
+        "suggestion": "Restore or render the Orders icon with the same size, alignment, and active/inactive styling as the other tabs."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Content in the horizontal sections is cut off at the right edge, including the 'Healthy' category chip and the 'Trattoria Piccol...' restaurant card.",
+        "suggestion": "This is expected for carousels, but add clearer scroll affordance, edge fade, or ensure at least one full card plus a peek of the next item is visible."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The heart/favorite icons on dark restaurant images are thin dark outlines with low contrast, making them hard to see.",
+        "suggestion": "Use a filled or higher-contrast heart icon with a subtle backdrop or white stroke so the control remains visible over any image."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The second 'Popular right now' card is heavily cropped at the bottom of the viewport, which can look like broken rendering even though it is likely just scroll position.",
+        "suggestion": "Increase bottom spacing above the tab bar or adjust card peek height so partially visible cards look intentionally scrollable rather than clipped."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 633,
+    "reasoningTokens": 277,
+    "estimatedCost": 0.015801,
+    "reportedCost": 0.0155418,
+    "durationSeconds": 24.578960499999987
+  }
+}

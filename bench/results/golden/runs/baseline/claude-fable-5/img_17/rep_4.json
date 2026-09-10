@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:53:12.586Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there are a few visual/functional inconsistencies: the bottom navigation highlights the wrong tab, a category chip is awkwardly clipped at the screen edge, and some content is truncated or cut off.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom navigation bar shows 'Profile' as the active (highlighted green) tab, but the screen displayed is clearly the Home feed (delivery address, search, promotions, restaurant lists). 'Home' should be the active tab.",
+        "suggestion": "Fix the active-tab state logic so the 'Home' icon and label are highlighted when the home feed is displayed."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A category filter chip at the far right of the chips row (after 'Healthy') is clipped, showing only an empty sliver of a pill with no visible label.",
+        "suggestion": "Adjust horizontal padding/peek amount so the partially visible chip shows at least part of its label, making it clear the row scrolls."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The restaurant name 'Trattoria Piccol...' in the 'Fastest near you' carousel is cut off at the screen edge without an ellipsis or visible truncation indicator.",
+        "suggestion": "Apply text truncation with an ellipsis within the card width, or ensure the card peeks in a way that makes truncation look intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second 'Popular right now' card (pizza with −20% badge) is abruptly cut off by the bottom navigation bar, hiding its name, rating, and delivery info.",
+        "suggestion": "Ensure sufficient bottom content padding/inset so scrolled content isn't obscured by the nav bar, or verify the list scrolls to reveal the full card."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The promotional banner subtext 'Use code TALLINN3 at checkout · min. order €10' is light text on a green background with relatively low contrast.",
+        "suggestion": "Increase the text opacity/weight or darken the banner background to meet WCAG AA contrast requirements."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 927,
+    "estimatedCost": 0.06609000000000001,
+    "durationSeconds": 18.127038042000013
+  }
+}

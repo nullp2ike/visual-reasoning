@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The pizza card in the 'Popular right now' section displays a '–0%' discount badge, which is meaningless — a 0% discount should not be advertised and looks like a data/rendering bug.",
+    "In the 'Fastest near you' carousel, the third restaurant name is cut off as 'Trattoria Piccol' with no ellipsis, making the truncation look accidental rather than intentional.",
+    "The rightmost category filter chip after 'Healthy' is clipped at the screen edge and shows no visible text, appearing as an empty pill.",
+    "The bottom pizza card is abruptly cut off by the bottom navigation bar without any fade or padding, which can look broken at this scroll position."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the exact same defect: a discount badge displaying '–0%' on a pizza card, identified as meaningless and a rendering bug."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

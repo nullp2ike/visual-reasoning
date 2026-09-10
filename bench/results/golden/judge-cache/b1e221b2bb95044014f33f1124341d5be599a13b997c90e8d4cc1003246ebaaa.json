@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers shows delivery fee as '€NaN delivery', indicating a null/undefined price was formatted as a number.",
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you carousel card.",
+    "The last category filter chip ('Healthy') is clipped at the right edge with no clear affordance that more categories exist."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes the delivery fee showing as '€NaN', matching the expected defect of a null/undefined price formatted incorrectly."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

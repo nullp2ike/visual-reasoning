@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_06",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:34:06.443Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished, but horizontally scrolling content is visibly clipped at the right edge and the bottom navigation overlaps the feed content.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The horizontal category row is cut off on the right: a partial extra category pill is visible with no comfortable end padding, making the carousel look clipped by the viewport.",
+        "suggestion": "Add consistent trailing padding to the horizontal list and ensure partially visible items are intentionally sized/positioned, or avoid showing a clipped pill."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Fastest near you' restaurant carousel is visibly truncated at the right edge. The third restaurant card and its title/details are cut off, with no right inset.",
+        "suggestion": "Apply horizontal carousel padding matching the left inset, and ensure card widths/gaps leave an intentional partial-card preview or fully fit the visible cards."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlays the scrolling restaurant feed; the next popular card is hidden beneath the navigation area instead of the content ending above it.",
+        "suggestion": "Add bottom content padding equal to the navigation bar height plus safe-area inset so all cards can scroll fully above the fixed navigation."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 264,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.00679,
+    "durationSeconds": 4.682919457999989
+  }
+}

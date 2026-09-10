@@ -1,0 +1,24 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "A circular loading spinner is still displayed in the center of the 'Tokumaru Ramen Bar' banner even though the image behind it has fully rendered, making the card look stuck/broken.",
+    "In the 'Fastest near you' carousel the third card is cut off at the right edge and its title is truncated mid-word ('Trattoria Piccol') with no ellipsis, so it reads as broken text rather than an intentional peek.",
+    "Restaurant hero images are very dark and blurry with strong bokeh, making the food barely identifiable and reducing contrast for the white overlay badges (e.g. '20–30 min', '€0 delivery').",
+    "The favourite (heart) buttons are styled inconsistently: the first card uses a white circular background with a dark outline heart, the second uses a dark/transparent circle with a white heart.",
+    "The second 'Popular right now' card is clipped by the bottom navigation bar with no visible name, rating or delivery info, so it looks unfinished rather than scrollable.",
+    "Icon-only controls (notification bell with red dot, heart favourite buttons) have no visible text label; contrast of the grey placeholder text in the search field and the '€0.90 delivery' subtitles is also low."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes a loading spinner remaining over an image after the content has fully rendered."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

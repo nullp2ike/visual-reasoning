@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee text overlaps the delivery time text"],
+  "reportedIssues": [
+    "In the 'Tokumaru Ramen Bar' card, the subtitle line shows overlapping/garbled text: '25–30 min' and '€0 delivery' are rendered on top of each other (appears as '25–30rdelivery'), making it unreadable.",
+    "The 'Fastest near you' horizontal carousel cuts off the third card ('Trattoria Piccol...') at the right edge with no visual affordance indicating more content is scrollable.",
+    "The notification bell icon in the top-right has a red dot badge but no visible label or count, and the icon button may lack an accessible name.",
+    "The category filter chips row ('All', 'Pizza', 'Sushi'...) is also cut off at the right edge with a partially visible chip, which can look unintentional."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the delivery fee and delivery time text overlapping in the same card."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

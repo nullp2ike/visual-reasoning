@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-terra",
+  "provider": "openai",
+  "imageId": "img_06",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:34:13.660Z",
+  "status": "ok",
+  "result": {
+    "summary": "The main visual defect is horizontal content overflow: the category row and the horizontal restaurant carousel are clipped at the right edge, making cards and labels appear cut off. The rest of the page is generally coherent, though the bottom content is naturally obscured by the fixed navigation bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The category chip row overflows the viewport on the right; an additional chip is visible only as a cut-off grey sliver after “Healthy.”",
+        "suggestion": "Use a clearly intentional horizontally scrollable container with appropriate end padding and clipping, or resize/wrap the chips so no partial chip is shown by default."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in “Fastest near you” is clipped by the right viewport edge, truncating the restaurant name (“Trattoria Picco...”), image, delivery-time pill, and delivery fee.",
+        "suggestion": "Implement the restaurant list as a deliberate horizontal carousel with consistent trailing padding and an affordance that indicates more items, or ensure cards fit within the viewport if horizontal scrolling is not intended."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The next “Popular right now” card is partially hidden behind the fixed bottom navigation area, leaving the content visually cut off at the fold.",
+        "suggestion": "Add sufficient bottom padding to the scrollable page content so cards can scroll fully above the bottom navigation."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 304,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.00727,
+    "durationSeconds": 5.3362044590000295
+  }
+}

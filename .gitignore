@@ -7,13 +7,16 @@ coverage/
 .DS_Store
 .history/
 
-# Benchmark datasets and results are local-only. Screenshots under test are
-# usually private product UI, and run records quote model output about them
-# verbatim, so neither belongs in a shared repository. Only the format
-# documentation is tracked; bring your own dataset (bench/datasets/README.md).
-bench/datasets/*
-!bench/datasets/README.md
-bench/results/
+# Benchmark datasets and results are tracked, so the seeded-defect ground truth
+# and the runs graded against it have a home outside one laptop. The `primary`
+# dataset is the exception: those screenshots are private product UI, and its
+# run records quote model output about them verbatim.
+bench/datasets/primary/
+bench/results/primary/
+
+# Presence-only visibility records, kept on disk but out of the tracked history:
+# the bench judges rendering quality now, and these runs are not comparable.
+bench/results/*/visibility/_archive-presence-only/
 
 # Video bug-hunting harness: recordings are private product footage and results
 # quote model output about them verbatim, so neither is tracked.

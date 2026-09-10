@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated with missing letters at the end of the card.",
+    "A green badge shows '-100%' on the pizza card, which looks like a broken or incorrect discount label.",
+    "The horizontal category filter row is clipped on the right (partial pill visible), suggesting overflow without clear affordance.",
+    "The bottom pizza promotional card is heavily cropped by the bottom navigation, so most of the image and context are hidden.",
+    "Third 'Fastest near you' card is only partially on-screen with no strong scroll cue, making the carousel feel cut off."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Issue 1 describes a green badge showing '-100%' which is the same discount badge defect, though the expected defect doesn't specify the color."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3, 4]
+  }
+}

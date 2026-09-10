@@ -1,0 +1,23 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers shows delivery fee as '€NaN delivery', indicating a failed number format or missing data.",
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you row.",
+    "Category filter chips are clipped on the right edge (partial 'Healthy' chip and next item cut off), with no clear affordance that the row scrolls.",
+    "Bottom restaurant card (pizza) and its content appear partially cut off at the bottom of the viewport above the tab bar.",
+    "Delivery time badges sit over food images with limited contrast in places, which can hurt legibility."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.80 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

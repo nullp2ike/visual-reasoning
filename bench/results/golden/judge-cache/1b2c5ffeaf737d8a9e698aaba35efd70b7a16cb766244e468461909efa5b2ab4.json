@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The 'Trattoria Piccolo' card in the 'Fastest near you' row is cut off at the right edge of the screen, indicating horizontal scroll content is not clearly indicated or the layout doesn't fit properly.",
+    "Restaurant name 'Trattoria Piccol' appears truncated without ellipsis, making it look like a cut-off/broken label.",
+    "The pizza item at the bottom shows a badge reading '-0%' which is a meaningless/broken discount label.",
+    "The heart/favorite icon on the ramen bar image is white on a light/blurred background, reducing visibility and contrast in some areas of the image."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [2],
+        "reasoning": "Reported issue 2 describes a discount badge showing '-0%', which is the exact same defect as the expected discount badge showing −0%."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 3]
+  }
+}

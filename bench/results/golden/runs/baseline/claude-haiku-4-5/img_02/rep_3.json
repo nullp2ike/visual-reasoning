@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-4-5",
+  "provider": "anthropic",
+  "imageId": "img_02",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:04:38.849Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: a critical data display error in the delivery cost and a major layout issue with truncated restaurant information.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "Smash Bros Burgers displays '€NaN delivery' instead of a valid price. NaN (Not a Number) indicates a data parsing or calculation error.",
+        "suggestion": "Fix the backend data processing to ensure delivery fees are properly calculated and formatted as valid numbers before display."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The rightmost restaurant card in the 'Fastest near you' section (Trattoria Piccol) is horizontally cut off, and the restaurant name appears truncated, making full information inaccessible.",
+        "suggestion": "Adjust the carousel or grid layout to ensure all cards are fully visible, or implement proper overflow handling with scroll indicators."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1854,
+    "outputTokens": 551,
+    "estimatedCost": 0.004609,
+    "durationSeconds": 6.826855709000025
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_07",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:25:40.707Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found a few visual issues, mostly around content being clipped and a loading indicator appearing over already-rendered content.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "A loading spinner is visible in the center of the Tokumaru Ramen Bar image even though the restaurant card and image content appear to be loaded.",
+        "suggestion": "Hide the loading indicator once the image/card content has finished loading, or show a proper skeleton state before the content appears."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The fixed bottom navigation overlaps the restaurant feed; the next restaurant image is partially hidden behind the tab bar.",
+        "suggestion": "Add bottom padding or safe-area spacing to the scrollable content so cards can scroll fully above the bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Several horizontally scrollable elements are abruptly clipped at the right edge, including the category chips and the third card in the “Fastest near you” row.",
+        "suggestion": "If these are carousels, add clearer horizontal scroll affordance, spacing, or a fade edge so the clipping feels intentional rather than broken."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 625,
+    "reasoningTokens": 380,
+    "estimatedCost": 0.027805,
+    "durationSeconds": 15.382127083999993
+  }
+}

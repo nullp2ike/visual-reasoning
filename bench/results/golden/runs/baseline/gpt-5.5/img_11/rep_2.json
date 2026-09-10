@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_11",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:26:36.726Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly visually polished, but a few horizontally scrolling and fixed-navigation areas look awkward or partially clipped.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Content in the restaurant list appears to run underneath the fixed bottom navigation bar. The second restaurant image is cut off by the nav area, making the page feel clipped and potentially hiding tappable content.",
+        "suggestion": "Add sufficient bottom padding or safe-area spacing to the scrollable content so cards can scroll fully above the bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A partially visible blank category pill appears on the far right of the category row after “Healthy,” with no readable label. It looks like an empty or broken filter chip.",
+        "suggestion": "Adjust the horizontal carousel positioning so the next chip is either more visibly shown with its label or hidden cleanly off-screen."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal restaurant carousel under “Fastest near you” cuts off the third restaurant card and its text abruptly at the right edge. While partial cards can indicate scrolling, the text truncation looks visually unfinished.",
+        "suggestion": "Show a cleaner partial preview, add more spacing, or ensure clipped cards do not expose partially unreadable text."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 786,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.032635,
+    "durationSeconds": 15.456044584000017
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:53:10.955Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual and layout issues: truncated restaurant names, duplicate cards in the Fastest section, and cut-off category chips and popular cards.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The third 'Fastest near you' card title is truncated to 'Smash Bros Bu' instead of the full restaurant name.",
+        "suggestion": "Allow multi-line titles, reduce font size, or use ellipsis with full name on a second line so the name is fully readable."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The first two 'Fastest near you' cards are identical (same image, name 'Green Bowl Poké', delivery time and fee), which looks like a data or rendering bug.",
+        "suggestion": "Ensure each card shows a unique nearby restaurant; fix any duplicate data binding or carousel logic."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom 'Popular right now' pizza card is heavily cropped so only the top of the image and '-20%' badge are visible, with no title or metadata shown.",
+        "suggestion": "Increase card height, adjust scroll/safe-area padding above the tab bar, or ensure full card content is visible before the bottom nav."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips are cut off on the right (partial 'Healthy' chip and a trailing fragment), with no clear affordance that the row scrolls.",
+        "suggestion": "Add peek of the next chip, a fade edge, or a scroll indicator so users know more categories are available."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery time badges sit over the food images with light backgrounds that can reduce contrast or clutter the illustration.",
+        "suggestion": "Improve badge contrast and placement (e.g. stronger shadow or consistent corner padding) for clearer readability."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 480,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.006644000000000001,
+    "reportedCost": 0.0035976,
+    "durationSeconds": 10.451480125000002
+  }
+}

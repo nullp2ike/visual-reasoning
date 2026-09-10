@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_04",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:02:31.220Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 issues on this food delivery app screen: one major content/display bug and two minor visual concerns.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The discount badge on the pizza restaurant card at the bottom displays '-0%', which is semantically meaningless and visually confusing. A zero-percent discount should not be displayed as a badge at all.",
+        "suggestion": "Remove the discount badge when the discount value is 0%, or only show the badge when there is an actual discount (e.g., > 0%). Fix the data pipeline that populates this value."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' horizontal scroll section ('Trattoria Piccol...') is partially clipped without a visible ellipsis on the card image, making it unclear the name is truncated.",
+        "suggestion": "Add a text ellipsis ('...') to clearly indicate the restaurant name is truncated, or increase the card width slightly to show more characters."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The partially visible third card in the horizontal carousel has its image abruptly cut off with no fade or gradient to indicate scrollability, which may confuse users.",
+        "suggestion": "Add a subtle right-edge gradient fade overlay on the last visible card to visually hint that more content is available by scrolling horizontally."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 639,
+    "estimatedCost": 0.01506,
+    "durationSeconds": 14.101146250000108
+  }
+}

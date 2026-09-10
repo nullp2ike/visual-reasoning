@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "model": "meta/muse-spark-1.3",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-03T20:26:36.089Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 visual issue: the restaurant name 'Tokumaru Ramen' is truncated mid-letter as 'Tokumaru Ramer' due to layout crowding with the rating.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name under 'Popular right now' is clipped mid-character, displayed as 'Tokumaru Ramer' with the final letter cut off to make room for the rating on the same line, with no ellipsis.",
+        "suggestion": "Fix the title-rating layout to prevent mid-character clipping - allow flexible width, wrap to next line, or truncate with ellipsis so the full name is readable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1818,
+    "outputTokens": 1770,
+    "reasoningTokens": 1562,
+    "cachedInputTokens": 1790,
+    "estimatedCost": 0.009795,
+    "reportedCost": 0.007826,
+    "durationSeconds": 22.06407037500001
+  }
+}

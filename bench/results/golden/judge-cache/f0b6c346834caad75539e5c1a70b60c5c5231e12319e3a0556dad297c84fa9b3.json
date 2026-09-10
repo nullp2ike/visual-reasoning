@@ -1,0 +1,21 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The 'Fastest near you' section shows a third restaurant card (Smash Bros Bu) that is partially cut off on the right edge, indicating horizontal scrollable content without any visual indicator (carousel dots, arrows, or other UI cues) to inform users they can scroll",
+    "The 'Green Bowl Pokéé' restaurant appears twice consecutively in the 'Fastest near you' section with identical information (15-25 min, €0.90 delivery), which appears to be a duplicate listing",
+    "The restaurant name 'Smash Bros Bu' is truncated and appears incomplete, likely should read 'Smash Bros Burger' or similar"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 describes the exact same defect: Green Bowl Pokéé appearing twice consecutively in the carousel with identical information."
+      }
+    ],
+    "extraReportedIndexes": [0, 2]
+  }
+}

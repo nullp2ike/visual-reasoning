@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "model": "meta/muse-spark-1.3-contributor",
+  "provider": "openrouter",
+  "imageId": "img_14",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-03T11:28:05.849Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 4 visual issues: misaligned carousel card heights in Fastest near you, inconsistent favorite icon styling, low-contrast inactive navigation and search placeholder, and clipped edge content with truncated text.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Cards in 'Fastest near you' row have unequal image heights - Green Bowl Poké image is taller than Smash Bros Burgers, causing time badges and titles/delivery text to sit on uneven baselines",
+        "suggestion": "Enforce a uniform aspect ratio and fixed height for all horizontal carousel cards so images, badges, and text align"
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Favorite heart icon treatment is inconsistent: Tokumaru Ramen Bar shows white outline directly on image with no background, while the pizza card below shows white outline inside a dark circular scrim",
+        "suggestion": "Use a consistent scrim or circular background for all overlay favorite icons to ensure visibility and visual consistency"
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Inactive bottom navigation icons/labels for Search, Orders, Profile and the search field placeholder and magnifier are very light grey with low contrast against white",
+        "suggestion": "Darken inactive icons, labels, and placeholder text to meet minimum color contrast requirements"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Right-edge content is clipped without clear affordance: far-right category chip is cut in half and the third restaurant card is cut off mid-image with name truncated as 'Trattoria Piccol' without ellipsis",
+        "suggestion": "Add proper end padding and intentional card peeking with ellipsis truncation to make horizontal scroll obvious"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1739,
+    "outputTokens": 1822,
+    "reasoningTokens": 1415,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0005383,
+    "reportedCost": 0.0005383,
+    "durationSeconds": 20.24503016699999
+  }
+}

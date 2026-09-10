@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k2.7-code",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:01:30.506Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly functional, but there is a clear data-display bug and a couple of minor truncation/clipping issues.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The delivery fee for 'Smash Bros Burgers' is displayed as '€NaN delivery', indicating a malformed or missing numeric value.",
+        "suggestion": "Fix the underlying price data or add a fallback formatter so invalid/missing values show a meaningful message (e.g., 'Delivery fee unavailable') instead of 'NaN'."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third 'Fastest near you' card is partially cut off on the right edge and its name 'Trattoria Picco...' is truncated.",
+        "suggestion": "Increase horizontal padding or adjust the card/carousel width so the edge of the next card is fully visible and long restaurant names can wrap or use a larger visible area."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom of the second 'Popular right now' card (pizza image) is clipped by the bottom of the visible screen.",
+        "suggestion": "Add sufficient bottom padding to the scrollable content area so the last items are not obscured by the bottom tab bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2006,
+    "outputTokens": 879,
+    "reasoningTokens": 568,
+    "estimatedCost": 0.00494117,
+    "reportedCost": 0.00779428,
+    "durationSeconds": 7.321415582999936
+  }
+}

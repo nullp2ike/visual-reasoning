@@ -1,0 +1,22 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Orders icon is missing from the bottom nav bar"],
+  "reportedIssues": [
+    "The third 'Fastest near you' card truncates the restaurant name to 'Trattoria Piccol' and clips the right edge of the image, so content is cut off at the screen edge.",
+    "The bottom tab bar shows labels for Home, Search, Orders, and Profile, but the Orders tab has no icon while the others do.",
+    "The category filter row is clipped on the right; 'Healthy' is only partly visible and a following chip is cut off, with no clear affordance that the list scrolls.",
+    "Promo copy is dense and slightly hard to scan: 'Use code TALLINN3 at checkout · min. order €10' sits in one long line on the green banner."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 explicitly states that the Orders tab has no icon in the bottom tab bar."
+      }
+    ],
+    "extraReportedIndexes": [0, 2, 3]
+  }
+}

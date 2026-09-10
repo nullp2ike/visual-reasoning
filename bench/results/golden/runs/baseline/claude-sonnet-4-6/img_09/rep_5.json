@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_09",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:03:13.877Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: one major layout/content truncation issue and one minor visual clipping concern.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The third restaurant card in the 'Fastest near you' row shows a truncated name 'Trattoria Piccol' without an ellipsis, making it unclear the name is cut off. It reads as an incomplete word rather than a clearly truncated label.",
+        "suggestion": "Apply CSS text-overflow: ellipsis and overflow: hidden to restaurant name labels so truncated text ends with '…' (e.g., 'Trattoria Piccol…'), signaling to users that the name continues."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The third card in the 'Fastest near you' horizontal scroll list is partially clipped at the right edge of the screen with no visual affordance (e.g., a gradient fade or partial card peek) to clearly communicate horizontal scrollability.",
+        "suggestion": "Add a subtle right-edge gradient overlay or ensure a consistent peek amount so users clearly understand the row is horizontally scrollable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 530,
+    "estimatedCost": 0.013425,
+    "durationSeconds": 12.619328207999933
+  }
+}

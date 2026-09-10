@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_12",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:52:02.917Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-rendered, but there is one clear visual defect: overlapping metadata text under the 'Tokumaru Ramen Bar' card. A few minor layout/content observations were also noted.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Under 'Tokumaru Ramen Bar', the delivery time and delivery fee labels overlap, rendering as garbled text '25–3€0rdelivery' instead of '25–35 min · €0 delivery · Ramen'. The two text elements are stacked on top of each other.",
+        "suggestion": "Fix the metadata row layout so the time, delivery fee, and cuisine labels are laid out horizontally with proper spacing/separators (e.g., a flex row with dot dividers) instead of absolutely positioned overlapping text."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the third card ('Trattoria Piccol...') is truncated at the right edge with its name cut off. This may be intentional carousel peeking, but there is no visual affordance (partial padding/fade) making it look clipped.",
+        "suggestion": "Ensure horizontal scrolling works and consider adding right-edge padding or a fade gradient to signal that more content is scrollable; avoid truncating the restaurant name label abruptly."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row at the top is cut off on the right side, showing only a sliver of the next chip after 'Healthy'.",
+        "suggestion": "Verify the chips are in a horizontally scrollable container; add trailing padding or a partial-chip peek pattern consistently so it reads as scrollable rather than clipped."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The bottom pizza card near the '−20%' badge is cut off by the bottom navigation without any spacing, and the last card's content (name, rating, metadata) is not visible above the fold.",
+        "suggestion": "Add bottom padding to the scroll container equal to the nav bar height so content isn't obscured, and confirm the card details render fully when scrolled."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 863,
+    "estimatedCost": 0.06289,
+    "durationSeconds": 15.625344125000003
+  }
+}

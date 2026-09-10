@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The 'Fastest near you' carousel shows the exact same restaurant card twice ('Green Bowl Poké', 15–25 min, €0.90 delivery) side by side, which looks like a data duplication bug.",
+    "The last category chip after 'Healthy' is cut off at the right edge, showing only an empty sliver of a pill with no visible label.",
+    "The third carousel card's title is truncated ('Smash Bros Bu…') without an ellipsis or clear indication of continuation.",
+    "The second 'Popular right now' item (pizza card with −20% badge) is abruptly clipped by the bottom navigation bar, cutting through the image mid-card."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.84 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

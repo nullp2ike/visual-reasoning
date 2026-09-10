@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "Smash Bros Burgers shows '€NaN delivery' instead of an actual delivery fee amount",
+    "Restaurant cards in 'Fastest near you' section are horizontally cut off, with the third card (Trattoria Piccol) and subsequent content not fully visible",
+    "Restaurant name 'Trattoria Piccol' appears truncated - likely should be 'Trattoria Piccolo' or similar"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.82 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

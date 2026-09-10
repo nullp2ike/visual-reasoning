@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_05",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:52:25.257Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content clipping issues are visible: restaurant names and category chips are truncated, and the bottom restaurant card is cut off by the navigation bar.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card under 'Fastest near you' has its name truncated to 'Trattoria Piccol' instead of showing the full name.",
+        "suggestion": "Allow multi-line titles, reduce font size, or ensure horizontal cards fully show names without ellipsis cutoff."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom restaurant card (pizza) is partially cut off by the bottom tab bar, hiding part of the image and content.",
+        "suggestion": "Add sufficient bottom padding/safe-area inset so list content scrolls fully above the tab bar."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category filter chips overflow horizontally; the rightmost chip is clipped and only partially visible.",
+        "suggestion": "Ensure horizontal scroll is obvious (e.g. peek of next chip) or wrap/adjust spacing so chips are fully visible."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Promo banner text contrast is low (light green text on light green background), reducing readability.",
+        "suggestion": "Darken the promo text color to meet WCAG contrast guidelines against the mint background."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 293,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005522,
+    "reportedCost": 0.0024756,
+    "durationSeconds": 7.310369624999999
+  }
+}

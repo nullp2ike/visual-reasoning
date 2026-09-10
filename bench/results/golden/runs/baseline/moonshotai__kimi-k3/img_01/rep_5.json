@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:54:58.479Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly intact, but there is one clear localization/content failure where a raw translation key is shown instead of the section title, plus a minor clipped carousel edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "A section heading displays the raw localization key \"home_feed.popular_title\" instead of a human-readable title.",
+        "suggestion": "Fix the missing i18n mapping or fallback so the heading renders localized text such as \"Popular near you\"."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontal category/filter row is clipped at the right edge, with the next chip only partially visible.",
+        "suggestion": "If intentional, keep consistent peek spacing; otherwise add right padding or adjust chip widths so the carousel edge looks deliberate."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 380,
+    "reasoningTokens": 204,
+    "estimatedCost": 0.012006,
+    "reportedCost": 0.00639,
+    "durationSeconds": 10.439345166999992
+  }
+}

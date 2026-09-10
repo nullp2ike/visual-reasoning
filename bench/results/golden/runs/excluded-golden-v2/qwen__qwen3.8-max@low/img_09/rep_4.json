@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:34:10.016Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-structured, but the 'Popular right now' restaurant card title is clipped ('Tokumaru Rameı' / 'Tokumaru Ramen' truncated without ellipsis handling), which is a content/layout defect distinct from the allowed edge-clipping of horizontal carousels.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The restaurant name under the ramen card is truncated mid-word ('Tokumaru Rameı' with the final letter cut off) even though there is empty horizontal space to the right before the rating badge. The title container does not use the available width or apply a proper ellipsis, so the name appears visually broken.",
+        "suggestion": "Allow the title to use the full available width (e.g. flex layout with the rating right-aligned) and apply text-overflow: ellipsis with a single-line clamp so long names truncate cleanly with '…' instead of cutting a glyph in half."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The truncated title shows an unusual character ('ı' dotless i) at the cut point, suggesting the truncation happens at a raw glyph boundary rather than a clean ellipsis, which looks like a rendering glitch.",
+        "suggestion": "Use proper text truncation (ellipsis) so the visible text ends cleanly, avoiding partial or odd glyphs at the cutoff."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 1088,
+    "reasoningTokens": 745,
+    "estimatedCost": 0.010116,
+    "reportedCost": 0.008996,
+    "durationSeconds": 56.06793162500003
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T13:14:11.101Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally well-designed and functional, but there are a few visual issues: horizontally scrollable content (category chips and the 'Fastest near you' carousel) is clipped at the right edge without clear scroll affordance, and the bottom pizza card is cut off mid-image by the viewport. These are mostly minor/cosmetic, though the clipped carousel text could mildly hurt discoverability.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The 'Fastest near you' horizontal carousel is clipped at the right edge: the third card's title 'Trattoria Piccol...' is truncated mid-word with no visible scroll indicator or fade-out gradient to signal that more content is available by scrolling.",
+        "suggestion": "Add a right-edge fade gradient or peek of the next card, and/or a scroll indicator, so users understand the row is horizontally scrollable. Ensure card titles truncate with an ellipsis at a consistent width rather than cutting mid-word at the viewport edge."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chips row ('All', 'Pizza', 'Sushi', 'Burgers', 'Healthy') is cut off at the right edge with a partially visible chip and no visual cue that it scrolls horizontally.",
+        "suggestion": "Add a subtle right-edge fade or ensure the next chip peeks into view to communicate horizontal scrollability."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The bottom pizza restaurant card is cut off mid-image by the viewport bottom edge (above the tab bar), showing only the top portion of the image and no title/metadata, which looks like an incomplete render at this scroll position.",
+        "suggestion": "This is acceptable for a scrollable feed, but consider adding bottom padding or a scroll snap so cards aren't awkwardly bisected when the list rests; alternatively ensure the feed scrolls fully so the card can be seen completely."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The notification bell icon in the top-right has a small red dot badge with no text label or count, which may be unclear to screen-reader users and is a very small touch/visual target.",
+        "suggestion": "Provide an accessible label (e.g., 'Notifications, 1 unread') and ensure the badge meets minimum size/contrast guidelines."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1711,
+    "outputTokens": 1008,
+    "reasoningTokens": 435,
+    "estimatedCost": 0.00947,
+    "reportedCost": 0.00947,
+    "durationSeconds": 32.521427458
+  }
+}

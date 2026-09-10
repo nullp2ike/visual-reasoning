@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:26:09.070Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-designed, but one section header displays a raw localization key instead of translated text, which is a visible content defect.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section header between the 'Fastest near you' carousel and the restaurant list shows the untranslated localization key 'home_feed.popular_title' instead of a human-readable title (e.g. 'Popular near you').",
+        "suggestion": "Resolve the missing/failed translation so the proper localized string renders. Verify the i18n bundle contains a value for 'home_feed.popular_title' and add a fallback string to prevent raw keys from appearing in the UI."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 892,
+    "reasoningTokens": 709,
+    "estimatedCost": 0.00894,
+    "reportedCost": 0.00782,
+    "durationSeconds": 73.155988375
+  }
+}

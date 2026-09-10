@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_05",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:25:17.229Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-structured, but a few visual/accessibility issues stand out: the promotional banner text is hard to read, some horizontally scrolling content appears abruptly clipped, and the bottom navigation overlaps the feed content.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "accessibility",
+        "description": "The promotional banner uses white text on a very pale mint background, making the headline and especially the subtitle difficult to read.",
+        "suggestion": "Increase text contrast by using a darker green/gray text color, darkening the banner background, or adding a stronger overlay behind the text."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom navigation bar appears to cover the lower feed content; the second restaurant card is partially hidden behind the fixed tab bar.",
+        "suggestion": "Add sufficient bottom padding/safe-area inset to the scrollable content so cards are not obscured by the bottom navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Horizontally scrollable rows are visibly clipped at the right edge, including the category chips and the third card in the 'Fastest near you' section. This may be intentional, but it looks abrupt in the screenshot.",
+        "suggestion": "Consider adding a fade/peek treatment, consistent side padding, or ensuring partial items are clipped more intentionally to communicate horizontal scrolling."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 671,
+    "reasoningTokens": 387,
+    "estimatedCost": 0.029185000000000003,
+    "durationSeconds": 14.038136166999998
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_03",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:24:52.809Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual issues: one missing restaurant image and one layout issue where content appears obscured by the bottom navigation.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The 'Tokumaru Ramen Bar' card in the 'Popular right now' section shows a gray image placeholder with a broken/missing image icon instead of the restaurant image.",
+        "suggestion": "Ensure the image URL loads correctly, add a valid fallback image, or replace the placeholder with a branded skeleton/loading state until the image is available."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The lower restaurant card image is partially hidden behind the fixed bottom navigation bar, making the content feel cut off.",
+        "suggestion": "Add sufficient bottom padding to the scrollable content equal to or greater than the bottom navigation height so cards are not obscured."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 566,
+    "reasoningTokens": 378,
+    "estimatedCost": 0.026035000000000003,
+    "durationSeconds": 11.938413542000003
+  }
+}

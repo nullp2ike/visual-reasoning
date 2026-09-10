@@ -1,0 +1,24 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Middle card in the carousel is not aligned with the other cards"],
+  "reportedIssues": [
+    "Cards in the 'Fastest near you' carousel are not aligned to a common baseline: the 'Green Bowl Poké' image is shorter and sits higher, 'Smash Bros Burgers' is pushed ~40px lower, and 'Trattoria Piccol…' sits higher again. Titles and delivery-fee lines therefore appear at three different vertical positions.",
+    "The second 'Popular right now' card (pizza) is clipped by the bottom tab bar, showing only the image with no restaurant name, rating or delivery info, which makes it look like a rendering error rather than scrollable content.",
+    "Time badges are inconsistently placed and styled across carousel cards: on 'Green Bowl Poké' it hugs the bottom-left edge with no visible padding, while on the other cards it is inset differently, and the Poké image background is washed-out grey vs. the dark photos of its neighbours.",
+    "The third carousel card's name is truncated mid-word as 'Trattoria Piccol' with no ellipsis, and the card itself is cut by the viewport edge, giving no visual cue that the row is scrollable.",
+    "Favourite (heart) icons are styled inconsistently: the ramen card's heart is a bare white outline over a dark image, while the pizza card's heart sits inside a dark translucent circle.",
+    "Secondary text such as '€0.90 delivery' and the '25–35 min • €0 delivery • Ramen' metadata line uses light grey on white, likely below the 4.5:1 contrast minimum; the notification bell dot also has no visible label."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "The reported issue explicitly describes carousel cards sitting at different vertical positions and not sharing a common baseline."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5]
+  }
+}

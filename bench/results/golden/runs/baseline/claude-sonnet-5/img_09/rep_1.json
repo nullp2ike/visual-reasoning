@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_09",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:00:56.882Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 3 issues, mainly related to layout cropping and content cutoff in the horizontal scroll sections.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in 'Fastest near you' (Trattoria Piccolo) is cut off at the right edge of the screen, showing only a partial image and truncated name.",
+        "suggestion": "Ensure horizontal scroll containers properly clip or provide a visual cue (like a fade/gradient) indicating more content is scrollable, or adjust card width so it doesn't awkwardly cut off text."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name 'Tokumaru Ramen' appears truncated as 'Tokumaru Rame' due to text overflow.",
+        "suggestion": "Adjust text container width or use ellipsis truncation with proper spacing so the full name is visible or clearly truncated with '...'"
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The pizza promotional card at the bottom of the screen is abruptly cut off by the viewport/navigation bar, making it unclear what content or CTA follows.",
+        "suggestion": "Add sufficient bottom padding/margin to the scrollable content area so cards aren't cut off by the fixed bottom navigation bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 487,
+    "estimatedCost": 0.013227,
+    "durationSeconds": 12.165383207999986
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_15",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:59:25.194Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly coherent, but the bottom navigation area appears clipped/cropped, which is the most significant visual problem. A few carousel/card items are also cut off at the viewport edges, though some of that may be expected scrolling behavior.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Bottom navigation bar is partially cut off at the bottom edge; the search/cart/profile icons appear cropped and tab labels are not visible.",
+        "suggestion": "Adjust bottom safe-area padding and tab bar height so all navigation icons/labels are fully visible above the system gesture area."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The right-most category chip and the right edge of the 'Fastest near you' carousel are visibly clipped, making content feel cropped.",
+        "suggestion": "Add clearer edge fade/scroll affordance or ensure partially visible items have enough margin to look intentionally scrollable rather than broken."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant name 'Trattoria Piccol...' is truncated in the 'Fastest near you' card.",
+        "suggestion": "Allow two-line titles, reduce font size slightly, or widen cards so restaurant names remain readable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 549,
+    "reasoningTokens": 288,
+    "estimatedCost": 0.014541000000000002,
+    "reportedCost": 0.0142818,
+    "durationSeconds": 19.845637374999992
+  }
+}

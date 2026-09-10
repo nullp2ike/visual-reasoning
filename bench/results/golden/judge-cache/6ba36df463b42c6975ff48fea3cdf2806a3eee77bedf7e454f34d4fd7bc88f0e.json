@@ -1,0 +1,20 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −100%"],
+  "reportedIssues": [
+    "The restaurant title 'Trattoria Piccolo' is cut off abruptly as 'Trattoria Piccol' without proper ellipsis truncation.",
+    "The pizza promotion displays a '-100%' discount badge, which appears to be placeholder or erroneous data."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [1],
+        "reasoning": "Reported issue 1 directly describes the −100% discount badge as placeholder/erroneous data, matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [0]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The first two cards under 'Fastest near you' are identical duplicates (same Green Bowl Poké image, name, delivery time, and fee), which looks broken and untrustworthy.",
+    "The third restaurant name is truncated to 'Smash Bros Bu' with no ellipsis, cutting off the full title mid-word.",
+    "Tokumaru Ramen Bar shows '€ delivery' with the fee amount missing (blank between € and 'delivery'), while other cards show complete fees like €0.90."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes duplicate Green Bowl Poké cards in the carousel."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

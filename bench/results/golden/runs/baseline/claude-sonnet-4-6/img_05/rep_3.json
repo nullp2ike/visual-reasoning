@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "imageId": "img_05",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:02:42.531Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 visual issues on the food delivery app page: one truncated restaurant card and one partially visible category filter button.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third restaurant card in the 'Fastest near you' section ('Trattoria Piccol...') is cut off on the right edge, truncating both the image and the restaurant name text, making it incomplete and unreadable.",
+        "suggestion": "Ensure the horizontal scroll container properly shows a peek of the next card to signal scrollability, but the restaurant name should not be truncated mid-word without an ellipsis or proper clipping boundary. Consider adding a text ellipsis and ensuring the card width is consistent."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The last category filter pill in the horizontal scroll row (after 'Healthy') is partially visible and appears cut off, showing only a sliver of the button without any label text.",
+        "suggestion": "While a partial peek is acceptable UX to indicate scrollability, the partially visible element should show at least a portion of its label text to be meaningful. Adjust the peek amount or ensure partial items are more recognizable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1825,
+    "outputTokens": 306,
+    "estimatedCost": 0.010065000000000001,
+    "durationSeconds": 7.499221249999944
+  }
+}

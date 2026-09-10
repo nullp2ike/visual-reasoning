@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_08",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:52:49.852Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several visual and content issues: truncated restaurant names, a misspelled search placeholder, and horizontal clipping on category chips and listing cards.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name under the third 'Fastest near you' card is truncated ('Trattoria Piccol') with no ellipsis or wrapping, so the full name is unreadable.",
+        "suggestion": "Ensure card titles use ellipsis overflow, flexible width, or multi-line clamp so full names remain discoverable (e.g. tooltip or full text on two lines)."
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Search field placeholder is misspelled: 'Restarants, dishes, groceries'.",
+        "suggestion": "Correct the placeholder to 'Restaurants, dishes, groceries'."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Category chip row and 'Fastest near you' cards are hard-clipped at the right edge with no clear fade/peek affordance that more content scrolls horizontally.",
+        "suggestion": "Add consistent right-side padding/fade and partial next-item peek so horizontal scroll is obvious."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Bottom 'Popular right now' pizza card is heavily cut off by the viewport/tab bar, which can feel broken if users don't realize the page scrolls.",
+        "suggestion": "Add bottom content inset above the tab bar so the next card peeks more clearly and isn't flush against the nav."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 831,
+    "reasoningTokens": 509,
+    "estimatedCost": 0.00875,
+    "reportedCost": 0.0057036,
+    "durationSeconds": 17.782780958999997
+  }
+}

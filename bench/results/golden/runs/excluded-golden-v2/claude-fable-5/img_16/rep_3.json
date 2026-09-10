@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5",
+  "provider": "anthropic",
+  "imageId": "img_16",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:35:08.715Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed, but there is one notable inconsistency: the 'Pizza' filter chip is selected while the displayed content is not filtered to pizza restaurants. A couple of minor cosmetic observations were also noted.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The 'Pizza' category chip is shown in a selected/active state, but the page content is not filtered accordingly — the 'Fastest near you' and 'Popular right now' sections show poké, burgers, and ramen restaurants (e.g., Green Bowl Poké, Smash Bros Burgers, Tokumaru Ramen Bar).",
+        "suggestion": "Either apply the pizza filter to the restaurant lists when the chip is selected, or reset the chip to 'All' if no filter is actually active, so the UI state matches the displayed content."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant cards in the 'Fastest near you' section show delivery time and fee but no ratings, while the 'Popular right now' card (Tokumaru Ramen Bar) includes a rating — inconsistent information density across cards.",
+        "suggestion": "Consider showing ratings consistently across all restaurant cards, or intentionally standardize which metadata each section displays."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The heart/favorite button on the Tokumaru Ramen Bar image sits on a dark semi-transparent background over a dark photo area, making the icon's boundary and tap target less visually distinct.",
+        "suggestion": "Increase the contrast of the favorite button overlay (e.g., lighter scrim or subtle border) to ensure it remains visible over dark imagery."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2087,
+    "outputTokens": 744,
+    "estimatedCost": 0.05807000000000001,
+    "durationSeconds": 60.510244375000006
+  }
+}

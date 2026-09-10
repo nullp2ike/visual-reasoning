@@ -1,0 +1,25 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The 'Smash Bros Burgers' card shows '€NaN delivery' instead of a real delivery fee, indicating an unhandled null/undefined value in the price formatting logic.",
+    "In the 'Fastest near you' carousel, the third card ('Trattoria Piccol…') and its title are hard-clipped at the right screen edge with no visible peek/padding, making it look broken rather than scrollable.",
+    "The second 'Popular right now' card (pizza, -20%) is abruptly cut off by the bottom navigation bar with no title/metadata visible, and the content area appears to lack bottom scroll padding.",
+    "The favorite (heart) buttons are inconsistent: the first card uses a white circular background with a dark outline heart, while the second uses a dark/translucent circle with a white heart.",
+    "The category chip row is clipped mid-chip at the right edge, showing only a sliver of the next filter with no fade or arrow affordance.",
+    "The 'See all' links and the promo banner's secondary text ('Use code TALLINN3 …') use light green/low-opacity text that may fall below the 4.5:1 contrast threshold.",
+    "The notification bell with a red dot badge conveys unread state by color/shape only, with no accessible text label or count."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes the €NaN delivery fee display on a restaurant card due to unhandled null/undefined value in price formatting."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4, 5, 6]
+  }
+}

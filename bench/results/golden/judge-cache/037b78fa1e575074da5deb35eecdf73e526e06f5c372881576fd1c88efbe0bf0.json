@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The delivery fee for “Smash Bros Burgers” displays as “€NaN delivery”, which indicates a broken or missing numeric value.",
+    "Several horizontally scrollable elements are visibly cut off on the right edge, including the category chip row and the third restaurant card in “Fastest near you”. This may be intentional carousel behavior, but it looks abrupt and slightly broken in the screenshot.",
+    "The restaurant name “Trattoria Piccol…” is truncated in the “Fastest near you” row, making the full name unavailable at a glance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.82 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

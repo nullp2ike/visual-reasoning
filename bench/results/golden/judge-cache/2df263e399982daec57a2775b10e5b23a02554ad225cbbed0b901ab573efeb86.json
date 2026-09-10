@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "Search bar placeholder reads 'Restarants, dishes, groceries' - 'Restaurants' is misspelled.",
+    "Favorite heart buttons in 'Popular right now' section are inconsistent: the Tokumaru Ramen Bar card shows a bare white outline with no background, while the pizza card below shows the heart inside a dark circular background.",
+    "Right-edge carousel content is clipped mid-element: the far-right filter pill and the third 'Fastest near you' card are cut off, leaving the restaurant name as 'Trattoria Piccol' cut mid-letter."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.85 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

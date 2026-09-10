@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Delivery fee shows €NaN"],
+  "reportedIssues": [
+    "The \"Smash Bros Burgers\" card shows \"€NaN delivery\" instead of a valid price, indicating an undefined/non-numeric value being passed into the currency formatter.",
+    "The third card in the \"Fastest near you\" horizontal list is clipped by the viewport edge and its title is cut off (\"Trattoria Piccol...\"), with no ellipsis, so the restaurant name is unreadable.",
+    "The favorite (heart) buttons are styled inconsistently: the Tokumaru Ramen card uses a white circular background with a dark outline heart, while the pizza card below uses a dark circular background with a white heart.",
+    "The bottom pizza card is abruptly cut by the fixed bottom tab bar with no visible name, rating or fade, making the page feel truncated rather than scrollable.",
+    "The notification bell badge dot and the category chip row rely on visual cues only; the truncated 'See all' links and icon-only buttons (bell, hearts) likely lack accessible labels."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the same €NaN delivery fee defect on a card."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The 'Pizza' category chip is shown in a selected/active state, but the page content is not filtered accordingly — the 'Fastest near you' and 'Popular right now' sections show poké, burgers, and ramen restaurants (e.g., Green Bowl Poké, Smash Bros Burgers, Tokumaru Ramen Bar).",
+    "Restaurant cards in the 'Fastest near you' section show delivery time and fee but no ratings, while the 'Popular right now' card (Tokumaru Ramen Bar) includes a rating — inconsistent information density across cards.",
+    "The heart/favorite button on the Tokumaru Ramen Bar image sits on a dark semi-transparent background over a dark photo area, making the icon's boundary and tap target less visually distinct."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 describes the Pizza category appearing selected while the feed still shows restaurants from other cuisines."
+      }
+    ],
+    "extraReportedIndexes": [1, 2]
+  }
+}

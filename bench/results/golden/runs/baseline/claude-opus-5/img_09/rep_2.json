@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5",
+  "provider": "anthropic",
+  "imageId": "img_09",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T11:55:37.137Z",
+  "status": "ok",
+  "result": {
+    "summary": "The layout is mostly coherent, but several elements are clipped or truncated at container edges and there is inconsistent styling between repeated card components. Found 5 issues: 1 major text truncation/overlap, plus layout and styling inconsistencies.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The restaurant name 'Tokumaru Ramen' in the 'Popular right now' card is clipped/cut off mid-glyph by the rating block on the right, with no ellipsis or spacing between the two elements.",
+        "suggestion": "Give the title a flexible width with text-overflow: ellipsis and reserve fixed space for the rating, adding a gap between title and rating so characters are never visually sliced."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The third card in the 'Fastest near you' carousel ('Trattoria Piccol...') is hard-clipped at the right screen edge, and its name is cut mid-word without ellipsis, making it look broken rather than scrollable.",
+        "suggestion": "Add consistent horizontal padding/peek to the carousel so the next card is partially but cleanly visible, and truncate card titles with an ellipsis."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Favorite (heart) buttons use inconsistent styling: the ramen card has a white circular background while the pizza card below uses a dark/translucent background.",
+        "suggestion": "Standardise the favorite button background, size and icon colour across all cards."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter chip row is cut off at the right edge, showing only a thin sliver of the next chip, which reads as a rendering glitch.",
+        "suggestion": "Adjust the scroll container padding so the next chip is either meaningfully visible or fully off-screen, and consider a fade/gradient affordance."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The second 'Popular right now' card is abruptly cut by the bottom navigation bar with no fade or visible partial content cue, and its text/rating are hidden behind the nav.",
+        "suggestion": "Add bottom padding to the scroll content equal to the nav bar height so cards can scroll fully clear of the tab bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 945,
+    "estimatedCost": 0.033495,
+    "durationSeconds": 15.314928042000043
+  }
+}

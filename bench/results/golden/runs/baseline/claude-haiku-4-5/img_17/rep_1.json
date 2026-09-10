@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-4-5",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:06:40.241Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 major layout issues: truncated restaurant names and cut-off card content on the right side of the page.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated in the 'Fastest near you' section, cutting off the full name",
+        "suggestion": "Ensure restaurant names have enough space to display fully, or implement text ellipsis with hover tooltips to show complete names"
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The rightmost cards in carousel sections are partially cut off at the screen edge, making content difficult to view",
+        "suggestion": "Adjust the horizontal scroll or card width to ensure all visible cards are fully displayed, or add padding/margins to accommodate overflow"
+      },
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza card in 'Popular right now' section (with -20% badge) is missing a visible restaurant name label",
+        "suggestion": "Ensure all restaurant cards display the business name clearly, either as an overlay or below the image"
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1854,
+    "outputTokens": 667,
+    "estimatedCost": 0.005189,
+    "durationSeconds": 7.8847542499999985
+  }
+}

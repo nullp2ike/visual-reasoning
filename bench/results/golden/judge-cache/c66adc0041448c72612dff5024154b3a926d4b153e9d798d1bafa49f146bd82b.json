@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Profile is highlighted in the bottom nav bar while the home feed is shown"],
+  "reportedIssues": [
+    "The bottom navigation shows 'Profile' as the active (green) tab, but the screen displayed is clearly the Home feed (delivery address, search, restaurant lists). The active-tab state does not match the current screen.",
+    "The third card in 'Fastest near you' shows a truncated restaurant name ('Trattoria Piccol...') that is clipped by the screen edge without an ellipsis or clear affordance.",
+    "A category filter chip after 'Healthy' is cut off at the right edge with only a sliver visible, which looks broken rather than like an intentional scroll hint.",
+    "The 'DELIVER TO' label and delivery fee text use light gray on white, which may have insufficient contrast for readability."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.83 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

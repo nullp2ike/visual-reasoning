@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:34:28.334Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-designed, but one text element is clipped: the 'Tokumaru Ramen' restaurant title is truncated at the right edge without an ellipsis, colliding with the rating block. Other partially visible items (carousel cards, bottom pizza card) are expected scroll/viewport behavior and not defects.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The restaurant title 'Tokumaru Ramen' in the 'Popular right now' section is cut off mid-word ('Rameı'/ 'Ramen' clipped) at the right edge, running into the star rating '4.8 (500+)'. The text is truncated without an ellipsis, making the name unreadable and visually broken.",
+        "suggestion": "Constrain the title width to leave room for the rating block, and apply single-line truncation with an ellipsis (text-overflow: ellipsis) so the full layout stays clean; alternatively stack the rating below the title or reduce the title font size."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1794,
+    "outputTokens": 989,
+    "reasoningTokens": 739,
+    "estimatedCost": 0.009522,
+    "reportedCost": 0.008402,
+    "durationSeconds": 53.44824650000007
+  }
+}

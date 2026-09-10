@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Loading spinner is shown on top of already loaded content"],
+  "reportedIssues": [
+    "A loading spinner is displayed on top of the 'Tokumaru Ramen Bar' hero image even though the image appears fully loaded, making the card look stuck in a loading state.",
+    "The third restaurant name in 'Fastest near you' is cut off ('Trattoria Piccol...') with no ellipsis, and its card is clipped at the right edge of the screen.",
+    "The last category filter chip on the right (after 'Healthy') is clipped at the screen edge, showing only a small sliver with no readable label.",
+    "The 'Green Bowl Poké' card image uses a plain light gray background, inconsistent with the darker, richer photographic styling of the neighboring restaurant cards."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.73 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

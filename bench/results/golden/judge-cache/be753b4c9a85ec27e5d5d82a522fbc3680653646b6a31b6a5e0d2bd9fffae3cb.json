@@ -1,0 +1,22 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Green Bowl Poké card appears twice in the carousel"],
+  "reportedIssues": [
+    "The first two “Fastest near you” cards appear to be exact duplicates: same “Green Bowl Poké” name, same image, same 15–25 min time, and same €0.90 delivery fee.",
+    "The rightmost category chip and the “Smash Bros Bu…” card are clipped by the screen edge, making the horizontal list look accidentally cut off rather than intentionally scrollable.",
+    "The lower “Popular right now” card is partially cut off at the bottom of the viewport, which can appear like a rendering crop issue on first load.",
+    "Secondary metadata such as delivery fees and time ranges use small gray text that may be hard to read for low-vision users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "cosine 0.76 >= 0.69 threshold (reported #0)"
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3]
+  }
+}

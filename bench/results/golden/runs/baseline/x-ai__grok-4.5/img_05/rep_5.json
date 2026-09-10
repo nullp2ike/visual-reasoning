@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.5",
+  "provider": "openrouter",
+  "imageId": "img_05",
+  "rep": 5,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:52:25.340Z",
+  "status": "ok",
+  "result": {
+    "summary": "Several layout and content clipping issues are visible: truncated restaurant names, cut-off category chips and cards, and partial bottom content. These reduce scannability and make the UI feel unfinished.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you row.",
+        "suggestion": "Allow multi-line titles, reduce font size, or ensure cards fully show names (e.g. ellipsis only after full readable width)."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Category filter chips overflow horizontally with a partial chip visible on the right edge and no clear affordance that the row scrolls.",
+        "suggestion": "Add fade/scroll hint, padding at end of list, or wrap/scroll cleanly so chips aren’t clipped mid-control."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Bottom restaurant card (pizza) is heavily cropped by the screen/tab bar so most of the card and metadata are missing.",
+        "suggestion": "Ensure list content has enough bottom padding above the tab bar and that cards aren’t cut off mid-image."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Fastest near you cards show only a sliver of the third card, which can look broken rather than intentionally scrollable.",
+        "suggestion": "Adjust peek width/spacing or add a clearer horizontal scroll cue so partial cards feel intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Promo banner text is low-contrast (light green on light green), which hurts readability.",
+        "suggestion": "Darken body text or increase contrast against the mint background for WCAG-compliant readability."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 372,
+    "reasoningTokens": 0,
+    "estimatedCost": 0.005996,
+    "reportedCost": 0.0029496,
+    "durationSeconds": 8.514280416000002
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Discount badge shows −0%"],
+  "reportedIssues": [
+    "The promotional badge on the pizza card reads '-0%', which is a meaningless/zero discount and looks like a data or formatting bug.",
+    "The third card in the 'Fastest near you' carousel shows the name 'Trattoria Piccol' hard-clipped at the screen edge with no ellipsis, and the card image is also abruptly cut, making it unclear the row is scrollable.",
+    "Favorite (heart) buttons are styled inconsistently: white circle with dark outline on the ramen card, dark circle with white outline on the pizza card.",
+    "The second 'Popular right now' card is cut off by the bottom tab bar with no visible title or metadata, leaving an incomplete-looking viewport bottom.",
+    "Category chip row is cut off mid-chip at the right edge and the notification bell dot has no textual indication, so unread state and additional filters may be missed by some users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Issue 0 directly describes the discount badge displaying '-0%' as a meaningless zero discount, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 3,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:59:51.903Z",
+  "status": "ok",
+  "result": {
+    "summary": "No critical blockers found. The page is generally usable, but a few carousel/content-clipping and low-contrast details make parts look unfinished or harder to read.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "Horizontally scrolling sections show edge items clipped by the viewport, such as the third 'Fastest near you' card and the partial category chip after 'Healthy', which can look accidentally cut off without a clear scroll affordance.",
+        "suggestion": "Add clearer horizontal scroll indicators, peek spacing, or fade/edge cues so clipped cards and chips read as intentional overflow rather than broken layout."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Restaurant/card text at the right edge is truncated, e.g. 'Trattoria Piccol…', making the content appear incomplete.",
+        "suggestion": "Ensure carousel card widths and text containers reserve enough space or use controlled ellipsis with accessible full names available on tap/screen reader."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search placeholder text 'Restaurants, dishes, groceries' is light gray on a light gray field and may have weak contrast for low-vision users.",
+        "suggestion": "Darken placeholder text or increase field contrast while preserving placeholder styling; verify contrast against WCAG guidance."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The bottom visible 'Popular right now' pizza card is abruptly cut by the viewport/bottom navigation area, which can look like a rendering cutoff on first load.",
+        "suggestion": "Add bottom padding above the nav/gesture area or a subtle section continuation cue so partially visible content feels intentional."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2102,
+    "outputTokens": 916,
+    "reasoningTokens": 564,
+    "estimatedCost": 0.020046,
+    "reportedCost": 0.0145164,
+    "durationSeconds": 44.33510704200005
+  }
+}

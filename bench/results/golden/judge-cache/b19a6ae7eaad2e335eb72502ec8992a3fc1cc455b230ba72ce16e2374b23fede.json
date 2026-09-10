@@ -1,0 +1,22 @@
+{
+  "judgeModel": "claude-haiku-4-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The last restaurant card in the 'Fastest near you' row is clipped on the right, cutting off the restaurant name ('Trattoria Piccol').",
+    "The last category chip ('Healthy') is clipped at the right edge of the screen, so the pill shape and label are incomplete.",
+    "The second 'Popular right now' restaurant card is partially hidden behind the bottom tab bar, so the image, discount badge, and favorite control are truncated.",
+    "The category row alignment looks uneven because the trailing chip is cropped, making the filter bar feel unfinished."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "None of the reported issues describe a filtering problem where Pizza category selection fails to filter the feed; all reported issues concern layout/clipping problems with UI elements."
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2, 3]
+  }
+}

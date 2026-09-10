@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:54:23.714Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page appears largely functional, with no critical visual breakage. The main concerns are minor layout/scroll affordance issues where horizontally scrolling content is clipped at the right edge and some restaurant text is truncated.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row is clipped on the far right after “Healthy,” leaving a partially visible chip with no clear scroll indicator.",
+        "suggestion": "Add edge fade, spacing, or a horizontal scroll indicator so the cut-off chip clearly signals more content rather than looking accidentally cropped."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In “Fastest near you,” the third restaurant card is partially cut off and its name is truncated as “Trattoria Piccol…”.",
+        "suggestion": "Use consistent card widths/peek padding and ellipsis rules so off-screen cards look intentionally scrollable and titles truncate cleanly."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Delivery-time pills overlap the bottom edge of some restaurant images, which can look slightly misaligned on the first card.",
+        "suggestion": "Keep badges fully inside the image bounds or standardize overlap/offset across all cards."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2105,
+    "outputTokens": 646,
+    "reasoningTokens": 513,
+    "estimatedCost": 0.016005000000000002,
+    "reportedCost": 0.0240075,
+    "durationSeconds": 14.325700083999982
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 1,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T12:01:55.672Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 4 issues including a bottom navigation state inconsistency, a cut-off content card, incomplete category tabs, and inconsistent heart icon styling.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Profile tab is highlighted as active (green icon and label) at the bottom, but the visible page content shows the Home/Restaurant discovery screen, not a Profile screen.",
+        "suggestion": "Ensure the active navigation tab correctly matches the currently displayed screen content."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Trattoria Piccolo' card and its details in the 'Fastest near you' section are cut off at the right edge of the screen, and the pizza promotional card at the bottom is cut off vertically.",
+        "suggestion": "Adjust card widths/spacing or add proper horizontal scroll indicators so cards are not abruptly clipped by the viewport edge."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row (All, Pizza, Sushi, Burgers, Healthy) shows a partially cut-off tab at the right edge, indicating more content exists off-screen without a clear scroll affordance.",
+        "suggestion": "Add a fade/gradient edge or scroll indicator to signal that the filter row is horizontally scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The heart/favorite icon appears white/outlined on the Tokumaru Ramen Bar card but solid black on the pizza card below, creating inconsistent icon styling across similar cards.",
+        "suggestion": "Standardize the heart icon color and style across all restaurant cards for visual consistency."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1974,
+    "outputTokens": 622,
+    "estimatedCost": 0.015252,
+    "durationSeconds": 8.618065458999947
+  }
+}

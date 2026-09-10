@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_13",
+  "rep": 2,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:58:43.751Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly intact, but several horizontally scrolling elements are hard-clipped at the right and bottom edges, making content look cropped rather than intentionally scrollable.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The 'Fastest near you' carousel is clipped at the right edge: the third card image is half off-screen and the restaurant name is truncated as 'Trattoria Piccol...', which can read as broken rather than a scroll hint.",
+        "suggestion": "Add clearer carousel affordance such as peek spacing consistent on both sides, a page indicator, or fade/arrow; avoid truncating the visible card title so aggressively."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category chip row has a partially visible pill cut off at the far right edge after 'Healthy' with no fade or arrow.",
+        "suggestion": "Add edge fade, scroll indicator, or more symmetric inset so the cut-off chip reads as intentionally scrollable."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The lower 'Popular right now' pizza card is cropped by the bottom of the viewport and overlaps close to the fixed bottom navigation, leaving an awkward partial card visible.",
+        "suggestion": "Increase bottom content padding above the tab bar and use a consistent card peek height so partially visible content looks deliberate."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary metadata such as delivery fees and time are small gray text, which may be low contrast for some users.",
+        "suggestion": "Increase text size/contrast for metadata to meet WCAG AA while preserving hierarchy."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2105,
+    "outputTokens": 841,
+    "reasoningTokens": 604,
+    "estimatedCost": 0.01893,
+    "reportedCost": 0.028395,
+    "durationSeconds": 17.24755700000003
+  }
+}

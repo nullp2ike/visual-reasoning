@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "imageId": "img_11",
+  "rep": 4,
+  "promptHash": "8a963f905314cca5af65dc56f6f0ac7f0bfb32a130bed6f653d504458a153739",
+  "promptVariant": "baseline",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-04T10:26:37.585Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is generally polished, but a few elements look unintentionally clipped or crowded at the right and bottom edges, suggesting horizontal overflow/carousel padding and fixed bottom navigation spacing issues.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The horizontal restaurant carousel in the “Fastest near you” section is clipped at the right edge. The third card and its restaurant name are cut off, which can look like broken layout rather than an intentional carousel preview.",
+        "suggestion": "Add proper horizontal padding and carousel snapping, or ensure partially visible cards are clipped cleanly with enough spacing so the preview feels intentional."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The category filter row shows a partially visible empty-looking pill on the far right, with no readable label. This looks visually broken or like a truncated button.",
+        "suggestion": "Either hide overflow more cleanly, add spacing so the next chip is meaningfully visible, or use a fade/scroll affordance to indicate horizontal scrolling."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The fixed bottom navigation sits very close to the feed content, and the next restaurant card is partially cut off at the bottom of the screen. This can make the content feel cramped or obscured.",
+        "suggestion": "Add sufficient bottom padding to the scrollable content so cards are not visually crowded by the fixed bottom navigation."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1811,
+    "outputTokens": 809,
+    "reasoningTokens": 516,
+    "estimatedCost": 0.033325,
+    "durationSeconds": 18.680483792000015
+  }
+}

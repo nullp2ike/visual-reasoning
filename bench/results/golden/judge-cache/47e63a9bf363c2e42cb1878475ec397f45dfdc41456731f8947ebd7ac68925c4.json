@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["The word Restaurants is misspelled Restarants"],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' in the 'Fastest near you' section is truncated and doesn't show the full name",
+    "The third restaurant card in 'Fastest near you' section is partially cut off at the right edge of the screen",
+    "The second restaurant card in 'Popular right now' section is cut off at the bottom, hiding the restaurant name and delivery details"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.67 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}

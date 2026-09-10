@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "moonshotai/kimi-k3",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-08-05T06:46:20.076Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely intact; excluded edge-clipped carousel items and bottom-cutoff cards are treated as features. Found 2 minor issues: an implausible '-100%' discount label and low-contrast secondary text.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The pizza card shows a '-100%' discount badge, which is ambiguous/implausible as a discount value (it implies a free item) and may be a data or formatting error.",
+        "suggestion": "Verify the intended promotion value and display it clearly, e.g. '-10%' or '100% off', so users are not misled."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary metadata text such as delivery fees and '25–35 min · €0 delivery · Ramen' uses light gray on white/dark imagery and may be hard to read for low-vision users.",
+        "suggestion": "Increase contrast of secondary text to meet WCAG AA (at least 4.5:1) by darkening the gray or adding a scrim behind text on images."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2183,
+    "outputTokens": 704,
+    "reasoningTokens": 424,
+    "estimatedCost": 0.017109,
+    "reportedCost": 0.0115794,
+    "durationSeconds": 273.89300654199997
+  }
+}

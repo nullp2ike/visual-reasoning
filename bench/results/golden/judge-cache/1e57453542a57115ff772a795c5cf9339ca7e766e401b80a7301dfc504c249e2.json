@@ -1,0 +1,25 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section heading below 'Fastest near you' shows the raw i18n key 'home_feed.popular_title' instead of a human-readable label such as 'Popular near you'.",
+    "The favorite (heart) buttons on the two popular restaurant cards use inconsistent styling — the first is a white circle with a dark outline heart, the second is a dark/translucent circle with a white heart.",
+    "The third card in the 'Fastest near you' carousel ('Trattoria Piccol…') is cut off at the right edge with its title clipped and no visual affordance that the list scrolls.",
+    "The second popular restaurant card is clipped by the bottom navigation bar with no visible name, rating or metadata, making the feed appear cut off.",
+    "Icon-only controls (notification bell with unread dot, heart favorite buttons, search magnifier) have no visible text labels; if accessible names are missing they will be unusable with screen readers."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [0],
+        "reasoning": "Reported issue 0 identifies the same section heading displaying the raw home_feed.popular_title translation key."
+      }
+    ],
+    "extraReportedIndexes": [1, 2, 3, 4]
+  }
+}

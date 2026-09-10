@@ -1,0 +1,21 @@
+{
+  "judgeModel": "embed:bge-small",
+  "judgePromptVersion": "v1",
+  "expectedIssues": ["Pizza category is selected but the feed still shows all cuisines"],
+  "reportedIssues": [
+    "The third restaurant card in 'Fastest near you' (Trattoria Piccolo) is cut off at the right edge, showing partial text and image.",
+    "The category filter chips row (All, Pizza, Sushi, Burgers, Healthy) appears cut off on the right, suggesting more items scroll horizontally.",
+    "The favorite (heart) icon on the ramen card is white/outlined on a dark image, while on the pizza card it appears in a dark circular background, creating inconsistent styling."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "best cosine 0.67 < 0.69 threshold"
+      }
+    ],
+    "extraReportedIndexes": [0, 1, 2]
+  }
+}
