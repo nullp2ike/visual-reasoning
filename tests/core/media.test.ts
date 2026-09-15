@@ -81,6 +81,33 @@ describe("normalizeMedia", () => {
       expect(frame.mimeType).toBe("image/jpeg");
       expect(frame.timestampSeconds).toBeGreaterThanOrEqual(0);
     }
+    // The fixture's two frames differ visibly, so nothing is dropped by default.
+    expect(result.frames).toHaveLength(2);
+    expect(result.droppedUnchanged).toBe(0);
+  });
+
+  it("keeps every frame with dedupe disabled and reports zero dropped", async () => {
+    const result = await normalizeMedia(join(FIXTURES_DIR, "small.mp4"), { dedupe: false });
+    if (result.kind !== "video") throw new Error("expected video result");
+    expect(result.frames).toHaveLength(2);
+    expect(result.droppedUnchanged).toBe(0);
+  });
+
+  it("drops the second frame when the dedupe threshold is raised past its change", async () => {
+    const result = await normalizeMedia(join(FIXTURES_DIR, "small.mp4"), {
+      dedupe: { threshold: 1 },
+    });
+    if (result.kind !== "video") throw new Error("expected video result");
+    expect(result.frames).toHaveLength(1);
+    expect(result.frames[0]?.timestampSeconds).toBe(0.5);
+    expect(result.droppedUnchanged).toBe(1);
+    expect(result.durationSeconds).toBeGreaterThan(1.5);
+  });
+
+  it("rejects an invalid dedupe threshold", async () => {
+    await expect(
+      normalizeMedia(join(FIXTURES_DIR, "small.mp4"), { dedupe: { threshold: 2 } }),
+    ).rejects.toThrow(/Invalid dedupe threshold/);
   });
 
   it("forwards video sampling options", async () => {

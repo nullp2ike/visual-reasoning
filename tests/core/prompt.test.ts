@@ -171,6 +171,29 @@ describe("buildCheckPrompt with video media context", () => {
     expect(prompt).toContain("seconds from the start");
   });
 
+  it("says nothing about dropped frames when none were dropped", () => {
+    const withZero = buildCheckPrompt("A toast appears", {
+      media: { ...videoContext, droppedUnchanged: 0 },
+    });
+    const withoutField = buildCheckPrompt("A toast appears", { media: videoContext });
+    expect(withZero).toBe(withoutField);
+    expect(withZero).not.toContain("dropped");
+    expect(withZero).not.toContain("until the clip ended");
+  });
+
+  it("explains dropped unchanged frames and the static tail", () => {
+    const prompt = buildCheckPrompt("A toast appears", {
+      media: { ...videoContext, droppedUnchanged: 2 },
+    });
+    expect(prompt).toContain(
+      "5 frames sampled (in chronological order); 2 were dropped because they did not visibly change from the preceding kept frame, so 3 images are attached",
+    );
+    expect(prompt).toContain("Frame index → timestamp:\n  0: 0.50s\n  1: 1.50s\n  2: 2.50s");
+    expect(prompt).toContain(
+      "Frames sampled between two consecutive listed timestamps looked the same as the earlier listed frame, and frames sampled after the last listed timestamp looked the same as the last attached image until the clip ended at 3.00s.",
+    );
+  });
+
   it("falls back to the image role and schema when media kind is image", () => {
     const prompt = buildCheckPrompt("Something is visible", { media: { kind: "image" } });
     expect(prompt).not.toContain("Video timeline");
@@ -190,6 +213,17 @@ describe("buildAskPrompt with video media context", () => {
     expect(prompt).toContain("sequence of video frames");
     expect(prompt).toContain('"frameReferences"');
     expect(prompt).toContain("Video timeline");
+    expect(prompt).not.toContain("dropped");
+  });
+
+  it("explains dropped unchanged frames", () => {
+    const prompt = buildAskPrompt("What happened?", {
+      media: { ...videoContext, droppedUnchanged: 1 },
+    });
+    expect(prompt).toContain(
+      "3 frames sampled (in chronological order); 1 was dropped because it did not visibly change from the preceding kept frame, so 2 images are attached",
+    );
+    expect(prompt).toContain("until the clip ended at 2.00s");
   });
 
   it("falls back to the image schema when no video context is supplied", () => {

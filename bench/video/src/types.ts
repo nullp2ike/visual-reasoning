@@ -37,6 +37,12 @@ export const VideoRunRecordSchema = z.object({
     delivery: z.enum(["inline", "file"]).optional(),
     /** Frames mode only. */
     maxFrames: z.number().optional(),
+    /**
+     * Frames mode only: whether the library's unchanged-frame dropping was on.
+     * The bench pins it off so every model sees the same frame count; absent on
+     * records written before the option existed, when it was effectively off.
+     */
+    dedupe: z.boolean().optional(),
     /** Frames mode only: timestamps of the frames the model actually saw. */
     frameTimestampsSeconds: z.array(z.number()).optional(),
   }),

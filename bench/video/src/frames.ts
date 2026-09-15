@@ -84,6 +84,9 @@ export async function runFramesCall(options: FramesCallOptions): Promise<FramesC
       // The library rejects clips longer than this before any provider call;
       // lift the 10 s default so the whole recording is eligible.
       maxDurationSeconds: Math.ceil(options.durationSeconds) + 1,
+      // Every model must see the same frames for the comparison to mean
+      // anything, so the library's unchanged-frame dropping stays off here.
+      dedupe: false,
     },
   });
 

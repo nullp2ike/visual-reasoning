@@ -314,7 +314,9 @@ async function main(): Promise<void> {
             fps: cli.fps,
             reasoningEffort: cli.effort,
             maxTokens: cli.maxTokens,
-            ...(mode === "native" ? { resolution: cli.resolution } : { maxFrames: cli.maxFrames }),
+            ...(mode === "native"
+              ? { resolution: cli.resolution }
+              : { maxFrames: cli.maxFrames, dedupe: false }),
           },
           prompt: {
             variant: cli.promptVariant,

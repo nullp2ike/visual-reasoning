@@ -291,11 +291,13 @@ function mediaToProviderInputs(media: NormalizedMedia): {
       kind: "video",
       frameTimestamps: timestamps,
       durationSeconds: media.durationSeconds,
+      droppedUnchanged: media.droppedUnchanged,
     },
     framesMetadata: {
       count: media.frames.length,
       timestampsSeconds: timestamps,
       durationSeconds: media.durationSeconds,
+      droppedUnchanged: media.droppedUnchanged,
     },
   };
 }

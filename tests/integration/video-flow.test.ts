@@ -61,6 +61,7 @@ describe("integration: video → check()", () => {
     expect(result.frames?.durationSeconds).toBeGreaterThan(1.5);
     expect(result.frames?.durationSeconds).toBeLessThan(2.5);
     expect(result.frames?.timestampsSeconds).toEqual([0.5, 1.5]);
+    expect(result.frames?.droppedUnchanged).toBe(0);
 
     const call = mockAnthropicCreate.mock.calls[0]![0];
     const messageContent = (call as { messages: Array<{ content: unknown[] }> }).messages[0]!

@@ -38,7 +38,7 @@ describe("isFramesInput", () => {
 describe("normalizeFrames", () => {
   it("normalizes bare image frames with fps-derived timestamps", async () => {
     const png = await pngBuffer();
-    const result = await normalizeFrames({ frames: [png, png, png] });
+    const result = await normalizeFrames({ frames: [png, png, png], dedupe: false });
 
     expect(result.kind).toBe("video");
     if (result.kind !== "video") return;
@@ -46,6 +46,7 @@ describe("normalizeFrames", () => {
     expect(result.frames.map((f) => f.timestampSeconds)).toEqual([0, 1, 2]);
     expect(result.frames.map((f) => f.index)).toEqual([0, 1, 2]);
     expect(result.durationSeconds).toBe(2);
+    expect(result.droppedUnchanged).toBe(0);
     for (const frame of result.frames) {
       expect(frame.mimeType).toBe("image/png");
       expect(frame.base64.length).toBeGreaterThan(0);
@@ -55,7 +56,7 @@ describe("normalizeFrames", () => {
 
   it("derives timestamps from a custom fps", async () => {
     const png = await pngBuffer();
-    const result = await normalizeFrames({ frames: [png, png, png], fps: 2 });
+    const result = await normalizeFrames({ frames: [png, png, png], fps: 2, dedupe: false });
     if (result.kind !== "video") throw new Error("expected video");
     expect(result.frames.map((f) => f.timestampSeconds)).toEqual([0, 0.5, 1]);
     expect(result.durationSeconds).toBe(1);
@@ -67,6 +68,7 @@ describe("normalizeFrames", () => {
     const result = await normalizeFrames({
       frames: [png, { image: png, timestampSeconds: 3.5 }, { image: png }],
       fps: 1,
+      dedupe: false,
     });
     if (result.kind !== "video") throw new Error("expected video");
     // Frame 0 bare → 0; frame 1 explicit → 3.5; frame 2 bare → index/fps = 2.
@@ -101,12 +103,32 @@ describe("normalizeFrames", () => {
     ).rejects.toThrow(/Invalid timestampSeconds/);
     expect(ffmpeg.loaded).toBe(false);
   });
+
+  it("drops frames identical to the preceding kept frame by default", async () => {
+    const png = await pngBuffer();
+    const result = await normalizeFrames({ frames: [png, png, png] });
+    if (result.kind !== "video") throw new Error("expected video");
+    expect(result.frames).toHaveLength(1);
+    expect(result.frames[0]?.index).toBe(0);
+    expect(result.frames[0]?.timestampSeconds).toBe(0);
+    // The span still covers every supplied frame, not just the kept ones.
+    expect(result.durationSeconds).toBe(2);
+    expect(result.droppedUnchanged).toBe(2);
+    expect(ffmpeg.loaded).toBe(false);
+  });
+
+  it("throws on an invalid dedupe threshold before decoding any frame", async () => {
+    await expect(
+      normalizeFrames({ frames: [Buffer.from([1, 2, 3])], dedupe: { threshold: 0 } }),
+    ).rejects.toThrow(/Invalid dedupe threshold/);
+    expect(ffmpeg.loaded).toBe(false);
+  });
 });
 
 describe("normalizeMedia dispatches FramesInput without loading ffmpeg", () => {
   it("routes a { frames } object through the frames path", async () => {
     const png = await pngBuffer();
-    const result = await normalizeMedia({ frames: [png, png] });
+    const result = await normalizeMedia({ frames: [png, png], dedupe: false });
     expect(result.kind).toBe("video");
     if (result.kind !== "video") return;
     expect(result.frames).toHaveLength(2);

@@ -112,12 +112,18 @@ export const CheckResultSchema = BaseResultSchema.extend({
  * Populated client-side; not part of the model's response.
  */
 export interface VideoFramesMetadata {
-  /** Total number of frames sampled from the video. */
+  /** Number of frames actually sent to the model (after unchanged frames were dropped). */
   count: number;
-  /** Timestamp (seconds, from the start of the clip) of each sampled frame, in order. */
+  /** Timestamp (seconds, from the start of the clip) of each sent frame, in order. */
   timestampsSeconds: number[];
   /** Total duration of the source video in seconds. */
   durationSeconds: number;
+  /**
+   * Number of sampled frames dropped because they did not visibly change from
+   * the preceding kept frame. `0` when dedupe is disabled or nothing was dropped.
+   * See `FrameDedupeOptions`.
+   */
+  droppedUnchanged: number;
 }
 /** Result returned by `check()` and the template convenience methods. */
 export type CheckResult = z.infer<typeof CheckResultSchema> & {
@@ -219,6 +225,11 @@ export interface FramesInput {
    * `timestampSeconds` (frame `i` maps to `i / fps` seconds). Default `1`.
    */
   fps?: number;
+  /**
+   * Drop frames that did not visibly change from the preceding kept frame
+   * before sending to the provider. Default `true`. See `FrameDedupeOptions`.
+   */
+  dedupe?: FrameDedupeOptions;
 }
 
 /** Supported image MIME types accepted by all providers. */
@@ -416,7 +427,30 @@ export interface VideoSamplingOptions {
    * Default `10`.
    */
   maxDurationSeconds?: number;
+  /**
+   * Drop sampled frames that did not visibly change from the preceding kept
+   * frame before sending to the provider. Default `true`. See `FrameDedupeOptions`.
+   */
+  dedupe?: FrameDedupeOptions;
 }
+
+/**
+ * Controls dropping of frames that did not visibly change from the previous
+ * kept frame, so a static screen does not cost input tokens for every sample.
+ *
+ * - `true` (default): drop unchanged frames using the default threshold.
+ * - `false`: send every sampled frame.
+ * - `{ threshold }`: the fraction `(0, 1]` of a frame's pixels that must differ
+ *   from the last kept frame for it to count as changed. Default `0.001` (0.1%,
+ *   roughly a 37x37 px region on a 1568x880 frame). Lower it to keep smaller
+ *   changes; raise it to ignore more.
+ *
+ * Each frame is compared against the most recently *kept* frame, so gradual
+ * drift accumulates and is eventually kept. The first frame is always kept.
+ * Pixel-level compression noise and tiny flickers such as a blinking text
+ * caret fall below the default threshold.
+ */
+export type FrameDedupeOptions = boolean | { threshold?: number };
 
 /**
  * A single frame extracted from a video input. Identical in shape to

@@ -161,20 +161,39 @@ const DEFAULT_ASK_ROLE_VIDEO =
  */
 export type MediaContext =
   | { kind: "image" }
-  | { kind: "video"; frameTimestamps: readonly number[]; durationSeconds: number };
+  | {
+      kind: "video";
+      frameTimestamps: readonly number[];
+      durationSeconds: number;
+      /** Sampled frames omitted because they matched the preceding kept frame. */
+      droppedUnchanged?: number;
+    };
 
 function buildVideoTimelineSection(
   frameTimestamps: readonly number[],
   durationSeconds: number,
+  droppedUnchanged = 0,
 ): string {
   const formatted = frameTimestamps.map((t, i) => `  ${i}: ${t.toFixed(2)}s`).join("\n");
+  const attached = frameTimestamps.length;
+  const sampledLine =
+    droppedUnchanged > 0
+      ? `- ${attached + droppedUnchanged} frames sampled (in chronological order); ${droppedUnchanged} ` +
+        `${droppedUnchanged === 1 ? "was" : "were"} dropped because ` +
+        `${droppedUnchanged === 1 ? "it" : "they"} did not visibly change from the preceding kept frame, ` +
+        `so ${attached} ${attached === 1 ? "image is" : "images are"} attached`
+      : `- ${attached} frames sampled (in chronological order)`;
+  const droppedGuidance =
+    droppedUnchanged > 0
+      ? ` Frames sampled between two consecutive listed timestamps looked the same as the earlier listed frame, and frames sampled after the last listed timestamp looked the same as the last attached image until the clip ended at ${durationSeconds.toFixed(2)}s.`
+      : "";
   return `Video timeline:
 - Total duration: ${durationSeconds.toFixed(2)}s
-- ${frameTimestamps.length} frames sampled (in chronological order)
+${sampledLine}
 - Frame index → timestamp:
 ${formatted}
 
-Treat the attached images as a chronological timeline. The first image is the earliest frame, the last is the latest. Refer to frames by timestamp where helpful.`;
+Treat the attached images as a chronological timeline. The first image is the earliest frame, the last is the latest. Refer to frames by timestamp where helpful.${droppedGuidance}`;
 }
 
 const COMPARE_ROLE =
@@ -220,7 +239,13 @@ export function buildCheckPrompt(
   const sections = [options?.role ?? defaultRole];
 
   if (media?.kind === "video") {
-    sections.push(buildVideoTimelineSection(media.frameTimestamps, media.durationSeconds));
+    sections.push(
+      buildVideoTimelineSection(
+        media.frameTimestamps,
+        media.durationSeconds,
+        media.droppedUnchanged,
+      ),
+    );
   }
 
   if (options?.instructions && options.instructions.length > 0) {
@@ -238,7 +263,13 @@ export function buildAskPrompt(userPrompt: string, options?: AskPromptOptions): 
   const sections = [media?.kind === "video" ? DEFAULT_ASK_ROLE_VIDEO : DEFAULT_ASK_ROLE];
 
   if (media?.kind === "video") {
-    sections.push(buildVideoTimelineSection(media.frameTimestamps, media.durationSeconds));
+    sections.push(
+      buildVideoTimelineSection(
+        media.frameTimestamps,
+        media.durationSeconds,
+        media.droppedUnchanged,
+      ),
+    );
   }
 
   if (options?.instructions && options.instructions.length > 0) {

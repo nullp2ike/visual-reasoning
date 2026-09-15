@@ -52,6 +52,7 @@ export type {
   SupportedMimeType,
   SupportedVideoMimeType,
   Frame,
+  FrameDedupeOptions,
   VideoFramesMetadata,
   VideoSamplingOptions,
 } from "./types.js";

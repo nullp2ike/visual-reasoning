@@ -57,7 +57,7 @@ describe("integration: pre-sampled frames → check()", () => {
 
     const frame = await png();
     const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test-key" });
-    const result = await ai.check({ frames: [frame, frame] }, [
+    const result = await ai.check({ frames: [frame, frame], dedupe: false }, [
       'A success toast with text "Saved" appears',
     ]);
 
@@ -66,6 +66,7 @@ describe("integration: pre-sampled frames → check()", () => {
     expect(result.frames?.count).toBe(2);
     expect(result.frames?.timestampsSeconds).toEqual([0, 1]);
     expect(result.frames?.durationSeconds).toBe(1);
+    expect(result.frames?.droppedUnchanged).toBe(0);
 
     const call = mockAnthropicCreate.mock.calls[0]![0];
     const messageContent = (call as { messages: Array<{ content: unknown[] }> }).messages[0]!
@@ -81,6 +82,62 @@ describe("integration: pre-sampled frames → check()", () => {
     expect(textBlock?.text).toContain("Video timeline");
     expect(textBlock?.text).toContain("0: 0.00s");
     expect(textBlock?.text).toContain("1: 1.00s");
+    expect(textBlock?.text).not.toContain("dropped");
+  });
+
+  it("drops an unchanged frame by default and tells the model so", async () => {
+    mockAnthropicCreate.mockResolvedValueOnce({
+      content: [
+        {
+          type: "text",
+          text: JSON.stringify({
+            pass: false,
+            reasoning: "No toast in the only frame.",
+            issues: [],
+            statements: [
+              {
+                statement: 'A success toast with text "Saved" appears',
+                pass: false,
+                reasoning: "Not visible",
+                confidence: "high",
+                timestampSeconds: 0,
+              },
+            ],
+          }),
+        },
+      ],
+      usage: { input_tokens: 400, output_tokens: 90 },
+    });
+
+    const frame = await png();
+    const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test-key" });
+    const result = await ai.check({ frames: [frame, frame] }, [
+      'A success toast with text "Saved" appears',
+    ]);
+
+    expect(result.frames).toEqual({
+      count: 1,
+      timestampsSeconds: [0],
+      durationSeconds: 1,
+      droppedUnchanged: 1,
+    });
+
+    const call = mockAnthropicCreate.mock.calls[0]![0];
+    const messageContent = (call as { messages: Array<{ content: unknown[] }> }).messages[0]!
+      .content;
+    const imageBlocks = messageContent.filter(
+      (b): b is { type: "image" } => (b as { type: string }).type === "image",
+    );
+    expect(imageBlocks).toHaveLength(1);
+
+    const textBlock = messageContent.find(
+      (b): b is { type: "text"; text: string } => (b as { type: string }).type === "text",
+    );
+    expect(textBlock?.text).toContain(
+      "2 frames sampled (in chronological order); 1 was dropped because it did not visibly change from the preceding kept frame, so 1 image is attached",
+    );
+    expect(textBlock?.text).toContain("until the clip ended at 1.00s");
+    expect(textBlock?.text).not.toContain("1: 1.00s");
   });
 
   it("honors explicit per-frame timestamps and custom fps", async () => {
@@ -110,7 +167,7 @@ describe("integration: pre-sampled frames → check()", () => {
     const frame = await png();
     const ai = visualAI({ model: "claude-sonnet-4-6", apiKey: "test-key" });
     const result = await ai.check(
-      { frames: [{ image: frame, timestampSeconds: 5 }, frame], fps: 4 },
+      { frames: [{ image: frame, timestampSeconds: 5 }, frame], fps: 4, dedupe: false },
       "test",
     );
 
@@ -136,7 +193,7 @@ describe("integration: pre-sampled frames → ask()", () => {
 
     const frame = await png();
     const ai = visualAI({ model: "gpt-5-mini", apiKey: "test-key" });
-    const result = await ai.ask({ frames: [frame, frame] }, "What appears?");
+    const result = await ai.ask({ frames: [frame, frame], dedupe: false }, "What appears?");
 
     expect(result.summary).toContain("toast");
     expect(result.frameReferences).toEqual([1]);

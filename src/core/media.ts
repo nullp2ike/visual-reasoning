@@ -10,6 +10,7 @@ import type {
   VideoSamplingOptions,
 } from "../types.js";
 import { saveDebugFrames } from "./debug-frames.js";
+import { dedupeFrames, resolveDedupeOptions } from "./frame-dedupe.js";
 import { normalizeImage } from "./image.js";
 import {
   decodeBase64,
@@ -29,7 +30,14 @@ import {
 
 export type NormalizedMedia =
   | { kind: "image"; image: NormalizedImage }
-  | { kind: "video"; frames: Frame[]; durationSeconds: number };
+  | {
+      kind: "video";
+      /** Frames to send to the provider, after unchanged frames were dropped. */
+      frames: Frame[];
+      durationSeconds: number;
+      /** Sampled frames dropped because they matched the preceding kept frame. */
+      droppedUnchanged: number;
+    };
 
 // Only the first 12 bytes (16 base64 chars) are needed to sniff a magic-byte signature.
 const VIDEO_MAGIC_BYTE_PREFIX_LEN = 16;
@@ -113,6 +121,9 @@ export async function normalizeFrames(
   const rawFrames = input.frames;
   const fps = input.fps ?? DEFAULT_FPS;
 
+  // Validate before decoding any image so a bad option fails fast.
+  resolveDedupeOptions(input.dedupe);
+
   if (rawFrames.length === 0) {
     throw new VisualAIVideoError("frames must be a non-empty array of image inputs");
   }
@@ -126,7 +137,7 @@ export async function normalizeFrames(
     throw new VisualAIVideoError(`Invalid fps: ${fps}. Must be a finite number > 0.`);
   }
 
-  const frames: Frame[] = await Promise.all(
+  const sampled: Frame[] = await Promise.all(
     rawFrames.map(async (raw, index): Promise<Frame> => {
       const timestamped = isTimestampedFrameInput(raw);
       const imageInput = timestamped ? raw.image : raw;
@@ -152,11 +163,13 @@ export async function normalizeFrames(
   );
 
   // Duration isn't known for a bare frame sequence; use the latest timestamp so
-  // the timeline prompt and frame metadata report a sensible span.
-  const durationSeconds = frames.reduce((max, f) => Math.max(max, f.timestampSeconds), 0);
+  // the timeline prompt and frame metadata report a sensible span. Computed
+  // over every supplied frame so dropping a static tail does not shorten it.
+  const durationSeconds = sampled.reduce((max, f) => Math.max(max, f.timestampSeconds), 0);
 
+  const { frames, dropped } = await dedupeFrames(sampled, input.dedupe);
   await saveDebugFrames(frames);
-  return { kind: "video", frames, durationSeconds };
+  return { kind: "video", frames, durationSeconds, droppedUnchanged: dropped };
 }
 
 /**
@@ -174,11 +187,19 @@ export async function normalizeMedia(
   }
 
   if (isVideoInput(input)) {
+    // Validate before touching the filesystem or ffmpeg so a bad option fails fast.
+    resolveDedupeOptions(videoOptions?.dedupe);
     const { path, cleanup } = await resolveVideoToPath(input);
     try {
-      const { frames, durationSeconds } = await extractFrames(path, videoOptions, maxDimension);
+      const { frames: sampled, durationSeconds } = await extractFrames(
+        path,
+        videoOptions,
+        maxDimension,
+      );
+      const { frames, dropped } = await dedupeFrames(sampled, videoOptions?.dedupe);
+      // Debug output shows exactly the frames the model receives.
       await saveDebugFrames(frames);
-      return { kind: "video", frames, durationSeconds };
+      return { kind: "video", frames, durationSeconds, droppedUnchanged: dropped };
     } finally {
       try {
         await cleanup();
