@@ -322,11 +322,20 @@ export async function probeDurationSeconds(videoPath: string): Promise<number> {
  * the longer edge fits within `FRAME_MAX_DIMENSION`, and time-stamped at
  * the centre of each sample window.
  */
-export async function extractFrames(
-  videoPath: string,
+export interface ResolvedVideoSamplingOptions {
+  readonly fps: number;
+  readonly maxFrames: number;
+  readonly maxDurationSeconds: number;
+}
+
+/**
+ * Applies defaults to the numeric sampling options and validates them, throwing
+ * `VisualAIVideoError` for anything out of range. Shared by frame extraction
+ * and native delivery so both paths reject the same inputs before any I/O.
+ */
+export function resolveVideoSamplingOptions(
   options: VideoSamplingOptions = {},
-  maxDimension: number = FRAME_MAX_DIMENSION,
-): Promise<{ frames: Frame[]; durationSeconds: number }> {
+): ResolvedVideoSamplingOptions {
   const fps = options.fps ?? DEFAULT_FPS;
   const maxFrames = options.maxFrames ?? DEFAULT_MAX_FRAMES;
   const maxDurationSeconds = options.maxDurationSeconds ?? DEFAULT_MAX_DURATION_SECONDS;
@@ -348,16 +357,32 @@ export async function extractFrames(
       `Invalid maxDurationSeconds: ${maxDurationSeconds}. Must be a finite number > 0.`,
     );
   }
+  return { fps, maxFrames, maxDurationSeconds };
+}
 
-  const ffmpeg = await loadFfmpegFactory();
-  const durationSeconds = await probeDurationSeconds(videoPath);
-
+/** Throws `VisualAIVideoError` when a probed duration exceeds the configured limit. */
+export function assertDurationWithinLimit(
+  durationSeconds: number,
+  maxDurationSeconds: number,
+): void {
   if (durationSeconds > maxDurationSeconds) {
     throw new VisualAIVideoError(
       `Video duration ${durationSeconds.toFixed(2)}s exceeds limit of ${maxDurationSeconds}s. ` +
         `Pass { maxDurationSeconds: N } to override, or trim the source video.`,
     );
   }
+}
+
+export async function extractFrames(
+  videoPath: string,
+  options: VideoSamplingOptions = {},
+  maxDimension: number = FRAME_MAX_DIMENSION,
+): Promise<{ frames: Frame[]; durationSeconds: number }> {
+  const { fps, maxFrames, maxDurationSeconds } = resolveVideoSamplingOptions(options);
+
+  const ffmpeg = await loadFfmpegFactory();
+  const durationSeconds = await probeDurationSeconds(videoPath);
+  assertDurationWithinLimit(durationSeconds, maxDurationSeconds);
 
   const outputDir = await mkdtemp(join(tmpdir(), "visual-ai-frames-"));
   try {

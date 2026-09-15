@@ -201,6 +201,41 @@ describe("buildCheckPrompt with video media context", () => {
   });
 });
 
+describe("buildCheckPrompt with native video media context", () => {
+  const nativeContext = { kind: "native-video" as const, durationSeconds: 15 };
+
+  it("uses the recording role and section instead of a frame timeline", () => {
+    const prompt = buildCheckPrompt("A toast appears", { media: nativeContext });
+    expect(prompt).toContain("Evaluate the provided video recording");
+    expect(prompt).toContain("Video recording:\n- Total duration: 15.00s");
+    expect(prompt).toContain("The attached file is the complete video recording");
+    expect(prompt).not.toContain("Video timeline");
+    expect(prompt).not.toContain("frames sampled");
+  });
+
+  it("phrases the video schema in moments rather than frames", () => {
+    const prompt = buildCheckPrompt("A toast appears", { media: nativeContext });
+    expect(prompt).toContain("true at ANY moment of the video");
+    expect(prompt).toContain("the timestamp of the moment that most clearly demonstrates it");
+    expect(prompt).toContain('"timestampSeconds"');
+    expect(prompt).not.toContain("ANY frame of the timeline");
+    expect(prompt).not.toContain("at the 3.5s frame");
+  });
+
+  it("keeps the frame wording for the sampled-frames context", () => {
+    const prompt = buildCheckPrompt("A toast appears", {
+      media: { kind: "video", frameTimestamps: [0.5], durationSeconds: 1 },
+    });
+    expect(prompt).toContain("true at ANY frame of the timeline");
+    expect(prompt).toContain("at the 3.5s frame");
+  });
+
+  it("honours a custom role over the native default", () => {
+    const prompt = buildCheckPrompt("A toast appears", { media: nativeContext, role: "Custom" });
+    expect(prompt.startsWith("Custom")).toBe(true);
+  });
+});
+
 describe("buildAskPrompt with video media context", () => {
   const videoContext = {
     kind: "video" as const,
@@ -230,6 +265,17 @@ describe("buildAskPrompt with video media context", () => {
     const prompt = buildAskPrompt("What's broken?");
     expect(prompt).not.toContain("Video timeline");
     expect(prompt).not.toContain("frameReferences");
+  });
+
+  it("asks for timestampReferences instead of frameReferences for native video", () => {
+    const prompt = buildAskPrompt("What happened?", {
+      media: { kind: "native-video", durationSeconds: 4 },
+    });
+    expect(prompt).toContain("Analyze the provided video recording");
+    expect(prompt).toContain("Video recording:\n- Total duration: 4.00s");
+    expect(prompt).toContain('"timestampReferences"');
+    expect(prompt).not.toContain("frameReferences");
+    expect(prompt).not.toContain("Video timeline");
   });
 });
 

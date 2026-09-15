@@ -1,4 +1,4 @@
-import type { NormalizedImage } from "../types.js";
+import type { NormalizedImage, NormalizedVideo } from "../types.js";
 import type { ImageDetailLevel, ReasoningEffortLevel } from "../constants.js";
 
 export interface ProviderConfig {
@@ -49,12 +49,27 @@ export interface SendMessageOptions {
   responseSchema?: Record<string, unknown>;
 }
 
+/** Response from a native video request; also says how the bytes were delivered. */
+export interface RawVideoProviderResponse extends RawProviderResponse {
+  delivery: "inline" | "file";
+}
+
 export interface ProviderDriver {
   sendMessage(
     images: NormalizedImage[],
     prompt: string,
     options?: SendMessageOptions,
   ): Promise<RawProviderResponse>;
+  /**
+   * Sends the video itself rather than sampled frames. Only drivers whose
+   * provider accepts video input implement this; the client falls back to
+   * frame sampling when it is absent.
+   */
+  sendVideoMessage?(
+    video: NormalizedVideo,
+    prompt: string,
+    options?: SendMessageOptions,
+  ): Promise<RawVideoProviderResponse>;
   generateImage?(
     images: NormalizedImage[],
     prompt: string,

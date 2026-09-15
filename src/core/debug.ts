@@ -4,9 +4,10 @@ import type { ResolvedConfig } from "./config.js";
 import type {
   ProviderDriver,
   RawProviderResponse,
+  RawVideoProviderResponse,
   SendMessageOptions,
 } from "../providers/types.js";
-import type { NormalizedImage, UsageInfo } from "../types.js";
+import type { NormalizedImage, NormalizedVideo, UsageInfo } from "../types.js";
 import { VisualAIError, VisualAIResponseParseError, VisualAITruncationError } from "../errors.js";
 
 export type DebugLogKind = "prompt" | "response" | "error";
@@ -115,6 +116,25 @@ export async function timedSendMessage(
 ): Promise<RawProviderResponse & { durationSeconds: number }> {
   const start = performance.now();
   const response = await driver.sendMessage(images, prompt, options);
+  const durationSeconds = (performance.now() - start) / 1000;
+  return { ...response, durationSeconds };
+}
+
+/**
+ * Native-video counterpart of `timedSendMessage`. The caller has already
+ * checked that the driver implements `sendVideoMessage`.
+ */
+export async function timedSendVideoMessage(
+  driver: ProviderDriver,
+  video: NormalizedVideo,
+  prompt: string,
+  options?: SendMessageOptions,
+): Promise<RawVideoProviderResponse & { durationSeconds: number }> {
+  if (!driver.sendVideoMessage) {
+    throw new VisualAIError("Provider driver does not support native video delivery");
+  }
+  const start = performance.now();
+  const response = await driver.sendVideoMessage(video, prompt, options);
   const durationSeconds = (performance.now() - start) / 1000;
   return { ...response, durationSeconds };
 }

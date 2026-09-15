@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.25.0] - 2026-09-15
+
+### Added
+
+- **Native video delivery for Google models.** A video passed to `check()` or `ask()` on a Gemini model is now sent as the video itself instead of being sampled into frames: Gemini samples and tokenises it server-side at `fps` (passed through as `videoMetadata.fps`), and also hears the audio track. Videos up to 19 MB go inline as base64; larger ones are uploaded through the Gemini Files API, polled until processed, referenced by URI, and deleted again afterwards. The duration is still probed with ffprobe and `maxDurationSeconds` still enforced before any provider call, and the numeric sampling options are validated the same way, so the guard rails match the frames path exactly. The prompt swaps the frame timeline for a "video recording" section and phrases the check schema in moments rather than frames, so `statements[].timestampSeconds` keeps working. Measured live on the 15 s bench recording with a seven-statement `check()` on Gemini 3.8 Flash, three reps each: native at 1 fps cost **$0.009 per call and 6.7 s** against $0.0145 and 8.2 s for the frames path with dedupe on (and $0.040 with dedupe off, where two of three calls exceeded three minutes), with all 21 verdicts and all 9 cited timestamps correct on both native and dedupe-on frames. Gemini tokenises a video frame at about 60 tokens where the same frame sent as an image costs about 1,080, so native input is almost free and its bill is mostly thinking; at 2 fps native cost slightly more than frames with dedupe on for that reason.
+- **`video.mode`** on `VideoSamplingOptions` (`VideoDeliveryMode`): `"auto"` (default) sends natively where the provider supports it and samples frames elsewhere; `"frames"` forces ffmpeg sampling on any provider; `"native"` insists on native delivery and throws `VisualAIConfigError` on a provider without it — but only when the input really is a video, so images and pre-sampled `{ frames }` input pass through untouched whatever the mode. Pre-sampled frames are always sent as frames. `maxFrames` and `dedupe` apply to frame sampling only.
+- **`result.video`** (`NativeVideoMetadata`: `durationSeconds`, `fps`, `mimeType`, `delivery: "inline" | "file"`) on `CheckResult` and `AskResult` when the video was delivered natively, in place of `result.frames`. **`result.timestampReferences`** on `AskResult` — seconds from the start of the clip the model relied on — is the native counterpart of the frame-indexed `frameReferences`; the two are never both present.
+- `ProviderDriver.sendVideoMessage` (optional) for drivers whose provider accepts video input; the Google driver implements it. Exported types `NativeVideoMetadata` and `VideoDeliveryMode`.
+
+### Changed
+
+- **Google models now default to native video delivery.** Code that inspected `result.frames` or `frameReferences` on a Gemini model will find `result.video` and `timestampReferences` instead; pass `video: { mode: "frames" }` to keep the previous behaviour. Other providers are unchanged.
+- The video bench pins `mode: "frames"` in its frames mode, since the library would otherwise route Google models to native delivery, which is the bench's own `native` mode.
+
 ## [0.24.0] - 2026-09-15
 
 ### Added

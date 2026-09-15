@@ -115,6 +115,7 @@ export function parseAskResponse(raw: string): Omit<AskResult, "usage"> {
   return {
     ...result,
     frameReferences: result.frameReferences ?? undefined,
+    timestampReferences: result.timestampReferences ?? undefined,
   };
 }
 

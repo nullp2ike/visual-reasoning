@@ -343,6 +343,18 @@ describe("parseAskResponse", () => {
     expect(result.frameReferences).toBeUndefined();
   });
 
+  it("normalizes a null timestampReferences to undefined and keeps a real one", () => {
+    const nulled = parseAskResponse(
+      JSON.stringify({ summary: "ok", issues: [], timestampReferences: null }),
+    );
+    expect(nulled.timestampReferences).toBeUndefined();
+
+    const present = parseAskResponse(
+      JSON.stringify({ summary: "ok", issues: [], timestampReferences: [3.25, 12] }),
+    );
+    expect(present.timestampReferences).toEqual([3.25, 12]);
+  });
+
   it("throws on invalid JSON", () => {
     expect(() => parseAskResponse("{invalid")).toThrow(VisualAIResponseParseError);
   });

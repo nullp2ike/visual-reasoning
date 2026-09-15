@@ -51,10 +51,22 @@ Example for a failing check:
 }
 ${JSON_INSTRUCTIONS}`;
 
-const CHECK_OUTPUT_SCHEMA_VIDEO = `IMPORTANT: Follow this evaluation order:
+/**
+ * Video check schema. The wording differs only in what the model is looking
+ * at: discrete sampled frames, or a continuous clip it samples itself.
+ */
+function buildCheckOutputSchemaVideo(unit: "frame" | "moment"): string {
+  const anyPoint = unit === "frame" ? "ANY frame of the timeline" : "ANY moment of the video";
+  const bestPoint =
+    unit === "frame"
+      ? "the timestamp of the frame that most clearly demonstrates it"
+      : "the timestamp of the moment that most clearly demonstrates it";
+  const citing = unit === "frame" ? "citing frame timestamps" : "citing timestamps";
+  const exampleWhere = unit === "frame" ? "at the 3.5s frame" : "at 3.5s";
+  return `IMPORTANT: Follow this evaluation order:
 1. First, evaluate EACH statement independently across the entire timeline and populate the "statements" array
-2. A statement passes if it is true at ANY frame of the timeline, unless the wording explicitly says otherwise (e.g. "throughout", "at all times")
-3. For each statement that passes, set "timestampSeconds" to the timestamp of the frame that most clearly demonstrates it (or where it first becomes true). Use null when the statement fails or applies across the whole clip.
+2. A statement passes if it is true at ${anyPoint}, unless the wording explicitly says otherwise (e.g. "throughout", "at all times")
+3. For each statement that passes, set "timestampSeconds" to ${bestPoint} (or where it first becomes true). Use null when the statement fails or applies across the whole clip.
 4. Then, set "pass" to true ONLY if every statement passed (logical AND of all statement results)
 5. Write "reasoning" as a brief overall summary of the evaluation
 6. Include "issues" only for statements that failed
@@ -68,7 +80,7 @@ Respond with a JSON object matching this exact structure:
     {
       "statement": string,  // the original statement text
       "pass": boolean,      // whether this statement is true at any point in the timeline
-      "reasoning": string,  // explanation for this statement, citing frame timestamps where relevant
+      "reasoning": string,  // explanation for this statement, ${citing} where relevant
       "confidence": "high" | "medium" | "low",
       "timestampSeconds": number | null
         // seconds from the start of the clip where the statement is most clearly true,
@@ -86,10 +98,14 @@ Example for a passing video check:
   "reasoning": "The success toast appeared briefly around 3.5s.",
   "issues": [],
   "statements": [
-    { "statement": "A success toast with text 'Saved' appears", "pass": true, "reasoning": "A green toast labeled 'Saved' is visible in the bottom-right at the 3.5s frame", "confidence": "high", "timestampSeconds": 3.5 }
+    { "statement": "A success toast with text 'Saved' appears", "pass": true, "reasoning": "A green toast labeled 'Saved' is visible in the bottom-right ${exampleWhere}", "confidence": "high", "timestampSeconds": 3.5 }
   ]
 }
 ${JSON_INSTRUCTIONS}`;
+}
+
+const CHECK_OUTPUT_SCHEMA_VIDEO = buildCheckOutputSchemaVideo("frame");
+const CHECK_OUTPUT_SCHEMA_NATIVE_VIDEO = buildCheckOutputSchemaVideo("moment");
 
 const ASK_OUTPUT_SCHEMA_IMAGE = `Respond with a JSON object matching this exact structure:
 {
@@ -125,6 +141,18 @@ Prioritize issues by severity (critical / major / minor) as for image input.
 Cite frame indices in "frameReferences" so the user can locate the moments you describe.
 ${JSON_INSTRUCTIONS}`;
 
+const ASK_OUTPUT_SCHEMA_NATIVE_VIDEO = `Respond with a JSON object matching this exact structure:
+{
+  "summary": string,                // high-level summary of what happens across the video
+  "issues": [...],                  // list of issues/findings, can be empty
+  "timestampReferences": number[]   // seconds from the start of the clip of the moments the answer relies on (in order)
+}
+${ISSUE_SCHEMA_INSTRUCTIONS}
+
+Prioritize issues by severity (critical / major / minor) as for image input.
+Cite timestamps in "timestampReferences" so the user can locate the moments you describe.
+${JSON_INSTRUCTIONS}`;
+
 const COMPARE_OUTPUT_SCHEMA = `Respond with a JSON object matching this exact structure:
 {
   "pass": boolean,          // true if no critical or major changes found
@@ -155,6 +183,12 @@ const DEFAULT_ASK_ROLE =
 const DEFAULT_ASK_ROLE_VIDEO =
   "You are a visual QA assistant. Analyze the provided sequence of video frames as a chronological timeline based on the user's request.";
 
+const DEFAULT_CHECK_ROLE_NATIVE_VIDEO =
+  "You are a visual QA assistant. Evaluate the provided video recording precisely and objectively, treating it as a chronological timeline.";
+
+const DEFAULT_ASK_ROLE_NATIVE_VIDEO =
+  "You are a visual QA assistant. Analyze the provided video recording as a chronological timeline based on the user's request.";
+
 /**
  * Describes the media accompanying a prompt so the builders can adapt the
  * role, schema, and timeline guidance accordingly.
@@ -167,7 +201,19 @@ export type MediaContext =
       durationSeconds: number;
       /** Sampled frames omitted because they matched the preceding kept frame. */
       droppedUnchanged?: number;
+    }
+  | {
+      /** The video itself was attached; the provider samples it. */
+      kind: "native-video";
+      durationSeconds: number;
     };
+
+function buildNativeVideoSection(durationSeconds: number): string {
+  return `Video recording:
+- Total duration: ${durationSeconds.toFixed(2)}s
+
+The attached file is the complete video recording. Treat it as a chronological timeline and refer to moments by timestamp (seconds from the start of the clip) where helpful.`;
+}
 
 function buildVideoTimelineSection(
   frameTimestamps: readonly number[],
@@ -234,7 +280,12 @@ export function buildCheckPrompt(
   const stmts = Array.isArray(statements) ? statements : [statements];
   const statementsBlock = stmts.map((s, i) => `${i + 1}. "${s}"`).join("\n");
   const media = options?.media;
-  const defaultRole = media?.kind === "video" ? DEFAULT_CHECK_ROLE_VIDEO : DEFAULT_CHECK_ROLE;
+  const defaultRole =
+    media?.kind === "video"
+      ? DEFAULT_CHECK_ROLE_VIDEO
+      : media?.kind === "native-video"
+        ? DEFAULT_CHECK_ROLE_NATIVE_VIDEO
+        : DEFAULT_CHECK_ROLE;
 
   const sections = [options?.role ?? defaultRole];
 
@@ -246,6 +297,8 @@ export function buildCheckPrompt(
         media.droppedUnchanged,
       ),
     );
+  } else if (media?.kind === "native-video") {
+    sections.push(buildNativeVideoSection(media.durationSeconds));
   }
 
   if (options?.instructions && options.instructions.length > 0) {
@@ -253,14 +306,26 @@ export function buildCheckPrompt(
   }
 
   sections.push(`Statements to evaluate:\n${statementsBlock}`);
-  sections.push(media?.kind === "video" ? CHECK_OUTPUT_SCHEMA_VIDEO : CHECK_OUTPUT_SCHEMA_IMAGE);
+  sections.push(
+    media?.kind === "video"
+      ? CHECK_OUTPUT_SCHEMA_VIDEO
+      : media?.kind === "native-video"
+        ? CHECK_OUTPUT_SCHEMA_NATIVE_VIDEO
+        : CHECK_OUTPUT_SCHEMA_IMAGE,
+  );
 
   return sections.join("\n\n");
 }
 
 export function buildAskPrompt(userPrompt: string, options?: AskPromptOptions): string {
   const media = options?.media;
-  const sections = [media?.kind === "video" ? DEFAULT_ASK_ROLE_VIDEO : DEFAULT_ASK_ROLE];
+  const sections = [
+    media?.kind === "video"
+      ? DEFAULT_ASK_ROLE_VIDEO
+      : media?.kind === "native-video"
+        ? DEFAULT_ASK_ROLE_NATIVE_VIDEO
+        : DEFAULT_ASK_ROLE,
+  ];
 
   if (media?.kind === "video") {
     sections.push(
@@ -270,6 +335,8 @@ export function buildAskPrompt(userPrompt: string, options?: AskPromptOptions): 
         media.droppedUnchanged,
       ),
     );
+  } else if (media?.kind === "native-video") {
+    sections.push(buildNativeVideoSection(media.durationSeconds));
   }
 
   if (options?.instructions && options.instructions.length > 0) {
@@ -277,7 +344,13 @@ export function buildAskPrompt(userPrompt: string, options?: AskPromptOptions): 
   }
 
   sections.push(`User request: ${userPrompt}`);
-  sections.push(media?.kind === "video" ? ASK_OUTPUT_SCHEMA_VIDEO : ASK_OUTPUT_SCHEMA_IMAGE);
+  sections.push(
+    media?.kind === "video"
+      ? ASK_OUTPUT_SCHEMA_VIDEO
+      : media?.kind === "native-video"
+        ? ASK_OUTPUT_SCHEMA_NATIVE_VIDEO
+        : ASK_OUTPUT_SCHEMA_IMAGE,
+  );
 
   return sections.join("\n\n");
 }

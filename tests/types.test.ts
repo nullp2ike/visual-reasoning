@@ -362,4 +362,14 @@ describe("AskResultSchema", () => {
     const result = { summary: "No issues found", issues: [], frameReferences: null };
     expect(AskResultSchema.parse(result)).toEqual(result);
   });
+
+  it("accepts null or fractional timestampReferences but rejects negatives", () => {
+    const nulled = { summary: "ok", issues: [], timestampReferences: null };
+    expect(AskResultSchema.parse(nulled)).toEqual(nulled);
+    const present = { summary: "ok", issues: [], timestampReferences: [0, 3.25] };
+    expect(AskResultSchema.parse(present)).toEqual(present);
+    expect(() =>
+      AskResultSchema.parse({ summary: "ok", issues: [], timestampReferences: [-1] }),
+    ).toThrow();
+  });
 });

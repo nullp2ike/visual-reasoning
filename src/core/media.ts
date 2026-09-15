@@ -1,11 +1,13 @@
 import { DEFAULT_MAX_IMAGE_DIMENSION } from "../constants.js";
 import { VisualAIVideoError } from "../errors.js";
+import { readFile } from "node:fs/promises";
 import type {
   Frame,
   FramesInput,
   ImageInput,
   MediaInput,
   NormalizedImage,
+  NormalizedVideo,
   TimestampedFrameInput,
   VideoSamplingOptions,
 } from "../types.js";
@@ -23,8 +25,11 @@ import {
   DEFAULT_FPS,
   MAX_FRAMES_HARD_CAP,
   detectVideoMimeType,
+  assertDurationWithinLimit,
   extractFrames,
   getVideoMimeFromExtension,
+  probeDurationSeconds,
+  resolveVideoSamplingOptions,
   resolveVideoToPath,
 } from "./video.js";
 
@@ -37,6 +42,11 @@ export type NormalizedMedia =
       durationSeconds: number;
       /** Sampled frames dropped because they matched the preceding kept frame. */
       droppedUnchanged: number;
+    }
+  | {
+      kind: "native-video";
+      /** The video itself, to be sent to a provider that accepts video input. */
+      video: NormalizedVideo;
     };
 
 // Only the first 12 bytes (16 base64 chars) are needed to sniff a magic-byte signature.
@@ -173,20 +183,51 @@ export async function normalizeFrames(
 }
 
 /**
+ * Prepares a video for native delivery: resolves it to bytes, probes the
+ * duration, and enforces `maxDurationSeconds` before any provider call, exactly
+ * as frame sampling does. No frames are extracted.
+ */
+export async function normalizeNativeVideo(
+  input: MediaInput,
+  videoOptions?: VideoSamplingOptions,
+): Promise<NormalizedMedia> {
+  const { fps, maxDurationSeconds } = resolveVideoSamplingOptions(videoOptions);
+  const { path, mimeType, cleanup } = await resolveVideoToPath(input);
+  try {
+    const durationSeconds = await probeDurationSeconds(path);
+    assertDurationWithinLimit(durationSeconds, maxDurationSeconds);
+    const data = await readFile(path);
+    return { kind: "native-video", video: { data, mimeType, durationSeconds, fps } };
+  } finally {
+    try {
+      await cleanup();
+    } catch {
+      // Best-effort cleanup; do not mask the original error path.
+    }
+  }
+}
+
+/**
  * Single entry point used by the client. Accepts pre-sampled frames or auto-detects
  * whether `input` is an image or a video, returning a uniform `NormalizedMedia`
- * envelope.
+ * envelope. With `nativeVideo` set, a video input is prepared for native
+ * delivery instead of being sampled into frames; images and pre-sampled frames
+ * are unaffected.
  */
 export async function normalizeMedia(
   input: MediaInput | FramesInput,
   videoOptions?: VideoSamplingOptions,
   maxDimension: number = DEFAULT_MAX_IMAGE_DIMENSION,
+  nativeVideo = false,
 ): Promise<NormalizedMedia> {
   if (isFramesInput(input)) {
     return normalizeFrames(input, maxDimension);
   }
 
   if (isVideoInput(input)) {
+    if (nativeVideo) {
+      return normalizeNativeVideo(input, videoOptions);
+    }
     // Validate before touching the filesystem or ffmpeg so a bad option fails fast.
     resolveDedupeOptions(videoOptions?.dedupe);
     const { path, cleanup } = await resolveVideoToPath(input);

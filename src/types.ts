@@ -125,10 +125,26 @@ export interface VideoFramesMetadata {
    */
   droppedUnchanged: number;
 }
+/**
+ * Metadata describing a video that was delivered to the model natively (as the
+ * video itself rather than sampled frames). Populated client-side.
+ */
+export interface NativeVideoMetadata {
+  /** Total duration of the source video in seconds. */
+  durationSeconds: number;
+  /** Sampling rate requested from the provider, in frames per second. */
+  fps: number;
+  /** MIME type the video was sent as. */
+  mimeType: SupportedVideoMimeType;
+  /** Whether the bytes went inline in the request or through the provider's file upload API. */
+  delivery: "inline" | "file";
+}
 /** Result returned by `check()` and the template convenience methods. */
 export type CheckResult = z.infer<typeof CheckResultSchema> & {
-  /** Present only when the input was a video. Describes which frames the model saw. */
+  /** Present only when the input was a video sampled into frames. Describes which frames the model saw. */
   frames?: VideoFramesMetadata;
+  /** Present only when the input was a video delivered natively to the provider. */
+  video?: NativeVideoMetadata;
 };
 
 // --- compare() result ---
@@ -174,13 +190,27 @@ export const AskResultSchema = z.object({
    * omitting the key, even for image inputs that were never asked to populate it.
    */
   frameReferences: z.array(z.number().int().nonnegative()).nullable().optional(),
+  /**
+   * For natively delivered video, the timestamps (seconds from the start of
+   * the clip) the model relied on to answer. The native counterpart of
+   * `frameReferences`. Nullable for the same strict-schema reason.
+   */
+  timestampReferences: z.array(z.number().nonnegative()).nullable().optional(),
   usage: UsageInfoSchema.optional(),
 });
 /** Result returned by `ask()`. */
-export type AskResult = Omit<z.infer<typeof AskResultSchema>, "frameReferences"> & {
-  /** Present only when the input was a video. Describes which frames the model saw. */
+export type AskResult = Omit<
+  z.infer<typeof AskResultSchema>,
+  "frameReferences" | "timestampReferences"
+> & {
+  /** Present only when the input was a video sampled into frames. Indices into `frames.timestampsSeconds`. */
   frameReferences?: number[];
+  /** Present only when the input was a video delivered natively. Seconds from the start of the clip. */
+  timestampReferences?: number[];
+  /** Present only when the input was a video sampled into frames. Describes which frames the model saw. */
   frames?: VideoFramesMetadata;
+  /** Present only when the input was a video delivered natively to the provider. */
+  video?: NativeVideoMetadata;
 };
 
 // --- Image / media input ---
@@ -430,9 +460,30 @@ export interface VideoSamplingOptions {
   /**
    * Drop sampled frames that did not visibly change from the preceding kept
    * frame before sending to the provider. Default `true`. See `FrameDedupeOptions`.
+   * Only applies when frames are sampled; ignored for native delivery.
    */
   dedupe?: FrameDedupeOptions;
+  /**
+   * How the video reaches the model. Default `"auto"`. See `VideoDeliveryMode`.
+   */
+  mode?: VideoDeliveryMode;
 }
+
+/**
+ * How a video input is delivered to the model.
+ *
+ * - `"auto"` (default): send the video itself when the provider accepts video
+ *   natively (Google models), otherwise sample frames with ffmpeg.
+ * - `"native"`: always send the video itself. Throws `VisualAIConfigError`
+ *   when the provider has no native video support.
+ * - `"frames"`: always sample frames with ffmpeg, whatever the provider.
+ *
+ * Native delivery still probes the duration and enforces `maxDurationSeconds`
+ * before any provider call, and passes `fps` on as the provider's sampling
+ * rate. `maxFrames` and `dedupe` apply to frame sampling only. Pre-sampled
+ * `FramesInput` is always sent as frames.
+ */
+export type VideoDeliveryMode = "auto" | "native" | "frames";
 
 /**
  * Controls dropping of frames that did not visibly change from the previous
@@ -451,6 +502,16 @@ export interface VideoSamplingOptions {
  * caret fall below the default threshold.
  */
 export type FrameDedupeOptions = boolean | { threshold?: number };
+
+/** Internal normalized video passed to a provider driver's `sendVideoMessage`. */
+export interface NormalizedVideo {
+  readonly data: Buffer;
+  readonly mimeType: SupportedVideoMimeType;
+  /** Probed duration in seconds; already checked against `maxDurationSeconds`. */
+  readonly durationSeconds: number;
+  /** Sampling rate to request from the provider, in frames per second. */
+  readonly fps: number;
+}
 
 /**
  * A single frame extracted from a video input. Identical in shape to

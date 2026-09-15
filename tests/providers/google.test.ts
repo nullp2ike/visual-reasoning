@@ -1,14 +1,17 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { GoogleDriver } from "../../src/providers/google.js";
+import { GEMINI_INLINE_VIDEO_LIMIT_BYTES, GoogleDriver } from "../../src/providers/google.js";
 import {
   VisualAIAuthError,
   VisualAIProviderError,
   VisualAIRateLimitError,
   VisualAITruncationError,
 } from "../../src/errors.js";
-import type { NormalizedImage } from "../../src/types.js";
+import type { NormalizedImage, NormalizedVideo } from "../../src/types.js";
 
 const mockGenerateContent = vi.fn();
+const mockFileUpload = vi.fn();
+const mockFileGet = vi.fn();
+const mockFileDelete = vi.fn();
 
 let capturedGoogleOptions: Record<string, unknown> | undefined;
 
@@ -18,6 +21,7 @@ vi.mock("@google/genai", () => ({
       capturedGoogleOptions = opts;
     }
     models = { generateContent: mockGenerateContent };
+    files = { upload: mockFileUpload, get: mockFileGet, delete: mockFileDelete };
   },
 }));
 
@@ -551,5 +555,196 @@ describe("GoogleDriver", () => {
     });
     await driver.sendMessage([makeImage()], "p");
     expect(capturedGoogleOptions).not.toHaveProperty("httpOptions");
+  });
+});
+
+describe("GoogleDriver.sendVideoMessage", () => {
+  beforeEach(() => {
+    // Reset (not just clear) so a queued once-value from an earlier test can never leak.
+    vi.resetAllMocks();
+    vi.useRealTimers();
+  });
+
+  // Captured before any test fakes the clock: the polling test needs a real
+  // delay so the (I/O-backed) mocked SDK import can resolve under load.
+  const realSetTimeout = globalThis.setTimeout;
+  const settleForReal = () => new Promise<void>((resolve) => realSetTimeout(resolve, 5));
+
+  function makeVideo(bytes = 16): NormalizedVideo {
+    return {
+      data: Buffer.alloc(bytes, 0x42),
+      mimeType: "video/mp4",
+      durationSeconds: 2.5,
+      fps: 2,
+    };
+  }
+
+  it("sends a small video inline with videoMetadata.fps and returns delivery inline", async () => {
+    mockGenerateContent.mockResolvedValueOnce({
+      text: '{"pass": true}',
+      usageMetadata: { promptTokenCount: 900, candidatesTokenCount: 50, thoughtsTokenCount: 20 },
+    });
+
+    const driver = makeDriver({ reasoningEffort: "high", imageDetail: "low" });
+    const video = makeVideo();
+    const result = await driver.sendVideoMessage(video, "Check the clip");
+
+    expect(result).toEqual({
+      text: '{"pass": true}',
+      usage: { inputTokens: 900, outputTokens: 70, reasoningTokens: 20 },
+      delivery: "inline",
+    });
+
+    const call = mockGenerateContent.mock.calls[0]![0] as {
+      model: string;
+      contents: unknown[];
+      config: Record<string, unknown>;
+    };
+    expect(call.model).toBe("gemini-3-flash-preview");
+    expect(call.contents).toEqual([
+      {
+        inlineData: { data: video.data.toString("base64"), mimeType: "video/mp4" },
+        videoMetadata: { fps: 2 },
+      },
+      "Check the clip",
+    ]);
+    expect(call.config).toMatchObject({
+      responseMimeType: "application/json",
+      maxOutputTokens: 4096,
+      thinkingConfig: { thinkingLevel: "high" },
+      mediaResolution: "MEDIA_RESOLUTION_LOW",
+    });
+    expect(mockFileUpload).not.toHaveBeenCalled();
+  });
+
+  it("uploads a large video through the Files API, references it, and deletes it afterwards", async () => {
+    mockFileUpload.mockResolvedValueOnce({
+      name: "files/abc",
+      state: "ACTIVE",
+      uri: "https://generativelanguage.googleapis.com/v1beta/files/abc",
+      mimeType: "video/mp4",
+    });
+    mockFileDelete.mockResolvedValueOnce({});
+    mockGenerateContent.mockResolvedValueOnce({
+      text: '{"pass": true}',
+      usageMetadata: { promptTokenCount: 10, candidatesTokenCount: 5 },
+    });
+
+    const driver = makeDriver();
+    const video = makeVideo(GEMINI_INLINE_VIDEO_LIMIT_BYTES + 1);
+    const result = await driver.sendVideoMessage(video, "Check the clip");
+
+    expect(result.delivery).toBe("file");
+    const uploadArg = mockFileUpload.mock.calls[0]![0] as {
+      file: Blob;
+      config: { mimeType: string };
+    };
+    expect(uploadArg.file).toBeInstanceOf(Blob);
+    expect(uploadArg.file.size).toBe(GEMINI_INLINE_VIDEO_LIMIT_BYTES + 1);
+    expect(uploadArg.config).toEqual({ mimeType: "video/mp4" });
+
+    const call = mockGenerateContent.mock.calls[0]![0] as { contents: unknown[] };
+    expect(call.contents[0]).toEqual({
+      fileData: {
+        fileUri: "https://generativelanguage.googleapis.com/v1beta/files/abc",
+        mimeType: "video/mp4",
+      },
+      videoMetadata: { fps: 2 },
+    });
+    expect(mockFileGet).not.toHaveBeenCalled();
+    expect(mockFileDelete).toHaveBeenCalledWith({ name: "files/abc" });
+  });
+
+  it("polls a PROCESSING upload until it becomes ACTIVE", async () => {
+    vi.useFakeTimers({ toFake: ["setTimeout", "clearTimeout", "Date"] });
+    mockFileUpload.mockResolvedValueOnce({ name: "files/slow", state: "PROCESSING" });
+    mockFileGet
+      .mockResolvedValueOnce({ name: "files/slow", state: "PROCESSING" })
+      .mockResolvedValueOnce({
+        name: "files/slow",
+        state: "ACTIVE",
+        uri: "https://example.test/files/slow",
+        mimeType: "video/webm",
+      });
+    mockFileDelete.mockResolvedValueOnce({});
+    mockGenerateContent.mockResolvedValueOnce({ text: "{}", usageMetadata: {} });
+
+    const driver = makeDriver();
+    const state = { settled: false };
+    const pending = driver
+      .sendVideoMessage(
+        { ...makeVideo(GEMINI_INLINE_VIDEO_LIMIT_BYTES + 1), mimeType: "video/webm" },
+        "Check",
+      )
+      .finally(() => {
+        state.settled = true;
+      });
+    // The SDK import and each poll resolve over real I/O; keep giving them
+    // real time and advancing the faked clock until the call settles.
+    for (let i = 0; i < 400 && !state.settled; i++) {
+      await settleForReal();
+      await vi.advanceTimersByTimeAsync(2_000);
+    }
+    const result = await pending;
+
+    expect(result.delivery).toBe("file");
+    expect(mockFileGet).toHaveBeenCalledTimes(2);
+    expect(mockFileDelete).toHaveBeenCalledWith({ name: "files/slow" });
+  });
+
+  it("throws VisualAIProviderError when the upload ends in FAILED", async () => {
+    mockFileUpload.mockResolvedValueOnce({
+      name: "files/bad",
+      state: "FAILED",
+      error: { message: "unsupported codec" },
+    });
+
+    const driver = makeDriver();
+    const err = await driver
+      .sendVideoMessage(makeVideo(GEMINI_INLINE_VIDEO_LIMIT_BYTES + 1), "Check")
+      .catch((e: unknown) => e);
+    expect(err).toBeInstanceOf(VisualAIProviderError);
+    expect((err as Error).message).toMatch(/FAILED: unsupported codec/);
+    expect(mockGenerateContent).not.toHaveBeenCalled();
+  });
+
+  it("still deletes the uploaded file when generation fails, and surfaces the original error", async () => {
+    mockFileUpload.mockResolvedValueOnce({
+      name: "files/abc",
+      state: "ACTIVE",
+      uri: "https://example.test/files/abc",
+    });
+    mockFileDelete.mockRejectedValueOnce(new Error("delete failed"));
+    mockGenerateContent.mockResolvedValueOnce({
+      text: "partial",
+      candidates: [{ finishReason: "MAX_TOKENS" }],
+    });
+
+    const driver = makeDriver();
+    await expect(
+      driver.sendVideoMessage(makeVideo(GEMINI_INLINE_VIDEO_LIMIT_BYTES + 1), "Check"),
+    ).rejects.toThrow(VisualAITruncationError);
+    expect(mockFileDelete).toHaveBeenCalledWith({ name: "files/abc" });
+  });
+
+  it("maps a MAX_TOKENS finish on an inline video to VisualAITruncationError", async () => {
+    mockGenerateContent.mockResolvedValueOnce({
+      text: "partial",
+      candidates: [{ finishReason: "MAX_TOKENS" }],
+    });
+    const driver = makeDriver();
+    await expect(driver.sendVideoMessage(makeVideo(), "Check")).rejects.toThrow(
+      VisualAITruncationError,
+    );
+  });
+
+  it("maps SDK errors through the shared provider error mapper", async () => {
+    mockGenerateContent.mockRejectedValueOnce(
+      Object.assign(new Error("Rate limited"), { status: 429 }),
+    );
+    const driver = makeDriver();
+    await expect(driver.sendVideoMessage(makeVideo(), "Check")).rejects.toThrow(
+      VisualAIRateLimitError,
+    );
   });
 });

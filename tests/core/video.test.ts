@@ -3,11 +3,13 @@ import { readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
+  assertDurationWithinLimit,
   detectVideoMimeType,
   extractFrames,
   getVideoMimeFromExtension,
   isSupportedVideoMimeType,
   probeDurationSeconds,
+  resolveVideoSamplingOptions,
   resolveVideoToPath,
 } from "../../src/core/video.js";
 import { VisualAIVideoError } from "../../src/errors.js";
@@ -211,5 +213,48 @@ describe("extractFrames", () => {
     it("throws VisualAIVideoError", async () => {
       await expect(extractFrames(stubPath)).rejects.toThrow(VisualAIVideoError);
     });
+  });
+});
+
+describe("resolveVideoSamplingOptions", () => {
+  it("applies the documented defaults", () => {
+    expect(resolveVideoSamplingOptions()).toEqual({
+      fps: 1,
+      maxFrames: 10,
+      maxDurationSeconds: 10,
+    });
+    expect(resolveVideoSamplingOptions({ mode: "native", dedupe: false })).toEqual({
+      fps: 1,
+      maxFrames: 10,
+      maxDurationSeconds: 10,
+    });
+  });
+
+  it("keeps explicit values and rejects invalid ones", () => {
+    expect(resolveVideoSamplingOptions({ fps: 2, maxFrames: 20, maxDurationSeconds: 30 })).toEqual({
+      fps: 2,
+      maxFrames: 20,
+      maxDurationSeconds: 30,
+    });
+    expect(() => resolveVideoSamplingOptions({ fps: Number.NaN })).toThrow(/Invalid fps/);
+    expect(() => resolveVideoSamplingOptions({ maxFrames: 0 })).toThrow(/Invalid maxFrames/);
+    expect(() => resolveVideoSamplingOptions({ maxFrames: 61 })).toThrow(/hard cap of 60/);
+    expect(() => resolveVideoSamplingOptions({ maxDurationSeconds: -5 })).toThrow(
+      /Invalid maxDurationSeconds/,
+    );
+  });
+});
+
+describe("assertDurationWithinLimit", () => {
+  it("passes at or under the limit and throws VisualAIVideoError above it", () => {
+    expect(() => {
+      assertDurationWithinLimit(10, 10);
+    }).not.toThrow();
+    expect(() => {
+      assertDurationWithinLimit(10.01, 10);
+    }).toThrow(VisualAIVideoError);
+    expect(() => {
+      assertDurationWithinLimit(12, 10);
+    }).toThrow(/12\.00s exceeds limit of 10s/);
   });
 });

@@ -21,22 +21,36 @@ import type {
   ImageInput,
   LayoutOptions,
   MediaInput,
+  NativeVideoMetadata,
   NormalizedImage,
+  NormalizedVideo,
   PageLoadOptions,
   ProviderName,
   VideoFramesMetadata,
+  VideoSamplingOptions,
   VisualAIConfig,
 } from "../types.js";
 import { AnthropicDriver } from "../providers/anthropic.js";
 import { GoogleDriver } from "../providers/google.js";
 import { OpenAIDriver } from "../providers/openai.js";
 import { OpenRouterDriver } from "../providers/openrouter.js";
-import type { ProviderConfig, ProviderDriver, SendMessageOptions } from "../providers/types.js";
+import type {
+  ProviderConfig,
+  ProviderDriver,
+  RawProviderResponse,
+  SendMessageOptions,
+} from "../providers/types.js";
 import { resolveConfig } from "./config.js";
-import { debugLog, processUsage, timedSendMessage, withErrorDebug } from "./debug.js";
+import {
+  debugLog,
+  processUsage,
+  timedSendMessage,
+  timedSendVideoMessage,
+  withErrorDebug,
+} from "./debug.js";
 import { generateAiDiff } from "./diff.js";
 import { normalizeImage } from "./image.js";
-import { normalizeMedia, type NormalizedMedia } from "./media.js";
+import { isFramesInput, isVideoInput, normalizeMedia, type NormalizedMedia } from "./media.js";
 import {
   buildAskPrompt,
   buildCheckPrompt,
@@ -74,12 +88,14 @@ export interface VisualAIClient {
    * Verifies one or more statements against a single image or video.
    *
    * Pass an image (PNG/JPEG/WebP/GIF) for a single-frame check. Pass a video
-   * (MP4/WebM/MOV/MKV file path, URL, base64, Buffer) and the client samples
-   * frames automatically; statements pass if they are true at any sampled
-   * frame, and each statement result includes the timestamp where it
-   * matched. The `frames` metadata on the result reports which timestamps
-   * the model saw. Pass a `FramesInput` (`{ frames, fps? }`) to supply
-   * pre-sampled frames directly — handled identically to a video timeline but
+   * (MP4/WebM/MOV/MKV file path, base64, Buffer) and statements pass if they
+   * are true at any point, with each statement result carrying the timestamp
+   * where it matched. On providers that accept video natively (Google models)
+   * the video itself is sent and the result's `video` metadata describes the
+   * delivery; elsewhere the client samples frames with ffmpeg and the `frames`
+   * metadata reports which timestamps the model saw. Control this with
+   * `video.mode`. Pass a `FramesInput` (`{ frames, fps? }`) to supply
+   * pre-sampled frames directly — handled identically to a sampled timeline but
    * without loading ffmpeg.
    *
    * @param input Image or video source as a buffer, URL, file path, or base64 string, or a `FramesInput` of pre-sampled frames.
@@ -113,11 +129,13 @@ export interface VisualAIClient {
   /**
    * Asks an open-ended question about an image or video and returns a structured summary.
    *
-   * Video inputs are sampled into frames and analyzed as a chronological
-   * timeline. The result's `frameReferences` array surfaces which frames the
-   * model relied on for its answer. Pass a `FramesInput` (`{ frames, fps? }`)
-   * to supply pre-sampled frames directly — handled identically to a video
-   * timeline but without loading ffmpeg.
+   * Video inputs are analyzed as a chronological timeline. On providers that
+   * accept video natively (Google models) the video itself is sent and the
+   * result's `timestampReferences` array surfaces the moments the model relied
+   * on; elsewhere frames are sampled with ffmpeg and `frameReferences` indexes
+   * into `frames.timestampsSeconds`. Control this with `video.mode`. Pass a
+   * `FramesInput` (`{ frames, fps? }`) to supply pre-sampled frames directly —
+   * handled identically to a sampled timeline but without loading ffmpeg.
    *
    * @param input Image or video source as a buffer, URL, file path, or base64 string, or a `FramesInput` of pre-sampled frames.
    * @param prompt Prompt describing what to inspect in the input.
@@ -272,20 +290,40 @@ const checkSchemaOptions = toSchemaOptions(CheckResponseSchema);
 const askSchemaOptions = toSchemaOptions(AskResponseSchema);
 const compareSchemaOptions = toSchemaOptions(CompareResponseSchema);
 
-function mediaToProviderInputs(media: NormalizedMedia): {
-  images: NormalizedImage[];
-  mediaContext: MediaContext;
-  framesMetadata: VideoFramesMetadata | undefined;
-} {
+/** Media-derived fields spread onto a `check()` / `ask()` result. */
+interface MediaResultMetadata {
+  frames?: VideoFramesMetadata;
+  video?: NativeVideoMetadata;
+}
+
+type MediaDispatch =
+  | {
+      kind: "images";
+      images: NormalizedImage[];
+      mediaContext: MediaContext;
+      frames: VideoFramesMetadata | undefined;
+    }
+  | { kind: "native-video"; video: NormalizedVideo; mediaContext: MediaContext };
+
+function mediaToProviderInputs(media: NormalizedMedia): MediaDispatch {
   if (media.kind === "image") {
     return {
+      kind: "images",
       images: [media.image],
       mediaContext: { kind: "image" },
-      framesMetadata: undefined,
+      frames: undefined,
+    };
+  }
+  if (media.kind === "native-video") {
+    return {
+      kind: "native-video",
+      video: media.video,
+      mediaContext: { kind: "native-video", durationSeconds: media.video.durationSeconds },
     };
   }
   const timestamps = media.frames.map((f) => f.timestampSeconds);
   return {
+    kind: "images",
     images: media.frames,
     mediaContext: {
       kind: "video",
@@ -293,13 +331,66 @@ function mediaToProviderInputs(media: NormalizedMedia): {
       durationSeconds: media.durationSeconds,
       droppedUnchanged: media.droppedUnchanged,
     },
-    framesMetadata: {
+    frames: {
       count: media.frames.length,
       timestampsSeconds: timestamps,
       durationSeconds: media.durationSeconds,
       droppedUnchanged: media.droppedUnchanged,
     },
   };
+}
+
+/** Sends the dispatched media through the matching driver method and returns the metadata for the result. */
+async function sendMedia(
+  driver: ProviderDriver,
+  dispatch: MediaDispatch,
+  prompt: string,
+  options: SendMessageOptions,
+): Promise<{
+  response: RawProviderResponse & { durationSeconds: number };
+  metadata: MediaResultMetadata;
+}> {
+  if (dispatch.kind === "native-video") {
+    const response = await timedSendVideoMessage(driver, dispatch.video, prompt, options);
+    const { durationSeconds, fps, mimeType } = dispatch.video;
+    return {
+      response,
+      metadata: { video: { durationSeconds, fps, mimeType, delivery: response.delivery } },
+    };
+  }
+  const response = await timedSendMessage(driver, dispatch.images, prompt, options);
+  return { response, metadata: dispatch.frames ? { frames: dispatch.frames } : {} };
+}
+
+/**
+ * Decides whether a video input should be delivered natively, honouring
+ * `video.mode`. `"native"` on a provider without support throws, but only
+ * when the input really is a video, so images and pre-sampled frames pass
+ * through untouched whatever the mode says.
+ */
+function resolveNativeVideo(
+  input: MediaInput | FramesInput,
+  videoOptions: VideoSamplingOptions | undefined,
+  driver: ProviderDriver,
+  provider: ProviderName,
+): boolean {
+  // Widened to string so a value outside the union still gets a clear error at runtime.
+  const mode: string = videoOptions?.mode ?? "auto";
+  if (mode !== "auto" && mode !== "native" && mode !== "frames") {
+    throw new VisualAIConfigError(
+      `Invalid video mode: ${mode}. Expected "auto", "native", or "frames".`,
+    );
+  }
+  const supported = typeof driver.sendVideoMessage === "function";
+  if (mode === "frames") return false;
+  if (mode === "auto") return supported;
+  if (!supported && !isFramesInput(input) && isVideoInput(input)) {
+    throw new VisualAIConfigError(
+      `Native video delivery is not supported by the "${provider}" provider. ` +
+        `Use a Google model, or set video: { mode: "frames" } to sample frames instead.`,
+    );
+  }
+  return true;
 }
 
 /**
@@ -380,21 +471,32 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
       }
 
       return withErrorDebug(resolvedConfig, "check", async () => {
-        const media = await normalizeMedia(input, options?.video, maxImageDimension);
-        const { images, mediaContext, framesMetadata } = mediaToProviderInputs(media);
+        const nativeVideo = resolveNativeVideo(
+          input,
+          options?.video,
+          driver,
+          resolvedConfig.provider,
+        );
+        const media = await normalizeMedia(input, options?.video, maxImageDimension, nativeVideo);
+        const dispatch = mediaToProviderInputs(media);
         const prompt = buildCheckPrompt(stmts, {
           instructions: options?.instructions,
-          media: mediaContext,
+          media: dispatch.mediaContext,
         });
         debugLog(resolvedConfig, "check prompt", prompt, "prompt");
 
-        const response = await timedSendMessage(driver, images, prompt, checkSchemaOptions);
+        const { response, metadata } = await sendMedia(
+          driver,
+          dispatch,
+          prompt,
+          checkSchemaOptions,
+        );
         debugLog(resolvedConfig, "check response", response.text, "response");
 
         const result = parseCheckResponse(response.text);
         return {
           ...result,
-          ...(framesMetadata ? { frames: framesMetadata } : {}),
+          ...metadata,
           usage: processUsage("check", response.usage, response.durationSeconds, resolvedConfig),
         };
       });
@@ -402,21 +504,27 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
 
     async ask(input, userPrompt, options) {
       return withErrorDebug(resolvedConfig, "ask", async () => {
-        const media = await normalizeMedia(input, options?.video, maxImageDimension);
-        const { images, mediaContext, framesMetadata } = mediaToProviderInputs(media);
+        const nativeVideo = resolveNativeVideo(
+          input,
+          options?.video,
+          driver,
+          resolvedConfig.provider,
+        );
+        const media = await normalizeMedia(input, options?.video, maxImageDimension, nativeVideo);
+        const dispatch = mediaToProviderInputs(media);
         const prompt = buildAskPrompt(userPrompt, {
           instructions: options?.instructions,
-          media: mediaContext,
+          media: dispatch.mediaContext,
         });
         debugLog(resolvedConfig, "ask prompt", prompt, "prompt");
 
-        const response = await timedSendMessage(driver, images, prompt, askSchemaOptions);
+        const { response, metadata } = await sendMedia(driver, dispatch, prompt, askSchemaOptions);
         debugLog(resolvedConfig, "ask response", response.text, "response");
 
         const result = parseAskResponse(response.text);
         return {
           ...result,
-          ...(framesMetadata ? { frames: framesMetadata } : {}),
+          ...metadata,
           usage: processUsage("ask", response.usage, response.durationSeconds, resolvedConfig),
         };
       });

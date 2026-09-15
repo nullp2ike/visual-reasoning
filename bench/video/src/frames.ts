@@ -87,6 +87,9 @@ export async function runFramesCall(options: FramesCallOptions): Promise<FramesC
       // Every model must see the same frames for the comparison to mean
       // anything, so the library's unchanged-frame dropping stays off here.
       dedupe: false,
+      // This is the frames baseline; the library would otherwise route Google
+      // models to native delivery, which is the bench's own `native` mode.
+      mode: "frames",
     },
   });
 

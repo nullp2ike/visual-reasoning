@@ -121,3 +121,47 @@ describe("normalizeMedia", () => {
     expect(result.frames).toHaveLength(1);
   });
 });
+
+describe("normalizeMedia with native video delivery", () => {
+  const SMALL_MP4 = join(FIXTURES_DIR, "small.mp4");
+
+  it("returns the video bytes, MIME type, probed duration, and fps without extracting frames", async () => {
+    const result = await normalizeMedia(SMALL_MP4, undefined, undefined, true);
+    expect(result.kind).toBe("native-video");
+    if (result.kind !== "native-video") return;
+    expect(result.video.data.equals(await readFile(SMALL_MP4))).toBe(true);
+    expect(result.video.mimeType).toBe("video/mp4");
+    expect(result.video.durationSeconds).toBeGreaterThan(1.5);
+    expect(result.video.durationSeconds).toBeLessThan(2.5);
+    expect(result.video.fps).toBe(1);
+  });
+
+  it("forwards fps and accepts a Buffer input", async () => {
+    const bytes = await readFile(SMALL_MP4);
+    const result = await normalizeMedia(bytes, { fps: 2 }, undefined, true);
+    if (result.kind !== "native-video") throw new Error("expected native video");
+    expect(result.video.fps).toBe(2);
+    expect(result.video.mimeType).toBe("video/mp4");
+    expect(result.video.data.equals(bytes)).toBe(true);
+  });
+
+  it("still enforces maxDurationSeconds before any provider call", async () => {
+    await expect(
+      normalizeMedia(SMALL_MP4, { maxDurationSeconds: 1 }, undefined, true),
+    ).rejects.toThrow(/exceeds limit of 1s/);
+  });
+
+  it("still validates the numeric sampling options", async () => {
+    await expect(normalizeMedia(SMALL_MP4, { fps: 0 }, undefined, true)).rejects.toThrow(
+      /Invalid fps/,
+    );
+  });
+
+  it("leaves images and pre-sampled frames on their usual paths", async () => {
+    const png = await readFile(join(FIXTURES_DIR, "small.png"));
+    const image = await normalizeMedia(png, undefined, undefined, true);
+    expect(image.kind).toBe("image");
+    const frames = await normalizeMedia({ frames: [png] }, undefined, undefined, true);
+    expect(frames.kind).toBe("video");
+  });
+});

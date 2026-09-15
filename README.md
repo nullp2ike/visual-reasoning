@@ -352,16 +352,22 @@ Oversized images are automatically resized to provider limits.
 
 `ai.check()` and `ai.ask()` also accept short video recordings (`.mp4`, `.webm`, `.mov`, `.mkv`) — useful for asserting on transient UI like toast messages. Accepted shapes are file path, `data:video/...;base64,...` URL, raw base64 string, `Buffer`, and `Uint8Array`. HTTP/HTTPS URLs are not supported for video inputs — fetch the bytes yourself first.
 
+How the video reaches the model depends on the provider. **Google models receive the video itself** (native delivery): Gemini samples and tokenises it server-side and also hears the audio track. **Every other provider gets frames sampled with ffmpeg** and sent as an ordered image timeline. Both paths enforce the same duration cap before any provider call, and both give you per-statement timestamps.
+
 ```typescript
 // Playwright recording on disk
 const result = await ai.check("./trace/video/recording.webm", [
   'A success toast with text "Saved" briefly appears',
 ]);
+console.log(result.statements[0].timestampSeconds); // 3.5
 
-// Result includes frame metadata + per-statement timestamps
+// Google model → the video was sent natively
+console.log(result.video);
+// { durationSeconds: 4.0, fps: 1, mimeType: "video/webm", delivery: "inline" }
+
+// Any other provider → frames were sampled
 console.log(result.frames);
 // { count: 3, timestampsSeconds: [0.5, 2.5, 3.5], durationSeconds: 4.0, droppedUnchanged: 1 }
-console.log(result.statements[0].timestampSeconds); // 3.5
 
 // Override sampling — defaults are 1 fps, max 10 frames, max 10 s of video
 await ai.check("./long-clip.mp4", ["Loader disappears"], {
@@ -369,7 +375,19 @@ await ai.check("./long-clip.mp4", ["Loader disappears"], {
 });
 ```
 
-`maxFrames` is hard-capped at 60 to keep memory bounded. Frames are downscaled so the longer edge fits within 1568 px before being sent to the provider.
+`fps` applies to both paths: it is the ffmpeg sampling rate, and for native delivery it is passed to the provider as its sampling rate. `maxFrames` and `dedupe` apply to frame sampling only; `maxFrames` is hard-capped at 60 to keep memory bounded, and frames are downscaled so the longer edge fits within 1568 px before being sent.
+
+**Choosing the delivery.** `video.mode` is `"auto"` by default: native where the provider supports it, frames elsewhere. Set `"frames"` to sample frames on a Google model too, or `"native"` to insist on native delivery — that throws `VisualAIConfigError` on providers without it.
+
+```typescript
+// Sample frames on Gemini instead of sending the video
+await ai.check("./clip.mp4", ["Loader disappears"], { video: { mode: "frames" } });
+
+// Fail loudly if the configured model cannot take video natively
+await ai.ask("./clip.mp4", "What happens?", { video: { mode: "native" } });
+```
+
+Native delivery is worth preferring where available. Measured on a 15 s recording with a seven-statement `check()` on Gemini 3.8 Flash, native video at 1 fps cost about 60% of the frames path with dedupe on and answered about 1.5 s faster, with identical verdicts and correct timestamps on every run; Gemini tokenises a video frame at roughly 60 tokens against about 1,080 for the same frame sent as an image. Videos over 19 MB are uploaded through the Gemini Files API automatically (`delivery: "file"`) and deleted again afterwards. For `ask()`, native results carry `timestampReferences` (seconds) in place of the frame-indexed `frameReferences`.
 
 **Unchanged frames are dropped.** A recording of a mostly static screen would otherwise pay input tokens for every near-identical sample, so by default each sampled frame is compared against the most recently kept frame and dropped when fewer than 0.1% of its pixels changed — roughly a 37x37 px region on a 1568x880 frame. A toast, a loader, or a dialog comfortably clears that; compression noise and a blinking text caret do not. The first frame is always kept, `durationSeconds` still covers the whole clip, and the prompt tells the model how many frames were dropped and that the screen stayed unchanged between the listed timestamps. `result.frames.droppedUnchanged` reports how many were dropped.
 
@@ -387,7 +405,7 @@ await ai.check("./clip.webm", ["The 24 px status dot turns green"], {
 
 A change smaller than the threshold — a lone 24x24 px icon on a full-size frame is about 0.04% — is treated as no change, so lower `threshold` or pass `dedupe: false` when the assertion is about something that small.
 
-How it works: the library samples frames with ffmpeg, drops the ones that did not visibly change, and sends the rest to the provider as an ordered timeline. A statement passes when it is true at any sampled frame, unless its wording specifies otherwise (e.g. "throughout"). Template helpers (`accessibility`, `layout`, `pageLoad`, `content`, `elementsVisible`, `elementsHidden`) are image-only — pass video to `check()` or `ask()` instead.
+How it works: on the frames path the library samples frames with ffmpeg, drops the ones that did not visibly change, and sends the rest to the provider as an ordered timeline; on the native path it probes the duration, then hands the provider the video and a matching prompt. Either way a statement passes when it is true at any point, unless its wording specifies otherwise (e.g. "throughout"). Template helpers (`accessibility`, `layout`, `pageLoad`, `content`, `elementsVisible`, `elementsHidden`) are image-only — pass video to `check()` or `ask()` instead.
 
 **ffmpeg setup.** Video support works out of the box — `fluent-ffmpeg`, `@ffmpeg-installer/ffmpeg`, and `@ffprobe-installer/ffprobe` ship as regular dependencies and bundle platform-specific ffmpeg/ffprobe binaries. If you ran `npm install` you already have everything you need. On platforms where the prebuilt binary is unavailable (or if you've pruned dependencies), `check()` and `ask()` throw `VisualAIVideoError` (import from `visual-ai-assertions` to `instanceof`-narrow it) when called with video input.
 
@@ -414,7 +432,7 @@ await ai.ask(
 );
 ```
 
-Timestamps for bare frames are derived as `index / fps` (default `fps` is `1`); a per-frame `timestampSeconds` overrides that. The frame count is subject to the same 60-frame hard cap as video sampling, and the `video` sampling option is ignored for this path. Frames that did not visibly change from the preceding kept frame are dropped exactly as for video input; control it with `dedupe` on the `FramesInput` itself, e.g. `{ frames, dedupe: false }` or `{ frames, dedupe: { threshold: 0.0002 } }`.
+Timestamps for bare frames are derived as `index / fps` (default `fps` is `1`); a per-frame `timestampSeconds` overrides that. The frame count is subject to the same 60-frame hard cap as video sampling, and the `video` sampling option is ignored for this path — pre-sampled frames are always sent as frames, even to Google models. Frames that did not visibly change from the preceding kept frame are dropped exactly as for video input; control it with `dedupe` on the `FramesInput` itself, e.g. `{ frames, dedupe: false }` or `{ frames, dedupe: { threshold: 0.0002 } }`.
 
 ### Formatting & Assertion Helpers
 
@@ -529,6 +547,8 @@ import type {
   Frame,
   FrameDedupeOptions,
   MediaInput,
+  NativeVideoMetadata,
+  VideoDeliveryMode,
   SupportedMimeType,
   SupportedVideoMimeType,
   VideoFramesMetadata,
