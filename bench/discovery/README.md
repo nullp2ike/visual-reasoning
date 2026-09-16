@@ -40,14 +40,13 @@ Set `BENCH_DATASET` in `.env` to avoid passing `--dataset` every time.
 
 ## Commands
 
-| Command                          | What it does                                                                 |
-| -------------------------------- | ---------------------------------------------------------------------------- |
-| `pnpm discovery:run`             | Executes the sweep and writes one run record per (model, image, rep).        |
-| `pnpm discovery:score`           | Judges every run against the expected issues and writes a scores file.       |
-| `pnpm discovery:report`          | Renders `RESULTS.*.md`, `report.*.html`, and the judge comparison.           |
-| `pnpm discovery:calibrate-embed` | Picks a cosine threshold for the local embedding judge against an LLM judge. |
+| Command                 | What it does                                                           |
+| ----------------------- | ---------------------------------------------------------------------- |
+| `pnpm discovery:run`    | Executes the sweep and writes one run record per (model, image, rep).  |
+| `pnpm discovery:score`  | Judges every run against the expected issues and writes a scores file. |
+| `pnpm discovery:report` | Renders `RESULTS.*.md`, `report.*.html`, and the judge comparison.     |
 
-All four accept `--dataset <id-or-path>`.
+All three accept `--dataset <id-or-path>`.
 
 `--models` selects models outright rather than filtering the roster, so a
 one-off model can be swept without editing `bench.config.ts`.
@@ -83,12 +82,10 @@ model can be compared against itself across settings.
 ## Judges
 
 The judge is text-only: it never sees the screenshot, only the expected issues
-and what the model reported. Either an LLM (`claude-haiku-4-5`, `gpt-5.6-terra`,
-…) or a local embedding judge (`embed:bge-small`) that runs offline via
-Transformers.js and thresholds cosine similarity. Reports are written per judge
-so you can see how much the grading choice moves the ranking; the one named in
-`judgeModel` (`gpt-5.6-luna`) also owns the canonical `RESULTS.md` and
-`report.html`.
+and what the model reported. It is an LLM (`claude-haiku-4-5`, `gpt-5.6-terra`,
+…). Reports are written per judge so you can see how much the grading choice
+moves the ranking; the one named in `judgeModel` (`gpt-5.6-luna`) also owns the
+canonical `RESULTS.md` and `report.html`.
 
 ## Output
 

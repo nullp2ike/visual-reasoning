@@ -39,10 +39,9 @@ export function sha256(data: string | Buffer): string {
 /**
  * Directory- and URL-safe name for a model or judge id. OpenRouter slugs contain
  * "/" ("x-ai/grok-4.5"), which would otherwise nest an extra path level under
- * results/runs/ and break record discovery; embedding judge ids contain ":"
- * ("embed:bge-small"), which a browser parses as a URL scheme and so breaks
- * report links. Records/scores still store the true name; only on-disk names and
- * hrefs use this form.
+ * results/runs/ and break record discovery; ":" is replaced too, since a browser
+ * parses it as a URL scheme and so breaks report links. Records/scores still
+ * store the true name; only on-disk names and hrefs use this form.
  */
 export function modelDirName(model: string): string {
   return model.replaceAll("/", "__").replaceAll(":", "__");

@@ -3,17 +3,17 @@
 Two benchmarks live here, and they answer different questions. Both run the same
 models against the same screenshots; what differs is who does the asking.
 
-|                     | [Defect discovery](discovery/README.md)                              | [Assertion accuracy](assertion/README.md)                                  |
-| ------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| **The question**    | Given no hints, does the model find the defects we seeded?           | Given a specific claim, does the model judge it correctly?                 |
-| **What is sent**    | One open prompt: "What looks visually broken on this page?"          | A list of elements, asked through `elementsVisible()` / `elementsHidden()` |
-| **The answer**      | Free prose — a list of issues the model chose to report              | One boolean per element                                                    |
-| **Grading**         | An LLM (or embedding) judge matches reported issues to expected ones | Deterministic — the boolean is compared with the ground truth              |
-| **Ground truth**    | `issues_per_file.md` — what is wrong with each screenshot            | `assertions_per_file.md` — which elements are there, and which are not     |
-| **Headline metric** | Recall of seeded defects, against extras reported per run            | Accuracy, and the hallucination rate inside it                             |
-| **Fails when**      | The model overlooks a defect, or invents defects on a clean page     | The model agrees with a claim that is false                                |
-| **Commands**        | `pnpm discovery:run` → `:score` → `:report`                          | `pnpm assertion:run` → `:report`                                           |
-| **Results**         | `results/<dataset>/`                                                 | `results/<dataset>/assertion/`                                             |
+|                     | [Defect discovery](discovery/README.md)                          | [Assertion accuracy](assertion/README.md)                                  |
+| ------------------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| **The question**    | Given no hints, does the model find the defects we seeded?       | Given a specific claim, does the model judge it correctly?                 |
+| **What is sent**    | One open prompt: "What looks visually broken on this page?"      | A list of elements, asked through `elementsVisible()` / `elementsHidden()` |
+| **The answer**      | Free prose — a list of issues the model chose to report          | One boolean per element                                                    |
+| **Grading**         | An LLM judge matches reported issues to expected ones            | Deterministic — the boolean is compared with the ground truth              |
+| **Ground truth**    | `issues_per_file.md` — what is wrong with each screenshot        | `assertions_per_file.md` — which elements are there, and which are not     |
+| **Headline metric** | Recall of seeded defects, against extras reported per run        | Accuracy, and the hallucination rate inside it                             |
+| **Fails when**      | The model overlooks a defect, or invents defects on a clean page | The model agrees with a claim that is false                                |
+| **Commands**        | `pnpm discovery:run` → `:score` → `:report`                      | `pnpm assertion:run` → `:report`                                           |
+| **Results**         | `results/<dataset>/`                                             | `results/<dataset>/assertion/`                                             |
 
 The short version: **discovery measures what a model notices when nobody points
 at anything; assertion measures whether it will tell you the truth about

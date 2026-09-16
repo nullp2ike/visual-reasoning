@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Removed
+
+- **The local embedding judge (`embed:bge-small`) is gone from the discovery bench**, along with `pnpm discovery:calibrate-embed`, the `@huggingface/transformers` dependency, and the `embed` / `threshold` options on `JudgeOptions`. Measured side by side against the LLM judges over the golden set it was the least accurate grader: recall differed from the `gpt-5.6-luna` judge by up to 11 points for the same runs, always in the direction of missing matches the LLM judges accepted, so its rankings could not be trusted for close comparisons. `judgeModel` and `discovery:score --judge` now take an LLM model name only. The tracked golden results for the embedding judge (its `RESULTS`, `scores`, `report`, and 2,347 judge-cache entries) are deleted, and `JUDGE_COMPARISON.md` and the reports were regenerated over the two remaining judges with no other numbers changing.
+
 ## [0.25.0] - 2026-09-15
 
 ### Added

@@ -11,7 +11,6 @@ import {
   type PromptVariantId,
 } from "../../bench.config.js";
 import { selectDataset } from "../../shared/dataset.js";
-import { isEmbeddingJudge } from "./embed.js";
 import { JUDGE_PROMPT_VERSION, createJudgeCompletion, judgeRun } from "./judge.js";
 import { ensureManifest } from "./manifest.js";
 import { computeModelMetrics, sortLeaderboard } from "./metrics.js";
@@ -248,9 +247,7 @@ async function main(): Promise<void> {
   const expectedByImage = new Map(manifest.entries.map((e) => [e.imageId, e.expectedIssues]));
 
   console.log(`Judging with ${judgeModel} (cached verdicts are reused).`);
-  // Embedding judges run locally and load their model inside judgeRun; only LLM
-  // judges need a provider completion built here.
-  const completion = isEmbeddingJudge(judgeModel) ? undefined : createJudgeCompletion(judgeModel);
+  const completion = createJudgeCompletion(judgeModel);
   let judged = 0;
   const tasks = records.map((record) => async (): Promise<ResolvedCell> => {
     if (record.status !== "ok" || !record.result) {
