@@ -1,0 +1,56 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Loading spinner is shown on top of already loaded content"
+  ],
+  "reportedIssues": [
+    "A circular loading spinner is centered over the Tokumaru Ramen Bar hero image in 'Popular right now'. The image appears to be stuck loading or only partly rendered, and the spinner sits on top of the food photo like a broken overlay.",
+    "On the 'Green Bowl Poké' card, the '15–25 min' time badge overlaps the plate illustration. The badge's left edge also sits differently against the image than on the neighboring cards, so the badges look inconsistently placed.",
+    "The light gray secondary text ('€0.90 delivery', '25–35 min • €0.00 delivery • Ramen') and the placeholder text in the search field have low contrast against the white or light gray backgrounds. The inactive tab labels have the same problem.",
+    "The heart (favorite) buttons sit on images with different backgrounds. The one on the ramen image is a dark translucent circle that is barely visible, and the one on the pizza card is styled differently."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=0.98, confidence 0.95)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.98,
+        "confidence": 0.95
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

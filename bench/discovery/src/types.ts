@@ -66,6 +66,19 @@ export type RunRecord = z.infer<typeof RunRecordSchema>;
 
 // --- Judge verdict ---
 
+/**
+ * One reported issue as a decision judge (Jev) classified it: the expected
+ * defect it picked, or `null` for none, with the probability it gave that
+ * option and its own calibrated confidence. Chat-model judges don't produce these.
+ */
+export const JudgeDecisionSchema = z.object({
+  reportedIndex: z.number().int().nonnegative(),
+  expectedIndex: z.number().int().nonnegative().nullable(),
+  probability: z.number().min(0).max(1),
+  confidence: z.number().min(0).max(1),
+});
+export type JudgeDecision = z.infer<typeof JudgeDecisionSchema>;
+
 export const JudgeVerdictSchema = z.object({
   expected: z.array(
     z.object({
@@ -77,6 +90,8 @@ export const JudgeVerdictSchema = z.object({
   ),
   /** Reported issue indexes that match none of the expected issues. */
   extraReportedIndexes: z.array(z.number().int().nonnegative()),
+  /** Per-reported-issue decisions, from decision judges only. */
+  decisions: z.array(JudgeDecisionSchema).optional(),
 });
 export type JudgeVerdict = z.infer<typeof JudgeVerdictSchema>;
 
@@ -127,6 +142,8 @@ export const ResolvedCellSchema = z.object({
   /** Reported indexes judged as not matching any expected issue (after overrides). */
   extraReportedIndexes: z.array(z.number().int().nonnegative()),
   overridden: z.boolean(),
+  /** The judge's per-reported-issue decisions, verbatim (decision judges only; overrides don't touch them). */
+  decisions: z.array(JudgeDecisionSchema).optional(),
   usage: UsageInfoSchema.optional(),
   error: z.object({ name: z.string(), message: z.string() }).optional(),
 });

@@ -1,0 +1,56 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "An icon is missing from the top right corner, only a red dot is visible"
+  ],
+  "reportedIssues": [
+    "The circular button at the top right is an empty gray circle with only a small red dot. It has no icon (profile, bell or cart), so its purpose is unclear. The red dot looks like a notification badge but is not attached to any icon. The icon is likely missing or failed to load.",
+    "The delivery-time pills on the 'Fastest near you' cards (e.g. '15–25 min') overlap the image and sit close to the card's bottom edge. On the first card the pill also overlaps the plate illustration.",
+    "The gray secondary text (delivery fees, the '(500+)' rating count, the inactive tab labels and the search placeholder) has low contrast against the white or light-gray backgrounds. The white '€0 delivery' and '−20%' badges are also small.",
+    "The heart/favorite buttons on the cards are inconsistent. The one on the ramen card has a dark circular background that blends into the dark image, while the one on the pizza card has a different, more visible translucent circle. Both have weak visual definition."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

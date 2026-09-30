@@ -1,0 +1,56 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "An icon is missing from the top right corner, only a red dot is visible"
+  ],
+  "reportedIssues": [
+    "The circular button at the top right is an empty gray circle with only a small red dot. Its icon (bell, avatar or similar) is missing or failed to load, so its purpose is unclear. The red dot looks like a notification badge floating on nothing.",
+    "The secondary text (delivery fees under the carousel cards, the search placeholder, and the time, fee and cuisine line) is light gray on a white or light background. Contrast is low and the text is small.",
+    "The white time-pill badges on the carousel cards sit close to the image edge and overlap the plate on the first card. The pill's position looks inconsistent with the '€0 delivery' and '-20%' badges on the large cards.",
+    "The favorite heart buttons are styled inconsistently. The first has a dark, almost invisible background against the dark ramen image, while the second has a visible translucent circle."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

@@ -91,6 +91,21 @@ and what the model reported. It is an LLM (`gpt-5.6-luna`, `gemini-3.8-flash`,
 moves the ranking; the one named in `judgeModel` (`gpt-5.6-luna`) also owns the
 canonical `RESULTS.md` and `report.html`.
 
+`typesafe/jev-1.13` is a different kind of judge: a decision model that returns
+typed answers with probabilities instead of text, called through OpenRouter's
+Decisions API with the same `OPENROUTER_API_KEY`. It is asked one Choice
+question per reported issue (which expected defect does it describe, or none),
+which yields the same verdict as a chat judge: a defect is found when some
+reported issue picks it, and an issue that picks none is an extra. It writes no
+explanations; each verdict records the probability of the choice and Jev's
+calibrated confidence instead, shown as badges in the report's drill-down and
+summarised in a "Judge confidence" section listing the least confident
+decisions. Decisions below confidence 0.8 are the ones worth checking by hand:
+on golden, nearly all of Jev's disagreements with the chat judges, and every
+verdict that changed between two identical runs, fell below it. The question
+wording lives in `bench/discovery/src/jev.ts` and is versioned by
+`JEV_PROMPT_VERSION`, which keys its judge-cache entries.
+
 ## Output
 
 Everything lands in `bench/results/<dataset-id>/discovery/`, beside the

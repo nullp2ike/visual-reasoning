@@ -4,10 +4,11 @@ import { join, relative, sep } from "node:path";
 import { parseArgs } from "node:util";
 import { benchConfig } from "../../bench.config.js";
 import { buildComparisonMarkdown, buildJudgeComparison } from "./compare.js";
+import { UNCERTAIN_CONFIDENCE, summarizeConfidence } from "./confidence.js";
 import { selectDataset, type Dataset } from "../../shared/dataset.js";
 import { buildReportHtml } from "./html.js";
 import { ensureManifest } from "./manifest.js";
-import { buildMatrix, buildMatrixMarkdown } from "./matrix.js";
+import { buildMatrix, buildMatrixMarkdown, truncateDescription } from "./matrix.js";
 import { overridesPath } from "./score.js";
 import {
   OverridesSchema,
@@ -71,6 +72,34 @@ function leaderboardRow(m: ModelMetrics): string {
   return `| ${m.series} | ${m.provider} | ${m.reasoningEffort} | ${pct(m.meanRecall)} | ${pct(m.anyRecall)} | ${pct(m.flakiness)} | ${num(m.extrasPerRun, 1)} | ${num(m.latencyMedianSeconds, 1, "s")} / ${num(m.latencyP95Seconds, 1, "s")} | ${money(m.meanCostPerRun)} | ${money(m.totalCost)} | ${num(m.meanReasoningTokens, 0)} | ${pct(m.cacheHitRate)} | ${m.failedRuns || ""} |`;
 }
 
+/** Section for decision judges (Jev), which attach a probability and confidence to every decision. */
+function confidenceMarkdown(scores: Scores): string[] {
+  const summary = summarizeConfidence(scores, 15);
+  if (!summary) return [];
+  const cell = (text: string): string => text.replaceAll("|", "\\|");
+  return [
+    "## Judge confidence",
+    "",
+    `\`${scores.judgeModel}\` classified each reported issue as matching an expected defect or as an extra, with a calibrated confidence. ` +
+      `${summary.uncertainRuns} of ${summary.judgedRuns} judged run(s) have a decision below confidence ${UNCERTAIN_CONFIDENCE.toFixed(2)}; ` +
+      "those are the verdicts worth checking by hand.",
+    "",
+    "| Confidence | Decisions |",
+    "| --- | --- |",
+    ...summary.buckets.map((b) => `| ${b.label} | ${b.count} |`),
+    "",
+    "Least confident decisions:",
+    "",
+    "| Model | Image | Rep | Issue | Decision | p | Confidence | Reported issue |",
+    "| --- | --- | --- | --- | --- | --- | --- | --- |",
+    ...summary.leastConfident.map(
+      (d) =>
+        `| ${d.series} | ${d.imageId} | ${d.rep} | R${d.reportedIndex} | ${d.label} | ${d.probability.toFixed(2)} | ${d.confidence.toFixed(2)} | ${cell(truncateDescription(d.description))} |`,
+    ),
+    "",
+  ];
+}
+
 export function buildResultsMarkdown(scores: Scores, manifest: Manifest): string {
   const slug = modelDirName(scores.judgeModel);
   const lines = [
@@ -108,6 +137,7 @@ export function buildResultsMarkdown(scores: Scores, manifest: Manifest): string
     "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ...scores.models.map(leaderboardRow),
     "",
+    ...confidenceMarkdown(scores),
     `- **Generated:** ${scores.generatedAt}`,
     `- **Prompt sha256:** \`${scores.promptHash}\``,
     `- **Reasoning effort:** \`${scores.reasoningEffort}\` (fixed for all models; per-provider mapping documented in the library)`,

@@ -1,0 +1,56 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "An icon is missing from the top right corner, only a red dot is visible"
+  ],
+  "reportedIssues": [
+    "The circular button in the top-right corner is an empty gray circle with only a small red dot. It has no icon or avatar (for example a profile, notification, or cart icon), so its purpose is unclear. It looks like a failed image or icon load.",
+    "The time pill on the first 'Fastest near you' card (15–25 min) overlaps the plate illustration and is positioned differently relative to the image than on the other cards. The pills also have low visual separation from the light background on the first card.",
+    "Secondary text such as the gray delivery fee lines and the search placeholder is light gray on white or light gray, which gives low contrast. The inactive bottom-nav labels (Search, Orders, Profile) are also faint.",
+    "The heart/favorite button on the Ramen card is a dark translucent circle with a white icon that blends into the dark food image. The button on the pizza card has a different background treatment, so the two look inconsistent."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

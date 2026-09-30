@@ -7,6 +7,15 @@ import { OpenRouterDriver } from "../../../src/providers/openrouter.js";
 import type { ProviderDriver, SendMessageOptions } from "../../../src/providers/types.js";
 import type { Issue } from "../../../src/types.js";
 import { benchConfig } from "../../bench.config.js";
+import {
+  JEV_PROMPT_VERSION,
+  buildJevRequest,
+  createJevDecide,
+  isDecisionJudge,
+  parseJevResponse,
+  verdictFromJev,
+  type JevDecide,
+} from "./jev.js";
 import { JudgeCacheEntrySchema, JudgeVerdictSchema, type JudgeVerdict } from "./types.js";
 import {
   discoveryResultsDir,
@@ -27,6 +36,11 @@ export function judgeCacheDir(): string {
  * message. Kept at v1 deliberately to preserve the existing paid cache.
  */
 export const JUDGE_PROMPT_VERSION = "v1";
+
+/** The prompt version a judge's verdicts are cached and reported under. */
+export function judgePromptVersion(judgeModel: string): string {
+  return isDecisionJudge(judgeModel) ? JEV_PROMPT_VERSION : JUDGE_PROMPT_VERSION;
+}
 
 const JUDGE_SYSTEM_PROMPT = `You compare QA bug reports for the same app screenshot. You never see the screenshot itself — judge purely from the issue descriptions.
 
@@ -63,7 +77,7 @@ export function judgeCacheKey(request: JudgeRequest, judgeModel: string): string
   return sha256(
     JSON.stringify({
       judgeModel,
-      version: JUDGE_PROMPT_VERSION,
+      version: judgePromptVersion(judgeModel),
       expected: request.expectedIssues,
       reported: request.reportedIssues.map((i) => i.description),
     }),
@@ -175,6 +189,8 @@ export function createJudgeCompletion(judgeModel: string): JudgeCompletion {
 
 export interface JudgeOptions {
   completion?: JudgeCompletion;
+  /** Decisions call for decision judges (Jev); defaults to OpenRouter's Decisions API. */
+  decide?: JevDecide;
   cacheDir?: string;
   /** Judge model to attribute (and cache) verdicts under. Defaults to benchConfig.judgeModel. */
   judgeModel?: string;
@@ -236,11 +252,19 @@ export async function judgeRun(
     if (cached.success) return cached.data.verdict;
   }
 
-  const verdict = await llmJudge(request, judgeModel, options);
+  const verdict = isDecisionJudge(judgeModel)
+    ? verdictFromJev(
+        parseJevResponse(
+          await (options.decide ?? createJevDecide())(buildJevRequest(request, judgeModel)),
+          request,
+        ),
+        request,
+      )
+    : await llmJudge(request, judgeModel, options);
 
   await atomicWriteJson(cachePath, {
     judgeModel,
-    judgePromptVersion: JUDGE_PROMPT_VERSION,
+    judgePromptVersion: judgePromptVersion(judgeModel),
     expectedIssues: request.expectedIssues,
     reportedIssues: request.reportedIssues.map((i) => i.description),
     verdict,

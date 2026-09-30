@@ -1,0 +1,64 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The system gesture/home indicator bar overlaps the bottom navigation icons. It cuts through the search icon and the orders icon, so the icons are partly obscured and their tap targets are compromised.",
+    "The bottom navigation shows icons only, with no text labels. The active Home tab is indicated only by color, so the icons are ambiguous and hard to tell apart.",
+    "On the first 'Fastest near you' card (Green Bowl Poké), the '15–25 min' badge overlaps the plate image and looks slightly misaligned compared with the other cards. The badge is also tight against the card edge.",
+    "The secondary gray text ('€0.90 delivery', '25–35 min • €0 delivery • Ramen', '(500+)') has low contrast against the white background. The heart icons on the dark image overlays are also small and the semi-transparent circle behind them is faint.",
+    "The food imagery is flat illustration-style art, and the pizza card's '-20%' badge has no context. The '€0 delivery' pill on the ramen card also duplicates the €0 delivery text below it."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=0.95, confidence 0.89)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.95,
+        "confidence": 0.89
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.91,
+        "confidence": 0.82
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 4,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

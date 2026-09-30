@@ -1,0 +1,39 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "Restaurant names under Fastest near you cards are truncated mid-word (e.g. 'Trattoria Piccol'), making titles hard to read even though more vertical space is available under each card.",
+    "The second Popular right now pizza card shows a -20% badge and image but has no restaurant name, rating, delivery time, or other details visible below it (unlike Tokumaru Ramen Bar above)."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "Jev matched no reported issue; closest was R1 (p=0.01)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.99
+      }
+    ]
+  }
+}

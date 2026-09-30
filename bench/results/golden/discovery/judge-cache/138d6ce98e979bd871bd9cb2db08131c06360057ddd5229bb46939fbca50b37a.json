@@ -1,0 +1,56 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The pizza card in 'Popular right now' shows a '-100%' badge. A 100% discount would make the item free, so this is almost certainly a data or formatting error, and it looks broken next to the other card's '€0 delivery' badge.",
+    "The secondary gray text (delivery fees, '25–35 min · €0 delivery · Ramen', the search placeholder) is light gray on white or light gray and has low contrast. The '(500+)' rating count is also faint.",
+    "The time pills ('15–25 min', '20–30 min') sit over the images and overlap the image edge and the card's rounded corner. The first pill also overlaps the plate illustration in the light card. The heart icon on the pizza card is a dark translucent circle that is barely visible against the dark wood background.",
+    "The promo banner has decorative circles that are clipped and overlap the banner's bottom-right corner. The 'Order now' button is a white pill with green text that is lightweight compared to the banner's size."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Profile is highlighted in the bottom nav bar while the home feed is shown"
+  ],
+  "reportedIssues": [
+    "The bottom navigation highlights 'Profile' as the active tab, but the screen shown is the home/restaurant feed. The 'Home' tab is grey and inactive, so the navigation state does not match the content.",
+    "Several small grey text elements have low contrast against light backgrounds: the delivery fee lines under the carousel cards, the search placeholder, the '(500+)' rating count, and the inactive tab labels.",
+    "The white time-badge pills (e.g. '15–25 min') overlap the image edges and the illustration, and the small heart icon on the dark image has low contrast against its translucent dark circle.",
+    "The promo banner's decorative translucent circles are cut off and overlap the banner's right edge unevenly. The '3 free deliveries' promo text is also small and light against the green background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.97
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

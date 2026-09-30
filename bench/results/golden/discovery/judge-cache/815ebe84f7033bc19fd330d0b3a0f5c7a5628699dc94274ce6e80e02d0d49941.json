@@ -1,0 +1,48 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Delivery fee shows €NaN"
+  ],
+  "reportedIssues": [
+    "The Smash Bros Burgers card in the \"Fastest near you\" row shows \"€NaN delivery\" instead of a real delivery fee. This is a data or formatting bug (a failed number calculation or missing value). It looks broken and untrustworthy, and users can't tell what delivery will cost.",
+    "The secondary text is light grey on a white or light background, and the search placeholder and delivery/meta lines are also light. This gives low contrast and hurts readability. The inactive tab labels in the bottom bar have the same problem.",
+    "The time badge on the Green Bowl Poké card overlaps the plate image and looks cramped. The decorative circles in the promo banner are also cut off oddly at its edges, with a hard-edged shape at the bottom right corner."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

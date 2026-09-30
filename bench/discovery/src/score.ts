@@ -4,7 +4,8 @@ import { join } from "node:path";
 import { parseArgs } from "node:util";
 import { benchConfig } from "../../bench.config.js";
 import { selectDataset } from "../../shared/dataset.js";
-import { JUDGE_PROMPT_VERSION, createJudgeCompletion, judgeRun } from "./judge.js";
+import { createJudgeCompletion, judgePromptVersion, judgeRun } from "./judge.js";
+import { createJevDecide, isDecisionJudge } from "./jev.js";
 import { ensureManifest } from "./manifest.js";
 import { computeModelMetrics, sortLeaderboard } from "./metrics.js";
 import { loadPrompt } from "./prompt.js";
@@ -165,6 +166,7 @@ export function resolveCell(
     expected,
     extraReportedIndexes,
     overridden,
+    decisions: verdict?.decisions,
     usage: record.usage,
     error: record.error ? { name: record.error.name, message: record.error.message } : undefined,
   };
@@ -231,7 +233,10 @@ async function main(): Promise<void> {
   const expectedByImage = new Map(manifest.entries.map((e) => [e.imageId, e.expectedIssues]));
 
   console.log(`Judging with ${judgeModel} (cached verdicts are reused).`);
-  const completion = createJudgeCompletion(judgeModel);
+  // A decision judge (Jev) answers typed questions rather than chat prompts.
+  const decisionJudge = isDecisionJudge(judgeModel);
+  const completion = decisionJudge ? undefined : createJudgeCompletion(judgeModel);
+  const decide = decisionJudge ? createJevDecide() : undefined;
   let judged = 0;
   const tasks = records.map((record) => async (): Promise<ResolvedCell> => {
     if (record.status !== "ok" || !record.result) {
@@ -241,7 +246,7 @@ async function main(): Promise<void> {
     if (!expectedIssues) throw new Error(`Run record references unknown image ${record.imageId}`);
     const verdict = await judgeRun(
       { expectedIssues, reportedIssues: record.result.issues },
-      { judgeModel, completion },
+      { judgeModel, completion, decide },
     );
     judged++;
     if (judged % 25 === 0) console.log(`  judged ${judged} runs...`);
@@ -286,7 +291,7 @@ async function main(): Promise<void> {
     reasoningEffort: benchConfig.reasoningEffort,
     repeats: benchConfig.repeats,
     judgeModel,
-    judgePromptVersion: JUDGE_PROMPT_VERSION,
+    judgePromptVersion: judgePromptVersion(judgeModel),
     overrideCount: Object.keys(overrides).length,
     models: sortLeaderboard(models),
     cells,

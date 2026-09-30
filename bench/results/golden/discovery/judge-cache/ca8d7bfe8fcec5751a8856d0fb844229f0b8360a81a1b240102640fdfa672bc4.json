@@ -1,0 +1,48 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel, the third card (Trattoria Piccola) is clipped abruptly at the right screen edge with its delivery badge ('20–30 min') also cut, giving a hard crop rather than an intentional peek; there is no edge fade or spacing cue indicating horizontal scrollability.",
+    "The 'See all' affordances next to 'Fastest near you' and 'Popular right now' are distinguished only by green color on a light background, with small text size; color-only signaling and low text mass can hinder readability for low-vision users.",
+    "The promo banner states '3 free deliveries for you' with code TALLINNN3, but the selected category chip is 'Pizza' while the first visible recommendations include poké, burgers and ramen, which can feel inconsistent with the filtered context."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          2
+        ],
+        "reasoning": "Jev matched R2 (p=0.89, confidence 0.78)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": 0,
+        "probability": 0.89,
+        "confidence": 0.78
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Green Bowl Poké card appears twice in the carousel"
+  ],
+  "reportedIssues": [
+    "In the 'Fastest near you' row, the first two cards are exact duplicates: same 'Green Bowl Poké' title, same illustration, same '15–25 min' badge and '€0.90 delivery' line. This looks like a data/rendering bug (duplicate list item) rather than intentional content.",
+    "The two identical 'Green Bowl Poké' cards use a plain light-gray placeholder-style background while the neighboring 'Smash Bros' card and the 'Popular right now' cards use rich photographic/illustrated backgrounds, making the first two tiles look unfinished or broken by comparison."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=0.99, confidence 0.98)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.84,
+        "confidence": 0.68
+      }
+    ]
+  }
+}

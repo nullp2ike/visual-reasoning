@@ -1,0 +1,40 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Delivery fee text overlaps the delivery time text"
+  ],
+  "reportedIssues": [
+    "Under the 'Tokumaru Ramen Bar' title, the delivery time text ('25–30 min') and the delivery fee text ('€0 delivery') overlap each other, producing garbled, unreadable text (e.g. '25–3€0 delivery' with strikethrough-like collision).",
+    "The overlapping meta line also duplicates delivery information already shown as a badge on the card image ('€0 delivery'), which can look redundant once the overlap is fixed."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.73,
+        "confidence": 0.46
+      }
+    ]
+  }
+}

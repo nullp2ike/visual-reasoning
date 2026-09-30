@@ -1,0 +1,40 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Green Bowl Poké card appears twice in the carousel"
+  ],
+  "reportedIssues": [
+    "In the 'Fastest near you' row, the first two cards are identical duplicates: same 'Green Bowl Poké' title, same image, same '15–25 min' badge and '€0.90 delivery' fee, shown side by side. This reads as duplicated/incorrect data rather than two distinct restaurants.",
+    "The delivery-time badges ('15–25 min', '20–30 min') on the 'Fastest near you' cards overlap the card images and, on the first two cards, the badge slightly overlaps the plate illustration's edge, making the badge look pasted on rather than integrated; the second badge also crowds the gap between card 1 and card 2."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=0.99, confidence 0.99)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 0.99
+      }
+    ]
+  }
+}

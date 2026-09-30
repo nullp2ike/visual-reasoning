@@ -1,0 +1,56 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Profile is highlighted in the bottom nav bar while the home feed is shown"
+  ],
+  "reportedIssues": [
+    "The bottom navigation highlights 'Profile' as the active tab, but the page shown is the home/restaurant discovery feed. The 'Home' tab appears inactive (grey). This is a wrong active-state indicator and confuses navigation context.",
+    "Secondary text is light grey on white or light backgrounds (e.g. '€0.90 delivery', '(500+)', inactive nav labels, search placeholder). Contrast is low and hard to read. The white 'Order now' text and the small promo subtext over the green gradient are also fairly small.",
+    "The time pill on the first 'Fastest near you' card ('15–25 min') overlaps the plate illustration and looks crowded. The card images are flat illustrations rather than real photos, and their styling is inconsistent with the popular cards.",
+    "The heart/favorite icon sits on a dark translucent circle that is barely visible against the dark ramen image, and the badge styles differ ('€0 delivery' vs '−20%')."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.97
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

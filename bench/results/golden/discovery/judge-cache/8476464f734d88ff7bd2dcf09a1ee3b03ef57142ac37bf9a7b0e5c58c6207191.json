@@ -1,0 +1,31 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "In the 'Popular right now' card, the restaurant title renders as 'Tokumaru Rameı'. The final 'n' is cut off, leaving only a partial stroke, even though there is plenty of horizontal space before the rating. The text container appears to have a fixed width or overflow clipping that is slightly too narrow for the text."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=0.88, confidence 0.76)."
+      }
+    ],
+    "extraReportedIndexes": [],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.88,
+        "confidence": 0.76
+      }
+    ]
+  }
+}

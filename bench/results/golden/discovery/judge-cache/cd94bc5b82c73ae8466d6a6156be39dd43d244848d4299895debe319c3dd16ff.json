@@ -1,0 +1,48 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Promo banner text is unreadable, white text on a pale mint background"
+  ],
+  "reportedIssues": [
+    "The promo banner headline '3 free deliveries for you' and the subtext 'Use code TALLINN3 at checkout · min. order €10' are white on a very light mint background. Contrast is extremely low and the promo code is almost illegible.",
+    "In the 'Fastest near you' carousel, the Green Bowl Poké image is a light, low-contrast plate on a pale gray background, and the time pill (15–25 min) overlaps the plate. The card looks washed out and inconsistent next to the darker cards.",
+    "The white 'Order now' button on the pale banner has weak separation from its background. The heart icon on the pizza card sits on a semi-transparent dark circle that blends into the image."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.67,
+        "confidence": 0.34
+      }
+    ]
+  }
+}

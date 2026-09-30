@@ -1,0 +1,39 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Orders icon is missing from the bottom nav bar"
+  ],
+  "reportedIssues": [
+    "In the bottom navigation bar, the 'Orders' tab has no icon above its label, whereas Home, Search and Profile each display an icon. This creates an empty vertical gap, makes the 'Orders' label sit higher than the other labels, and breaks the visual consistency of the tab bar.",
+    "Because the 'Orders' tab icon is missing, its text label is vertically offset relative to the other tab labels (Home/Search/Profile labels sit below their icons, Orders sits where an icon-plus-label block should be), producing uneven spacing across the tab bar."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          1
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.94,
+        "confidence": 0.88
+      }
+    ]
+  }
+}

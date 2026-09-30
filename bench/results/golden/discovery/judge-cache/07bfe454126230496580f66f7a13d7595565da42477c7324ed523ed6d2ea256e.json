@@ -1,0 +1,48 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Green Bowl Poké card appears twice in the carousel"
+  ],
+  "reportedIssues": [
+    "The first two cards in the 'Fastest near you' row are exact duplicates: same restaurant name 'Green Bowl Poké', same food illustration, same '15–25 min' badge, and same '€0.90 delivery' fee, making the carousel look like a rendering/data bug rather than two distinct restaurants.",
+    "The promotional banner's decorative translucent circles are clipped abruptly at the banner's right edge, and the banner's right side is otherwise empty, leaving the composition slightly unbalanced next to the dense left-aligned text.",
+    "The favorite (heart) buttons on the restaurant cards are icon-only controls with no visible label, and the notification bell in the header relies solely on icon plus a small red dot to convey unread state."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

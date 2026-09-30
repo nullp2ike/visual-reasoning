@@ -1,0 +1,40 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Restaurant cover image failed to load"
+  ],
+  "reportedIssues": [
+    "The hero image for the 'Tokumaru Ramen Bar' card in the 'Popular right now' section failed to load, showing a light gray placeholder area with a broken-image icon instead of the restaurant photo, while adjacent cards (e.g. the pizza card below) render images correctly.",
+    "The broken-image placeholder state uses a bare gray rectangle with a small icon, which looks visually unfinished compared to the rich imagery elsewhere on the page."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.91,
+        "confidence": 0.82
+      }
+    ]
+  }
+}

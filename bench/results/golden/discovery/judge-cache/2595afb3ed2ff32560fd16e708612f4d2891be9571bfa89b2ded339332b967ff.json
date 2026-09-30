@@ -1,0 +1,56 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccol' is cut off mid-word under the third 'Fastest near you' card, making the name unreadable.",
+    "Under the third 'Fastest near you' card, the delivery fee text appears incomplete as '€1.90 deliverv' (or similarly truncated), so users cannot read the full fee information.",
+    "The pizza card shows a green badge reading '-100%', which looks broken or nonsensical as a discount (implying free or negative price) rather than a clear offer.",
+    "Category filter chips extend past the right edge with only a partial next chip visible, which can feel unfinished even if horizontal scrolling is intended."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          2
+        ],
+        "reasoning": "Jev matched R2 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

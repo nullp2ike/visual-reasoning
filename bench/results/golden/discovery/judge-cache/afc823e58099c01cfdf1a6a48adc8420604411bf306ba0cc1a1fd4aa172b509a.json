@@ -1,0 +1,64 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The 'Pizza' category chip is selected (dark/active), but the content below is not filtered. The 'Fastest near you' row shows a poke bowl, burgers and pasta, and the 'Popular right now' list leads with a ramen restaurant. The filter state and the results are inconsistent.",
+    "Secondary text is light gray on white or light backgrounds, such as the delivery fee lines, the '(500+)' rating count, the search placeholder and the inactive nav labels. Contrast is low and hard to read.",
+    "The time badge ('15–25 min') on the first 'Fastest near you' card overlaps the plate illustration and sits close to the card's left and bottom edges. It looks crowded, and its white background blends into the light card image.",
+    "The green promo banner has decorative circles that clip awkwardly at the bottom-right corner. The 'Order now' button's white fill also stands out sharply against the banner.",
+    "The heart/favorite buttons use a dark translucent circle that is barely visible against the dark ramen image and the brown pizza image. Their appearance is inconsistent between the two cards."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 4,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Restaurant cover image failed to load"
+  ],
+  "reportedIssues": [
+    "The 'Tokumaru Ramen Bar' card under 'Popular right now' shows a large empty gray area with only a generic image-broken icon placeholder instead of a food photo.",
+    "The restaurant name 'Trattoria Piccol' is truncated/cut off on the right in the 'Fastest near you' row.",
+    "The category filter chips row ends with a partially visible empty/white pill on the far right, which looks like a broken or incomplete chip rather than a normal peek of the next category label."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=0.97, confidence 0.93)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.97,
+        "confidence": 0.93
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

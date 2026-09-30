@@ -1,0 +1,48 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Restaurant cover image failed to load"
+  ],
+  "reportedIssues": [
+    "The 'Tokumaru Ramen Bar' card in the 'Popular right now' section shows no restaurant photo — instead a large empty grey block with a broken-image icon is displayed, unlike all other cards which render imagery.",
+    "The heart/favorite button on the broken Tokumaru card renders on a light grey translucent circle with a grey outline icon, whereas the same button on the pizza card below uses a dark circle with a white icon — inconsistent styling and weak contrast against the light grey placeholder.",
+    "The placeholder image block is noticeably shorter/differently proportioned than the neighbouring pizza card image, making the list rhythm uneven."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.97,
+        "confidence": 0.94
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.62,
+        "confidence": 0.23
+      }
+    ]
+  }
+}

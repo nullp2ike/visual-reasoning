@@ -1,5 +1,6 @@
 import type { Manifest, Overrides, Scores } from "./types.js";
 import { modelDirName } from "../../shared/util.js";
+import { UNCERTAIN_CONFIDENCE, summarizeConfidence } from "./confidence.js";
 
 export function escapeHtml(text: string): string {
   return text
@@ -7,6 +8,40 @@ export function escapeHtml(text: string): string {
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
+}
+
+/**
+ * Static "Judge confidence" section for decision judges (Jev): a histogram of
+ * decision confidence and the least confident decisions, each row opening the
+ * matching matrix cell. Empty for chat-model judges, which report no confidence.
+ */
+function confidenceSectionHtml(scores: Scores): string {
+  const summary = summarizeConfidence(scores);
+  if (!summary) return "";
+  const max = Math.max(1, ...summary.buckets.map((b) => b.count));
+  const bars = summary.buckets
+    .map(
+      (b) =>
+        `<div class="conf-bar"><span class="conf-label">${escapeHtml(b.label)}</span>` +
+        `<span class="conf-fill" style="width:${((100 * b.count) / max).toFixed(1)}%"></span>` +
+        `<span class="conf-count">${b.count}</span></div>`,
+    )
+    .join("");
+  const rows = summary.leastConfident
+    .map(
+      (d) =>
+        `<tr class="conf-row" data-image="${escapeHtml(d.imageId)}" data-model="${escapeHtml(d.series)}">` +
+        `<td>${escapeHtml(d.series)}</td><td>${escapeHtml(d.imageId)}</td><td>${d.rep}</td>` +
+        `<td>R${d.reportedIndex}</td><td>${escapeHtml(d.label)}</td><td>${d.probability.toFixed(2)}</td>` +
+        `<td>${d.confidence.toFixed(2)}</td><td class="conf-desc">${escapeHtml(d.description)}</td></tr>`,
+    )
+    .join("");
+  return `<section id="confidence">
+  <h2>Judge confidence</h2>
+  <p class="meta">${escapeHtml(scores.judgeModel)} classifies each reported issue as matching an expected defect or as an extra, with a calibrated confidence. ${summary.uncertainRuns} of ${summary.judgedRuns} judged runs have a decision below confidence ${UNCERTAIN_CONFIDENCE.toFixed(2)}: those verdicts are the ones worth checking by hand. Click a row to open that cell in the matrix.</p>
+  <div class="conf-hist">${bars}</div>
+  <div style="overflow-x:auto"><table id="confidence-table"><thead><tr><th>Model</th><th>Image</th><th>Rep</th><th>Issue</th><th>Decision</th><th>p</th><th>Confidence</th><th>Reported issue</th></tr></thead><tbody>${rows}</tbody></table></div>
+</section>`;
 }
 
 export interface ReportHtmlOptions {
@@ -134,6 +169,16 @@ export function buildReportHtml(
   .rep-block .reported-list { margin: 6px 0 0 0; padding-left: 22px; }
   .reported-list li { margin: 3px 0; }
   .reported-list li.matched { background: #dcfce7; border-left: 3px solid var(--ok); padding: 2px 6px; list-style-position: inside; }
+  .decision { display: inline-block; border-radius: 4px; padding: 1px 6px; font-size: 11px; margin-left: 6px; background: #e0e7ff; color: #3730a3; }
+  .decision.low { background: #fef3c7; color: #92400e; font-weight: 600; }
+  .conf-hist { max-width: 520px; margin: 8px 0 12px; }
+  .conf-bar { display: flex; align-items: center; gap: 8px; font-size: 12px; margin: 3px 0; }
+  .conf-label { width: 84px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .conf-fill { display: inline-block; height: 12px; background: var(--accent); border-radius: 2px; min-width: 1px; }
+  .conf-count { font-variant-numeric: tabular-nums; }
+  #confidence-table tbody tr { cursor: pointer; }
+  #confidence-table tbody tr:hover { background: #eff6ff; }
+  #confidence-table td.conf-desc { text-align: left; white-space: normal; min-width: 280px; }
   .ovr-badge { display: inline-block; background: #111827; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: 11px; margin-left: 6px; }
   .imgcard { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin: 16px 0; }
   .imgcard img { max-width: 320px; max-height: 220px; border: 1px solid var(--line); border-radius: 4px; float: right; margin: 0 0 12px 16px; }
@@ -174,6 +219,7 @@ export function buildReportHtml(
   <p class="meta">Click a column header to sort (hover a header for its definition); click a row to inspect a model. Flakiness = expected issues found in some reps but not others of the same screenshot. Extras/run = reported issues the judge matched to no expected issue (noise) — lower is better.</p>
   <div style="overflow-x:auto"><table id="leaderboard"><thead></thead><tbody></tbody></table></div>
   <div id="detail"></div>
+  ${confidenceSectionHtml(scores)}
 </main>
 ${
   readOnly
@@ -192,6 +238,17 @@ const DATA = JSON.parse(document.getElementById("data").textContent);
 const READ_ONLY = ${readOnly};
 // Path prefix for screenshot <img> hrefs, relative to this report's own file.
 const IMAGE_BASE = DATA.imageBase;
+// Decision judges (Jev) attach a probability and calibrated confidence to each
+// reported issue's classification; chat-model judges leave cell.decisions unset.
+const UNCERTAIN_CONFIDENCE = ${UNCERTAIN_CONFIDENCE};
+function decisionBadge(cell, reportedIndex) {
+  const d = (cell.decisions || []).find(x => x.reportedIndex === reportedIndex);
+  if (!d) return "";
+  const what = d.expectedIndex === null ? "extra" : "matches E" + d.expectedIndex;
+  const low = d.confidence < UNCERTAIN_CONFIDENCE;
+  return ' <span class="decision' + (low ? " low" : "") + '" title="Judge decision: probability of the chosen option and the calibrated confidence of the judge">' +
+    what + " · p " + d.probability.toFixed(2) + " · conf " + d.confidence.toFixed(2) + "</span>";
+}
 const scores = DATA.scores;
 const manifestByImage = Object.fromEntries(DATA.manifest.map(e => [e.imageId, e]));
 // Forced verdict states accumulated in this page session, seeded from committed overrides.
@@ -360,7 +417,7 @@ function expansionHtml(series, entry) {
       cell.reportedIssues.forEach((issue, i) => {
         const matched = matchedIndexes.has(i);
         html += '<li class="' + (matched ? "matched" : "") + '">[' + esc(issue.priority) + "/" + esc(issue.category) + "] " + esc(issue.description) +
-          (matched ? ' <span class="ovr-badge" style="background:var(--ok)">matched</span>' : "") + "</li>";
+          (matched ? ' <span class="ovr-badge" style="background:var(--ok)">matched</span>' : "") + decisionBadge(cell, i) + "</li>";
       });
       html += "</ol>";
     }
@@ -524,7 +581,7 @@ function renderDetail() {
         anyExtras = true;
         const forced = overrides[key] && overrides[key].extras && overrides[key].extras[String(repIndex)];
         html += '<div class="extra-item">rep ' + rep + ": [" + issue.priority + "/" + issue.category + "] " + issue.description +
-          ' <span class="chip extra' + (forced ? " overridden" : "") + '" data-kind="extra" data-key="' + key + '" data-index="' + repIndex + '">extra</span></div>';
+          ' <span class="chip extra' + (forced ? " overridden" : "") + '" data-kind="extra" data-key="' + key + '" data-index="' + repIndex + '">extra</span>' + decisionBadge(cell, repIndex) + "</div>";
       });
     });
     if (!anyExtras) html += '<div class="meta" style="margin-left:16px">none</div>';
@@ -557,6 +614,14 @@ if (exportButton) exportButton.onclick = () => {
   a.click();
   URL.revokeObjectURL(a.href);
 };
+
+// Least-confident decisions open the matching matrix cell.
+document.querySelectorAll("#confidence-table tr.conf-row").forEach(tr => tr.onclick = () => {
+  expandedCell = { imageId: tr.dataset.image, model: tr.dataset.model };
+  renderMatrix();
+  const cellEl = document.querySelector('#matrix td.mcell.expanded');
+  if (cellEl) cellEl.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+});
 
 renderMeta();
 renderEffortFilter();

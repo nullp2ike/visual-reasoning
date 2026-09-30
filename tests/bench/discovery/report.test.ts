@@ -58,6 +58,39 @@ function makeScores(overrides: Partial<Scores> = {}): Scores {
 
 const scores = makeScores();
 
+/** A Jev-style scored cell: R0 matched confidently, R1 an uncertain extra. */
+const decisionScores = makeScores({
+  judgeModel: "typesafe/jev-1.13",
+  cells: [
+    {
+      model: "model-a",
+      series: "model-a",
+      imageId: "img_01",
+      rep: 1,
+      status: "ok",
+      reportedIssues: [
+        { priority: "major", category: "content", description: "Typo in title", suggestion: "fix" },
+        { priority: "minor", category: "layout", description: "Card spacing", suggestion: "fix" },
+      ],
+      expected: [
+        {
+          expectedIndex: 0,
+          found: true,
+          matchedReportedIndexes: [0],
+          reasoning: "Jev matched R0 (p=0.99, confidence 0.98).",
+          overridden: false,
+        },
+      ],
+      extraReportedIndexes: [1],
+      overridden: false,
+      decisions: [
+        { reportedIndex: 0, expectedIndex: 0, probability: 0.99, confidence: 0.98 },
+        { reportedIndex: 1, expectedIndex: null, probability: 0.62, confidence: 0.24 },
+      ],
+    },
+  ],
+});
+
 describe("buildResultsMarkdown", () => {
   it("orders sections: prompt + judge, matrix, leaderboard", () => {
     const md = buildResultsMarkdown(scores, manifest);
@@ -88,6 +121,21 @@ describe("buildResultsMarkdown", () => {
     expect(md).toContain("| Model | Provider | Effort |");
     // The fixture model runs at medium effort — it must appear in its row.
     expect(md).toMatch(/\| model-a \| anthropic \| medium \|/);
+  });
+});
+
+describe("buildResultsMarkdown judge confidence", () => {
+  it("summarises a decision judge's confidence and lists the least confident decisions", () => {
+    const md = buildResultsMarkdown(decisionScores, manifest);
+    expect(md).toContain("## Judge confidence");
+    expect(md).toContain("| 0.00–0.50 | 1 |");
+    expect(md).toContain("| 0.95–1.00 | 1 |");
+    expect(md).toContain("1 of 1 judged run(s) have a decision below confidence 0.80");
+    expect(md).toContain("| model-a | img_01 | 1 | R1 | extra | 0.62 | 0.24 | Card spacing |");
+  });
+
+  it("omits the section for chat-model judges, which report no confidence", () => {
+    expect(buildResultsMarkdown(scores, manifest)).not.toContain("Judge confidence");
   });
 });
 
@@ -178,6 +226,18 @@ describe("buildReportHtml", () => {
     expect(html).not.toContain('<div class="toolbar">');
     expect(html).toContain('<body class="read-only">');
     expect(html).toContain("const READ_ONLY = true;");
+  });
+
+  it("adds a judge-confidence section and per-issue badges for a decision judge", () => {
+    const html = buildReportHtml(decisionScores, manifest, {});
+    expect(html).toContain('<section id="confidence">');
+    expect(html).toContain("function decisionBadge(");
+    expect(html).toContain('"confidence":0.24');
+    expect(() => new Script(inlineScript(html))).not.toThrow();
+  });
+
+  it("has no confidence section for a chat-model judge", () => {
+    expect(buildReportHtml(scores, manifest, {})).not.toContain('<section id="confidence">');
   });
 
   it("shows the per-model reasoning effort in the leaderboard column set", () => {

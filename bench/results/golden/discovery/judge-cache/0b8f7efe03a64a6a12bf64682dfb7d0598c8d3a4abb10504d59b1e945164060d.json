@@ -1,0 +1,48 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant name in the 'Popular right now' card reads 'Tokumaru Ramei' (the final letter is clipped or rendered incorrectly, likely 'Ramen'). The title has plenty of horizontal room, so this is not a legitimate truncation. It looks like a text rendering or clipping bug.",
+    "The time pill badges on the 'Fastest near you' cards (e.g. '15–25 min') overlap the plate image and sit close to the card's bottom edge. On the first card the badge covers part of the bowl, making the imagery look cluttered.",
+    "Secondary gray text (delivery fees, 'min. order', inactive nav labels, search placeholder) is light gray on a light background and has low contrast. The white heart icon on the semi-transparent dark circle also varies in contrast depending on the image behind it."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 0.99)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

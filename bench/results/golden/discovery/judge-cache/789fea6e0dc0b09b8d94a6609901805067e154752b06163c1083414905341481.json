@@ -1,0 +1,48 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Delivery fee shows €NaN"
+  ],
+  "reportedIssues": [
+    "The Smash Bros Burgers card shows '€NaN delivery' instead of a real delivery fee. This is a data or formatting error, and it leaves users without pricing information.",
+    "The secondary gray text (delivery fees, 'min', rating count, inactive nav labels) is light on a white background and has low contrast. The white time pills over light food images, such as the 15–25 min pill on the poké card, also blend into the background.",
+    "The heart/favorite button on the pizza card is a dark translucent circle that has weak visual separation from the dark background, and it is inconsistent with the ramen card's button. The illustrated placeholder food images also look flat and inconsistent with the rest of the UI."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

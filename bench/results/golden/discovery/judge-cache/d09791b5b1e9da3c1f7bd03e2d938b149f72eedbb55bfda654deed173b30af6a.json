@@ -1,0 +1,48 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The iOS home indicator (horizontal black bar) is rendered on top of the bottom navigation bar, overlapping and obscuring the search and bookmark/order icons, making the tab bar look broken and potentially hindering taps.",
+    "Bottom navigation icons (home, search, orders, profile) have no text labels and no visible active-state indicator beyond color, which can make their purpose ambiguous, especially for the overlapped search and bookmark icons.",
+    "The heart (favorite) button on the dark restaurant cards uses a dark translucent circle that blends into the dark image background, reducing its visibility compared to the same button on lighter images."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=0.93, confidence 0.85)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.93,
+        "confidence": 0.85
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.97,
+        "confidence": 0.94
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

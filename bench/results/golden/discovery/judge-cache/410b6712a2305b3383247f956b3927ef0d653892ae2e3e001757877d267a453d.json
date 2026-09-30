@@ -1,0 +1,48 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "The word Restaurants is misspelled Restarants"
+  ],
+  "reportedIssues": [
+    "The search field placeholder reads 'Restarants, dishes, groceries' — 'Restarants' is misspelled (should be 'Restaurants').",
+    "The favorite (heart) buttons on the two 'Popular right now' cards are styled differently: the Tokumaru Ramen card uses a white circle with a dark outlined heart, while the pizza card below uses a dark/translucent circle with a white heart. This inconsistency makes the second one look like a different state or a rendering error.",
+    "In the 'Fastest near you' carousel, the Green Bowl Poké thumbnail has a light gray background while the neighbouring Smash Bros Burgers and Trattoria thumbnails have dark backgrounds, so the row looks visually uneven and the white time badge has weak contrast against the light image."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}
