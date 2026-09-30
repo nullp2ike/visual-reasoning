@@ -205,7 +205,7 @@ HTML clicking a cell lists the failing files with their rep counts.
 
 ## Output
 
-Everything lands in `bench/results/<dataset-id>/visibility/`, beside
+Everything lands in `bench/results/<dataset-id>/assertion/`, beside
 the discovery bench's artifacts for the same dataset rather than mixed into them:
 
 ```

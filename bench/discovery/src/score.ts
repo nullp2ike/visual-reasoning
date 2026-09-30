@@ -25,7 +25,7 @@ import {
   type Scores,
 } from "./types.js";
 import {
-  resultsDir,
+  discoveryResultsDir,
   atomicWriteJson,
   readJsonIfExists,
   runPool,
@@ -37,7 +37,7 @@ import {
 } from "../../shared/util.js";
 
 export function overridesPath(): string {
-  return join(resultsDir(), "overrides.json");
+  return join(discoveryResultsDir(), "overrides.json");
 }
 
 export interface ScorableRecords {

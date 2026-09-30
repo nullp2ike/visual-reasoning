@@ -34,7 +34,7 @@ pnpm discovery:score --dataset golden
 pnpm discovery:report --dataset golden
 ```
 
-Then open `bench/results/golden/report.html`.
+Then open `bench/results/golden/discovery/report.html`.
 
 Set `BENCH_DATASET` in `.env` to avoid passing `--dataset` every time.
 
@@ -89,7 +89,8 @@ canonical `RESULTS.md` and `report.html`.
 
 ## Output
 
-Everything lands in `bench/results/<dataset-id>/`:
+Everything lands in `bench/results/<dataset-id>/discovery/`, beside the
+assertion bench's artifacts for the same dataset rather than mixed into them:
 
 ```
 manifest.json                    image ids, hashes, expected issues

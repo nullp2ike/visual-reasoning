@@ -6,14 +6,14 @@ import { ISSUES_FILE, selectDataset } from "../../shared/dataset.js";
 import { ManifestSchema, type Manifest, type ManifestEntry, type RetiredEntry } from "./types.js";
 import {
   datasetDir,
-  resultsDir,
+  discoveryResultsDir,
   atomicWriteJson,
   readJsonIfExists,
   sha256,
 } from "../../shared/util.js";
 
 export function manifestPath(): string {
-  return join(resultsDir(), "manifest.json");
+  return join(discoveryResultsDir(), "manifest.json");
 }
 
 /**

@@ -22,10 +22,10 @@ import {
   type Overrides,
   type Scores,
 } from "./types.js";
-import { resultsDir, modelDirName, readJsonIfExists } from "../../shared/util.js";
+import { discoveryResultsDir, modelDirName, readJsonIfExists } from "../../shared/util.js";
 
 export function comparisonMdPath(): string {
-  return join(resultsDir(), "JUDGE_COMPARISON.md");
+  return join(discoveryResultsDir(), "JUDGE_COMPARISON.md");
 }
 
 /**
@@ -43,11 +43,11 @@ export function orderVariants(variants: Iterable<string>): string[] {
 }
 
 export function resultsMdPathForVariantJudge(variant: string, judgeModel: string): string {
-  return join(resultsDir(), `RESULTS.${variant}.${modelDirName(judgeModel)}.md`);
+  return join(discoveryResultsDir(), `RESULTS.${variant}.${modelDirName(judgeModel)}.md`);
 }
 
 export function reportHtmlPathForJudge(judgeModel: string): string {
-  return join(resultsDir(), `report.${modelDirName(judgeModel)}.html`);
+  return join(discoveryResultsDir(), `report.${modelDirName(judgeModel)}.html`);
 }
 
 /**
@@ -58,7 +58,7 @@ export function reportHtmlPathForJudge(judgeModel: string): string {
 export async function discoverScores(): Promise<Scores[]> {
   let files: string[];
   try {
-    files = await readdir(resultsDir());
+    files = await readdir(discoveryResultsDir());
   } catch {
     return [];
   }
@@ -66,7 +66,7 @@ export async function discoverScores(): Promise<Scores[]> {
   for (const file of files.sort()) {
     const match = SCORES_FILE_RE.exec(file);
     if (!match || !isPromptVariantId(match[1] ?? "")) continue;
-    const raw = await readJsonIfExists(join(resultsDir(), file));
+    const raw = await readJsonIfExists(join(discoveryResultsDir(), file));
     scoresList.push(ScoresSchema.parse(raw));
   }
   return scoresList;
@@ -142,7 +142,7 @@ export function buildResultsMarkdown(scores: Scores, manifest: Manifest): string
  * still resolves when the report is opened from disk.
  */
 function imageBaseForReport(dataset: Dataset): string {
-  return relative(dataset.resultsDir, dataset.dir).split(sep).join("/");
+  return relative(join(dataset.resultsDir, "discovery"), dataset.dir).split(sep).join("/");
 }
 
 async function main(): Promise<void> {
@@ -159,7 +159,7 @@ async function main(): Promise<void> {
   }
   if (scoresList.length === 0) {
     throw new Error(
-      `No scores.<judge>.json files found in ${resultsDir()}` +
+      `No scores.<judge>.json files found in ${discoveryResultsDir()}` +
         `${values.judge ? ` for judge "${values.judge}"` : ""}. Run "pnpm discovery:score" first.`,
     );
   }
@@ -208,10 +208,10 @@ async function main(): Promise<void> {
     // report.html carries the full variant toggle; RESULTS.md shows the default variant.
     if (judge === benchConfig.judgeModel) {
       const defaultScores = vmap.get(DEFAULT_PROMPT_VARIANT) ?? variantScores[0]?.scores;
-      await writeFile(join(resultsDir(), "report.html"), html, "utf8");
+      await writeFile(join(discoveryResultsDir(), "report.html"), html, "utf8");
       if (defaultScores) {
         await writeFile(
-          join(resultsDir(), "RESULTS.md"),
+          join(discoveryResultsDir(), "RESULTS.md"),
           buildResultsMarkdown(defaultScores, manifest),
           "utf8",
         );

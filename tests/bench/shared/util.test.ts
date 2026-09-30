@@ -1,9 +1,14 @@
 import { describe, it, expect } from "vitest";
+import { join } from "node:path";
+import { activeDataset } from "../../../bench/shared/dataset.js";
 import {
   PRIMARY_EFFORT,
   PRIMARY_FIDELITY,
+  discoveryResultsDir,
   modelDirName,
   runModelDir,
+  runsDirForVariant,
+  scoresPathForVariantJudge,
   seriesId,
 } from "../../../bench/shared/util.js";
 
@@ -55,5 +60,16 @@ describe("runModelDir", () => {
   it("suffixes non-primary fidelity with a distinct @fid-<fidelity> tag", () => {
     expect(runModelDir("gpt-5.6-luna", PRIMARY_EFFORT, "high")).toBe("gpt-5.6-luna@fid-high");
     expect(runModelDir("gpt-5.6-luna", "xhigh", "high")).toBe("gpt-5.6-luna@xhigh@fid-high");
+  });
+});
+
+describe("discoveryResultsDir", () => {
+  it("namespaces discovery artifacts under the dataset's results root, beside assertion/", () => {
+    const dir = discoveryResultsDir();
+    expect(dir).toBe(join(activeDataset().resultsDir, "discovery"));
+    expect(runsDirForVariant("baseline")).toBe(join(dir, "runs", "baseline"));
+    expect(scoresPathForVariantJudge("baseline", "gpt-5.6-luna")).toBe(
+      join(dir, "scores.baseline.gpt-5.6-luna.json"),
+    );
   });
 });

@@ -220,7 +220,7 @@ export function buildReportHtml(
 <div class="toolbar">
   <button id="export">Export overrides.json</button>
   <span id="override-count"></span>
-  <span class="meta">Click found/missed and extra chips to override judge verdicts, then export and save as bench/results/overrides.json and re-run pnpm discovery:score &amp;&amp; pnpm discovery:report.</span>
+  <span class="meta">Click found/missed and extra chips to override judge verdicts, then export and save as bench/results/&lt;dataset&gt;/discovery/overrides.json and re-run pnpm discovery:score &amp;&amp; pnpm discovery:report.</span>
 </div>
 <script type="application/json" id="data">${json}</script>
 <script>

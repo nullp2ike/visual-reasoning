@@ -10,18 +10,22 @@ export function datasetDir(): string {
   return activeDataset().dir;
 }
 
-/** Where every generated artifact for the active dataset lands. */
-export function resultsDir(): string {
-  return activeDataset().resultsDir;
+/**
+ * Where every discovery-bench artifact for the active dataset lands:
+ * results/<dataset>/discovery/, beside (never inside) the assertion bench's
+ * results/<dataset>/assertion/.
+ */
+export function discoveryResultsDir(): string {
+  return join(activeDataset().resultsDir, "discovery");
 }
 
 /**
  * Run records live under a per-prompt-variant subdirectory so runs from
  * different prompts coexist:
- * results/<dataset>/runs/<variant>/<model>/<imageId>/rep_N.json.
+ * results/<dataset>/discovery/runs/<variant>/<model>/<imageId>/rep_N.json.
  */
 export function runsDirForVariant(variant: string): string {
-  return join(resultsDir(), "runs", variant);
+  return join(discoveryResultsDir(), "runs", variant);
 }
 
 /**
@@ -29,7 +33,7 @@ export function runsDirForVariant(variant: string): string {
  * the judge slug follows and may itself contain dots ("gpt-5.4-mini").
  */
 export function scoresPathForVariantJudge(variant: string, judgeModel: string): string {
-  return join(resultsDir(), `scores.${variant}.${modelDirName(judgeModel)}.json`);
+  return join(discoveryResultsDir(), `scores.${variant}.${modelDirName(judgeModel)}.json`);
 }
 
 export function sha256(data: string | Buffer): string {

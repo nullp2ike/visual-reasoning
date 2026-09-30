@@ -34,7 +34,7 @@ import type { ImageDetailLevel, ReasoningEffortLevel } from "../src/constants.js
  *   list names, the more conservative models become beyond them, and narrow
  *   wording ("cut off mid-word inside its own container") became a loophole
  *   models used to keep reporting the carousel clip anyway. Any
- *   `results/golden/runs/excluded-golden/` records on disk are
+ *   `results/golden/discovery/runs/excluded-golden/` records on disk are
  *   orphaned and can be deleted.
  */
 export const BENCH_PROMPT_VARIANTS = {

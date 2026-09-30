@@ -13,7 +13,7 @@ models against the same screenshots; what differs is who does the asking.
 | **Headline metric** | Recall of seeded defects, against extras reported per run        | Accuracy, and the hallucination rate inside it                             |
 | **Fails when**      | The model overlooks a defect, or invents defects on a clean page | The model agrees with a claim that is false                                |
 | **Commands**        | `pnpm discovery:run` → `:score` → `:report`                      | `pnpm assertion:run` → `:report`                                           |
-| **Results**         | `results/<dataset>/`                                             | `results/<dataset>/assertion/`                                             |
+| **Results**         | `results/<dataset>/discovery/`                                   | `results/<dataset>/assertion/`                                             |
 
 The short version: **discovery measures what a model notices when nobody points
 at anything; assertion measures whether it will tell you the truth about

@@ -9,7 +9,7 @@ import type { Issue } from "../../../src/types.js";
 import { benchConfig } from "../../bench.config.js";
 import { JudgeCacheEntrySchema, JudgeVerdictSchema, type JudgeVerdict } from "./types.js";
 import {
-  resultsDir,
+  discoveryResultsDir,
   atomicWriteJson,
   inferProvider,
   readJsonIfExists,
@@ -17,7 +17,7 @@ import {
 } from "../../shared/util.js";
 
 export function judgeCacheDir(): string {
-  return join(resultsDir(), "judge-cache");
+  return join(discoveryResultsDir(), "judge-cache");
 }
 
 /**
