@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:05:18.740Z",
+  "status": "ok",
+  "result": {
+    "summary": "The food delivery home screen is mostly well-formed. The carousel clipping and the partially visible bottom card are intentional and were not counted. One navigation state looks wrong, and there are a few minor styling and accessibility concerns.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom navigation highlights 'Profile' as the active tab, but the screen shown is the home/restaurant feed. The 'Home' tab is grey and inactive, so the navigation state does not match the content.",
+        "suggestion": "Set the active tab to 'Home' when this feed is displayed, and reserve the 'Profile' highlight for the profile screen."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Several small grey text elements have low contrast against light backgrounds: the delivery fee lines under the carousel cards, the search placeholder, the '(500+)' rating count, and the inactive tab labels.",
+        "suggestion": "Darken the secondary text colors to meet the WCAG AA 4.5:1 contrast ratio."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The white time-badge pills (e.g. '15–25 min') overlap the image edges and the illustration, and the small heart icon on the dark image has low contrast against its translucent dark circle.",
+        "suggestion": "Use consistent badge padding and placement, and give the favorite button a higher-contrast background."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The promo banner's decorative translucent circles are cut off and overlap the banner's right edge unevenly. The '3 free deliveries' promo text is also small and light against the green background.",
+        "suggestion": "Clean up the decorative shapes so they are clipped consistently, and increase the size or weight of the secondary promo text."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 657,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.010748,
+    "durationSeconds": 5.638235125000007
+  }
+}

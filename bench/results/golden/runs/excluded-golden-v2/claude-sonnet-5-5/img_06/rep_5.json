@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_06",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:04:19.195Z",
+  "status": "ok",
+  "result": {
+    "summary": "The screen is mostly well laid out. The header, search, chips, promo banner, carousel and bottom nav are all aligned and readable. A few small visual flaws stand out, mainly the time pill on the first 'Fastest near you' card and some low-contrast text.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "On the first 'Fastest near you' card (Green Bowl Poké), the '15–25 min' pill overlaps the plate illustration and hangs over its edge. On the other cards the pill sits cleanly on the background. The overlap looks unintentional and inconsistent.",
+        "suggestion": "Anchor the time pill at a consistent position with consistent padding, so it doesn't collide with the image subject. Crop the image or adjust its position so the pill never covers the main content."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary text is light gray on white or light backgrounds and has low contrast. This includes the delivery fee lines, the search placeholder, the inactive bottom-nav labels (Search, Orders, Profile) and the '(500+)' rating count.",
+        "suggestion": "Darken the secondary text and inactive icon colors to meet at least a 4.5:1 contrast ratio."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The white heart icon on the semi-transparent dark circle over the food images depends on the image behind it. On the pizza card the circle blends with the busy background, so the favorite button is less visible.",
+        "suggestion": "Use a more opaque or consistent button background, or add a subtle border or shadow so the favorite control stays clearly visible on any image."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Two decorative translucent circles in the promo banner are cut off by the banner edge, and one has a hard corner at the bottom right. This makes the banner look slightly unpolished. The '€0 delivery' pill on the ramen card is also very close to the card corner.",
+        "suggestion": "Refine the banner decoration so it clips cleanly with the rounded corners, and keep pill offsets consistent across cards."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 762,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.011798,
+    "durationSeconds": 6.484577749999997
+  }
+}

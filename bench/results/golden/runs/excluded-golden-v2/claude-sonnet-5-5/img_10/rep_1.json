@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_10",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:04:37.953Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well laid out. The main defect is in the 'Fastest near you' carousel, where the first two cards are identical duplicates. There are also a few minor contrast and consistency concerns.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "In the 'Fastest near you' carousel, the first two cards are exact duplicates: same 'Green Bowl Poké' name, image, 15–25 min badge and €0.90 delivery fee. This looks like a data or rendering bug and wastes prime space on the most prominent carousel.",
+        "suggestion": "Deduplicate the restaurant list by ID before rendering, and check the API or data source for repeated entries."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The secondary gray text ('€0.90 delivery', '25–35 min • €0 delivery • Ramen') is light and small on a white background, so contrast is low. The placeholder text in the search bar is also faint.",
+        "suggestion": "Darken the secondary text to meet WCAG AA contrast (4.5:1) and slightly increase the font size."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The heart/favorite icon on the food images sits on a translucent dark circle over busy photos. The ramen card's circle is almost invisible, and the icon's contrast varies between cards.",
+        "suggestion": "Use a consistent solid or semi-opaque background for the favorite button so it is clearly visible on all images."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The time badges on the carousel cards overlap the bottom-left edge of the image and look cramped. The white pill also sits close to the plate image.",
+        "suggestion": "Add consistent inset padding for the badges and make sure they do not collide with the image content."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Illustrated placeholder-style images (a generic bowl, a generic pizza) are used instead of real restaurant photos or logos. The cards also have no restaurant identity beyond the name, and the pizza card has a discount badge but no visible title yet.",
+        "suggestion": "Use real restaurant imagery and make sure the title and metadata are present for each card."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 800,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.012178,
+    "durationSeconds": 6.885542833
+  }
+}

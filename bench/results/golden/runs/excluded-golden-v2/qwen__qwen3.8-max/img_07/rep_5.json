@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:26:18.853Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed, but one element looks visually broken: in the 'Popular right now' section, the Tokumaru Ramen Bar card shows a circular loading spinner overlaying the center of the restaurant image, indicating the image/content failed to finish loading while surrounding cards render fully. Other elements (partially visible carousel item at the right edge and the card cut off at the bottom viewport) are expected behaviors and not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The featured card for 'Tokumaru Ramen Bar' in the 'Popular right now' section displays a persistent circular loading spinner centered on top of the restaurant image, making the card look stuck in a loading/broken state even though the image behind it appears already rendered.",
+        "suggestion": "Remove the loading spinner once the image/content has loaded; ensure the spinner is only shown while assets are pending and is hidden (or replaced with an error/retry state) after load completes or fails."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The loading spinner is placed directly over the center of the food image, obscuring the main visual content of the card; even during genuine loading it hides the dish imagery and looks like a rendering glitch.",
+        "suggestion": "If a loading indicator is needed, show it as a subtle skeleton/placeholder background or position it unobtrusively (e.g., corner), so it never covers the primary card imagery."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1781,
+    "outputTokens": 2450,
+    "reasoningTokens": 2085,
+    "cachedInputTokens": 1152,
+    "estimatedCost": 0.018262,
+    "reportedCost": 0.016246,
+    "durationSeconds": 66.58981795899994
+  }
+}

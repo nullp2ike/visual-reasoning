@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-1",
+  "provider": "anthropic",
+  "imageId": "img_15",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-24T20:33:49.304Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-rendered, but the bottom navigation bar has a clear visual defect: a dark horizontal bar overlaps the middle two tab icons (search and orders), obscuring them. Everything else — header, search, filter chips, promo banner, and restaurant cards — appears intact.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the bottom navigation bar, a thick dark horizontal line/bar is drawn across the search and orders tab icons, partially covering them. It looks like a misplaced active-tab indicator or a stray divider element overlapping the icons.",
+        "suggestion": "Inspect the bottom tab bar for an incorrectly positioned indicator or divider element; ensure the active-tab indicator is sized to a single tab and positioned above/below the icon rather than across it, and remove any stray border/decoration overlapping the icons."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The bottom navigation icons have no text labels, and the (partially obscured) search and orders icons are hard to identify, reducing clarity of navigation.",
+        "suggestion": "Add short text labels under each tab icon and ensure icons are not obstructed so their meaning is clear."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 443,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.04304,
+    "durationSeconds": 8.964225625000006
+  }
+}

@@ -603,32 +603,40 @@ All listed models support image/vision input. Pass any model ID to the `model` c
 | ----------------- | ------------------- | ------------ | ------------- | ------------------------------------------- |
 | Claude Fable 5.1  | `claude-fable-5-1`  | $10          | $50           | Most capable; long-horizon agentic work     |
 | Claude Fable 5    | `claude-fable-5`    | $10          | $50           | Predecessor to Fable 5.1, same price        |
-| Claude Opus 4.8   | `claude-opus-4-8`   | $5           | $25           | Most capable Opus tier; supports `xhigh`    |
+| Claude Opus 5.5   | `claude-opus-5-5`   | $4           | $20           | Newest Opus; >30% faster output than Opus 5 |
+| Claude Opus 5     | `claude-opus-5`     | $5           | $25           | Previous Opus flagship; supports `xhigh`    |
+| Claude Opus 4.8   | `claude-opus-4-8`   | $5           | $25           | Prior Opus tier; supports `xhigh`           |
 | Claude Opus 4.7   | `claude-opus-4-7`   | $5           | $25           | Previous Opus; supports `xhigh` effort tier |
 | Claude Opus 4.6   | `claude-opus-4-6`   | $5           | $25           | Previous flagship, 128K max output          |
+| Claude Sonnet 5.5 | `claude-sonnet-5-5` | $2           | $10           | Newest Sonnet; fast, supports `xhigh`       |
 | Claude Sonnet 5   | `claude-sonnet-5`   | $3           | $15           | Near-Opus quality on coding/agentic work    |
 | Claude Sonnet 4.6 | `claude-sonnet-4-6` | $3           | $15           | **Default** — best value                    |
 | Claude Haiku 4.5  | `claude-haiku-4-5`  | $1           | $5            | Fastest, budget-friendly                    |
 
 ### OpenAI
 
-| Model         | Model ID        | Input $/MTok | Output $/MTok | Notes                                  |
-| ------------- | --------------- | ------------ | ------------- | -------------------------------------- |
-| GPT-6 Astra   | `gpt-6-astra`   | $10          | $50           | Most capable; restricted access¹       |
-| GPT-5.6 Sol   | `gpt-5.6-sol`   | $5           | $30           | Newest flagship, frontier tier         |
-| GPT-5.6 Terra | `gpt-5.6-terra` | $2           | $12           | Newest balanced, everyday tier         |
-| GPT-5.6 Luna  | `gpt-5.6-luna`  | $0.20        | $1.20         | **Default** — newest, fastest/cheapest |
-| GPT-5.5       | `gpt-5.5`       | $5           | $30           | Previous flagship, 1M context          |
-| GPT-5.4 Pro   | `gpt-5.4-pro`   | $30          | $180          | Most capable, extended context         |
-| GPT-5.4       | `gpt-5.4`       | $2.50        | $15           | Best vision quality                    |
-| GPT-5.2       | `gpt-5.2`       | $1.75        | $14           | Balanced quality and cost              |
-| GPT-5.4 mini  | `gpt-5.4-mini`  | $0.75        | $4.50         | Prior default — fast and affordable    |
-| GPT-5.4 nano  | `gpt-5.4-nano`  | $0.20        | $1.25         | Cheapest older-generation option       |
-| GPT-5 mini    | `gpt-5-mini`    | $0.25        | $2            | Fast and cheap                         |
+| Model         | Model ID        | Input $/MTok | Output $/MTok | Notes                               |
+| ------------- | --------------- | ------------ | ------------- | ----------------------------------- |
+| GPT-6 Astra   | `gpt-6-astra`   | $10          | $50           | Most capable; restricted access¹    |
+| GPT-6.1 Sol   | `gpt-6.1-sol`   | $2           | $10           | Upgraded Sol, near-Astra quality²   |
+| GPT-6 Sol     | `gpt-6-sol`     | $2           | $10           | GPT-6 generation, frontier tier     |
+| GPT-6 Luna    | `gpt-6-luna`    | $0.10        | $0.50         | GPT-6 generation, fastest/cheapest  |
+| GPT-5.6 Sol   | `gpt-5.6-sol`   | $5           | $30           | Previous flagship, frontier tier    |
+| GPT-5.6 Terra | `gpt-5.6-terra` | $2           | $12           | Newest balanced, everyday tier      |
+| GPT-5.6 Luna  | `gpt-5.6-luna`  | $0.20        | $1.20         | **Default** — fast and cheap        |
+| GPT-5.5       | `gpt-5.5`       | $5           | $30           | Previous flagship, 1M context       |
+| GPT-5.4 Pro   | `gpt-5.4-pro`   | $30          | $180          | Most capable, extended context      |
+| GPT-5.4       | `gpt-5.4`       | $2.50        | $15           | Best vision quality                 |
+| GPT-5.2       | `gpt-5.2`       | $1.75        | $14           | Balanced quality and cost           |
+| GPT-5.4 mini  | `gpt-5.4-mini`  | $0.75        | $4.50         | Prior default — fast and affordable |
+| GPT-5.4 nano  | `gpt-5.4-nano`  | $0.20        | $1.25         | Cheapest older-generation option    |
+| GPT-5 mini    | `gpt-5-mini`    | $0.25        | $2            | Fast and cheap                      |
 
 ¹ GPT-6 Astra is rolling out through OpenAI's Trusted Access Program, so many API keys cannot reach it yet — expect a `VisualAIProviderError` naming the model until your account is enabled.
 
-Astra reasons heavily enough to spend the entire 4096-token default output budget before emitting an answer, so **it is given a 32768-token budget automatically**, at every reasoning effort rather than only at `high`/`xhigh` like other OpenAI models. That follows OpenAI's guidance to reserve at least 25,000 tokens for reasoning and output. Its output length is erratic — identical calls have used anywhere from 0 to 16384+ reasoning tokens — so a large budget reduces truncation without eliminating it; a call that exhausts the budget still bills for the tokens it burned. Passing `maxTokens` explicitly still wins. It also accepts a fifth reasoning level, `max`, above `xhigh`; this library's `reasoningEffort` stops at `xhigh`, which is passed through unchanged, so `max` is not currently reachable.
+Astra uses the same output budget as other OpenAI models: the 4096 default, raised to 16384 automatically at `high`/`xhigh`. It used to get 32768 at every effort because plain `ask()` calls exhausted the default, which looked like heavy reasoning. That was actually the image `ask()` schema bug fixed in this release: the model spent under 50 reasoning tokens, then printed whitespace until the budget ran out. With the fix, `ask()` and `check()` both completed every call at 4096 in live testing, and no call on the `golden` bench produced more than 548 output tokens. It also accepts a fifth reasoning level, `max`, above `xhigh`; this library's `reasoningEffort` stops at `xhigh`, which is passed through unchanged, so `max` is not currently reachable.
+
+² GPT-6.1 Sol accepts `low`, `medium`, `high`, `xhigh` and `max`; `minimal` and `none` return HTTP 400, so use `low` as the floor.
 
 ### Google
 
@@ -655,15 +663,22 @@ Any [OpenRouter](https://openrouter.ai/models) model slug (always `vendor/model`
 | Grok 4.6       | `x-ai/grok-4.6`             | $2           | $6            | Newest xAI flagship, 500K context     |
 | Grok 4.5       | `x-ai/grok-4.5`             | $2           | $6            | Prior xAI flagship, 500K context      |
 | Kimi K3        | `moonshotai/kimi-k3`        | $3           | $15           | Moonshot flagship, 1M context         |
-| Kimi K2.7 Code | `moonshotai/kimi-k2.7-code` | $0.82        | $3.75         | Agentic/coding tier with vision       |
-| Qwen3.8 Max    | `qwen/qwen3.8-max`          | $2           | $6            | First Max tier with image input       |
-| Qwen3.7 Plus   | `qwen/qwen3.7-plus`         | $0.32        | $1.28         | Cost-effective, GUI/screen-reading    |
+| Kimi K2.7 Code | `moonshotai/kimi-k2.7-code` | $0.82        | $3.75         | Agentic/coding tier with vision⁵      |
+| Qwen3.8 Max    | `qwen/qwen3.8-max`          | $2           | $6            | First Max tier with image input⁴      |
+| Qwen3.7 Plus   | `qwen/qwen3.7-plus`         | $0.32        | $1.28         | Cost-effective, GUI/screen-reading⁴   |
 | Qwen3.6 Flash  | `qwen/qwen3.6-flash`        | $0.19        | $1.13         | **Default** — cheap flash vision tier |
 | GLM 5.3 Flash  | `z-ai/glm-5.3-flash`        | $0.15        | $0.50         | Z.ai flash tier, 1.3M context²        |
+| MiMo V2.6 Pro  | `xiaomi/mimo-v2.6-pro`      | $0.435       | $0.87         | Xiaomi flagship, 1M context³          |
 
 ¹ Muse Spark 1.3 is age-gated by OpenRouter: calls return HTTP 403 (`VisualAIAuthError`) until the account completes the 18+ confirmation at [openrouter.ai/settings/preferences](https://openrouter.ai/settings/preferences). It also reasons by default — expect several hundred reasoning tokens per call even with no `reasoningEffort` set.
 
 ² GLM 5.3 Flash reasons by default — expect one to two hundred reasoning tokens per call even with no `reasoningEffort` set, billed at the output rate. OpenRouter's own context cap for it is 1,048,576 tokens (Z.ai lists 1,310,720) and its output ceiling is 131,072.
+
+³ MiMo V2.6 Pro also reasons by default: about 390 reasoning tokens per call with no `reasoningEffort` set, and about 790 at `medium`. OpenRouter serves it from two fp8 hosts at the same price, Xiaomi (~36 tok/s) and DeepInfra (~4 tok/s), so per-call latency varies widely with the host it is routed to.
+
+⁴ Qwen3.8 Max and Qwen3.7 Plus reason past the 4096-token default on a large share of calls (4,500–5,400 reasoning tokens on the long ones), so **they get a 32768-token output budget automatically** at every reasoning effort. At the default, about half their `ask()` calls truncated in live testing; with the larger budget every call completed. Passing `maxTokens` explicitly still wins, and a call that used the whole budget would cost at most about $0.20 on Qwen3.8 Max.
+
+⁵ Kimi K2.7 Code fails roughly one call in ten by answering in prose instead of JSON. At the 4096 default those calls surface as `VisualAITruncationError`, and with a larger `maxTokens` they finish and throw `VisualAIResponseParseError` instead, so raising the budget does not help. Retry failed calls.
 
 Meta also publishes `meta/muse-spark-1.3-contributor`, the same model at $0.10 / $0.20 per MTok — about 12x cheaper — because Meta uses everything submitted through it for product improvement. It has **no named constant** (`Model.OpenRouter` does not expose it) and never appears by default anywhere in this library, so using it takes a deliberate, explicit choice: pass the slug directly as a plain string, `visualAI({ model: "meta/muse-spark-1.3-contributor" })`. Any OpenRouter slug works this way — see the note above the table — and cost tracking works correctly once you opt in. OpenRouter itself blocks it with HTTP 404 (`paid-model-training-violation-by-account`) until the account's privacy settings allow training endpoints, at [openrouter.ai/settings/privacy](https://openrouter.ai/settings/privacy). Only use it if sending your screenshots to Meta for training is a trade you've deliberately made.
 

@@ -122,13 +122,22 @@ export const benchConfig: BenchConfig = {
   dataset: "golden",
   models: [
     // Anthropic: flagship / mid / small
+    "claude-fable-5-1",
     "claude-fable-5",
+    "claude-opus-5-5",
     "claude-opus-5",
     "claude-opus-4-8",
+    "claude-sonnet-5-5",
     "claude-sonnet-5",
     "claude-sonnet-4-6",
     "claude-haiku-4-5",
-    // OpenAI: flagship / mini + 5.6 variants
+    // OpenAI: GPT-6 Astra, GPT-6.1 Sol, GPT-6 Sol/Luna, flagship / mini + 5.6 variants.
+    // Astra is gated behind OpenAI's Trusted Access Program; keys without
+    // access fail every cell with a VisualAIProviderError naming the model.
+    "gpt-6-astra",
+    "gpt-6.1-sol",
+    "gpt-6-sol",
+    "gpt-6-luna",
     "gpt-5.5",
     "gpt-5.4-mini",
     "gpt-5.6-sol",
@@ -173,6 +182,7 @@ export const benchConfig: BenchConfig = {
     // default even with no effort configured (~370-814 reasoning tokens/call),
     // so its cost per run sits above the headline $1.25/$4.25 rate suggests.
     "meta/muse-spark-1.3",
+    "x-ai/grok-4.7",
     "x-ai/grok-4.6",
     "x-ai/grok-4.5",
     "moonshotai/kimi-k3",
@@ -184,6 +194,10 @@ export const benchConfig: BenchConfig = {
     // no effort configured), so its cost per run runs a little above the
     // headline rate.
     "z-ai/glm-5.3-flash",
+    // Xiaomi flagship (1T+ params). Served by two fp8 upstreams at the same
+    // price; DeepInfra's throughput (~4 tok/s p50) is far below Xiaomi's own
+    // (~36 tok/s), so latency here depends on which host OpenRouter picks.
+    "xiaomi/mimo-v2.6-pro",
   ],
   repeats: 5,
   reasoningEffort: "medium",

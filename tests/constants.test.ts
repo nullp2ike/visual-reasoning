@@ -27,10 +27,12 @@ describe("Model", () => {
   it("has correct Anthropic model values", () => {
     expect(Model.Anthropic.FABLE_5_1).toBe("claude-fable-5-1");
     expect(Model.Anthropic.FABLE_5).toBe("claude-fable-5");
+    expect(Model.Anthropic.OPUS_5_5).toBe("claude-opus-5-5");
     expect(Model.Anthropic.OPUS_5).toBe("claude-opus-5");
     expect(Model.Anthropic.OPUS_4_8).toBe("claude-opus-4-8");
     expect(Model.Anthropic.OPUS_4_7).toBe("claude-opus-4-7");
     expect(Model.Anthropic.OPUS_4_6).toBe("claude-opus-4-6");
+    expect(Model.Anthropic.SONNET_5_5).toBe("claude-sonnet-5-5");
     expect(Model.Anthropic.SONNET_5).toBe("claude-sonnet-5");
     expect(Model.Anthropic.SONNET_4_6).toBe("claude-sonnet-4-6");
     expect(Model.Anthropic.HAIKU_4_5).toBe("claude-haiku-4-5");
@@ -38,6 +40,9 @@ describe("Model", () => {
 
   it("has correct OpenAI model values", () => {
     expect(Model.OpenAI.GPT_6_ASTRA).toBe("gpt-6-astra");
+    expect(Model.OpenAI.GPT_6_1_SOL).toBe("gpt-6.1-sol");
+    expect(Model.OpenAI.GPT_6_SOL).toBe("gpt-6-sol");
+    expect(Model.OpenAI.GPT_6_LUNA).toBe("gpt-6-luna");
     expect(Model.OpenAI.GPT_5_6_SOL).toBe("gpt-5.6-sol");
     expect(Model.OpenAI.GPT_5_6_TERRA).toBe("gpt-5.6-terra");
     expect(Model.OpenAI.GPT_5_6_LUNA).toBe("gpt-5.6-luna");
@@ -63,6 +68,8 @@ describe("Model", () => {
 
   it("has correct OpenRouter model values", () => {
     expect(Model.OpenRouter.MUSE_SPARK_1_3).toBe("meta/muse-spark-1.3");
+    expect(Model.OpenRouter.GROK_4_7).toBe("x-ai/grok-4.7");
+    expect(Model.OpenRouter.MIMO_V2_6_PRO).toBe("xiaomi/mimo-v2.6-pro");
     expect(Model.OpenRouter.GROK_4_6).toBe("x-ai/grok-4.6");
     expect(Model.OpenRouter.GROK_4_5).toBe("x-ai/grok-4.5");
     expect(Model.OpenRouter.KIMI_K3).toBe("moonshotai/kimi-k3");

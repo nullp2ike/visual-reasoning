@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_03",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:04:05.275Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen is mostly well laid out, but one clear defect: the Tokumaru Ramen Bar card shows a broken-image placeholder instead of a photo. Other cards load real images, so this one looks like a failed load. There are also minor inconsistencies in the first carousel.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The hero image for the 'Tokumaru Ramen Bar' card in 'Popular right now' failed to load. A grey box with a broken-image icon is shown instead of a food photo, which makes the card look broken and less appealing than the pizza card below it.",
+        "suggestion": "Fix the image URL or loading logic. Add a proper fallback (branded placeholder or cuisine illustration), a retry, and a skeleton loader instead of the raw broken-image icon."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "In the 'Fastest near you' carousel, the '15–25 min' time badge on the Green Bowl Poké card overlaps and covers part of the plate image. The badge also sits close to the card's left edge and the dish, so it looks slightly misaligned. The Poké image has a pale, low-contrast background that blends into the page.",
+        "suggestion": "Keep badge placement and padding consistent across cards so it doesn't cover the dish. Give the light image a subtle border or background treatment to separate it from the page."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The grey secondary text (e.g. delivery fees, '25–35 min · €0 delivery · Ramen', and the search placeholder) has fairly low contrast against the white and light-grey backgrounds.",
+        "suggestion": "Darken the secondary text color to meet WCAG AA 4.5:1 contrast."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 637,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.010548,
+    "durationSeconds": 5.371879458000001
+  }
+}

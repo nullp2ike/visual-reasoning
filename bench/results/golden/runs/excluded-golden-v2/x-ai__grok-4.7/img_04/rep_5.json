@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.7",
+  "provider": "openrouter",
+  "imageId": "img_04",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-21T18:36:09.631Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly clean and well-aligned, but one promotional badge displays a nonsensical value. Edge clipping from the horizontal carousel and the card cut off at the bottom of the viewport were treated as intended behavior.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The lower restaurant card shows a discount badge reading '-0%', which is a meaningless promotion and looks like a failed or unpopulated value.",
+        "suggestion": "Hide the discount badge when the discount is zero or missing, and only render it with a valid positive discount (e.g. '-20%')."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search field placeholder text ('Restaurants, dishes, groceries') is light gray on a light gray background, giving it weak contrast.",
+        "suggestion": "Darken the placeholder text so it meets at least a 4.5:1 contrast ratio against the field background."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1997,
+    "outputTokens": 5473,
+    "reasoningTokens": 5270,
+    "cachedInputTokens": 1920,
+    "estimatedCost": 0.0294656,
+    "reportedCost": 0.0271616,
+    "durationSeconds": 80.99484733300001
+  }
+}

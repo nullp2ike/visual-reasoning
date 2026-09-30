@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:25:22.095Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but the 'Popular right now' card for Tokumaru Ramen Bar shows a loading spinner overlay stuck on top of a fully loaded image, which looks visually broken. Other elements (header, search, chips, promo banner, carousels, bottom nav) render correctly; partial visibility of the last carousel item and the bottom-cut card are expected behaviors and not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "On the 'Tokumaru Ramen Bar' card in 'Popular right now', a circular loading spinner is overlaid in the center of the restaurant image even though the image and all card metadata (title, rating, delivery time) have already loaded. This makes the card look stuck in a perpetual loading state.",
+        "suggestion": "Remove the loading spinner once the image/content has finished loading; only show the spinner as a placeholder while the image is actually fetching."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The spinner overlay partially obscures the ramen dish photo on the Tokumaru Ramen Bar card, hiding the center of the food imagery and reducing the card's visual appeal.",
+        "suggestion": "After fixing the stuck spinner, ensure the hero food image is fully visible without overlays blocking its center."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1781,
+    "outputTokens": 2923,
+    "reasoningTokens": 2594,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0211,
+    "reportedCost": 0.0211,
+    "durationSeconds": 70.26107687500003
+  }
+}

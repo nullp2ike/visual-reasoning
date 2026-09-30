@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:32:32.061Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there is one clear visual defect: in the 'Popular right now' section, the meta line under 'Tokumaru Ramen Bar' shows overlapping text ('25–30 min' and '€0 delivery' rendered on top of each other), making both unreadable. Other elements (header, search, chips, promo banner, carousel, bottom nav) appear intact; the partially visible carousel item at the right edge and the card cut off at the bottom are expected scroll behavior and not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Under the 'Tokumaru Ramen Bar' title, the delivery time text ('25–30 min') and the delivery fee text ('€0 delivery') overlap each other, producing garbled, unreadable text (e.g. '25–3€0 delivery' with strikethrough-like collision).",
+        "suggestion": "Fix the meta row layout so each meta item occupies its own space: use a horizontal flex row with proper gap/separator between time, fee, and category, and ensure text elements are not absolutely positioned or negatively margined on top of one another."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The overlapping meta line also duplicates delivery information already shown as a badge on the card image ('€0 delivery'), which can look redundant once the overlap is fixed.",
+        "suggestion": "After fixing the overlap, consider showing only one delivery-fee indication per card (badge or meta line) to avoid redundant information."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1781,
+    "outputTokens": 2482,
+    "reasoningTokens": 2096,
+    "cachedInputTokens": 1152,
+    "estimatedCost": 0.018454,
+    "reportedCost": 0.016438,
+    "durationSeconds": 75.82892733400001
+  }
+}

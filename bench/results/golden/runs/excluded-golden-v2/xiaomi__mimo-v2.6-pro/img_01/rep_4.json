@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "xiaomi/mimo-v2.6-pro",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-23T11:08:35.312Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders mostly correctly, but a raw i18n placeholder key is displayed as a section title instead of translated text, which is a clear content/localization defect.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading shows the raw localization key 'home_feed.popular_title' instead of a human-readable translated string (e.g. 'Popular'). This exposes developer/internal text to end users and suggests a missing or broken translation entry.",
+        "suggestion": "Add the 'home_feed.popular_title' key to the localization resources (or fix the lookup/namespace) so it resolves to a proper translated label, and add a fallback string so raw keys can never surface in the UI."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary meta text under restaurant cards (delivery fees such as '€0.90 delivery', '€2.40 delivery' and details like '25–35 min · €0 delivery · Ramen') is rendered in a light gray that likely fails WCAG AA contrast requirements against the white background.",
+        "suggestion": "Darken the secondary text color to achieve at least a 4.5:1 contrast ratio with the background, or increase the font size/weight for these labels."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1499,
+    "outputTokens": 1038,
+    "reasoningTokens": 719,
+    "cachedInputTokens": 1408,
+    "estimatedCost": 0.001555125,
+    "reportedCost": 0.0009477138,
+    "durationSeconds": 28.854808582999997
+  }
+}

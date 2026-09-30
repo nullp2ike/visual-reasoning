@@ -313,6 +313,25 @@ describe("AnthropicDriver", () => {
     expect(callArgs).toHaveProperty("output_config", { effort: "xhigh" });
   });
 
+  it("maps xhigh reasoning effort to xhigh for Sonnet 5.5", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: "{}" }],
+      usage: { input_tokens: 0, output_tokens: 0 },
+    });
+
+    const driver = new AnthropicDriver({
+      apiKey: "test-key",
+      model: "claude-sonnet-5-5",
+      maxTokens: 4096,
+      reasoningEffort: "xhigh",
+    });
+    await driver.sendMessage([makeImage()], "test");
+
+    const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
+    expect(callArgs).toHaveProperty("thinking", { type: "adaptive" });
+    expect(callArgs).toHaveProperty("output_config", { effort: "xhigh" });
+  });
+
   it("maps xhigh reasoning effort to xhigh for Sonnet 5", async () => {
     mockCreate.mockResolvedValueOnce({
       content: [{ type: "text", text: "{}" }],
@@ -322,6 +341,24 @@ describe("AnthropicDriver", () => {
     const driver = new AnthropicDriver({
       apiKey: "test-key",
       model: "claude-sonnet-5",
+      maxTokens: 4096,
+      reasoningEffort: "xhigh",
+    });
+    await driver.sendMessage([makeImage()], "test");
+
+    const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
+    expect(callArgs).toHaveProperty("output_config", { effort: "xhigh" });
+  });
+
+  it("maps xhigh reasoning effort to xhigh for Opus 5.5", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: "{}" }],
+      usage: { input_tokens: 0, output_tokens: 0 },
+    });
+
+    const driver = new AnthropicDriver({
+      apiKey: "test-key",
+      model: "claude-opus-5-5",
       maxTokens: 4096,
       reasoningEffort: "xhigh",
     });
@@ -402,6 +439,24 @@ describe("AnthropicDriver", () => {
     const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
     expect(callArgs).toHaveProperty("thinking", { type: "enabled", budget_tokens: 4096 });
     expect(callArgs).not.toHaveProperty("output_config");
+  });
+
+  it("uses the low thinking budget for minimal effort on budget-based models", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: "{}" }],
+      usage: { input_tokens: 0, output_tokens: 0 },
+    });
+
+    const driver = new AnthropicDriver({
+      apiKey: "test-key",
+      model: "claude-haiku-4-5",
+      maxTokens: 4096,
+      reasoningEffort: "minimal",
+    });
+    await driver.sendMessage([makeImage()], "test");
+
+    const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
+    expect(callArgs).toHaveProperty("thinking", { type: "enabled", budget_tokens: 1024 });
   });
 
   it("raises max_tokens above the thinking budget for budget-based models", async () => {

@@ -3,7 +3,21 @@ import type { ProviderName } from "./types.js";
 // --- Reasoning effort constants ---
 
 /** Supported reasoning effort levels. */
+/**
+ * Abstract reasoning-effort hint. Each provider driver maps it to its native
+ * mechanism; levels a provider lacks clamp to its nearest tier.
+ *
+ * `minimal` is **not universally accepted**. OpenAI rejects it per-model with
+ * HTTP 400 ("Unsupported value: 'minimal' is not supported with the
+ * '<model>' model"), observed on `gpt-6-astra` and `gpt-6.1-sol`, whose
+ * supported set is low/medium/high/xhigh/max, and on `gpt-6-sol` and
+ * `gpt-6-luna`, which accept none/low/medium/high/xhigh/max. Gemini defines
+ * the tier but some models (e.g. Gemini 3.1 Pro) reject it, so Google and
+ * OpenRouter clamp it to `low` rather than send it. Use `minimal` only
+ * against an OpenAI model known to accept it; `low` is the portable floor.
+ */
 export const ReasoningEffort = {
+  MINIMAL: "minimal",
   LOW: "low",
   MEDIUM: "medium",
   HIGH: "high",
@@ -59,16 +73,21 @@ export const Model = {
   Anthropic: {
     FABLE_5_1: "claude-fable-5-1",
     FABLE_5: "claude-fable-5",
+    OPUS_5_5: "claude-opus-5-5",
     OPUS_5: "claude-opus-5",
     OPUS_4_8: "claude-opus-4-8",
     OPUS_4_7: "claude-opus-4-7",
     OPUS_4_6: "claude-opus-4-6",
+    SONNET_5_5: "claude-sonnet-5-5",
     SONNET_5: "claude-sonnet-5",
     SONNET_4_6: "claude-sonnet-4-6",
     HAIKU_4_5: "claude-haiku-4-5",
   },
   OpenAI: {
     GPT_6_ASTRA: "gpt-6-astra",
+    GPT_6_1_SOL: "gpt-6.1-sol",
+    GPT_6_SOL: "gpt-6-sol",
+    GPT_6_LUNA: "gpt-6-luna",
     GPT_5_6_SOL: "gpt-5.6-sol",
     GPT_5_6_TERRA: "gpt-5.6-terra",
     GPT_5_6_LUNA: "gpt-5.6-luna",
@@ -97,6 +116,7 @@ export const Model = {
    */
   OpenRouter: {
     MUSE_SPARK_1_3: "meta/muse-spark-1.3",
+    GROK_4_7: "x-ai/grok-4.7",
     GROK_4_6: "x-ai/grok-4.6",
     GROK_4_5: "x-ai/grok-4.5",
     KIMI_K3: "moonshotai/kimi-k3",
@@ -105,6 +125,7 @@ export const Model = {
     QWEN_3_7_PLUS: "qwen/qwen3.7-plus",
     QWEN_3_6_FLASH: "qwen/qwen3.6-flash",
     GLM_5_3_FLASH: "z-ai/glm-5.3-flash",
+    MIMO_V2_6_PRO: "xiaomi/mimo-v2.6-pro",
   },
 } as const;
 
@@ -137,13 +158,12 @@ export const DEFAULT_MAX_TOKENS = 4096;
 export const OPENAI_REASONING_MAX_TOKENS = 16384;
 
 /**
- * Budget for models that reason heavily enough to truncate at
- * `OPENAI_REASONING_MAX_TOKENS`. OpenAI's reasoning guide recommends reserving
- * "at least 25,000 tokens for reasoning and outputs" when starting out; 16384
- * sits below that, and `gpt-6-astra` was observed exhausting it at
- * `reasoningEffort: "low"`. This leaves headroom above the recommendation
- * while still capping cost — an uncapped request would be bounded only by the
- * model's own max output (128k for Astra, ~$6.40 at $50/MTok).
+ * Budget for `MODELS_REQUIRING_LARGE_OUTPUT_BUDGET`. OpenAI's reasoning guide
+ * recommends reserving "at least 25,000 tokens for reasoning and outputs" when
+ * starting out; this leaves headroom above that while still capping cost. The
+ * listed models' longest observed calls stayed under 9000 output tokens, and at
+ * their output prices a call that used the whole budget would cost at most
+ * about $0.20 (qwen3.8-max, $6/MTok).
  */
 export const OPENAI_HEAVY_REASONING_MAX_TOKENS = 32768;
 
@@ -153,12 +173,28 @@ export const OPENAI_HEAVY_REASONING_MAX_TOKENS = 32768;
  * visible answer. They get `OPENAI_HEAVY_REASONING_MAX_TOKENS` by default
  * regardless of `reasoningEffort`; an explicit `maxTokens` still wins.
  *
- * `gpt-6-astra` was added after live testing: plain `check()` and `ask()`
- * calls truncated at the 4096 default, and `reasoningEffort: "low"` went on to
- * exhaust 16384 as well.
+ * `gpt-6-astra` was listed here after image `ask()` calls truncated at 4096
+ * and even 16384. That turned out to be the image response schema requiring
+ * the video-only `frameReferences` (see `AskImageResponseSchema`), not
+ * reasoning: the model printed whitespace until the budget ran out. With that
+ * fixed, Astra completed `ask()` and `check()` at 4096 and never exceeded 548
+ * output tokens on the discovery bench, so it was removed.
+ *
+ * The Qwen entries were verified live at the 4096 default with that fix in
+ * place. Unlike Astra they genuinely reason past it (4500-5400 reasoning tokens
+ * on long calls, under 600 visible): at `medium`, qwen3.8-max truncated 5/8
+ * `ask()` and 3/8 `check()` calls and qwen3.7-plus 5/8 `ask()`; with this
+ * budget both completed 16/16. grok-4.7 reasons as long but never truncated,
+ * since its upstream does not count reasoning against `max_tokens`.
+ *
+ * kimi-k2.7-code is deliberately absent. It truncates ~8% of calls at 4096,
+ * but those are calls where it writes prose instead of JSON: at 32768 they
+ * finish and fail to parse instead (~12%), so a larger budget only makes each
+ * failure cost more.
  */
 export const MODELS_REQUIRING_LARGE_OUTPUT_BUDGET: ReadonlySet<string> = new Set<string>([
-  Model.OpenAI.GPT_6_ASTRA,
+  Model.OpenRouter.QWEN_3_8_MAX,
+  Model.OpenRouter.QWEN_3_7_PLUS,
 ]);
 
 // --- Reverse map: model → provider ---

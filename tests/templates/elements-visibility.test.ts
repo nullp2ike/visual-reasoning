@@ -44,6 +44,11 @@ describe("buildElementsVisibilityPrompt", () => {
 
     it("refuses to assume an unseen element exists further down the page", () => {
       const prompt = buildElementsVisibilityPrompt(["X"], true);
+      expect(prompt).toContain("applies only to elements that are at least partly rendered");
+      expect(prompt).toMatch(
+        /If no part of an element is on screen, the check for that element FAILS/,
+      );
+      expect(prompt).toContain("do not infer that it exists below the fold");
       expect(prompt).toContain("Judge only what this screenshot actually shows");
     });
 

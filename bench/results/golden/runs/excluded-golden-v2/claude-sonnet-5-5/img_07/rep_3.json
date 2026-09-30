@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_07",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:04:23.362Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen is mostly well laid out. The main visual defect is on the Tokumaru Ramen Bar card, where a loading spinner sits on top of the hero image, so the image looks stuck or partially loaded. Smaller polish issues affect text contrast and badge placement.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "performance",
+        "description": "The 'Popular right now' Tokumaru Ramen Bar card shows a circular loading spinner in the center of its hero image. The image appears stuck loading or half-rendered, while other images on the page have loaded.",
+        "suggestion": "Make sure the image finishes loading, and add a timeout with a fallback or retry. Use a skeleton or placeholder instead of a spinner over content, and hide the spinner once the image has loaded."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary text (e.g. '€0.90 delivery', '25–35 min • €0 delivery • Ramen') is light gray on white and has low contrast. The gray search placeholder is also faint.",
+        "suggestion": "Darken the secondary text color to meet WCAG AA contrast of at least 4.5:1."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The time badges on the 'Fastest near you' cards (e.g. '15–25 min') overlap the bottom-left edge of the illustration. They look slightly cramped and inconsistent with the image content, and the first badge overlaps the plate.",
+        "suggestion": "Give the badges consistent padding and position them clear of the main subject, or add a subtle shadow to separate them from the image."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite heart icons on the hero cards are inconsistent. The ramen card uses a dark translucent circle that is barely visible against the dark image, and the pizza card uses a different-looking button.",
+        "suggestion": "Use a consistent favorite button style, such as a solid light circle with a dark icon, so it stays visible on any image."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 723,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.011408,
+    "durationSeconds": 6.433481916999997
+  }
+}

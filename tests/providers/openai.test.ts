@@ -170,6 +170,20 @@ describe("OpenAIDriver", () => {
     expect(callArgs).toHaveProperty("reasoning", { effort: "low" });
   });
 
+  it("passes minimal reasoning effort through unchanged", async () => {
+    mockCreate.mockResolvedValueOnce(makeResponse());
+
+    const driver = new OpenAIDriver({
+      apiKey: "test-key",
+      model: "gpt-6-astra",
+      reasoningEffort: "minimal",
+    });
+    await driver.sendMessage([makeImage()], "test");
+
+    const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
+    expect(callArgs).toHaveProperty("reasoning", { effort: "minimal" });
+  });
+
   it("passes xhigh reasoning effort", async () => {
     mockCreate.mockResolvedValueOnce(makeResponse());
 

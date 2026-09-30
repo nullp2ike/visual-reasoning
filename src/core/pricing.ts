@@ -18,6 +18,10 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
     inputPricePerToken: 10 / PER_MILLION,
     outputPricePerToken: 50 / PER_MILLION,
   },
+  [`${Provider.ANTHROPIC}:${Model.Anthropic.OPUS_5_5}`]: {
+    inputPricePerToken: 4 / PER_MILLION,
+    outputPricePerToken: 20 / PER_MILLION,
+  },
   [`${Provider.ANTHROPIC}:${Model.Anthropic.OPUS_5}`]: {
     inputPricePerToken: 5 / PER_MILLION,
     outputPricePerToken: 25 / PER_MILLION,
@@ -25,6 +29,10 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
   [`${Provider.ANTHROPIC}:${Model.Anthropic.OPUS_4_8}`]: {
     inputPricePerToken: 5 / PER_MILLION,
     outputPricePerToken: 25 / PER_MILLION,
+  },
+  [`${Provider.ANTHROPIC}:${Model.Anthropic.SONNET_5_5}`]: {
+    inputPricePerToken: 2 / PER_MILLION,
+    outputPricePerToken: 10 / PER_MILLION,
   },
   [`${Provider.ANTHROPIC}:${Model.Anthropic.SONNET_5}`]: {
     inputPricePerToken: 3 / PER_MILLION,
@@ -51,6 +59,22 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
   [`${Provider.OPENAI}:${Model.OpenAI.GPT_6_ASTRA}`]: {
     inputPricePerToken: 10 / PER_MILLION,
     outputPricePerToken: 50 / PER_MILLION,
+  },
+  // Cached input is $0.10/MTok (not modelled), half GPT-6 Sol's cached rate.
+  [`${Provider.OPENAI}:${Model.OpenAI.GPT_6_1_SOL}`]: {
+    inputPricePerToken: 2 / PER_MILLION,
+    outputPricePerToken: 10 / PER_MILLION,
+  },
+  // Cached input is $0.20/MTok (not modelled). Prompts above 272K input tokens
+  // bill at 2x input / 1.5x output, which is far beyond screenshot-sized calls.
+  [`${Provider.OPENAI}:${Model.OpenAI.GPT_6_SOL}`]: {
+    inputPricePerToken: 2 / PER_MILLION,
+    outputPricePerToken: 10 / PER_MILLION,
+  },
+  // Cached input is $0.01/MTok and cache writes $0.125/MTok; neither is modelled.
+  [`${Provider.OPENAI}:${Model.OpenAI.GPT_6_LUNA}`]: {
+    inputPricePerToken: 0.1 / PER_MILLION,
+    outputPricePerToken: 0.5 / PER_MILLION,
   },
   [`${Provider.OPENAI}:${Model.OpenAI.GPT_5_6_SOL}`]: {
     inputPricePerToken: 5 / PER_MILLION,
@@ -148,6 +172,10 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
     inputPricePerToken: 0.1 / PER_MILLION,
     outputPricePerToken: 0.2 / PER_MILLION,
   },
+  [`${Provider.OPENROUTER}:${Model.OpenRouter.GROK_4_7}`]: {
+    inputPricePerToken: 1.6 / PER_MILLION,
+    outputPricePerToken: 4.8 / PER_MILLION,
+  },
   [`${Provider.OPENROUTER}:${Model.OpenRouter.GROK_4_6}`]: {
     inputPricePerToken: 2 / PER_MILLION,
     outputPricePerToken: 6 / PER_MILLION,
@@ -181,6 +209,13 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
   [`${Provider.OPENROUTER}:${Model.OpenRouter.GLM_5_3_FLASH}`]: {
     inputPricePerToken: 0.15 / PER_MILLION,
     outputPricePerToken: 0.5 / PER_MILLION,
+  },
+  // Verified 2026-09-23 against https://openrouter.ai/api/v1/models; both
+  // upstream endpoints (Xiaomi, DeepInfra) charge the same rate. Cached input
+  // is $0.0036/MTok, not modelled (no provider gets a cache discount here).
+  [`${Provider.OPENROUTER}:${Model.OpenRouter.MIMO_V2_6_PRO}`]: {
+    inputPricePerToken: 0.435 / PER_MILLION,
+    outputPricePerToken: 0.87 / PER_MILLION,
   },
 };
 

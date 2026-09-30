@@ -47,7 +47,7 @@ function visibleRole(finalState: boolean, requireCorrectRendering: boolean): str
 const ELEMENTS_VISIBLE_CLIPPING_RULES: readonly string[] = [
   "When an element is partly rendered but cut off at an edge, decide whether ordinary scrolling would bring it fully into view. For example, a card peeking past the end of a horizontal carousel, a filter chip in a row that continues past the screen edge, or a list item partly below the bottom of a scrolling feed is reachable that way, so the check for that element PASSES. Say in your reasoning that it is reached by scrolling.",
   "An element that scrolling cannot bring into view is NOT properly visible: one sliced by the screen edge itself, or cut off or overlapped by fixed chrome such as the status bar, a notch, a home indicator, a sticky header, or a fixed bottom navigation bar. That is a layout fault, so the check for that element FAILS. Describe the clipping in your reasoning.",
-  "An element you cannot see at all is not visible, even if the page might reveal it after scrolling. Judge only what this screenshot actually shows.",
+  "The scrolling allowance above applies only to elements that are at least partly rendered. If no part of an element is on screen, the check for that element FAILS: do not infer that it exists below the fold. Judge only what this screenshot actually shows.",
 ];
 
 /**

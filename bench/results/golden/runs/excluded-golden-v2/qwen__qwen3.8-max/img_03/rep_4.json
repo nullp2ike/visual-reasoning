@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_03",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:22:10.692Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but one card image failed to load: the 'Tokumaru Ramen Bar' card in the 'Popular right now' section shows a gray placeholder box with a broken-image icon instead of a photo, while its badge and favorite button still render. Other elements (header, search, chips, promo banner, carousels) look consistent.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The main image of the 'Tokumaru Ramen Bar' card in the 'Popular right now' section failed to load and displays a gray placeholder with a broken-image glyph, unlike the other cards which show real food imagery.",
+        "suggestion": "Fix the image source/URL for this card or provide a proper fallback image; ensure the error state shows a branded placeholder rather than a broken-image icon."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) button on the broken-image card sits on a plain gray placeholder, and the gray circular background looks inconsistent with the dark translucent circle used on the pizza card below.",
+        "suggestion": "Use a consistent favorite-button background treatment across cards regardless of image load state."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1781,
+    "outputTokens": 2340,
+    "reasoningTokens": 2032,
+    "cachedInputTokens": 1024,
+    "estimatedCost": 0.017602,
+    "reportedCost": 0.01581,
+    "durationSeconds": 55.418950333999994
+  }
+}

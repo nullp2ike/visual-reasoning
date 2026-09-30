@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_09",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:04:35.958Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen is mostly well laid out. One visible defect: the restaurant name 'Tokumaru Ramen' in the Popular right now card is truncated or has a broken final glyph. Two minor issues also stand out: low-contrast secondary text and a delivery pill that overlaps the image edge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The restaurant name 'Tokumaru Ramen' renders with a clipped or malformed last character (it reads 'Rameı'). This is not a carousel edge, since the card is full width and there is plenty of space. It looks like a text-rendering or clipping bug, or a font glyph problem.",
+        "suggestion": "Check the text container's width, padding and overflow, and the font's glyph coverage. Make sure the full name renders, or use proper ellipsis truncation if it is too long."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary text (delivery fees, '25–35 min · €0 delivery · Ramen', the '(500+)' rating count) is light gray on white and has low contrast.",
+        "suggestion": "Darken the secondary text color to meet WCAG AA 4.5:1 contrast."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The time pills ('15–25 min', etc.) on the 'Fastest near you' cards sit tight against the bottom-left corner of the image and slightly overlap the image edge. This looks cramped, and the pill on the first card appears to collide with the plate image.",
+        "suggestion": "Add consistent inset padding for the overlay pills and make sure they don't overlap the key image content."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 592,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.010098,
+    "durationSeconds": 4.9980194999999945
+  }
+}

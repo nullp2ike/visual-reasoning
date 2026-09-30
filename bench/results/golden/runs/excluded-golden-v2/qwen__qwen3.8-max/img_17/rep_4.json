@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:39:05.778Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed: header, search bar, category chips, promo banner, carousels and bottom tab bar all render consistently. Excluding the expected partially-visible carousel item at the right edge and the card cut off at the bottom of the viewport, only minor visual inconsistencies remain.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "A sliver of another category chip is visible at the right edge immediately after the 'Healthy' chip (around x=965), showing only a few pixels of the next chip. Unlike the restaurant carousel, the chip row gives almost no visual affordance that it scrolls, and the tiny sliver looks like a rendering artifact rather than an intentional peek.",
+        "suggestion": "Give the next chip a more deliberate peek (e.g. 24-40px visible) or add a fade/scroll indicator at the right edge so the horizontal scrollability of the filter row is clear."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Inconsistent badge styling across cards: time badges on the 'Fastest near you' carousel use a dark-text-on-white pill, while the '€0 delivery' and '-20%' badges on the 'Popular right now' cards use green/dark text on white pills of different sizes, and the heart favorite button appears as a dark circle on one card but a brown-tinted circle on the pizza card, making the overlay treatments feel uncoordinated.",
+        "suggestion": "Unify overlay badge and favorite-button styles (same pill height, text color rule, and favorite-button background/opacity) across all card types."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The notification bell icon in the top-right has a small red dot indicator with no textual or numeric label, and the icon itself has no visible label; the red dot on the light gray circular background is also low contrast and very small.",
+        "suggestion": "Ensure the bell button has an accessible label (e.g. 'Notifications, unread') and make the unread indicator larger or paired with a count so its state is perceivable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1781,
+    "outputTokens": 2813,
+    "reasoningTokens": 2295,
+    "cachedInputTokens": 1152,
+    "estimatedCost": 0.02044,
+    "reportedCost": 0.018424,
+    "durationSeconds": 70.42995820900006
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:03:57.263Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but one clear defect stands out: an untranslated localization key is shown as a section heading. There are also minor issues with the time badge overlapping the food image and with low-contrast secondary text.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading shows the raw localization key 'home_feed.popular_title' instead of translated text such as 'Popular near you'. This is a missing translation and looks unfinished.",
+        "suggestion": "Add the missing string to the translation resources for this locale, and add a fallback to the default language so raw keys never appear in the UI."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "In the 'Fastest near you' cards, the time pill (e.g. '15–25 min') sits over the bottom-left of the image and overlaps the edge of the plate in the Green Bowl Poké card. This looks cramped and inconsistent with the other cards.",
+        "suggestion": "Keep the image focal point clear of the badge, or use consistent padding and placement for badges."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary text is light gray on a white background (delivery fees, the 'Restaurants, dishes, groceries' placeholder, inactive tab labels). Its contrast is low and it is hard to read. The white '−20%' and '€0 delivery' badge text is also small.",
+        "suggestion": "Darken the secondary text colors to meet WCAG AA contrast of at least 4.5:1, and consider increasing the badge font size."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 558,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.009758,
+    "durationSeconds": 5.002799665999999
+  }
+}

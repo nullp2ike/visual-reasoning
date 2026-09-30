@@ -102,6 +102,9 @@ function sleep(ms: number): Promise<void> {
  * which also sidesteps models that reject it (e.g. Gemini 3.1 Pro).
  */
 const GOOGLE_THINKING_LEVEL = {
+  // Gemini does define a "minimal" thinking level, but some models reject it
+  // (e.g. Gemini 3.1 Pro), so "minimal" clamps to "low" here as well.
+  minimal: "low",
   low: "low",
   medium: "medium",
   high: "high",

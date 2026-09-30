@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5-5",
+  "provider": "anthropic",
+  "imageId": "img_15",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-23T13:14:26.815Z",
+  "status": "ok",
+  "result": {
+    "summary": "The main defect is the bottom navigation bar. It ignores the device's bottom safe-area inset, so its icons are cut off by the screen edge and overlapped by the system gesture bar. The rest of the page looks visually sound.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom tab bar icons (Home, Search, Orders, Profile) sit too low and are clipped by the bottom edge of the screen. Only their upper portions are visible, and any labels are hidden, which makes the primary navigation hard to recognize and tap.",
+        "suggestion": "Add the device's bottom safe-area inset (e.g., env(safe-area-inset-bottom) or WindowInsets) as padding to the tab bar so icons and labels render fully above the screen edge."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The system gesture handle (home indicator) is drawn directly over the Search and Orders tab icons. This obscures them and risks gesture conflicts when users try to tap those tabs.",
+        "suggestion": "Lay out the tab bar above the system gesture area by respecting the navigation bar insets, or increase the tab bar height so its content is not beneath the indicator."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 801,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.024376000000000002,
+    "durationSeconds": 10.892694167000009
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.7",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-21T19:52:09.981Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 issue: a broken delivery price value displayed as \"€NaN\" in the Fastest near you section.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The delivery fee for Smash Bros Burgers renders as \"€NaN delivery\" instead of a numeric price, exposing an invalid/uninitialized value to users.",
+        "suggestion": "Guard the price formatting so a missing or non-numeric delivery fee falls back to a valid value (e.g., \"Free\" or a computed amount) and never displays NaN."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1997,
+    "outputTokens": 762,
+    "reasoningTokens": 635,
+    "cachedInputTokens": 1920,
+    "estimatedCost": 0.006852800000000001,
+    "reportedCost": 0.0045488,
+    "durationSeconds": 90.501329708
+  }
+}

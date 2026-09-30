@@ -21,6 +21,9 @@ const OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1";
  * there is no xhigh, so it clamps to high.
  */
 const OPENROUTER_REASONING_EFFORT: Record<ReasoningEffortLevel, "low" | "medium" | "high"> = {
+  // OpenRouter normalizes upstream vendors to low/medium/high only, so
+  // "minimal" has no native equivalent and clamps to the floor.
+  minimal: "low",
   low: "low",
   medium: "medium",
   high: "high",

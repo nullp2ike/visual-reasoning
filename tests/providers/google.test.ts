@@ -125,6 +125,7 @@ describe("GoogleDriver", () => {
 
   it("maps reasoning effort levels 1:1 to Google thinking levels (xhigh clamps to high)", async () => {
     const expectedLevels: Record<string, string> = {
+      minimal: "low",
       low: "low",
       medium: "medium",
       high: "high",
@@ -135,7 +136,7 @@ describe("GoogleDriver", () => {
       mockGenerateContent.mockResolvedValueOnce({ text: "{}" });
 
       const driver = makeDriver({
-        reasoningEffort: level as "low" | "medium" | "high" | "xhigh",
+        reasoningEffort: level as "minimal" | "low" | "medium" | "high" | "xhigh",
       });
       await driver.sendMessage([makeImage()], "test");
 

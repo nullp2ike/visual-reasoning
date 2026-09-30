@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_05",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:24:13.442Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but the promotional banner has a serious contrast problem: white headline and subtext on a pale green background are barely legible. Other elements (header, chips, carousels, bottom nav) appear intentional and functional; partial visibility of the last carousel card and the bottom card are expected scroll behaviors.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "accessibility",
+        "description": "In the '3 free deliveries for you' promo banner, the white heading and the 'Use code TALLINN3 at checkout · min. order €10' subtext sit on a very light mint-green background, resulting in extremely low contrast that makes the text hard to read.",
+        "suggestion": "Use a darker green background (or darker text color) so the banner text meets WCAG AA contrast ratios, e.g. deep green background with white text or light background with dark green text."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Order now' button inside the promo banner uses green text on a white pill, which is fine, but the banner's low-contrast text makes the call-to-code information (TALLINN3) easy to miss, reducing the promo's effectiveness.",
+        "suggestion": "Emphasize the promo code with a bold/monospace chip or higher-contrast styling so users can notice and copy the code."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1781,
+    "outputTokens": 2436,
+    "reasoningTokens": 2090,
+    "cachedInputTokens": 1152,
+    "estimatedCost": 0.018178,
+    "reportedCost": 0.016162,
+    "durationSeconds": 59.96955829099996
+  }
+}

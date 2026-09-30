@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_07",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:04:22.990Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen is mostly well laid out. The main visual defect is the Tokumare Ramen Bar hero card, which shows a loading spinner over its image, so the image looks stuck or half-loaded. There are also a few minor styling and contrast concerns.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "performance",
+        "description": "The 'Tokumaru Ramen Bar' hero card shows a circular loading spinner in the middle of the image. The image appears to be still loading or stuck, while the other images on the page have loaded. The spinner covers the main subject (the ramen bowl).",
+        "suggestion": "Make sure the image loads reliably. Use a skeleton or blurred placeholder, add a timeout with an error or retry fallback, and preload images for above-the-fold cards."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The white 'Order now' pill and the white time badges ('15–25 min', etc.) sit on busy or gradient backgrounds. The secondary gray text ('€0.90 delivery', 'Ramen', '25–35 min') is light gray on white and has low contrast.",
+        "suggestion": "Darken the secondary text to meet WCAG AA (4.5:1). Make sure the badge text and backgrounds keep enough contrast."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The time badges on the 'Fastest near you' cards overlap the bottom-left edge of the image, and the first badge overlaps the plate illustration. The heart icon on the second popular card sits on a semi-transparent dark circle that looks different from the heart on the first card (dark on the ramen image).",
+        "suggestion": "Use one consistent style for the badges and the favorite button, and keep consistent spacing from the image edges so they don't cover the subject."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The decorative translucent circles on the green promo banner are cut off at the right edge and overlap awkwardly with the banner's rounded corner, which looks like a rendering artifact.",
+        "suggestion": "Clip the decorative shapes cleanly within the banner's rounded bounds, or simplify or remove them."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 774,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.011918,
+    "durationSeconds": 6.536162916000001
+  }
+}

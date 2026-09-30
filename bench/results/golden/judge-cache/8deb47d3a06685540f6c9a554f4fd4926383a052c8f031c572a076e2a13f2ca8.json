@@ -1,0 +1,28 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −0%"
+  ],
+  "reportedIssues": [
+    "The discount badge on the second restaurant card in the 'Popular right now' section reads '-0%', a nonsensical value (zero percent discount). This looks like a placeholder or data/formatting bug and undermines trust in the promo labeling.",
+    "The '-0%' badge and the '€0 delivery' badge use a leading sign format that reads oddly for monetary/discount values; combined with the zero value it emphasizes the formatting inconsistency.",
+    "The notification bell icon in the top-right has a small red indicator dot with no textual or badge count label, so its meaning (unread notifications) may not be perceivable by screen reader or low-vision users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          1
+        ],
+        "reasoning": "Reports 0 and 1 both identify the discount badge displaying the malformed “-0%” value."
+      }
+    ],
+    "extraReportedIndexes": [
+      2
+    ]
+  }
+}

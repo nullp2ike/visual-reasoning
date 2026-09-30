@@ -1,0 +1,28 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −0%"
+  ],
+  "reportedIssues": [
+    "The second card in 'Popular right now' (pizza) shows a discount badge reading '-0%'. A zero-percent discount is meaningless and looks like a bug, probably a missing value or a badge rendered when no promotion is active.",
+    "The Tokumaru Ramen Bar card shows '€0 delivery' twice: as an overlay badge on the image and again in the metadata row below the title.",
+    "The favorite (heart) button's circular background is inconsistent. On the ramen card it blends into the dark image and is barely visible, while on the pizza card it is clearly visible. This makes the button's tap target and contrast inconsistent across cards."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 identifies the pizza card's discount badge displaying '-0%', which is the same defect."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

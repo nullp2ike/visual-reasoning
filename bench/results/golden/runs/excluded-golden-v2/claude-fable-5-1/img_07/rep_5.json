@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-1",
+  "provider": "anthropic",
+  "imageId": "img_07",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-24T20:32:50.659Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is a food delivery home screen that is mostly well-formed. The one clear visual defect is a loading spinner stuck in the center of the Tokumaru Ramen Bar hero image, even though the image itself has already rendered behind it, indicating a stale or orphaned loading state. Other elements (header, search, chips, promo banner, carousels, bottom nav) appear intact.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "A loading spinner overlay remains visible in the center of the Tokumaru Ramen Bar card image in the 'Popular right now' section, even though the ramen image is fully rendered behind it. This looks like a stuck/orphaned loading indicator that was never dismissed.",
+        "suggestion": "Ensure the image loading state is cleared once the image has loaded (hide the spinner on the image onLoad/onError callback), and add a timeout fallback so the spinner cannot persist indefinitely."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 321,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.03694,
+    "durationSeconds": 7.234351290999999
+  }
+}

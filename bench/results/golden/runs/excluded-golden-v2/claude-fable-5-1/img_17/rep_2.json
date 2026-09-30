@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-1",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-24T20:34:02.388Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home feed renders cleanly overall (header, search, filter chips, promo banner, carousels and cards are aligned and consistently styled). One clear defect was found: the bottom navigation highlights the wrong tab as active for the screen being shown.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom navigation shows 'Profile' as the active (green, bold) tab while the displayed content is clearly the Home/discovery feed (delivery address, search, promo banner, 'Fastest near you', 'Popular right now'). The 'Home' tab is rendered in the inactive gray state. This active-state mismatch misleads users about where they are in the app.",
+        "suggestion": "Bind the active tab state to the current route so that 'Home' is highlighted on this screen and 'Profile' is shown as inactive; add a test that verifies the selected tab matches the rendered screen."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 812,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.06149,
+    "durationSeconds": 11.971299500000008
+  }
+}

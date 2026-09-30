@@ -1,0 +1,26 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The second restaurant card in 'Popular right now' shows a '−100%' badge. It reads as a 100% discount (free food), which is almost certainly wrong. It looks like a percentage calculation bug or a mislabeled free-delivery promo. The first card correctly uses a descriptive '€0 delivery' badge.",
+    "The favorite (heart) buttons may be styled inconsistently. On the pizza card the heart sits in a clearly visible dark circular backdrop. On the Tokumaru Ramen card, any backdrop is barely visible against the dark image, so the two buttons look different."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 identifies the second restaurant card's −100% discount badge."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ]
+  }
+}

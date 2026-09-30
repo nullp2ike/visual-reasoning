@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-1",
+  "provider": "anthropic",
+  "imageId": "img_14",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-24T20:33:39.769Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-composed, but the 'Fastest near you' carousel has a clear alignment defect: the middle card (Smash Bros Burgers) is vertically offset from its neighbors, breaking the row's baseline.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' horizontal carousel, the second card ('Smash Bros Burgers') is shifted down by roughly 25–30px relative to the first ('Green Bowl Poké') and third ('Trattoria Piccol…') cards. Its image top edge, the time badge, the restaurant name and the delivery-fee line all sit lower than the adjacent cards, so the row's top edges and text baselines are misaligned.",
+        "suggestion": "Ensure all carousel cards share the same top alignment (e.g., align-items: flex-start with consistent card height and no extra top margin/padding on individual cards). Check the card component for a stray margin-top or a differing image aspect ratio causing the offset."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 682,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.05499,
+    "durationSeconds": 10.581918917000003
+  }
+}

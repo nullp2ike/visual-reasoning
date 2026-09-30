@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:30:00.434Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed, but the 'Fastest near you' carousel shows two identical 'Green Bowl Poké' cards side by side with the same image, delivery time, and fee, which reads as duplicated content or a rendering bug. Other observations are minor cosmetic notes.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The first two cards in the 'Fastest near you' row are exact duplicates: same restaurant name 'Green Bowl Poké', same food illustration, same '15–25 min' badge, and same '€0.90 delivery' fee, making the carousel look like a rendering/data bug rather than two distinct restaurants.",
+        "suggestion": "Verify the data source for the 'Fastest near you' carousel and deduplicate entries, or ensure each card renders its own restaurant image, name, and delivery metadata."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The promotional banner's decorative translucent circles are clipped abruptly at the banner's right edge, and the banner's right side is otherwise empty, leaving the composition slightly unbalanced next to the dense left-aligned text.",
+        "suggestion": "Either inset the decorative circles fully within the banner bounds or intentionally bleed them with a softer gradient so the clipping looks deliberate."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The favorite (heart) buttons on the restaurant cards are icon-only controls with no visible label, and the notification bell in the header relies solely on icon plus a small red dot to convey unread state.",
+        "suggestion": "Add accessible names (e.g., aria-label='Add Tokumaru Ramen Bar to favorites') to icon-only buttons and provide a non-color indicator or tooltip for unread notifications."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1781,
+    "outputTokens": 4466,
+    "reasoningTokens": 4029,
+    "cachedInputTokens": 1152,
+    "estimatedCost": 0.030358,
+    "reportedCost": 0.028342,
+    "durationSeconds": 112.42715554099996
+  }
+}

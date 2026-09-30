@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "model": "xiaomi/mimo-v2.6-pro",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-23T11:10:45.816Z",
+  "status": "ok",
+  "result": {
+    "summary": "Overall layout is coherent, but the 'Fastest near you' carousel shows generic placeholder illustrations instead of real restaurant photos and appears to list the same venue twice with identical details.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The first two cards in the 'Fastest near you' section display a rough, generic poke-bowl illustration (scattered green/red shapes in a white bowl) instead of an actual restaurant photo. In a food-delivery context this reads as a missing or placeholder image and hurts trust and appetite appeal.",
+        "suggestion": "Replace the placeholder illustration with the restaurant's real food/venue photography, or show a branded fallback tile (e.g., logo on colored background) if no photo is available."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "'Green Bowl Poké' is listed twice in the 'Fastest near you' carousel with identical name, identical '15-25 min' delivery estimate, identical €0.90 delivery fee and identical image, which looks like duplicated data rather than two distinct branches.",
+        "suggestion": "Deduplicate the entries, or if they are distinct branches, differentiate them (e.g., append neighborhood/branch name and use distinct photos and estimates)."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1499,
+    "outputTokens": 2068,
+    "reasoningTokens": 1764,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0024512250000000005,
+    "reportedCost": 0.002451225,
+    "durationSeconds": 62.43131395800001
+  }
+}

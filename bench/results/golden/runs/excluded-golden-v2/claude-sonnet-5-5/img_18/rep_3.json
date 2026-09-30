@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_18",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:03:50.080Z",
+  "status": "ok",
+  "result": {
+    "summary": "The food delivery home screen is mostly well-formed. The header, search, category chips, promo banner, carousels and bottom navigation are all aligned and legible. A few minor issues: a contrast problem on the promo banner, small low-contrast secondary text, and an inconsistent time-badge position on the first carousel card. No critical or major breakage was found.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary text on the green promo banner (\"Use code TALLINN3 at checkout · min. order €10\") is thin white text on a mid-green background, which gives borderline contrast. The decorative circles lighten the background behind part of the text and lower contrast further.",
+        "suggestion": "Use a darker green or bolder text weight, and keep the decorative shapes away from the text area, so contrast meets WCAG AA (4.5:1)."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Grey secondary text (delivery fees under the carousel cards, and \"25–35 min • €0 delivery • Ramen\") is small and light grey on white, so contrast is low. The search placeholder is also faint.",
+        "suggestion": "Darken the secondary text color to at least 4.5:1 contrast and slightly increase the font size."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The time badge on the first \"Fastest near you\" card (15–25 min) sits slightly left of the badges on the other cards and overlaps the plate illustration. The badge is inset differently from the card edge than on the other cards.",
+        "suggestion": "Give all time badges the same left and bottom inset from the card edge, and keep them clear of the key image content."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The heart/favorite button on the pizza card sits on a semi-transparent dark circle that has low visibility against the brown wooden background. The \"−20%\" badge and the heart button also differ in style from the \"€0 delivery\" badge and heart button on the ramen card.",
+        "suggestion": "Use one consistent style and a higher-contrast backing for the favorite button across all cards."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 762,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.011798,
+    "durationSeconds": 7.239669542000001
+  }
+}

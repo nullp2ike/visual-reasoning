@@ -1,0 +1,32 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The pizza card shows a '-100%' badge. This implies the item is completely free, which is almost certainly a data or formatting error (a wrong discount value) and could mislead users.",
+    "The secondary gray text (delivery fees under the 'Fastest near you' cards, the '25–35 min · €0 delivery · Ramen' line, and the '(500+)' rating count) has low contrast against the white background. The search placeholder is also light gray on light gray.",
+    "The white time pills (e.g. '15–25 min') sit over the food images and overlap the image edge, so they look cramped. The white '€0 delivery' and '-100%' badges are small, and the dark heart icon buttons have weak contrast over the busy imagery.",
+    "The illustrated food images are inconsistent. The poke bowl card has a light background while the others are dark, and the images are flat vector art rather than real photos, so the cards look uneven.",
+    "The badge styles are inconsistent. '€0 delivery' uses green text on a white pill, and the '-100%' badge uses the same style even though it carries a different kind of information. The pizza card also lacks the rating and info shown on other cards."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 specifically identifies the pizza card's −100% discount badge as an erroneous value."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+}

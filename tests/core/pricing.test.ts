@@ -14,6 +14,12 @@ describe("calculateCost", () => {
     expect(cost).toBeCloseTo(0.035, 10);
   });
 
+  it("calculates cost for anthropic claude-opus-5-5", () => {
+    const cost = calculateCost("anthropic", "claude-opus-5-5", 1000, 500);
+    // 1000 * (4/1M) + 500 * (20/1M) = 0.004 + 0.01 = 0.014
+    expect(cost).toBeCloseTo(0.014, 10);
+  });
+
   it("calculates cost for anthropic claude-opus-5", () => {
     const cost = calculateCost("anthropic", "claude-opus-5", 1000, 500);
     // 1000 * (5/1M) + 500 * (25/1M) = 0.005 + 0.0125 = 0.0175
@@ -24,6 +30,12 @@ describe("calculateCost", () => {
     const cost = calculateCost("anthropic", "claude-opus-4-8", 1000, 500);
     // 1000 * (5/1M) + 500 * (25/1M) = 0.005 + 0.0125 = 0.0175
     expect(cost).toBeCloseTo(0.0175, 10);
+  });
+
+  it("calculates cost for anthropic claude-sonnet-5-5", () => {
+    const cost = calculateCost("anthropic", "claude-sonnet-5-5", 1000, 500);
+    // 1000 * (2/1M) + 500 * (10/1M) = 0.002 + 0.005 = 0.007
+    expect(cost).toBeCloseTo(0.007, 10);
   });
 
   it("calculates cost for anthropic claude-sonnet-5", () => {
@@ -66,6 +78,24 @@ describe("calculateCost", () => {
     const cost = calculateCost("openai", "gpt-6-astra", 1000, 500);
     // 1000 * (10/1M) + 500 * (50/1M) = 0.01 + 0.025 = 0.035
     expect(cost).toBeCloseTo(0.035, 10);
+  });
+
+  it("calculates cost for openai gpt-6.1-sol", () => {
+    const cost = calculateCost("openai", "gpt-6.1-sol", 1000, 500);
+    // 1000 * (2/1M) + 500 * (10/1M) = 0.002 + 0.005 = 0.007
+    expect(cost).toBeCloseTo(0.007, 10);
+  });
+
+  it("calculates cost for openai gpt-6-sol", () => {
+    const cost = calculateCost("openai", "gpt-6-sol", 1000, 500);
+    // 1000 * (2/1M) + 500 * (10/1M) = 0.002 + 0.005 = 0.007
+    expect(cost).toBeCloseTo(0.007, 10);
+  });
+
+  it("calculates cost for openai gpt-6-luna", () => {
+    const cost = calculateCost("openai", "gpt-6-luna", 1000, 500);
+    // 1000 * (0.1/1M) + 500 * (0.5/1M) = 0.0001 + 0.00025 = 0.00035
+    expect(cost).toBeCloseTo(0.00035, 10);
   });
 
   it("calculates cost for openai gpt-5.6-luna", () => {
@@ -144,6 +174,18 @@ describe("calculateCost", () => {
     const cost = calculateCost("openrouter", "meta/muse-spark-1.3-contributor", 1000, 500);
     // 1000 * (0.1/1M) + 500 * (0.2/1M) = 0.0001 + 0.0001 = 0.0002
     expect(cost).toBeCloseTo(0.0002, 10);
+  });
+
+  it("calculates cost for openrouter xiaomi/mimo-v2.6-pro", () => {
+    const cost = calculateCost("openrouter", "xiaomi/mimo-v2.6-pro", 1000, 500);
+    // 1000 * (0.435/1M) + 500 * (0.87/1M) = 0.000435 + 0.000435 = 0.00087
+    expect(cost).toBeCloseTo(0.00087, 10);
+  });
+
+  it("calculates cost for openrouter x-ai/grok-4.7", () => {
+    const cost = calculateCost("openrouter", "x-ai/grok-4.7", 1000, 500);
+    // 1000 * (1.6/1M) + 500 * (4.8/1M) = 0.0016 + 0.0024 = 0.004
+    expect(cost).toBeCloseTo(0.004, 10);
   });
 
   it("calculates cost for openrouter x-ai/grok-4.6", () => {

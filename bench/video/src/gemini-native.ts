@@ -44,6 +44,9 @@ export interface NativeCallResult {
 }
 
 const THINKING_LEVEL: Record<ReasoningEffortLevel, ThinkingLevel> = {
+  // Matches the image driver: Gemini's own "minimal" tier is rejected by some
+  // models, so minimal clamps to LOW here too.
+  minimal: ThinkingLevel.LOW,
   low: ThinkingLevel.LOW,
   medium: ThinkingLevel.MEDIUM,
   high: ThinkingLevel.HIGH,

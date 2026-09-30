@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_15",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:05:08.444Z",
+  "status": "ok",
+  "result": {
+    "summary": "The food delivery home screen is mostly well-formed. The carousels and the cut-off card at the bottom are expected behavior and not reported. A few minor visual problems remain: the bottom navigation is overlapped, the first carousel card has a misplaced badge, and the promo banner has a clipped decoration.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The system gesture/home indicator bar overlaps the bottom navigation. It cuts across the Search icon and sits over the icons, and the tab bar has no labels. The nav icons appear clipped at the bottom edge of the screen.",
+        "suggestion": "Add bottom safe-area inset padding to the tab bar so the icons sit fully above the gesture indicator. Consider adding text labels to the tabs."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "In the 'Fastest near you' carousel, the '15–25 min' badge on the first card is misaligned with the plate image and overlaps its edge. The card images (plate illustrations) are also inconsistent in framing and background, with the first card being light and the others dark.",
+        "suggestion": "Anchor the time badges consistently at the same inset and use consistent image cropping and treatment across cards."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The decorative circles in the green promo banner are cropped irregularly. A hard-edged sliver appears at the bottom right corner, which looks like a rendering artifact. The white text sits over the lighter circle area with reduced contrast.",
+        "suggestion": "Clip the decorative shapes cleanly to the banner's rounded corners and check text contrast over the lighter regions."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary gray text (delivery fees, '25–35 min · €0 delivery · Ramen', the review count) is small and light, giving low contrast against the white background. The heart icon on the dark card image is also low contrast on its translucent circle.",
+        "suggestion": "Darken the secondary text color and strengthen the favorite button background to meet WCAG AA contrast."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 753,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.011708,
+    "durationSeconds": 6.592175499999998
+  }
+}

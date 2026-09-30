@@ -156,6 +156,15 @@ describe("OpenRouterDriver", () => {
     expect(callArgs).toHaveProperty("reasoning", { effort: "high" });
   });
 
+  it("maps minimal reasoning effort to low", async () => {
+    mockCreate.mockResolvedValueOnce(makeResponse());
+
+    await makeDriver({ reasoningEffort: "minimal" }).sendMessage([makeImage()], "test");
+
+    const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
+    expect(callArgs).toHaveProperty("reasoning", { effort: "low" });
+  });
+
   it("does not include reasoning when reasoningEffort is not set", async () => {
     mockCreate.mockResolvedValueOnce(makeResponse());
 

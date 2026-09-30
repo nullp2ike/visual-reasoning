@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_10",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:04:38.832Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well laid out. The main visible defect is in the 'Fastest near you' carousel, where the first two cards are identical duplicates (same name, image, time and fee). There are also minor contrast and consistency issues.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Fastest near you' carousel shows two identical cards, both 'Green Bowl Poké' with the same image, 15–25 min and €0.90 delivery. This looks like a data or rendering bug that duplicates a restaurant.",
+        "suggestion": "Deduplicate the restaurant list by unique ID before rendering, and check the backend or feed for repeated entries."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The secondary gray text ('€0.90 delivery', 'min. order' details, the search placeholder) is small and light against white or light gray backgrounds, so contrast is low. The white promo subtext on the mid-green banner is also fairly light.",
+        "suggestion": "Darken the secondary text colors to meet WCAG AA 4.5:1 contrast, and use a darker green or bolder weight for the banner subtext."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The heart/favorite button is inconsistent between cards. On the ramen card it is a dark translucent circle that blends into the dark image, and on the pizza card it is a different-looking circle. The white heart icon is low-contrast over busy images.",
+        "suggestion": "Use one consistent favorite button style, for example a solid white circle with a dark heart icon, so it stays visible on any image."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The food images are flat illustrations or placeholders rather than real photos. The poké bowl image is small and off-center within its card, leaving large empty gray areas.",
+        "suggestion": "Use properly cropped, consistent restaurant photography that fills the card."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 692,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.011098,
+    "durationSeconds": 6.349290416999996
+  }
+}

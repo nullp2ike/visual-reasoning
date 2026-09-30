@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_04",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:04:06.313Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well laid out. The main visible defect is a nonsensical '-0%' discount badge on the pizza card. There are also minor issues with the low-contrast secondary text and the small first delivery-time pill.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza restaurant card shows a promotional badge reading '-0%'. A 0% discount is meaningless and looks like a data or template bug, since it advertises a discount that does not exist.",
+        "suggestion": "Hide the discount badge when the discount is 0%, or show the correct discount value."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The light gray secondary text has low contrast against the white and light backgrounds. This affects the delivery fee lines under the 'Fastest near you' cards, the meta line under Tokumaru Ramen Bar, and the search placeholder.",
+        "suggestion": "Darken the secondary text color to meet WCAG AA contrast of at least 4.5:1."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The '15–25 min' time pill on the Green Bowl Poké card sits over the plate image and slightly overlaps its edge. Its position looks inconsistent with the pills on the other cards.",
+        "suggestion": "Anchor the time pills consistently in the bottom-left corner with uniform padding, and keep them clear of the image subject."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The heart (favorite) icon on the dark food images has no visible contrast background on the ramen card. The pale green 'Order now' promo text and the secondary text on the green banner may also be weak in contrast.",
+        "suggestion": "Give the favorite button a consistent semi-opaque background circle, as on the pizza card. Check the banner text contrast."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 659,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.010768,
+    "durationSeconds": 6.9654999580000005
+  }
+}

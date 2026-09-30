@@ -237,23 +237,53 @@ describe("resolveConfig", () => {
       expect(resolved.maxTokens).toBe(OPENAI_REASONING_MAX_TOKENS);
     });
 
-    it("increases maxTokens for gpt-6-astra at every effort level, not just high", () => {
-      // Astra spends the 4096 default entirely on reasoning and returns
-      // status "incomplete" before emitting an answer — verified live against
-      // the API, where plain check()/ask() calls truncated at the default.
-      for (const reasoningEffort of ["low", "medium"] as const) {
+    it("leaves gpt-6-astra at the default budget below high effort", () => {
+      // Astra used to get a 32768 budget at every effort because image ask()
+      // calls truncated at 4096. The cause was the ask() schema requiring the
+      // video-only frameReferences, not reasoning; with that fixed, Astra
+      // completes at 4096 and is treated like any other OpenAI model.
+      for (const reasoningEffort of [undefined, "low", "medium"] as const) {
         const resolved = resolveConfig({ model: "gpt-6-astra", apiKey: "k", reasoningEffort });
-        expect(resolved.maxTokens).toBe(OPENAI_HEAVY_REASONING_MAX_TOKENS);
+        expect(resolved.maxTokens).toBe(DEFAULT_MAX_TOKENS);
       }
     });
 
-    it("increases maxTokens for gpt-6-astra when no reasoning effort is set at all", () => {
-      const resolved = resolveConfig({ model: "gpt-6-astra", apiKey: "k" });
-      expect(resolved.maxTokens).toBe(OPENAI_HEAVY_REASONING_MAX_TOKENS);
+    it("gives gpt-6-astra the standard effort-based increase at high effort", () => {
+      const resolved = resolveConfig({
+        model: "gpt-6-astra",
+        apiKey: "k",
+        reasoningEffort: "high",
+      });
+      expect(resolved.maxTokens).toBe(OPENAI_REASONING_MAX_TOKENS);
     });
 
-    it("preserves user-specified maxTokens for gpt-6-astra", () => {
-      const resolved = resolveConfig({ model: "gpt-6-astra", apiKey: "k", maxTokens: 2048 });
+    it.each(["qwen/qwen3.8-max", "qwen/qwen3.7-plus"])(
+      "increases maxTokens for %s at every effort level, not just high",
+      (model) => {
+        // Verified live at the 4096 default with the ask() schema fix in place:
+        // these models genuinely reason past 4096 (4500-5400 reasoning tokens,
+        // under 600 visible) and truncate on ask() and, for qwen3.8-max, check().
+        // With the large budget both completed 16/16 live calls.
+        for (const reasoningEffort of [undefined, "low", "medium", "high"] as const) {
+          const resolved = resolveConfig({ model, apiKey: "k", reasoningEffort });
+          expect(resolved.maxTokens).toBe(OPENAI_HEAVY_REASONING_MAX_TOKENS);
+        }
+      },
+    );
+
+    it("leaves kimi-k2.7-code at the default budget", () => {
+      // Its truncated calls are ones where it writes prose instead of JSON; a
+      // larger budget turns them into parse errors rather than fixing them.
+      const resolved = resolveConfig({
+        model: "moonshotai/kimi-k2.7-code",
+        apiKey: "k",
+        reasoningEffort: "medium",
+      });
+      expect(resolved.maxTokens).toBe(DEFAULT_MAX_TOKENS);
+    });
+
+    it("preserves user-specified maxTokens for heavy-reasoning OpenRouter models", () => {
+      const resolved = resolveConfig({ model: "qwen/qwen3.8-max", apiKey: "k", maxTokens: 2048 });
       expect(resolved.maxTokens).toBe(2048);
     });
 

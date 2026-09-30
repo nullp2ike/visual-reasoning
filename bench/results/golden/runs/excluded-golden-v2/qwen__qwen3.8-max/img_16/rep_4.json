@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:37:33.945Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed: header, search, category chips, promo banner, carousels and bottom nav all render correctly. The partially visible carousel item at the right edge ('Trattoria Piccol...') and the card cut off at the bottom viewport edge are expected scroll affordances and not defects. One minor visual inconsistency remains: the horizontal restaurant carousel cards are clipped mid-card at the right edge without any fade/peek gradient, and the 'See all' links rely on color alone. Overall no critical or major visual breakage detected.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "In the 'Fastest near you' carousel, the third card (Trattoria Piccola) is clipped abruptly at the right screen edge with its delivery badge ('20–30 min') also cut, giving a hard crop rather than an intentional peek; there is no edge fade or spacing cue indicating horizontal scrollability.",
+        "suggestion": "Add a right-edge fade/gradient mask or consistent card peek width so the clipped card reads as an intentional scroll hint instead of a broken crop."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The 'See all' affordances next to 'Fastest near you' and 'Popular right now' are distinguished only by green color on a light background, with small text size; color-only signaling and low text mass can hinder readability for low-vision users.",
+        "suggestion": "Add a chevron/arrow icon or underline to the 'See all' links in addition to color, and ensure the green-on-white contrast meets WCAG AA for small text."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The promo banner states '3 free deliveries for you' with code TALLINNN3, but the selected category chip is 'Pizza' while the first visible recommendations include poké, burgers and ramen, which can feel inconsistent with the filtered context.",
+        "suggestion": "Either filter the recommendation rows by the selected 'Pizza' category or clarify that the rows show all nearby restaurants regardless of the active chip."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1781,
+    "outputTokens": 4862,
+    "reasoningTokens": 4353,
+    "cachedInputTokens": 1152,
+    "estimatedCost": 0.032734,
+    "reportedCost": 0.030718,
+    "durationSeconds": 120.84732933299989
+  }
+}

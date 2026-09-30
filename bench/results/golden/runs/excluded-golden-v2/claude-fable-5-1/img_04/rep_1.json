@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-1",
+  "provider": "anthropic",
+  "imageId": "img_04",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-24T20:32:30.774Z",
+  "status": "ok",
+  "result": {
+    "summary": "The food delivery home screen renders mostly well. The main visible defect is a badge on the second 'Popular right now' card showing '–0%', which indicates a broken/empty discount value being rendered. Other elements (header, search, chips, promo banner, carousels) appear intact.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza restaurant card in 'Popular right now' displays a discount badge reading '–0%'. A zero-percent discount is meaningless and suggests the discount value is missing or defaulting to 0, producing a broken-looking label.",
+        "suggestion": "Hide the discount badge when the discount value is 0 or null, or ensure the correct discount percentage is populated from the data source."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 247,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.033240000000000006,
+    "durationSeconds": 10.988305917000002
+  }
+}

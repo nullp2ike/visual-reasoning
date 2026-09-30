@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:05:17.336Z",
+  "status": "ok",
+  "result": {
+    "summary": "The food delivery home screen is mostly well-formed. Carousels, chips, and the bottom cut-off card are excluded as intended features. A few real issues remain: the bottom navigation highlights 'Profile' on what is clearly the home/browse screen, and some smaller contrast and consistency problems.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom navigation shows 'Profile' as the active tab, while the content on screen is the Home/browse feed. The 'Home' tab is shown as inactive, so the navigation state does not match the page.",
+        "suggestion": "Set the active state on the 'Home' tab when this feed is displayed, and only highlight 'Profile' on the profile screen."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The secondary gray text (delivery fees, 'See all' links, inactive nav labels, search placeholder) is light on a light background and has low contrast. The white delivery-time pills over the light Green Bowl Poké image also blend into the background.",
+        "suggestion": "Darken the secondary text colors to at least a 4.5:1 contrast ratio and add a subtle shadow or border to the pills over light images."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The promo banner has decorative translucent circles that clip awkwardly at the corner and bottom edge. The 'Order now' button also sits close to the code text.",
+        "suggestion": "Reposition or clip the decorative shapes cleanly within the banner and add more spacing around the CTA."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The badges are inconsistent. The delivery-time pills sit inside the image at bottom-left, while the '€0 delivery' and '-20%' badges sit at top-left. The €0 delivery info is also repeated in the text below the card.",
+        "suggestion": "Standardize badge placement and remove duplicated information."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 693,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.011108,
+    "durationSeconds": 5.887823457999999
+  }
+}

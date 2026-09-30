@@ -1,0 +1,27 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Profile is highlighted in the bottom nav bar while the home feed is shown"
+  ],
+  "reportedIssues": [
+    "A sliver of another category chip is visible at the right edge immediately after the 'Healthy' chip (around x=965), showing only a few pixels of the next chip. Unlike the restaurant carousel, the chip row gives almost no visual affordance that it scrolls, and the tiny sliver looks like a rendering artifact rather than an intentional peek.",
+    "Inconsistent badge styling across cards: time badges on the 'Fastest near you' carousel use a dark-text-on-white pill, while the '€0 delivery' and '-20%' badges on the 'Popular right now' cards use green/dark text on white pills of different sizes, and the heart favorite button appears as a dark circle on one card but a brown-tinted circle on the pizza card, making the overlay treatments feel uncoordinated.",
+    "The notification bell icon in the top-right has a small red dot indicator with no textual or numeric label, and the icon itself has no visible label; the red dot on the light gray circular background is also low contrast and very small."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "None of the reported issues concerns the bottom navigation highlight or the Profile tab while the home feed is displayed."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1,
+      2
+    ]
+  }
+}

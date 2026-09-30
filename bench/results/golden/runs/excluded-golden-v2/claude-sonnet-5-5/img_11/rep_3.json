@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_11",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:04:44.882Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed. The carousel and bottom-cut card are excluded per instructions. One clear content defect is the '-100%' discount badge on the pizza card, which looks like a data or logic error. There are also minor legibility and consistency concerns.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza card shows a '-100%' badge, implying the item is entirely free. This is almost certainly a data or formatting bug, and it is misleading. It also lacks context about what is discounted.",
+        "suggestion": "Verify the discount value from the data source. Show the correct percentage (e.g. '-10%') or hide the badge when the value is invalid, and make clear what the discount applies to."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The gray secondary text (delivery fees under the restaurant names, and the meta line '25–35 min · €0 delivery · Ramen') is small and light against the white background, so contrast is low. The white time pills over the light Green Bowl Poké image also have weak separation from the background.",
+        "suggestion": "Darken the secondary text to meet WCAG 4.5:1 contrast. Add a subtle shadow or border to the time pills on light images."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The heart/favorite icon on the pizza card sits on a dark translucent circle, while on the ramen card the circle is nearly invisible against the dark image. The treatment is inconsistent and the icon's contrast varies with the image.",
+        "suggestion": "Use a consistent button background, such as a semi-opaque fixed-color circle, so the favorite icon is always clearly visible."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The decorative circles in the green promo banner are cropped awkwardly at the right and bottom edges. The bottom circle also appears to clip against the rounded corner with a visible hard edge.",
+        "suggestion": "Clip decorative shapes cleanly within the banner's rounded container, or adjust their placement."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 731,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.011488,
+    "durationSeconds": 6.294058999999994
+  }
+}

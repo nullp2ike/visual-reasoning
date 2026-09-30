@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_04",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:04:11.606Z",
+  "status": "ok",
+  "result": {
+    "summary": "The food delivery home screen is mostly well laid out. Two issues stand out: a promotional badge that shows a nonsensical \"-0%\" discount, and a small element overlap on the first carousel card. Some secondary text also has weak contrast.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza card's promo badge reads \"−0%\", which is a meaningless discount. It looks like a data or template bug, and it misleads users into expecting a deal.",
+        "suggestion": "Hide the discount badge when the value is 0, or show the correct discount value."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "On the first \"Fastest near you\" card (Green Bowl Poké), the \"15–25 min\" time pill overlaps the plate image and sits close to the card's left edge. The pill's position is cramped and looks inconsistent with the image content.",
+        "suggestion": "Give the time pill consistent padding from the card edges and keep it clear of the key image content."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary text is light gray on a white or light background, for example the delivery fee lines, the \"(500+)\" rating count, and the search placeholder. Its contrast is low and hard to read.",
+        "suggestion": "Darken the gray text to meet WCAG AA contrast of at least 4.5:1."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The white \"€0 delivery\" badge uses small green text, and the heart icon sits on a semi-transparent dark circle. Both have weak contrast against the busy photo backgrounds, so they are less legible.",
+        "suggestion": "Use a more opaque badge background or a stronger icon container, and increase the text size or weight."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 642,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.010598,
+    "durationSeconds": 5.514587291
+  }
+}

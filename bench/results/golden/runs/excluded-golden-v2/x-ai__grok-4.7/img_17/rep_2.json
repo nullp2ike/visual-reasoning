@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.7",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-21T18:47:14.724Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 issue: the bottom navigation highlights the Profile tab while the screen shows the home delivery feed.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom navigation shows 'Profile' as the active tab (green icon and label), but the visible content is the home/discovery feed with the delivery address, search bar, category chips, and restaurant listings. The active tab state does not match the screen being displayed.",
+        "suggestion": "Set 'Home' as the active tab on this screen, and apply the green active state to 'Profile' only when the profile screen is actually shown."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1997,
+    "outputTokens": 4510,
+    "reasoningTokens": 4371,
+    "cachedInputTokens": 1920,
+    "estimatedCost": 0.024843200000000003,
+    "reportedCost": 0.0225392,
+    "durationSeconds": 53.780079582999925
+  }
+}

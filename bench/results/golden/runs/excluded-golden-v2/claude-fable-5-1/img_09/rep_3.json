@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-1",
+  "provider": "anthropic",
+  "imageId": "img_09",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "promptVariant": "excluded-golden-v2",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-24T20:33:01.348Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed. One clear visual defect: the restaurant name 'Tokumaru Ramen' in the 'Popular right now' section is hard-clipped mid-character ('Tokumaru Ramer') without an ellipsis, despite ample space before the rating badge. Other elements (carousels, category chips, bottom card) are intentionally scrollable or viewport-clipped and are not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The restaurant title 'Tokumaru Ramen' in the 'Popular right now' list is truncated abruptly to 'Tokumaru Ramer' with the last letter partially cut off and no ellipsis, even though there is plenty of empty horizontal space between the title and the '4.8 (500+)' rating on the right.",
+        "suggestion": "Fix the title container width so it flexes to fill available space next to the rating (e.g., flex: 1 with the rating as a fixed-width sibling), and apply proper text-overflow: ellipsis for genuinely long names instead of hard clipping mid-glyph."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 389,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.04034,
+    "durationSeconds": 7.844267583000001
+  }
+}
