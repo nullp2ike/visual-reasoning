@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.7",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-21T19:56:56.806Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely intact, but the 'Fastest near you' row shows two identical restaurant cards, which looks like duplicated content.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The first two cards in the 'Fastest near you' section are exact duplicates: same 'Green Bowl Poké' name, same bowl image, same '15-25 min' badge, and same '€0.90 delivery' text.",
+        "suggestion": "Ensure each carousel card renders a distinct restaurant; if the duplication comes from the data source, dedupe the list before rendering."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1997,
+    "outputTokens": 1401,
+    "reasoningTokens": 1267,
+    "cachedInputTokens": 384,
+    "estimatedCost": 0.00992,
+    "reportedCost": 0.0094592,
+    "durationSeconds": 35.31058241700003
+  }
+}

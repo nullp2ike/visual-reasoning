@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_13",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:04:54.934Z",
+  "status": "ok",
+  "result": {
+    "summary": "The food delivery home screen is mostly well-formed. The main defect is the empty profile/notification avatar at the top right, which shows only a red dot. Some smaller polish issues also exist in the promo banner and the card overlays.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The circular button at the top right is an empty gray circle with only a red dot. It has no icon or avatar (such as a bell or profile image), so its purpose is unclear. It looks like an icon or image that failed to load.",
+        "suggestion": "Render the intended icon or avatar inside the circle, and place the red badge on the icon's corner so it reads as a notification indicator."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The delivery-time pill on the first 'Fastest near you' card (Green Bowl Poké) overlaps and clips the plate illustration. The light card background also gives the image low contrast and makes it look washed out compared with the dark cards beside it.",
+        "suggestion": "Keep the time pill clear of the main image subject and use consistent image treatment across the cards."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The secondary gray text (delivery fees, '25–35 min · €0 delivery · Ramen') and the search placeholder have fairly low contrast against their light backgrounds. The unselected navigation labels (Search, Orders, Profile) are also light gray.",
+        "suggestion": "Darken the secondary text and inactive nav labels to meet WCAG AA contrast of at least 4.5:1."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The decorative circles on the green promo banner are cropped awkwardly at the right and bottom edges. The lower circle creates a slightly visible seam near the corner.",
+        "suggestion": "Adjust the placement of the decorative shapes or clip them cleanly within the banner's rounded corners."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 689,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.011068,
+    "durationSeconds": 5.877062791000004
+  }
+}

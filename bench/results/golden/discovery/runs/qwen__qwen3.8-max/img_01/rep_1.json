@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:18:36.966Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but one section heading displays a raw localization key ('home_feed.popular_title') instead of translated text, which is the main visual defect. Other elements (header, search, chips, promo banner, carousels, bottom nav) render correctly; partially visible carousel items and the bottom-cut card are expected behavior and not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading between 'Fastest near you' and the ramen card shows the untranslated localization key 'home_feed.popular_title' instead of a human-readable title like 'Popular near you'.",
+        "suggestion": "Resolve the missing translation string: add the correct value for the 'home_feed.popular_title' key in the locale resources (or fix the key lookup) so the heading renders actual copy, and add a fallback so raw keys are never shown to users."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1781,
+    "outputTokens": 2042,
+    "reasoningTokens": 1814,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.015814,
+    "reportedCost": 0.015814,
+    "durationSeconds": 51.629826291
+  }
+}

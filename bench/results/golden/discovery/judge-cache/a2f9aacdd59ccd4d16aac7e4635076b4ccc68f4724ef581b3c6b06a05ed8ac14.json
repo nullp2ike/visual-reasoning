@@ -1,0 +1,30 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −0%"
+  ],
+  "reportedIssues": [
+    "The pizza restaurant card shows a promotional badge reading '-0%'. A 0% discount is meaningless and looks like a data or template bug. It misleads users and adds visual noise.",
+    "In the 'Fastest near you' carousel, the '15–25 min' badge on the Green Bowl Poké card overlaps the plate image and sits close to the card's left and bottom edges. Its position looks slightly inconsistent with the other cards' badges. The pale card image also has low separation from the white badge.",
+    "Secondary gray text (delivery fee lines, the '(500+)' rating count, the search placeholder) and the inactive tab labels have low contrast against the white or light-gray backgrounds.",
+    "The heart (favorite) icon on the ramen card is white on a dark, semi-transparent circle over a busy photo, so it is hard to see. It has no visible active state."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 specifically identifies the promotional badge displaying '-0%'."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ]
+  }
+}

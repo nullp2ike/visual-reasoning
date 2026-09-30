@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-1",
+  "provider": "anthropic",
+  "imageId": "img_16",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-24T20:33:50.399Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders cleanly overall, but there is one notable inconsistency: the 'Pizza' category filter appears selected while the listed content is not filtered to pizza restaurants.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The 'Pizza' category chip is shown in the selected (dark) state, yet the 'Fastest near you' and 'Popular right now' sections display unfiltered content (poké, burgers, pasta, ramen). Either the selected state is wrong (should be 'All') or the filter is not being applied to the results.",
+        "suggestion": "Sync the chip selection state with the displayed content: default to 'All' selected when showing unfiltered results, or apply the pizza filter to the restaurant lists when 'Pizza' is active."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 695,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.05564000000000001,
+    "durationSeconds": 11.947195082999999
+  }
+}

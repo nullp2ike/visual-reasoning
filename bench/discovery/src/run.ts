@@ -19,16 +19,10 @@ import {
   type ReasoningEffortLevel,
 } from "../../../src/constants.js";
 import type { ProviderName } from "../../../src/types.js";
-import {
-  BENCH_PROMPT_VARIANTS,
-  DEFAULT_PROMPT_VARIANT,
-  PROMPT_VARIANT_IDS,
-  benchConfig,
-  isPromptVariantId,
-  type PromptVariantId,
-} from "../../bench.config.js";
+import { benchConfig } from "../../bench.config.js";
 import { selectDataset } from "../../shared/dataset.js";
 import { ensureManifest } from "./manifest.js";
+import { loadPrompt } from "./prompt.js";
 import { RunRecordSchema, type Manifest, type RunRecord } from "./types.js";
 import {
   datasetDir,
@@ -38,7 +32,7 @@ import {
   retryWithBackoff,
   runModelDir,
   runPool,
-  runsDirForVariant,
+  runsDir,
   sha256,
 } from "../../shared/util.js";
 
@@ -64,27 +58,25 @@ interface RunCell {
 
 function recordPath(
   cell: Pick<RunCell, "model" | "imageId" | "rep">,
-  variant: PromptVariantId,
   effort: string,
   fidelity: string,
 ): string {
   return join(
-    runsDirForVariant(variant),
+    runsDir(),
     runModelDir(cell.model, effort, fidelity),
     cell.imageId,
     `rep_${cell.rep}.json`,
   );
 }
 
-/** A cell is complete when its record exists, parses, succeeded, and matches the frozen prompt. */
+/** A cell is complete when its record exists, parses, succeeded, and matches the dataset's prompt. */
 async function isCellComplete(
   cell: RunCell,
-  variant: PromptVariantId,
   effort: string,
   fidelity: string,
   promptHash: string,
 ): Promise<boolean> {
-  const raw = await readJsonIfExists(recordPath(cell, variant, effort, fidelity));
+  const raw = await readJsonIfExists(recordPath(cell, effort, fidelity));
   if (raw === undefined) return false;
   const parsed = RunRecordSchema.safeParse(raw);
   return parsed.success && parsed.data.status === "ok" && parsed.data.promptHash === promptHash;
@@ -131,7 +123,6 @@ async function executeCell(
   cell: RunCell,
   client: VisualAIClient,
   imageBytes: Buffer,
-  variant: PromptVariantId,
   effort: string,
   fidelity: string,
   promptText: string,
@@ -144,7 +135,6 @@ async function executeCell(
     imageId: cell.imageId,
     rep: cell.rep,
     promptHash,
-    promptVariant: variant,
     reasoningEffort: effort,
     imageFidelity: fidelity,
     maxTokens: benchConfig.maxTokens,
@@ -196,7 +186,6 @@ async function main(): Promise<void> {
       dataset: { type: "string" },
       models: { type: "string" },
       images: { type: "string" },
-      prompt: { type: "string" },
       force: { type: "boolean", default: false },
       yes: { type: "boolean", default: false },
       concurrency: { type: "string" },
@@ -231,17 +220,10 @@ async function main(): Promise<void> {
     throw new Error(`Invalid --concurrency "${values.concurrency ?? ""}" (positive integer)`);
   }
 
-  const variant = values.prompt ?? DEFAULT_PROMPT_VARIANT;
-  if (!isPromptVariantId(variant)) {
-    throw new Error(
-      `Invalid --prompt "${variant}". Valid variants: ${PROMPT_VARIANT_IDS.join(", ")}.`,
-    );
-  }
-  const promptText = BENCH_PROMPT_VARIANTS[variant];
-
+  const promptText = await loadPrompt();
   const manifest: Manifest = await ensureManifest(values.force);
   const promptHash = sha256(promptText);
-  console.log(`Prompt variant: ${variant} (sha256 ${promptHash.slice(0, 12)}…)`);
+  console.log(`Prompt: ${dataset.id}/prompt.md (sha256 ${promptHash.slice(0, 12)}…)`);
   console.log(`Reasoning effort: ${effort}`);
   console.log(`Image fidelity: ${fidelity}`);
 
@@ -275,7 +257,7 @@ async function main(): Promise<void> {
 
   const pending: RunCell[] = [];
   for (const cell of allCells) {
-    if (values.force || !(await isCellComplete(cell, variant, effort, fidelity, promptHash)))
+    if (values.force || !(await isCellComplete(cell, effort, fidelity, promptHash)))
       pending.push(cell);
   }
   console.log(
@@ -335,22 +317,13 @@ async function main(): Promise<void> {
         throw new Error(`Internal: missing client or image for ${cell.model}/${cell.imageId}`);
       let record: RunRecord;
       try {
-        record = await executeCell(
-          cell,
-          client,
-          bytes,
-          variant,
-          effort,
-          fidelity,
-          promptText,
-          promptHash,
-        );
+        record = await executeCell(cell, client, bytes, effort, fidelity, promptText, promptHash);
       } catch (error) {
         // Auth/config errors doom every remaining cell for this provider — stop early.
         abortedProviders.add(provider);
         throw error;
       }
-      await atomicWriteJson(recordPath(cell, variant, effort, fidelity), record);
+      await atomicWriteJson(recordPath(cell, effort, fidelity), record);
       completed++;
       if (record.status === "ok") {
         const cost = record.usage?.reportedCost ?? record.usage?.estimatedCost;
@@ -382,9 +355,7 @@ async function main(): Promise<void> {
     }
   }
 
-  console.log(
-    `Done. ${completed - failed} ok, ${failed} failed. Records in ${runsDirForVariant(variant)}`,
-  );
+  console.log(`Done. ${completed - failed} ok, ${failed} failed. Records in ${runsDir()}`);
   if (failed > 0) {
     console.log(
       'Failed cells wrote status:"error" records and will be retried on the next discovery:run.',

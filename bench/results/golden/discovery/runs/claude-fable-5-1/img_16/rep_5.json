@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-1",
+  "provider": "anthropic",
+  "imageId": "img_16",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-24T20:33:58.306Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders cleanly overall; the only notable inconsistency is that the 'Pizza' category filter is shown as selected while the listed restaurants are mostly non-pizza venues, suggesting a stale or mis-rendered filter state.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The 'Pizza' category chip is rendered in the active/selected state, yet the 'Fastest near you' and 'Popular right now' sections show poké, burger, trattoria and ramen restaurants. The visible filter state does not match the displayed content, which will confuse users about whether the filter is applied.",
+        "suggestion": "Either apply the Pizza filter to the restaurant lists so only pizza venues appear, or reset the chip row so 'All' is the selected chip when unfiltered content is shown."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 749,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.05834,
+    "durationSeconds": 12.925764125000002
+  }
+}

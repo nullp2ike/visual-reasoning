@@ -1,0 +1,25 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "In the bottom navigation bar, a dark horizontal line/bar (likely a misplaced active-tab indicator or divider) is drawn across the middle of the bar, overlapping and partially hiding the search icon and the orders/receipt icon between the home and profile tabs.",
+    "Bottom navigation tabs have no text labels, only icons, and the home tab is the only one highlighted; the obscured middle icons make it hard to identify what those tabs do."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          1
+        ],
+        "reasoning": "Reported issue 0 describes the gesture bar overlapping the bottom nav icons, while reported issue 1 notes the missing labels resulting from them being cut off below the screen edge."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

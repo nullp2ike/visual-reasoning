@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_14",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:05:00.407Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen is mostly well-formed. The main visible defect is inconsistent card alignment in the 'Fastest near you' carousel. There are also a few minor styling and accessibility concerns. The clipped carousel and chip items and the cut-off pizza card at the bottom are expected and not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the cards are misaligned vertically. The Green Bowl Poké image is taller and starts higher (about y=631 to 776). The Smash Bros Burgers and Trattoria images start lower (about y=658 to 803). The titles and delivery text therefore sit at different baselines (801 vs 829), and the cards have different image heights.",
+        "suggestion": "Give every carousel card the same image height and top alignment so the images, titles and subtitles line up on shared baselines."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The time pill badges overlap the food images inconsistently. On the Green Bowl card the pill sits partly over the plate and is positioned differently from the pills on the other cards. The pills also sit low on the image rather than at a consistent inset.",
+        "suggestion": "Anchor the badges at a consistent inset (e.g. bottom-left with 8-12px padding) on every card."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary gray text (delivery fees, the '(500+)' rating count, and the 'Ramen' meta line) is light gray on white and has low contrast. The unselected tab labels (Search, Orders, Profile) are also low contrast.",
+        "suggestion": "Darken the secondary text and inactive tab colors to meet at least a 4.5:1 contrast ratio."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The heart/favorite icons are styled inconsistently. The ramen card's heart has no background, while the pizza card's heart sits in a dark translucent circle. The white heart on the ramen image also has weak separation from the busy background.",
+        "suggestion": "Use a consistent circular translucent background for the favorite buttons on all cards."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The decorative circles on the green promo banner are cropped awkwardly at the bottom-right corner. Their edges look slightly clipped and inconsistent with the rounded corner.",
+        "suggestion": "Clip the decorative shapes cleanly within the banner's rounded bounds, or adjust their placement."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 817,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.012348,
+    "durationSeconds": 7.033063625000009
+  }
+}

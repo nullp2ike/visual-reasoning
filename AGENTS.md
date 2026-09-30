@@ -17,7 +17,7 @@ Run all checks: `pnpm typecheck && pnpm lint && pnpm test && pnpm build`
 
 ## Benchmarks
 
-- **Always pass `--prompt <variant>` to `pnpm discovery:run` and `pnpm discovery:score`**, even when you want `baseline`. Without it both silently fall back to `baseline`. That means a sweep lands in the wrong `runs/` directory, or the scoring step re-grades and rewrites `scores.baseline.*.json` while leaving the variant you meant unscored. Variant ids live in `BENCH_PROMPT_VARIANTS` in `bench/bench.config.ts` (e.g. `baseline`, `excluded-golden-v2`). `pnpm discovery:report` takes no `--prompt`; it renders every scored variant.
+- **A discovery dataset has exactly one prompt: `bench/datasets/<id>/prompt.md`.** There are no prompt variants and no `--prompt` flag. To benchmark a different wording, create a new dataset directory with its own `prompt.md` rather than editing an existing one: editing it changes the prompt hash, so the manifest guard refuses to run until `--force`, and the next `discovery:run` re-runs every cell for that dataset.
 
 ## Development rules
 

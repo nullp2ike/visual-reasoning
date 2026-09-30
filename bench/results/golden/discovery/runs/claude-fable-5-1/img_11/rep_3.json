@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-1",
+  "provider": "anthropic",
+  "imageId": "img_11",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-24T20:33:12.603Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders cleanly overall (layout, spacing, navigation, and imagery are consistent). One notable content anomaly was found: a promotional badge showing a '−100%' discount on the pizza restaurant card, which is almost certainly an incorrect value. A minor redundancy was also noted on the ramen card.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza restaurant card in 'Popular right now' displays a '−100%' discount badge. A 100% discount implies the order is completely free, which is implausible and looks like a data/calculation error (e.g., missing or zero price used in the percentage formula, or a wrong field mapped to the badge).",
+        "suggestion": "Verify the discount data source for this restaurant and cap/validate the discount percentage (e.g., only show badges for values between 1% and 99%). If the intended promo is free delivery, use the '€0 delivery' badge style used on the ramen card instead."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "On the Tokumaru Ramen Bar card, '€0 delivery' appears twice — once as an overlay badge on the image and again in the metadata line below the title — which is redundant.",
+        "suggestion": "Show the delivery fee in one place only (e.g., keep the badge and drop it from the metadata line, or vice versa) to reduce visual noise."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 769,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.059340000000000004,
+    "durationSeconds": 11.342741125
+  }
+}

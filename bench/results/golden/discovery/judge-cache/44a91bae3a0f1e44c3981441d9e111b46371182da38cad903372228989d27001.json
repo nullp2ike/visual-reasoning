@@ -1,0 +1,23 @@
+{
+  "judgeModel": "meta/muse-spark-1.3-contributor",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Delivery fee shows €NaN"
+  ],
+  "reportedIssues": [
+    "Smash Bros Burgers shows '€NaN delivery' instead of a valid delivery fee. NaN (Not a Number) is a JavaScript error that leaked into the UI, indicating a failed numeric calculation or missing data for the delivery cost."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both describe €NaN as the delivery fee for Smash Bros Burgers."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

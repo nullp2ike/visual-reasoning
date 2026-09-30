@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_16",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:05:13.594Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed. The main defect is a content mismatch: the 'Pizza' filter chip is selected, but the feed shows non-pizza restaurants (poke, burgers, ramen). Minor polish issues also appear in the time badges and the low-contrast secondary text.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The 'Pizza' category chip is active (dark fill), yet the content below is not filtered. 'Fastest near you' and 'Popular right now' show Green Bowl Poké, Smash Bros Burgers and Tokumaru Ramen Bar. The filter state and the results are inconsistent.",
+        "suggestion": "Apply the selected filter to all sections, or show a loading or empty state. If no filter is meant to be active, reset the selection to 'All'."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The time badges ('15–25 min', '20–30 min') on the Fastest near you cards sit at the bottom-left and overlap the image edge. On the first card the badge overlaps the plate illustration and looks cramped against the card's bottom edge.",
+        "suggestion": "Add consistent inner padding and position the badges so they don't collide with the image subject or the card boundary."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary text (delivery fees, the '(500+)' rating count, and the 'Restaurants, dishes, groceries' placeholder) is light gray on a white or light-gray background. Contrast is low. The white '€0 delivery' pill on the image also has small text.",
+        "suggestion": "Darken the secondary text colors to meet WCAG AA contrast (4.5:1) and increase the small label sizes."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The illustrated food images are flat placeholder-style graphics with inconsistent backgrounds (light, dark and wood). The first card's light image looks washed out next to the others. The heart icon on the pizza card also sits on a semi-transparent dark circle, unlike the ramen card's, which appears to have no visible circle.",
+        "suggestion": "Use consistent photography and treatment, and give the favorite button the same background on every card."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 793,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.012108,
+    "durationSeconds": 6.8246845829999945
+  }
+}

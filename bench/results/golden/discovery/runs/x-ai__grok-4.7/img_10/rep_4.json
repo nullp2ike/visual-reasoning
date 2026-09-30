@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.7",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-21T18:42:13.384Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 issue: the 'Fastest near you' carousel renders the same restaurant card twice, which looks like a data/rendering bug.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The first two cards in the 'Fastest near you' carousel are identical duplicates: same bowl photo, same '15-25 min' badge, same 'Green Bowl Poké' title, and same '€0.90 delivery' text, so one restaurant occupies two slots.",
+        "suggestion": "Deduplicate the restaurant list before rendering the carousel so each venue appears only once, and check that the data source is not returning the same item twice."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1997,
+    "outputTokens": 4265,
+    "reasoningTokens": 4117,
+    "cachedInputTokens": 1920,
+    "estimatedCost": 0.0236672,
+    "reportedCost": 0.0213632,
+    "durationSeconds": 51.36905854200001
+  }
+}

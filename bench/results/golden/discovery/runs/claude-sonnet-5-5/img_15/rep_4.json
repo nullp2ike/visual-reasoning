@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_15",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:05:07.487Z",
+  "status": "ok",
+  "result": {
+    "summary": "Most of the food delivery home screen renders cleanly. The header, search, chips, promo banner and cards are aligned and legible. The problems are the bottom navigation, which is overlapped, and a few smaller issues with contrast and consistency. The clipped carousel items and the cut-off card at the bottom are expected and not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The system gesture/home indicator bar overlaps the bottom navigation. It sits directly over the Search icon and cuts through it, so the icon looks broken. The bottom nav has no labels, and its icons sit very close to the bottom edge.",
+        "suggestion": "Add bottom safe-area inset padding so the nav bar sits above the gesture indicator. Make sure the icons are fully visible and not overlapped, and consider adding text labels."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The inactive bottom nav icons (search, orders, profile) are light gray on white with low contrast. The gray secondary text (delivery fees, '(500+)', '25–35 min') and the search placeholder are also low contrast.",
+        "suggestion": "Darken the inactive icon and secondary text colors to meet at least a 4.5:1 contrast ratio (3:1 for icons)."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The white time pills ('15–25 min', etc.) overlap the plate image on the first 'Fastest near you' card and crowd the artwork. The heart icon on the second popular card sits on a dark translucent circle, but the first heart has almost no visible background, so the two are inconsistent.",
+        "suggestion": "Use a consistent style for the favorite button, and position the badges so they don't cover the key part of the imagery."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The '−20%' promo card image is an illustrated pizza with no restaurant name visible yet, and the illustrations look like placeholder art rather than real photography.",
+        "suggestion": "Replace them with real restaurant photos and ensure a consistent image style."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 679,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.010968,
+    "durationSeconds": 6.06725837499999
+  }
+}

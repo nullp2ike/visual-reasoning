@@ -1,0 +1,28 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant title 'Tokumaru Ramen' is rendered as 'Tokumaru Rameı', with the final 'n' cut off or garbled. The title sits well inside the card with plenty of free space, so this is not a legitimate carousel clip. It looks like a text rendering, clipping or font glyph problem.",
+    "The secondary grey text (delivery fees, '25–35 min · €0 delivery · Ramen') and the inactive tab labels are light grey on white/light backgrounds and have low contrast.",
+    "The time badges (e.g. '15–25 min') overlap the card image corner. On the first card the pill also overlaps the plate image, so it looks cramped. The heart icon on the dark card sits on a semi-transparent dark circle with limited contrast against the dark image."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both describe the Tokumaru Ramen heading being truncated or cut off mid-word."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

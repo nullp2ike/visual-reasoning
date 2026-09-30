@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_14",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:34:41.087Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely consistent, but the 'Fastest near you' carousel has vertically misaligned cards: the first card (Green Bowl Poké) sits higher with its image top edge above the others, while the second and third cards are offset downward, producing a jagged, uneven row. Other elements (header, promo banner, popular list, bottom nav) render correctly.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' horizontal carousel, the cards are not vertically aligned: the Green Bowl Poké card's image starts higher (top edge ~y=830) while Smash Bros Burgers and Trattoria Piccola cards start lower (~y=865), so titles and delivery fees land at different baselines and the row looks jagged/broken.",
+        "suggestion": "Align all carousel cards to a common top edge (e.g. align-items: flex-start on the row container) and give images a fixed height so titles, badges and prices line up across cards."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The delivery-time badge position is inconsistent across carousel cards: on Green Bowl Poké it overlaps the bottom-left of the image, on Smash Bros Burgers it sits lower overlapping the image bottom edge, and on Trattoria Piccola it overlaps the middle-left of the image, reinforcing the misaligned appearance.",
+        "suggestion": "Standardize badge placement (same offset from the image's bottom-left corner) on every card once the card heights are unified."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1781,
+    "outputTokens": 5516,
+    "reasoningTokens": 5136,
+    "cachedInputTokens": 1152,
+    "estimatedCost": 0.036658,
+    "reportedCost": 0.034642,
+    "durationSeconds": 124.83769449999987
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_09",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:04:32.054Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen is mostly well-formed. The carousel and bottom-cut items are expected scroll behavior and are not reported. One clear defect is the truncated/garbled restaurant name 'Tokumaru Ramen' in the Popular list, which is not caused by scrolling. There are also a few minor styling and accessibility concerns.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The restaurant name 'Tokumaru Ramen' is rendered incorrectly. The final letter looks clipped and renders as 'Rameı', as if the text is cut off or a glyph is broken. This card is a full-width vertical list item with plenty of horizontal space, so the cut-off is not scroll behavior.",
+        "suggestion": "Fix the text container's width, padding, or overflow and the font rendering so the full name 'Tokumaru Ramen' displays. Verify the font has all needed glyphs."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The duration pill ('15–25 min') overlaps the plate image and is tightly placed. The secondary gray text (delivery fees, '25–35 min · €0 delivery · Ramen') is light and small, so its contrast on white is low.",
+        "suggestion": "Darken the secondary text color to meet WCAG AA 4.5:1 and increase the font size slightly."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The heart/favorite icon on the food image cards is white on a semi-transparent dark circle. On the pizza card the circle blends into the busy image, which weakens the button's visibility.",
+        "suggestion": "Use a more opaque or solid background for the favorite button so it stays visible on every image."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The promo banner's decorative translucent circles are cut off and overlap the right edge, and the code text sits close to them. The white text on the mid-green background also has modest contrast.",
+        "suggestion": "Deepen the green or reduce the decorative overlay so the promo text has stronger contrast."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 741,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.011588000000000001,
+    "durationSeconds": 6.732003250000002
+  }
+}

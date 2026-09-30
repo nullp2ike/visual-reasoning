@@ -1,0 +1,28 @@
+{
+  "judgeModel": "meta/muse-spark-1.3-contributor",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The pizza card shows a '-100%' discount badge. That would mean the item is completely free, which is almost certainly a data or formatting bug, and it is inconsistent with the other cards' '€0 delivery' style badges.",
+    "Secondary gray text, such as the delivery fee lines and the '25–35 min · €0 delivery · Ramen' metadata, has low contrast against the white background. The search placeholder is also light gray on light gray.",
+    "The time pills (e.g. '15–25 min') overlap the bottom-left edge of the carousel images and are offset from the card edge. On the first card the pill sits over the plate image, which looks slightly cramped. The heart icon on the pizza card is also a dark translucent circle on a busy background, so it is hard to see."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported 0 describes the same -100% discount badge on the pizza card."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

@@ -50,7 +50,6 @@ function scores(
   return {
     schemaVersion: 1,
     generatedAt: "2026-07-23T00:00:00.000Z",
-    promptVariant: "baseline",
     prompt: "What looks broken?",
     promptHash: "hash",
     reasoningEffort: "medium",

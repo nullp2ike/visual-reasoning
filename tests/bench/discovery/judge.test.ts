@@ -137,7 +137,7 @@ describe("judgeRun", () => {
   });
 
   it("uses distinct cache keys for distinct judge models", () => {
-    expect(judgeCacheKey(request, "claude-haiku-4-5")).not.toBe(
+    expect(judgeCacheKey(request, "gemini-3.8-flash")).not.toBe(
       judgeCacheKey(request, "gpt-5.4-mini"),
     );
   });

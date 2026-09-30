@@ -32,7 +32,7 @@ recording — see [`video/README.md`](video/README.md). It is discovery-shaped
 ```
 bench/
   bench.config.ts       models, repeats, effort, fidelity — shared by both benchmarks;
-                        also the discovery prompt variants and its judge
+                        also the discovery judge
   shared/               dataset resolution and small helpers both benchmarks use
   discovery/            the defect-discovery benchmark
   assertion/            the assertion-accuracy benchmark

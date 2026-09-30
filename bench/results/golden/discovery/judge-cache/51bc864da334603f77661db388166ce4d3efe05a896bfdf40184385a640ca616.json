@@ -1,0 +1,28 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Profile is highlighted in the bottom nav bar while the home feed is shown"
+  ],
+  "reportedIssues": [
+    "The bottom navigation highlights 'Profile' as the active tab, yet the screen shows the restaurant home feed. The active tab state does not match the content, which is confusing, and 'Home' looks inactive.",
+    "The secondary gray text (e.g. '€0.90 delivery', the '(500+)' rating count, and the inactive tab labels) is light on a white background and has low contrast. The white promo text on the mid-green banner is also fairly light.",
+    "The time pills on the 'Fastest near you' cards (e.g. '15–25 min') sit over the image and slightly overlap the plate illustration. The heart icon on the '−20%' pizza card has a dim, low-contrast background circle against the dark wood."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 accurately describes the Profile tab being highlighted as active while the restaurant home feed is displayed."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-1",
+  "provider": "anthropic",
+  "imageId": "img_09",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-24T20:33:01.540Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-rendered. One visible defect: the restaurant name 'Tokumaru Ramen' in the 'Popular right now' list is clipped mid-word ('Tokumaru Ramei'), despite ample empty space before the rating on the right. Other elements (header, search, chips, promo banner, carousel, bottom nav) appear intact.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The restaurant title 'Tokumaru Ramen' in the 'Popular right now' section is truncated mid-character (renders as 'Tokumaru Ramei') even though there is plenty of free horizontal space between the title and the rating '4.8 (500+)'. This is a hard clip with no ellipsis, indicating the title container has an incorrectly constrained width.",
+        "suggestion": "Allow the title to use the available width (e.g., flex: 1 with the rating as a fixed-width sibling) and apply proper text overflow handling with an ellipsis for genuinely long names instead of hard clipping."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 370,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.03939000000000001,
+    "durationSeconds": 6.965942499999997
+  }
+}

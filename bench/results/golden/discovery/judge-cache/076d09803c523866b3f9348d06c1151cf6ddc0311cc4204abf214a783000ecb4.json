@@ -1,0 +1,23 @@
+{
+  "judgeModel": "meta/muse-spark-1.3-contributor",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The 'Pizza' filter chip is rendered in the selected (dark) state, but the content below is unfiltered: 'Fastest near you' shows a poké bowl, a burger place and a pasta trattoria, and 'Popular right now' leads with Tokumaru Ramen Bar. The active filter state does not match the displayed results."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both describe Pizza selected yet feed shows non-pizza cuisines."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

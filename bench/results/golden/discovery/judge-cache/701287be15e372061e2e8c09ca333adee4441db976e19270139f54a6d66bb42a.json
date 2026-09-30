@@ -1,0 +1,28 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −0%"
+  ],
+  "reportedIssues": [
+    "The second card in 'Popular right now' (pizza) shows a discount badge reading '−0%'. A zero-percent discount is meaningless and makes it look like the promo data failed to load or was formatted incorrectly.",
+    "The '15–25 min' pill on the Green Bowl Poké card appears to be partly covered by the plate illustration. Its right edge looks cut off instead of fully rounded like the '20–30 min' pills on the other cards, which suggests a stacking-order problem between the badge and the image.",
+    "In the green '3 free deliveries for you' banner, the decorative circle creates a darker, hard-edged artifact at the bottom-right corner. It does not follow the card's rounded corner and looks like a clipping error."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both describe the discount badge displaying '−0%' on a card."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

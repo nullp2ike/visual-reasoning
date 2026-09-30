@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.7",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "low",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-21T19:51:58.018Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 issue: an untranslated localization key is shown as a section heading.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading displays the raw localization key 'home_feed.popular_title' instead of a user-facing title.",
+        "suggestion": "Replace the key with its translated string (e.g., 'Popular near you') and verify localization fallbacks so missing keys never render in the UI."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1997,
+    "outputTokens": 405,
+    "reasoningTokens": 300,
+    "cachedInputTokens": 1920,
+    "estimatedCost": 0.0051392,
+    "reportedCost": 0.0028352,
+    "durationSeconds": 7.652079999999998
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Delivery fee text overlaps the delivery time text"
+  ],
+  "reportedIssues": [
+    "Under the Tokumaru Ramen Bar listing, the delivery time and delivery fee text are overlapping. The line reads '25-3€0 delivery • Ramen', where the '0' from '25-30 min' and the '€0 delivery' label are merging into unreadable text, suggesting a z-index or absolute-positioning collision between two text elements."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both report the delivery fee text overlapping the delivery time text."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The second restaurant card in 'Popular right now' shows a '−100%' badge. A 100% discount implies the food is free, which is almost certainly a data or formatting error. It is also unclear whether it refers to the food price or the delivery fee (the card above uses '€0 delivery' for the free-delivery case).",
+    "The heart (favorite) buttons are styled inconsistently. On the Tokumaru Ramen card the button's dark circular background blends into the dark image and is barely distinguishable. On the pizza card below, the dark circle is clearly visible against the lighter image."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 directly points out the '−100%' discount badge on the restaurant card."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ]
+  }
+}

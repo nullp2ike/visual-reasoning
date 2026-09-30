@@ -1,0 +1,26 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section header above the popular restaurants list shows the untranslated localization key 'home_feed.popular_title' instead of a human-readable title (e.g. 'Popular near you'), while all other headings are properly translated.",
+    "At the right edge of the category filter chip row, an empty gray chip shape is partially visible after 'Healthy', which looks like a rendering artifact or an item with missing label/icon rather than intentional content."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both describe the section header displaying the raw localization key 'home_feed.popular_title' instead of translated text."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ]
+  }
+}

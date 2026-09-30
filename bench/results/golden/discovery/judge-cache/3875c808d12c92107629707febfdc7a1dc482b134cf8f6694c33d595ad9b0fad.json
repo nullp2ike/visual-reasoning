@@ -1,0 +1,26 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section heading shows the raw localization key 'home_feed.popular_title' instead of a human-readable translated string (e.g. 'Popular'). This exposes developer/internal text to end users and suggests a missing or broken translation entry.",
+    "Secondary meta text under restaurant cards (delivery fees such as '€0.90 delivery', '€2.40 delivery' and details like '25–35 min · €0 delivery · Ramen') is rendered in a light gray that likely fails WCAG AA contrast requirements against the white background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both report the section heading showing the raw translation key 'home_feed.popular_title' instead of translated text."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ]
+  }
+}

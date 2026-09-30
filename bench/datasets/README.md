@@ -3,7 +3,7 @@
 A **dataset** is a directory of screenshots plus ground truth about them. Which
 ground-truth file it carries decides which benchmark can use it: [defect
 discovery](../discovery/README.md) needs `issues_per_file.md` (what is wrong with
-each screenshot), [assertion accuracy](../assertion/README.md) needs
+each screenshot) and `prompt.md` (the question put to the models), [assertion accuracy](../assertion/README.md) needs
 `assertions_per_file.md` (which elements are there and which are not). One
 directory may carry both, and the two benchmarks keep their results apart.
 
@@ -17,6 +17,7 @@ produced them, so it and its results are gitignored.
 ```
 bench/datasets/<your-dataset>/
   issues_per_file.md      # required — the ground truth
+  prompt.md               # required by discovery — the question every model is asked
   login_broken.png        # any number of images
   cart_empty.png
 ```
@@ -49,6 +50,29 @@ Filenames never reach a model. Each image is assigned an anonymous `img_NN` id
 in the manifest, and only the bytes are sent — a model can't infer the answer
 from a name like `login_broken.png`.
 
+## The prompt
+
+`prompt.md` is sent to every model verbatim (trailing whitespace aside), so it
+holds only the question, with no front matter or comments. Each dataset has
+exactly one prompt: to compare two wordings, make two datasets over the same
+screenshots, each with its own `prompt.md`, and each gets its own results.
+Editing an existing `prompt.md` changes its hash, which invalidates every run
+recorded under it.
+
+A prompt may tell models what not to report. Keep any such exclusion list
+specific to its dataset: a screen's recurring non-defects in one product are
+real defects in another. Derive the list from what models report on the
+dataset's negative control — anything reported on a clean screenshot is noise by
+definition — and check it against every expected issue before adopting it. Name
+as little as possible. On `golden`, a four-category list cut extras per run from
+1.89 to 0.28 but also dropped mean recall from 66.8% to 58.1%: the more an
+exclusion list names, the more conservative models become beyond it. Its current
+prompt names only the two scroll and viewport-edge cases, which were about 84% of
+the clean control's noise on their own, framed as features rather than defects.
+`primary` has its own list; reused on `golden`, it would suppress 4 of the 17
+expected defects, because clipping, overlap and alignment are real ground truth
+there.
+
 ## Selecting a dataset
 
 Precedence, highest first:
@@ -61,7 +85,7 @@ A value without a path separator is a directory name under `bench/datasets/`; a
 value containing one is a path, so a dataset can live entirely outside the repo:
 
 ```bash
-pnpm bench:run --dataset ~/private/checkout-screens
+pnpm discovery:run --dataset ~/private/checkout-screens
 ```
 
 ## Results are namespaced per dataset
@@ -74,16 +98,16 @@ without their runs ever mixing.
 ## Adding a dataset
 
 ```bash
-mkdir -p bench/datasets/my-set          # add images + issues_per_file.md
-BENCH_DATASET=my-set pnpm bench:run --models claude-haiku-4-5
-BENCH_DATASET=my-set pnpm bench:score
-BENCH_DATASET=my-set pnpm bench:report
+mkdir -p bench/datasets/my-set          # add images, issues_per_file.md, prompt.md
+BENCH_DATASET=my-set pnpm discovery:run --models claude-haiku-4-5
+BENCH_DATASET=my-set pnpm discovery:score
+BENCH_DATASET=my-set pnpm discovery:report
 ```
 
 The manifest is generated on first run and then guarded: adding or removing
 images regenerates it automatically (ids stay stable, removed images are
 retired), but editing an existing image's bytes or its expected issues
-invalidates prior runs and requires `--force`.
+invalidates prior runs and requires `--force`. So does editing `prompt.md`.
 
 ## Datasets for the assertion benchmark
 
@@ -112,8 +136,8 @@ answers. A bullet may end with `| TRUE` or `| FALSE` (default `TRUE`) saying
 whether its section's claim really holds — that is how a near-miss statement
 about an element that does exist is written, and how you keep a call's expected
 answers from being uniform. A directory may carry both ground-truth files; the
-two benchmarks keep their results apart (`assertion/` nests under the dataset's
-results directory, discovery's artifacts sit at its root). Datasets for this
+two benchmarks keep their results apart (`assertion/` and `discovery/` each nest
+under the dataset's results directory). Datasets for this
 benchmark are selected with `--dataset` or `assertion.config.ts` only —
 `BENCH_DATASET` is not consulted, since it usually names a discovery dataset. See
 [`bench/assertion/README.md`](../assertion/README.md) for the full grammar.
@@ -122,8 +146,8 @@ benchmark are selected with `--dataset` or `assertion.config.ts` only —
 
 | Dataset             | Ground truth             | What it is                                                                                     |
 | ------------------- | ------------------------ | ---------------------------------------------------------------------------------------------- |
-| `golden`  | `issues_per_file.md` + `assertions_per_file.md` | 18 screenshots, one seeded defect each plus a clean control, labelled for both benchmarks over one copy of the images. The default for both. |
-| `primary` | `issues_per_file.md`                            | Private product UI. Gitignored, so only present on the machine that captured it.                                                            |
+| `golden`  | `issues_per_file.md` + `prompt.md` + `assertions_per_file.md` | 18 screenshots, one seeded defect each plus a clean control, labelled for both benchmarks over one copy of the images. The default for both. |
+| `primary` | `issues_per_file.md` + `prompt.md`                            | Private product UI. Gitignored, so only present on the machine that captured it.                                                            |
 
 Adding your own needs no more than a directory, a handful of screenshots, one
 `## <filename>` heading each, and at least one clean control for the screenshot

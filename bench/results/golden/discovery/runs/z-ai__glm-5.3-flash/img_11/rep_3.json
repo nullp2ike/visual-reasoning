@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "z-ai/glm-5.3-flash",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:41:37.612Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders correctly overall; one suspicious content issue was found: a '-100%' discount badge on the partially visible pizza card, which is almost certainly a data/calculation error rather than a real promotion.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The promo badge on the partially visible pizza card shows '-100%', which implies the item is completely free. A 100% discount is almost certainly a data or calculation error (e.g., missing price or divide-by-zero) and would mislead users.",
+        "suggestion": "Verify the discount calculation and cap it at a valid value (e.g., -50%); check backend promo data and add validation to prevent impossible discount values from being displayed."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1882,
+    "outputTokens": 232,
+    "reasoningTokens": 53,
+    "cachedInputTokens": 1856,
+    "estimatedCost": 0.0003983,
+    "reportedCost": 0.00010442,
+    "durationSeconds": 12.767105957999826
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_05",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:23:42.314Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but the promotional banner '3 free deliveries for you' uses white text on a pale green background, resulting in very low contrast for the headline and subtext. Other elements (header, chips, cards, bottom nav) appear consistent. The partially visible carousel item at the right edge and the card cut off at the bottom are expected scroll behaviors and not counted as defects.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "accessibility",
+        "description": "In the promo banner, the headline '3 free deliveries for you' and the subtext 'Use code TALLINN3 at checkout · min. order €10' are rendered in white/near-white on a light mint green background, giving very poor text contrast and making the offer hard to read.",
+        "suggestion": "Darken the banner background (e.g., deep green) or switch the text to a dark color so headline and subtext meet WCAG AA contrast ratios (at least 4.5:1 for body text)."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Order now' button inside the promo banner uses green text on a white pill, which is fine, but the banner's decorative circular shapes are barely visible and the overall banner looks washed out, reducing visual hierarchy compared to other sections.",
+        "suggestion": "Increase the banner's background saturation or add a subtle gradient/illustration so the promotion stands out without relying on low-contrast white text."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1781,
+    "outputTokens": 2975,
+    "reasoningTokens": 2609,
+    "cachedInputTokens": 1024,
+    "estimatedCost": 0.021412,
+    "reportedCost": 0.01962,
+    "durationSeconds": 75.34899470799998
+  }
+}

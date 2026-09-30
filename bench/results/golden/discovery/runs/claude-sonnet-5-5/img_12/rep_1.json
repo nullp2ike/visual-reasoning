@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_12",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:04:47.291Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen is mostly well-formed, but the Tokumaru Ramen Bar card has overlapping text in its metadata row. A smaller issue is the delivery-time pill on the first 'Fastest near you' card.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the Tokumaru Ramen Bar card, the metadata line has two text strings drawn on top of each other. The delivery time ('25–35 min') overlaps '€0 delivery', so both are garbled and unreadable ('25–35 min' collides with '€0 delivery • Ramen').",
+        "suggestion": "Fix the layout so delivery time and delivery fee are separate inline items with separators, or wrap them onto separate lines. Remove any duplicate absolutely positioned text and check that the row does not overflow."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The '15–25 min' time pill on the Green Bowl Poké card is close to the image's left and bottom edges. It also overlaps the plate image on a light background, so it looks inconsistent with the pills on the other cards.",
+        "suggestion": "Use the same inset and shadow or border for all time pills so they stay legible and consistent on light images."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The gray secondary text ('€0.90 delivery', '€2.40 delivery') and the gray 'Ramen' label have low contrast against the white background. The '(500+)' rating count is also low contrast.",
+        "suggestion": "Darken the secondary text color to meet WCAG AA contrast (4.5:1)."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 579,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.009968000000000001,
+    "durationSeconds": 5.4074972080000006
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The pizza card in 'Popular right now' shows a '-100%' discount badge. That would mean the item is free, which is almost certainly a data or formatting bug, and it conflicts with the tone of the other promos.",
+    "Secondary text is light gray on white or light backgrounds: the delivery fee lines, the search placeholder, and the '25–35 min • €0 delivery • Ramen' metadata. Contrast is low, especially for small text.",
+    "The delivery-time pills (e.g. '15–25 min') sit at the bottom-left corner of the card images and touch or overlap the image edge. The pill on the first card looks slightly clipped against the image bounds and is inconsistent with the badges on the large cards, which have more padding.",
+    "The heart/favorite button on the dark food images has a low-contrast translucent background, so it is less visible. On the pizza card the dark circle blends into the wood background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 directly points out the '-100%' discount badge on the pizza card."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ]
+  }
+}

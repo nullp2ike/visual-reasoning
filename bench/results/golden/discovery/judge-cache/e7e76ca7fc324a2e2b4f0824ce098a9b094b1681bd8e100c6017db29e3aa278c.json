@@ -1,0 +1,32 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Green Bowl Poké card appears twice in the carousel"
+  ],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel, the first two cards are exact duplicates: same 'Green Bowl Poké' name, image, 15–25 min badge and €0.90 delivery fee. This looks like a data or rendering bug and wastes prime space on the most prominent carousel.",
+    "The secondary gray text ('€0.90 delivery', '25–35 min • €0 delivery • Ramen') is light and small on a white background, so contrast is low. The placeholder text in the search bar is also faint.",
+    "The heart/favorite icon on the food images sits on a translucent dark circle over busy photos. The ramen card's circle is almost invisible, and the icon's contrast varies between cards.",
+    "The time badges on the carousel cards overlap the bottom-left edge of the image and look cramped. The white pill also sits close to the plate image.",
+    "Illustrated placeholder-style images (a generic bowl, a generic pizza) are used instead of real restaurant photos or logos. The cards also have no restaurant identity beyond the name, and the pizza card has a discount badge but no visible title yet."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 explicitly identifies the duplicate Green Bowl Poké card appearing twice in the carousel."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+}

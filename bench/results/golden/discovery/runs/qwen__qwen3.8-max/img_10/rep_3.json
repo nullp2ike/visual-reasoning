@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:29:36.364Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but the 'Fastest near you' carousel shows two identical duplicate cards ('Green Bowl Poké' with the same image, delivery time and fee) side by side, which looks like a data/rendering defect. Other elements (partially visible third carousel card and the card cut off at the bottom) are expected scroll/viewport behavior and not defects.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Duplicate restaurant cards: the first two items in the 'Fastest near you' horizontal carousel are identical ('Green Bowl Poké', same image, 15–25 min badge, €0.90 delivery), making the row look like a rendering/data bug rather than two distinct restaurants.",
+        "suggestion": "Ensure the carousel renders unique restaurants; deduplicate the data source or vary the cards (different restaurant/image) so repeated entries are not shown adjacently."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The delivery-time badges ('15–25 min') on the first two carousel cards overlap the card images' bottom-left corner inconsistently with the third card's badge placement, and the badge on the second card slightly overlaps the first card's edge region, creating a cramped look.",
+        "suggestion": "Align badge placement consistently within each card (same offset from card edges) and add spacing so badges never visually collide between adjacent cards."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1781,
+    "outputTokens": 4240,
+    "reasoningTokens": 3885,
+    "cachedInputTokens": 1152,
+    "estimatedCost": 0.029002,
+    "reportedCost": 0.026986,
+    "durationSeconds": 106.68653612499999
+  }
+}

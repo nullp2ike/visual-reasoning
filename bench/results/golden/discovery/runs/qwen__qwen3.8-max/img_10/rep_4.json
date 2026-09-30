@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:29:52.512Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed: header, search, category chips, promo banner, carousels and bottom nav all render correctly. The main visual defect is duplicated content in the 'Fastest near you' carousel, where the same restaurant ('Green Bowl Poké') appears twice consecutively with identical imagery and delivery info. Horizontal clipping of the third carousel card and the bottom-cut pizza card are expected scroll/viewport behavior and are not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "In the 'Fastest near you' row, the first two cards are exact duplicates: same 'Green Bowl Poké' title, same illustration, same '15–25 min' badge and '€0.90 delivery' line. This looks like a data/rendering bug (duplicate list item) rather than intentional content.",
+        "suggestion": "Deduplicate the restaurant list before rendering (e.g., key by restaurant ID) so each card in the carousel shows a distinct restaurant."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The two identical 'Green Bowl Poké' cards use a plain light-gray placeholder-style background while the neighboring 'Smash Bros' card and the 'Popular right now' cards use rich photographic/illustrated backgrounds, making the first two tiles look unfinished or broken by comparison.",
+        "suggestion": "Provide proper hero imagery for Green Bowl Poké consistent with the other restaurant cards, or apply a consistent branded background treatment."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1781,
+    "outputTokens": 2930,
+    "reasoningTokens": 2562,
+    "cachedInputTokens": 1024,
+    "estimatedCost": 0.021142,
+    "reportedCost": 0.01935,
+    "durationSeconds": 82.604043542
+  }
+}

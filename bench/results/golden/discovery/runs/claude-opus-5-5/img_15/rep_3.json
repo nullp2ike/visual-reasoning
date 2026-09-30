@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5-5",
+  "provider": "anthropic",
+  "imageId": "img_15",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-23T13:14:29.282Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 issue: the bottom navigation bar does not respect the device's bottom safe area. Its icons are clipped by the screen edge and overlapped by the system gesture indicator. The rest of the page looks correct.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom navigation bar sits too low and ignores the bottom safe-area inset. All four tab icons (Home, Search, Orders, Profile) are cut off at the bottom of the screen. The system gesture handle is drawn directly over the Search and Orders icons, which makes these tabs hard to recognize and tap. Any tab labels are pushed out of view entirely.",
+        "suggestion": "Add the bottom safe-area/window inset (e.g., padding for WindowInsets.navigationBars or safeAreaInsets.bottom) to the tab bar container so the icons and labels sit fully above the gesture indicator. Also ensure the scrollable content is padded so it isn't hidden behind the tab bar."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 738,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.023115999999999998,
+    "durationSeconds": 13.49236675
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The 'Pizza' filter chip is rendered in the active/selected state, but the content below (Green Bowl Poké, Smash Bros Burgers, Tokumaru Ramen Bar) is not filtered to pizza, so the visible selection state does not match the displayed results."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both describe the Pizza category being selected while the feed continues to display non-pizza food options."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

@@ -1,12 +1,6 @@
 import type { Manifest, Overrides, Scores } from "./types.js";
 import { modelDirName } from "../../shared/util.js";
 
-/** One prompt variant's scores, paired with its id, for the in-page toggle. */
-export interface VariantScores {
-  variant: string;
-  scores: Scores;
-}
-
 /**
  * Build the self-contained report page. All data is inlined as JSON; the only
  * external references are the dataset screenshots, loaded via `imageBase` —
@@ -27,24 +21,14 @@ function escapeHtml(text: string): string {
 }
 
 export function buildReportHtml(
-  variants: readonly VariantScores[],
+  scores: Scores,
   manifest: Manifest,
   overrides: Overrides,
   siblingJudges: readonly string[] = [],
   imageBase = ".",
 ): string {
-  if (variants.length === 0) throw new Error("buildReportHtml: at least one variant is required");
-  const variantOrder = variants.map((v) => v.variant);
-  const scoresByVariant = Object.fromEntries(variants.map((v) => [v.variant, v.scores]));
-  const defaultVariant = variantOrder[0] as string;
-  // All variants of one report share the same judge; use the default for the
-  // build-time hero so prompt + judge are visible even without JavaScript.
-  const defaultScores = variants[0]?.scores as Scores;
-
   const payload = {
-    scoresByVariant,
-    variantOrder,
-    defaultVariant,
+    scores,
     manifest: manifest.entries,
     overrides,
     // Screenshots are not inlined; the page links them relative to its own
@@ -60,41 +44,17 @@ export function buildReportHtml(
         siblingJudges
           .map(
             (judge) =>
-              `<a class="judge-link" href="report.${escapeHtml(modelDirName(judge))}.html">${escapeHtml(judge)}</a>`,
+              `<a href="report.${escapeHtml(modelDirName(judge))}.html">${escapeHtml(judge)}</a>`,
           )
           .join(" · ") +
         ' · <a href="JUDGE_COMPARISON.md">comparison</a>'
-      : "";
-  // The variant switcher swaps the entire report in-page (matrix, leaderboard,
-  // hero) between prompt variants. A single-variant report shows a static badge.
-  const variantSwitchHtml =
-    variantOrder.length > 1
-      ? `<label class="variant-switch">Prompt variant ` +
-        `<select id="variant">` +
-        variantOrder
-          .map((v) => `<option value="${escapeHtml(v)}">${escapeHtml(v)}</option>`)
-          .join("") +
-        `</select></label>`
-      : `<span class="variant-badge">Prompt variant: ${escapeHtml(defaultVariant)}</span>`;
-
-  // Leaderboard "compare" checkbox: with >1 variant, show each non-primary
-  // variant as a paired row beneath its primary (variantOrder[0]) row.
-  const comparisonVariants = variantOrder.slice(1);
-  const compareToggleHtml =
-    comparisonVariants.length > 0
-      ? `<label class="compare-toggle"><input type="checkbox" id="compare-variants"> ` +
-        `Compare prompts: pair ${comparisonVariants
-          .map((v) => `<code>${escapeHtml(v)}</code>`)
-          .join(
-            ", ",
-          )} as a row beneath each <code>${escapeHtml(defaultVariant)}</code> row (matrix &amp; leaderboard)</label>`
       : "";
 
   return `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Defect discovery benchmark — judge ${escapeHtml(defaultScores.judgeModel)}</title>
+<title>Defect discovery benchmark — judge ${escapeHtml(scores.judgeModel)}</title>
 <style>
   :root { --ok: #15803d; --bad: #b91c1c; --muted: #6b7280; --line: #e5e7eb; --accent: #1d4ed8; }
   * { box-sizing: border-box; }
@@ -103,10 +63,6 @@ export function buildReportHtml(
   h1 { font-size: 22px; } h2 { font-size: 18px; margin-top: 32px; } h3 { font-size: 15px; }
   .prompt-hero { background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 8px; padding: 14px 18px; margin: 12px 0 8px; }
   .prompt-hero .prompt-text { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 16px; white-space: pre-wrap; }
-  .variant-controls { margin-bottom: 10px; }
-  .variant-switch { font-size: 13px; font-weight: 600; color: #3730a3; }
-  .variant-switch select { font: inherit; font-weight: 600; margin-left: 6px; padding: 3px 6px; border: 1px solid #c7d2fe; border-radius: 6px; background: #fff; cursor: pointer; }
-  .variant-badge { display: inline-block; background: #4338ca; color: #fff; border-radius: 6px; padding: 3px 10px; font-size: 13px; }
   .judge-badge { display: inline-block; background: #1e3a8a; color: #fff; border-radius: 6px; padding: 3px 10px; font-size: 13px; margin-top: 8px; }
   .sibling-links { margin-left: 10px; font-size: 13px; }
   .meta { color: var(--muted); font-size: 12px; margin-bottom: 16px; }
@@ -119,18 +75,6 @@ export function buildReportHtml(
   #leaderboard tbody tr { cursor: pointer; }
   #leaderboard tbody tr:hover { background: #eff6ff; }
   #leaderboard tbody tr.selected { background: #dbeafe; }
-  /* Paired comparison rows: the excluded-prompt row sits tinted under its baseline row. */
-  #leaderboard tbody tr.compare-row td { background: #fff7ed; border-top-style: dashed; color: #7c2d12; }
-  #leaderboard tbody tr.compare-row:hover td { background: #ffedd5; }
-  .row-variant { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; border-radius: 3px; padding: 0 5px; margin-right: 6px; vertical-align: 1px; }
-  .row-variant.base { background: #e5e7eb; color: #374151; }
-  .row-variant.comp { background: #fed7aa; color: #7c2d12; }
-  .compare-row .indent { color: var(--muted); margin-right: 2px; }
-  .delta { font-size: 11px; font-weight: 600; margin-left: 4px; }
-  .delta.good { color: var(--ok); } .delta.bad { color: var(--bad); } .delta.same { color: var(--muted); }
-  .compare-toggle { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #374151; margin: 0 0 10px; cursor: pointer; user-select: none; }
-  .compare-toggle input { cursor: pointer; }
-  .compare-toggle code { background: #eef2ff; padding: 1px 4px; border-radius: 3px; }
   .effort-filter { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 13px; color: #374151; margin: 0 0 10px; }
   .effort-filter .ef-label { font-weight: 600; }
   .effort-filter .ef-opt { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; user-select: none; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 6px; padding: 2px 8px; }
@@ -148,11 +92,6 @@ export function buildReportHtml(
   #matrix th.brand-other { background: #f3f4f6; }
   #matrix td.mcell { cursor: pointer; }
   #matrix td.mcell:hover { outline: 2px solid var(--accent); outline-offset: -2px; }
-  #matrix td.mcell.static { cursor: default; }
-  #matrix td.mcell.static:hover { outline: none; }
-  /* Matrix comparison rows: keep per-cell shading, just mark the row + label. */
-  #matrix tr.compare-row td { border-top-style: dashed; }
-  #matrix tr.compare-row td:first-child { background: #fff7ed; color: #7c2d12; text-align: left; }
   #matrix td.mcell.expanded { outline: 2px solid var(--accent); outline-offset: -2px; background: #dbeafe; }
   #matrix td.all-found { background: #dcfce7; }
   #matrix td.none-found { background: #fee2e2; }
@@ -201,15 +140,13 @@ export function buildReportHtml(
 <main>
   <h1>Defect discovery benchmark</h1>
   <div class="prompt-hero">
-    <div class="variant-controls">${variantSwitchHtml}</div>
-    <div class="prompt-text" id="prompt-text">&#8220;${escapeHtml(defaultScores.prompt)}&#8221;</div>
-    <span class="judge-badge">Judge: ${escapeHtml(defaultScores.judgeModel)} · ${escapeHtml(defaultScores.judgePromptVersion)}</span>
+    <div class="prompt-text">&#8220;${escapeHtml(scores.prompt)}&#8221;</div>
+    <span class="judge-badge">Judge: ${escapeHtml(scores.judgeModel)} · ${escapeHtml(scores.judgePromptVersion)}</span>
     <span class="sibling-links">${siblingLinksHtml}</span>
   </div>
   <div class="meta" id="meta"></div>
   <h2>Screenshot × model matrix</h2>
   <p class="meta">Cells = reps where the judge matched every expected issue ("clean n/m" on negative controls; † = failed reps excluded). Click a cell to expand that model's reported issues per rep, with judge-matched issues highlighted.</p>
-  ${compareToggleHtml}
   <div id="effort-filter" class="effort-filter"></div>
   <div style="overflow-x:auto"><table id="matrix"><thead></thead><tbody></tbody></table></div>
   <h2>Leaderboard</h2>
@@ -228,48 +165,33 @@ export function buildReportHtml(
 const DATA = JSON.parse(document.getElementById("data").textContent);
 // Path prefix for screenshot <img> hrefs, relative to this report's own file.
 const IMAGE_BASE = DATA.imageBase;
-// Current prompt variant. The switcher swaps \`scores\` and re-renders everything.
-// Honor #variant=<v> from the URL so cross-judge links keep the reader on the
-// same prompt variant; fall back to the report default if it's absent/unknown.
-function variantFromHash() {
-  const m = /(?:^|[#&])variant=([^&]+)/.exec(location.hash || "");
-  const v = m ? decodeURIComponent(m[1]) : null;
-  return v && DATA.scoresByVariant[v] ? v : null;
-}
-let currentVariant = variantFromHash() || DATA.defaultVariant;
-let scores = DATA.scoresByVariant[currentVariant];
+const scores = DATA.scores;
 const manifestByImage = Object.fromEntries(DATA.manifest.map(e => [e.imageId, e]));
 // Forced verdict states accumulated in this page session, seeded from committed overrides.
 const overrides = structuredClone(DATA.overrides || {});
 
 // Reasoning-effort filter. Each (model, effort) pair is its own "series"; this set
 // controls which efforts are visible in the matrix + leaderboard. All on by default;
-// the control only renders when more than one effort is present across the variants.
-const allEfforts = [...new Set(
-  Object.values(DATA.scoresByVariant).flatMap(s => s.models.map(m => m.reasoningEffort))
-)].sort();
+// the control only renders when more than one effort is present.
+const allEfforts = [...new Set(scores.models.map(m => m.reasoningEffort))].sort();
 const activeEfforts = new Set(allEfforts);
 
 const fmt = (v, digits = 2, suffix = "") => (v === null || v === undefined) ? "–" : v.toFixed(digits) + suffix;
 const pct = v => (v === null || v === undefined) ? "–" : (100 * v).toFixed(0) + "%";
 const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
 
-let REPS = Array.from({ length: scores.repeats }, (_, i) => i + 1);
+const REPS = Array.from({ length: scores.repeats }, (_, i) => i + 1);
 
-// Prompt text + meta line reflect the selected variant.
-function renderHero() {
-  document.getElementById("prompt-text").textContent = "\\u201c" + scores.prompt + "\\u201d";
+function renderMeta() {
   document.getElementById("meta").innerHTML =
-    "Generated " + esc(scores.generatedAt) + " · variant <code>" + esc(scores.promptVariant) + "</code>" +
-    " · prompt sha256 " + esc(scores.promptHash.slice(0, 12)) + "…" +
+    "Generated " + esc(scores.generatedAt) + " · prompt sha256 " + esc(scores.promptHash.slice(0, 12)) + "…" +
     " · reasoning effort <code>" + esc(scores.reasoningEffort) + "</code> · " + scores.repeats + " reps" +
     " · " + scores.overrideCount + " committed override cell(s)";
 }
 
 // Identity is the "series" (model × reasoning effort), so a model benchmarked at
 // several efforts stays distinct across the matrix, leaderboard, and overrides.
-// Effort filter checkboxes. Static across variants (efforts don't change with the
-// prompt), so this is built once at init. Toggling re-renders both tables.
+// Effort filter checkboxes, built once at init. Toggling re-renders both tables.
 function renderEffortFilter() {
   const el = document.getElementById("effort-filter");
   if (!el) return;
@@ -292,8 +214,8 @@ function renderEffortFilter() {
   });
 }
 
-function cellFor(series, imageId, rep, src) {
-  return (src || scores).cells.find(c => c.series === series && c.imageId === imageId && c.rep === rep);
+function cellFor(series, imageId, rep) {
+  return scores.cells.find(c => c.series === series && c.imageId === imageId && c.rep === rep);
 }
 function keyFor(cell) {
   return cell.series + "/" + cell.imageId + "/rep_" + cell.rep;
@@ -343,8 +265,8 @@ function bindChips(container) {
 
 let expandedCell = null; // { imageId, model } | null
 
-function computeMatrixCell(series, entry, src) {
-  const cells = REPS.map(rep => cellFor(series, entry.imageId, rep, src)).filter(Boolean);
+function computeMatrixCell(series, entry) {
+  const cells = REPS.map(rep => cellFor(series, entry.imageId, rep)).filter(Boolean);
   const ok = cells.filter(c => c.status === "ok");
   const negative = entry.expectedIssues.length === 0;
   return {
@@ -426,8 +348,8 @@ function modelBrand(provider, model) {
   if (provider === "openrouter") { const i = model.indexOf("/"); return i === -1 ? provider : model.slice(0, i); }
   return provider;
 }
-function matrixModels(src) {
-  const models = (src || scores).models.filter(m => activeEfforts.has(m.reasoningEffort));
+function matrixModels() {
+  const models = scores.models.filter(m => activeEfforts.has(m.reasoningEffort));
   const recall = m => (m.meanRecall == null ? -1 : m.meanRecall);
   const groups = new Map();
   for (const m of models) {
@@ -441,29 +363,10 @@ function matrixModels(src) {
     g.slice().sort((a, b) => recall(a) - recall(b) || a.series.localeCompare(b.series)).map(m => m.series));
 }
 
-// Change in a matrix cell's score (found reps, or clean reps on negative
-// controls) for a comparison row vs its baseline row. Higher is better.
-function matrixDelta(mb, me) {
-  const b = mb.cleanReps !== null ? mb.cleanReps : mb.foundReps;
-  const e = me.cleanReps !== null ? me.cleanReps : me.foundReps;
-  if (b === null || e === null || mb.okReps === 0 || me.okReps === 0) return "";
-  const d = e - b;
-  if (d === 0) return "";
-  return ' <span class="delta ' + (d > 0 ? "good" : "bad") + '">' + (d > 0 ? "▲+" : "▼") + d + "</span>";
-}
-
 function renderMatrix() {
-  // Compare mode mirrors the leaderboard: a fixed baseline spine (variantOrder[0])
-  // with each other variant paired as a row beneath each screenshot. Cell drill-down
-  // is available in normal mode; compare mode is a read-only overview.
-  const compareEl = document.getElementById("compare-variants");
-  const compareOn = !!(compareEl && compareEl.checked) && DATA.variantOrder.length > 1;
-  const primaryVariant = DATA.variantOrder[0];
-  const baseSrc = compareOn ? DATA.scoresByVariant[primaryVariant] : scores;
-
-  const series = matrixModels(baseSrc);
-  const effortBySeries = Object.fromEntries(baseSrc.models.map(m => [m.series, m.reasoningEffort]));
-  const brandBySeries = Object.fromEntries(baseSrc.models.map(m => [m.series, modelBrand(m.provider, m.model)]));
+  const series = matrixModels();
+  const effortBySeries = Object.fromEntries(scores.models.map(m => [m.series, m.reasoningEffort]));
+  const brandBySeries = Object.fromEntries(scores.models.map(m => [m.series, modelBrand(m.provider, m.model)]));
   const thead = document.querySelector("#matrix thead");
   // Header shows the full series id (model + any non-default effort/fidelity tags);
   // the effort sublabel stays for quick scanning.
@@ -476,48 +379,32 @@ function renderMatrix() {
     const desc = entry.expectedIssues.length === 0
       ? "no expected issues (negative control)"
       : entry.expectedIssues.join("; ");
-    const baseTag = compareOn ? ' <span class="row-variant base">' + esc(primaryVariant) + "</span>" : "";
     html += "<tr>" +
       '<td><span class="imgname">' + esc(entry.imageId) + "</span><br>" + esc(entry.filename) + "</td>" +
-      '<td class="expdesc">' + esc(desc) + baseTag + "</td>" +
+      '<td class="expdesc">' + esc(desc) + "</td>" +
       series.map(s => {
-        const m = computeMatrixCell(s, entry, baseSrc);
-        const isExpanded = !compareOn && expandedCell && expandedCell.imageId === entry.imageId && expandedCell.model === s;
-        return '<td class="mcell ' + cellShadeClass(m) + (isExpanded ? " expanded" : "") + (compareOn ? " static" : "") + '"' +
+        const m = computeMatrixCell(s, entry);
+        const isExpanded = expandedCell && expandedCell.imageId === entry.imageId && expandedCell.model === s;
+        return '<td class="mcell ' + cellShadeClass(m) + (isExpanded ? " expanded" : "") + '"' +
           ' data-image="' + esc(entry.imageId) + '" data-model="' + esc(s) + '">' +
           formatCellText(m) + "</td>";
       }).join("") + "</tr>";
-    if (!compareOn && expandedCell && expandedCell.imageId === entry.imageId) {
+    if (expandedCell && expandedCell.imageId === entry.imageId) {
       html += '<tr class="matrix-detail"><td colspan="' + (series.length + 2) + '">' +
         expansionHtml(expandedCell.model, entry) + "</td></tr>";
     }
-    if (compareOn) {
-      for (const v of DATA.variantOrder.slice(1)) {
-        const src = DATA.scoresByVariant[v];
-        html += '<tr class="compare-row"><td colspan="2"><span class="indent">↳</span>' +
-          '<span class="row-variant comp">' + esc(v) + "</span></td>" +
-          series.map(s => {
-            const mb = computeMatrixCell(s, entry, baseSrc);
-            const me = computeMatrixCell(s, entry, src);
-            return '<td class="mcell static ' + cellShadeClass(me) + '">' +
-              formatCellText(me) + matrixDelta(mb, me) + "</td>";
-          }).join("") + "</tr>";
-      }
-    }
   }
   tbody.innerHTML = html;
-  if (!compareOn) {
-    tbody.querySelectorAll("td.mcell").forEach(td => td.onclick = () => {
-      const { image, model } = td.dataset;
-      expandedCell = (expandedCell && expandedCell.imageId === image && expandedCell.model === model)
-        ? null : { imageId: image, model };
-      renderMatrix();
-    });
-  }
+  tbody.querySelectorAll("td.mcell").forEach(td => td.onclick = () => {
+    const { image, model } = td.dataset;
+    expandedCell = (expandedCell && expandedCell.imageId === image && expandedCell.model === model)
+      ? null : { imageId: image, model };
+    renderMatrix();
+  });
   bindChips(tbody);
 }
 
-// --- Leaderboard + per-model detail (unchanged behavior) ---
+// --- Leaderboard + per-model detail ---
 
 // [key, label, getter, render, tooltip]
 const COLUMNS = [
@@ -544,38 +431,10 @@ const COLUMNS = [
 ];
 let sortKey = "meanRecall", sortDir = -1, selectedModel = null;
 
-// Columns that get a Δ badge (vs the baseline row) on comparison sub-rows.
-const DELTA_COLS = new Set(["meanRecall", "anyRecall", "flakiness", "extrasPerRun"]);
-
-// Signed change of a comparison row's metric vs its baseline row, colored by
-// whether the change is an improvement (recall up / extras + flakiness down).
-function deltaBadge(key, cur, base) {
-  if (cur === null || cur === undefined || base === null || base === undefined) return "";
-  const d = cur - base;
-  if (Math.abs(d) < 1e-9) return ' <span class="delta same">±0</span>';
-  const higherBetter = key === "meanRecall" || key === "anyRecall";
-  const isPoints = higherBetter || key === "flakiness"; // rate metrics shown in points
-  const good = higherBetter ? d > 0 : d < 0;
-  const txt = isPoints ? (100 * d).toFixed(1) + "pp" : d.toFixed(2);
-  return ' <span class="delta ' + (good ? "good" : "bad") + '">' + (d > 0 ? "▲+" : "▼") + txt + "</span>";
-}
-
-// One leaderboard <tr>. In compare mode the primary row carries a variant tag and
-// the model name; sub-rows are indented, tagged, and carry Δ badges vs \`base\`.
-function leaderboardRow(m, opts) {
-  const { variant = null, isCompare = false, base = null } = opts || {};
-  const cells = COLUMNS.map(([key, , get, render]) => {
-    if (key === "model") {
-      if (isCompare) return '<td><span class="indent">↳</span><span class="row-variant comp">' + esc(variant) + "</span></td>";
-      if (variant) return '<td><span class="row-variant base">' + esc(variant) + "</span>" + esc(m.series) + "</td>";
-      return "<td>" + esc(m.series) + "</td>";
-    }
-    let inner = render(get(m));
-    if (base && DELTA_COLS.has(key)) inner += deltaBadge(key, get(m), get(base));
-    return "<td" + (key === "failedRuns" && m.failedRuns ? ' class="errcell"' : "") + ">" + inner + "</td>";
-  }).join("");
-  const cls = (isCompare ? "compare-row" : "") + (m.series === selectedModel ? " selected" : "");
-  return '<tr data-model="' + esc(m.series) + '"' + (cls.trim() ? ' class="' + cls.trim() + '"' : "") + ">" + cells + "</tr>";
+function leaderboardRow(m) {
+  const cells = COLUMNS.map(([key, , get, render]) =>
+    "<td" + (key === "failedRuns" && m.failedRuns ? ' class="errcell"' : "") + ">" + render(get(m)) + "</td>").join("");
+  return '<tr data-model="' + esc(m.series) + '"' + (m.series === selectedModel ? ' class="selected"' : "") + ">" + cells + "</tr>";
 }
 
 function renderLeaderboard() {
@@ -587,33 +446,15 @@ function renderLeaderboard() {
     if (sortKey === key) sortDir = -sortDir; else { sortKey = key; sortDir = key === "model" || key === "provider" ? 1 : -1; }
     renderLeaderboard();
   });
-  // Compare mode: fixed spine = primary variant (variantOrder[0]), with each
-  // other variant paired beneath. Otherwise the leaderboard follows the dropdown.
-  const compareEl = document.getElementById("compare-variants");
-  const compareOn = !!(compareEl && compareEl.checked) && DATA.variantOrder.length > 1;
-  const primaryVariant = DATA.variantOrder[0];
-  const spine = (compareOn ? DATA.scoresByVariant[primaryVariant].models : scores.models)
-    .filter(m => activeEfforts.has(m.reasoningEffort));
-
   const col = COLUMNS.find(c => c[0] === sortKey);
-  const rows = [...spine].sort((a, b) => {
+  const rows = scores.models.filter(m => activeEfforts.has(m.reasoningEffort)).sort((a, b) => {
     const va = col[2](a), vb = col[2](b);
     if (va === null || va === undefined) return 1;
     if (vb === null || vb === undefined) return -1;
     return (typeof va === "string" ? va.localeCompare(vb) : va - vb) * sortDir;
   });
-
-  let html = "";
-  for (const m of rows) {
-    if (!compareOn) { html += leaderboardRow(m, {}); continue; }
-    html += leaderboardRow(m, { variant: primaryVariant });
-    for (const v of DATA.variantOrder.slice(1)) {
-      const cm = (DATA.scoresByVariant[v].models || []).find(x => x.series === m.series);
-      if (cm) html += leaderboardRow(cm, { variant: v, isCompare: true, base: m });
-    }
-  }
   const tbody = document.querySelector("#leaderboard tbody");
-  tbody.innerHTML = html;
+  tbody.innerHTML = rows.map(leaderboardRow).join("");
   tbody.querySelectorAll("tr").forEach(tr => tr.onclick = () => { selectedModel = tr.dataset.model; renderLeaderboard(); renderDetail(); });
 }
 
@@ -687,48 +528,7 @@ document.getElementById("export").onclick = () => {
   URL.revokeObjectURL(a.href);
 };
 
-// Reflect the current variant in the URL hash and in the cross-judge links, so
-// clicking another judge lands on the same prompt variant (that report reads
-// #variant on load). Judges that never scored this variant fall back to their
-// default, since variantFromHash() only honors variants they actually have.
-function syncVariantLinks() {
-  const hash = "#variant=" + encodeURIComponent(currentVariant);
-  if (history.replaceState) history.replaceState(null, "", hash);
-  else location.hash = hash;
-  document.querySelectorAll("a.judge-link").forEach(a => {
-    a.setAttribute("href", a.getAttribute("href").split("#")[0] + hash);
-  });
-}
-
-// Switching variant swaps the scored dataset and re-renders the whole report.
-const variantSelect = document.getElementById("variant");
-if (variantSelect) {
-  variantSelect.value = currentVariant;
-  variantSelect.addEventListener("change", () => {
-    currentVariant = variantSelect.value;
-    scores = DATA.scoresByVariant[currentVariant];
-    REPS = Array.from({ length: scores.repeats }, (_, i) => i + 1);
-    expandedCell = null;
-    if (selectedModel && !scores.models.some(m => m.series === selectedModel)) selectedModel = null;
-    syncVariantLinks();
-    renderHero();
-    renderMatrix();
-    renderLeaderboard();
-    renderDetail();
-  });
-}
-
-// The compare checkbox re-lays-out both tables (paired rows on/off). Any open
-// matrix drill-down is cleared since compare mode is a read-only overview.
-const compareToggle = document.getElementById("compare-variants");
-if (compareToggle) compareToggle.addEventListener("change", () => {
-  expandedCell = null;
-  renderMatrix();
-  renderLeaderboard();
-});
-
-syncVariantLinks();
-renderHero();
+renderMeta();
 renderEffortFilter();
 renderMatrix();
 renderLeaderboard();

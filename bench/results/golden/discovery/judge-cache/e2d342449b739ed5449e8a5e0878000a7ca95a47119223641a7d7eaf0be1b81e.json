@@ -1,0 +1,30 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The 'Pizza' category chip is selected (dark filled), but the content below is not filtered. The 'Fastest near you' and 'Popular right now' sections show poke, burgers, pasta and ramen. The selected state contradicts the results, and the 'All' chip is not highlighted.",
+    "The secondary gray text (delivery fees, the '25–35 min • €0 delivery • Ramen' meta line, the search placeholder and the inactive tab labels) is light gray on white or light gray backgrounds and has low contrast. The white time pills over light images, such as '15–25 min' on the poke card, blend into the pale background.",
+    "The heart/favorite button is styled inconsistently. On the ramen card it is almost invisible against the dark image, and on the pizza card it sits in a semi-transparent dark circle. The white '-20%' and '€0 delivery' badges also vary in visual weight.",
+    "The time pill on the first carousel card overlaps the plate image and looks awkwardly placed. The promo banner's decorative circles are clipped at the corner and are a little distracting."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 explicitly describes the 'Pizza' category being selected without the feed content being filtered."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ]
+  }
+}

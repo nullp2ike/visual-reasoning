@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Delivery fee text overlaps the delivery time text"
+  ],
+  "reportedIssues": [
+    "The metadata line under 'Tokumaru Ramen Bar' shows two overlapping strings, the delivery time ('25–35 min') and the delivery fee ('€0 delivery'), rendered in the same position. The result reads as garbled text ('25–3€0 mdeilivery'), so users cannot read the delivery time or fee."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both describe the delivery fee text overlapping the delivery time text."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

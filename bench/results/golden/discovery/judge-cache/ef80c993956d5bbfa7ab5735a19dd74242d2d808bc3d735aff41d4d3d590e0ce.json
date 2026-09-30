@@ -1,0 +1,26 @@
+{
+  "judgeModel": "meta/muse-spark-1.3-contributor",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The '−100%' badge on the second restaurant card in 'Popular right now' implies the entire order is free, which is almost certainly a data error or malformed promotion value.",
+    "The first card in 'Popular right now' shows a '€0 delivery' badge in the top-left while the second shows a discount badge in the same position; the mixed badge types create slight visual inconsistency in the list."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported 0 identifies the same −100% badge on the second card as an erroneous promotion value."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_04",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:04:07.763Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well laid out. The one clear defect is a nonsensical '-0%' discount badge on the pizza card. There are also minor issues with contrast and with the first carousel card's time badge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza restaurant card shows a promotional badge reading '-0%'. A 0% discount is meaningless and looks like a data or template bug. It misleads users and adds visual noise.",
+        "suggestion": "Hide the discount badge when the discount is 0 or missing. Only render it for real discounts."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the '15–25 min' badge on the Green Bowl Poké card overlaps the plate image and sits close to the card's left and bottom edges. Its position looks slightly inconsistent with the other cards' badges. The pale card image also has low separation from the white badge.",
+        "suggestion": "Use consistent badge insets across cards. Add a subtle shadow or border to the badge so it stands out on light images."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary gray text (delivery fee lines, the '(500+)' rating count, the search placeholder) and the inactive tab labels have low contrast against the white or light-gray backgrounds.",
+        "suggestion": "Darken the gray text to meet a WCAG 4.5:1 contrast ratio."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The heart (favorite) icon on the ramen card is white on a dark, semi-transparent circle over a busy photo, so it is hard to see. It has no visible active state.",
+        "suggestion": "Increase the opacity of the circle behind the icon and make sure the favorited state is clearly distinguishable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 660,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.010778,
+    "durationSeconds": 5.814869166
+  }
+}

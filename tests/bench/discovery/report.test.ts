@@ -3,11 +3,10 @@ import { describe, expect, it } from "vitest";
 import {
   SCORES_FILE_RE,
   buildResultsMarkdown,
-  orderVariants,
   reportHtmlPathForJudge,
-  resultsMdPathForVariantJudge,
+  resultsMdPathForJudge,
 } from "../../../bench/discovery/src/report.js";
-import { buildReportHtml, type VariantScores } from "../../../bench/discovery/src/html.js";
+import { buildReportHtml } from "../../../bench/discovery/src/html.js";
 import type { Manifest, Scores } from "../../../bench/discovery/src/types.js";
 
 const manifest: Manifest = {
@@ -22,12 +21,11 @@ function makeScores(overrides: Partial<Scores> = {}): Scores {
   return {
     schemaVersion: 1,
     generatedAt: "2026-07-23T00:00:00.000Z",
-    promptVariant: "baseline",
     prompt: "What looks visually broken on this page?",
     promptHash: "hash",
     reasoningEffort: "medium",
     repeats: 5,
-    judgeModel: "claude-haiku-4-5",
+    judgeModel: "gemini-3.8-flash",
     judgePromptVersion: "v1",
     overrideCount: 0,
     models: [
@@ -64,7 +62,7 @@ describe("buildResultsMarkdown", () => {
   it("orders sections: prompt + judge, matrix, leaderboard", () => {
     const md = buildResultsMarkdown(scores, manifest);
     const promptAt = md.indexOf("What looks visually broken on this page?");
-    const judgeAt = md.indexOf("claude-haiku-4-5");
+    const judgeAt = md.indexOf("gemini-3.8-flash");
     const matrixAt = md.indexOf("## Screenshot × model matrix");
     const leaderboardAt = md.indexOf("## Leaderboard");
     expect(promptAt).toBeGreaterThan(-1);
@@ -73,10 +71,10 @@ describe("buildResultsMarkdown", () => {
     expect(leaderboardAt).toBeGreaterThan(matrixAt);
   });
 
-  it("names the prompt variant in the heading", () => {
-    expect(buildResultsMarkdown(makeScores({ promptVariant: "excluded" }), manifest)).toContain(
-      "variant: `excluded`",
-    );
+  it("shows the prompt under a plain heading, with no variant", () => {
+    const md = buildResultsMarkdown(makeScores({ prompt: "Dataset prompt" }), manifest);
+    expect(md).toContain("## Prompt\n\n```text\nDataset prompt\n```");
+    expect(md).not.toContain("variant");
   });
 
   it("includes the matrix row for each screenshot", () => {
@@ -94,28 +92,16 @@ describe("buildResultsMarkdown", () => {
 });
 
 describe("report paths", () => {
-  it("embed the variant and sanitized judge slug", () => {
-    expect(resultsMdPathForVariantJudge("baseline", "claude-haiku-4-5")).toMatch(
-      /RESULTS\.baseline\.claude-haiku-4-5\.md$/,
-    );
+  it("embed the sanitized judge slug", () => {
+    expect(resultsMdPathForJudge("gemini-3.8-flash")).toMatch(/RESULTS\.gemini-3\.8-flash\.md$/);
     expect(reportHtmlPathForJudge("x-ai/grok-4.5")).toMatch(/report\.x-ai__grok-4\.5\.html$/);
   });
 });
 
-describe("orderVariants", () => {
-  it("returns present variants in canonical order (baseline first)", () => {
-    expect(orderVariants(new Set(["excluded", "baseline"]))).toEqual(["baseline", "excluded"]);
-  });
-
-  it("drops unknown variant ids", () => {
-    expect(orderVariants(new Set(["baseline", "nonsense"]))).toEqual(["baseline"]);
-  });
-});
-
 describe("SCORES_FILE_RE", () => {
-  it("matches per-(variant, judge) scores files", () => {
-    expect(SCORES_FILE_RE.test("scores.baseline.claude-haiku-4-5.json")).toBe(true);
-    expect(SCORES_FILE_RE.test("scores.excluded.x-ai__grok-4.5.json")).toBe(true);
+  it("matches per-judge scores files and captures the judge slug", () => {
+    expect(SCORES_FILE_RE.exec("scores.gpt-5.6-luna.json")?.[1]).toBe("gpt-5.6-luna");
+    expect(SCORES_FILE_RE.exec("scores.x-ai__grok-4.5.json")?.[1]).toBe("x-ai__grok-4.5");
   });
 
   it("rejects unversioned and non-scores files", () => {
@@ -125,35 +111,17 @@ describe("SCORES_FILE_RE", () => {
 });
 
 describe("buildReportHtml", () => {
-  const baseline: VariantScores = { variant: "baseline", scores: makeScores() };
-  const excluded: VariantScores = {
-    variant: "excluded",
-    scores: makeScores({ promptVariant: "excluded", prompt: "Excluded prompt text" }),
-  };
-
-  it("renders an in-page variant switcher when multiple variants exist", () => {
-    const html = buildReportHtml([baseline, excluded], manifest, {});
-    expect(html).toContain('<select id="variant">');
-    expect(html).toContain('<option value="baseline">');
-    expect(html).toContain('<option value="excluded">');
-    // Both variants' scored data is embedded so the toggle can swap client-side.
-    expect(html).toContain('"scoresByVariant"');
-    expect(html).toContain("Excluded prompt text");
-  });
-
-  it("offers a compare checkbox (matrix + leaderboard) when multiple variants exist", () => {
-    const multi = buildReportHtml([baseline, excluded], manifest, {});
-    expect(multi).toContain('id="compare-variants"');
-    // Names the comparison variant and states it applies to both tables.
-    expect(multi).toContain("<code>excluded</code>");
-    expect(multi).toContain("matrix &amp; leaderboard");
-    // A single-variant report has nothing to compare, so no checkbox.
-    const single = buildReportHtml([baseline], manifest, {});
-    expect(single).not.toContain('id="compare-variants"');
+  it("renders one prompt with no variant switcher or compare toggle", () => {
+    const html = buildReportHtml(makeScores({ prompt: "Dataset prompt" }), manifest, {});
+    expect(html).toContain("Dataset prompt");
+    expect(html).not.toContain('id="variant"');
+    expect(html).not.toContain('id="compare-variants"');
+    expect(html).not.toContain("scoresByVariant");
+    expect(html).not.toContain("Prompt variant");
   });
 
   it("emits a syntactically valid inline script", () => {
-    const html = buildReportHtml([baseline, excluded], manifest, {});
+    const html = buildReportHtml(scores, manifest, {}, ["gpt-5.6-luna"]);
     // The interactive report is a single inline <script>; a malformed string
     // (e.g. an unescaped quote in a column tooltip) silently breaks all rendering.
     const match = /<script>\n([\s\S]*?)<\/script>/.exec(html);
@@ -163,19 +131,19 @@ describe("buildReportHtml", () => {
     expect(() => new Script(match![1] ?? "")).not.toThrow();
   });
 
+  it("links sibling judges' reports and the comparison", () => {
+    const html = buildReportHtml(scores, manifest, {}, ["x-ai/grok-4.5"]);
+    expect(html).toContain('<a href="report.x-ai__grok-4.5.html">x-ai/grok-4.5</a>');
+    expect(html).toContain('<a href="JUDGE_COMPARISON.md">comparison</a>');
+  });
+
   it("shows the per-model reasoning effort in the leaderboard column set", () => {
-    const html = buildReportHtml([baseline], manifest, {});
+    const html = buildReportHtml(scores, manifest, {});
     expect(html).toContain('"reasoningEffort", "Effort"');
   });
 
-  it("shows a static badge (no switcher) for a single variant", () => {
-    const html = buildReportHtml([baseline], manifest, {});
-    expect(html).not.toContain('<select id="variant">');
-    expect(html).toContain("Prompt variant: baseline");
-  });
-
   it("links screenshots through the caller-supplied image base, not a fixed path", () => {
-    const html = buildReportHtml([baseline], manifest, {}, [], "../../datasets/my-set");
+    const html = buildReportHtml(scores, manifest, {}, [], "../../datasets/my-set");
     expect(html).toContain('"imageBase":"../../datasets/my-set"');
     // No dataset directory name may be baked into the page's markup.
     expect(html).not.toContain("golden_data_set");
@@ -183,11 +151,7 @@ describe("buildReportHtml", () => {
   });
 
   it("strips a trailing slash from the image base so hrefs never double up", () => {
-    const html = buildReportHtml([baseline], manifest, {}, [], "../../datasets/my-set/");
+    const html = buildReportHtml(scores, manifest, {}, [], "../../datasets/my-set/");
     expect(html).toContain('"imageBase":"../../datasets/my-set"');
-  });
-
-  it("throws when given no variants", () => {
-    expect(() => buildReportHtml([], manifest, {})).toThrow();
   });
 });

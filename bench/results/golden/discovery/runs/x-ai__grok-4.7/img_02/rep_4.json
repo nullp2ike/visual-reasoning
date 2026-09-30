@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "x-ai/grok-4.7",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-21T18:35:11.607Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 issue: a restaurant card displays an invalid delivery fee value.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "Under 'Smash Bros Burgers', the delivery fee reads '€NaN delivery' instead of a valid price.",
+        "suggestion": "Validate the delivery fee before rendering and show a properly formatted amount, or a fallback such as 'Delivery fee unavailable', when the value is missing or not a number."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1997,
+    "outputTokens": 1095,
+    "reasoningTokens": 992,
+    "cachedInputTokens": 1920,
+    "estimatedCost": 0.008451199999999999,
+    "reportedCost": 0.0061472,
+    "durationSeconds": 18.995145458
+  }
+}

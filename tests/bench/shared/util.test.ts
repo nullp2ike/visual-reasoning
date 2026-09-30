@@ -7,8 +7,8 @@ import {
   discoveryResultsDir,
   modelDirName,
   runModelDir,
-  runsDirForVariant,
-  scoresPathForVariantJudge,
+  runsDir,
+  scoresPathForJudge,
   seriesId,
 } from "../../../bench/shared/util.js";
 
@@ -67,9 +67,7 @@ describe("discoveryResultsDir", () => {
   it("namespaces discovery artifacts under the dataset's results root, beside assertion/", () => {
     const dir = discoveryResultsDir();
     expect(dir).toBe(join(activeDataset().resultsDir, "discovery"));
-    expect(runsDirForVariant("baseline")).toBe(join(dir, "runs", "baseline"));
-    expect(scoresPathForVariantJudge("baseline", "gpt-5.6-luna")).toBe(
-      join(dir, "scores.baseline.gpt-5.6-luna.json"),
-    );
+    expect(runsDir()).toBe(join(dir, "runs"));
+    expect(scoresPathForJudge("gpt-5.6-luna")).toBe(join(dir, "scores.gpt-5.6-luna.json"));
   });
 });

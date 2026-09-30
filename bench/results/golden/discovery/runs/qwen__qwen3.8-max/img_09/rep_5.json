@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:28:33.179Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but two text elements are clipped: the restaurant title 'Tokumaru Ramen' in the 'Popular right now' list is truncated vertically (descenders cut off), while the horizontal carousel clipping ('Trattoria Piccol...') and the card cut off at the bottom viewport edge are expected scroll behaviors and not counted as defects.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The restaurant title 'Tokumaru Ramen' in the 'Popular right now' section is vertically clipped: the bottom of the letters (e.g. the descender area of the text) is cut off by the line box, making the heading look broken compared to other titles on the page.",
+        "suggestion": "Increase the line-height / container height of the restaurant title text (or remove a fixed height / overflow hidden) so the full glyph height renders without clipping."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The promo banner text 'Use code TALLINN3 at checkout · min. order €10' sits close to the decorative circle overlay on the right, reducing legibility of the white text over the lighter green shapes on smaller widths.",
+        "suggestion": "Constrain the banner copy to a max-width or add right padding so text never overlaps the decorative circles."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1781,
+    "outputTokens": 3157,
+    "reasoningTokens": 2822,
+    "cachedInputTokens": 1152,
+    "estimatedCost": 0.022504,
+    "reportedCost": 0.020488,
+    "durationSeconds": 79.28473204100004
+  }
+}

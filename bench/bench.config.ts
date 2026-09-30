@@ -1,77 +1,5 @@
 import type { ImageDetailLevel, ReasoningEffortLevel } from "../src/constants.js";
 
-/**
- * Named prompt variants under test. Each is fed verbatim to every model via
- * `ask()`, and its sha256 is stamped into the run records it produces, so
- * runs from different variants never collide. Variant ids must be dot-free
- * (they become the first segment of `scores.<variant>.<judge>.json`).
- *
- * - `baseline` is the original frozen question. Its wording anchors the
- *   manifest promptHash, so it must not change without regenerating runs. It is
- *   dataset-agnostic and is the anchor every exclusion variant is measured against.
- *
- * Exclusion variants are **dataset-specific** and are named `excluded-<dataset>`.
- * A dataset's UI has its own recurring non-defects, so one shared list cannot
- * serve two datasets: wording that suppresses noise in one will suppress real
- * ground-truth defects in another. Derive each list from the false positives
- * models report on that dataset's **negative control** — anything reported on a
- * screenshot with no expected issues is by definition noise — and then check the
- * candidate list against every expected issue before adopting it.
- *
- * - `excluded` is the list for the `primary` dataset (clipping/overflow,
- *   low-contrast legal text, sticky-nav/overlay occlusion, the "SCROLL DOWN"
- *   indicator, cramped spacing). It predates this naming convention and keeps
- *   its bare id because `results/primary/runs/excluded/` already holds runs
- *   under it. Do NOT reuse it for other datasets: against
- *   `golden` it would suppress 4 of the 17 expected defects, because
- *   there clipping, overlap, and alignment are real ground truth.
- * - `excluded-golden-v2` is the list for `golden`: the two
- *   scroll/viewport-edge bullets only, which were ~84% of the clean control's
- *   noise on their own, framed as "features, not defects". Everything narrower
- *   than that is deliberately omitted. Its predecessor (`excluded-golden`, now
- *   removed) named four categories and cut mean extras/run 1.89 -> 0.28 but
- *   also dropped mean recall 66.8% -> 58.1%: the more categories an exclusion
- *   list names, the more conservative models become beyond them, and narrow
- *   wording ("cut off mid-word inside its own container") became a loophole
- *   models used to keep reporting the carousel clip anyway. Any
- *   `results/golden/discovery/runs/excluded-golden/` records on disk are
- *   orphaned and can be deleted.
- */
-export const BENCH_PROMPT_VARIANTS = {
-  baseline: "What looks visually broken on this page?",
-  excluded: `What looks visually broken on this page?
-
-Do not report the following (treat these as out of scope, not defects):
-- Game cards, tiles, or other content clipped or cut off at a screen edge, or the page appearing to overflow horizontally.
-- Small or low-contrast legal / disclaimer / fine-print text being hard to read.
-- A fixed or sticky bottom navigation bar, or any overlay, covering or overlapping page content.
-- A "SCROLL DOWN" indicator or scroll-prompt overlay.
-- Inconsistent or tight spacing, padding, margins, or alignment, or a generally cramped layout.`,
-  "excluded-golden-v2": `What looks visually broken on this page?
-
-Do not report the following (treat these as features, not defects):
-- A horizontally scrollable row (restaurant carousels, category filter chips) whose last item is only partially visible at the right screen edge, including that item's title being clipped by the edge.
-- Content cut off by the bottom of the viewport, such as a partially visible card at the end of a vertical list.`,
-} as const;
-
-export type PromptVariantId = keyof typeof BENCH_PROMPT_VARIANTS;
-
-/** All variant ids in display order (baseline first). */
-export const PROMPT_VARIANT_IDS = Object.keys(BENCH_PROMPT_VARIANTS) as PromptVariantId[];
-
-/** The variant used when `--prompt` is omitted; also the report's default view. */
-export const DEFAULT_PROMPT_VARIANT: PromptVariantId = "baseline";
-
-export function isPromptVariantId(value: string): value is PromptVariantId {
-  return value in BENCH_PROMPT_VARIANTS;
-}
-
-/**
- * Baseline prompt. Anchors the manifest promptHash and keeps back-compat for
- * importers (e.g. `manifest.ts`) that only need the frozen baseline question.
- */
-export const BENCH_PROMPT = BENCH_PROMPT_VARIANTS[DEFAULT_PROMPT_VARIANT];
-
 export interface BenchConfig {
   /**
    * Default dataset: a directory name under `bench/datasets/`, or a path to a
@@ -100,12 +28,12 @@ export interface BenchConfig {
   readonly maxTokens: number;
   /**
    * Text-only LLM judge that matches reported issues against expected issues.
-   * A model name with the provider inferred (e.g. "claude-haiku-4-5",
-   * "gpt-5.6-terra"). Select per run with `discovery:score --judge <id>`.
+   * A model name with the provider inferred (e.g. "gpt-5.6-luna",
+   * "gemini-3.8-flash"). Select per run with `discovery:score --judge <id>`.
    *
    * Whichever judge is named here also owns the canonical `RESULTS.md` and
-   * `report.html`; every other judge's reports are written under its own
-   * `RESULTS.<variant>.<judge>.md` / `report.<judge>.html`.
+   * `report.html`; every judge's reports are also written under its own
+   * `RESULTS.<judge>.md` / `report.<judge>.html`.
    */
   readonly judgeModel: string;
   /**

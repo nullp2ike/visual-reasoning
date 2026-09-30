@@ -1,0 +1,26 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Profile is highlighted in the bottom nav bar while the home feed is shown"
+  ],
+  "reportedIssues": [
+    "The bottom navigation marks 'Profile' as the active tab (green icon and label) while the screen content is the home/discovery feed, showing the delivery address, search, cuisine filters, promo banner, and restaurant listings. The selected tab does not match the visible page, misrepresenting the user's location in the app.",
+    "The search field placeholder 'Restaurants, dishes, groceries' is light gray on a light gray field, so its contrast is low and it may be difficult to read."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both describe the Profile tab being marked as active in the bottom navigation despite the screen displaying the home feed."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ]
+  }
+}

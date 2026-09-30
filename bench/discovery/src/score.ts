@@ -2,18 +2,12 @@ import "dotenv/config";
 import { readdir } from "node:fs/promises";
 import { join } from "node:path";
 import { parseArgs } from "node:util";
-import {
-  BENCH_PROMPT_VARIANTS,
-  DEFAULT_PROMPT_VARIANT,
-  PROMPT_VARIANT_IDS,
-  benchConfig,
-  isPromptVariantId,
-  type PromptVariantId,
-} from "../../bench.config.js";
+import { benchConfig } from "../../bench.config.js";
 import { selectDataset } from "../../shared/dataset.js";
 import { JUDGE_PROMPT_VERSION, createJudgeCompletion, judgeRun } from "./judge.js";
 import { ensureManifest } from "./manifest.js";
 import { computeModelMetrics, sortLeaderboard } from "./metrics.js";
+import { loadPrompt } from "./prompt.js";
 import {
   OverridesSchema,
   RunRecordSchema,
@@ -30,8 +24,8 @@ import {
   readJsonIfExists,
   runPool,
   PRIMARY_FIDELITY,
-  runsDirForVariant,
-  scoresPathForVariantJudge,
+  runsDir,
+  scoresPathForJudge,
   seriesId,
   sha256,
 } from "../../shared/util.js";
@@ -75,26 +69,26 @@ export function filterScorableRecords(
   return { records, skippedModels, skippedImages };
 }
 
-async function loadRunRecords(variant: PromptVariantId): Promise<RunRecord[]> {
-  const runsDir = runsDirForVariant(variant);
+async function loadRunRecords(): Promise<RunRecord[]> {
+  const dir = runsDir();
   const records: RunRecord[] = [];
   let modelDirs: string[];
   try {
-    modelDirs = await readdir(runsDir);
+    modelDirs = await readdir(dir);
   } catch {
     return records;
   }
   for (const model of modelDirs) {
     let imageDirs: string[];
     try {
-      imageDirs = await readdir(join(runsDir, model));
+      imageDirs = await readdir(join(dir, model));
     } catch {
       continue;
     }
     for (const imageId of imageDirs) {
-      const files = await readdir(join(runsDir, model, imageId));
+      const files = await readdir(join(dir, model, imageId));
       for (const file of files.filter((f) => f.endsWith(".json"))) {
-        const raw = await readJsonIfExists(join(runsDir, model, imageId, file));
+        const raw = await readJsonIfExists(join(dir, model, imageId, file));
         const parsed = RunRecordSchema.safeParse(raw);
         if (parsed.success) {
           records.push(parsed.data);
@@ -182,7 +176,6 @@ async function main(): Promise<void> {
       // Judge calls are cheap text-only requests; cached verdicts never hit the API.
       concurrency: { type: "string", default: "8" },
       judge: { type: "string" },
-      prompt: { type: "string" },
       dataset: { type: "string" },
       models: { type: "string" },
     },
@@ -190,13 +183,7 @@ async function main(): Promise<void> {
   const dataset = selectDataset(values.dataset);
   console.log(`Dataset: ${dataset.id} (${dataset.dir})`);
   const judgeModel = values.judge ?? benchConfig.judgeModel;
-  const variant = values.prompt ?? DEFAULT_PROMPT_VARIANT;
-  if (!isPromptVariantId(variant)) {
-    throw new Error(
-      `Invalid --prompt "${variant}". Valid variants: ${PROMPT_VARIANT_IDS.join(", ")}.`,
-    );
-  }
-  const promptText = BENCH_PROMPT_VARIANTS[variant];
+  const promptText = await loadPrompt();
 
   const manifest: Manifest = await ensureManifest();
   // Only the configured roster and active (non-retired) images are scored;
@@ -207,7 +194,7 @@ async function main(): Promise<void> {
     ?.split(",")
     .map((m) => m.trim())
     .filter(Boolean);
-  const allRecords = await loadRunRecords(variant);
+  const allRecords = await loadRunRecords();
   const { records, skippedModels, skippedImages } = filterScorableRecords(
     allRecords,
     manifest,
@@ -222,10 +209,7 @@ async function main(): Promise<void> {
     console.log(`Skipping records for retired image ${imageId}`);
   }
   if (records.length === 0) {
-    throw new Error(
-      `No run records found in ${runsDirForVariant(variant)}. ` +
-        `Run "pnpm discovery:run --prompt ${variant}" first.`,
-    );
+    throw new Error(`No run records found in ${runsDir()}. Run "pnpm discovery:run" first.`);
   }
 
   const overridesRaw = await readJsonIfExists(overridesPath());
@@ -297,7 +281,6 @@ async function main(): Promise<void> {
   const scores: Scores = {
     schemaVersion: 1,
     generatedAt: new Date().toISOString(),
-    promptVariant: variant,
     prompt: promptText,
     promptHash: sha256(promptText),
     reasoningEffort: benchConfig.reasoningEffort,
@@ -308,7 +291,7 @@ async function main(): Promise<void> {
     models: sortLeaderboard(models),
     cells,
   };
-  const scoresPath = scoresPathForVariantJudge(variant, judgeModel);
+  const scoresPath = scoresPathForJudge(judgeModel);
   await atomicWriteJson(scoresPath, scores);
   console.log(`Scored ${cells.length} runs across ${models.length} models -> ${scoresPath}`);
   console.log(`Next: pnpm discovery:report`);

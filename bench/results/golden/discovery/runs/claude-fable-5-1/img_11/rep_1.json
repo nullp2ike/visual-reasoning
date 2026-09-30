@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-1",
+  "provider": "anthropic",
+  "imageId": "img_11",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-24T20:33:09.711Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders cleanly overall; the main visible defect is an implausible '−100%' discount badge on the pizza card in the 'Popular right now' list, which looks like a data/formatting error.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The second card under 'Popular right now' (pizza) shows a '−100%' badge, implying the item is completely free. This is almost certainly a data or formatting bug (e.g., a discount value being multiplied incorrectly or a delivery-fee flag rendered as a percentage discount) and will mislead users.",
+        "suggestion": "Verify the discount value returned for this restaurant and the badge formatting logic; clamp or validate discount percentages (e.g., reject values ≥100%) and display the intended promotion such as '€0 delivery' or the correct percentage."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 667,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.05424000000000001,
+    "durationSeconds": 10.922669166
+  }
+}

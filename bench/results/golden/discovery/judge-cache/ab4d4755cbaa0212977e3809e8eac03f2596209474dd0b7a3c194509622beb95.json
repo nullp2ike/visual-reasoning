@@ -1,0 +1,32 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The system gesture/home indicator bar overlaps the bottom navigation. It cuts through the search icon and the orders icon, and the nav icons are partially clipped at the bottom edge. This makes the tabs harder to see and tap.",
+    "The bottom navigation icons have no text labels. The active state is indicated only by color, and the inactive icons are light grey with low contrast.",
+    "In the 'Fastest near you' cards, the time badge (e.g. '15–25 min') overlaps the plate image on the first card and sits over the food illustration. The badge placement looks inconsistent with the other cards' image framing, and the card image is low contrast against its light grey background.",
+    "The heart/favorite button on the pizza card is a dark translucent circle over a brown image with low contrast. The white '€0 delivery' and '-20%' badges also sit over busy imagery.",
+    "The promo banner's decorative circles are clipped in the lower right, and the darker green corner looks like a rendering artifact rather than an intentional shape."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Report 0 describes the system gesture bar overlapping the bottom navigation and the navigation elements being clipped at the bottom edge."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+}

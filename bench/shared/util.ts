@@ -19,21 +19,14 @@ export function discoveryResultsDir(): string {
   return join(activeDataset().resultsDir, "discovery");
 }
 
-/**
- * Run records live under a per-prompt-variant subdirectory so runs from
- * different prompts coexist:
- * results/<dataset>/discovery/runs/<variant>/<model>/<imageId>/rep_N.json.
- */
-export function runsDirForVariant(variant: string): string {
-  return join(discoveryResultsDir(), "runs", variant);
+/** Run records: results/<dataset>/discovery/runs/<model>/<imageId>/rep_N.json. */
+export function runsDir(): string {
+  return join(discoveryResultsDir(), "runs");
 }
 
-/**
- * Per-(variant, judge) scores file. The variant is the dot-free first segment;
- * the judge slug follows and may itself contain dots ("gpt-5.4-mini").
- */
-export function scoresPathForVariantJudge(variant: string, judgeModel: string): string {
-  return join(discoveryResultsDir(), `scores.${variant}.${modelDirName(judgeModel)}.json`);
+/** Per-judge scores file. The judge slug may itself contain dots ("gpt-5.4-mini"). */
+export function scoresPathForJudge(judgeModel: string): string {
+  return join(discoveryResultsDir(), `scores.${modelDirName(judgeModel)}.json`);
 }
 
 export function sha256(data: string | Buffer): string {

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-1",
+  "provider": "anthropic",
+  "imageId": "img_07",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-24T20:32:47.241Z",
+  "status": "ok",
+  "result": {
+    "summary": "The food delivery home screen is mostly well-formed. The one visually broken element is the Tokumaru Ramen Bar hero image, which shows a persistent loading spinner overlaid on an already-rendered image, indicating a stuck or leftover loading state. Other elements (carousels, promo banner, nav bar) render as expected.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "A loading spinner is displayed in the center of the Tokumaru Ramen Bar card image even though the image itself has fully rendered. This indicates a stuck/orphaned loading indicator that was never dismissed, making the card look broken and partially obscuring the image.",
+        "suggestion": "Ensure the image loading placeholder/spinner is removed once the image load completes (hook into onLoad/onError), and add a timeout fallback so the spinner never persists indefinitely over loaded content."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 302,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.03599,
+    "durationSeconds": 8.844020833000002
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5-5",
+  "provider": "anthropic",
+  "imageId": "img_15",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-23T13:14:26.939Z",
+  "status": "ok",
+  "result": {
+    "summary": "The main defect is the bottom tab bar, which does not respect the device's bottom safe-area inset. The system gesture handle overlaps its icons, and the icons are cut off at the bottom edge. The rest of the page (header, search, chips, promo banner, carousels, cards) renders correctly.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The Android system gesture/home indicator bar is drawn directly over the bottom navigation, crossing through the Search and Orders tab icons.",
+        "suggestion": "Apply window/safe-area insets (e.g., WindowInsets.navigationBars or equivalent padding) to the bottom navigation so it sits above the gesture area."
+      },
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom navigation icons (Home, Search, Orders, Profile) are clipped by the bottom edge of the screen. Only their top halves are visible, and any tab labels are hidden, which makes the primary navigation hard to recognize and tap.",
+        "suggestion": "Give the tab bar enough height plus bottom inset padding so icons and labels render fully within the visible area."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 761,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.023576,
+    "durationSeconds": 9.634443709
+  }
+}

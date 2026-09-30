@@ -1,0 +1,30 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The system gesture/home indicator bar overlaps the bottom navigation. It sits directly over the Search icon and cuts through it, so the icon looks broken. The bottom nav has no labels, and its icons sit very close to the bottom edge.",
+    "The inactive bottom nav icons (search, orders, profile) are light gray on white with low contrast. The gray secondary text (delivery fees, '(500+)', '25–35 min') and the search placeholder are also low contrast.",
+    "The white time pills ('15–25 min', etc.) overlap the plate image on the first 'Fastest near you' card and crowd the artwork. The heart icon on the second popular card sits on a dark translucent circle, but the first heart has almost no visible background, so the two are inconsistent.",
+    "The '−20%' promo card image is an illustrated pizza with no restaurant name visible yet, and the illustrations look like placeholder art rather than real photography."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both report the system gesture bar overlapping the bottom navigation icons and the navigation being positioned too low against the bottom edge."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ]
+  }
+}

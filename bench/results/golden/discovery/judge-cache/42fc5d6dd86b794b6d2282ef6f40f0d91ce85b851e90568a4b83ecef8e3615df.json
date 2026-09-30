@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The title of the first card in the 'Popular right now' list reads 'Tokumaru Rameı' instead of 'Tokumaru Ramen'. The final 'n' is cut off mid-glyph, with no ellipsis, even though there is plenty of empty space between the title and the rating. This looks like an overly narrow or fixed-width text container with overflow hidden, and the name can be misread."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both describe the 'Tokumaru Ramen' title being truncated mid-letter without an ellipsis."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

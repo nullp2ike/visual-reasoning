@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_04",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:22:41.540Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed: header, search, category chips, promo banner, carousels and bottom navigation all render correctly. The partially visible carousel item at the right edge and the card cut off at the bottom are expected scroll behaviors and not defects. One genuine visual/content anomaly stands out: the second 'Popular right now' card shows a '-0%' discount badge, which is a meaningless value and looks like broken promo data.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The discount badge on the second restaurant card in 'Popular right now' reads '-0%', a nonsensical promo value (zero percent discount) that looks like broken or placeholder data.",
+        "suggestion": "Suppress the discount badge when the discount is 0, or populate it with a real percentage (e.g. '-20%'); add a guard so promo badges only render for non-zero discounts."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The '€0 delivery' badge on the Tokumaru Ramen Bar card and the '-0%' badge use the same white pill style, so a meaningless '-0%' sits visually equal in weight to a real benefit badge, amplifying the broken-data impression.",
+        "suggestion": "Reserve the pill badge for meaningful offers only and validate promo values before rendering."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1781,
+    "outputTokens": 2610,
+    "reasoningTokens": 2274,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.019222,
+    "reportedCost": 0.019222,
+    "durationSeconds": 60.72552683299998
+  }
+}

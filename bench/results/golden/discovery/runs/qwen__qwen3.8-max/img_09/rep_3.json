@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:27:46.205Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but two text elements are clipped: the restaurant title 'Tokumaru Ramen' in the 'Popular right now' list is truncated mid-word without an ellipsis, and a category chip is partially visible at the right edge of the filter row (expected carousel behavior). Other than that, spacing, contrast, and layout look consistent.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The restaurant title 'Tokumaru Ramen' in the 'Popular right now' section is cut off mid-glyph ('Ramen' appears as 'Rameı' / clipped) even though there is empty horizontal space to the left of the rating block; the text is truncated without an ellipsis, making the name look broken.",
+        "suggestion": "Allow the title to use the full available width up to the rating element, and apply proper single-line truncation with an ellipsis (text-overflow: ellipsis) or wrap to two lines so the restaurant name is never clipped mid-character."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the third card ('Trattoria Piccol...') is clipped at the right edge; while horizontal scroll affordance is expected, the card title is cut mid-word with no visual fade or peek padding to signal scrollability.",
+        "suggestion": "Add a right-edge gradient fade or consistent peek padding so the clipped card reads as scrollable content rather than a layout error."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1781,
+    "outputTokens": 5738,
+    "reasoningTokens": 5365,
+    "cachedInputTokens": 1152,
+    "estimatedCost": 0.03799,
+    "reportedCost": 0.035974,
+    "durationSeconds": 134.18086283400004
+  }
+}

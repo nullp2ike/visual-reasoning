@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:29:32.510Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-formed. Two duplicate restaurant cards appear side by side in the 'Fastest near you' carousel, which looks like a data/content defect rather than an intentional design. Other elements (header, search, promo banner, popular list, bottom nav) render correctly. The partially visible carousel item at the right edge and the card cut off at the bottom viewport edge are expected scroll behaviors and are not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "In the 'Fastest near you' row, the first two cards are identical duplicates: same 'Green Bowl Poké' title, same image, same '15–25 min' badge and '€0.90 delivery' fee, shown side by side. This reads as duplicated/incorrect data rather than two distinct restaurants.",
+        "suggestion": "Deduplicate the restaurant feed so each card represents a unique restaurant (or, if the same chain has multiple branches, differentiate them by branch name/address and use distinct imagery)."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The delivery-time badges ('15–25 min', '20–30 min') on the 'Fastest near you' cards overlap the card images and, on the first two cards, the badge slightly overlaps the plate illustration's edge, making the badge look pasted on rather than integrated; the second badge also crowds the gap between card 1 and card 2.",
+        "suggestion": "Align badges consistently within each card (e.g. fixed inset from the bottom-left corner with uniform margin) so they do not collide with neighboring cards or image focal points."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1781,
+    "outputTokens": 3608,
+    "reasoningTokens": 3205,
+    "cachedInputTokens": 1024,
+    "estimatedCost": 0.02521,
+    "reportedCost": 0.023418,
+    "durationSeconds": 90.704562791
+  }
+}

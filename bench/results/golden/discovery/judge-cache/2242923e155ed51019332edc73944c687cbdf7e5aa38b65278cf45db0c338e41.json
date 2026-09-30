@@ -1,0 +1,32 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The 'Pizza' category chip is selected, but the results below are unfiltered. Green Bowl Poké, Smash Bros Burgers, Trattoria (pasta) and Tokumaru Ramen Bar are all shown. The filter state and the content contradict each other.",
+    "The time pill badges (e.g. '15–25 min') on the 'Fastest near you' cards overlap the bottom-left corner of the image and sit tight against the edge. On the first card the pill looks like it collides with the plate image.",
+    "The secondary gray text (delivery fee, '25–35 min · €0 delivery · Ramen', the rating count '(500+)') is small and light, so contrast is low. The gray placeholder in the search bar and the inactive nav labels are also low contrast.",
+    "The white '€0 delivery' and '−20%' badges and the heart icon sit on busy photographic backgrounds. The heart button's dark translucent circle is barely visible on the ramen card and differs in appearance from the pizza card.",
+    "The 'Fastest near you' cards show a delivery fee but no rating, while the 'Popular' cards show ratings and cuisine. The card information is inconsistent, and the promo card 'Order now' offers a code with no copy or apply action."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both report that selecting the 'Pizza' category chip fails to filter the feed and continues showing other cuisines."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_16",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:05:10.138Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page mostly renders cleanly. The main defect is a mismatch between the selected 'Pizza' filter and the content shown. There are also a few minor contrast and layout details.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The 'Pizza' category chip is selected (dark/active), but the content below is not filtered. The 'Fastest near you' row shows a poke bowl, burgers and pasta, and the 'Popular right now' list leads with a ramen restaurant. The filter state and the results are inconsistent.",
+        "suggestion": "Make the listings respond to the selected chip so only pizza restaurants appear. Otherwise reset the selection to 'All' when the page shows unfiltered content."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary text is light gray on white or light backgrounds, such as the delivery fee lines, the '(500+)' rating count, the search placeholder and the inactive nav labels. Contrast is low and hard to read.",
+        "suggestion": "Darken the secondary gray text to reach at least a 4.5:1 contrast ratio."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The time badge ('15–25 min') on the first 'Fastest near you' card overlaps the plate illustration and sits close to the card's left and bottom edges. It looks crowded, and its white background blends into the light card image.",
+        "suggestion": "Add consistent padding and a subtle shadow or border to the badge, and keep it clear of the main image content."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The green promo banner has decorative circles that clip awkwardly at the bottom-right corner. The 'Order now' button's white fill also stands out sharply against the banner.",
+        "suggestion": "Adjust or mask the decorative shapes so they end cleanly at the rounded corners."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The heart/favorite buttons use a dark translucent circle that is barely visible against the dark ramen image and the brown pizza image. Their appearance is inconsistent between the two cards.",
+        "suggestion": "Use a consistent, higher-contrast background for the favorite button, such as a white circle with a dark icon."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 813,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.012308,
+    "durationSeconds": 7.196159667
+  }
+}

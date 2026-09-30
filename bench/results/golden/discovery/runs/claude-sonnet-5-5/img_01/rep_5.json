@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:03:57.310Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page mostly renders correctly, but one clear defect stands out: an untranslated localization key is shown as a section heading. Minor issues include a weak-contrast time badge and small secondary text.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading shows the raw localization key 'home_feed.popular_title' instead of a translated title such as 'Popular near you'. This is unprofessional and confusing for users.",
+        "suggestion": "Add the missing translation string for this key, and add a fallback to the default language so raw keys are never displayed."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "On the first 'Fastest near you' card, the '15–25 min' badge overlaps the plate image and sits close to the card's left edge. It looks inconsistent with the badges on the other cards, where the placement is cleaner.",
+        "suggestion": "Use consistent badge padding and position across all cards, and make sure it doesn't cover the key part of the image."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary text (grey delivery fee and meta info such as '€0.90 delivery' and '25–35 min · €0 delivery · Ramen') is small and light grey, so its contrast against the white background is low. The '€0 delivery' green text on the white pill is also small.",
+        "suggestion": "Darken the secondary text color to meet WCAG AA contrast (4.5:1) and increase the font size slightly."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 529,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.009468,
+    "durationSeconds": 4.467553541999999
+  }
+}

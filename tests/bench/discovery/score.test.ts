@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { filterScorableRecords } from "../../../bench/discovery/src/score.js";
-import { scoresPathForVariantJudge } from "../../../bench/shared/util.js";
+import { scoresPathForJudge } from "../../../bench/shared/util.js";
 import type { Manifest, RunRecord } from "../../../bench/discovery/src/types.js";
 
 function record(model: string, imageId: string): RunRecord {
@@ -59,19 +59,12 @@ describe("filterScorableRecords", () => {
   });
 });
 
-describe("scoresPathForVariantJudge", () => {
-  it("embeds the variant and judge model in the filename", () => {
-    expect(scoresPathForVariantJudge("baseline", "claude-haiku-4-5")).toMatch(
-      /scores\.baseline\.claude-haiku-4-5\.json$/,
-    );
-    expect(scoresPathForVariantJudge("excluded", "claude-haiku-4-5")).toMatch(
-      /scores\.excluded\.claude-haiku-4-5\.json$/,
-    );
+describe("scoresPathForJudge", () => {
+  it("embeds the judge model in the filename", () => {
+    expect(scoresPathForJudge("gpt-5.6-luna")).toMatch(/scores\.gpt-5\.6-luna\.json$/);
   });
 
   it("sanitizes slash-slug judges", () => {
-    expect(scoresPathForVariantJudge("baseline", "x-ai/grok-4.5")).toMatch(
-      /scores\.baseline\.x-ai__grok-4\.5\.json$/,
-    );
+    expect(scoresPathForJudge("x-ai/grok-4.5")).toMatch(/scores\.x-ai__grok-4\.5\.json$/);
   });
 });

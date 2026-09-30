@@ -1,8 +1,8 @@
 import "dotenv/config";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { BENCH_PROMPT } from "../../bench.config.js";
 import { ISSUES_FILE, selectDataset } from "../../shared/dataset.js";
+import { loadPrompt } from "./prompt.js";
 import { ManifestSchema, type Manifest, type ManifestEntry, type RetiredEntry } from "./types.js";
 import {
   datasetDir,
@@ -119,7 +119,7 @@ export async function generateManifest(
 
   return {
     schemaVersion: 1,
-    promptHash: sha256(BENCH_PROMPT),
+    promptHash: sha256(await loadPrompt(goldenDir)),
     generatedAt: new Date().toISOString(),
     entries,
     retired,
@@ -151,7 +151,7 @@ export function diffManifests(stored: Manifest, fresh: Manifest): ManifestDiff {
   const membership: string[] = [];
 
   if (stored.promptHash !== fresh.promptHash) {
-    breaking.push("prompt hash changed (BENCH_PROMPT was edited)");
+    breaking.push("prompt hash changed (prompt.md was edited)");
   }
 
   const storedByFile = new Map(stored.entries.map((e) => [e.filename, e]));

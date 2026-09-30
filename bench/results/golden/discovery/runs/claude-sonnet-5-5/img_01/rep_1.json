@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:03:50.080Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well laid out, but one clear defect stands out: an untranslated localization key is shown as the section heading. There are also minor issues with the time badges and text contrast.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading shows the raw localization key 'home_feed.popular_title' instead of translated text such as 'Popular near you'. It looks like a missing translation or i18n failure.",
+        "suggestion": "Add the missing translation string for this key and a fallback so raw keys are never shown. Check that all locales, including English and Estonian, define it."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The delivery-time pill on the first 'Fastest near you' card (15–25 min) overlaps the plate image and sits close to the card edge. Its position looks slightly inconsistent with the other cards' pills.",
+        "suggestion": "Use the same padding and anchoring for the badge on every card, and keep it clear of the key image content."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The secondary gray text (delivery fees, the search placeholder, the inactive tab labels) is low contrast against the light background. The white '€0 delivery' and '−20%' badges over busy photos also depend on the image behind them.",
+        "suggestion": "Darken the secondary text to meet WCAG AA 4.5:1 contrast. Keep the badges on a solid background."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 516,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.009337999999999999,
+    "durationSeconds": 9.081183666000001
+  }
+}

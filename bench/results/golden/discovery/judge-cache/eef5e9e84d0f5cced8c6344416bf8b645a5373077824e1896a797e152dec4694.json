@@ -1,0 +1,23 @@
+{
+  "judgeModel": "meta/muse-spark-1.3-contributor",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The 'Pizza' filter chip is highlighted as the active category, but the content below does not match. 'Fastest near you' shows a poké bowl place, a burger joint and a trattoria, and the top 'Popular right now' result is Tokumaru Ramen Bar (tagged 'Ramen'). Either the filter is not being applied or the chip's selected state is wrong, which misleads users about what they are browsing."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both describe Pizza selected but feed shows other cuisines like ramen and burgers."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

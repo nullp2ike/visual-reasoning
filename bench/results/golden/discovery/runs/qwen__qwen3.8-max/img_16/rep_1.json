@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:36:49.825Z",
+  "status": "ok",
+  "result": {
+    "summary": "The food delivery home screen is largely well composed: header, search bar, category chips, promo banner, carousels and bottom nav all render correctly. The only genuine visual defect is the horizontal category chip row, where a fifth chip is cut off at the right edge with no visual affordance (fade/gradient or peeking label) indicating the row scrolls, and the partially visible chip appears as an empty grey pill with no readable content. The partially visible carousel card ('Trattoria Piccol...') and the card cut off at the bottom viewport edge are expected scroll behavior and are not reported.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The horizontally scrollable category filter row ends with a chip that is almost entirely off-screen at the right edge; only a blank grey sliver is visible, giving no hint that more categories exist or that the row is scrollable.",
+        "suggestion": "Add a scroll affordance such as a right-edge fade/gradient mask, a chevron indicator, or size the chips so the next chip peeks with visible label text, so users understand the row scrolls horizontally."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The favourite (heart) buttons overlaid on the restaurant cards are icon-only controls with no visible text label; the white heart on the dark ramen image also relies solely on shape for meaning.",
+        "suggestion": "Provide accessible names (e.g. aria-label 'Save Tokumaru Ramen Bar to favourites') and ensure a sufficient contrast backdrop (the translucent dark circle already helps) so the control is perceivable and operable by screen readers."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1781,
+    "outputTokens": 5570,
+    "reasoningTokens": 5174,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.036982,
+    "reportedCost": 0.036982,
+    "durationSeconds": 130.00796025
+  }
+}

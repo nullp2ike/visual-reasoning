@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-sonnet-5-5",
+  "provider": "anthropic",
+  "imageId": "img_14",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-29T18:04:56.879Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly clean. The main visual defect is the misaligned cards in the 'Fastest near you' carousel. There are also minor contrast and consistency issues.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The cards in the 'Fastest near you' carousel are not aligned. Green Bowl Poké has a taller image (starting near y≈631) than Smash Bros Burgers and Trattoria Piccola (starting near y≈658). Their titles and delivery-fee text therefore sit at different vertical positions (801 vs 829), and the time badges are offset too.",
+        "suggestion": "Give all carousel cards the same image height and top alignment, using a fixed aspect ratio so titles and meta text line up on one baseline."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The secondary gray text (delivery fees, '25–35 min · €0 delivery · Ramen', the '(500+)' rating count) and the inactive tab labels are light gray on white and have low contrast.",
+        "suggestion": "Darken the secondary text and inactive tab colors to meet WCAG AA contrast (4.5:1)."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The heart/favorite buttons are inconsistent. On the ramen card the heart has no background, so it may be hard to see against the image. On the pizza card it has a dark circular background.",
+        "suggestion": "Use the same favorite button style, such as a semi-transparent circular backdrop, on every card."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The promo banner's decorative circles are cropped awkwardly at the right and bottom edges, and one of them has a hard-edged corner artifact at the bottom right.",
+        "suggestion": "Adjust or clip the decorative shapes cleanly so they look intentional."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 671,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.010888,
+    "durationSeconds": 5.740387167000008
+  }
+}

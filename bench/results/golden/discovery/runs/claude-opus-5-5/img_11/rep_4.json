@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5-5",
+  "provider": "anthropic",
+  "imageId": "img_11",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-23T13:13:59.399Z",
+  "status": "ok",
+  "result": {
+    "summary": "The layout is mostly clean. One likely content defect stands out: the second 'Popular right now' card shows a '−100%' promo badge, which looks like a broken discount value.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The pizza restaurant card in 'Popular right now' shows a '−100%' badge. A 100% discount means everything is free, so the value is probably a calculation or formatting bug, such as a free-delivery promo rendered as a percentage or a missing discount value defaulting to −100%. It misleads users about pricing.",
+        "suggestion": "Check the discount data and badge formatting logic. Show the correct discount (e.g., '−20%') or use clear wording like '€0 delivery' if it is a delivery promo. Hide the badge when the value is missing or invalid."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 532,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.018996,
+    "durationSeconds": 6.63182475
+  }
+}

@@ -51,8 +51,7 @@ All three accept `--dataset <id-or-path>`.
 `--models` selects models outright rather than filtering the roster, so a
 one-off model can be swept without editing `bench.config.ts`.
 
-`discovery:run` also takes `--models`, `--images`, `--prompt <variant>`,
-`--effort`, `--fidelity`, `--concurrency`, `--force`, and `--yes` (skip the cost
+`discovery:run` also takes `--models`, `--images`, `--effort`, `--fidelity`, `--concurrency`, `--force`, and `--yes` (skip the cost
 confirmation). It prints an estimated cost and asks before spending anything.
 Runs are resumable: completed cells are skipped, and failed cells are retried on
 the next invocation.
@@ -67,22 +66,26 @@ cached, so re-scoring is nearly free.
 
 [`bench.config.ts`](../bench.config.ts) holds the roster of models, the number of
 repeats, the default dataset, reasoning effort, image fidelity, token budget,
-judge, and concurrency. It also defines the **prompt variants** — the exact
-questions put to the models. Changing a variant's wording invalidates existing
-runs for it (the prompt hash is stamped into every record), which the manifest
+judge, and concurrency.
+
+The question put to the models is not configuration: it belongs to the dataset,
+in `bench/datasets/<id>/prompt.md`, sent verbatim. A dataset has exactly one
+prompt, so there are no prompt variants. To try a different wording, make a new
+dataset directory with its own `prompt.md` — a separate benchmark with its own
+results. Editing an existing `prompt.md` invalidates that dataset's runs (the
+prompt hash is stamped into every record and the manifest), which the manifest
 guard will tell you about.
 
 ## Axes
 
-A run is identified by (model, prompt variant, reasoning effort, image
-fidelity). Non-default efforts and fidelities are stored separately and appear
+A run is identified by (model, reasoning effort, image fidelity). Non-default efforts and fidelities are stored separately and appear
 as their own leaderboard rows, e.g. `gpt-5.6-luna (xhigh, high-res)`, so one
 model can be compared against itself across settings.
 
 ## Judges
 
 The judge is text-only: it never sees the screenshot, only the expected issues
-and what the model reported. It is an LLM (`claude-haiku-4-5`, `gpt-5.6-terra`,
+and what the model reported. It is an LLM (`gpt-5.6-luna`, `gemini-3.8-flash`,
 …). Reports are written per judge so you can see how much the grading choice
 moves the ranking; the one named in `judgeModel` (`gpt-5.6-luna`) also owns the
 canonical `RESULTS.md` and `report.html`.
@@ -93,12 +96,15 @@ Everything lands in `bench/results/<dataset-id>/discovery/`, beside the
 assertion bench's artifacts for the same dataset rather than mixed into them:
 
 ```
-manifest.json                    image ids, hashes, expected issues
-runs/<variant>/<model>/<img>/    one JSON record per repetition
-judge-cache/                     cached judge verdicts
-scores.<variant>.<judge>.json    graded cells + leaderboard metrics
-RESULTS.<variant>.<judge>.md     markdown leaderboard + matrix
-report.<judge>.html              interactive report with per-image drill-down
+manifest.json          image ids, hashes, expected issues, prompt hash
+runs/<model>/<img>/    one JSON record per repetition
+judge-cache/           cached judge verdicts
+scores.<judge>.json    graded cells + leaderboard metrics
+RESULTS.<judge>.md     markdown leaderboard + matrix
+report.<judge>.html    interactive report with per-image drill-down
+RESULTS.md             copies of the default judge's RESULTS and report
+report.html
+JUDGE_COMPARISON.md    how the judges disagree, when there are two or more
 ```
 
 The HTML report links screenshots relative to its own location rather than

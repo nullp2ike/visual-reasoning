@@ -40,8 +40,6 @@ export const RunRecordSchema = z.object({
   imageId: z.string(),
   rep: z.number().int().positive(),
   promptHash: z.string(),
-  /** Prompt variant this run used. Optional for records written before variants existed. */
-  promptVariant: z.string().optional(),
   reasoningEffort: z.string(),
   /** Image-fidelity hint used for this run (optional; absent → "auto" on pre-fidelity records). */
   imageFidelity: z.string().optional(),
@@ -183,8 +181,6 @@ export type ModelMetrics = z.infer<typeof ModelMetricsSchema>;
 export const ScoresSchema = z.object({
   schemaVersion: z.literal(1),
   generatedAt: z.string(),
-  /** Prompt variant these scores were computed for (e.g. "baseline", "excluded"). */
-  promptVariant: z.string(),
   prompt: z.string(),
   promptHash: z.string(),
   reasoningEffort: z.string(),

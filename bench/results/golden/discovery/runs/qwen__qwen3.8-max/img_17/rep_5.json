@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:39:34.843Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed: header, search bar, category chips, promo banner, carousels and bottom tab bar all render consistently. Excluding the expected partially-visible carousel item at the right edge and the card cut off at the bottom of the viewport, two minor visual inconsistencies remain: the active tab label ('Profile') does not match the visible content (home feed), and the promo banner's decorative circles are clipped abruptly at the banner's right edge.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The bottom navigation highlights 'Profile' as the active tab (green icon and label) while the screen shows the home/feed content (delivery address, search, restaurant carousels), so the active state contradicts the visible page.",
+        "suggestion": "Mark 'Home' as the active tab on this feed screen, or navigate to the Profile screen when Profile is selected, so the highlighted tab matches the displayed content."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The decorative translucent circles on the green '3 free deliveries' banner are cut off abruptly at the banner's right and bottom edges, producing hard flat edges instead of smooth circular shapes.",
+        "suggestion": "Clip the decorative shapes within the banner's rounded corners intentionally (e.g., overflow hidden with shapes positioned fully inside or deliberately bleeding off-edge), or reposition/resize them so the cutoff looks intentional rather than accidentally sliced."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1781,
+    "outputTokens": 3691,
+    "reasoningTokens": 3337,
+    "cachedInputTokens": 1152,
+    "estimatedCost": 0.025707999999999998,
+    "reportedCost": 0.023692,
+    "durationSeconds": 89.89322833299985
+  }
+}

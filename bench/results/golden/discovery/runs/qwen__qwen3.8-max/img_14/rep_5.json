@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen3.8-max",
+  "provider": "openrouter",
+  "imageId": "img_14",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-09-22T19:35:06.325Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-composed, but the 'Fastest near you' carousel row has vertically misaligned cards: image tiles and their titles/delivery lines sit at different heights across the row, making the layout look broken. Other elements (header, search, promo banner, popular list, bottom nav) appear consistent.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' horizontal row, the restaurant cards are vertically misaligned: the Green Bowl Poké image tile starts higher than the Smash Bros Burgers tile, which in turn starts higher than the Trattoria Piccola tile, so their titles and delivery-fee lines sit at three different baselines and the row looks jagged/broken.",
+        "suggestion": "Align all carousel cards to a common top edge (e.g. align-items: flex-start on the row container) and give image tiles a fixed aspect ratio/height so titles and metadata lines line up across cards."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The delivery-time badges ('15–25 min', '20–30 min') are pinned to inconsistent positions on their image tiles (bottom-left on the first card, lower-left overlapping differently on the others), reinforcing the misaligned appearance of the carousel.",
+        "suggestion": "Use a consistent badge anchor (same offset from the tile's bottom-left corner) on every card so badges align uniformly across the row."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1781,
+    "outputTokens": 4841,
+    "reasoningTokens": 4479,
+    "cachedInputTokens": 1152,
+    "estimatedCost": 0.032608000000000005,
+    "reportedCost": 0.030592,
+    "durationSeconds": 110.71100524999993
+  }
+}
