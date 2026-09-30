@@ -15,6 +15,10 @@ TypeScript library for AI-powered visual assertions in E2E tests.
 
 Run all checks: `pnpm typecheck && pnpm lint && pnpm test && pnpm build`
 
+## Benchmarks
+
+- **Always pass `--prompt <variant>` to `pnpm discovery:run` and `pnpm discovery:score`**, even when you want `baseline`. Without it both silently fall back to `baseline`. That means a sweep lands in the wrong `runs/` directory, or the scoring step re-grades and rewrites `scores.baseline.*.json` while leaving the variant you meant unscored. Variant ids live in `BENCH_PROMPT_VARIANTS` in `bench/bench.config.ts` (e.g. `baseline`, `excluded-golden-v2`). `pnpm discovery:report` takes no `--prompt`; it renders every scored variant.
+
 ## Development rules
 
 - **Test first**: Write tests before implementation. Target 80%+ coverage.
@@ -22,13 +26,15 @@ Run all checks: `pnpm typecheck && pnpm lint && pnpm test && pnpm build`
 - **Zod for AI responses**: All AI model responses must be validated with Zod schemas before returning to users.
 - **No barrel re-exports in subdirectories**: Only `src/index.ts` serves as the public API barrel.
 - **Provider SDKs are optional peer deps**: Import them dynamically. Always check for availability at runtime with a clear error message.
+- **ffmpeg deps ship with the library**: `fluent-ffmpeg`, `@ffmpeg-installer/ffmpeg`, and `@ffprobe-installer/ffprobe` are regular `dependencies` so video input works out of the box. They are still loaded via dynamic `import()` at first use — image-only flows must not import them eagerly, and the loader must surface a `VisualAIVideoError` if a module fails to resolve (e.g., unsupported platform binary, pruned install).
 - **Image handling**: Always validate image input type and format before sending to providers. Auto-resize to provider limits.
+- **Video handling**: Auto-detect via magic bytes / extension / data URL. Probe duration before any provider call and reject videos exceeding `maxDurationSeconds` — on both delivery paths. Providers that accept video natively (Google) implement the optional `ProviderDriver.sendVideoMessage` and receive a `NormalizedVideo`; `video.mode` (`auto` | `native` | `frames`) decides in `src/core/client.ts` and `normalizeMedia` returns `{ kind: "native-video" }` for that path, with `result.video` / `timestampReferences` instead of `result.frames` / `frameReferences`. Everywhere else sampled frames are passed to providers as ordinary `NormalizedImage`s — drivers must stay format-agnostic. Frames that did not visibly change from the preceding kept frame are dropped in `src/core/frame-dedupe.ts` (on by default, for both video and pre-sampled `FramesInput`) before `saveDebugFrames` and before the provider call; surviving frames get contiguous `Frame.index` values so `frameReferences` stay valid, and the timeline prompt must state how many were dropped.
 - **Errors over silent failures**: Throw typed errors (`VisualAIError` subclasses). Never swallow exceptions or return ambiguous results.
 - **Keep prompts in dedicated functions**: Prompt text lives in `src/core/prompt.ts` and `src/templates/*.ts`, not inline in provider drivers.
 
 ## Project structure
 
-- `src/core/` — Image normalization, prompt construction, response parsing, client
+- `src/core/` — Image + video normalization, frame extraction, prompt construction, response parsing, client
 - `src/providers/` — Thin drivers for Anthropic, OpenAI, Google (one file each)
 - `src/templates/` — Built-in prompt templates
 - `src/types.ts` — Shared types and Zod schemas
@@ -48,3 +54,13 @@ Run all checks: `pnpm typecheck && pnpm lint && pnpm test && pnpm build`
 - Every user-visible change must be recorded in [`CHANGELOG.md`](./CHANGELOG.md) under a new top-of-file `## [X.Y.Z]` heading **before** the version is tagged.
 - Group entries under `Added` / `Changed` / `Fixed` / `Notes for upgraders` (see prior versions for shape). Mention any `VisualAIErrorCode` widening or other type-level breaking change in the upgrade notes so downstream consumers can prepare.
 - Keep entries written from the consumer's perspective — what they can now do, what they need to change — not internal refactors.
+
+## Releasing a new version
+
+1. Update `"version"` in `package.json`
+2. Add a `## [X.Y.Z]` section at the top of [`CHANGELOG.md`](./CHANGELOG.md) covering every user-visible change (Added / Changed / Fixed / Notes for upgraders)
+3. Run all checks: `pnpm typecheck && pnpm lint && pnpm test && pnpm build`
+4. Commit: `git commit -m "Bump to vX.Y.Z: <summary of changes>"`
+5. Tag: `git tag -a vX.Y.Z -m "vX.Y.Z: <summary>"`
+6. Push: `git push origin main --tags`
+7. Publish: `pnpm publish --access public`
