@@ -1,0 +1,28 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "Category filter 'Pizza' is selected, but displayed restaurants include ramen, burgers, and poké.",
+    "Text 'Trattoria Piccol' in the horizontal carousel is cut off abruptly.",
+    "Food items use simplified vector placeholder graphics instead of actual food photography."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both report that selecting the 'Pizza' category filter fails to filter the feed, displaying other cuisines instead."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}
