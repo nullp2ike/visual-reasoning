@@ -1,6 +1,7 @@
 import type { Manifest, Overrides, Scores } from "./types.js";
 import { modelDirName } from "../../shared/util.js";
 import { UNCERTAIN_CONFIDENCE, summarizeConfidence } from "./confidence.js";
+import { MODEL_FILTER_CSS, MODEL_FILTER_MARKUP, MODEL_FILTER_SCRIPT } from "./model-filter.js";
 
 export function escapeHtml(text: string): string {
   return text
@@ -138,19 +139,7 @@ export function buildReportHtml(
   #leaderboard tbody tr { cursor: pointer; }
   #leaderboard tbody tr:hover { background: #eff6ff; }
   #leaderboard tbody tr.selected { background: #dbeafe; }
-  /* A compact button; the list opens as a dropdown over the page instead of pushing it down. */
-  .model-filter { position: relative; display: inline-block; font-size: 13px; color: #374151; margin: 0 0 10px; }
-  .model-filter summary { cursor: pointer; font-weight: 600; color: #3730a3; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 6px; padding: 3px 10px; list-style: none; user-select: none; }
-  .model-filter summary::-webkit-details-marker { display: none; }
-  .model-filter summary::after { content: " ▾"; }
-  .model-filter[open] summary::after { content: " ▴"; }
-  .model-filter .mf-panel { position: absolute; top: calc(100% + 4px); left: 0; z-index: 20; width: min(760px, calc(100vw - 48px)); max-height: 60vh; overflow: auto; background: #fff; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 8px 24px rgba(17, 24, 39, 0.15); padding: 8px 12px; }
-  .model-filter .mf-actions { display: flex; gap: 8px; margin: 0 0 8px; }
-  .model-filter .mf-actions button { background: #eef2ff; color: #3730a3; border: 1px solid #c7d2fe; border-radius: 6px; padding: 3px 10px; font-size: 12px; }
-  .model-filter .mf-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 2px 16px; }
-  .model-filter .mf-opt { display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
-  .model-filter .mf-recall { color: var(--muted); font-variant-numeric: tabular-nums; margin-left: auto; }
-  .effort-filter { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 13px; color: #374151; margin: 0 0 10px; }
+${MODEL_FILTER_CSS}  .effort-filter { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 13px; color: #374151; margin: 0 0 10px; }
   .effort-filter .ef-label { font-weight: 600; }
   .effort-filter .ef-opt { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; user-select: none; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 6px; padding: 2px 8px; }
   .effort-filter .ef-opt input { cursor: pointer; }
@@ -233,7 +222,7 @@ export function buildReportHtml(
   <div class="meta" id="meta"></div>
   <h2>Screenshot × model matrix</h2>
   <p class="meta">Cells = reps where the judge matched every expected issue ("clean n/m" on negative controls; † = failed reps excluded). Click a cell to expand that model's reported issues per rep, with judge-matched issues highlighted.</p>
-  <details id="model-filter" class="model-filter"><summary></summary><div class="mf-panel"><div class="mf-actions"></div><div class="mf-list"></div></div></details>
+  ${MODEL_FILTER_MARKUP}
   <div id="effort-filter" class="effort-filter"></div>
   <div style="overflow-x:auto"><table id="matrix"><thead></thead><tbody></tbody></table></div>
   <h2>Leaderboard</h2>
@@ -281,29 +270,21 @@ const overrides = structuredClone(DATA.overrides || {});
 const allEfforts = [...new Set(scores.models.map(m => m.reasoningEffort))].sort();
 const activeEfforts = new Set(allEfforts);
 
-// Model filter: which series the matrix, leaderboard, detail and confidence
-// list show. The default (e.g. the top 10 by one judge's recall) is the same
-// in every judge's report; a changed selection lives in #models=… so it can be
-// shared and follows the links to the other judges' reports.
-const ALL_SERIES = scores.models.map(m => m.series);
-const DEFAULT_SERIES = (() => {
-  const known = (DATA.defaultSeries || []).filter(s => ALL_SERIES.includes(s));
-  return known.length > 0 ? known : ALL_SERIES;
-})();
-function seriesFromHash() {
-  const m = /(?:^|[#&])models=([^&]*)/.exec(location.hash || "");
-  if (!m) return null;
-  if (m[1] === "all") return ALL_SERIES;
-  if (m[1] === "none") return [];
-  const wanted = m[1].split(",").map(decodeURIComponent).filter(s => ALL_SERIES.includes(s));
-  return wanted.length > 0 ? wanted : null;
-}
-let visibleSeries = new Set(seriesFromHash() || DEFAULT_SERIES);
-const isShown = m => activeEfforts.has(m.reasoningEffort) && visibleSeries.has(m.series);
-
 const fmt = (v, digits = 2, suffix = "") => (v === null || v === undefined) ? "–" : v.toFixed(digits) + suffix;
 const pct = v => (v === null || v === undefined) ? "–" : (100 * v).toFixed(0) + "%";
 const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+
+// Model filter (shared with the comparison page): which series the matrix,
+// leaderboard, detail and confidence list show.
+${MODEL_FILTER_SCRIPT}
+const MODEL_FILTER = createModelFilter({
+  series: scores.models.map(m => m.series),
+  labels: Object.fromEntries(scores.models.map(m => [m.series, pct(m.meanRecall)])),
+  defaults: DATA.defaultSeries,
+  defaultJudge: DATA.defaultSeriesJudge,
+});
+const isShown = m => activeEfforts.has(m.reasoningEffort) && MODEL_FILTER.has(m.series);
+
 
 const REPS = Array.from({ length: scores.repeats }, (_, i) => i + 1);
 
@@ -339,70 +320,19 @@ function renderEffortFilter() {
   });
 }
 
-function modelHash() {
-  const isDefault = visibleSeries.size === DEFAULT_SERIES.length && DEFAULT_SERIES.every(s => visibleSeries.has(s));
-  if (isDefault) return "";
-  if (visibleSeries.size === ALL_SERIES.length) return "#models=all";
-  if (visibleSeries.size === 0) return "#models=none";
-  return "#models=" + ALL_SERIES.filter(s => visibleSeries.has(s)).map(encodeURIComponent).join(",");
-}
-function syncModelHash() {
-  const hash = modelHash();
-  if (history.replaceState) history.replaceState(null, "", location.pathname + location.search + hash);
-  document.querySelectorAll('.sibling-links a[href^="report."]').forEach(a => {
-    a.setAttribute("href", a.getAttribute("href").split("#")[0] + hash);
-  });
-}
-function renderModelFilter() {
-  const el = document.getElementById("model-filter");
-  if (!el) return;
-  const recall = Object.fromEntries(scores.models.map(m => [m.series, m.meanRecall]));
-  el.querySelector("summary").textContent = "Models: " + visibleSeries.size + " of " + ALL_SERIES.length + " shown";
-  const defaultLabel = DATA.defaultSeriesJudge
-    ? "Top " + DEFAULT_SERIES.length + " by " + DATA.defaultSeriesJudge + " recall"
-    : "Default";
-  el.querySelector(".mf-actions").innerHTML =
-    '<button type="button" data-mf="default">' + esc(defaultLabel) + "</button>" +
-    '<button type="button" data-mf="all">All</button><button type="button" data-mf="none">None</button>';
-  el.querySelector(".mf-list").innerHTML = ALL_SERIES.map(s =>
-    '<label class="mf-opt"><input type="checkbox" data-series="' + esc(s) + '"' + (visibleSeries.has(s) ? " checked" : "") + "> " +
-    esc(s) + ' <span class="mf-recall">' + pct(recall[s]) + "</span></label>").join("");
-  el.querySelectorAll("button[data-mf]").forEach(b => b.onclick = () => {
-    const which = b.dataset.mf;
-    visibleSeries = new Set(which === "all" ? ALL_SERIES : which === "none" ? [] : DEFAULT_SERIES);
-    applyModelFilter();
-  });
-  el.querySelectorAll("input[data-series]").forEach(cb => cb.onchange = () => {
-    if (cb.checked) visibleSeries.add(cb.dataset.series); else visibleSeries.delete(cb.dataset.series);
-    applyModelFilter();
-  });
-}
-// Close the model dropdown on a click outside it or on Escape. composedPath()
-// is fixed at dispatch, so clicks on controls the panel re-renders still count
-// as inside.
-document.addEventListener("click", e => {
-  const el = document.getElementById("model-filter");
-  if (el && el.open && !e.composedPath().includes(el)) el.open = false;
-});
-document.addEventListener("keydown", e => {
-  const el = document.getElementById("model-filter");
-  if (e.key === "Escape" && el && el.open) el.open = false;
-});
 function filterConfidenceRows() {
   document.querySelectorAll("#confidence-table tr.conf-row").forEach(tr => {
-    tr.style.display = visibleSeries.has(tr.dataset.model) ? "" : "none";
+    tr.style.display = MODEL_FILTER.has(tr.dataset.model) ? "" : "none";
   });
 }
-function applyModelFilter() {
-  if (selectedModel && !visibleSeries.has(selectedModel)) selectedModel = null;
-  if (expandedCell && !visibleSeries.has(expandedCell.model)) expandedCell = null;
-  syncModelHash();
-  renderModelFilter();
+MODEL_FILTER.onChange(() => {
+  if (selectedModel && !MODEL_FILTER.has(selectedModel)) selectedModel = null;
+  if (expandedCell && !MODEL_FILTER.has(expandedCell.model)) expandedCell = null;
   renderMatrix();
   renderLeaderboard();
   renderDetail();
   filterConfidenceRows();
-}
+});
 
 function cellFor(series, imageId, rep) {
   return scores.cells.find(c => c.series === series && c.imageId === imageId && c.rep === rep);
@@ -730,8 +660,7 @@ document.querySelectorAll("#confidence-table tr.conf-row").forEach(tr => tr.oncl
 });
 
 renderMeta();
-syncModelHash();
-renderModelFilter();
+MODEL_FILTER.render();
 filterConfidenceRows();
 renderEffortFilter();
 renderMatrix();

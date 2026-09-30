@@ -1,5 +1,11 @@
 import type { Manifest, ResolvedCell, Scores } from "./types.js";
 import { escapeHtml } from "./html.js";
+import {
+  MODEL_FILTER_CSS,
+  MODEL_FILTER_MARKUP,
+  MODEL_FILTER_SCRIPT,
+  type ModelFilterConfig,
+} from "./model-filter.js";
 import { truncateDescription } from "./matrix.js";
 
 interface JudgeModelStats {
@@ -292,7 +298,12 @@ export function disagreementHeat(comparison: JudgeComparison): Map<string, HeatC
  */
 export function buildComparisonHtml(
   comparison: JudgeComparison,
-  options: { backHref: string; imageBase?: string },
+  options: {
+    backHref: string;
+    imageBase?: string;
+    /** Models shown before the reader changes the filter, and the judge that ranked them. */
+    defaultSeries?: { series: readonly string[]; rankJudge: string };
+  },
 ): string {
   const e = escapeHtml;
   const imageBase = options.imageBase?.replace(/\/+$/, "");
@@ -322,25 +333,25 @@ export function buildComparisonHtml(
   };
 
   const heatHead = `<tr><th class="rowhead">Screenshot</th>${columns
-    .map((s) => `<th class="col"><span>${e(s)}</span></th>`)
+    .map((s) => `<th class="col" data-model="${e(s)}"><span>${e(s)}</span></th>`)
     .join("")}<th class="col"><span>total</span></th></tr>`;
   const heatRows = images.map((d) => {
     const cells = columns.map((series) => {
       const h = heat.get(`${series} ${d.imageId}`);
-      if (!h) return `<td class="heat"></td>`;
+      if (!h) return `<td class="heat" data-model="${e(series)}"></td>`;
       const title = `${d.imageId} × ${series}: ${h.splitReps} of ${repCount} reps split, ${h.outvoted} outvoted verdicts`;
-      return `<td class="heat" data-outvoted="${h.outvoted}" style="${shade(h.outvoted)}" title="${e(title)}"><a href="#${anchor(series, d.imageId)}">${h.outvoted}</a></td>`;
+      return `<td class="heat" data-model="${e(series)}" data-outvoted="${h.outvoted}" style="${shade(h.outvoted)}" title="${e(title)}"><a href="#${anchor(series, d.imageId)}">${h.outvoted}</a></td>`;
     });
     const rowTotal = [...heat.values()]
       .filter((h) => h.imageId === d.imageId)
       .reduce((n, h) => n + h.outvoted, 0);
-    return `<tr><th class="rowhead">${e(d.imageId)} <span class="muted">${e(d.filename)}</span><br><span class="muted">${e(truncateDescription(d.expectedText))}</span></th>${cells.join("")}<td class="total">${rowTotal}</td></tr>`;
+    return `<tr data-image="${e(d.imageId)}"><th class="rowhead">${e(d.imageId)} <span class="muted">${e(d.filename)}</span><br><span class="muted">${e(truncateDescription(d.expectedText))}</span></th>${cells.join("")}<td class="total row-total">${rowTotal}</td></tr>`;
   });
   const heatFoot = `<tr><th class="rowhead">total</th>${columns
-    .map((s) => `<td class="total">${colTotal(s) || ""}</td>`)
+    .map((s) => `<td class="total" data-model="${e(s)}">${colTotal(s) || ""}</td>`)
     .join(
       "",
-    )}<td class="total">${[...heat.values()].reduce((n, h) => n + h.outvoted, 0)}</td></tr>`;
+    )}<td class="total" id="grand-total">${[...heat.values()].reduce((n, h) => n + h.outvoted, 0)}</td></tr>`;
 
   const metricHeader = [
     "Model",
@@ -356,8 +367,32 @@ export function buildComparisonHtml(
       ]),
       row.recallDelta === null ? "–" : pct(row.recallDelta),
     ];
-    return `<tr>${cells.map((c) => `<td>${e(c)}</td>`).join("")}</tr>`;
+    return `<tr data-model="${e(row.model)}">${cells.map((c) => `<td>${e(c)}</td>`).join("")}</tr>`;
   });
+
+  // The same model filter as the judge reports, listing models by the ranking
+  // judge's recall; the page's own tables are filtered by data-model.
+  const rankJudge = options.defaultSeries?.rankJudge;
+  const recallOf = (series: string): number | null =>
+    rankJudge === undefined
+      ? null
+      : (comparison.perModel.find((r) => r.model === series)?.byJudge[rankJudge]?.meanRecall ??
+        null);
+  const filterConfig: ModelFilterConfig = {
+    series: comparison.perModel
+      .map((r) => r.model)
+      .sort((a, b) => (recallOf(b) ?? -1) - (recallOf(a) ?? -1) || a.localeCompare(b)),
+    labels: Object.fromEntries(
+      comparison.perModel.map((r) => [
+        r.model,
+        recallOf(r.model) === null ? "" : pct(recallOf(r.model)),
+      ]),
+    ),
+    defaults: options.defaultSeries?.series ?? null,
+    defaultJudge: rankJudge ?? null,
+  };
+  // </script> inside JSON would terminate the script block early.
+  const filterJson = JSON.stringify(filterConfig).replace(/</g, "\\u003c");
 
   // Disagreement sections, most outvoted first. The first section of each
   // (model, screenshot) pair carries the anchor its heatmap cell links to.
@@ -399,7 +434,7 @@ export function buildComparisonHtml(
       const shot = imageBase
         ? `<img src="${e(imageBase)}/${e(d.filename)}" alt="${e(d.imageId)}" loading="lazy">`
         : "";
-      return `<section class="disagreement"${id}>
+      return `<section class="disagreement" data-model="${e(d.model)}"${id}>
 ${shot}<h3>${e(d.imageId)} ${e(d.filename)} — ${e(d.model)} <span class="badge" style="${shade(outvoted)}">${outvoted} outvoted</span></h3>
 <p class="muted">Expected: ${e(d.expectedText)}</p>
 <table class="verdicts"><thead><tr><th>Judge</th>${reps.map((r) => `<th>rep ${r}</th>`).join("")}</tr></thead><tbody>${grid.join("")}</tbody></table>
@@ -444,6 +479,8 @@ ${shot}<h3>${e(d.imageId)} ${e(d.filename)} — ${e(d.model)} <span class="badge
   table.verdicts td.found { color: var(--ok); } table.verdicts td.missed { color: var(--bad); }
   table.verdicts td.split { background: #fef2f2; font-weight: 600; }
   details { margin-top: 6px; } summary { cursor: pointer; color: var(--accent); font-size: 13px; }
+  details.model-filter { margin-top: 0; }
+${MODEL_FILTER_CSS}
 </style>
 </head>
 <body>
@@ -453,6 +490,7 @@ ${shot}<h3>${e(d.imageId)} ${e(d.filename)} — ${e(d.model)} <span class="badge
 <p>Judges compared: ${comparison.judges.map((j) => `<code>${e(j)}</code>`).join(" vs ")}</p>
 <h2>Where the judges disagree</h2>
 <p class="muted">Each cell is one model on one screenshot. The number is how many found/missed verdicts were outvoted, summed over its reps: a rep where the judges split 4-1 adds 1, a 3-2 split adds 2. Darker means more disagreement. Models are ordered most contested first; click a cell for its verdicts.</p>
+${MODEL_FILTER_MARKUP}
 <div class="legend"><span>fewer</span><span class="ramp"></span><span>more outvoted verdicts (max ${maxOutvoted})</span></div>
 ${heat.size === 0 ? "<p>The judges agree on every non-overridden cell.</p>" : `<div class="scroll"><table id="heatmap"><thead>${heatHead}</thead><tbody>${heatRows.join("")}</tbody><tfoot>${heatFoot}</tfoot></table></div>`}
 <h2>Per-model metrics by judge</h2>
@@ -460,7 +498,7 @@ ${heat.size === 0 ? "<p>The judges agree on every non-overridden cell.</p>" : `<
 <thead><tr>${metricHeader.map((h) => `<th>${e(h)}</th>`).join("")}</tr></thead>
 <tbody>${metricRows.join("\n")}</tbody>
 </table></div>
-<h2>Disagreements (${comparison.disagreements.length})</h2>
+<h2>Disagreements (<span id="d-count">${comparison.disagreements.length}</span>)</h2>
 <p class="muted">Most outvoted first. Hover a verdict for the judge's reasoning; split reps are shaded.</p>
 ${sections.join("\n")}
 ${
@@ -469,6 +507,40 @@ ${
     : ""
 }
 </main>
+<script type="application/json" id="filter-data">${filterJson}</script>
+<script>
+"use strict";
+${MODEL_FILTER_SCRIPT}
+const MODEL_FILTER = createModelFilter(JSON.parse(document.getElementById("filter-data").textContent));
+// Hide filtered-out models everywhere on the page, then recompute the heatmap
+// totals from the visible cells and hide screenshots left with no disagreement.
+function applyModelFilter() {
+  document.querySelectorAll("[data-model]").forEach(el => {
+    el.style.display = MODEL_FILTER.has(el.dataset.model) ? "" : "none";
+  });
+  let grand = 0;
+  document.querySelectorAll("#heatmap tbody tr").forEach(tr => {
+    let total = 0;
+    tr.querySelectorAll("td.heat[data-outvoted]").forEach(td => {
+      if (MODEL_FILTER.has(td.dataset.model)) total += Number(td.dataset.outvoted);
+    });
+    tr.querySelector("td.row-total").textContent = total ? String(total) : "";
+    tr.style.display = total > 0 ? "" : "none";
+    grand += total;
+  });
+  const grandEl = document.getElementById("grand-total");
+  if (grandEl) grandEl.textContent = String(grand);
+  const count = document.getElementById("d-count");
+  if (count) {
+    const all = document.querySelectorAll("section.disagreement").length;
+    const shown = [...document.querySelectorAll("section.disagreement")].filter(el => el.style.display !== "none").length;
+    count.textContent = shown === all ? String(all) : shown + " of " + all;
+  }
+}
+MODEL_FILTER.onChange(applyModelFilter);
+MODEL_FILTER.render();
+applyModelFilter();
+</script>
 </body>
 </html>
 `;

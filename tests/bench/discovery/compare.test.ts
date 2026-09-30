@@ -1,3 +1,4 @@
+import { Script } from "node:vm";
 import { describe, expect, it } from "vitest";
 import {
   buildComparisonHtml,
@@ -174,7 +175,7 @@ describe("buildComparisonHtml", () => {
     expect(html).toContain("<th>judge-a recall</th>");
     expect(html).toContain("model-a");
     expect(html).toContain("typo.png");
-    expect(html).toContain("Disagreements (1)");
+    expect(html).toContain('Disagreements (<span id="d-count">1</span>)');
     expect(html).toContain('<a href="index.html">');
   });
 
@@ -263,5 +264,36 @@ describe("disagreement heat", () => {
     expect(html).toContain("2 of 2 reps split, 3 outvoted verdicts");
     expect(html).toContain('id="d-0-img_01"');
     expect(html).toContain('<img src="shots/typo.png"');
+  });
+});
+
+describe("buildComparisonHtml model filter", () => {
+  const comparison = buildJudgeComparison(
+    [scores("judge-a", [cell(true)], 1.0), scores("judge-b", [cell(false)], 0.5)],
+    manifest,
+  );
+  const html = buildComparisonHtml(comparison, {
+    backHref: "report.html",
+    defaultSeries: { series: ["model-a"], rankJudge: "judge-a" },
+  });
+
+  it("offers the shared model filter, ranked and labelled by the ranking judge", () => {
+    expect(html).toContain('<details id="model-filter"');
+    expect(html).toContain('"defaults":["model-a"]');
+    expect(html).toContain('"defaultJudge":"judge-a"');
+    expect(html).toContain('"labels":{"model-a":"100%"}');
+  });
+
+  it("tags every heatmap column, metric row and disagreement with its model", () => {
+    expect(html).toContain('<th class="col" data-model="model-a">');
+    expect(html).toMatch(/<td class="heat" data-model="model-a" data-outvoted="1"/);
+    expect(html).toContain('<tr data-model="model-a">');
+    expect(html).toContain('<section class="disagreement" data-model="model-a"');
+  });
+
+  it("emits a syntactically valid inline script", () => {
+    const match = /<script>\n([\s\S]*?)<\/script>/.exec(html);
+    expect(match).not.toBeNull();
+    expect(() => new Script(match?.[1] ?? "")).not.toThrow();
   });
 });

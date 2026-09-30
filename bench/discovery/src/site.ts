@@ -102,7 +102,11 @@ export async function buildSite(outDir: string): Promise<SiteSummary> {
     const comparison = buildJudgeComparison(scoresList, manifest);
     await writeFile(
       join(outDir, "comparison.html"),
-      buildComparisonHtml(comparison, { backHref: "index.html", imageBase: SCREENSHOTS_DIR }),
+      buildComparisonHtml(comparison, {
+        backHref: "index.html",
+        imageBase: SCREENSHOTS_DIR,
+        defaultSeries,
+      }),
       "utf8",
     );
   }

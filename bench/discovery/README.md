@@ -164,11 +164,15 @@ as the source.
 Each report opens on a subset of models: the top `reportDefaultModels` (10) by
 `reportRankJudge`'s (`gpt-6-luna`) recall, falling back to `judgeModel` when
 that judge has no scores, so every judge's report starts on the same models. The
-**Models** button above the matrix opens a dropdown that switches any model on or off, with shortcuts
-back to the default, to all, or to none; it applies to the matrix, the
-leaderboard, the model detail and the least-confident decisions. A changed
-selection is kept in the URL (`#models=…`), so it can be shared and carries over
-when you follow the links to the other judges' reports.
+**Models** button above the matrix opens a dropdown that switches any model on
+or off, with shortcuts back to the default, to all, or to none; it applies to
+the matrix, the leaderboard, the model detail and the least-confident decisions.
+`comparison.html` has the same filter over its heatmap, metric table and
+disagreements, recomputing the heatmap totals and hiding screenshots left with
+no disagreement. A changed selection is stored for the browser tab and shared
+by every report and the comparison page in the same results directory, so it
+applies however you get to a page, including the back and forward buttons. It
+is not part of the URL, so a filtered view can't be shared as a link.
 
 The HTML report links screenshots relative to its own location rather than
 inlining them, so it stays small and never embeds your dataset.

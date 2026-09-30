@@ -249,6 +249,7 @@ async function main(): Promise<void> {
       buildComparisonHtml(comparison, {
         backHref: "report.html",
         imageBase: imageBaseForReport(dataset),
+        defaultSeries,
       }),
       "utf8",
     );
