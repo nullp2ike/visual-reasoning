@@ -40,15 +40,13 @@ Judges compared: `gemini-3.8-flash` vs `gpt-5.6-luna` vs `meta/muse-spark-1.3-co
 | moonshotai/kimi-k3 | 75% | 0.2 | 73% | 0.2 | 74% | 0.2 | 2% |
 | qwen/qwen3.7-plus | 55% | 0.1 | 54% | 0.1 | 54% | 0.1 | 1% |
 | qwen/qwen3.8-max | 86% | 1.0 | 86% | 0.9 | 86% | 1.0 | 0% |
-| qwen/qwen3.8-max (low) | 86% | 0.5 | 86% | 0.5 | 87% | 0.5 | 1% |
 | x-ai/grok-4.5 | 62% | 2.2 | 62% | 2.2 | 62% | 2.2 | 0% |
 | x-ai/grok-4.6 | 71% | 0.7 | 69% | 0.7 | 71% | 0.7 | 1% |
 | x-ai/grok-4.7 | 71% | 0.1 | 65% | 0.1 | 68% | 0.1 | 6% |
-| x-ai/grok-4.7 (low) | 78% | 0.1 | 74% | 0.1 | 75% | 0.1 | 4% |
 | xiaomi/mimo-v2.6-pro | 52% | 0.6 | 47% | 0.6 | 48% | 0.6 | 5% |
 | z-ai/glm-5.3-flash | 73% | 0.5 | 71% | 0.5 | 69% | 0.5 | 4% |
 
-## Disagreements (54)
+## Disagreements (50)
 
 ### img_03 03_broken_image.png — gemini-3.1-flash-lite
 
@@ -372,29 +370,6 @@ Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
   - rep 4: No issues were reported.
   - rep 5: No issues were reported.
 
-### img_09 09_text_truncation.png — x-ai/grok-4.7 (low)
-
-Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
-
-- **gemini-3.8-flash**: rep 1: missed, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: No issues were reported.
-  - rep 2: Both describe the restaurant title being truncated mid-word at 'Rame...', though the reporter misinterprets the clipped letter as a typo.
-  - rep 3: No issues were reported.
-  - rep 4: Both describe the Tokumaru Ramen restaurant heading being truncated mid-word.
-  - rep 5: Both report the restaurant title being cut off or truncated mid-word at 'Ramen'.
-- **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: No issues were reported.
-  - rep 2: The expected issue is visual clipping without an ellipsis, while the report describes a misspelled restaurant name.
-  - rep 3: No issues were reported.
-  - rep 4: Both describe the Tokumaru Ramen Bar restaurant name being clipped at the end near the rating area without proper truncation.
-  - rep 5: The reported issue identifies the restaurant title as incorrectly truncated or misspelled instead of displaying 'Ramen,' matching the heading cut-off defect.
-- **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: No issues were reported.
-  - rep 2: Reported describes a misspelled title, not a heading cut off mid-word without ellipsis.
-  - rep 3: No issues were reported.
-  - rep 4: Both describe the Tokumaru restaurant name truncated where it meets the rating area.
-  - rep 5: Both describe the restaurant title truncated around 'Ramen'.
-
 ### img_09 09_text_truncation.png — xiaomi/mimo-v2.6-pro
 
 Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
@@ -423,7 +398,7 @@ Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
 Expected: Green Bowl Poké card appears twice in the carousel
 
 - **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the duplicate Green Bowl Poké card appearing side-by-side in the section/carousel.
+  - rep 1: Both describe the duplication of the Green Bowl Poké card appearing twice side-by-side.
   - rep 2: Reported issue 0 describes duplicate restaurant listings in the carousel section, which corresponds to the Green Bowl Poké card appearing twice.
   - rep 3: Both describe the duplicate entry of the 'Green Bowl Poké' card in the section/carousel.
   - rep 4: Both describe the duplicate card/entry for 'Green Bowl Poké' appearing twice.
@@ -435,7 +410,7 @@ Expected: Green Bowl Poké card appears twice in the carousel
   - rep 4: The report describes a duplicate entry in the 'Fastest near you' section, not the Green Bowl Poké card duplicated in the carousel.
   - rep 5: The report describes the Green Bowl Poké card appearing twice side-by-side in the carousel.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe duplicate Green Bowl Poké cards displayed side-by-side.
+  - rep 1: Reported issue describes two identical Green Bowl Poké cards side-by-side.
   - rep 2: No report specifically identifies the Green Bowl Poké card duplicated in the carousel.
   - rep 3: Both describe duplicate Green Bowl Poké cards in the same section.
   - rep 4: Both describe duplicate Green Bowl Poké card in the same carousel section.
@@ -878,29 +853,6 @@ Expected: An icon is missing from the top right corner, only a red do…
   - rep 4: Reported notes the red dot in the top right but does not describe a missing icon.
   - rep 5: No issues were reported.
 
-### img_13 13_orphaned_notification_badge.png — x-ai/grok-4.7 (low)
-
-Expected: An icon is missing from the top right corner, only a red do…
-
-- **gemini-3.8-flash**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: Both describe a missing icon in the top-right corner where only a red notification dot remains visible.
-  - rep 2: No issues were reported.
-  - rep 3: Both describe the top-right icon area where only the red notification dot is clearly visible due to the icon being either missing or extremely low-contrast.
-  - rep 4: Both describe the top-right corner element where only the red notification dot is clearly visible due to the icon being missing or indistinguishable from the background.
-  - rep 5: No issues were reported.
-- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: missed
-  - rep 1: The report describes the top-right profile icon/control as blank or missing while only the red notification dot remains visible.
-  - rep 2: No issues were reported.
-  - rep 3: The report identifies the same top-right profile control as effectively invisible, with only the red notification dot standing out.
-  - rep 4: The report describes a low-contrast avatar button boundary, not a missing top-right icon.
-  - rep 5: No issues were reported.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: Both describe top-right icon missing leaving only red dot visible.
-  - rep 2: No issues were reported.
-  - rep 3: Both describe the top-right icon as effectively invisible except for the red dot.
-  - rep 4: Both describe the top-right control as effectively invisible except for the red dot.
-  - rep 5: No issues were reported.
-
 ### img_14 14_misalignment.png — claude-sonnet-5-5
 
 Expected: Middle card in the carousel is not aligned with the other c…
@@ -923,29 +875,6 @@ Expected: Middle card in the carousel is not aligned with the other c…
   - rep 3: Both describe vertical misalignment of cards in the Fastest near you carousel.
   - rep 4: Both describe vertical misalignment of a carousel card relative to the other cards.
   - rep 5: Reported 0 describes the first card as the outlier with middle and last aligned, not the middle card misaligned.
-
-### img_14 14_misalignment.png — qwen/qwen3.8-max (low)
-
-Expected: Middle card in the carousel is not aligned with the other c…
-
-- **gemini-3.8-flash**: rep 1: missed, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: The reported issue identifies the first card as having a shorter height, whereas the expected defect specifies the middle card is misaligned.
-  - rep 2: Report 0 describes vertical misalignment among the carousel cards, matching the alignment defect described in the expected issue.
-  - rep 3: Both describe the vertical card alignment issue across the cards in the horizontal carousel, though they differ on which specific card causes the misalignment.
-  - rep 4: The reported issue is about a missing or unloaded background image placeholder, not a card alignment defect.
-  - rep 5: Both describe the middle card in the carousel row being vertically misaligned with the adjacent cards.
-- **gpt-5.6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: The reported issue concerns the first carousel card's shorter image, while the expected defect concerns misalignment of the middle card.
-  - rep 2: Reported issue 0 describes the carousel cards having inconsistent vertical alignment, matching the middle card alignment defect.
-  - rep 3: The report describes inconsistent vertical alignment among the cards in the same horizontal carousel.
-  - rep 4: The reported issue concerns a card's missing or incorrect background image, not the middle card's alignment.
-  - rep 5: The report describes the middle card being vertically offset and misaligned relative to the other cards in the row.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: Both describe the Fastest near you carousel cards being vertically misaligned due to uneven image height.
-  - rep 2: Reported 0 describes the carousel cards as vertically misaligned with uneven titles, matching the middle-card alignment defect.
-  - rep 3: Both describe the Fastest near you carousel cards and titles not aligning on a common baseline.
-  - rep 4: Reported issue describes a missing image background, not card misalignment.
-  - rep 5: Both describe the middle card in the Fastest carousel being vertically misaligned with the others.
 
 ### img_15 15_safe_area_violation.png — claude-fable-5-1
 
@@ -1222,29 +1151,6 @@ Expected: Bottom nav labels are cut off below the screen edge and the…
   - rep 3: Reported describes a stray line artifact, not cut-off labels or gesture-bar overlap.
   - rep 4: Reported describes conflicting selection indicator and green Home highlight, not cut-off labels or gesture bar overlapping icons.
   - rep 5: Both describe a dark bar overlapping the bottom navigation icons in the same area.
-
-### img_15 15_safe_area_violation.png — x-ai/grok-4.7 (low)
-
-Expected: Bottom nav labels are cut off below the screen edge and the…
-
-- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: The reported thick dark horizontal bar overlapping the bottom navigation icon describes the gesture bar overlapping the navigation elements.
-  - rep 2: Both describe the gesture bar (reported as a thick horizontal stroke) overlapping the bottom navigation bar icons due to layout padding issues.
-  - rep 3: The reported issue describes the gesture bar (thick black bar) overlapping the bottom navigation icons, matching the expected defect.
-  - rep 4: The reported issue discusses search field contrast, whereas the expected issue describes bottom navigation clipping and gesture bar overlap.
-  - rep 5: Both describe the gesture bar (thick gray horizontal bar) overlapping the bottom navigation icons due to improper bottom insets.
-- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: The reported dark horizontal bar overlapping a bottom-navigation icon describes the gesture-bar overlap portion of the expected bottom-navigation layout defect.
-  - rep 2: The expected defect concerns bottom navigation content being cut off and overlapped by the gesture bar, while the reported issue concerns an incorrect horizontal indicator line between icons.
-  - rep 3: The reported black bottom bar overlaps the bottom navigation icons, matching the expected bottom-edge navigation/gesture-area overlap.
-  - rep 4: The reported issue concerns low contrast in the search field placeholder, not bottom navigation labels or gesture bar overlap.
-  - rep 5: The reported gray bar obstructing bottom-navigation icons describes the same bottom-edge navigation overlap defect, though it does not explicitly mention the cut-off labels.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: Both describe a dark horizontal bar overlapping bottom-nav icon(s).
-  - rep 2: Reported describes a tab-indicator stroke, not cut-off labels or gesture-bar overlap.
-  - rep 3: Both describe the bottom navigation bar overlapping and obscuring the icons.
-  - rep 4: Reported issue concerns search placeholder contrast, not bottom nav cutoff.
-  - rep 5: Both describe the bottom navigation icons being overlapped by a horizontal bar.
 
 ### img_15 15_safe_area_violation.png — xiaomi/mimo-v2.6-pro
 

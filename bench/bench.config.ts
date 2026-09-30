@@ -85,18 +85,12 @@ export const benchConfig: BenchConfig = {
     // Note: qwen3.8-max is the first Max tier to accept image input (3.6-max
     // and 3.7-max are text-only on OpenRouter).
     //
-    // qwen3.8-max must be run with `--effort low`. OpenRouter maps effort
-    // medium/high onto a fixed thinking_budget of 32768 for this model, and
-    // upstream rejects the call unless max_completion_tokens exceeds it
-    // ("max_completion_tokens [8192] must be greater than thinking_budget
-    // [32768]"). Raising maxTokens past 32768 does make the call succeed
-    // (40960 returns finish_reason "stop" with valid JSON), but the result is
-    // not comparable: at medium this model burns ~7100 reasoning tokens per
-    // call at ~199s, against a board median of ~358 tokens and under 20s for
-    // every other model at medium. Effort low costs ~582 reasoning tokens at
-    // ~32s, which sits mid-pack among the medium-effort models -- so `low` is
-    // the closer analogue to what the rest of the roster is doing, not a
-    // handicap. Keep it at `--effort low`; it benches as its own `(low)` row.
+    // qwen3.8-max is the heaviest reasoner in the roster at medium: ~3,200
+    // reasoning tokens and a ~78s median per call on golden, against a board
+    // median under 16s. It used to need `--effort low`, because OpenRouter
+    // rejected medium unless max_completion_tokens exceeded a fixed 32768
+    // thinking budget; that no longer happens, so it runs at medium like the
+    // rest of the roster.
     //
     // qwen3.6-flash is deliberately absent: with response_format json_schema
     // it returns HTTP 200 and an empty content string, which surfaces as
