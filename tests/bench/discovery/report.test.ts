@@ -196,7 +196,7 @@ describe("buildReportHtml", () => {
   it("links sibling judges' reports and the comparison", () => {
     const html = buildReportHtml(scores, manifest, {}, { siblingJudges: ["x-ai/grok-4.5"] });
     expect(html).toContain('<a href="report.x-ai__grok-4.5.html">x-ai/grok-4.5</a>');
-    expect(html).toContain('<a href="JUDGE_COMPARISON.md">comparison</a>');
+    expect(html).toContain('<a href="comparison.html">comparison</a>');
   });
 
   it("links the comparison through a caller-supplied href", () => {
@@ -206,11 +206,11 @@ describe("buildReportHtml", () => {
       {},
       {
         siblingJudges: ["x-ai/grok-4.5"],
-        comparisonHref: "comparison.html",
+        comparisonHref: "JUDGE_COMPARISON.md",
       },
     );
-    expect(html).toContain('<a href="comparison.html">comparison</a>');
-    expect(html).not.toContain("JUDGE_COMPARISON.md");
+    expect(html).toContain('<a href="JUDGE_COMPARISON.md">comparison</a>');
+    expect(html).not.toContain("comparison.html");
   });
 
   it("offers override editing and export by default", () => {

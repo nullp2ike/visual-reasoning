@@ -3,7 +3,7 @@ import { readdir, writeFile } from "node:fs/promises";
 import { join, relative, sep } from "node:path";
 import { parseArgs } from "node:util";
 import { benchConfig } from "../../bench.config.js";
-import { buildComparisonMarkdown, buildJudgeComparison } from "./compare.js";
+import { buildComparisonHtml, buildComparisonMarkdown, buildJudgeComparison } from "./compare.js";
 import { UNCERTAIN_CONFIDENCE, summarizeConfidence } from "./confidence.js";
 import { selectDataset, type Dataset } from "../../shared/dataset.js";
 import { buildReportHtml } from "./html.js";
@@ -204,6 +204,14 @@ async function main(): Promise<void> {
   if (scoresList.length >= 2) {
     const comparison = buildJudgeComparison(scoresList, manifest);
     await writeFile(comparisonMdPath(), buildComparisonMarkdown(comparison), "utf8");
+    await writeFile(
+      join(discoveryResultsDir(), "comparison.html"),
+      buildComparisonHtml(comparison, {
+        backHref: "report.html",
+        imageBase: imageBaseForReport(dataset),
+      }),
+      "utf8",
+    );
     console.log(`Wrote ${comparisonMdPath()} (${comparison.disagreements.length} disagreement(s))`);
   }
 }

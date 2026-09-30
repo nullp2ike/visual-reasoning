@@ -95,7 +95,7 @@ export async function buildSite(outDir: string): Promise<SiteSummary> {
     const comparison = buildJudgeComparison(scoresList, manifest);
     await writeFile(
       join(outDir, "comparison.html"),
-      buildComparisonHtml(comparison, { backHref: "index.html" }),
+      buildComparisonHtml(comparison, { backHref: "index.html", imageBase: SCREENSHOTS_DIR }),
       "utf8",
     );
   }

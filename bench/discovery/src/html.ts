@@ -79,7 +79,7 @@ export function buildReportHtml(
   const {
     siblingJudges = [],
     imageBase = ".",
-    comparisonHref = "JUDGE_COMPARISON.md",
+    comparisonHref = "comparison.html",
     readOnly = false,
   } = options;
   const payload = {

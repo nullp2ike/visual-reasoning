@@ -3,6 +3,8 @@ import {
   buildComparisonHtml,
   buildComparisonMarkdown,
   buildJudgeComparison,
+  disagreementHeat,
+  outvotedByRep,
 } from "../../../bench/discovery/src/compare.js";
 import type { Manifest, ResolvedCell, Scores } from "../../../bench/discovery/src/types.js";
 
@@ -187,5 +189,79 @@ describe("buildComparisonHtml", () => {
     const html = buildComparisonHtml(hostile, { backHref: "index.html" });
     expect(html).not.toContain("<b>x</b>");
     expect(html).toContain("&lt;b&gt;x&lt;/b&gt;");
+  });
+});
+
+describe("disagreement heat", () => {
+  // Five judges over two reps of one cell: rep 1 splits 3-2, rep 2 splits 4-1.
+  const verdicts: [string, boolean, boolean][] = [
+    ["j1", true, true],
+    ["j2", true, true],
+    ["j3", true, true],
+    ["j4", false, true],
+    ["j5", false, false],
+  ];
+  const comparison = buildJudgeComparison(
+    verdicts.map(([judge, rep1, rep2]) =>
+      scores(judge, [cell(rep1, { rep: 1 }), cell(rep2, { rep: 2 })], 0.5),
+    ),
+    manifest,
+  );
+
+  it("counts the outvoted verdicts in each rep", () => {
+    const [d] = comparison.disagreements;
+    expect(d).toBeDefined();
+    expect(outvotedByRep(d!)).toEqual(
+      new Map([
+        [1, 2],
+        [2, 1],
+      ]),
+    );
+  });
+
+  it("sums them per screenshot and model, with the number of split reps", () => {
+    expect(disagreementHeat(comparison).get("model-a img_01")).toEqual({
+      series: "model-a",
+      imageId: "img_01",
+      splitReps: 2,
+      outvoted: 3,
+    });
+  });
+
+  it("keeps the reported issues of each rep for the detail view", () => {
+    const withIssue = buildJudgeComparison(
+      verdicts
+        .slice(0, 2)
+        .map(([judge, rep1]) =>
+          scores(
+            judge,
+            [
+              cell(rep1, {
+                reportedIssues: [
+                  {
+                    priority: "major",
+                    category: "content",
+                    description: "Title typo",
+                    suggestion: "",
+                  },
+                ],
+              }),
+            ],
+            0.5,
+          ),
+        )
+        .concat([scores("j9", [cell(false)], 0.5)]),
+      manifest,
+    );
+    expect(withIssue.disagreements[0]?.reportedByRep).toEqual({ "1": ["Title typo"] });
+  });
+
+  it("renders a heatmap whose cells link to their disagreement, shaded by outvoted verdicts", () => {
+    const html = buildComparisonHtml(comparison, { backHref: "report.html", imageBase: "shots" });
+    expect(html).toContain('<table id="heatmap">');
+    expect(html).toMatch(/<td class="heat"[^>]*data-outvoted="3"[^>]*><a href="#d-0-img_01"/);
+    expect(html).toContain("2 of 2 reps split, 3 outvoted verdicts");
+    expect(html).toContain('id="d-0-img_01"');
+    expect(html).toContain('<img src="shots/typo.png"');
   });
 });

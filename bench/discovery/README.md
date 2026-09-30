@@ -121,7 +121,16 @@ report.<judge>.html    interactive report with per-image drill-down
 RESULTS.md             copies of the default judge's RESULTS and report
 report.html
 JUDGE_COMPARISON.md    how the judges disagree, when there are two or more
+comparison.html        the same comparison as a page, with a disagreement heatmap
 ```
+
+`comparison.html` opens with a screenshot × model heatmap of where the judges
+disagree. A cell's number is its outvoted found/missed verdicts summed over its
+reps: judges on the losing side of a rep's vote, so a 4-1 split adds 1 and a 3-2
+split adds 2. Darker cells disagree more, and models are ordered most contested
+first. Each cell links to its disagreement below: a rep × judge grid of verdicts
+(hover for the reasoning), what the model reported, and the screenshot. Every
+report's "comparison" link points here.
 
 ## Publishing
 
