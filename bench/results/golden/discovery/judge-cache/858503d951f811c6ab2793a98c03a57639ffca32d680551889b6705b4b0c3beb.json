@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −0%"
+  ],
+  "reportedIssues": [
+    "The favorite (heart) icon on the Tokumaru Ramen Bar card has a white background circle, while the heart icon on the pizza card below has a dark/black background circle. This inconsistency in icon container styling looks unintentional.",
+    "The promotional badge on the pizza card reads '-0%', which is a meaningless discount value and likely a rendering or data error."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          1
+        ],
+        "reasoning": "Reported issue 1 describes the pizza card’s promotional badge showing the same meaningless −0% discount."
+      }
+    ],
+    "extraReportedIndexes": [
+      0
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.99
+      }
+    ]
+  }
+}

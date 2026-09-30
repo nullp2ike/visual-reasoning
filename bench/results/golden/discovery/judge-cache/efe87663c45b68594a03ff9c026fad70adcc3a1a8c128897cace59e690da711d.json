@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Delivery fee shows €NaN"
+  ],
+  "reportedIssues": [
+    "The 'Smash Bros Burgers' card displays '€NaN delivery' instead of a valid delivery fee, exposing an unparsed/undefined numeric value to the user.",
+    "The favorite heart buttons on the 'Popular right now' cards are inconsistent: the Tokumaru Ramen card uses a white circular background with a dark outline heart, while the pizza card below uses a dark/transparent circle with a white heart, which reduces visual consistency and contrast."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the Smash Bros Burgers card showing an invalid €NaN delivery fee."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Green Bowl Poké card appears twice in the carousel"
+  ],
+  "reportedIssues": [
+    "The 'Fastest near you' carousel shows two identical cards, both 'Green Bowl Poké' with the same image, 15–25 min and €0.90 delivery. This looks like a duplicated data or rendering bug, and it wastes prime space in a short list.",
+    "Secondary text such as the light gray delivery fee lines ('€0.90 delivery'), the search placeholder, and the inactive tab labels has low contrast against the white or light gray backgrounds.",
+    "The time badges on the carousel cards sit on the bottom-left edge of the image and overlap the image boundary tightly. The heart icon on the dark ramen image has a low-contrast translucent background. Both look slightly inconsistent.",
+    "The food images are flat illustrations rather than real photos, and the poké bowl image is small and off-center within its card. This makes the cards look like placeholders."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 explicitly describes two identical Green Bowl Poké cards in the carousel."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

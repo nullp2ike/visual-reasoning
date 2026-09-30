@@ -1,0 +1,56 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Profile is highlighted in the bottom nav bar while the home feed is shown"
+  ],
+  "reportedIssues": [
+    "The bottom navigation shows 'Profile' as the active tab, while the content on screen is the Home/browse feed. The 'Home' tab is shown as inactive, so the navigation state does not match the page.",
+    "The secondary gray text (delivery fees, 'See all' links, inactive nav labels, search placeholder) is light on a light background and has low contrast. The white delivery-time pills over the light Green Bowl Poké image also blend into the background.",
+    "The promo banner has decorative translucent circles that clip awkwardly at the corner and bottom edge. The 'Order now' button also sits close to the code text.",
+    "The badges are inconsistent. The delivery-time pills sit inside the image at bottom-left, while the '€0 delivery' and '-20%' badges sit at top-left. The €0 delivery info is also repeated in the text below the card."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes Profile active while the Home feed is shown, the same navigation-state defect."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

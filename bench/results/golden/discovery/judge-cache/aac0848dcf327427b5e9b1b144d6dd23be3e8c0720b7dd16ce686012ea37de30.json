@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Green Bowl Poké card appears twice in the carousel"
+  ],
+  "reportedIssues": [
+    "Duplicate restaurant listings appearing in the 'Fastest near you' section.",
+    "The 'Smash Bros Bu...' restaurant title is significantly truncated even for a short list view, making it hard to identify the full brand name."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes duplicate restaurant listings in the carousel section, matching the duplicated Green Bowl Poké card."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.9,
+        "confidence": 0.85
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.99
+      }
+    ]
+  }
+}

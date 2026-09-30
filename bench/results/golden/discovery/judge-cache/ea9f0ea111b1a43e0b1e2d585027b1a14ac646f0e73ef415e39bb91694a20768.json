@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −0%"
+  ],
+  "reportedIssues": [
+    "The bottom card showing a pizza is missing its restaurant name/title, unlike all other cards on the page.",
+    "The discount tag on the pizza card displays '-0%', which provides no meaningful information to the user and appears to be a data rendering error."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          1
+        ],
+        "reasoning": "Reported issue 1 describes the pizza card’s discount tag displaying “-0%,” the same defect."
+      }
+    ],
+    "extraReportedIndexes": [
+      0
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.99
+      }
+    ]
+  }
+}

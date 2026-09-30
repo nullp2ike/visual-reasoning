@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "A section header displays the raw string placeholder 'home_feed.popular_title' instead of a human-readable, localized title for the popular restaurants section.",
+    "The heart-shaped favorite icons on restaurant cards lack an accessible label, leaving their purpose unclear to users relying on screen readers."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the section header showing the same raw translation key instead of localized text."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

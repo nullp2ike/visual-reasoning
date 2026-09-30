@@ -1,0 +1,31 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Delivery fee text overlaps the delivery time text"
+  ],
+  "reportedIssues": [
+    "Under 'Tokumaru Ramen Bar', the subtitle text collides: 'min' overlaps the start of 'delivery', rendering as garbled '25-30delivery · Ramen' instead of a readable delivery-time line."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "The report describes the delivery-time suffix overlapping the word “delivery,” not delivery-fee text overlapping the delivery time."
+      }
+    ],
+    "extraReportedIndexes": [
+      0
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.98,
+        "confidence": 0.98
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "A raw localization key 'home_feed.popular_title' is visible instead of actual header text.",
+    "The '€0 delivery' badge overlaps the food illustration within the restaurant card."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the same raw home_feed.popular_title key appearing instead of translated text."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

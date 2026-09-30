@@ -1,0 +1,31 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Delivery fee text overlaps the delivery time text"
+  ],
+  "reportedIssues": [
+    "The metadata line under 'Tokumaru Ramen Bar' shows the delivery time ('25–35 min') and delivery fee ('€0 delivery') overlapping at the same position. The result reads as garbled text ('25–3€0mdielivery · Ramen'), making both the delivery time and the fee unreadable. The two elements appear to be absolutely positioned or missing a separator or spacing in the row layout."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the delivery fee text overlapping the delivery time text."
+      }
+    ],
+    "extraReportedIndexes": [],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

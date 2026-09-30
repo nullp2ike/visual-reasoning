@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Delivery fee text overlaps the delivery time text"
+  ],
+  "reportedIssues": [
+    "In the 'Popular right now' list, the meta row under 'Tokumaru Ramen Bar' has two text strings ('25–30 min' and '€0 delivery') overlapping each other, producing garbled, unreadable text ('25–3€0 delivery' style overlap).",
+    "The delivery fee information for Tokumaru Ramen Bar is duplicated/conflicting: the card badge says '€0 delivery' while the overlapped meta line also appears to include a delivery fee string, adding to the confusion."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Report 0 explicitly says the delivery fee and delivery time text overlap in the meta row."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.96,
+        "confidence": 0.91
+      }
+    ]
+  }
+}

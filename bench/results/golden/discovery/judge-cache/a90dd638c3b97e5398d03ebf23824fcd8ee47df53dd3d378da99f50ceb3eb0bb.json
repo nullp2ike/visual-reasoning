@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The restaurant card below 'Tokumaru Ramen Bar' shows a '-100%' discount badge, which implies the order is completely free — most likely a broken or placeholder promotion value.",
+    "The red notification dot on the bell icon in the top-right corner appears to slightly clip/overlap the bell outline, making it look misaligned."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the same −100% discount badge and its implausible promotion value."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

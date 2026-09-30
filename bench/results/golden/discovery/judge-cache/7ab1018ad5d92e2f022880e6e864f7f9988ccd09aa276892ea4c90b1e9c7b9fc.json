@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The second section heading shows the raw localization key 'home_feed.popular_title' instead of a human-readable title such as 'Popular near you'.",
+    "The heart/favorite buttons on the two popular restaurant cards use inconsistent styles: the first has a white circular background with a dark outline heart, while the second has a dark/transparent circular background with a white heart."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the section heading showing the same raw translation key."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

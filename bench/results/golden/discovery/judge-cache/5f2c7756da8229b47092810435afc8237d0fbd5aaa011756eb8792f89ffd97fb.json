@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The 'Pizza' category filter chip is in the selected/active state, but the listed restaurants do not match the filter: 'Fastest near you' shows Green Bowl Poké and Smash Bros Burgers, and 'Popular right now' features Tokumaru Ramen Bar. Only one partially visible pizza card appears at the bottom.",
+    "Inconsistent presentation of delivery fee info: cards in 'Fastest near you' show it as plain text ('€0.90 delivery'), while 'Popular right now' cards use an overlaid badge ('€0 delivery') plus repeated text in the meta row, creating slight redundancy and inconsistency."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the selected Pizza filter while non-pizza restaurants remain in the feed."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.99
+      }
+    ]
+  }
+}

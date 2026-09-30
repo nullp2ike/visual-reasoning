@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The 'Pizza' filter chip is shown as selected (dark filled state), but the content does not reflect this filter. 'Fastest near you' lists Green Bowl Poké and Smash Bros Burgers, and the first 'Popular right now' card is Tokumaru Ramen Bar (tagged 'Ramen'). The selected chip and the displayed results contradict each other.",
+    "The favorite (heart) button on the Tokumaru Ramen Bar card has almost no visible circular backdrop, unlike the clearly visible dark circle on the pizza card below. This makes the heart buttons look inconsistent between cards."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the selected Pizza filter showing results from other cuisines."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0,
+        "confidence": 1
+      }
+    ]
+  }
+}

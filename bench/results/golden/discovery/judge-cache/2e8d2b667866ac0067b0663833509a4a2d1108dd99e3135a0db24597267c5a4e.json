@@ -1,0 +1,48 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Loading spinner is shown on top of already loaded content"
+  ],
+  "reportedIssues": [
+    "The Tokumaru Ramen Bar card in 'Popular right now' displays a white circular loading spinner stuck in the center of the restaurant image, suggesting the image/media never finished loading or a loading state was never cleared, while the rest of the card (title, rating, meta) is fully rendered.",
+    "The category chip row ends with a partially visible empty grey chip at the right edge (after 'Healthy'), which reads as an unfinished element rather than intentional scroll affordance because no label is visible on it.",
+    "The promotional banner text 'Use code TALLINN3 at checkout · min. order €10' is white on a medium green background with decorative lighter circles, which may fall near minimum contrast thresholds for smaller text."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes a loading spinner stuck over fully loaded restaurant card content."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0,
+        "confidence": 0.99
+      }
+    ]
+  }
+}

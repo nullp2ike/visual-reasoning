@@ -1,0 +1,31 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The second card in the 'Popular right now' list shows a '−100%' badge, implying the item is free. This looks like a data or formatting bug (e.g. a delivery-fee discount rendered as a price discount, or a miscomputed percentage), and is inconsistent with the sibling card which shows a '€0 delivery' style badge."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the same −100% discount badge."
+      }
+    ],
+    "extraReportedIndexes": [],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

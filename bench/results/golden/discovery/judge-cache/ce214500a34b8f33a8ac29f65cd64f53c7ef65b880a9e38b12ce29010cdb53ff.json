@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Delivery fee text overlaps the delivery time text"
+  ],
+  "reportedIssues": [
+    "Delivery metadata line under 'Tokumaru Ramen Bar' is garbled/overlapping, appearing as '25-30rdelivery • Ramen' instead of readable time, fee and cuisine.",
+    "Favorite heart icon on 'Tokumaru Ramen Bar' card lacks the dark circular background used on the pizza card below, showing as white outline directly on the image with lower contrast."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the delivery metadata text overlapping and becoming garbled, matching the delivery fee and time overlap."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.99
+      }
+    ]
+  }
+}

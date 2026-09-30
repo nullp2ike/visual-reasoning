@@ -1,0 +1,39 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The 'Popular right now' section header alignment is slightly inconsistent with the 'Fastest near you' section header due to the large banner container.",
+    "The bottom card showing a pizza has a '-100%' badge, but no restaurant name, delivery time, or rating associated with it, unlike the card above it."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "The pizza card report mentions a −100% badge but identifies missing card details, not a defect with the badge."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.91,
+        "confidence": 0.91
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The 'Pizza' category chip is highlighted as the active filter, but the content does not match it. 'Fastest near you' shows Green Bowl Poké and Smash Bros Burgers, and the first 'Popular right now' card is Tokumaru Ramen Bar. The selected state and the displayed results contradict each other.",
+    "The Tokumaru Ramen Bar card shows '€0 delivery' twice: once as a badge on the image and again in the metadata line below."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 says Pizza is selected while the feed displays results from other cuisines."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.99
+      }
+    ]
+  }
+}

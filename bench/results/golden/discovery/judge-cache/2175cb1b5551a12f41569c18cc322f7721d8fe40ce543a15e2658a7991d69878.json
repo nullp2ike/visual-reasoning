@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Green Bowl Poké card appears twice in the carousel"
+  ],
+  "reportedIssues": [
+    "The 'Fastest near you' section shows two identical entries for 'Green Bowl Poke' with the same delivery time and price, appearing duplicated.",
+    "The Green Bowl Poke thumbnail images use a generic plate icon graphic rather than an actual food photo, making them look like placeholder art compared to the more detailed Tokumaru Ramen Bar and pizza images."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes two identical Green Bowl Poke entries, matching the duplicated card defect."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.99
+      }
+    ]
+  }
+}

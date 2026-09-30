@@ -1,0 +1,48 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Restaurant cover image failed to load"
+  ],
+  "reportedIssues": [
+    "The main card under 'Popular right now' for Tokumaru Ramen Bar shows only a broken-image placeholder icon instead of a restaurant photo, leaving a large empty gray area.",
+    "The restaurant name 'Trattoria Piccol' is truncated/cut off at the end in the Fastest near you row.",
+    "The €0 delivery badge and heart icon sit on an empty gray block above the Tokumaru Ramen Bar title, making the card structure look incomplete and disconnected from the image below."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "The Tokumaru Ramen Bar card shows a broken-image placeholder instead of its restaurant photo."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.98,
+        "confidence": 0.98
+      }
+    ]
+  }
+}

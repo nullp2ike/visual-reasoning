@@ -1,0 +1,64 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The 'Pizza' category chip is selected, but the results below are unfiltered. Green Bowl Poké, Smash Bros Burgers, Trattoria (pasta) and Tokumaru Ramen Bar are all shown. The filter state and the content contradict each other.",
+    "The time pill badges (e.g. '15–25 min') on the 'Fastest near you' cards overlap the bottom-left corner of the image and sit tight against the edge. On the first card the pill looks like it collides with the plate image.",
+    "The secondary gray text (delivery fee, '25–35 min · €0 delivery · Ramen', the rating count '(500+)') is small and light, so contrast is low. The gray placeholder in the search bar and the inactive nav labels are also low contrast.",
+    "The white '€0 delivery' and '−20%' badges and the heart icon sit on busy photographic backgrounds. The heart button's dark translucent circle is barely visible on the ramen card and differs in appearance from the pizza card.",
+    "The 'Fastest near you' cards show a delivery fee but no rating, while the 'Popular' cards show ratings and cuisine. The card information is inconsistent, and the promo card 'Order now' offers a code with no copy or apply action."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the selected Pizza category leaving results unfiltered, matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 0,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 4,
+        "expectedIndex": null,
+        "probability": 0,
+        "confidence": 1
+      }
+    ]
+  }
+}

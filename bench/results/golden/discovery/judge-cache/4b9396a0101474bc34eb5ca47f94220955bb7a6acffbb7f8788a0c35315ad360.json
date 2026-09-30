@@ -1,0 +1,39 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Loading spinner is shown on top of already loaded content"
+  ],
+  "reportedIssues": [
+    "The first card in 'Popular right now' (Tokumaru Ramen Bar) displays a persistent white circular loading spinner centered on top of the restaurant photo, making the card look stuck/broken even though the image behind it appears loaded.",
+    "The loading spinner's white circle overlaps and obscures the center of the ramen dish image, reducing the visual appeal of the featured card even if loading were intentional."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          1
+        ],
+        "reasoning": "Both reports describe a spinner obscuring the loaded restaurant image."
+      }
+    ],
+    "extraReportedIndexes": [],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.82,
+        "confidence": 0.82
+      }
+    ]
+  }
+}

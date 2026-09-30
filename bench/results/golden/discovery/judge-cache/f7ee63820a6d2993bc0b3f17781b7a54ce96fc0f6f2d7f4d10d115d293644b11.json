@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Loading spinner is shown on top of already loaded content"
+  ],
+  "reportedIssues": [
+    "A circular loading spinner sits in the center of the Tokumaru Ramen Bar hero image, even though the ramen image is fully rendered behind it. The loading state was never cleared, so the card looks like it is still loading and part of the image is covered.",
+    "The favorite (heart) button on the Tokumaru Ramen Bar card uses a dark translucent circle that blends into the dark image. The button's outline is barely visible, unlike the clearly visible circle on the next card."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes a loading spinner covering an already rendered image."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

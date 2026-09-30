@@ -1,0 +1,56 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The promotional badge on the second 'Popular right now' card reads '-100%', implying the entire order is free. This is almost certainly a data/formatting error (e.g. a discount fraction rendered as a percentage) rather than a real offer.",
+    "The favorite (heart) button on the second card uses a dark, near-black circular background with a dark outline icon, placed over a dark image area, making it barely visible. The equivalent button on the Tokumaru Ramen card above uses a white circle with a dark icon.",
+    "The heart icon buttons have no visible text label; combined with the low-contrast variant, their tappable state (favorited vs not) is ambiguous.",
+    "The first 'Fastest near you' card (Green Bowl Poké) has a very light, nearly white image background while its sibling cards use dark imagery, making the row look visually inconsistent and the card edges hard to perceive."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the promotional badge displaying −100% on the second card."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

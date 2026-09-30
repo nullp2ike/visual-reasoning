@@ -1,0 +1,31 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Delivery fee shows €NaN"
+  ],
+  "reportedIssues": [
+    "Smash Bros Burgers' delivery fee shows 'eNaN delivery', which is an invalid 'Not a Number' error value instead of a properly formatted monetary delivery fee (like €X.XX delivery)."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both reports describe the delivery fee displaying an invalid NaN value."
+      }
+    ],
+    "extraReportedIndexes": [],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

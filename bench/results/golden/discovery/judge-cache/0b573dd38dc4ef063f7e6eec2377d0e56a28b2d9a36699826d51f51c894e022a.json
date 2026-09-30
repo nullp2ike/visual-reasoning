@@ -1,0 +1,39 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The bottom navigation bar is pushed below the visible area. Its icons (Home, Search, Orders, Profile) are cut off at the bottom of the screen, with only their top halves visible, and any text labels are hidden entirely.",
+    "The system home-indicator / gesture bar overlaps the Search and Orders icons in the bottom navigation. These icons are partly hidden, and taps near them may trigger the system gesture instead of the tab."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          1
+        ],
+        "reasoning": "Issue 0 describes the clipped navigation labels and icons, while issue 1 describes the gesture bar overlapping navigation icons."
+      }
+    ],
+    "extraReportedIndexes": [],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.99
+      }
+    ]
+  }
+}

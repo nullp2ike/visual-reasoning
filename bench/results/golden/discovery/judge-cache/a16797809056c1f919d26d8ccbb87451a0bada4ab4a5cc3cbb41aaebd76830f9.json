@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Restaurant cover image failed to load"
+  ],
+  "reportedIssues": [
+    "The featured card image under 'Popular right now' (Tokumaru Ramen Bar) failed to load and displays a gray placeholder with a broken-image icon instead of a photo, making the card look broken.",
+    "The broken-image placeholder icon is centered in a large empty gray area, which emphasizes the empty state; the '€0 delivery' badge and heart button float over an otherwise blank card."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 explicitly says the restaurant card image failed to load and shows a broken-image placeholder."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.72,
+        "confidence": 0.78
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The pizza restaurant card in 'Popular right now' shows a promo badge of '−100%', implying the entire order is free. This is almost certainly a data or formatting bug (e.g., a free-delivery flag rendered as a percentage discount, or a miscomputed value) and is misleading to users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "The reported issue describes the same −100% discount badge."
+      }
+    ],
+    "extraReportedIndexes": [],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

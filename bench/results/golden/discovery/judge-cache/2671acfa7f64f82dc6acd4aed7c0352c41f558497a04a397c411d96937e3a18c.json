@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "A thick black horizontal bar/line stretches across the bottom navigation between the search icon and the orders (receipt) icon, overlapping both icons. It looks like a rendering artifact or misplaced element (e.g., an iOS home-indicator bar or divider rendered in the wrong position), making the tab bar look broken.",
+    "The bottom navigation icons (home, search, orders, profile) are vertically clipped — the lower portions of the icons are cut off, and there is no visible padding or labels beneath them."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "The misplaced bottom bar overlapping navigation icons matches the expected gesture bar overlap."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.83,
+        "confidence": 0.78
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.9,
+        "confidence": 0.84
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The 'Pizza' category chip is visually selected, but the feed displays unrelated categories like poke, burgers, and ramen.",
+    "Favorite heart buttons have inconsistent styling; the ramen card lacks the circular backdrop present on the pizza card."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the selected Pizza category while unrelated cuisines remain in the feed."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

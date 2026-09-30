@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "In the bottom navigation bar, a thick dark horizontal bar (likely the system home/gesture indicator or a misplaced divider) is drawn on top of the Search and Orders tab icons, partially covering them so they are hard to recognize and appear broken.",
+    "The bottom navigation tabs have icons only with no text labels, and only the Home tab is tinted; the overlapping element makes the Search and Orders tabs even less distinguishable."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "The reported issue describes the gesture indicator overlapping bottom navigation icons, matching the expected bottom-edge overlap."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.94,
+        "confidence": 0.9
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.98,
+        "confidence": 0.93
+      }
+    ]
+  }
+}

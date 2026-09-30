@@ -1,0 +1,31 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −0%"
+  ],
+  "reportedIssues": [
+    "The pizza restaurant card in 'Popular right now' shows a discount badge reading '–0%', which is a nonsensical value and looks like a data/rendering bug (a zero or missing discount being formatted as a promo)."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "The reported pizza card’s −0% discount badge is the same nonsensical zero-discount badge."
+      }
+    ],
+    "extraReportedIndexes": [],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

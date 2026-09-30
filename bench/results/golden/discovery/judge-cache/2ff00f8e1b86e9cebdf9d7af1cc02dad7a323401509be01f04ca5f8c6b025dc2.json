@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Delivery fee shows €NaN"
+  ],
+  "reportedIssues": [
+    "Smash Bros Burgers displays an invalid delivery fee value 'eNaN delivery', which is a content rendering error.",
+    "The third restaurant card in the 'Fastest near you' row (Trattoria Piccol) shows inconsistent alignment and spacing compared to the first two cards in the horizontal carousel."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes an invalid delivery fee value for a restaurant, matching the €NaN delivery fee defect."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

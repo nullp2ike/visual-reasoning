@@ -1,0 +1,56 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Loading spinner is shown on top of already loaded content"
+  ],
+  "reportedIssues": [
+    "The 'Popular right now' Tokumaru Ramen Bar card shows a circular loading spinner in the center of its hero image. The image appears stuck loading or half-rendered, while other images on the page have loaded.",
+    "Secondary text (e.g. '€0.90 delivery', '25–35 min • €0 delivery • Ramen') is light gray on white and has low contrast. The gray search placeholder is also faint.",
+    "The time badges on the 'Fastest near you' cards (e.g. '15–25 min') overlap the bottom-left edge of the illustration. They look slightly cramped and inconsistent with the image content, and the first badge overlaps the plate.",
+    "The favorite heart icons on the hero cards are inconsistent. The ramen card uses a dark translucent circle that is barely visible against the dark image, and the pizza card uses a different-looking button."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "The report describes a loading spinner over the ramen card’s hero image while the rest of the page content is loaded."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.92,
+        "confidence": 0.88
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.99
+      }
+    ]
+  }
+}
