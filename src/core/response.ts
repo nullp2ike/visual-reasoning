@@ -11,6 +11,23 @@ function stripCodeFences(text: string): string {
 
 export const CheckResponseSchema = CheckResultSchema.omit({ usage: true });
 export const AskResponseSchema = AskResultSchema.omit({ usage: true });
+/**
+ * What `ask()` requests from strict structured-output providers, one schema per
+ * media kind so the schema never requires a field its prompt does not mention.
+ * The image prompt describes only `summary` and `issues`; requiring the
+ * video-only `frameReferences` as well made gpt-6.1-sol and gpt-6-astra stall
+ * in endless whitespace after `issues` until `max_output_tokens` ran out (7 of
+ * 20 and 3 of 12 calls, against 0 of 60 and 0 of 12 without it). Sampled-frame
+ * video prompts ask for `frameReferences` and native video prompts for
+ * `timestampReferences`, so each keeps only its own. Parsing still uses
+ * `AskResponseSchema`, where both fields are optional.
+ */
+export const AskImageResponseSchema = AskResponseSchema.omit({
+  frameReferences: true,
+  timestampReferences: true,
+});
+export const AskFramesResponseSchema = AskResponseSchema.omit({ timestampReferences: true });
+export const AskNativeVideoResponseSchema = AskResponseSchema.omit({ frameReferences: true });
 export const CompareResponseSchema = CompareResultSchema.omit({ usage: true });
 
 /**

@@ -146,4 +146,22 @@ describe("integration: video → ask()", () => {
     expect(result.frameReferences).toEqual([0, 1]);
     expect(result.frames?.count).toBe(2);
   });
+
+  it("requires frameReferences in the response schema for video inputs", async () => {
+    mockOpenAICreate.mockResolvedValueOnce({
+      output_text: JSON.stringify({ summary: "Nothing notable.", issues: [], frameReferences: [] }),
+      usage: { input_tokens: 800, output_tokens: 50 },
+    });
+
+    const ai = visualAI({ model: "gpt-5-mini", apiKey: "test-key" });
+    await ai.ask(SMALL_MP4, "What happens?");
+
+    const params = mockOpenAICreate.mock.calls[0]![0] as {
+      text: { format: { schema: { properties: Record<string, unknown>; required: string[] } } };
+    };
+    expect(params.text.format.schema.properties).toHaveProperty("frameReferences");
+    expect(params.text.format.schema.required).toContain("frameReferences");
+    // Native video's timestampReferences is never mentioned in the frames prompt.
+    expect(params.text.format.schema.properties).not.toHaveProperty("timestampReferences");
+  });
 });

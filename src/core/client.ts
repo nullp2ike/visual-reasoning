@@ -58,7 +58,9 @@ import {
   type MediaContext,
 } from "./prompt.js";
 import {
-  AskResponseSchema,
+  AskFramesResponseSchema,
+  AskImageResponseSchema,
+  AskNativeVideoResponseSchema,
   CheckResponseSchema,
   CompareResponseSchema,
   parseAskResponse,
@@ -287,7 +289,11 @@ function createDriver(provider: ProviderName, config: ProviderConfig): ProviderD
 }
 
 const checkSchemaOptions = toSchemaOptions(CheckResponseSchema);
-const askSchemaOptions = toSchemaOptions(AskResponseSchema);
+const askSchemaOptionsByMedia = {
+  image: toSchemaOptions(AskImageResponseSchema),
+  video: toSchemaOptions(AskFramesResponseSchema),
+  "native-video": toSchemaOptions(AskNativeVideoResponseSchema),
+} as const satisfies Record<MediaContext["kind"], SendMessageOptions>;
 const compareSchemaOptions = toSchemaOptions(CompareResponseSchema);
 
 /** Media-derived fields spread onto a `check()` / `ask()` result. */
@@ -518,7 +524,12 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
         });
         debugLog(resolvedConfig, "ask prompt", prompt, "prompt");
 
-        const { response, metadata } = await sendMedia(driver, dispatch, prompt, askSchemaOptions);
+        const { response, metadata } = await sendMedia(
+          driver,
+          dispatch,
+          prompt,
+          askSchemaOptionsByMedia[dispatch.mediaContext.kind],
+        );
         debugLog(resolvedConfig, "ask response", response.text, "response");
 
         const result = parseAskResponse(response.text);

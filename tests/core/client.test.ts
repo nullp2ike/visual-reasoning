@@ -398,6 +398,27 @@ describe("visualAI", () => {
       const callArgs = JSON.stringify(mockOpenAICreate.mock.calls[0][0]);
       expect(callArgs).toContain("Ignore decorative elements");
     });
+
+    it("sends image inputs a response schema without frameReferences", async () => {
+      // The image prompt describes only { summary, issues }. Requiring a third,
+      // unmentioned field under strict structured outputs made gpt-6.1-sol stall
+      // in endless whitespace after "issues" until max_output_tokens ran out.
+      mockOpenAICreate.mockResolvedValueOnce({
+        output_text: makeQueryResponse(),
+        usage: { input_tokens: 200, output_tokens: 100 },
+      });
+
+      const ai = visualAI({ model: "gpt-5-mini", apiKey: "test" });
+      const image = await readFile(join(FIXTURES_DIR, "small.png"));
+      await ai.ask(image, "Analyze this page");
+
+      const params = mockOpenAICreate.mock.calls[0][0] as {
+        text: { format: { schema: { properties: Record<string, unknown>; required: string[] } } };
+      };
+      const { schema } = params.text.format;
+      expect(Object.keys(schema.properties).sort()).toEqual(["issues", "summary"]);
+      expect(schema.required.sort()).toEqual(["issues", "summary"]);
+    });
   });
 
   describe("compare()", () => {

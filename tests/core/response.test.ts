@@ -1,5 +1,8 @@
 import { describe, it, expect } from "vitest";
 import {
+  AskFramesResponseSchema,
+  AskImageResponseSchema,
+  AskNativeVideoResponseSchema,
   parseAskResponse,
   parseCheckResponse,
   parseCompareResponse,
@@ -363,6 +366,31 @@ describe("parseAskResponse", () => {
     expect(() => parseAskResponse(JSON.stringify({ issues: [] }))).toThrow(
       VisualAIResponseParseError,
     );
+  });
+});
+
+describe("ask() response schemas per media kind", () => {
+  // A strict schema must never require a field its prompt does not mention:
+  // gpt-6.1-sol and gpt-6-astra looped in whitespace until max_output_tokens
+  // when the image schema required the video-only frameReferences.
+  it("image schema has neither reference field", () => {
+    expect(Object.keys(AskImageResponseSchema.shape).sort()).toEqual(["issues", "summary"]);
+  });
+
+  it("sampled-frames schema has frameReferences only", () => {
+    expect(Object.keys(AskFramesResponseSchema.shape).sort()).toEqual([
+      "frameReferences",
+      "issues",
+      "summary",
+    ]);
+  });
+
+  it("native video schema has timestampReferences only", () => {
+    expect(Object.keys(AskNativeVideoResponseSchema.shape).sort()).toEqual([
+      "issues",
+      "summary",
+      "timestampReferences",
+    ]);
   });
 });
 
