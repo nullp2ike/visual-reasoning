@@ -80,6 +80,7 @@
   .toolbar { position: sticky; bottom: 0; background: #fff; border-top: 1px solid var(--line); padding: 10px 24px; display: flex; gap: 12px; align-items: center; }
   button { background: var(--accent); color: #fff; border: 0; border-radius: 6px; padding: 8px 14px; font-size: 14px; cursor: pointer; }
   #override-count { color: var(--muted); font-size: 13px; }
+  body.read-only .chip { cursor: default; }
   .clearfix::after { content: ""; display: table; clear: both; }
   .errcell { color: var(--bad); }
 </style>
@@ -115,6 +116,8 @@ Do not report the following (treat these as features, not defects):
 <script>
 "use strict";
 const DATA = JSON.parse(document.getElementById("data").textContent);
+// Published copies show verdicts but never stage overrides.
+const READ_ONLY = false;
 // Path prefix for screenshot <img> hrefs, relative to this report's own file.
 const IMAGE_BASE = DATA.imageBase;
 const scores = DATA.scores;
@@ -187,6 +190,7 @@ function effectiveExtra(cell, repIndex, key) {
   return cell.extraReportedIndexes.includes(repIndex);
 }
 function countOverrides() {
+  if (READ_ONLY) return;
   let n = 0;
   for (const entry of Object.values(overrides)) {
     n += Object.keys(entry.expected || {}).length + Object.keys(entry.extras || {}).length;
@@ -196,6 +200,7 @@ function countOverrides() {
 
 // Shared chip handler: staging an override re-renders matrix, detail, and counts.
 function bindChips(container) {
+  if (READ_ONLY) return;
   container.querySelectorAll(".chip[data-kind]").forEach(chip => chip.onclick = () => {
     const { kind, key, index } = chip.dataset;
     const entry = overrideEntry(key);
@@ -463,7 +468,8 @@ function renderDetail() {
   bindChips(container);
 }
 
-document.getElementById("export").onclick = () => {
+const exportButton = document.getElementById("export");
+if (exportButton) exportButton.onclick = () => {
   const cleaned = {};
   for (const [key, entry] of Object.entries(overrides)) {
     const out = {};

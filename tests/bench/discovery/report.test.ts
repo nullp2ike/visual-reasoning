@@ -120,21 +120,64 @@ describe("buildReportHtml", () => {
     expect(html).not.toContain("Prompt variant");
   });
 
-  it("emits a syntactically valid inline script", () => {
-    const html = buildReportHtml(scores, manifest, {}, ["gpt-5.6-luna"]);
-    // The interactive report is a single inline <script>; a malformed string
-    // (e.g. an unescaped quote in a column tooltip) silently breaks all rendering.
+  function inlineScript(html: string): string {
     const match = /<script>\n([\s\S]*?)<\/script>/.exec(html);
     expect(match).not.toBeNull();
+    return match?.[1] ?? "";
+  }
+
+  it("emits a syntactically valid inline script", () => {
+    // The interactive report is a single inline <script>; a malformed string
+    // (e.g. an unescaped quote in a column tooltip) silently breaks all rendering.
     // Compiling with vm.Script parses the body without executing it, so a
     // SyntaxError surfaces here while DOM globals are never touched.
-    expect(() => new Script(match![1] ?? "")).not.toThrow();
+    for (const readOnly of [false, true]) {
+      const html = buildReportHtml(
+        scores,
+        manifest,
+        {},
+        {
+          siblingJudges: ["gpt-5.6-luna"],
+          readOnly,
+        },
+      );
+      expect(() => new Script(inlineScript(html))).not.toThrow();
+    }
   });
 
   it("links sibling judges' reports and the comparison", () => {
-    const html = buildReportHtml(scores, manifest, {}, ["x-ai/grok-4.5"]);
+    const html = buildReportHtml(scores, manifest, {}, { siblingJudges: ["x-ai/grok-4.5"] });
     expect(html).toContain('<a href="report.x-ai__grok-4.5.html">x-ai/grok-4.5</a>');
     expect(html).toContain('<a href="JUDGE_COMPARISON.md">comparison</a>');
+  });
+
+  it("links the comparison through a caller-supplied href", () => {
+    const html = buildReportHtml(
+      scores,
+      manifest,
+      {},
+      {
+        siblingJudges: ["x-ai/grok-4.5"],
+        comparisonHref: "comparison.html",
+      },
+    );
+    expect(html).toContain('<a href="comparison.html">comparison</a>');
+    expect(html).not.toContain("JUDGE_COMPARISON.md");
+  });
+
+  it("offers override editing and export by default", () => {
+    const html = buildReportHtml(scores, manifest, {});
+    expect(html).toContain('<button id="export">');
+    expect(html).toContain("<body>");
+    expect(html).toContain("const READ_ONLY = false;");
+  });
+
+  it("drops override editing and export in read-only mode", () => {
+    const html = buildReportHtml(scores, manifest, {}, { readOnly: true });
+    expect(html).not.toContain('<button id="export">');
+    expect(html).not.toContain('<div class="toolbar">');
+    expect(html).toContain('<body class="read-only">');
+    expect(html).toContain("const READ_ONLY = true;");
   });
 
   it("shows the per-model reasoning effort in the leaderboard column set", () => {
@@ -143,7 +186,7 @@ describe("buildReportHtml", () => {
   });
 
   it("links screenshots through the caller-supplied image base, not a fixed path", () => {
-    const html = buildReportHtml(scores, manifest, {}, [], "../../datasets/my-set");
+    const html = buildReportHtml(scores, manifest, {}, { imageBase: "../../datasets/my-set" });
     expect(html).toContain('"imageBase":"../../datasets/my-set"');
     // No dataset directory name may be baked into the page's markup.
     expect(html).not.toContain("golden_data_set");
@@ -151,7 +194,7 @@ describe("buildReportHtml", () => {
   });
 
   it("strips a trailing slash from the image base so hrefs never double up", () => {
-    const html = buildReportHtml(scores, manifest, {}, [], "../../datasets/my-set/");
+    const html = buildReportHtml(scores, manifest, {}, { imageBase: "../../datasets/my-set/" });
     expect(html).toContain('"imageBase":"../../datasets/my-set"');
   });
 });

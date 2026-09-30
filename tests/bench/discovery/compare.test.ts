@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  buildComparisonHtml,
   buildComparisonMarkdown,
   buildJudgeComparison,
 } from "../../../bench/discovery/src/compare.js";
@@ -155,5 +156,36 @@ describe("buildComparisonMarkdown", () => {
     expect(md).toContain("typo.png");
     expect(md).toContain("matched");
     expect(md).toContain("missed");
+  });
+});
+
+describe("buildComparisonHtml", () => {
+  const comparison = buildJudgeComparison(
+    [scores("judge-a", [cell(true)], 1.0), scores("judge-b", [cell(false)], 0.5)],
+    manifest,
+  );
+
+  it("renders a standalone page with the metric table and disagreement reasonings", () => {
+    const html = buildComparisonHtml(comparison, { backHref: "index.html" });
+    expect(html.startsWith("<!doctype html>")).toBe(true);
+    expect(html).toContain("<table>");
+    expect(html).toContain("<th>judge-a recall</th>");
+    expect(html).toContain("model-a");
+    expect(html).toContain("typo.png");
+    expect(html).toContain("Disagreements (1)");
+    expect(html).toContain('<a href="index.html">');
+  });
+
+  it("escapes model output so it can never inject markup", () => {
+    const hostile = buildJudgeComparison(
+      [
+        scores("judge-a", [{ ...cell(true), series: "<b>x</b>", model: "<b>x</b>" }], 1.0),
+        scores("judge-b", [{ ...cell(false), series: "<b>x</b>", model: "<b>x</b>" }], 0.5),
+      ],
+      manifest,
+    );
+    const html = buildComparisonHtml(hostile, { backHref: "index.html" });
+    expect(html).not.toContain("<b>x</b>");
+    expect(html).toContain("&lt;b&gt;x&lt;/b&gt;");
   });
 });

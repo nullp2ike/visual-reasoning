@@ -45,6 +45,7 @@ Set `BENCH_DATASET` in `.env` to avoid passing `--dataset` every time.
 | `pnpm discovery:run`    | Executes the sweep and writes one run record per (model, image, rep).  |
 | `pnpm discovery:score`  | Judges every run against the expected issues and writes a scores file. |
 | `pnpm discovery:report` | Renders `RESULTS.*.md`, `report.*.html`, and the judge comparison.     |
+| `pnpm discovery:site`   | Builds the read-only static site that GitHub Pages publishes.          |
 
 All three accept `--dataset <id-or-path>`.
 
@@ -106,6 +107,35 @@ RESULTS.md             copies of the default judge's RESULTS and report
 report.html
 JUDGE_COMPARISON.md    how the judges disagree, when there are two or more
 ```
+
+## Publishing
+
+The `golden` results are published to GitHub Pages by
+[`.github/workflows/pages.yml`](../../.github/workflows/pages.yml) on every push
+to `main` that touches them. The workflow runs `pnpm discovery:site`, which
+assembles `_site/`:
+
+```
+index.html             the default judge's report
+report.<judge>.html    every judge's report
+comparison.html        the judge comparison, as a page
+screenshots/           the dataset images the reports link to
+```
+
+The published reports are read-only: the override chips can't be clicked and
+the export toolbar is gone, since overrides only mean something to someone
+re-grading locally. Only datasets in `PUBLISHABLE_DATASETS` in
+`bench/discovery/src/site.ts` can be built, which is just `golden`; the command
+ignores `BENCH_DATASET`, so the private `primary` dataset can never be
+published by accident. To preview the site locally:
+
+```bash
+pnpm discovery:site
+python3 -m http.server --directory _site 8000
+```
+
+Pages must be enabled once in the repository settings, with **GitHub Actions**
+as the source.
 
 The HTML report links screenshots relative to its own location rather than
 inlining them, so it stays small and never embeds your dataset.

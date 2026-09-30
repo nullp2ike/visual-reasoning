@@ -1,0 +1,62 @@
+name: Pages
+
+# Publishes the golden discovery benchmark report as a static site. Only the
+# `golden` dataset is publishable (PUBLISHABLE_DATASETS in
+# bench/discovery/src/site.ts); `primary` is private and never tracked anyway.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "bench/results/golden/discovery/**"
+      - "bench/datasets/golden/**"
+      - "bench/discovery/src/**"
+      - "bench/shared/**"
+      - "bench/bench.config.ts"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time; a newer push waits rather than cancelling a
+# deployment already in flight.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Run records and the judge cache are most of the repository's files and
+      # the site needs neither: the reports are built from the scores alone.
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/bench/results/**/runs/
+            !/bench/results/**/judge-cache/
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm discovery:site --dataset golden --out _site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

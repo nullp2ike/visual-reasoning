@@ -1,4 +1,5 @@
 import type { Manifest, ResolvedCell, Scores } from "./types.js";
+import { escapeHtml } from "./html.js";
 import { truncateDescription } from "./matrix.js";
 
 interface JudgeModelStats {
@@ -211,4 +212,96 @@ export function buildComparisonMarkdown(comparison: JudgeComparison): string {
   }
 
   return lines.join("\n");
+}
+
+/**
+ * Render the judge comparison as a standalone page for the published site,
+ * where a markdown file would be served as raw text. Same content as
+ * buildComparisonMarkdown; every string is escaped, since reasonings and
+ * expected issues are model- and dataset-authored text.
+ */
+export function buildComparisonHtml(
+  comparison: JudgeComparison,
+  options: { backHref: string },
+): string {
+  const e = escapeHtml;
+  const header = [
+    "Model",
+    ...comparison.judges.flatMap((j) => [`${j} recall`, `${j} extras/run`]),
+    "Recall Δ",
+  ];
+  const rows = comparison.perModel.map((row) => {
+    const cells = [
+      row.model,
+      ...comparison.judges.flatMap((j) => [
+        pct(row.byJudge[j]?.meanRecall ?? null),
+        num(row.byJudge[j]?.extrasPerRun ?? null),
+      ]),
+      row.recallDelta === null ? "–" : pct(row.recallDelta),
+    ];
+    return `<tr>${cells.map((c) => `<td>${e(c)}</td>`).join("")}</tr>`;
+  });
+
+  const disagreements = comparison.disagreements.map((d) => {
+    const judges = comparison.judges.map((judge) => {
+      const verdicts = d.perJudge[judge] ?? [];
+      const reps = verdicts
+        .map(
+          (v) =>
+            `<li><span class="${v.found ? "found" : "missed"}">rep ${v.rep}: ${v.found ? "found" : "missed"}</span> ${e(v.reasoning)}</li>`,
+        )
+        .join("");
+      return `<li><strong>${e(judge)}</strong>${reps ? `<ul>${reps}</ul>` : " no verdicts"}</li>`;
+    });
+    return `<section class="disagreement">
+<h3>${e(d.imageId)} ${e(d.filename)} — ${e(d.model)}</h3>
+<p>Expected: ${e(truncateDescription(d.expectedText))}</p>
+<ul>${judges.join("")}</ul>
+</section>`;
+  });
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Defect discovery benchmark — judge comparison</title>
+<style>
+  :root { --ok: #15803d; --bad: #b91c1c; --muted: #6b7280; --line: #e5e7eb; --accent: #1d4ed8; }
+  body { font: 14px/1.5 -apple-system, "Segoe UI", Roboto, sans-serif; margin: 0; color: #111827; background: #fafafa; }
+  main { max-width: 1400px; margin: 0 auto; padding: 24px 16px; }
+  h1 { font-size: 22px; } h2 { font-size: 18px; margin-top: 32px; } h3 { font-size: 15px; margin: 0 0 4px; }
+  a { color: var(--accent); }
+  .scroll { overflow-x: auto; }
+  table { border-collapse: collapse; background: #fff; }
+  th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: right; white-space: nowrap; }
+  th { background: #f3f4f6; }
+  th:first-child, td:first-child { text-align: left; }
+  .disagreement { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+  .disagreement p { margin: 0 0 6px; color: var(--muted); }
+  .disagreement ul { margin: 4px 0; padding-left: 20px; }
+  .found { color: var(--ok); font-weight: 600; } .missed { color: var(--bad); font-weight: 600; }
+</style>
+</head>
+<body>
+<main>
+<p><a href="${e(options.backHref)}">← Back to the report</a></p>
+<h1>Judge comparison</h1>
+<p>Judges compared: ${comparison.judges.map((j) => `<code>${e(j)}</code>`).join(" vs ")}</p>
+<h2>Per-model metrics by judge</h2>
+<div class="scroll"><table>
+<thead><tr>${header.map((h) => `<th>${e(h)}</th>`).join("")}</tr></thead>
+<tbody>${rows.join("\n")}</tbody>
+</table></div>
+<h2>Disagreements (${comparison.disagreements.length})</h2>
+${comparison.disagreements.length === 0 ? "<p>The judges agree on every non-overridden cell.</p>" : disagreements.join("\n")}
+${
+  comparison.overriddenExcluded > 0
+    ? `<p>${comparison.overriddenExcluded} manually overridden run(s) excluded — overrides force agreement regardless of judge.</p>`
+    : ""
+}
+</main>
+</body>
+</html>
+`;
 }

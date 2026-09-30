@@ -1,18 +1,7 @@
 import type { Manifest, Overrides, Scores } from "./types.js";
 import { modelDirName } from "../../shared/util.js";
 
-/**
- * Build the self-contained report page. All data is inlined as JSON; the only
- * external references are the dataset screenshots, loaded via `imageBase` —
- * a path relative to the report's own location, which the caller computes from
- * the report directory to the dataset directory (e.g. `../../datasets/<id>`).
- * It defaults to `.` (screenshots beside the page); no dataset name is baked in.
- *
- * The client-side computeMatrixCell mirrors bench/discovery/src/matrix.ts semantics but
- * uses the page's staged override state so matrix counts update live; the TS
- * version is the tested source of truth.
- */
-function escapeHtml(text: string): string {
+export function escapeHtml(text: string): string {
   return text
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
@@ -20,13 +9,44 @@ function escapeHtml(text: string): string {
     .replaceAll('"', "&quot;");
 }
 
+export interface ReportHtmlOptions {
+  /** Other judges with a report beside this one, linked as `report.<judge>.html`. */
+  siblingJudges?: readonly string[];
+  /**
+   * Path from the report to the directory holding the screenshots, e.g.
+   * `../../datasets/<id>`. Defaults to `.` (screenshots beside the page).
+   */
+  imageBase?: string;
+  /** Where the "comparison" link beside the sibling judges points. */
+  comparisonHref?: string;
+  /**
+   * Published copy: drops the override chips' click handlers and the export
+   * toolbar, which only make sense to someone re-grading the bench locally.
+   */
+  readOnly?: boolean;
+}
+
+/**
+ * Build the self-contained report page. All data is inlined as JSON; the only
+ * external references are the dataset screenshots, loaded via `imageBase`, a
+ * path relative to the report's own location. No dataset name is baked in.
+ *
+ * The client-side computeMatrixCell mirrors bench/discovery/src/matrix.ts semantics but
+ * uses the page's staged override state so matrix counts update live; the TS
+ * version is the tested source of truth.
+ */
 export function buildReportHtml(
   scores: Scores,
   manifest: Manifest,
   overrides: Overrides,
-  siblingJudges: readonly string[] = [],
-  imageBase = ".",
+  options: ReportHtmlOptions = {},
 ): string {
+  const {
+    siblingJudges = [],
+    imageBase = ".",
+    comparisonHref = "JUDGE_COMPARISON.md",
+    readOnly = false,
+  } = options;
   const payload = {
     scores,
     manifest: manifest.entries,
@@ -47,7 +67,7 @@ export function buildReportHtml(
               `<a href="report.${escapeHtml(modelDirName(judge))}.html">${escapeHtml(judge)}</a>`,
           )
           .join(" · ") +
-        ' · <a href="JUDGE_COMPARISON.md">comparison</a>'
+        ` · <a href="${escapeHtml(comparisonHref)}">comparison</a>`
       : "";
 
   return `<!doctype html>
@@ -132,11 +152,12 @@ export function buildReportHtml(
   .toolbar { position: sticky; bottom: 0; background: #fff; border-top: 1px solid var(--line); padding: 10px 24px; display: flex; gap: 12px; align-items: center; }
   button { background: var(--accent); color: #fff; border: 0; border-radius: 6px; padding: 8px 14px; font-size: 14px; cursor: pointer; }
   #override-count { color: var(--muted); font-size: 13px; }
+  body.read-only .chip { cursor: default; }
   .clearfix::after { content: ""; display: table; clear: both; }
   .errcell { color: var(--bad); }
 </style>
 </head>
-<body>
+<body${readOnly ? ' class="read-only"' : ""}>
 <main>
   <h1>Defect discovery benchmark</h1>
   <div class="prompt-hero">
@@ -154,15 +175,21 @@ export function buildReportHtml(
   <div style="overflow-x:auto"><table id="leaderboard"><thead></thead><tbody></tbody></table></div>
   <div id="detail"></div>
 </main>
-<div class="toolbar">
+${
+  readOnly
+    ? ""
+    : `<div class="toolbar">
   <button id="export">Export overrides.json</button>
   <span id="override-count"></span>
   <span class="meta">Click found/missed and extra chips to override judge verdicts, then export and save as bench/results/&lt;dataset&gt;/discovery/overrides.json and re-run pnpm discovery:score &amp;&amp; pnpm discovery:report.</span>
 </div>
-<script type="application/json" id="data">${json}</script>
+`
+}<script type="application/json" id="data">${json}</script>
 <script>
 "use strict";
 const DATA = JSON.parse(document.getElementById("data").textContent);
+// Published copies show verdicts but never stage overrides.
+const READ_ONLY = ${readOnly};
 // Path prefix for screenshot <img> hrefs, relative to this report's own file.
 const IMAGE_BASE = DATA.imageBase;
 const scores = DATA.scores;
@@ -235,6 +262,7 @@ function effectiveExtra(cell, repIndex, key) {
   return cell.extraReportedIndexes.includes(repIndex);
 }
 function countOverrides() {
+  if (READ_ONLY) return;
   let n = 0;
   for (const entry of Object.values(overrides)) {
     n += Object.keys(entry.expected || {}).length + Object.keys(entry.extras || {}).length;
@@ -244,6 +272,7 @@ function countOverrides() {
 
 // Shared chip handler: staging an override re-renders matrix, detail, and counts.
 function bindChips(container) {
+  if (READ_ONLY) return;
   container.querySelectorAll(".chip[data-kind]").forEach(chip => chip.onclick = () => {
     const { kind, key, index } = chip.dataset;
     const entry = overrideEntry(key);
@@ -511,7 +540,8 @@ function renderDetail() {
   bindChips(container);
 }
 
-document.getElementById("export").onclick = () => {
+const exportButton = document.getElementById("export");
+if (exportButton) exportButton.onclick = () => {
   const cleaned = {};
   for (const [key, entry] of Object.entries(overrides)) {
     const out = {};

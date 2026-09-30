@@ -154,13 +154,10 @@ async function main(): Promise<void> {
   const judges = scoresList.map((s) => s.judgeModel);
   for (const scores of scoresList) {
     const judge = scores.judgeModel;
-    const html = buildReportHtml(
-      scores,
-      manifest,
-      overrides,
-      judges.filter((j) => j !== judge),
-      imageBaseForReport(dataset),
-    );
+    const html = buildReportHtml(scores, manifest, overrides, {
+      siblingJudges: judges.filter((j) => j !== judge),
+      imageBase: imageBaseForReport(dataset),
+    });
     const markdown = buildResultsMarkdown(scores, manifest);
     await writeFile(reportHtmlPathForJudge(judge), html, "utf8");
     await writeFile(resultsMdPathForJudge(judge), markdown, "utf8");
