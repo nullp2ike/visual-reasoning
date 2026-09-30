@@ -9,6 +9,7 @@ import { selectDataset, type Dataset } from "../../shared/dataset.js";
 import { buildReportHtml } from "./html.js";
 import { ensureManifest } from "./manifest.js";
 import { buildMatrix, buildMatrixMarkdown, truncateDescription } from "./matrix.js";
+import { sortLeaderboard } from "./metrics.js";
 import { overridesPath } from "./score.js";
 import {
   OverridesSchema,
@@ -32,6 +33,37 @@ export const SCORES_FILE_RE = /^scores\.(.+)\.json$/;
 
 export function resultsMdPathForJudge(judgeModel: string): string {
   return join(discoveryResultsDir(), `RESULTS.${modelDirName(judgeModel)}.md`);
+}
+
+export interface DefaultSeries {
+  series: string[];
+  /** The judge whose recall produced the ranking. */
+  rankJudge: string;
+}
+
+/**
+ * The models a report shows before the reader touches its filter: the top
+ * `count` series by `rankJudge`'s leaderboard (recall, then fewest extras).
+ * Computed once across judges, so every judge's report opens on the same
+ * models. Falls back to `fallbackJudge`, then to the first judge with scores.
+ */
+export function defaultVisibleSeries(
+  scoresList: readonly Scores[],
+  rankJudge: string,
+  count: number,
+  fallbackJudge?: string,
+): DefaultSeries | undefined {
+  const ranking =
+    scoresList.find((s) => s.judgeModel === rankJudge) ??
+    scoresList.find((s) => s.judgeModel === fallbackJudge) ??
+    scoresList[0];
+  if (!ranking) return undefined;
+  return {
+    series: sortLeaderboard(ranking.models)
+      .slice(0, count)
+      .map((m) => m.series),
+    rankJudge: ranking.judgeModel,
+  };
 }
 
 export function reportHtmlPathForJudge(judgeModel: string): string {
@@ -167,6 +199,13 @@ async function main(): Promise<void> {
 
   const manifest = await ensureManifest();
   let scoresList = await discoverScores();
+  // Ranked across every judge's scores, even when --judge limits which reports are written.
+  const defaultSeries = defaultVisibleSeries(
+    scoresList,
+    benchConfig.reportRankJudge,
+    benchConfig.reportDefaultModels,
+    benchConfig.judgeModel,
+  );
   if (values.judge) {
     scoresList = scoresList.filter((s) => s.judgeModel === values.judge);
   }
@@ -187,6 +226,7 @@ async function main(): Promise<void> {
     const html = buildReportHtml(scores, manifest, overrides, {
       siblingJudges: judges.filter((j) => j !== judge),
       imageBase: imageBaseForReport(dataset),
+      defaultSeries,
     });
     const markdown = buildResultsMarkdown(scores, manifest);
     await writeFile(reportHtmlPathForJudge(judge), html, "utf8");

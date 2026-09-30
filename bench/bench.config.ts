@@ -37,6 +37,14 @@ export interface BenchConfig {
    */
   readonly judgeModel: string;
   /**
+   * The judge whose recall ranking picks the models every discovery report
+   * shows by default, so all judges' reports open on the same models. Falls
+   * back to `judgeModel` when this judge has no scores for the dataset.
+   */
+  readonly reportRankJudge: string;
+  /** How many top models a report shows by default; its model filter shows the rest. */
+  readonly reportDefaultModels: number;
+  /**
    * Concurrent in-flight requests per provider during a sweep.
    * Note: all OpenRouter-routed models (xAI, Moonshot, Qwen) share a single
    * "openrouter" pool since rate limits apply per API key.
@@ -126,6 +134,8 @@ export const benchConfig: BenchConfig = {
   imageFidelity: "auto",
   maxTokens: 8192,
   judgeModel: "gpt-5.6-luna",
+  reportRankJudge: "gpt-6-luna",
+  reportDefaultModels: 10,
   // Rate-limit errors retry with backoff and failed cells resume on the next
   // run, so this can be raised safely; override per-run with --concurrency.
   concurrencyPerProvider: 6,

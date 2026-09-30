@@ -161,5 +161,14 @@ python3 -m http.server --directory _site 8000
 Pages must be enabled once in the repository settings, with **GitHub Actions**
 as the source.
 
+Each report opens on a subset of models: the top `reportDefaultModels` (10) by
+`reportRankJudge`'s (`gpt-6-luna`) recall, falling back to `judgeModel` when
+that judge has no scores, so every judge's report starts on the same models. The
+**Models** button above the matrix opens a dropdown that switches any model on or off, with shortcuts
+back to the default, to all, or to none; it applies to the matrix, the
+leaderboard, the model detail and the least-confident decisions. A changed
+selection is kept in the URL (`#models=…`), so it can be shared and carries over
+when you follow the links to the other judges' reports.
+
 The HTML report links screenshots relative to its own location rather than
 inlining them, so it stays small and never embeds your dataset.

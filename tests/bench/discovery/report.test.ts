@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   SCORES_FILE_RE,
   buildResultsMarkdown,
+  defaultVisibleSeries,
   reportHtmlPathForJudge,
   resultsMdPathForJudge,
 } from "../../../bench/discovery/src/report.js";
@@ -139,6 +140,41 @@ describe("buildResultsMarkdown judge confidence", () => {
   });
 });
 
+describe("defaultVisibleSeries", () => {
+  function judgeScores(judgeModel: string, recalls: Record<string, number>) {
+    const base = makeScores().models[0]!;
+    return makeScores({
+      judgeModel,
+      models: Object.entries(recalls).map(([series, meanRecall]) => ({
+        ...base,
+        series,
+        model: series,
+        meanRecall,
+      })),
+    });
+  }
+  const luna6 = judgeScores("gpt-6-luna", { a: 0.5, b: 0.9, c: 0.7, d: 0.9 });
+  const luna5 = judgeScores("gpt-5.6-luna", { a: 0.95, b: 0.1, c: 0.2, d: 0.3 });
+
+  it("takes the top models by the ranking judge's recall, whichever report is built", () => {
+    expect(defaultVisibleSeries([luna5, luna6], "gpt-6-luna", 3)).toEqual({
+      series: ["b", "d", "c"],
+      rankJudge: "gpt-6-luna",
+    });
+  });
+
+  it("falls back to the first available judge when the ranking judge has no scores", () => {
+    expect(defaultVisibleSeries([luna5], "gpt-6-luna", 1, "gpt-5.6-luna")).toEqual({
+      series: ["a"],
+      rankJudge: "gpt-5.6-luna",
+    });
+  });
+
+  it("shows every model when there is nothing to rank by", () => {
+    expect(defaultVisibleSeries([], "gpt-6-luna", 10)).toBeUndefined();
+  });
+});
+
 describe("report paths", () => {
   it("embed the sanitized judge slug", () => {
     expect(resultsMdPathForJudge("gemini-3.8-flash")).toMatch(/RESULTS\.gemini-3\.8-flash\.md$/);
@@ -238,6 +274,26 @@ describe("buildReportHtml", () => {
 
   it("has no confidence section for a chat-model judge", () => {
     expect(buildReportHtml(scores, manifest, {})).not.toContain('<section id="confidence">');
+  });
+
+  it("offers a model filter defaulting to the given series", () => {
+    const html = buildReportHtml(
+      scores,
+      manifest,
+      {},
+      {
+        defaultSeries: { series: ["model-a"], rankJudge: "gpt-6-luna" },
+      },
+    );
+    expect(html).toContain('<details id="model-filter"');
+    expect(html).toContain('"defaultSeries":["model-a"]');
+    expect(html).toContain('"defaultSeriesJudge":"gpt-6-luna"');
+    expect(() => new Script(inlineScript(html))).not.toThrow();
+  });
+
+  it("shows every model by default when no default series is given", () => {
+    const html = buildReportHtml(scores, manifest, {});
+    expect(html).toContain('"defaultSeries":null');
   });
 
   it("shows the per-model reasoning effort in the leaderboard column set", () => {

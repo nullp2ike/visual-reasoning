@@ -57,6 +57,12 @@ describe("buildSite", () => {
     expect(index).toContain("const READ_ONLY = true;");
     expect(index).toContain('"imageBase":"screenshots"');
     expect(index).toContain('<a href="comparison.html">comparison</a>');
+    // Every judge's page opens on the same top models, ranked by the configured judge.
+    const defaults = /"defaultSeries":(\[[^\]]*\]),"defaultSeriesJudge":"([^"]+)"/.exec(index);
+    expect(defaults?.[2]).toBe("gpt-6-luna");
+    expect(JSON.parse(defaults?.[1] ?? "[]")).toHaveLength(10);
+    const gemini = await readFile(join(out, "report.gemini-3.8-flash.html"), "utf8");
+    expect(gemini).toContain(`"defaultSeries":${defaults?.[1] ?? ""}`);
 
     const screenshots = await readdir(join(out, "screenshots"));
     expect(screenshots).toHaveLength(summary.screenshots);

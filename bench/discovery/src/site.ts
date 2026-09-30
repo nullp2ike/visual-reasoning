@@ -8,7 +8,7 @@ import { datasetDir, modelDirName, readJsonIfExists } from "../../shared/util.js
 import { buildComparisonHtml, buildJudgeComparison } from "./compare.js";
 import { buildReportHtml } from "./html.js";
 import { ensureManifest } from "./manifest.js";
-import { discoverScores } from "./report.js";
+import { defaultVisibleSeries, discoverScores } from "./report.js";
 import { overridesPath } from "./score.js";
 import { OverridesSchema, type Overrides } from "./types.js";
 
@@ -77,6 +77,12 @@ export async function buildSite(outDir: string): Promise<SiteSummary> {
   const judges = scoresList.map((s) => s.judgeModel);
   const defaultJudge = judges.includes(benchConfig.judgeModel) ? benchConfig.judgeModel : judges[0];
   const hasComparison = scoresList.length >= 2;
+  const defaultSeries = defaultVisibleSeries(
+    scoresList,
+    benchConfig.reportRankJudge,
+    benchConfig.reportDefaultModels,
+    benchConfig.judgeModel,
+  );
 
   for (const scores of scoresList) {
     const html = buildReportHtml(scores, manifest, overrides, {
@@ -84,6 +90,7 @@ export async function buildSite(outDir: string): Promise<SiteSummary> {
       imageBase: SCREENSHOTS_DIR,
       comparisonHref: "comparison.html",
       readOnly: true,
+      defaultSeries,
     });
     await writeFile(join(outDir, `report.${modelDirName(scores.judgeModel)}.html`), html, "utf8");
     if (scores.judgeModel === defaultJudge) {
