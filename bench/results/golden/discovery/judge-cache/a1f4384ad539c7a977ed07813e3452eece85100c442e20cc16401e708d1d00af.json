@@ -1,0 +1,40 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "A partial category chip is visible at the far right of the category row, but it is clipped so heavily that it reads as an unintended stray grey shape rather than an available option.",
+    "The Android system home indicator overlaps the center of the bottom navigation bar, obscuring the search icon and creating a crowded, broken-looking footer."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          1
+        ],
+        "reasoning": "Jev matched R1 (p=0.66, confidence 0.31)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.66,
+        "confidence": 0.31
+      }
+    ]
+  }
+}

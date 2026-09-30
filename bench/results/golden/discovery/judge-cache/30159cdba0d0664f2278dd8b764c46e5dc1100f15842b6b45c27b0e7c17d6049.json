@@ -1,0 +1,48 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "Bottom navigation icons are positioned too low, overlapping the system gesture indicator.",
+    "Restaurant cards utilize generic vector graphics with inconsistent art styles.",
+    "Delivery costs are redundantly displayed in both card badges and metadata text."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both issues describe the bottom navigation positioned too low and overlapping the bottom system area."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.92,
+        "confidence": 0.95
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.99
+      }
+    ]
+  }
+}

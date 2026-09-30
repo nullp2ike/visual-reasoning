@@ -1,0 +1,31 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Tokumaru Ramen Bar Delivery fee text overlaps the delivery time text"
+  ],
+  "reportedIssues": [
+    "On the 'Tokumaru Ramen Bar' card, the text '25–30 min delivery • Ramen' overlaps with an 'Order' link, rendering as garbled overlapping text ('25–30Order min delivery')."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "The expected overlap is between the delivery fee and delivery time, while the reported issue describes overlap with an 'Order' link."
+      }
+    ],
+    "extraReportedIndexes": [
+      0
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.99
+      }
+    ]
+  }
+}

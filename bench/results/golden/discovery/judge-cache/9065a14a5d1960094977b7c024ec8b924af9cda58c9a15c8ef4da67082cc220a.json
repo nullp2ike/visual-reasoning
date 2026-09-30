@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "In the bottom navigation bar, the middle tab (presumably Search) is rendered as an odd wide dark horizontal bar with a small bookmark icon on it, instead of a proper search icon/label. It looks broken and inconsistent with the other tabs (home and profile).",
+    "Bottom navigation tabs lack text labels, which can reduce clarity for users unfamiliar with the icons."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the same malformed black horizontal bar in the bottom navigation, while issue 1 only says labels are absent rather than cut off."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.85,
+        "confidence": 0.85
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.9,
+        "confidence": 0.9
+      }
+    ]
+  }
+}

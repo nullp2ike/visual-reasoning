@@ -8,45 +8,45 @@ Judges compared: `gemini-3.8-flash` vs `gpt-5.6-luna` vs `gpt-6-luna` vs `meta/m
 
 | Model | gemini-3.8-flash recall | gemini-3.8-flash extras/run | gpt-5.6-luna recall | gpt-5.6-luna extras/run | gpt-6-luna recall | gpt-6-luna extras/run | meta/muse-spark-1.3-contributor recall | meta/muse-spark-1.3-contributor extras/run | typesafe/jev-1.13 recall | typesafe/jev-1.13 extras/run | Recall Δ |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| claude-fable-5 | 94% | 0.9 | 94% | 0.9 | 94% | 0.9 | 94% | 0.9 | 93% | 0.9 | 1% |
-| claude-fable-5-1 | 94% | 0.1 | 91% | 0.2 | 91% | 0.2 | 94% | 0.2 | 91% | 0.2 | 4% |
-| claude-haiku-4-5 | 26% | 0.0 | 25% | 0.0 | 26% | 0.0 | 27% | 0.0 | 25% | 0.0 | 2% |
-| claude-opus-4-8 | 54% | 0.4 | 48% | 0.4 | 51% | 0.4 | 52% | 0.4 | 51% | 0.4 | 6% |
-| claude-opus-5 | 95% | 2.2 | 92% | 2.2 | 92% | 2.2 | 94% | 2.2 | 91% | 2.2 | 5% |
+| claude-fable-5 | 94% | 0.9 | 94% | 0.9 | 94% | 0.9 | 94% | 0.9 | 94% | 0.9 | 0% |
+| claude-fable-5-1 | 94% | 0.2 | 94% | 0.2 | 94% | 0.2 | 94% | 0.2 | 94% | 0.2 | 0% |
+| claude-haiku-4-5 | 26% | 0.0 | 25% | 0.0 | 26% | 0.0 | 27% | 0.0 | 26% | 0.0 | 2% |
+| claude-opus-4-8 | 54% | 0.4 | 51% | 0.4 | 53% | 0.4 | 54% | 0.4 | 53% | 0.4 | 4% |
+| claude-opus-5 | 95% | 2.2 | 95% | 2.2 | 95% | 2.2 | 95% | 2.2 | 95% | 2.2 | 0% |
 | claude-opus-5-5 | 100% | 0.5 | 100% | 0.5 | 100% | 0.5 | 100% | 0.5 | 100% | 0.5 | 0% |
-| claude-sonnet-4-6 | 59% | 0.5 | 58% | 0.5 | 59% | 0.5 | 58% | 0.5 | 58% | 0.5 | 1% |
+| claude-sonnet-4-6 | 59% | 0.5 | 59% | 0.5 | 59% | 0.5 | 59% | 0.5 | 59% | 0.5 | 0% |
 | claude-sonnet-5 | 45% | 0.7 | 44% | 0.7 | 46% | 0.7 | 45% | 0.7 | 45% | 0.7 | 2% |
 | claude-sonnet-5-5 | 94% | 2.8 | 93% | 2.8 | 93% | 2.8 | 93% | 2.8 | 93% | 2.8 | 1% |
 | gemini-3-flash-preview | 66% | 0.9 | 68% | 0.9 | 66% | 0.9 | 66% | 0.9 | 68% | 0.9 | 2% |
-| gemini-3.1-flash-lite | 47% | 0.6 | 44% | 0.6 | 45% | 0.6 | 45% | 0.6 | 42% | 0.6 | 5% |
-| gemini-3.1-pro-preview | 74% | 0.3 | 67% | 0.4 | 68% | 0.4 | 72% | 0.4 | 71% | 0.4 | 7% |
+| gemini-3.1-flash-lite | 47% | 0.6 | 44% | 0.6 | 44% | 0.6 | 45% | 0.6 | 46% | 0.6 | 4% |
+| gemini-3.1-pro-preview | 74% | 0.3 | 69% | 0.4 | 71% | 0.4 | 73% | 0.4 | 74% | 0.3 | 5% |
 | gemini-3.5-flash | 69% | 0.1 | 68% | 0.1 | 66% | 0.1 | 66% | 0.1 | 68% | 0.1 | 4% |
-| gemini-3.5-flash-lite | 51% | 0.2 | 51% | 0.2 | 49% | 0.2 | 51% | 0.2 | 48% | 0.2 | 2% |
+| gemini-3.5-flash-lite | 51% | 0.2 | 52% | 0.2 | 51% | 0.2 | 51% | 0.2 | 49% | 0.2 | 2% |
 | gemini-3.6-flash | 81% | 0.1 | 82% | 0.1 | 81% | 0.1 | 81% | 0.1 | 81% | 0.1 | 1% |
-| gemini-3.7-flash | 74% | 0.0 | 73% | 0.0 | 73% | 0.0 | 74% | 0.0 | 73% | 0.0 | 1% |
-| gemini-3.8-flash | 87% | 0.3 | 87% | 0.3 | 86% | 0.4 | 87% | 0.3 | 87% | 0.3 | 1% |
+| gemini-3.7-flash | 74% | 0.0 | 73% | 0.0 | 73% | 0.0 | 74% | 0.0 | 74% | 0.0 | 1% |
+| gemini-3.8-flash | 87% | 0.3 | 86% | 0.4 | 86% | 0.4 | 87% | 0.3 | 87% | 0.3 | 1% |
 | gpt-5.4-mini | 42% | 0.0 | 42% | 0.0 | 42% | 0.0 | 41% | 0.0 | 42% | 0.0 | 1% |
-| gpt-5.5 | 62% | 0.0 | 61% | 0.0 | 61% | 0.0 | 61% | 0.0 | 60% | 0.0 | 2% |
-| gpt-5.6-luna | 51% | 0.0 | 48% | 0.0 | 48% | 0.0 | 51% | 0.0 | 49% | 0.0 | 2% |
-| gpt-5.6-sol | 67% | 0.0 | 66% | 0.0 | 66% | 0.0 | 67% | 0.0 | 67% | 0.0 | 1% |
+| gpt-5.5 | 62% | 0.0 | 62% | 0.0 | 62% | 0.0 | 62% | 0.0 | 62% | 0.0 | 0% |
+| gpt-5.6-luna | 51% | 0.0 | 51% | 0.0 | 48% | 0.0 | 51% | 0.0 | 51% | 0.0 | 2% |
+| gpt-5.6-sol | 67% | 0.0 | 67% | 0.0 | 67% | 0.0 | 67% | 0.0 | 67% | 0.0 | 0% |
 | gpt-5.6-terra | 55% | 0.2 | 55% | 0.2 | 55% | 0.2 | 55% | 0.2 | 55% | 0.2 | 0% |
 | gpt-6-astra | 89% | 0.0 | 89% | 0.0 | 89% | 0.0 | 89% | 0.0 | 88% | 0.0 | 1% |
-| gpt-6-luna | 47% | 0.0 | 44% | 0.0 | 45% | 0.0 | 45% | 0.0 | 44% | 0.0 | 4% |
-| gpt-6-sol | 64% | 0.0 | 62% | 0.0 | 64% | 0.0 | 64% | 0.0 | 64% | 0.0 | 1% |
+| gpt-6-luna | 47% | 0.0 | 45% | 0.0 | 45% | 0.0 | 47% | 0.0 | 46% | 0.0 | 2% |
+| gpt-6-sol | 64% | 0.0 | 64% | 0.0 | 64% | 0.0 | 64% | 0.0 | 64% | 0.0 | 0% |
 | gpt-6.1-sol | 93% | 0.0 | 93% | 0.0 | 93% | 0.0 | 93% | 0.0 | 93% | 0.0 | 0% |
-| meta/muse-spark-1.3 | 78% | 0.1 | 75% | 0.1 | 78% | 0.1 | 78% | 0.1 | 78% | 0.1 | 2% |
-| meta/muse-spark-1.3-contributor | 81% | 0.1 | 81% | 0.1 | 81% | 0.1 | 80% | 0.1 | 81% | 0.1 | 1% |
-| moonshotai/kimi-k2.7-code | 72% | 0.1 | 69% | 0.1 | 69% | 0.1 | 68% | 0.1 | 68% | 0.1 | 4% |
-| moonshotai/kimi-k3 | 75% | 0.2 | 73% | 0.2 | 73% | 0.2 | 74% | 0.2 | 74% | 0.2 | 2% |
-| qwen/qwen3.7-plus | 55% | 0.1 | 54% | 0.1 | 52% | 0.2 | 54% | 0.1 | 54% | 0.1 | 4% |
+| meta/muse-spark-1.3 | 78% | 0.1 | 78% | 0.1 | 78% | 0.1 | 78% | 0.1 | 78% | 0.1 | 0% |
+| meta/muse-spark-1.3-contributor | 81% | 0.1 | 81% | 0.1 | 81% | 0.1 | 81% | 0.1 | 81% | 0.1 | 0% |
+| moonshotai/kimi-k2.7-code | 72% | 0.1 | 71% | 0.1 | 71% | 0.1 | 69% | 0.1 | 68% | 0.1 | 4% |
+| moonshotai/kimi-k3 | 75% | 0.2 | 74% | 0.2 | 74% | 0.2 | 75% | 0.2 | 75% | 0.2 | 1% |
+| qwen/qwen3.7-plus | 55% | 0.1 | 53% | 0.2 | 53% | 0.2 | 53% | 0.2 | 54% | 0.1 | 2% |
 | qwen/qwen3.8-max | 86% | 1.0 | 86% | 0.9 | 85% | 0.9 | 86% | 1.0 | 86% | 0.9 | 1% |
-| x-ai/grok-4.5 | 62% | 2.2 | 62% | 2.2 | 61% | 2.2 | 62% | 2.2 | 62% | 2.2 | 1% |
-| x-ai/grok-4.6 | 71% | 0.7 | 69% | 0.7 | 68% | 0.8 | 71% | 0.7 | 71% | 0.7 | 2% |
-| x-ai/grok-4.7 | 71% | 0.1 | 65% | 0.1 | 64% | 0.1 | 68% | 0.1 | 66% | 0.1 | 7% |
-| xiaomi/mimo-v2.6-pro | 52% | 0.6 | 47% | 0.6 | 48% | 0.6 | 48% | 0.6 | 51% | 0.6 | 5% |
-| z-ai/glm-5.3-flash | 73% | 0.5 | 71% | 0.5 | 71% | 0.5 | 69% | 0.5 | 69% | 0.5 | 4% |
+| x-ai/grok-4.5 | 62% | 2.2 | 62% | 2.2 | 62% | 2.2 | 62% | 2.2 | 62% | 2.2 | 0% |
+| x-ai/grok-4.6 | 71% | 0.7 | 69% | 0.7 | 71% | 0.7 | 71% | 0.7 | 71% | 0.7 | 1% |
+| x-ai/grok-4.7 | 72% | 0.1 | 69% | 0.1 | 71% | 0.1 | 71% | 0.1 | 67% | 0.1 | 5% |
+| xiaomi/mimo-v2.6-pro | 52% | 0.6 | 49% | 0.6 | 49% | 0.6 | 49% | 0.6 | 53% | 0.6 | 4% |
+| z-ai/glm-5.3-flash | 74% | 0.5 | 71% | 0.5 | 72% | 0.5 | 71% | 0.5 | 71% | 0.5 | 4% |
 
-## Disagreements (66)
+## Disagreements (55)
 
 ### img_01 01_raw_localization_key.png — gemini-3.1-pro-preview
 
@@ -835,7 +835,7 @@ Expected: Green Bowl Poké card appears twice in the carousel
   - rep 4: The report describes a duplicate entry in the 'Fastest near you' section, not the Green Bowl Poké card duplicated in the carousel.
   - rep 5: The report describes the Green Bowl Poké card appearing twice side-by-side in the carousel.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both reports describe duplicate Green Bowl Poké cards in the carousel.
+  - rep 1: The report describes two identical Green Bowl Poké cards, matching the duplicate card defect.
   - rep 2: Reported issue 0 describes duplicate restaurant listings in the carousel section, matching the duplicated Green Bowl Poké card.
   - rep 3: Both describe the Green Bowl Poké entry appearing more than once.
   - rep 4: Both issues describe Green Bowl Poké appearing twice in the same restaurant carousel or section.
@@ -995,528 +995,423 @@ Expected: Discount badge shows −100%
 
 ### img_12 12_overlapping_elements.png — claude-haiku-4-5
 
-Expected: Delivery fee text overlaps the delivery time text
+Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
 
 - **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: missed
-  - rep 1: The reported issue notes overlapping text and numbers on the delivery time info card resulting in merged text, matching the delivery fee overlapping delivery time defect.
-  - rep 2: The reported corrupted text '25-350rdelivery' describes the visual result of the delivery fee text overlapping the delivery time text.
-  - rep 3: Both describe the delivery time text being overlapped/corrupted by another string (such as the delivery fee).
-  - rep 4: The reported issue describes an encoding/character rendering error and missing spacing rather than a layout overlap between delivery fee and delivery time text.
-  - rep 5: The reported issue describes a text wrapping/splitting problem resulting in 'rdelivery', which does not match an overlap between the delivery fee and delivery time text.
+  - rep 1: The reported issue notes that text on the Tokumaru Ramen Bar card is overlapping, specifically mentioning malformed overlapping delivery time and delivery text.
+  - rep 2: The reported corrupted text '25-350rdelivery' is the visual result of the delivery fee text overlapping the delivery time text.
+  - rep 3: Both describe the delivery time text overlapping with other text on the Tokumaru Ramen Bar card.
+  - rep 4: The reported issue describes a character encoding/rendering bug and missing spacing, which does not match the expected defect of delivery fee text overlapping delivery time text.
+  - rep 5: The reported issue describes a text wrapping or truncation problem resulting in 'rdelivery' rather than an overlap between the delivery fee and delivery time text.
 - **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: missed
-  - rep 1: The reported malformed, overlapping numbers and delivery text on the Tokumaru Ramen Bar card describes the delivery fee and delivery time text colliding.
-  - rep 2: The report describes corrupted delivery-time text but does not identify an overlap between the delivery fee and delivery-time text.
-  - rep 3: The report describes corrupted overlapping text in the delivery time and delivery label, matching the delivery fee/time text overlap defect.
-  - rep 4: The report describes corrupted delivery-time text and missing spacing with the word 'delivery,' not an overlap between delivery fee and delivery time text.
-  - rep 5: The report describes a word-wrapping issue in the delivery text, not delivery fee text overlapping delivery time text.
+  - rep 1: The report describes overlapping or malformed delivery fee and delivery time text on the Tokumaru Ramen Bar card.
+  - rep 2: The report describes corrupted delivery-time text but does not identify overlap with the delivery fee text.
+  - rep 3: The report describes corrupted overlapping text in the Tokumaru Ramen Bar delivery time area, matching the delivery fee and time text overlap.
+  - rep 4: The report describes corrupted delivery-time text and missing spacing with “delivery,” not overlap between the delivery fee and delivery time.
+  - rep 5: The report describes a line-wrapping error in the delivery word, not the delivery fee text overlapping the delivery time.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: missed
-  - rep 1: The malformed delivery text describes the delivery fee and delivery time overlapping on the card.
-  - rep 2: The reported delivery text is merged and misformatted, matching the described overlap between delivery fee and delivery time.
-  - rep 3: The report describes overlapping, corrupted delivery-time text in the same delivery information area.
-  - rep 4: The report describes corrupted delivery-time text and missing spacing, not the delivery fee overlapping the delivery time.
-  - rep 5: The report describes a wrapping issue in the delivery/category text, not delivery fee text overlapping the delivery time.
+  - rep 1: The Tokumaru card’s malformed delivery text describes the same overlap between delivery fee and delivery time.
+  - rep 2: The malformed '350rdelivery' text indicates the delivery fee and delivery-time text are running together.
+  - rep 3: The reported delivery-time text is corrupted by overlapping text in the same Tokumaru Ramen Bar card.
+  - rep 4: The report describes malformed delivery-time text and missing spacing before “delivery,” not the delivery fee overlapping the time.
+  - rep 5: The report describes a wrapping issue in the delivery-time and category line, not delivery-fee text overlapping the delivery time.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: Both describe overlapping delivery time and delivery fee text producing a garbled string.
-  - rep 2: Both describe garbled delivery time and fee text overlapping in the Tokumaru Ramen Bar card.
-  - rep 3: Reported describes overlapped/corrupted delivery time text matching the expected overlap.
-  - rep 4: Reported describes Omega character and missing spacing, not fee text overlapping time text.
-  - rep 5: Both describe corrupted delivery text in the same delivery time line.
-- **typesafe/jev-1.13**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: missed
-  - rep 1: Jev matched R0 (p=0.72, confidence 0.44).
-  - rep 2: Jev matched no reported issue; closest was R0 (p=0.39).
-  - rep 3: Jev matched R0 (p=0.59, confidence 0.18).
+  - rep 1: Both describe overlapping delivery fee and time text on the Tokumaru Ramen Bar card.
+  - rep 2: Both refer to garbled delivery time text in the Tokumaru Ramen Bar card caused by overlapping fee text.
+  - rep 3: Both describe overlapped/corrupted delivery time text in the Tokumaru Ramen Bar card.
+  - rep 4: Reported describes min rendered as Omega and missing spacing, not fee text overlapping time text.
+  - rep 5: Both describe garbled overlapping delivery text in the Tokumaru Ramen Bar listing.
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: missed
+  - rep 1: Jev matched R0 (p=0.79, confidence 0.59).
+  - rep 2: Jev matched R0 (p=0.52, confidence 0.05).
+  - rep 3: Jev matched R0 (p=0.70, confidence 0.40).
   - rep 4: Jev matched no reported issue; closest was R0 (p=0.12).
-  - rep 5: Jev matched no reported issue; closest was R0 (p=0.01).
-
-### img_12 12_overlapping_elements.png — claude-sonnet-4-6
-
-Expected: Delivery fee text overlaps the delivery time text
-
-- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both report the delivery fee text overlapping the delivery time text.
-  - rep 2: The reported issue specifically describes the delivery fee and delivery time text merging and overlapping into garbled text.
-  - rep 3: The reported issue specifically describes the delivery fee label rendering on top of the delivery time text.
-  - rep 4: The reported issue describes the delivery time text being overlapped/clipped by the delivery text.
-  - rep 5: Both report the delivery time text overlapping with the delivery fee text.
-- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: Reported issue 0 describes the delivery fee and delivery time text overlapping in the same listing.
-  - rep 2: The report describes the delivery fee label and delivery time text merging or overlapping in the listing metadata.
-  - rep 3: The report describes the delivery time and delivery fee text overlapping in the same subtitle area.
-  - rep 4: The report describes a delivery-time label being clipped or overlapped with the word “delivery,” not delivery fee text overlapping delivery time text.
-  - rep 5: The report describes the delivery time overlapping the delivery fee badge text in the same listing.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The report describes the delivery time and delivery fee text overlapping in the same listing.
-  - rep 2: The reported delivery time and delivery fee text are merged or overlapping, matching the expected defect.
-  - rep 3: The report describes the delivery time and delivery cost text overlapping.
-  - rep 4: The report describes the delivery time text running into adjacent delivery text, matching the stated overlap.
-  - rep 5: The reported issue describes the delivery fee badge overlapping the delivery time text.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: Both describe delivery time and fee text overlapping under Tokumaru Ramen Bar.
-  - rep 2: Both describe delivery time and delivery fee text overlapping in the same listing.
-  - rep 3: Both describe delivery time and delivery fee text overlapping under the restaurant name.
-  - rep 4: Reported describes missing 'min'/spacing in subtitle, not delivery fee text overlapping time text.
-  - rep 5: Both describe delivery fee text overlapping delivery time text becoming unreadable.
-- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
-  - rep 2: Jev matched R0 (p=0.97, confidence 0.95).
-  - rep 3: Jev matched R0 (p=0.95, confidence 0.91).
-  - rep 4: Jev matched no reported issue; closest was R0 (p=0.42).
-  - rep 5: Jev matched R0 (p=1.00, confidence 0.99).
+  - rep 5: Jev matched no reported issue; closest was R0 (p=0.02).
 
 ### img_12 12_overlapping_elements.png — gemini-3.1-flash-lite
 
-Expected: Delivery fee text overlaps the delivery time text
+Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
 
 - **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the delivery time and delivery fee text overlapping each other.
-  - rep 2: Both describe the delivery fee text overlapping the delivery time text in the card.
-  - rep 3: Both describe the delivery time text overlapping with the delivery fee/label text in the restaurant card.
-  - rep 4: Both describe the delivery time text overlapping with the delivery fee text.
-  - rep 5: Reported issue 0 describes overlapping text between '25–30 min' (delivery time) and 'delivery' text.
+  - rep 1: Both describe the delivery fee text and delivery time text overlapping under Tokumaru Ramen Bar.
+  - rep 2: Both describe the delivery fee text overlapping the delivery time text on the Tokumaru Ramen Bar card.
+  - rep 3: Both describe the delivery time and delivery/fee text overlapping in the Tokumaru Ramen Bar card.
+  - rep 4: Both reports describe the delivery time and delivery fee text overlapping in the Tokumaru Ramen Bar card.
+  - rep 5: Reported issue 0 correctly describes the overlap between the delivery time ('25–30 min') and the delivery fee ('delivery') text in the Tokumaru Ramen Bar section.
 - **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The report explicitly states that the delivery time and delivery fee text overlap under the same restaurant.
-  - rep 2: The report describes the €0 delivery label overlapping the delivery time text in the restaurant card, matching the delivery fee and delivery time overlap.
-  - rep 3: The report describes the delivery time text overlapping the delivery-related text in the same card, matching the stated overlap defect.
-  - rep 4: The report describes the delivery time overlapping the adjacent delivery-related text in the same card.
-  - rep 5: Reported issue 0 describes the delivery time and delivery text overlapping in the restaurant information area.
+  - rep 1: The report describes the delivery time and delivery fee text overlapping under Tokumaru Ramen Bar.
+  - rep 2: The report identifies the €0 delivery fee overlapping the delivery time text in the Tokumaru Ramen Bar card.
+  - rep 3: Both issues describe the Tokumaru Ramen Bar delivery time text overlapping nearby delivery-related text.
+  - rep 4: Both issues describe the delivery fee or delivery text overlapping the delivery time in the Tokumaru Ramen Bar card.
+  - rep 5: Reported issue 0 describes overlapping delivery-related text in the Tokumaru Ramen Bar information block, matching the delivery fee and delivery time overlap.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: Reported issue describes the delivery fee and delivery time text overlapping.
-  - rep 2: The €0 delivery label overlaps the delivery time and restaurant information text in the same card.
+  - rep 1: The report describes the delivery time and delivery fee text overlapping under Tokumaru Ramen Bar.
+  - rep 2: The €0 delivery label overlaps the delivery time text in the Tokumaru Ramen Bar card.
   - rep 3: The report describes the delivery time overlapping the delivery label, not the delivery fee overlapping the delivery time.
-  - rep 4: Both describe the delivery label or fee text overlapping the delivery time.
-  - rep 5: Report 0 describes the delivery time and delivery text overlapping in the restaurant information block.
+  - rep 4: Both describe the delivery fee or delivery text overlapping the delivery time in the Tokumaru Ramen Bar card.
+  - rep 5: Report 0 describes overlapping delivery-time and delivery text in the Tokumaru Ramen Bar information block.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe delivery fee text overlapping delivery time text.
-  - rep 2: Both describe the delivery fee label overlapping the delivery time text.
-  - rep 3: Both describe delivery time text overlapping delivery fee/label text in the same card.
-  - rep 4: Both describe overlap between delivery time text and delivery fee text.
-  - rep 5: Both describe '25-30 min' delivery time overlapping/merging with 'delivery' text.
-- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: Both describe overlapping delivery fee and time text under Tokumaru Ramen Bar.
+  - rep 2: Both describe €0 delivery label overlapping delivery time text in Tokumaru Ramen Bar card.
+  - rep 3: Both describe delivery time overlapping delivery fee text in Tokumaru Ramen Bar card.
+  - rep 4: Both describe overlapping delivery time and delivery text in the Tokumaru Ramen Bar card.
+  - rep 5: Reported 0 describes the same Tokumaru block with '25-30 min' and 'delivery' texts overlapping.
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
-  - rep 2: Jev matched R0 (p=0.99, confidence 0.98).
-  - rep 3: Jev matched no reported issue; closest was R0 (p=0.34).
-  - rep 4: Jev matched no reported issue; closest was R0 (p=0.48).
-  - rep 5: Jev matched no reported issue; closest was R0 (p=0.45).
+  - rep 2: Jev matched R0 (p=1.00, confidence 0.99).
+  - rep 3: Jev matched R0 (p=0.63, confidence 0.26).
+  - rep 4: Jev matched R0 (p=0.85, confidence 0.69).
+  - rep 5: Jev matched R0 (p=0.91, confidence 0.82).
 
 ### img_12 12_overlapping_elements.png — gemini-3.1-pro-preview
 
-Expected: Delivery fee text overlaps the delivery time text
+Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
 
 - **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The reported issue describes overlapping text directly below the restaurant title where the delivery fee and time text are located.
-  - rep 2: The reported issue identifies the text overlapping defect within the restaurant details section.
-  - rep 3: Both describe the overlapping text defect occurring right below the restaurant title where delivery time and fee are displayed.
-  - rep 4: The subtitle of 'Tokumaru Ramen Bar' typically contains the delivery time and fee, so overlapping text in that subtitle describes the same defect.
-  - rep 5: The reported issue describes text overlapping directly below the restaurant title, which corresponds to the delivery fee and time text overlapping.
-- **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: The report only vaguely mentions overlapping text below the title and does not identify the delivery fee and delivery time texts.
-  - rep 2: The report only vaguely mentions overlapping text in the details and does not identify the delivery fee and delivery time texts.
-  - rep 3: The report vaguely mentions overlapping text below the title but does not identify the delivery fee and delivery time texts.
-  - rep 4: The report describes overlapping subtitle text for a restaurant, not the delivery fee and delivery time text.
-  - rep 5: The expected defect concerns overlapping delivery fee and delivery time text, while the reported issue concerns text overlapping below the restaurant title.
-- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: The report only vaguely describes overlapping text below the title and does not identify the delivery fee or delivery time.
-  - rep 2: The report says only that text overlaps in the details area and does not identify the delivery fee and delivery time text.
-  - rep 3: The report mentions overlapping text below the title but does not identify the delivery fee and delivery time as the overlapping elements.
-  - rep 4: The report describes overlapping subtitle text but does not identify the delivery fee and delivery time as the overlapping elements.
-  - rep 5: The report describes text overlapping below the restaurant title, not the delivery fee overlapping the delivery time.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe overlapping text in the area below the restaurant title where fee and time are shown.
-  - rep 2: Reported issue mentions overlapping text vaguely without identifying delivery fee and delivery time.
-  - rep 3: Both describe overlapping texts in the area below the restaurant title where fee and time appear.
-  - rep 4: Both describe overlapping unreadable text in the Tokumaru Ramen Bar subtitle where fee and time appear.
-  - rep 5: Both describe text overlapping in the area just below the restaurant title.
-- **typesafe/jev-1.13**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: missed, rep 5: missed
-  - rep 1: Jev matched no reported issue; closest was R0 (p=0.37).
-  - rep 2: Jev matched no reported issue; closest was R0 (p=0.43).
-  - rep 3: Jev matched R0 (p=0.50, confidence 0.01).
-  - rep 4: Jev matched no reported issue; closest was R0 (p=0.29).
-  - rep 5: Jev matched no reported issue; closest was R0 (p=0.07).
-
-### img_12 12_overlapping_elements.png — gemini-3.5-flash-lite
-
-Expected: Delivery fee text overlaps the delivery time text
-
-- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the delivery duration/time text overlapping with the delivery information/fee text.
-  - rep 2: Both describe the delivery time and delivery fee text overlapping each other.
-  - rep 3: Both describe the delivery time text overlapping with the delivery text/fee under the restaurant title.
-  - rep 4: Both describe the delivery time text overlapping with delivery fee information ('25-35Ordelivery').
-  - rep 5: The reported issue describes the delivery time text overlapping with the delivery information text, directly matching the expected overlap defect.
-- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: The reported issue describes overlapping delivery duration/time and delivery information text, matching the delivery fee/time text overlap.
-  - rep 2: The report identifies the delivery time and delivery fee text overlapping below the restaurant card.
-  - rep 3: The report describes the delivery time text overlapping the adjacent delivery-related text in the same area.
-  - rep 4: The report describes overlap between delivery time and category text, not delivery fee text and delivery time.
-  - rep 5: The report describes the delivery time and delivery information text overlapping under the restaurant name, matching the delivery fee/time text overlap.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: The reported issue describes the delivery duration and delivery information text overlapping, matching the delivery time and fee text overlap.
-  - rep 2: The report says the delivery time and delivery fee text overlap below the card.
-  - rep 3: The report describes delivery-related text overlapping the delivery time in the same area.
-  - rep 4: The report describes the delivery time overlapping category text, not delivery fee text.
-  - rep 5: The report describes the delivery time and delivery information text overlapping in the same area.
+  - rep 1: The reported issue describes the overlapping text directly below the Tokumaru Ramen Bar title, which corresponds to the delivery fee and time text.
+  - rep 2: Both describe overlapping text within the Tokumaru Ramen Bar details section.
+  - rep 3: Both describe the overlapping text defect located directly beneath the 'Tokumaru Ramen Bar' title.
+  - rep 4: Both describe text overlapping under Tokumaru Ramen Bar.
+  - rep 5: Both describe overlapping text located below the 'Tokumaru Ramen Bar' title/restaurant listing.
+- **gpt-5.6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
+  - rep 1: The report vaguely mentions overlapping text below the title but does not identify the delivery fee and delivery time texts overlapping.
+  - rep 2: The reported text-overlap issue refers to the Tokumaru Ramen Bar details area and matches the described overlapping text defect.
+  - rep 3: The report describes overlapping text strings in the area directly below the Tokumaru Ramen Bar title, matching the delivery fee and delivery time overlap.
+  - rep 4: The reported overlapping subtitle text refers to the same Tokumaru Ramen Bar text-overlap defect involving the delivery information.
+  - rep 5: The reported overlap is below the restaurant title, not between the delivery fee and delivery time text.
+- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: found, rep 5: missed
+  - rep 1: The report only vaguely mentions overlapping text below the title and does not identify the delivery fee and delivery time.
+  - rep 2: The report only mentions text overlap in the restaurant details and does not identify the delivery fee and delivery time texts.
+  - rep 3: The reported overlapping text below the Tokumaru Ramen Bar title corresponds to the delivery fee and delivery time text.
+  - rep 4: The overlapping subtitle text corresponds to the delivery fee and delivery time shown for Tokumaru Ramen Bar.
+  - rep 5: The report only mentions unspecified text overlapping below the title, not the delivery fee and delivery time overlapping.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe delivery time and delivery fee text overlapping into unreadable text.
-  - rep 2: Both describe delivery time and fee texts overlapping.
-  - rep 3: Both describe overlapping delivery time and delivery fee text.
-  - rep 4: Both describe overlapping delivery time and fee text under Tokumaru Ramen Bar.
-  - rep 5: Both describe delivery time text overlapping delivery fee/information text.
-- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: Jev matched R0 (p=0.86, confidence 0.72).
-  - rep 2: Jev matched R0 (p=1.00, confidence 0.99).
-  - rep 3: Jev matched R0 (p=0.75, confidence 0.50).
-  - rep 4: Jev matched no reported issue; closest was R0 (p=0.20).
-  - rep 5: Jev matched R0 (p=0.79, confidence 0.58).
+  - rep 1: Both describe overlapping text below the Tokumaru Ramen Bar title.
+  - rep 2: Both describe text overlapping in the Tokumaru Ramen Bar details area.
+  - rep 3: Both describe overlapping text directly below the Tokumaru Ramen Bar title.
+  - rep 4: Both describe overlapping unreadable text in the Tokumaru Ramen Bar subtitle.
+  - rep 5: Both describe overlapping text directly below the Tokumaru Ramen Bar title.
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
+  - rep 1: Jev matched R0 (p=0.69, confidence 0.39).
+  - rep 2: Jev matched R0 (p=0.74, confidence 0.48).
+  - rep 3: Jev matched R0 (p=0.82, confidence 0.63).
+  - rep 4: Jev matched R0 (p=0.70, confidence 0.40).
+  - rep 5: Jev matched no reported issue; closest was R0 (p=0.49).
 
 ### img_12 12_overlapping_elements.png — gemini-3.7-flash
 
-Expected: Delivery fee text overlaps the delivery time text
+Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
 
 - **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Reported issue 0 describes the exact same layout problem where delivery time and delivery fee text overlap.
-  - rep 2: The reported issue describes the text overlap in the metadata area below the restaurant title, which directly corresponds to the overlapping delivery fee and delivery time text.
-  - rep 3: Both describe the delivery time and delivery fee text overlapping each other.
-  - rep 4: Both describe the overlapping delivery information text elements under the restaurant item.
-  - rep 5: Both describe the delivery time and delivery fee text overlapping each other.
+  - rep 1: Both describe the delivery fee and delivery time text overlapping below Tokumaru Ramen Bar.
+  - rep 2: The reported issue describes the text overlapping metadata directly below the 'Tokumaru Ramen Bar' title, which corresponds to the delivery fee and delivery time text overlap.
+  - rep 3: Both describe the delivery time and fee text overlapping under Tokumaru Ramen Bar.
+  - rep 4: Both report overlapping delivery information text directly under Tokumaru Ramen Bar.
+  - rep 5: Both reports identify the delivery fee text overlapping the delivery time text under Tokumaru Ramen Bar.
 - **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The reported issue describes the delivery time and delivery fee text overlapping and becoming combined.
-  - rep 2: The reported overlap concerns metadata below the restaurant title, not the delivery fee and delivery time text.
-  - rep 3: The reported issue describes delivery time and fee text merging due to overlap in the same metadata area.
-  - rep 4: The report describes overlapping delivery-information text under the restaurant, which corresponds to the delivery fee and delivery time overlapping.
-  - rep 5: The report describes delivery time and fee text overlapping and becoming illegible.
+  - rep 1: The report describes the delivery time and delivery fee text overlapping for Tokumaru Ramen Bar.
+  - rep 2: The report vaguely mentions overlapping metadata below the title but does not identify the delivery fee and delivery time texts overlapping.
+  - rep 3: The reported issue describes overlapping delivery time and fee text under Tokumaru Ramen Bar, matching the expected defect.
+  - rep 4: Both describe overlapping delivery information text beneath Tokumaru Ramen Bar, making it garbled and unreadable.
+  - rep 5: Reported issue describes the delivery fee and delivery time overlapping under Tokumaru Ramen Bar.
 - **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The report describes the delivery time and delivery fee text overlapping.
-  - rep 2: The report only vaguely describes overlapping metadata below the title and does not identify the delivery fee and delivery time.
-  - rep 3: The report describes the delivery time and fee text overlapping beneath the same restaurant name.
-  - rep 4: The report describes overlapping delivery information text under the restaurant name, consistent with the delivery fee and time overlapping.
-  - rep 5: The report describes the delivery fee and time overlapping into illegible text.
+  - rep 1: The reported issue describes the delivery time and delivery fee text overlapping for Tokumaru Ramen Bar.
+  - rep 2: The report only vaguely mentions overlapping metadata and does not identify the delivery fee and delivery time texts.
+  - rep 3: The report describes the delivery time and fee text overlapping under Tokumaru Ramen Bar.
+  - rep 4: The report describes overlapping delivery information text beneath Tokumaru Ramen Bar, matching the fee and delivery time overlap.
+  - rep 5: The report describes the delivery fee overlapping the delivery time for Tokumaru Ramen Bar.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe overlapping delivery time and delivery fee text in the same area.
-  - rep 2: Both describe overlapping unreadable metadata text below the restaurant title.
-  - rep 3: Both describe overlapping delivery time and fee text under Tokumaru Ramen Bar.
+  - rep 1: Both describe overlapping delivery fee and time text under Tokumaru Ramen Bar.
+  - rep 2: Both describe overlapping unreadable text directly below Tokumaru Ramen Bar title.
+  - rep 3: Both describe overlapping delivery fee and time text under Tokumaru Ramen Bar.
   - rep 4: Both describe overlapping delivery info text under Tokumaru Ramen Bar.
-  - rep 5: Both describe overlapping delivery time and fee text under Tokumaru Ramen Bar.
-- **typesafe/jev-1.13**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
+  - rep 5: Both describe delivery time and fee text overlapping under Tokumaru Ramen Bar.
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Jev matched R0 (p=0.99, confidence 0.99).
-  - rep 2: Jev matched no reported issue; closest was R0 (p=0.20).
+  - rep 2: Jev matched R0 (p=0.66, confidence 0.33).
   - rep 3: Jev matched R0 (p=1.00, confidence 1.00).
-  - rep 4: Jev matched R0 (p=0.67, confidence 0.33).
-  - rep 5: Jev matched R0 (p=1.00, confidence 0.99).
+  - rep 4: Jev matched R0 (p=0.91, confidence 0.83).
+  - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
 
 ### img_12 12_overlapping_elements.png — gpt-5.6-luna
 
-Expected: Delivery fee text overlaps the delivery time text
+Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
 
 - **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the delivery time text overlapping with the delivery/metadata row below it.
-  - rep 2: Reported issue 0 describes delivery-time text and delivery text overlapping in the restaurant metadata row, matching the expected overlap defect.
-  - rep 3: Both describe an overlap bug involving the delivery time and price/fee metadata under the restaurant listing.
-  - rep 4: Both describe the delivery fee and delivery time text overlapping in the metadata row.
-  - rep 5: The reported issue directly describes the delivery fee and delivery time text visibly overlapping.
-- **gpt-5.6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The report describes delivery-time text overlapping the delivery/category row, not delivery fee text overlapping delivery time text.
-  - rep 2: The reported overlap between the delivery-time text and “delivery” describes the same delivery fee and delivery time text collision.
-  - rep 3: The report describes the delivery time and price/fee metadata overlapping in the same delivery-information area.
-  - rep 4: The reported issue describes overlapping delivery fee and delivery time text in the metadata row, matching the expected defect.
-  - rep 5: The report describes the delivery fee and delivery time text overlapping beneath the restaurant name.
+  - rep 1: Both describe the delivery time text overlapping with the delivery fee/row text for Tokumaru Ramen Bar.
+  - rep 2: Both describe the delivery time text overlapping with the delivery fee text under Tokumaru Ramen Bar.
+  - rep 3: Both report overlapping metadata (delivery fee/price and delivery time text) under the Tokumaru Ramen Bar entry.
+  - rep 4: Both describe the delivery fee and delivery time text overlapping beneath Tokumaru Ramen Bar.
+  - rep 5: Both report the delivery fee text overlapping with the delivery time text under Tokumaru Ramen Bar.
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The report describes the Tokumaru Ramen Bar delivery-time text overlapping the delivery-related row, which corresponds to the delivery fee text collision.
+  - rep 2: The reported issue identifies overlapping delivery-time and delivery-fee text in the Tokumaru Ramen Bar metadata row.
+  - rep 3: The reported metadata overlap involves the delivery time and price/fee text in the same restaurant information area.
+  - rep 4: Reported issue 0 identifies the delivery fee and delivery time text overlapping in the Tokomaru Ramen Bar metadata row.
+  - rep 5: The reported issue describes the delivery time and delivery-fee text overlapping beneath Tokumaru Ramen Bar.
 - **gpt-6-luna**: rep 1: missed, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: The report describes delivery-time text colliding with the delivery/category row, not with delivery-fee text.
-  - rep 2: The report describes delivery-time text overlapping the adjacent “delivery” text in the same metadata row.
-  - rep 3: The report describes the time/price text overlapping the cuisine details, not the delivery fee overlapping the delivery time.
-  - rep 4: The report describes the delivery fee and delivery time overlapping in the same metadata row.
-  - rep 5: The report describes the delivery-time and delivery-fee text overlapping.
+  - rep 1: The report describes the delivery-time text colliding with the row below, not overlapping the delivery-fee text.
+  - rep 2: The report describes the delivery-time text overlapping the delivery information in the Tokumaru Ramen Bar metadata row.
+  - rep 3: The report describes delivery time/price text overlapping cuisine details, not the delivery fee overlapping the delivery time.
+  - rep 4: The report describes delivery fee and delivery time text overlapping in the restaurant metadata row.
+  - rep 5: Both describe the delivery time and fee text overlapping beneath Tokumaru Ramen Bar.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the delivery-time text overlapping the delivery fee/category row.
-  - rep 2: Both describe delivery fee text overlapping delivery-time text in the same metadata row.
-  - rep 3: Both describe overlapping delivery time and fee text beneath Tokomaru Ramen Bar.
-  - rep 4: Both describe delivery fee and delivery time text colliding.
-  - rep 5: Both describe overlapping delivery time and delivery-fee text.
+  - rep 1: Both describe the Tokumaru Ramen Bar delivery-time text overlapping nearby delivery info.
+  - rep 2: Both describe overlapping delivery fee and delivery time text in the row below Tokumaru Ramen Bar.
+  - rep 3: Both describe overlapping delivery time/fee metadata beneath Tokumaru Ramen Bar.
+  - rep 4: Both describe delivery fee and delivery time text overlapping in the metadata row under Tokumaru Ramen Bar.
+  - rep 5: Both describe overlapping delivery time and fee text under Tokumaru Ramen Bar.
 - **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Jev matched R0 (p=0.62, confidence 0.25).
-  - rep 2: Jev matched R0 (p=0.73, confidence 0.47).
-  - rep 3: Jev matched R0 (p=0.87, confidence 0.75).
-  - rep 4: Jev matched R0 (p=0.88, confidence 0.77).
+  - rep 1: Jev matched R0 (p=0.89, confidence 0.79).
+  - rep 2: Jev matched R0 (p=0.85, confidence 0.69).
+  - rep 3: Jev matched R0 (p=0.93, confidence 0.86).
+  - rep 4: Jev matched R0 (p=0.86, confidence 0.72).
   - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
 
 ### img_12 12_overlapping_elements.png — gpt-6-luna
 
-Expected: Delivery fee text overlaps the delivery time text
+Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
 
 - **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The reported issue specifically mentions the delivery time ('25–30 min') and delivery fee ('€3.0 delivery') overlapping.
-  - rep 2: Both describe the delivery time and delivery fee text overlapping each other.
-  - rep 3: Both describe the overlapping text defect involving the delivery time information beneath the restaurant title.
-  - rep 4: Both describe the overlapping text defect involving the delivery time information beneath the restaurant listing.
-  - rep 5: The reported issue specifically describes overlapping delivery time and delivery price metadata.
-- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: missed, rep 5: found
-  - rep 1: The report identifies the delivery fee and delivery time texts overlapping on the same line.
-  - rep 2: The report describes the delivery-time and delivery-fee text overlapping in the same area.
-  - rep 3: The report describes overlap involving delivery-time and cuisine text, not the delivery fee text overlapping the delivery time.
-  - rep 4: The report describes overlapping delivery-time and category text, not the delivery fee text overlapping the delivery time.
-  - rep 5: The reported overlap specifically includes the delivery time and delivery price, matching the expected delivery fee/time text overlap.
+  - rep 1: Both describe the delivery time and delivery fee text overlapping under Tokumaru Ramen Bar.
+  - rep 2: Both report the delivery time and delivery fee text overlapping for Tokumaru Ramen Bar.
+  - rep 3: Both describe an overlapping text issue within the metadata line (delivery time / fee / cuisine) under Tokumaru Ramen Bar.
+  - rep 4: Both describe an overlap bug involving delivery time details under Tokumaru Ramen Bar.
+  - rep 5: Both describe the delivery time and delivery fee/price overlapping beneath the Tokumaru Ramen Bar title.
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
+  - rep 1: The report describes the delivery fee and delivery time text overlapping beneath Tokumaru Ramen Bar.
+  - rep 2: The reported issue identifies the same Tokumaru Ramen Bar delivery-time and delivery-fee text overlap.
+  - rep 3: The report describes overlap between delivery-time and cuisine text, not the delivery-fee text overlapping delivery time.
+  - rep 4: Both describe overlapping listing text beneath Tokumaru Ramen Bar, including the delivery-time details.
+  - rep 5: The reported issue describes the delivery fee/price overlapping the delivery time for Tokumaru Ramen Bar.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: missed, rep 5: found
-  - rep 1: The report describes the delivery fee and delivery time overlapping on the same line.
-  - rep 2: Both reports describe the delivery-time and delivery-fee text overlapping.
-  - rep 3: The report describes delivery-time text overlapping cuisine text, not delivery-fee text overlapping delivery time.
-  - rep 4: The report describes overlap involving delivery-time and category text, not the delivery fee text.
-  - rep 5: The report says the delivery price and delivery time overlap, matching the described defect.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: missed, rep 4: missed, rep 5: found
-  - rep 1: Both describe delivery time and fee texts overlapping.
-  - rep 2: Both describe overlapping delivery-time and delivery-fee text.
-  - rep 3: Reported describes delivery-time overlapping cuisine text, not delivery fee text.
-  - rep 4: Reported describes delivery-time with category duplication, not delivery fee overlapping delivery time.
-  - rep 5: Reported issue describes delivery time and fee overlapping in same metadata area.
-- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: missed, rep 4: missed, rep 5: found
+  - rep 1: Both reports describe Tokumaru Ramen Bar’s delivery fee and delivery time overlapping.
+  - rep 2: Both reports describe the delivery fee and delivery-time text overlapping under Tokumaru Ramen Bar.
+  - rep 3: The report describes delivery-time and cuisine text overlapping, not the delivery fee text overlapping the delivery time.
+  - rep 4: The report describes duplicated delivery-time and category text, not delivery-fee text overlapping the delivery time.
+  - rep 5: The report describes the delivery price overlapping the delivery time in the Tokumaru Ramen Bar metadata.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe overlapping delivery time and fee text under Tokumaru Ramen Bar.
+  - rep 2: Both describe overlapping delivery-time and delivery-fee text under Tokumaru Ramen Bar.
+  - rep 3: Both describe overlapping/crowded delivery-related text beneath Tokumaru Ramen Bar.
+  - rep 4: Both describe overlapping delivery detail text beneath Tokumaru Ramen Bar.
+  - rep 5: Both describe delivery fee and delivery time overlapping under Tokumaru Ramen Bar.
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
   - rep 2: Jev matched R0 (p=1.00, confidence 1.00).
-  - rep 3: Jev matched no reported issue; closest was R0 (p=0.14).
-  - rep 4: Jev matched no reported issue; closest was R0 (p=0.08).
-  - rep 5: Jev matched R0 (p=0.83, confidence 0.67).
+  - rep 3: Jev matched R0 (p=0.61, confidence 0.22).
+  - rep 4: Jev matched R0 (p=0.58, confidence 0.17).
+  - rep 5: Jev matched R0 (p=0.86, confidence 0.72).
 
 ### img_12 12_overlapping_elements.png — moonshotai/kimi-k2.7-code
 
-Expected: Delivery fee text overlaps the delivery time text
+Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
 
 - **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: Both describe the delivery time and delivery text overlapping under the restaurant card.
-  - rep 2: The reported issue describes overlapping text where the delivery time appears merged/overlapped with delivery text in the delivery-info line.
-  - rep 3: The reported issue misinterprets the overlapping delivery fee text as corrupted/merged delivery time text at the exact same location.
-  - rep 4: Both describe the delivery text overlapping the delivery time label, resulting in garbled text like '25–35Ddelivery'.
-  - rep 5: The reported issue is about missing space between numbers and 'min', not an overlap between delivery fee and delivery time text.
+  - rep 1: Both describe the delivery time and delivery text overlapping or collapsing into each other under the Tokumaru Ramen Bar card.
+  - rep 2: Both report overlapping text in the delivery information line under Tokumaru Ramen Bar.
+  - rep 3: Both reports refer to the same visual issue under Tokumaru Ramen Bar where delivery fee and delivery time text interfere with each other, causing the corrupted text.
+  - rep 4: Both describe the delivery time text and delivery text overlapping for Tokumaru Ramen Bar.
+  - rep 5: The reported issue describes a missing space in the delivery time text rather than an overlap between the delivery fee and delivery time text.
 - **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: missed
-  - rep 1: The reported delivery-info text is visibly collapsed or overlapped in the same time-and-delivery label area.
-  - rep 2: The reported malformed and overlapped delivery text describes the same delivery-information text overlap defect.
-  - rep 3: The reported issue describes corrupted or missing delivery-time text, not an overlap between delivery fee and delivery time text.
-  - rep 4: The reported garbled delivery-time label describes the same overlap between delivery-related text elements.
-  - rep 5: The reported issue concerns missing spacing within the delivery time text, not overlap between delivery fee and delivery time.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: missed
-  - rep 1: The reported delivery-info label is collapsed between the delivery time and delivery text, matching the described overlap.
-  - rep 2: The reported delivery-info line says the 'min' text is malformed or overlapped with the delivery time.
-  - rep 3: The report describes corrupted delivery-time text, not delivery-fee text overlapping the time.
-  - rep 4: The reported delivery-time label is garbled by overlapping text, matching the delivery fee and time overlap.
-  - rep 5: The report describes missing spacing within the delivery-time text, not overlap between the delivery fee and delivery time.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: missed
+  - rep 1: The reported delivery-info text describes the same overlapping or collapsed text problem in the Tokumaru Ramen Bar card.
+  - rep 2: The reported malformed delivery-info text describes the delivery fee/time text overlapping in the Tokumaru Ramen Bar delivery line.
+  - rep 3: The report describes corrupted or missing text in the delivery-time label, not the delivery-fee text overlapping it.
+  - rep 4: The reported garbled delivery-time text describes the same overlap affecting the delivery information area.
+  - rep 5: The expected defect is an overlap between delivery fee and delivery time text, while the reported issue only describes missing spacing within the delivery time label.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
+  - rep 1: The report describes overlapping or collapsed delivery information in the Tokumaru Ramen Bar card, matching the delivery text overlap.
+  - rep 2: The report describes malformed, overlapped text in the delivery-info line, matching the delivery fee and delivery time overlap.
+  - rep 3: The report describes overlapping or merged text in the same Tokumaru delivery-time label.
+  - rep 4: The report describes the delivery fee overlapping the delivery-time text for Tokumaru Ramen Bar.
+  - rep 5: The report describes missing spacing within the delivery time text, not an overlap between the delivery fee and delivery time.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
   - rep 1: Both describe overlapped/unreadable delivery time text under the Tokumaru Ramen Bar card.
-  - rep 2: Both describe overlapped/garbled delivery time text in the same delivery-info line.
-  - rep 3: Reported describes garbled delivery-time text but never mentions delivery-fee text overlapping it.
-  - rep 4: Reported describes garbled/overlapped delivery-time text matching the fee/time overlap.
-  - rep 5: Reported describes missing space in time label, not fee text overlapping time text.
+  - rep 2: Both describe overlapped/malformed delivery time text under Tokumaru Ramen Bar.
+  - rep 3: Both describe the same garbled/merged delivery time text under Tokumaru Ramen Bar.
+  - rep 4: Both describe overlapped/garbled delivery time text for Tokumaru Ramen Bar.
+  - rep 5: Reported describes missing space inside the time label, not fee text overlapping time text.
 - **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: missed
-  - rep 1: Jev matched R0 (p=0.68, confidence 0.35).
-  - rep 2: Jev matched R0 (p=0.67, confidence 0.34).
-  - rep 3: Jev matched no reported issue; closest was R0 (p=0.10).
-  - rep 4: Jev matched R0 (p=0.85, confidence 0.71).
-  - rep 5: Jev matched no reported issue; closest was R0 (p=0.00).
+  - rep 1: Jev matched R0 (p=0.78, confidence 0.55).
+  - rep 2: Jev matched R0 (p=0.76, confidence 0.52).
+  - rep 3: Jev matched no reported issue; closest was R0 (p=0.14).
+  - rep 4: Jev matched R0 (p=0.89, confidence 0.79).
+  - rep 5: Jev matched no reported issue; closest was R0 (p=0.01).
 
 ### img_12 12_overlapping_elements.png — qwen/qwen3.7-plus
 
-Expected: Delivery fee text overlaps the delivery time text
+Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
 
 - **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the delivery time text overlapping with the delivery-related text in the restaurant listing.
-  - rep 2: The reported issue specifically describes the delivery fee text and delivery time text overlapping in the card details.
-  - rep 3: Both report overlapping text at the delivery time and fee area on the restaurant card.
-  - rep 4: Reported issue describes the delivery time ('25-30') overlapping with the delivery text, which matches the expected delivery fee and time text overlap.
-  - rep 5: Both describe the delivery time and delivery fee text overlapping.
+  - rep 1: Both report the delivery time text overlapping with delivery fee text in the Tokumaru Ramen Bar listing.
+  - rep 2: Reported issue 0 directly describes the delivery fee and delivery time text overlapping in the Tokumaru Ramen Bar card.
+  - rep 3: Both describe overlapping text related to the delivery information on the Tokumaru Ramen Bar card.
+  - rep 4: Both describe the delivery time text ('25-30') overlapping with the delivery fee text ('Delivery') under Tokumaru Ramen Bar.
+  - rep 5: Both describe the delivery time and delivery fee text overlapping under the Tokumaru Ramen Bar listing.
 - **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The report describes the delivery time text overlapping or misaligning with nearby delivery wording in the listing.
-  - rep 2: Reported issue 0 describes the delivery fee and delivery time text overlapping in the same card details line.
-  - rep 3: The reported overlapping text in the restaurant card describes the delivery time text collision.
-  - rep 4: The reported overlap between “25-30” and “Delivery” describes the same collision between delivery-time and delivery-fee text.
-  - rep 5: The reported issue explicitly describes the delivery time and delivery fee text overlapping under the listing.
-- **gpt-6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: The report describes the delivery time overlapping the word “delivery,” not the delivery fee overlapping the delivery time.
-  - rep 2: The report describes the delivery time and delivery fee text overlapping in the same card details line.
-  - rep 3: The report describes overlapping or garbled delivery-time text in the same card, matching the delivery fee and time text overlap.
-  - rep 4: The report describes the delivery time overlapping the word “Delivery,” not the delivery fee overlapping the delivery time.
-  - rep 5: Both describe the delivery fee and delivery time text overlapping under the listing.
+  - rep 1: Both issues describe the delivery fee and delivery time text overlapping or being poorly aligned in the Tokumaru Ramen Bar listing.
+  - rep 2: The report identifies overlapping delivery fee and delivery time text in the Tokumaru Ramen Bar card.
+  - rep 3: The reported overlapping or garbled delivery text in the Tokumaru Ramen Bar card describes the same delivery fee and time text overlap.
+  - rep 4: Both describe overlapping delivery-related text in the Tokumaru Ramen Bar listing, specifically the delivery time and delivery label or fee text.
+  - rep 5: The report identifies overlapping delivery time and delivery fee text for Tokumaru Ramen Bar.
+- **gpt-6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The report describes the delivery time overlapping the word “delivery,” not the delivery fee text overlapping the delivery time.
+  - rep 2: The report describes the delivery fee text overlapping or poorly spaced with the delivery time on the Tokumaru Ramen Bar card.
+  - rep 3: Both describe overlapping text in the Tokumaru Ramen Bar delivery information.
+  - rep 4: The reported time text '25-30' overlaps 'Delivery' in the same listing, matching the described overlap between delivery fee and delivery time text.
+  - rep 5: The report describes the delivery fee and time overlapping under the Tokumaru Ramen Bar listing.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe overlapping of delivery time text with delivery fee wording in the same listing.
-  - rep 2: Both describe overlapping delivery time and fee text.
-  - rep 3: Both describe overlapping/garbled text in the delivery info area.
-  - rep 4: Both describe the '25-30' time text overlapping the 'Delivery' fee text.
-  - rep 5: Both describe delivery fee and delivery time texts overlapping.
+  - rep 1: Both describe overlap between delivery time and delivery fee text in Tokumaru Ramen Bar listing.
+  - rep 2: Both describe overlapping delivery time and fee text in Tokumaru Ramen Bar card.
+  - rep 3: Both describe overlapping text in the Tokumaru Ramen Bar card.
+  - rep 4: Both describe overlapping delivery time and delivery fee text in the Tokumaru Ramen Bar listing.
+  - rep 5: Both describe delivery fee and time text overlapping under Tokumaru Ramen Bar.
 - **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Jev matched R0 (p=0.52, confidence 0.04).
+  - rep 1: Jev matched R0 (p=0.82, confidence 0.65).
   - rep 2: Jev matched R0 (p=1.00, confidence 0.99).
-  - rep 3: Jev matched R0 (p=0.69, confidence 0.37).
-  - rep 4: Jev matched R0 (p=0.75, confidence 0.51).
+  - rep 3: Jev matched R0 (p=0.85, confidence 0.69).
+  - rep 4: Jev matched R0 (p=0.94, confidence 0.89).
   - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
-
-### img_12 12_overlapping_elements.png — x-ai/grok-4.5
-
-Expected: Delivery fee text overlaps the delivery time text
-
-- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the delivery time text overlapping with the delivery text/fee on the restaurant card.
-  - rep 2: Reported issue 0 describes the delivery time text overlapping with the delivery fee text ('delivery').
-  - rep 3: Reported issue 0 describes the delivery time text overlapping with the delivery fee text ('delivery') on the restaurant card.
-  - rep 4: Reported issue 0 describes the text overlap between the delivery time ('25–30') and delivery text causing garbled text.
-  - rep 5: Reported issue 0 describes the text overlap in the delivery info line on the card where the fee and time collide.
-- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Reported issue 0 describes the delivery fee/time text overlapping and becoming garbled, matching the expected overlap defect.
-  - rep 2: Reported issue 0 describes the delivery information text overlapping the delivery time on the same restaurant card.
-  - rep 3: Reported issue 0 describes the delivery time colliding with the adjacent delivery text, matching the stated overlap.
-  - rep 4: Reported issue 0 describes the delivery information text overlapping and becoming garbled in the same delivery-time area.
-  - rep 5: Reported issue 0 describes the delivery information text overlapping and becoming unreadable, matching the fee/time text collision.
-- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Reported issue 0 describes the delivery time overlapping the delivery text in the same area.
-  - rep 2: No report describes the delivery fee text overlapping the delivery time text.
-  - rep 3: Reported issue 0 describes the delivery time colliding with the adjacent delivery text in the same area.
-  - rep 4: Both reports describe the Tokumaru delivery line appearing compressed as “25-30delivery,” consistent with the delivery text overlapping.
-  - rep 5: Reported issue 0 explicitly says the Tokumaru delivery information overlaps and collides.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe delivery time text overlapping delivery fee text on the same card.
-  - rep 2: Reported 0 describes the same Tokumaru card collision between delivery time and delivery fee text.
-  - rep 3: Reported 0 describes the same overlap of delivery time and delivery text on the Tokumaru card.
-  - rep 4: Reported 0 describes overlapping delivery info text on the Tokumaru card making time unreadable.
-  - rep 5: Reported 0 describes overlapping delivery info text on the Tokumaru card producing the same garbled string.
-- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Jev matched R0 (p=0.70, confidence 0.40).
-  - rep 2: Jev matched R0 (p=0.58, confidence 0.17).
-  - rep 3: Jev matched R0 (p=0.90, confidence 0.80).
-  - rep 4: Jev matched R0 (p=0.82, confidence 0.63).
-  - rep 5: Jev matched R0 (p=0.87, confidence 0.73).
 
 ### img_12 12_overlapping_elements.png — x-ai/grok-4.6
 
-Expected: Delivery fee text overlaps the delivery time text
+Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
 
 - **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the delivery time text overlapping with the delivery fee text on the card.
-  - rep 2: Both report the overlap between the delivery time text and the delivery fee text.
-  - rep 3: Both describe the overlapping text defect involving the delivery time and delivery text.
-  - rep 4: Reported issue 0 describes the text collision where 'delivery' overlaps the delivery time range ('25-30').
-  - rep 5: Both describe the text overlapping defect involving the delivery time text on the restaurant card.
+  - rep 1: Reported issue 0 describes the delivery-time text overlapping the delivery text on the Tokumaru Ramen Bar card.
+  - rep 2: Reported issue 0 accurately describes the delivery time text overlapping with delivery text on the Tokumaru Ramen Bar card.
+  - rep 3: Both describe the text overlap involving the delivery time and delivery fee text on the Tokumaru Ramen Bar card.
+  - rep 4: Both describe the delivery fee text overlapping the delivery time text on the Tokumaru Ramen Bar card.
+  - rep 5: Both report an overlap involving the delivery time and delivery text on the Tokumaru Ramen Bar card.
 - **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: Reported issue 0 describes the delivery-time text overlapping the adjacent delivery-related text, matching the stated metadata overlap.
-  - rep 2: The reported issue describes the delivery-time text overlapping adjacent delivery-related text in the same metadata line.
-  - rep 3: Reported issue 0 describes the delivery time text colliding with the word 'delivery,' matching the delivery fee/time text overlap.
-  - rep 4: Reported issue 0 describes delivery text overlapping the delivery time on the same card.
-  - rep 5: The reported issue describes the delivery-time text overlapping itself, not the delivery fee text overlapping the delivery-time text.
-- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: Reported issue 0 describes overlapping text in the same delivery metadata area.
-  - rep 2: The report describes the delivery time overlapping the word “delivery,” not the delivery fee overlapping the delivery time.
-  - rep 3: Reported issue 0 describes delivery time text colliding with the adjacent delivery text.
-  - rep 4: Reported issue 0 describes delivery information overlapping in the same card area.
-  - rep 5: The report describes the delivery-time text overlapping itself, not the delivery-fee text overlapping the delivery time.
+  - rep 1: Both reports describe overlapping delivery metadata text on the Tokumaru Ramen Bar card, making it unreadable.
+  - rep 2: The reported issue describes the same overlap between the Tokumaru Ramen Bar delivery metadata texts.
+  - rep 3: Reported issue 0 describes the Tokumaru Ramen Bar delivery time overlapping the delivery text, matching the expected overlap defect.
+  - rep 4: Reported issue 0 describes the Tokumaru Ramen Bar delivery time and delivery text overlapping, matching the expected defect.
+  - rep 5: Reported issue 0 describes the delivery-time text overlapping itself, not the delivery-fee text overlapping the delivery-time text.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both reports describe overlapping text in the Tokumaru Ramen Bar delivery metadata involving the delivery time.
+  - rep 2: The report describes overlapping delivery metadata on the same Tokumaru Ramen Bar card.
+  - rep 3: Both describe overlapping delivery information on the Tokumaru Ramen Bar card, making the time and delivery text collide.
+  - rep 4: Reported issue 0 describes the delivery text colliding with the time range on the same restaurant card.
+  - rep 5: Reported issue 0 describes overlapping text on the same Tokumaru delivery-time line.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe delivery time text overlapping delivery text on the same card.
-  - rep 2: Both describe delivery time text overlapping delivery fee text in the card metadata line.
-  - rep 3: Both describe overlapping delivery time and delivery text on the Tokumaru card.
-  - rep 4: Both describe delivery text overlapping the 25-30 time on the Tokumaru card.
-  - rep 5: Both describe overlapping delivery info text causing unreadable '25-30elivery'.
+  - rep 1: Both describe overlapping delivery time and fee text on the Tokumaru Ramen Bar card.
+  - rep 2: Both describe overlapping delivery time and delivery text on the Tokumaru Ramen Bar card.
+  - rep 3: Both describe overlapping delivery fee and time text on the Tokumaru Ramen Bar card.
+  - rep 4: Both describe the delivery text overlapping the time range on the Tokumaru Ramen Bar card.
+  - rep 5: Both describe overlapped unreadable delivery time text on the Tokumaru Ramen Bar card.
 - **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: Jev matched R0 (p=0.63, confidence 0.27).
-  - rep 2: Jev matched R0 (p=0.51, confidence 0.01).
-  - rep 3: Jev matched R0 (p=0.80, confidence 0.61).
-  - rep 4: Jev matched R0 (p=0.74, confidence 0.47).
-  - rep 5: Jev matched no reported issue; closest was R0 (p=0.06).
+  - rep 1: Jev matched R0 (p=0.90, confidence 0.81).
+  - rep 2: Jev matched R0 (p=0.78, confidence 0.56).
+  - rep 3: Jev matched R0 (p=0.91, confidence 0.82).
+  - rep 4: Jev matched R0 (p=0.78, confidence 0.57).
+  - rep 5: Jev matched no reported issue; closest was R0 (p=0.15).
 
 ### img_12 12_overlapping_elements.png — x-ai/grok-4.7
 
-Expected: Delivery fee text overlaps the delivery time text
+Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
 
 - **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The reported issue specifically describes the delivery time text ('25-30') colliding with and overlapping the delivery fee text.
-  - rep 2: Reported issue 0 describes delivery time ('25–30 min') overlapping with delivery text on the metadata line, which matches the expected defect.
-  - rep 3: The reported issue describes the delivery time range ('25-30') and the delivery fee/label ('delivery') colliding into each other, matching the expected overlap.
-  - rep 4: Both describe the delivery time text ('25-30 min') overlapping with the delivery text/fee line under the restaurant item.
-  - rep 5: Both report the delivery time text overlapping/colliding with the delivery fee text.
+  - rep 1: Reported issue 0 accurately describes the delivery fee and time text overlapping beneath Tokumaru Ramen Bar.
+  - rep 2: Both describe the delivery time text overlapping with the delivery/fee text under Tokumaru Ramen Bar.
+  - rep 3: Both describe the delivery time and delivery text colliding or overlapping under Tokumaru Ramen Bar.
+  - rep 4: Both describe the delivery time and delivery subtitle text overlapping under Tokumaru Ramen Bar.
+  - rep 5: Both describe the delivery fee text overlapping the delivery time text under Tokumaru Ramen Bar.
 - **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: The reported issue describes the delivery fee and delivery time text overlapping in the same layout area.
-  - rep 2: The reported issue describes the delivery time overlapping the delivery fee text in the same metadata line.
-  - rep 3: The reported metadata line describes the delivery time range colliding with the delivery label, matching the overlap defect.
-  - rep 4: The report describes a collision within the delivery-time subtitle between “min” and “delivery,” not delivery fee text overlapping delivery time text.
-  - rep 5: The report describes the delivery-time text colliding with the delivery-fee text in the restaurant subtitle.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: missed, rep 5: found
-  - rep 1: The report describes the delivery time and fee text colliding in the same line.
-  - rep 2: The reported collision between the delivery time and delivery text matches the expected overlapping delivery fee/time text.
-  - rep 3: The report describes the delivery label colliding with the time range, not delivery fee text overlapping the delivery time.
-  - rep 4: The report describes the delivery-time suffix overlapping the word “delivery,” not delivery-fee text overlapping the delivery time.
-  - rep 5: The report describes delivery-time and delivery-fee text colliding in the same subtitle.
+  - rep 1: The report describes the Tokumaru Ramen Bar delivery fee and delivery time text colliding in the same line.
+  - rep 2: Reported issue describes the delivery time text overlapping the delivery fee text for Tokumaru Ramen Bar.
+  - rep 3: The reported metadata collision between the delivery time and “delivery” text describes the same overlap defect.
+  - rep 4: The report describes overlap within the delivery-time subtitle, not a delivery fee text overlapping the delivery time.
+  - rep 5: Reported issue 0 describes the delivery-time and delivery-fee text overlapping for Tokumaru Ramen Bar.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The Tokumaru Ramen Bar report describes delivery-time text colliding with the delivery information.
+  - rep 2: Both describe overlapping delivery-related text and delivery time in Tokumaru Ramen Bar’s metadata line.
+  - rep 3: The report describes the delivery text colliding with the time range in the same metadata line.
+  - rep 4: The report describes delivery-time text colliding with the adjacent delivery text in the same subtitle area.
+  - rep 5: The report describes the delivery-time text colliding with the delivery-fee text for Tokumaru Ramen Bar.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe delivery time and fee text overlapping and unreadable.
-  - rep 2: Both describe delivery time and delivery fee text overlapping in the same metadata line.
-  - rep 3: Both describe the delivery time colliding/overlapping with delivery text in the same metadata line.
-  - rep 4: Both describe the delivery fee and delivery time texts overlapping in the same subtitle line.
-  - rep 5: Reported issue describes the same delivery time and fee text colliding under Tokumaru Ramen Bar.
+  - rep 1: Both describe delivery time and fee text overlapping beneath Tokumaru Ramen Bar.
+  - rep 2: Both describe overlapping delivery time and fee text under Tokumaru Ramen Bar.
+  - rep 3: Both describe the delivery time and delivery text colliding under Tokumaru Ramen Bar.
+  - rep 4: Both describe overlapping delivery time and delivery text in the subtitle under Tokumaru Ramen Bar.
+  - rep 5: Both describe overlapping delivery time and fee text under Tokumaru Ramen Bar.
 - **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Jev matched R0 (p=0.97, confidence 0.94).
-  - rep 2: Jev matched R0 (p=0.84, confidence 0.68).
-  - rep 3: Jev matched R0 (p=0.75, confidence 0.50).
-  - rep 4: Jev matched R0 (p=0.85, confidence 0.70).
-  - rep 5: Jev matched R0 (p=0.99, confidence 0.99).
+  - rep 1: Jev matched R0 (p=0.96, confidence 0.92).
+  - rep 2: Jev matched R0 (p=0.92, confidence 0.85).
+  - rep 3: Jev matched R0 (p=0.81, confidence 0.61).
+  - rep 4: Jev matched R0 (p=0.90, confidence 0.79).
+  - rep 5: Jev matched R0 (p=0.99, confidence 0.98).
 
 ### img_12 12_overlapping_elements.png — xiaomi/mimo-v2.6-pro
 
-Expected: Delivery fee text overlaps the delivery time text
+Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
 
 - **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both report overlapping text involving the delivery time and delivery fee/text element.
-  - rep 2: Both describe the overlap of metadata text elements under the restaurant item, specifically involving delivery time and delivery information.
-  - rep 3: Both describe the delivery fee text ('Free delivery') overlapping with the delivery time text.
-  - rep 4: Both describe the delivery time text overlapping an adjacent delivery-related text on the restaurant card.
-  - rep 5: Both describe the delivery fee text overlapping with the delivery time text.
+  - rep 1: Both report overlapping text between the delivery time ('25-30 min delivery') and delivery fee text under Tokumaru Ramen Bar.
+  - rep 2: Both report overlapping text elements including delivery time and delivery info under the Tokumaru Ramen Bar entry.
+  - rep 3: Both describe the delivery fee text overlapping with the delivery time text on the Tokumaru Ramen Bar card.
+  - rep 4: Both describe a text overlap involving the delivery time on the Tokumaru Ramen Bar card.
+  - rep 5: Both report the delivery fee text overlapping the delivery time text under the Tokumaru Ramen Bar entry.
 - **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: The report describes the delivery-time text colliding with another delivery-related text element, consistent with the delivery fee and time overlap.
-  - rep 2: The report describes overlapping delivery time and delivery-related text in the same restaurant entry, matching the expected text overlap.
-  - rep 3: The report describes overlapping delivery time and delivery fee text in the restaurant card.
-  - rep 4: The expected issue concerns delivery fee text overlapping delivery time, while the reported issue concerns delivery time overlapping 'Order delivery' text.
-  - rep 5: Reported issue 0 describes the delivery fee text overlapping the delivery time text in the restaurant card.
+  - rep 1: Reported issue 0 describes overlapping delivery-related text for Tokumaru Ramen Bar, matching the delivery fee and delivery time text collision.
+  - rep 2: The reported overlap among Tokumaru Ramen Bar's supporting text explicitly includes the delivery time and delivery fee text area.
+  - rep 3: Both issues describe the Tokumaru Ramen Bar card's delivery fee/free-delivery text overlapping the delivery time text.
+  - rep 4: The reported issue describes delivery time overlapping 'Order delivery' text, not delivery fee text overlapping delivery time text.
+  - rep 5: Both reports describe the delivery fee and delivery time text overlapping in the Tokumaru Ramen Bar card.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: The reported overlapping delivery text obscures the delivery details, matching the expected delivery fee and delivery time text overlap.
-  - rep 2: The report describes the delivery-time and delivery text overlapping in the same entry.
-  - rep 3: Both descriptions identify the delivery fee and delivery time text overlapping in the restaurant card.
-  - rep 4: The report describes delivery time overlapping “Order delivery,” not delivery fee text overlapping delivery time.
-  - rep 5: Both describe the delivery fee text overlapping the delivery time text.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: Both describe delivery time text overlapping another delivery text.
-  - rep 2: Both describe delivery time and delivery text overlapping under the same restaurant entry.
-  - rep 3: Both describe delivery time and delivery fee text overlapping.
-  - rep 4: Reported overlap involves 'Order delivery' text, not delivery fee text.
-  - rep 5: Both describe delivery fee and delivery time texts overlapping.
-- **typesafe/jev-1.13**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Jev matched R0 (p=0.65, confidence 0.29).
-  - rep 2: Jev matched no reported issue; closest was R0 (p=0.43).
+  - rep 1: The report describes overlapping delivery text for Tokumaru Ramen Bar, matching the expected collision involving the delivery time.
+  - rep 2: The report describes overlapping delivery-related supporting text, including the delivery time, in the same Tokumaru Ramen Bar entry.
+  - rep 3: Both describe the delivery fee text overlapping the delivery time in the Tokumaru Ramen Bar card.
+  - rep 4: The report describes delivery time overlapping “Order delivery,” not delivery fee overlapping delivery time.
+  - rep 5: The report describes the delivery fee and delivery time overlapping on the Tokumaru Ramen Bar card.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe overlapping delivery texts for Tokumaru Ramen Bar.
+  - rep 2: Both describe overlapping delivery-related text under the Tokumaru Ramen Bar entry.
+  - rep 3: Both describe overlapping delivery fee and delivery time text in Tokumaru Ramen Bar card.
+  - rep 4: Both describe delivery time text overlapping delivery-related text in Tokumaru Ramen Bar causing illegibility.
+  - rep 5: Both describe overlapping delivery time and fee texts under Tokumaru Ramen Bar.
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=0.92, confidence 0.85).
+  - rep 2: Jev matched R0 (p=0.81, confidence 0.62).
   - rep 3: Jev matched R0 (p=0.99, confidence 0.98).
-  - rep 4: Jev matched R0 (p=0.69, confidence 0.37).
+  - rep 4: Jev matched R0 (p=0.62, confidence 0.25).
   - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
 
 ### img_12 12_overlapping_elements.png — z-ai/glm-5.3-flash
 
-Expected: Delivery fee text overlaps the delivery time text
+Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
 
-- **gemini-3.8-flash**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe text overlapping the delivery time text on the restaurant card metadata, though the overlapping element is identified differently.
-  - rep 2: The reported issue describes an overlap between the delivery info line and the rating, whereas the expected defect is an overlap between the delivery fee and delivery time.
-  - rep 3: The reported issue describes the delivery fee ('€0 delivery') overlapping with the delivery time ('25–30').
-  - rep 4: The reported issue specifically describes the delivery fee and delivery time texts overlapping each other.
-  - rep 5: Both describe an overlap layout defect affecting the delivery time text on the restaurant card.
-- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: The reported issue describes the delivery time text being overlapped by an Order label, matching the delivery fee/time text overlap defect.
-  - rep 2: The reported overlap is between the delivery info line and rating, not between delivery fee text and delivery time text.
-  - rep 3: The report describes the delivery time range and delivery fee text overlapping in the same card.
-  - rep 4: The report describes the delivery fee and delivery time texts overlapping in the same restaurant listing.
-  - rep 5: The report describes delivery-time text overlapping an Order link, not delivery fee text overlapping delivery time text.
+- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe a layout overlap defect affecting the delivery time text on the Tokumaru Ramen Bar card.
+  - rep 2: Both describe overlapping text elements within the metadata section under the Tokumaru Ramen Bar card.
+  - rep 3: Reported issue 0 describes the delivery time ('25–30') and delivery fee ('€0 delivery') overlapping in the Tokumaru Ramen Bar card.
+  - rep 4: Both describe the delivery fee and delivery time texts overlapping under Tokumaru Ramen Bar.
+  - rep 5: Both report an overlapping text defect on the Tokumaru Ramen Bar card involving the delivery time text.
+- **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: found, rep 5: missed
+  - rep 1: The report describes an Order label overlapping the delivery-time text, not the delivery-fee text overlapping the delivery-time text.
+  - rep 2: The expected defect concerns delivery fee text overlapping delivery time, while the report describes the delivery info line overlapping the rating.
+  - rep 3: The reported Tokumaru Ramen Bar card issue describes the delivery time '25–30' overlapping the delivery fee text '€0 delivery'.
+  - rep 4: The reported issue describes the delivery fee and delivery time overlapping under Tokumaru Ramen Bar.
+  - rep 5: The expected overlap is between the delivery fee and delivery time, while the reported issue describes overlap with an 'Order' link.
 - **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: The reported Order label overlaps the delivery-time text on the same card.
-  - rep 2: The report describes the delivery info overlapping the rating, not the delivery fee overlapping the delivery time.
-  - rep 3: The report describes the delivery fee text overlapping the delivery time in the same card.
-  - rep 4: The report describes the delivery fee and delivery time texts overlapping.
-  - rep 5: The report describes delivery details overlapping an Order link, not delivery fee text overlapping delivery time.
+  - rep 1: The reported issue describes overlapping text in Tokumaru Ramen Bar’s delivery metadata line, matching the delivery fee and time text overlap.
+  - rep 2: The expected overlap is between the delivery fee and delivery time, while the report describes the delivery info and rating overlapping.
+  - rep 3: The report describes the delivery fee text overlapping the delivery time in the Tokumaru Ramen Bar card.
+  - rep 4: Both reports describe the delivery fee text overlapping the delivery time under Tokumaru Ramen Bar.
+  - rep 5: The expected issue is an overlap between the delivery fee and delivery time, while the report describes delivery details overlapping the Order link.
 - **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: Reported overlap is caused by Order label, not delivery fee text.
-  - rep 2: Reported overlap is between delivery info line and rating, not between delivery fee and delivery time.
-  - rep 3: Both describe delivery time and fee texts overlapping in the same card.
-  - rep 4: Both describe overlapping delivery time and fee texts.
-  - rep 5: Reported describes delivery time overlapping an Order link, not delivery fee text overlapping delivery time.
+  - rep 1: Reported describes an Order label/button overlapping delivery time, not delivery fee text overlapping delivery time.
+  - rep 2: Reported describes rating overlapping delivery info, not delivery fee overlapping delivery time.
+  - rep 3: Both describe delivery fee and time texts overlapping in Tokumaru Ramen Bar card.
+  - rep 4: Both describe overlapping delivery time and fee texts under Tokumaru Ramen Bar.
+  - rep 5: Reported describes overlap with 'Order' link, not with delivery fee text.
 - **typesafe/jev-1.13**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: Jev matched no reported issue; closest was R0 (p=0.18).
-  - rep 2: Jev matched no reported issue; closest was R0 (p=0.16).
-  - rep 3: Jev matched R0 (p=0.98, confidence 0.97).
+  - rep 1: Jev matched no reported issue; closest was R0 (p=0.25).
+  - rep 2: Jev matched no reported issue; closest was R0 (p=0.19).
+  - rep 3: Jev matched R0 (p=0.99, confidence 0.98).
   - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
-  - rep 5: Jev matched no reported issue; closest was R0 (p=0.15).
+  - rep 5: Jev matched no reported issue; closest was R0 (p=0.25).
 
 ### img_13 13_orphaned_notification_badge.png — gemini-3-flash-preview
 
@@ -1833,527 +1728,247 @@ Expected: Middle card in the carousel is not aligned with the other c…
   - rep 4: Jev matched R0 (p=0.95, confidence 0.90).
   - rep 5: Jev matched R0 (p=0.97, confidence 0.94).
 
-### img_15 15_safe_area_violation.png — claude-fable-5
+### img_15 15_safe_area_violation.png — gemini-3.1-flash-lite
 
-Expected: Bottom nav labels are cut off below the screen edge and the…
+Expected: Bottom nav labels are cut off below the screen edge and a b…
 
-- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Reported issue 0 describes the home indicator / gesture bar incorrectly positioned across and obscuring the bottom navigation icons.
-  - rep 2: Report 1 describes the bottom navigation bar and labels being cut off at the screen edge, while Report 0 describes the gesture bar (perceived as a thick black line) overlapping the icons.
-  - rep 3: Both reported issues describe parts of the same underlying safe-area layout bug: issue 0 reports the gesture bar overlapping bottom nav icons, and issue 1 reports the cut-off icons and missing labels at the bottom edge.
-  - rep 4: Report 0 describes the gesture bar overlapping and obscuring bottom nav icons, while Report 1 describes the bottom nav being clipped off at the bottom edge with no visible labels.
-  - rep 5: Reported issue 0 describes the gesture bar overlapping the navigation icons, while issue 1 describes the clipping of the navigation bar and cut-off labels due to missing safe-area padding.
-- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The misplaced horizontal bar described in report 0 corresponds to the gesture bar overlapping and obscuring the bottom navigation area.
-  - rep 2: Reported issue 1 describes the bottom navigation being vertically clipped at the screen edge, with icons cut off and labels not visible.
-  - rep 3: Both reports describe the bottom navigation being incorrectly clipped or overlapped at the bottom edge, including the gesture-bar-like artifact and missing lower content.
-  - rep 4: Reports 0 and 1 describe the bottom navigation being obstructed or vertically clipped at the bottom edge, including gesture-bar overlap and cut-off content.
-  - rep 5: The report describes bottom-navigation content clipped at the bottom edge with missing labels and insufficient safe-area padding, matching the expected overlap and cutoff.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The misplaced bottom bar overlaps the navigation icons, matching the reported gesture-bar overlap, though label clipping is not mentioned.
-  - rep 2: Reported issue 1 describes the bottom navigation being clipped at the screen edge, hiding its labels and cutting off its icons.
-  - rep 3: The misplaced bottom bar overlapping navigation icons matches the expected gesture bar overlap.
-  - rep 4: Both reports describe bottom navigation obstruction or clipping, corresponding to the cut-off labels and gesture-bar overlap.
-  - rep 5: It describes bottom navigation content clipped at the lower edge with missing labels and inadequate safe-area padding.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Reported 0 describes the home-indicator/gesture bar overlapping and obscuring the bottom nav icons, same area and problem.
-  - rep 2: Reported 1 describes the same clipped bottom nav bar with cut-off icons and invisible labels.
-  - rep 3: Both reports describe bottom nav clipping and the bar overlapping icons.
-  - rep 4: Reported 0 describes the bar overlapping nav icons and reported 1 describes clipped icons with no visible labels.
-  - rep 5: Reported 1 describes the same bottom-nav clipping with missing labels and no safe-area padding.
-- **typesafe/jev-1.13**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Jev matched no reported issue; closest was R0 (p=0.22).
-  - rep 2: Jev matched R1 (p=0.97, confidence 0.95).
-  - rep 3: Jev matched R1 (p=0.94, confidence 0.89).
-  - rep 4: Jev matched R1 (p=0.96, confidence 0.93).
-  - rep 5: Jev matched R1 (p=0.90, confidence 0.80).
+- **gemini-3.8-flash**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: found
+  - rep 1: The reported issue discusses missing text on a pizza card, which is unrelated to the bottom navigation bar overlap and cutoff.
+  - rep 2: The reported issue describes a restaurant card overlapping the bottom navigation, which is a different defect from the navigation labels being cut off by the screen edge and covered by a black bar.
+  - rep 3: No issues were reported.
+  - rep 4: The reported issue is about a restaurant card being clipped, not the bottom navigation bar labels or overlapping bar.
+  - rep 5: Both report that elements in the bottom navigation bar are clipped or cut off by the bottom screen edge.
+- **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: found
+  - rep 1: The expected defect concerns bottom navigation labels and an overlapping black bar, while the reported issue concerns a missing title on a pizza card.
+  - rep 2: The report describes a restaurant card overlapping the bottom navigation, not navigation labels being cut off or a black bar overlapping the icons.
+  - rep 3: No issues were reported.
+  - rep 4: The reported issue concerns a restaurant card clipped at the viewport bottom, not bottom navigation labels or a black bar overlapping icons.
+  - rep 5: Reported issue 1 describes the bottom navigation elements being cut off at the screen edge, matching the expected bottom-nav clipping defect.
+- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: The report concerns a missing title on a pizza card, not the cut-off navigation labels or overlapping black bar.
+  - rep 2: The report describes a restaurant card overlapping the navigation menu, not cut-off navigation labels or a black bar over the icons.
+  - rep 3: No issues were reported.
+  - rep 4: The report describes a restaurant card clipped by the viewport, not bottom navigation labels or icons obscured by a black bar.
+  - rep 5: The report only vaguely notes bottom-edge clipping and does not describe cut-off labels or a black bar overlapping the icons.
+- **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: found
+  - rep 1: Reported issue is about a missing pizza card title, not cut-off nav labels or black bar overlap.
+  - rep 2: Reported describes pizza card overlapping the nav, not nav labels cut off with black bar over icons.
+  - rep 3: No issues were reported.
+  - rep 4: Reported describes pizza card clipping, not nav labels cut off with black bar overlapping icons.
+  - rep 5: Both describe bottom nav being cut off at the screen edge.
+- **typesafe/jev-1.13**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: found
+  - rep 1: Jev matched no reported issue; closest was R0 (p=0.01).
+  - rep 2: Jev matched no reported issue; closest was R0 (p=0.31).
+  - rep 3: No issues were reported.
+  - rep 4: Jev matched no reported issue; closest was R0 (p=0.07).
+  - rep 5: Jev matched R1 (p=0.75, confidence 0.50).
 
-### img_15 15_safe_area_violation.png — claude-fable-5-1
+### img_15 15_safe_area_violation.png — gemini-3.1-pro-preview
 
-Expected: Bottom nav labels are cut off below the screen edge and the…
-
-- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Reported issue 0 describes the gesture bar overlapping the bottom nav icons, while reported issue 1 notes the missing labels resulting from them being cut off below the screen edge.
-  - rep 2: Reported issue 0 captures the gesture bar/home indicator overlapping the nav icons, while issue 1 notes the missing text labels resulting from them being cut off.
-  - rep 3: Reported issue 0 describes the system gesture indicator overlapping and partially covering the bottom navigation icons.
-  - rep 4: Reported issue 0 describes the gesture bar overlapping the bottom nav icons, while reported issue 1 describes the bottom nav being cut off at the screen edge causing missing labels.
-  - rep 5: Reported issue 0 describes the gesture bar overlapping the icons as a horizontal bar, while issue 1 notes the missing labels and obscured icons caused by the bottom nav being pushed off-screen.
-- **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: Neither report describes bottom navigation labels being cut off or the gesture bar overlapping the icons.
-  - rep 2: Neither report specifically describes bottom navigation labels being cut off or the gesture bar overlapping the icons.
-  - rep 3: Reported issue 0 describes the bottom gesture bar overlapping the bottom navigation icons, matching the expected bottom-edge obstruction.
-  - rep 4: Reports 0 and 1 both describe bottom navigation content being obscured or cut off at the screen edge, including overlap with the gesture area.
-  - rep 5: Neither report describes bottom navigation labels being cut off by the screen edge or the gesture bar overlapping the icons.
-- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: Neither report describes cut-off bottom-navigation labels or the gesture bar overlapping the icons.
-  - rep 2: Neither report describes bottom labels cut off by the screen edge or the gesture bar overlapping the icons.
-  - rep 3: The reported issue describes the gesture indicator overlapping bottom navigation icons, matching the expected bottom-edge overlap.
-  - rep 4: Reported issue 0 explicitly says the gesture indicator overlaps and partially covers bottom navigation icons.
-  - rep 5: Neither report describes bottom labels being clipped by the screen edge or the gesture bar overlapping the icons.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe a horizontal bar overlapping the middle bottom-nav icons in the same area.
-  - rep 2: Both reports describe the bottom nav bar overlapping icons and missing labels matching cut-off/overlap.
-  - rep 3: Reported 0 describes the dark gesture bar covering the Search and Orders icons, matching the overlap described in expected.
-  - rep 4: Report 0 covers the gesture bar overlapping nav icons and Report 1 covers the cut-off nav with missing labels.
-  - rep 5: Both describe the bottom nav with a bar covering icons and labels not visible.
-- **typesafe/jev-1.13**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: Jev matched no reported issue; closest was R1 (p=0.10).
-  - rep 2: Jev matched no reported issue; closest was R0 (p=0.35).
-  - rep 3: Jev matched R0 (p=0.93, confidence 0.86).
-  - rep 4: Jev matched R0 (p=0.96, confidence 0.92).
-  - rep 5: Jev matched no reported issue; closest was R0 (p=0.22).
-
-### img_15 15_safe_area_violation.png — claude-opus-4-8
-
-Expected: Bottom nav labels are cut off below the screen edge and the…
+Expected: Bottom nav labels are cut off below the screen edge and a b…
 
 - **gemini-3.8-flash**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
-  - rep 1: Reported issue 1 describes the bottom navigation icons overlapping a horizontal line (the gesture bar), which corresponds to the gesture bar overlap defect.
-  - rep 2: The reported issue is about favorite button styling on cards, not the bottom navigation bar cut-off and gesture bar overlap.
-  - rep 3: None of the reported issues mention the bottom navigation bar clipping or gesture bar overlap.
-  - rep 4: Both describe the gesture bar (thick horizontal line) overlapping the bottom navigation bar icons.
-  - rep 5: The reported issue discusses heart icon inconsistencies on cards, not the bottom navigation bar being cut off or overlapped by the gesture bar.
-- **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: Neither report describes bottom navigation labels or icons being cut off by the screen edge or overlapped by the gesture bar.
-  - rep 2: The reported issue concerns inconsistent favorite button styling on content cards, not bottom navigation clipping or gesture bar overlap.
-  - rep 3: The reported issue concerns inconsistent favorite heart styling on cards, not bottom navigation labels or gesture-bar overlap.
-  - rep 4: The reported bottom-navigation issue concerns a thick bar and overlapping center icons, not labels being cut off or the gesture bar overlapping icons.
-  - rep 5: The reported issue concerns inconsistent favorite heart icon styling, not bottom navigation labels or gesture bar overlap.
-- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: The reported navigation issue concerns icons overlapping a divider, not labels being cut off or the gesture bar overlapping icons.
-  - rep 2: The report concerns inconsistent heart-button styling on cards, not cut-off bottom navigation labels or gesture-bar overlap.
-  - rep 3: The reported issue concerns inconsistent favorite-heart styling on cards, not clipped bottom navigation labels or gesture-bar overlap.
-  - rep 4: Reported issue 1 describes overlapping navigation icons and a thick bar, not labels cut off at the screen edge or the gesture bar overlapping icons.
-  - rep 5: The report describes inconsistent heart-icon styling on cards, not clipped bottom navigation labels or gesture-bar overlap.
-- **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: Reported 1 describes icons overlapping a divider line, not labels cut off with gesture bar overlap.
-  - rep 2: Reported issue describes heart button styling, not bottom nav cutoff.
-  - rep 3: Reported issue describes heart icon styling, not bottom nav cutoff/overlap.
-  - rep 4: Reported 1 describes overlapping search/bookmark icons and a thick bar, not cut-off labels with gesture bar overlapping icons.
-  - rep 5: Reported issue describes inconsistent heart icons on cards, not bottom nav cutoff.
-- **typesafe/jev-1.13**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: Jev matched no reported issue; closest was R1 (p=0.05).
-  - rep 2: Jev matched no reported issue; closest was R0 (p=0.00).
+  - rep 1: Both report that elements in the bottom navigation bar are partially hidden or cut off.
+  - rep 2: The reported issue describes truncated restaurant text, not the bottom navigation bar being cut off or overlapped.
+  - rep 3: The reported issue describes category chips at the top rather than the bottom navigation labels and overlapping bar.
+  - rep 4: Both describe the bottom navigation bar items being cut off by the bottom edge of the screen.
+  - rep 5: The reported issue discusses a heart icon's placement on a restaurant image, not bottom navigation labels or an overlapping black bar.
+- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: Both issues describe bottom navigation content being partially obscured or clipped, despite referring to different nav elements.
+  - rep 2: The expected defect concerns bottom navigation labels and an overlapping black bar, while the report concerns unrelated text clipped at the right edge.
+  - rep 3: The expected defect concerns bottom navigation labels and an overlapping black bar, while the reported issue concerns top category chips cut off at the right edge.
+  - rep 4: The report describes bottom-navigation icons being clipped, whereas the expected defect concerns labels being cut off and a black bar overlapping the icons.
+  - rep 5: The reported issue concerns a heart icon near the image edge, not bottom navigation labels or a black bar overlapping icons.
+- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
+  - rep 1: The reported bottom-navigation icons being partially hidden matches the expected overlap affecting the same navigation area.
+  - rep 2: The report concerns clipped text at the right edge, not bottom navigation labels or an overlapping black bar.
+  - rep 3: The report concerns category chips clipped at the right edge, not bottom navigation labels or icons obscured by a black bar.
+  - rep 4: The report describes bottom navigation elements being cut off at the screen edge, matching the expected clipping issue.
+  - rep 5: The report concerns the heart icon’s position, not the bottom navigation labels or overlapping black bar.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
+  - rep 1: Both describe bottom navigation icons being partially hidden/cut off.
+  - rep 2: Reported clipping concerns restaurant name at right edge, not bottom nav labels.
+  - rep 3: Reported describes top category chips cutoff, not bottom nav labels or black bar.
+  - rep 4: Both describe bottom navigation bar elements cut off by the bottom screen edge.
+  - rep 5: Reported issue concerns heart icon position, not bottom nav labels or black bar.
+- **typesafe/jev-1.13**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
+  - rep 1: Jev matched R0 (p=0.69, confidence 0.37).
+  - rep 2: Jev matched no reported issue; closest was R0 (p=0.01).
   - rep 3: Jev matched no reported issue; closest was R0 (p=0.00).
-  - rep 4: Jev matched no reported issue; closest was R1 (p=0.22).
+  - rep 4: Jev matched R0 (p=0.85, confidence 0.69).
   - rep 5: Jev matched no reported issue; closest was R0 (p=0.00).
 
-### img_15 15_safe_area_violation.png — claude-opus-5
+### img_15 15_safe_area_violation.png — gemini-3.8-flash
 
-Expected: Bottom nav labels are cut off below the screen edge and the…
-
-- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Reported issue 1 describes the gesture bar (thick black horizontal bar) overlapping the bottom navigation icons.
-  - rep 2: Report 1 describes the gesture bar (solid black horizontal bar) overlapping and obscuring the bottom tab bar icons.
-  - rep 3: Reported issue 1 describes the black horizontal gesture bar overlapping and obscuring the bottom navigation icons.
-  - rep 4: Reported issue 1 describes the gesture bar (dark horizontal bar) overlapping and colliding with the bottom navigation icons.
-  - rep 5: Both reports describe symptoms of the bottom navigation bar safe-area defect: the gesture bar overlapping icons (mistaken for a fused horizontal bar) and missing labels due to being cut off.
-- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: missed
-  - rep 1: Reports 1 and 3 describe the bottom navigation's gesture-bar overlap and missing or clipped labels.
-  - rep 2: None of the reported issues describes bottom navigation labels being cut off or the gesture bar overlapping the icons.
-  - rep 3: The thick horizontal bar in the bottom tab bar overlaps and obscures the navigation icons, matching the reported gesture-bar/layout obstruction.
-  - rep 4: None of the reported issues describes bottom navigation labels being cut off or the gesture bar overlapping the icons.
-  - rep 5: None of the reported issues describes bottom navigation labels being clipped by the screen edge or the gesture bar overlapping the icons.
-- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: missed
-  - rep 1: Reports 1 and 3 describe the bottom bar obscuring its icons and its labels being absent from view, respectively.
-  - rep 2: No report describes bottom navigation labels cut off below the screen edge with the gesture bar overlapping the icons.
-  - rep 3: The reported black bar overlaps and obscures bottom navigation icons, matching the gesture-bar overlap described.
-  - rep 4: No report describes bottom navigation labels being clipped by the screen edge or the gesture bar overlapping the icons.
-  - rep 5: No report describes labels clipped by the screen edge or the gesture bar overlapping the icons.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: Report 1 describes the black bar overlapping nav icons and report 3 describes missing nav labels, matching the gesture-bar overlap and cut-off labels.
-  - rep 2: Reported 1 describes the black bar overlapping bottom tab icons and reported 4 describes missing bottom nav labels, matching the expected cutoff/overlap defect.
-  - rep 3: No report describes labels cut off at screen edge with gesture-bar overlap; 1 describes a thick middle bar and 4 claims missing labels as different problems.
-  - rep 4: Reported 1 describes the same bottom-nav bar overlapping and colliding with the icons.
-  - rep 5: Both describe bottom nav labels missing/invisible and a horizontal bar overlapping icons, matching cut-off labels and gesture-bar overlap.
-- **typesafe/jev-1.13**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
-  - rep 1: Jev matched no reported issue; closest was R3 (p=0.24).
-  - rep 2: Jev matched no reported issue; closest was R1 (p=0.25).
-  - rep 3: Jev matched no reported issue; closest was R1 (p=0.45).
-  - rep 4: Jev matched R1 (p=0.57, confidence 0.14).
-  - rep 5: Jev matched no reported issue; closest was R2 (p=0.36).
-
-### img_15 15_safe_area_violation.png — gpt-5.5
-
-Expected: Bottom nav labels are cut off below the screen edge and the…
+Expected: Bottom nav labels are cut off below the screen edge and a b…
 
 - **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the system gesture bar overlapping icons in the bottom navigation bar.
-  - rep 2: The reported thick dark horizontal line overlapping bottom navigation icons describes the gesture bar overlap issue.
-  - rep 3: Both describe the system gesture bar/home indicator overlapping the bottom navigation bar icons due to layout padding issues.
-  - rep 4: Both describe the gesture bar / dark indicator overlapping the icons in the bottom navigation bar.
-  - rep 5: Both describe the gesture bar (thick dark horizontal bar) overlapping the bottom navigation bar icons.
-- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The reported dark horizontal bar overlaps bottom navigation icons, matching the expected bottom-edge obstruction involving the gesture bar and navigation area.
-  - rep 2: The expected issue concerns bottom clipping and gesture-bar overlap, while the reported issue describes a dark horizontal rendering line.
-  - rep 3: The reported dark horizontal line is identified as a misplaced system/home indicator overlapping the bottom navigation icons, matching the gesture-bar overlap defect in the bottom nav area.
-  - rep 4: The reported dark horizontal overlay in the bottom navigation cuts through the icons, matching the expected gesture-bar overlap and bottom navigation obstruction.
-  - rep 5: The reported dark horizontal bar overlays the bottom navigation and crosses its icons, matching the expected bottom-edge overlap defect.
-- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The reported bar overlaps bottom-navigation icons, consistent with the gesture bar overlapping the navigation area.
-  - rep 2: The report describes a dark line overlapping navigation icons, not labels cut off by the screen edge or gesture bar overlap.
-  - rep 3: The reported bottom-bar line is described as a misplaced home indicator overlapping navigation icons, matching the gesture-bar overlap defect.
-  - rep 4: The reported gesture-like line overlaps bottom navigation icons, matching the expected gesture bar obstruction.
-  - rep 5: The reported bar crossing the bottom navigation icons matches the expected gesture bar overlapping the navigation area.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe a bar overlapping the bottom navigation icons.
-  - rep 2: Reported describes a dark artifact line, not cut-off labels and gesture-bar overlap.
-  - rep 3: Both describe the home/gesture bar overlapping icons in the bottom tab bar.
-  - rep 4: Both describe the gesture bar overlapping/cutting through the bottom navigation icons.
-  - rep 5: Both describe a dark bar overlapping the bottom navigation icons.
-- **typesafe/jev-1.13**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: Jev matched R0 (p=0.74, confidence 0.49).
-  - rep 2: Jev matched no reported issue; closest was R0 (p=0.09).
-  - rep 3: Jev matched R0 (p=0.52, confidence 0.05).
-  - rep 4: Jev matched no reported issue; closest was R0 (p=0.44).
-  - rep 5: Jev matched R0 (p=0.51, confidence 0.02).
-
-### img_15 15_safe_area_violation.png — gpt-5.6-luna
-
-Expected: Bottom nav labels are cut off below the screen edge and the…
-
-- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the horizontal gesture bar overlapping bottom navigation icons.
-  - rep 2: Both describe the horizontal gesture bar overlapping icons in the bottom navigation bar.
-  - rep 3: Both describe the bottom navigation icons being overlapped by a horizontal bar (gesture bar) across the bottom area.
-  - rep 4: Both describe a horizontal bar (gesture bar) overlapping the bottom navigation icons/controls.
-  - rep 5: Both describe the horizontal gesture bar overlapping icons in the bottom navigation bar.
+  - rep 1: Both describe the bottom navigation bar overlapping with a horizontal bar/system gesture indicator, obscuring the nav icons/labels.
+  - rep 2: Both describe the system home gesture bar (black horizontal bar) overlapping the bottom navigation due to missing safe area insets.
+  - rep 3: Both describe the system navigation bar/handle overlapping the bottom navigation bar icons due to incorrect safe area padding.
+  - rep 4: Both describe the horizontal home indicator bar overlapping the bottom navigation icons due to missing safe area padding.
+  - rep 5: Both describe the system gesture navigation bar (black horizontal bar) overlapping the bottom navigation bar icons and content.
 - **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: The reported dark horizontal bar overlaps bottom-navigation icons, describing the same bottom-edge obstruction caused by the navigation/gesture area.
-  - rep 2: Both describe a bottom navigation obstruction where a horizontal bar overlaps navigation elements and interferes with the UI.
-  - rep 3: The expected defect concerns clipped labels and gesture-bar overlap, while the report describes a dark horizontal rendering artifact behind navigation icons.
-  - rep 4: The reported dark horizontal bar obstructing the bottom navigation icons describes the same bottom-edge overlap problem as the gesture bar covering the navigation area.
-  - rep 5: The reported dark bar obstructing bottom-navigation icons describes the gesture-bar overlap in the same bottom navigation area.
+  - rep 1: The report describes the bottom navigation overlapping the system gesture indicator and obscuring icons, which is the same bottom-edge overlap defect.
+  - rep 2: The reported issue describes the bottom navigation icons being overlapped by the system gesture bar, matching the expected bottom-edge overlap and cutoff.
+  - rep 3: The report mentions a system navigation handle overlapping icons, but does not describe the cut-off labels or black bar overlapping the bottom navigation.
+  - rep 4: Both describe the bottom navigation being overlapped by the system/home indicator bar due to insufficient bottom safe-area space.
+  - rep 5: The report describes the black system navigation bar overlapping the bottom navigation icons, matching the stated bottom-area obstruction.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The reported dark bar overlaps bottom navigation icons, matching the expected gesture-bar overlap in the same area.
-  - rep 2: The reported dark bar overlaps bottom navigation icons, matching the expected gesture bar overlap in the same area.
-  - rep 3: The reported bar overlaps bottom navigation icons, matching the described overlap in that area.
-  - rep 4: The reported bar overlapping the bottom navigation icons describes the same gesture-bar obstruction.
-  - rep 5: The reported bottom bar overlaps navigation icons in the same bottom-edge obstruction described by the expected defect.
+  - rep 1: The report describes the bottom navigation icons being obscured by the system gesture bar, matching the overlapping black bar and cutoff navigation area.
+  - rep 2: Both describe the bottom navigation icons being overlapped by the system gesture area because of missing safe-area spacing.
+  - rep 3: The system navigation handle overlaps the bottom navigation icons, matching the reported overlap in the expected defect.
+  - rep 4: The report describes the black system bar overlapping the bottom navigation icons because safe-area padding is missing, matching the cutoff navigation area.
+  - rep 5: Both describe the black system gesture bar overlapping the bottom navigation icons.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe a bar overlapping icons in the bottom navigation area.
-  - rep 2: Both describe a bar overlapping the bottom navigation icons.
-  - rep 3: Both describe a dark horizontal bar overlapping the bottom nav icons in the same area.
-  - rep 4: Both describe a bar overlapping the bottom navigation icons.
-  - rep 5: Both describe a horizontal bar overlapping the bottom navigation icons.
-- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: Jev matched R0 (p=0.71, confidence 0.42).
-  - rep 2: Jev matched R0 (p=0.68, confidence 0.35).
-  - rep 3: Jev matched no reported issue; closest was R0 (p=0.04).
-  - rep 4: Jev matched R0 (p=0.82, confidence 0.63).
-  - rep 5: Jev matched R0 (p=0.71, confidence 0.41).
-
-### img_15 15_safe_area_violation.png — gpt-5.6-sol
-
-Expected: Bottom nav labels are cut off below the screen edge and the…
-
-- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe a horizontal/gesture bar overlapping the bottom navigation icons.
-  - rep 2: Both describe the system home indicator/gesture bar overlapping the bottom navigation icons due to missing bottom safe area insets.
-  - rep 3: Both describe a horizontal bar overlapping and obscuring the bottom navigation icons.
-  - rep 4: Both describe the horizontal gesture bar overlapping the bottom navigation icons and cutting off the nav area.
-  - rep 5: Both describe the system gesture bar improperly overlapping the bottom navigation icons.
-- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: The reported bottom obstruction overlaps the bottom navigation controls in the same area as the expected gesture-bar overlap and cutoff.
-  - rep 2: The report describes the gesture bar overlapping the bottom navigation icons, matching the expected bottom-edge navigation obstruction.
-  - rep 3: The expected defect concerns bottom-edge clipping and gesture-bar overlap, while the report describes a separate dark bar obscuring the navigation icons.
-  - rep 4: The reported dark bar across the bottom navigation describes the gesture-bar-like obstruction overlapping navigation elements, matching the expected bottom-edge overlap defect.
-  - rep 5: The report describes the gesture bar overlapping the bottom navigation icons, matching the expected bottom-edge overlap defect.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: The reported bar overlaps bottom navigation icons, matching the expected gesture-bar overlap in that area.
-  - rep 2: The reported home indicator overlaps the bottom navigation icons, matching the expected gesture-bar overlap.
-  - rep 3: The reported bar overlaps and obscures bottom navigation icons, matching the expected gesture-bar overlap.
-  - rep 4: The report describes a dark bar crossing navigation icons, not labels cut off by the screen edge or a gesture bar overlapping them.
-  - rep 5: The reported gesture bar overlaps the bottom navigation icons, matching the described bottom-edge navigation obstruction.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe a dark bar overlapping the bottom navigation icons.
-  - rep 2: Both describe the home indicator/gesture bar overlapping the bottom navigation icons in the same area.
-  - rep 3: Both describe the bottom navigation icons being obscured by an overlapping bar.
-  - rep 4: Both describe a horizontal bar overlapping the bottom navigation icons in the same area.
-  - rep 5: Reported describes the same gesture bar overlapping the bottom nav icons.
+  - rep 1: Both describe bottom navigation icons obscured by an overlapping black system bar.
+  - rep 2: Both describe the black system gesture bar overlapping bottom navigation icons.
+  - rep 3: Both describe the bottom nav icons overlapped by the black system navigation handle/bar.
+  - rep 4: Both describe black home indicator bar overlapping bottom navigation icons.
+  - rep 5: Both describe the system bar overlapping the bottom navigation icons.
 - **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Jev matched R0 (p=0.78, confidence 0.56).
-  - rep 2: Jev matched R0 (p=0.88, confidence 0.75).
-  - rep 3: Jev matched R0 (p=0.73, confidence 0.46).
-  - rep 4: Jev matched R0 (p=0.55, confidence 0.10).
-  - rep 5: Jev matched R0 (p=0.88, confidence 0.76).
-
-### img_15 15_safe_area_violation.png — gpt-6-sol
-
-Expected: Bottom nav labels are cut off below the screen edge and the…
-
-- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe a bar (gesture bar) overlapping the bottom navigation icons at the bottom of the screen.
-  - rep 2: Both describe the horizontal gesture bar overlapping and obscuring the bottom navigation bar elements.
-  - rep 3: Both describe the gesture/home-indicator bar overlapping and obscuring the bottom navigation bar icons.
-  - rep 4: Both describe the horizontal gesture bar overlapping/obscuring the bottom navigation bar icons.
-  - rep 5: Both describe the horizontal gesture bar overlapping the bottom navigation bar and covering icons.
-- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: The reported dark bar overlapping bottom-navigation icons describes the same bottom-edge obstruction involving the gesture area.
-  - rep 2: The report describes the gesture bar overlapping and obscuring bottom navigation elements, matching the expected bottom-navigation obstruction.
-  - rep 3: Both describe the bottom gesture/home-indicator area overlapping and obscuring the bottom navigation.
-  - rep 4: The reported dark bar obscuring bottom-navigation icons describes the same bottom-edge overlap affecting the navigation area.
-  - rep 5: The expected defect concerns labels and gesture-bar overlap, while the report describes a dark bar covering the search and saved icons.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The dark bar overlapping the bottom-navigation icons describes the gesture-bar overlap in the expected defect.
-  - rep 2: Both reports describe the bottom gesture bar overlapping and obscuring the navigation icons.
-  - rep 3: The report describes the gesture bar overlapping and obscuring bottom navigation icons, matching the expected bottom-edge overlap.
-  - rep 4: The dark bar crossing the bottom navigation matches the gesture bar overlapping its icons.
-  - rep 5: The reported bar overlaps bottom navigation icons, matching the expected gesture-bar overlap in that area.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe a dark bar overlapping the bottom navigation icons.
-  - rep 2: Both describe the gesture bar overlapping the bottom navigation icons.
-  - rep 3: Both describe the gesture/home-indicator bar overlapping the bottom navigation icons.
-  - rep 4: Both describe a dark bar overlapping/obscuring the bottom navigation icons.
-  - rep 5: Both describe the bottom navigation icons being covered by the overlapping dark gesture bar.
-- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Jev matched R0 (p=0.73, confidence 0.45).
-  - rep 2: Jev matched R0 (p=0.87, confidence 0.74).
-  - rep 3: Jev matched R0 (p=0.94, confidence 0.88).
-  - rep 4: Jev matched R0 (p=0.71, confidence 0.41).
-  - rep 5: Jev matched R0 (p=0.75, confidence 0.50).
-
-### img_15 15_safe_area_violation.png — meta/muse-spark-1.3
-
-Expected: Bottom nav labels are cut off below the screen edge and the…
-
-- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the bottom navigation bar being overlapped and obscured by a horizontal bar (gesture bar).
-  - rep 2: Both describe the gesture bar/black horizontal bar overlaying and obscuring the bottom navigation bar icons.
-  - rep 3: Both describe the bottom navigation bar icons being overlapped and obscured by the horizontal gesture/system bar at the bottom of the screen.
-  - rep 4: Both describe the system gesture bar overlapping icons in the bottom navigation bar.
-  - rep 5: Both describe the horizontal gesture bar overlapping and obscuring the bottom navigation bar icons.
-- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: Reported issue 0 describes the bottom navigation being overlapped and cut off, matching the expected bottom-edge clipping/overlap defect.
-  - rep 2: The expected issue concerns clipped labels and gesture-bar overlap, while the report describes a separate thick black bar obscuring navigation icons.
-  - rep 3: The report describes a black bar obscuring middle navigation icons, not bottom labels being cut off or the gesture bar overlapping the icons.
-  - rep 4: The reported gesture indicator overlaps and obscures the bottom navigation, matching the expected bottom-edge overlap defect.
-  - rep 5: Both describe the bottom navigation being obstructed by a bottom overlay or inset, causing its contents to be cut off or obscured.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Reported issue 0 describes the bottom navigation being obscured and cut off by an overlapping bar.
-  - rep 2: The reported black bar overlaps and obscures the bottom navigation icons, matching the expected gesture-bar overlap.
-  - rep 3: The reported black bar overlaps the bottom navigation icons, matching the described gesture-bar overlap.
-  - rep 4: The report describes the gesture indicator overlapping and obscuring bottom navigation icons, matching the expected bottom-nav overlap.
-  - rep 5: The reported bar obscures bottom navigation icons, matching the expected gesture-bar overlap in the same area.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe bottom navigation icons being cut off and obscured by an overlapping bar.
-  - rep 2: Both describe a bottom bar overlapping and obscuring the bottom navigation icons.
-  - rep 3: Both describe the bottom navigation being overlapped/obscured by the black gesture bar.
-  - rep 4: Both describe the gesture bar overlapping the bottom navigation icons.
-  - rep 5: Both describe a bar overlapping and obscuring the bottom navigation.
-- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Jev matched R0 (p=0.96, confidence 0.93).
-  - rep 2: Jev matched R0 (p=0.75, confidence 0.51).
-  - rep 3: Jev matched R0 (p=0.81, confidence 0.62).
-  - rep 4: Jev matched R0 (p=0.93, confidence 0.85).
-  - rep 5: Jev matched R0 (p=0.75, confidence 0.49).
-
-### img_15 15_safe_area_violation.png — meta/muse-spark-1.3-contributor
-
-Expected: Bottom nav labels are cut off below the screen edge and the…
-
-- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both report the bottom navigation bar being overlapped/obscured by a bar at the bottom of the screen.
-  - rep 2: Both report a horizontal bar (gesture bar) overlapping and obscuring the bottom navigation bar icons.
-  - rep 3: Both describe a horizontal bar overlapping and obscuring the bottom navigation bar icons.
-  - rep 4: Both report the bottom navigation bar and its icons being overlapped by the system bar/gesture bar at the bottom of the screen.
-  - rep 5: Both describe the gesture bar (thick black bar) incorrectly overlapping the bottom navigation bar and obscuring its elements.
-- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the bottom navigation being obscured by an overlapping horizontal system bar, hiding or cutting off its elements.
-  - rep 2: Both issues describe an obstruction overlapping the bottom navigation area and obscuring its controls.
-  - rep 3: Both describe an obstruction overlapping the bottom navigation area and obscuring its controls near the screen edge.
-  - rep 4: Both issues describe the bottom navigation being overlapped and obscured by a horizontal bar, including the navigation icons.
-  - rep 5: Both describe the bottom navigation area being overlapped by a horizontal system-like bar that obscures navigation content.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the bottom navigation being obscured by an overlapping bar, cutting off or hiding its icons.
-  - rep 2: The report describes a bar overlapping and obscuring bottom navigation icons, matching the expected gesture-bar overlap in the same area.
-  - rep 3: The reported black bar overlaps and obscures bottom navigation icons, matching the described gesture-bar overlap.
-  - rep 4: The reported black bar overlaps the bottom navigation icons, matching the described gesture-bar overlap at the bottom navigation.
-  - rep 5: The reported black bar overlaps bottom navigation icons, matching the described gesture bar intruding into the navigation area.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: Both describe the bottom nav icons overlapped by the black gesture bar.
-  - rep 2: Both describe the bottom navigation bar being overlapped and obscured by a horizontal bar.
-  - rep 3: Reported describes a thick bar fully hiding middle icons, not cut-off labels with gesture-bar overlap.
-  - rep 4: Both describe bottom navigation icons overlapped/obscured by a bar at the screen bottom.
-  - rep 5: Both describe the bottom nav being overlapped/obscured by the black gesture bar.
-- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Jev matched R0 (p=0.79, confidence 0.58).
-  - rep 2: Jev matched R0 (p=0.91, confidence 0.82).
-  - rep 3: Jev matched R0 (p=0.84, confidence 0.68).
-  - rep 4: Jev matched R0 (p=0.66, confidence 0.33).
-  - rep 5: Jev matched R0 (p=0.68, confidence 0.36).
+  - rep 1: Jev matched R0 (p=0.71, confidence 0.41).
+  - rep 2: Jev matched R0 (p=0.93, confidence 0.86).
+  - rep 3: Jev matched R0 (p=0.72, confidence 0.43).
+  - rep 4: Jev matched R0 (p=0.93, confidence 0.86).
+  - rep 5: Jev matched R0 (p=0.94, confidence 0.87).
 
 ### img_15 15_safe_area_violation.png — moonshotai/kimi-k2.7-code
 
-Expected: Bottom nav labels are cut off below the screen edge and the…
+Expected: Bottom nav labels are cut off below the screen edge and a b…
 
 - **gemini-3.8-flash**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: Both describe the gesture indicator bar overlapping the bottom navigation bar and icons.
+  - rep 1: Both describe the bottom navigation bar being overlapped by the bottom system bar/indicator.
   - rep 2: No issues were reported.
   - rep 3: No issues were reported.
-  - rep 4: The reported issue misidentifies the overlapping gesture bar as a dark horizontal line/divider across the bottom tab bar.
-  - rep 5: Both describe the system gesture bar incorrectly overlapping the bottom navigation bar elements.
-- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: found
-  - rep 1: The reported issue describes the gesture indicator overlapping the bottom navigation bar and icon, matching the expected bottom-edge overlap defect.
+  - rep 4: Both describe a dark horizontal bar or line overlapping across the bottom navigation tab bar.
+  - rep 5: Both report a dark horizontal bar erroneously overlapping the bottom navigation bar.
+- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: found
+  - rep 1: Both issues describe an obstruction from the system gesture area overlapping the bottom navigation and its icons.
   - rep 2: No issues were reported.
   - rep 3: No issues were reported.
-  - rep 4: The expected defect concerns bottom navigation labels and gesture-bar overlap, while the report describes an unrelated divider across the tab bar.
-  - rep 5: The reported dark horizontal bar is identified as a gesture-bar-like element overlapping the bottom navigation, matching the expected bottom-nav obstruction.
+  - rep 4: The reported dark horizontal bar across the bottom tab bar describes the same bar overlapping the bottom navigation area, though it does not mention the cut-off labels.
+  - rep 5: The reported dark horizontal bar overlaps the bottom navigation icons, matching the overlapping black bar defect even though label clipping is not mentioned.
 - **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: found
-  - rep 1: The report describes the gesture indicator overlapping the bottom navigation, including a navigation icon.
+  - rep 1: The report describes the bottom navigation being overlapped by the system gesture indicator, matching the reported bar-overlap defect.
   - rep 2: No issues were reported.
   - rep 3: No issues were reported.
-  - rep 4: The report describes a divider splitting the tab bar, not labels cut off by the screen edge or a gesture bar overlapping icons.
-  - rep 5: The report describes a system gesture bar overlapping the bottom navigation, matching the expected overlap in that area.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: found
-  - rep 1: Both describe the gesture bar overlapping the bottom nav icons.
+  - rep 4: The report describes a divider between the tab icons, not labels cut off at the screen edge with a bar overlapping the icons.
+  - rep 5: The report describes a horizontal bar overlapping the bottom navigation, matching the expected bar overlap, though it does not mention the cut-off labels.
+- **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: found, rep 5: found
+  - rep 1: Reported describes a gray system pill merging with Search icon, not cut-off labels and a black bar overlapping icons.
   - rep 2: No issues were reported.
   - rep 3: No issues were reported.
-  - rep 4: Reported describes a divider line splitting the tab bar, not cut-off labels or gesture bar overlap.
-  - rep 5: Both describe a gesture bar overlapping the bottom navigation icons.
+  - rep 4: Both describe a dark/black horizontal bar overlapping the bottom nav/tab bar area.
+  - rep 5: Both describe a dark horizontal bar overlapping the bottom navigation icons.
 - **typesafe/jev-1.13**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: Jev matched R0 (p=0.91, confidence 0.81).
+  - rep 1: Jev matched R0 (p=0.63, confidence 0.25).
   - rep 2: No issues were reported.
   - rep 3: No issues were reported.
-  - rep 4: Jev matched no reported issue; closest was R0 (p=0.00).
-  - rep 5: Jev matched no reported issue; closest was R0 (p=0.19).
+  - rep 4: Jev matched no reported issue; closest was R0 (p=0.20).
+  - rep 5: Jev matched no reported issue; closest was R0 (p=0.39).
 
-### img_15 15_safe_area_violation.png — moonshotai/kimi-k3
+### img_15 15_safe_area_violation.png — qwen/qwen3.7-plus
 
-Expected: Bottom nav labels are cut off below the screen edge and the…
+Expected: Bottom nav labels are cut off below the screen edge and a b…
 
-- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: Both describe the Android gesture bar overlapping the bottom navigation bar icons and causing clipping.
-  - rep 2: Reported issue 1 describes the gesture bar overlapping the bottom navigation icons as a dark horizontal stroke cluttering the icons.
-  - rep 3: Report 0 describes the gesture indicator overlapping the bottom navigation icons, matching the expected defect.
-  - rep 4: No issues were reported.
-  - rep 5: Both report the horizontal system gesture bar overlapping the bottom navigation bar icons.
-- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: The report identifies the same bottom navigation layout defect involving the system gesture bar overlapping and clipping bottom-tab content.
-  - rep 2: Neither report describes bottom navigation labels being cut off or the gesture bar overlapping the icons.
-  - rep 3: The reported thick gesture bar overlaps the bottom navigation icons, matching the expected bottom-edge overlap defect.
-  - rep 4: No issues were reported.
-  - rep 5: The reported overlapping bar obscures the bottom navigation controls in the same area as the expected gesture-bar and bottom-edge overlap.
-- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: The report describes the bottom navigation being overlapped by the system navigation bar, matching the clipped labels and overlapped icons.
-  - rep 2: Neither report describes bottom navigation labels being clipped or overlapped by the gesture bar.
-  - rep 3: Reported issue 0 explicitly describes the gesture bar overlapping bottom navigation icons.
-  - rep 4: No issues were reported.
-  - rep 5: The reported horizontal bar overlaps and obscures the bottom navigation icons, matching the described gesture-bar overlap.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: Both describe the gesture bar overlapping the bottom nav/tab bar icons in the same area.
-  - rep 2: Neither report mentions labels cut off at the screen edge or the gesture bar overlapping icons.
-  - rep 3: Reported 0 describes the same gesture bar overlapping the bottom nav icons.
-  - rep 4: No issues were reported.
-  - rep 5: Both describe the bottom tab bar icons being overlapped/obscured by a horizontal bar.
-- **typesafe/jev-1.13**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: Jev matched R0 (p=0.95, confidence 0.90).
-  - rep 2: Jev matched no reported issue; closest was R1 (p=0.03).
-  - rep 3: Jev matched R0 (p=0.93, confidence 0.85).
-  - rep 4: No issues were reported.
-  - rep 5: Jev matched R0 (p=0.54, confidence 0.08).
+- **gemini-3.8-flash**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: found
+  - rep 1: Both describe the bottom navigation icons being overlapped by a horizontal bar (the iOS home indicator).
+  - rep 2: The reported issue discusses a misaligned notification badge on a bell icon, which does not match the bottom navigation cutoff and overlapping black bar defect.
+  - rep 3: No issues were reported.
+  - rep 4: Both describe the horizontal bar overlapping the icons on the bottom navigation bar.
+  - rep 5: Both describe the bottom navigation bar being cut off at the bottom edge and overlapped by a horizontal line/bar.
+- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
+  - rep 1: The report describes the bottom navigation being overlapped by the home indicator bar, matching the expected bottom-edge obstruction.
+  - rep 2: The reported issue concerns a misaligned notification badge, not the bottom navigation labels or overlapping black bar.
+  - rep 3: No issues were reported.
+  - rep 4: The reported bottom-navigation home-indicator line overlapping the icons describes the same bottom-edge obstruction as the expected defect.
+  - rep 5: The report describes bottom-nav icons being clipped or misaligned, but the expected defect specifically concerns labels being cut off and a black bar overlapping the icons.
+- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: found
+  - rep 1: The report describes the bottom navigation being overlapped by the home indicator, matching the reported bar overlap with its icons.
+  - rep 2: The report concerns a misaligned notification badge, not the cut-off bottom navigation labels or overlapping black bar.
+  - rep 3: No issues were reported.
+  - rep 4: The report describes a horizontal bar overlapping bottom navigation icons, matching the stated overlap defect.
+  - rep 5: The report describes bottom navigation content cut off at the screen edge and a line crossing an icon, consistent with the same clipping and overlap defect.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: found
+  - rep 1: Both describe the black home-indicator bar overlapping the bottom navigation icons.
+  - rep 2: Reported issue describes bell badge misalignment, not bottom nav cutoff or black bar.
+  - rep 3: No issues were reported.
+  - rep 4: Reported mentions the overlapping line but omits the bottom nav labels being cut off.
+  - rep 5: Both describe bottom nav cut off at screen edge with bar/line overlapping icons.
+- **typesafe/jev-1.13**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=0.58, confidence 0.17).
+  - rep 2: Jev matched no reported issue; closest was R0 (p=0.00).
+  - rep 3: No issues were reported.
+  - rep 4: Jev matched R0 (p=0.80, confidence 0.59).
+  - rep 5: Jev matched R0 (p=0.73, confidence 0.46).
 
 ### img_15 15_safe_area_violation.png — x-ai/grok-4.7
 
-Expected: Bottom nav labels are cut off below the screen edge and the…
+Expected: Bottom nav labels are cut off below the screen edge and a b…
 
-- **gemini-3.8-flash**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: The reported issue describes the gesture bar overlapping the bottom navigation area, mistaking it for a misplaced tab indicator artifact.
+- **gemini-3.8-flash**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe the abnormal dark horizontal bar rendering across the bottom navigation bar.
   - rep 2: No issues were reported.
-  - rep 3: The reported stray horizontal gray line overlapping bottom nav icons describes the system gesture bar overlapping the icons due to improper bottom safe-area insets.
-  - rep 4: The reported issue misidentifies the gesture bar as a tab selection indicator and reports conflicting active-state cues rather than labels cut off by the screen edge.
-  - rep 5: Both describe the system gesture bar/indicator inappropriately positioned and overlapping the bottom navigation icons.
-- **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: The reported misplaced dark bar is a different bottom-navigation rendering issue and does not describe cut-off labels or gesture-bar overlap.
+  - rep 3: Both report an unintended horizontal bar or line overlapping the bottom navigation icons.
+  - rep 4: Both describe the dark horizontal bar misplaced over/within the bottom navigation bar icons.
+  - rep 5: Both describe a thick dark horizontal bar improperly overlapping the bottom navigation bar icons.
+- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The reported misplaced dark horizontal bar in the bottom navigation corresponds to the black bar overlapping the bottom-nav icons, which is the same underlying rendering defect.
   - rep 2: No issues were reported.
-  - rep 3: The expected defect concerns bottom navigation labels and gesture-bar overlap, while the reported issue concerns a stray horizontal line between icons.
-  - rep 4: The reported issue concerns conflicting bottom-navigation active-state visuals, not labels being cut off or the gesture bar overlapping icons.
-  - rep 5: The expected issue is bottom-nav labels and gesture-bar overlap, while the report describes a detached dark bar between navigation icons.
-- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: The report describes a misplaced dark tab indicator, not clipped navigation labels or gesture-bar overlap.
+  - rep 3: The reported stray horizontal line overlapping the bottom-navigation icons describes the same bottom-bar overlap artifact, though it uses different color wording.
+  - rep 4: The report identifies the same bottom-navigation dark horizontal bar disrupting the icons, although it does not explicitly mention the clipped labels.
+  - rep 5: The reported detached dark bar overlaps the bottom navigation icons, matching the expected bottom-nav obstruction even though label clipping is not mentioned.
+- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The report describes the same misplaced dark horizontal bar overlapping the bottom navigation, though it does not mention the clipped labels.
   - rep 2: No issues were reported.
-  - rep 3: The report describes a stray line across navigation icons, not labels cut off by the screen edge or gesture bar overlap.
-  - rep 4: The report describes a misplaced bar and conflicting tab-selection cues, not clipped labels or a gesture bar overlapping the icons.
-  - rep 5: The report describes a detached bar between icons, not labels cut off below the screen or a gesture bar overlapping the icons.
-- **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: found
-  - rep 1: Reported describes a misaligned tab indicator artifact, not labels cut off with gesture bar overlapping icons.
+  - rep 3: The reported horizontal line overlaps bottom navigation icons, matching the described bar overlapping the icons.
+  - rep 4: The report describes the same dark horizontal bar in the bottom navigation, though it does not mention the clipped labels.
+  - rep 5: The report describes the same dark horizontal bar overlapping the bottom navigation icons.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: found
+  - rep 1: Both describe a dark horizontal bar inside/overlapping the bottom navigation icons.
   - rep 2: No issues were reported.
-  - rep 3: Reported describes a stray line artifact, not cut-off labels or gesture-bar overlap.
-  - rep 4: Reported describes conflicting selection indicator and green Home highlight, not cut-off labels or gesture bar overlapping icons.
-  - rep 5: Both describe a dark bar overlapping the bottom navigation icons in the same area.
-- **typesafe/jev-1.13**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: Jev matched no reported issue; closest was R0 (p=0.03).
+  - rep 3: Both describe a horizontal bar/line overlapping icons in the bottom navigation.
+  - rep 4: Reported reinterprets the black bar as a selection indicator and omits the clipped labels, describing a different problem.
+  - rep 5: Both describe a dark horizontal bar overlapping the bottom navigation icons.
+- **typesafe/jev-1.13**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: found
+  - rep 1: Jev matched no reported issue; closest was R0 (p=0.48).
   - rep 2: No issues were reported.
-  - rep 3: Jev matched no reported issue; closest was R0 (p=0.00).
-  - rep 4: Jev matched no reported issue; closest was R0 (p=0.01).
-  - rep 5: Jev matched no reported issue; closest was R0 (p=0.06).
+  - rep 3: Jev matched no reported issue; closest was R0 (p=0.10).
+  - rep 4: Jev matched no reported issue; closest was R0 (p=0.22).
+  - rep 5: Jev matched R0 (p=0.65, confidence 0.29).
 
 ### img_15 15_safe_area_violation.png — xiaomi/mimo-v2.6-pro
 
-Expected: Bottom nav labels are cut off below the screen edge and the…
+Expected: Bottom nav labels are cut off below the screen edge and a b…
 
 - **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: Reported issue 0 describes the bottom navigation bar overlapping with a horizontal line (gesture bar) and clipping at the bottom edge of the viewport.
-  - rep 2: Both describe the bottom navigation bar elements being cut off/obscured by the gesture bar at the bottom of the screen.
-  - rep 3: The reported issue describes an icon styling inconsistency on the search icon rather than the bottom nav labels being cut off and the gesture bar overlapping the navigation bar.
-  - rep 4: Reported issue 1 describes horizontal icon overlap between the shopping bag and search icons rather than the gesture bar overlap and labels being cut off at the bottom screen edge.
+  - rep 1: Both report the dark horizontal bar overlapping bottom navigation icons and clipping at the bottom edge of the screen.
+  - rep 2: Both describe the bottom navigation elements being cut off or overlapped by a black bar/line at the bottom edge.
+  - rep 3: The reported issue describes a styling line behind a single icon, missing the cut-off labels and general overlapping bar across the navigation bar.
+  - rep 4: None of the reported issues mention the bottom nav labels being cut off at the screen edge or overlapped by a black horizontal bar.
   - rep 5: No issues were reported.
-- **gpt-5.6-luna**: rep 1: missed, rep 2: found, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: The report describes a stray horizontal bar obscuring middle icons and their clipping, not bottom navigation labels being cut off or the gesture bar overlapping the icons.
-  - rep 2: Both describe the bottom navigation being clipped or obscured at the very bottom edge of the screen.
-  - rep 3: The reported issue concerns a horizontal line behind the search icon, not bottom navigation labels being cut off or overlapped by the gesture bar.
-  - rep 4: The reported bottom-navigation issue concerns misplaced or overlapping icons, not labels being cut off by the screen edge or gesture bar overlap.
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: missed
+  - rep 1: Reported issue 0 describes the same bottom navigation clipping and overlapping dark horizontal bar.
+  - rep 2: The reported issue describes the bottom navigation icons being cut off by a black line at the screen edge, matching the expected defect.
+  - rep 3: The reported horizontal line behind the bottom navigation search icon describes the same overlapping-bar defect in the bottom navigation area.
+  - rep 4: The reported navigation issue describes misplaced or overlapping icons, not labels cut off below the screen with a black bar overlapping the icons.
   - rep 5: No issues were reported.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: The report describes bottom navigation content clipped at the viewport edge, matching the expected bottom-edge overlap and clipping.
-  - rep 2: The report describes the bottom navigation icons being cut off at the screen edge by the bottom line, matching the overlap and clipping defect.
-  - rep 3: The report describes a line behind the search icon, not clipped navigation labels or gesture-bar overlap.
-  - rep 4: The report describes overlapping navigation elements, not labels cut off by the screen edge or gesture bar overlap.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: missed
+  - rep 1: The report describes the same bottom navigation bar obstruction and clipping at the screen edge.
+  - rep 2: The report describes the black line at the bottom overlapping and cutting off the bottom navigation icons.
+  - rep 3: The reported horizontal line behind the search icon describes the black bar overlapping the bottom navigation icons.
+  - rep 4: The reported navigation overlap does not describe labels cut off below the screen edge or a black bar overlapping the icons.
   - rep 5: No issues were reported.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: Both describe the bottom nav being clipped at the bottom edge and overlapped by a horizontal bar.
-  - rep 2: Both describe bottom nav icons cut off/obscured at the bottom screen edge.
-  - rep 3: Reported describes a styling line behind search icon, not cut-off labels or gesture bar overlapping icons.
-  - rep 4: Reported 1 describes shopping-bag/search icon overlap, not labels cut off by screen edge and gesture bar overlap.
+  - rep 1: Both describe bottom nav clipped at bottom edge with a dark bar overlapping the icons.
+  - rep 2: Both describe bottom nav icons cut off/obscured by a black bar at the bottom edge.
+  - rep 3: Reported notes only a line behind search icon while claiming others lack it, missing cutoff labels and bar overlapping icons.
+  - rep 4: Reported 1 describes bag-search overlap, not cut-off labels and black bar overlapping icons.
   - rep 5: No issues were reported.
-- **typesafe/jev-1.13**: rep 1: missed, rep 2: found, rep 3: missed, rep 4: found, rep 5: missed
-  - rep 1: Jev matched no reported issue; closest was R0 (p=0.33).
-  - rep 2: Jev matched R0 (p=0.82, confidence 0.64).
-  - rep 3: Jev matched no reported issue; closest was R0 (p=0.00).
-  - rep 4: Jev matched R1 (p=0.66, confidence 0.32).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: missed
+  - rep 1: Jev matched R0 (p=0.93, confidence 0.86).
+  - rep 2: Jev matched R0 (p=0.96, confidence 0.91).
+  - rep 3: Jev matched no reported issue; closest was R0 (p=0.14).
+  - rep 4: Jev matched R1 (p=0.56, confidence 0.12).
   - rep 5: No issues were reported.
-
-### img_15 15_safe_area_violation.png — z-ai/glm-5.3-flash
-
-Expected: Bottom nav labels are cut off below the screen edge and the…
-
-- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the bottom gesture/home-indicator bar overlapping the bottom navigation icons due to safe area layout issues.
-  - rep 2: Reported issue 0 describes the gesture bar overlapping the bottom nav icon, mistaking the system gesture bar for an odd dark horizontal bar on the tab.
-  - rep 3: Both describe the gesture bar/dark bar overlapping the icons in the bottom navigation bar.
-  - rep 4: Both report the system gesture bar overlapping icons in the bottom navigation bar.
-  - rep 5: Both describe the gesture/home-indicator bar overlapping the bottom navigation icons due to missing bottom safe area padding.
-- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The report describes the gesture/home-indicator bar overlapping the bottom navigation and covering an icon, matching the expected bottom navigation overlap defect.
-  - rep 2: Neither report describes bottom navigation labels being cut off or the gesture bar overlapping the icons.
-  - rep 3: Both describe an obstruction overlapping content in the bottom navigation area, though they identify different affected elements.
-  - rep 4: The reported issue describes the bottom navigation gesture indicator overlapping an icon, matching the expected bottom-nav content being obstructed by the gesture bar.
-  - rep 5: The report describes the bottom gesture bar overlapping and obscuring the bottom navigation icons, matching the expected bottom-edge overlap defect.
-- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The home-indicator bar overlaps the bottom navigation icons, matching the reported gesture-bar overlap.
-  - rep 2: Neither report describes labels clipped by the screen edge or the gesture bar overlapping the icons.
-  - rep 3: The dark bar overlapping a bottom-navigation icon describes the gesture-bar overlap, though it does not mention the clipped labels.
-  - rep 4: Both describe the bottom navigation gesture indicator overlapping and obscuring its icons.
-  - rep 5: The report describes the gesture bar overlapping the bottom navigation icons, matching the expected overlap defect.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the gesture bar overlapping bottom nav icons.
-  - rep 2: Neither report describes labels cut off below the edge or gesture bar overlapping icons.
-  - rep 3: Both describe a dark/gesture bar overlapping icons in the bottom navigation bar.
-  - rep 4: Both describe the gesture bar overlapping icons in the bottom navigation bar.
-  - rep 5: Both describe the home-indicator/gesture bar overlapping the bottom navigation icons.
-- **typesafe/jev-1.13**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Jev matched R0 (p=0.68, confidence 0.36).
-  - rep 2: Jev matched no reported issue; closest was R1 (p=0.22).
-  - rep 3: Jev matched R0 (p=0.85, confidence 0.70).
-  - rep 4: Jev matched R0 (p=0.80, confidence 0.61).
-  - rep 5: Jev matched R0 (p=0.94, confidence 0.87).

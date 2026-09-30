@@ -1,0 +1,48 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "A thick black horizontal line stretches across the middle of the bottom navigation bar, running through the search icon and the orders/receipt icon. It looks like a rendering artifact or a misplaced divider/scrollbar element rather than an intended design.",
+    "The bottom navigation bar is vertically clipped: the home, search, orders, and profile icons are cut off at the bottom of the screen and any labels are not visible. A fixed navigation bar should always be fully visible.",
+    "The two bottom-nav icons on the right (orders and profile) appear noticeably lighter/faded compared to the home icon, and there is no clear active-state indication beyond color, which is subtle."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          1
+        ],
+        "reasoning": "Issue 0 describes the black bar crossing the nav icons, and issue 1 describes the bottom navigation being clipped."
+      }
+    ],
+    "extraReportedIndexes": [
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.99
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.99
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "judgeModel": "meta/muse-spark-1.3-contributor",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Tokumaru Ramen Bar Delivery fee text overlaps the delivery time text"
+  ],
+  "reportedIssues": [
+    "The metadata line under 'Tokumaru Ramen Bar' shows the delivery time ('25–35 min') and delivery fee ('€0 delivery') overlapping at the same position. The result reads as garbled text ('25–3€0mdielivery · Ramen'), making both the delivery time and the fee unreadable. The two elements appear to be absolutely positioned or missing a separator or spacing in the row layout."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both describe overlapping delivery time and fee text under Tokumaru Ramen Bar."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

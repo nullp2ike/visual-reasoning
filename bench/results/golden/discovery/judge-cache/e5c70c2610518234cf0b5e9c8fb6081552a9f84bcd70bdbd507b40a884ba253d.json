@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "A partial category chip is visible at the far right of the category row, but it is clipped so heavily that it reads as an unintended stray grey shape rather than an available option.",
+    "The Android system home indicator overlaps the center of the bottom navigation bar, obscuring the search icon and creating a crowded, broken-looking footer."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          1
+        ],
+        "reasoning": "Both describe a bottom navigation obstruction where a horizontal system indicator overlaps and obscures the navigation area."
+      }
+    ],
+    "extraReportedIndexes": [
+      0
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.94,
+        "confidence": 0.94
+      },
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.99
+      }
+    ]
+  }
+}

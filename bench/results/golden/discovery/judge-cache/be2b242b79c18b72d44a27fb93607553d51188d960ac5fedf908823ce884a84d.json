@@ -1,0 +1,48 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Tokumaru Ramen Bar Delivery fee text overlaps the delivery time text"
+  ],
+  "reportedIssues": [
+    "On the Tokumaru Ramen Bar card, the delivery time text ('25-30') overlaps or collides with the word 'delivery', rendering as garbled text like '25-30delivery'.",
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you section.",
+    "On the Tokumaru Ramen Bar card, the cuisine type 'Ramen' sits too close to or collides with the delivery info on the same line."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=0.86, confidence 0.73)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.86,
+        "confidence": 0.73
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.95,
+        "confidence": 0.9
+      }
+    ]
+  }
+}

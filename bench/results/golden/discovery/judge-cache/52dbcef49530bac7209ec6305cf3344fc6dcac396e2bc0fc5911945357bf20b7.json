@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "A horizontal dark bar overlaps the search icon in the bottom navigation bar, obscuring it and making the tab look broken or disabled.",
+    "The second card under 'Popular right now' (pizza with -20% badge) has its image partially clipped at the bottom of the visible area with unusually tight spacing compared to the ramen card above."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the same dark bar overlapping an icon in the bottom navigation, though it does not mention the clipped labels."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.88,
+        "confidence": 0.87
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      }
+    ]
+  }
+}

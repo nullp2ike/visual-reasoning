@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-30T08:43:34.781Z",
+  "generatedAt": "2026-09-30T11:10:11.810Z",
   "prompt": "What looks visually broken on this page?\n\nDo not report the following (treat these as features, not defects):\n- A horizontally scrollable row (restaurant carousels, category filter chips) whose last item is only partially visible at the right screen edge, including that item's title being clipped by the edge.\n- Content cut off by the bottom of the viewport, such as a partially visible card at the end of a vertical list.",
   "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
   "reasoningEffort": "medium",
@@ -61,7 +61,7 @@
       "meanRecall": 0.9411764705882353,
       "anyRecall": 0.9411764705882353,
       "flakiness": 0,
-      "extrasPerRun": 0.14444444444444443,
+      "extrasPerRun": 0.15555555555555556,
       "noBugsCleanRate": 0.8,
       "latencyMedianSeconds": 7.807545270999995,
       "latencyP95Seconds": 13.869787083000002,
@@ -331,10 +331,10 @@
       "reasoningEffort": "medium",
       "okRuns": 90,
       "failedRuns": 0,
-      "meanRecall": 0.7294117647058824,
+      "meanRecall": 0.7411764705882353,
       "anyRecall": 0.8823529411764706,
-      "flakiness": 0.29411764705882354,
-      "extrasPerRun": 0.5111111111111111,
+      "flakiness": 0.23529411764705882,
+      "extrasPerRun": 0.5,
       "noBugsCleanRate": 0.4,
       "latencyMedianSeconds": 8.12104510400002,
       "latencyP95Seconds": 18.267099167000037,
@@ -344,6 +344,27 @@
       "meanOutputTokens": 223.13333333333333,
       "meanReasoningTokens": 54.63333333333333,
       "cacheHitRate": 0.6223166843783209
+    },
+    {
+      "series": "x-ai/grok-4.7",
+      "model": "x-ai/grok-4.7",
+      "provider": "openrouter",
+      "reasoningEffort": "medium",
+      "okRuns": 90,
+      "failedRuns": 0,
+      "meanRecall": 0.7176470588235295,
+      "anyRecall": 0.8823529411764706,
+      "flakiness": 0.35294117647058826,
+      "extrasPerRun": 0.06666666666666667,
+      "noBugsCleanRate": 1,
+      "latencyMedianSeconds": 51.21033370850002,
+      "latencyP95Seconds": 129.665711,
+      "meanCostPerRun": 0.021931986666666674,
+      "totalCost": 1.9738788000000005,
+      "meanInputTokens": 1995.8333333333333,
+      "meanOutputTokens": 4237.688888888889,
+      "meanReasoningTokens": 4117.666666666667,
+      "cacheHitRate": 0.7282727905358386
     },
     {
       "series": "moonshotai/kimi-k2.7-code",
@@ -365,27 +386,6 @@
       "meanOutputTokens": 2074.4,
       "meanReasoningTokens": 1966.9333333333334,
       "cacheHitRate": null
-    },
-    {
-      "series": "x-ai/grok-4.7",
-      "model": "x-ai/grok-4.7",
-      "provider": "openrouter",
-      "reasoningEffort": "medium",
-      "okRuns": 90,
-      "failedRuns": 0,
-      "meanRecall": 0.7058823529411765,
-      "anyRecall": 0.8823529411764706,
-      "flakiness": 0.35294117647058826,
-      "extrasPerRun": 0.07777777777777778,
-      "noBugsCleanRate": 1,
-      "latencyMedianSeconds": 51.21033370850002,
-      "latencyP95Seconds": 129.665711,
-      "meanCostPerRun": 0.021931986666666674,
-      "totalCost": 1.9738788000000005,
-      "meanInputTokens": 1995.8333333333333,
-      "meanOutputTokens": 4237.688888888889,
-      "meanReasoningTokens": 4117.666666666667,
-      "cacheHitRate": 0.7282727905358386
     },
     {
       "series": "x-ai/grok-4.6",
@@ -3001,7 +3001,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the exact overlap between the delivery time ('25–35 min') and delivery fee ('€0 delivery') text.",
+          "reasoning": "Reported issue 0 directly describes the delivery fee text and delivery time text overlapping on Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -3038,7 +3038,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee text and delivery time text overlapping each other.",
+          "reasoning": "Both describe the delivery fee text overlapping the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -3073,7 +3073,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue specifically describes the delivery fee and delivery time text overlapping each other.",
+          "reasoning": "Both describe the delivery fee text and delivery time text overlapping each other under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -3114,7 +3114,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the exact overlap between the delivery fee and delivery time labels.",
+          "reasoning": "Reported issue 0 accurately describes the delivery fee and delivery time labels overlapping each other under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -3151,7 +3151,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the delivery time text ('25–35 min') and delivery fee text ('€0 delivery') overlapping directly on top of each other.",
+          "reasoning": "Both describe the delivery fee text overlapping the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -3634,7 +3634,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the home indicator / gesture bar incorrectly positioned across and obscuring the bottom navigation icons.",
+          "reasoning": "Reported issue 0 describes the black horizontal bar overlapping and cutting through the bottom navigation icons.",
           "overridden": false
         }
       ],
@@ -3684,7 +3684,7 @@
             0,
             1
           ],
-          "reasoning": "Report 1 describes the bottom navigation bar and labels being cut off at the screen edge, while Report 0 describes the gesture bar (perceived as a thick black line) overlapping the icons.",
+          "reasoning": "Reported issue 0 covers the black horizontal bar overlapping bottom nav icons, while reported issue 1 covers the bottom nav labels and icons being clipped off at the bottom of the screen.",
           "overridden": false
         }
       ],
@@ -3728,7 +3728,7 @@
             0,
             1
           ],
-          "reasoning": "Both reported issues describe parts of the same underlying safe-area layout bug: issue 0 reports the gesture bar overlapping bottom nav icons, and issue 1 reports the cut-off icons and missing labels at the bottom edge.",
+          "reasoning": "The reported issues split the defect into two reports: issue 0 reports the black horizontal bar overlapping the bottom navigation icons, and issue 1 reports the labels/icons being cut off at the bottom edge.",
           "overridden": false
         }
       ],
@@ -3776,7 +3776,7 @@
             0,
             1
           ],
-          "reasoning": "Report 0 describes the gesture bar overlapping and obscuring bottom nav icons, while Report 1 describes the bottom nav being clipped off at the bottom edge with no visible labels.",
+          "reasoning": "Reported issue 0 covers the black horizontal bar overlapping the nav icons, while reported issue 1 covers the bottom navigation clipping and missing labels.",
           "overridden": false
         }
       ],
@@ -3826,7 +3826,7 @@
             0,
             1
           ],
-          "reasoning": "Reported issue 0 describes the gesture bar overlapping the navigation icons, while issue 1 describes the clipping of the navigation bar and cut-off labels due to missing safe-area padding.",
+          "reasoning": "Report 0 describes the stray horizontal line overlapping the bottom navigation icons, while Report 1 describes the navigation bar being clipped at the bottom with labels cut off.",
           "overridden": false
         }
       ],
@@ -6506,7 +6506,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee text overlapping the delivery time text.",
+          "reasoning": "Both describe the delivery fee text and delivery time text overlapping each other under the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -6542,7 +6542,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue specifically describes the delivery time ('25–35 min') and delivery fee ('€0 delivery') overlapping each other.",
+          "reasoning": "Both describe the delivery fee text overlapping with the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -6578,7 +6578,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue specifically describes the delivery fee and delivery time text rendering directly on top of each other.",
+          "reasoning": "Both describe the delivery fee text overlapping the delivery time text for Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -6614,7 +6614,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee text overlapping the delivery time text under the restaurant name.",
+          "reasoning": "Both describe the delivery fee and delivery time texts overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -6650,7 +6650,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the exact same overlapping text between delivery fee and delivery time.",
+          "reasoning": "Both describe the delivery fee text overlapping the delivery time text beneath Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -7050,14 +7050,15 @@
           "expectedIndex": 0,
           "found": true,
           "matchedReportedIndexes": [
-            0,
-            1
+            0
           ],
-          "reasoning": "Reported issue 0 describes the gesture bar overlapping the bottom nav icons, while reported issue 1 notes the missing labels resulting from them being cut off below the screen edge.",
+          "reasoning": "Reported issue 0 accurately describes the dark horizontal bar overlapping the bottom navigation icons.",
           "overridden": false
         }
       ],
-      "extraReportedIndexes": [],
+      "extraReportedIndexes": [
+        1
+      ],
       "overridden": false,
       "usage": {
         "inputTokens": 2089,
@@ -7096,7 +7097,7 @@
             0,
             1
           ],
-          "reasoning": "Reported issue 0 captures the gesture bar/home indicator overlapping the nav icons, while issue 1 notes the missing text labels resulting from them being cut off.",
+          "reasoning": "Reported issue 0 describes the dark horizontal bar covering the icons, while reported issue 1 describes the missing/cut-off labels and obscured icons.",
           "overridden": false
         }
       ],
@@ -7138,7 +7139,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the system gesture indicator overlapping and partially covering the bottom navigation icons.",
+          "reasoning": "Reported issue 0 describes the dark horizontal bar overlapping and partially covering the bottom navigation icons.",
           "overridden": false
         }
       ],
@@ -7189,7 +7190,7 @@
             0,
             1
           ],
-          "reasoning": "Reported issue 0 describes the gesture bar overlapping the bottom nav icons, while reported issue 1 describes the bottom nav being cut off at the screen edge causing missing labels.",
+          "reasoning": "Reported issue 0 covers the dark bar overlapping the bottom navigation icons, while issue 1 describes the nav labels and icons being cut off at the bottom edge.",
           "overridden": false
         }
       ],
@@ -7234,7 +7235,7 @@
             0,
             1
           ],
-          "reasoning": "Reported issue 0 describes the gesture bar overlapping the icons as a horizontal bar, while issue 1 notes the missing labels and obscured icons caused by the bottom nav being pushed off-screen.",
+          "reasoning": "Reported issue 0 describes the dark horizontal bar overlapping the bottom nav icons, while reported issue 1 describes the missing/cut-off text labels and obscured icons in the same area.",
           "overridden": false
         }
       ],
@@ -9335,7 +9336,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue notes overlapping text and numbers on the delivery time info card resulting in merged text, matching the delivery fee overlapping delivery time defect.",
+          "reasoning": "The reported issue notes that text on the Tokumaru Ramen Bar card is overlapping, specifically mentioning malformed overlapping delivery time and delivery text.",
           "overridden": false
         }
       ],
@@ -9370,7 +9371,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported corrupted text '25-350rdelivery' describes the visual result of the delivery fee text overlapping the delivery time text.",
+          "reasoning": "The reported corrupted text '25-350rdelivery' is the visual result of the delivery fee text overlapping the delivery time text.",
           "overridden": false
         }
       ],
@@ -9405,7 +9406,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time text being overlapped/corrupted by another string (such as the delivery fee).",
+          "reasoning": "Both describe the delivery time text overlapping with other text on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -9438,7 +9439,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue describes an encoding/character rendering error and missing spacing rather than a layout overlap between delivery fee and delivery time text.",
+          "reasoning": "The reported issue describes a character encoding/rendering bug and missing spacing, which does not match the expected defect of delivery fee text overlapping delivery time text.",
           "overridden": false
         }
       ],
@@ -9473,7 +9474,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue describes a text wrapping/splitting problem resulting in 'rdelivery', which does not match an overlap between the delivery fee and delivery time text.",
+          "reasoning": "The reported issue describes a text wrapping or truncation problem resulting in 'rdelivery' rather than an overlap between the delivery fee and delivery time text.",
           "overridden": false
         }
       ],
@@ -12207,7 +12208,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both describe the delivery time and delivery text overlapping each other in the Tokumaru Ramen Bar entry.",
           "overridden": false
         }
       ],
@@ -12242,7 +12243,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both report the overlapping text issue between delivery time and delivery fee in the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -12277,7 +12278,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes delivery-related text overlapping with the delivery time text in a listing subtitle.",
+          "reasoning": "Both describe the delivery text overlapping the delivery time in the Tokumaru Ramen Bar listing.",
           "overridden": false
         }
       ],
@@ -12312,7 +12313,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the delivery time ('25–35 min') and delivery fee ('€0 delivery') texts overlapping each other.",
+          "reasoning": "Both describe the delivery fee and delivery time text overlapping each other under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -12347,7 +12348,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue specifically describes the delivery fee and delivery time text overlapping and appearing stacked on top of each other.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -12657,7 +12658,7 @@
           "matchedReportedIndexes": [
             1
           ],
-          "reasoning": "Reported issue 1 describes the bottom navigation icons overlapping a horizontal line (the gesture bar), which corresponds to the gesture bar overlap defect.",
+          "reasoning": "Both describe an issue in the bottom navigation bar where a horizontal line/bar overlaps the icons.",
           "overridden": false
         }
       ],
@@ -12692,7 +12693,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue is about favorite button styling on cards, not the bottom navigation bar cut-off and gesture bar overlap.",
+          "reasoning": "The reported issue discusses favorite button styling inconsistency, not bottom navigation labels or overlapping bars.",
           "overridden": false
         }
       ],
@@ -12727,7 +12728,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "None of the reported issues mention the bottom navigation bar clipping or gesture bar overlap.",
+          "reasoning": "The reported issue is about inconsistent styling of favorite heart icons, not the cut-off bottom nav labels or overlapping black bar.",
           "overridden": false
         }
       ],
@@ -12770,7 +12771,7 @@
           "matchedReportedIndexes": [
             1
           ],
-          "reasoning": "Both describe the gesture bar (thick horizontal line) overlapping the bottom navigation bar icons.",
+          "reasoning": "Both describe an issue with a horizontal bar overlapping the icons in the bottom navigation bar.",
           "overridden": false
         }
       ],
@@ -12805,7 +12806,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue discusses heart icon inconsistencies on cards, not the bottom navigation bar being cut off or overlapped by the gesture bar.",
+          "reasoning": "The reported issue is about favorite heart icon styling inconsistencies, not bottom navigation labels being cut off by a black bar.",
           "overridden": false
         }
       ],
@@ -15976,7 +15977,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 explicitly describes the delivery-time and delivery-fee texts overlapping under a restaurant card.",
+          "reasoning": "Reported issue 0 accurately describes the delivery fee and delivery time text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -16026,7 +16027,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the delivery fee ('€0 delivery') overlapping the delivery time ('25–35 min') text.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping in the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -16076,7 +16077,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the exact overlap between the delivery time ('25–35 min') and delivery fee ('€0 delivery').",
+          "reasoning": "Reported issue 0 describes the exact same overlapping text defect between the delivery fee ('€0 delivery') and delivery time ('25–35 min') on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -16126,7 +16127,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes delivery fee and delivery time text ('25–35 min' and '€0 delivery') overlapping each other under Tokumaru Ramen Bar.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -16176,7 +16177,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 specifically describes the delivery fee (€0 delivery) overlapping the delivery time (25–35 min).",
+          "reasoning": "Reported issue 0 directly describes the delivery time ('25–35 min') and delivery fee ('€0 delivery') overlapping on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -16759,7 +16760,7 @@
           "matchedReportedIndexes": [
             1
           ],
-          "reasoning": "Reported issue 1 describes the gesture bar (thick black horizontal bar) overlapping the bottom navigation icons.",
+          "reasoning": "Reported issue 1 describes the black horizontal bar overlapping icons in the bottom navigation bar.",
           "overridden": false
         }
       ],
@@ -16823,7 +16824,7 @@
           "matchedReportedIndexes": [
             1
           ],
-          "reasoning": "Report 1 describes the gesture bar (solid black horizontal bar) overlapping and obscuring the bottom tab bar icons.",
+          "reasoning": "Reported issue 1 describes the black horizontal bar overlapping and obscuring the bottom navigation tab icons.",
           "overridden": false
         }
       ],
@@ -16887,7 +16888,7 @@
           "matchedReportedIndexes": [
             1
           ],
-          "reasoning": "Reported issue 1 describes the black horizontal gesture bar overlapping and obscuring the bottom navigation icons.",
+          "reasoning": "Reported issue 1 describes the black horizontal bar overlapping the icons in the bottom navigation bar.",
           "overridden": false
         }
       ],
@@ -16951,7 +16952,7 @@
           "matchedReportedIndexes": [
             1
           ],
-          "reasoning": "Reported issue 1 describes the gesture bar (dark horizontal bar) overlapping and colliding with the bottom navigation icons.",
+          "reasoning": "Reported issue 1 describes the dark horizontal bar overlapping and colliding with the bottom navigation icons, matching the expected defect.",
           "overridden": false
         }
       ],
@@ -17010,7 +17011,7 @@
             1,
             2
           ],
-          "reasoning": "Both reports describe symptoms of the bottom navigation bar safe-area defect: the gesture bar overlapping icons (mistaken for a fused horizontal bar) and missing labels due to being cut off.",
+          "reasoning": "Reported issues 1 and 2 describe the two parts of this defect: the horizontal bar overlapping the bottom navigation icons and the missing/cut-off text labels.",
           "overridden": false
         }
       ],
@@ -19880,7 +19881,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue specifically describes the delivery fee and delivery time text strings overlapping each other.",
+          "reasoning": "Both describe the delivery fee text overlapping the delivery time text for Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -19916,7 +19917,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee text and delivery time text overlapping each other.",
+          "reasoning": "The reported issue accurately describes the delivery fee and delivery time text overlapping on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -19952,7 +19953,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee text overlapping the delivery time text.",
+          "reasoning": "Both describe the delivery fee and delivery time text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -19988,7 +19989,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee text and delivery time text overlapping each other.",
+          "reasoning": "Both describe the delivery fee text overlapping the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -20024,7 +20025,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the exact same defect where the delivery fee and delivery time text overlap each other.",
+          "reasoning": "Both describe the delivery fee text overlapping with the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -20528,7 +20529,7 @@
             0,
             1
           ],
-          "reasoning": "Reported issue 0 covers the bottom navigation clipping/labels cut off, and reported issue 1 covers the system gesture bar overlapping the tab icons.",
+          "reasoning": "Reported issue 0 covers the nav labels and icons being clipped off-screen, while reported issue 1 covers the black horizontal bar (gesture handle) overlapping the icons.",
           "overridden": false
         }
       ],
@@ -20571,7 +20572,7 @@
             0,
             1
           ],
-          "reasoning": "Both reported issues describe components of this layout inset bug: one notes the gesture bar overlap and the other notes the navigation icons/labels clipping off the bottom edge.",
+          "reasoning": "Reported issue 0 covers the overlapping system bar, while reported issue 1 covers the bottom navigation elements and labels being cut off by the screen edge.",
           "overridden": false
         }
       ],
@@ -20607,7 +20608,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue describes the bottom navigation bar sitting too low, cutting off labels below view, and the system gesture bar overlapping tab icons.",
+          "reasoning": "Both describe the bottom navigation bar sitting too low, cutting off tab labels and having the horizontal home indicator bar overlap the icons.",
           "overridden": false
         }
       ],
@@ -20650,7 +20651,7 @@
             0,
             1
           ],
-          "reasoning": "Reported issues 0 and 1 separately describe the two aspects of the navigation bar layout defect: labels being cut off off-screen and the gesture bar overlapping the icons.",
+          "reasoning": "Reported issue 0 covers the bottom navigation labels and icons being cut off at the bottom edge, while reported issue 1 covers the system gesture bar overlapping the icons.",
           "overridden": false
         }
       ],
@@ -20693,7 +20694,7 @@
             0,
             1
           ],
-          "reasoning": "Both reported issues describe aspects of the same defect: the navigation bar sitting too low causing cut-off labels/icons and gesture bar overlap.",
+          "reasoning": "Both reported issues describe parts of the same safe-area layout defect: issue 0 covers the cut-off labels/icons and issue 1 covers the home indicator bar overlapping the icons.",
           "overridden": false
         }
       ],
@@ -23266,7 +23267,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the delivery fee text overlapping the delivery time text.",
+          "reasoning": "Both describe the delivery fee text overlapping with the delivery time under the Tokumaru Ramen Bar listing.",
           "overridden": false
         }
       ],
@@ -23301,7 +23302,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue specifically describes the delivery fee and delivery time text merging and overlapping into garbled text.",
+          "reasoning": "Both describe the delivery fee text overlapping with the delivery time text for Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -23336,7 +23337,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue specifically describes the delivery fee label rendering on top of the delivery time text.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping beneath Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -23371,7 +23372,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue describes the delivery time text being overlapped/clipped by the delivery text.",
+          "reasoning": "Both describe the delivery time and delivery/fee text overlapping or colliding under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -23406,7 +23407,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the delivery time text overlapping with the delivery fee text.",
+          "reasoning": "Both describe the delivery fee text overlapping with the delivery time text on the Tokumaru Ramen Bar listing.",
           "overridden": false
         }
       ],
@@ -23796,7 +23797,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue is about text truncation in a horizontal carousel, not the bottom navigation bar cutoff or gesture bar overlap.",
+          "reasoning": "The reported issue is about text truncation in a horizontal carousel card, not the bottom navigation bar overlap/cutoff.",
           "overridden": false
         }
       ],
@@ -23831,7 +23832,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue describes truncated restaurant text in a carousel rather than bottom navigation labels being cut off by the gesture bar.",
+          "reasoning": "The reported issue concerns text truncation in a carousel, not the bottom navigation bar overlap or cut-off labels.",
           "overridden": false
         }
       ],
@@ -23866,7 +23867,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue describes truncated text in a carousel card rather than the bottom navigation bar and gesture bar overlap.",
+          "reasoning": "Reported issue 0 describes text truncation in a restaurant card carousel, not the bottom navigation bar cutoff or overlapping bar.",
           "overridden": false
         }
       ],
@@ -23901,7 +23902,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue discusses text truncation in a restaurant card, not the bottom navigation bar and gesture bar overlap.",
+          "reasoning": "The reported issue discusses text truncation on a restaurant card in the content section, not the bottom navigation bar overlap/cutoff issue.",
           "overridden": false
         }
       ],
@@ -23936,7 +23937,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue discusses text truncation in a carousel, not the bottom navigation labels and gesture bar overlap.",
+          "reasoning": "The reported issue is about truncated text in a restaurant card carousel, not the bottom navigation bar cutoff or overlap.",
           "overridden": false
         }
       ],
@@ -26436,7 +26437,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee and delivery time text overlapping each other.",
+          "reasoning": "Both describe the delivery fee text overlapping the delivery time text on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -26471,7 +26472,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee text and delivery time text rendering on top of each other and overlapping.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping in the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -26506,7 +26507,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue specifically describes the delivery fee and delivery time text overlapping into '25-3€0delivery'.",
+          "reasoning": "Both describe the delivery fee text overlapping the delivery time text for Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -26541,7 +26542,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee text overlapping the delivery time text under the restaurant name.",
+          "reasoning": "Both describe the delivery fee text overlapping the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -26576,7 +26577,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue specifically describes the delivery fee text overlapping the delivery time text.",
+          "reasoning": "Both report that the delivery fee text overlaps with the delivery time text on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -26973,7 +26974,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue discusses heart icon styling inconsistencies on cards rather than bottom nav bar cutoff or gesture bar overlap.",
+          "reasoning": "The reported issue concerns inconsistent favorite icon backgrounds on cards, not bottom navigation labels being cut off by a black bar.",
           "overridden": false
         }
       ],
@@ -27014,7 +27015,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "None of the reported issues mention the bottom navigation bar labels being cut off or overlapped by the gesture bar.",
+          "reasoning": "None of the reported issues describe the bottom navigation cutoff or overlapping black bar defect.",
           "overridden": false
         }
       ],
@@ -27056,7 +27057,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "None of the reported issues mention the bottom navigation bar cutoff or gesture bar overlap.",
+          "reasoning": "None of the reported issues describe the bottom navigation bar cutoff or overlapping black bar.",
           "overridden": false
         }
       ],
@@ -27098,7 +27099,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "None of the reported issues mention the bottom navigation labels being cut off or the gesture bar overlap.",
+          "reasoning": "None of the reported issues mention the bottom navigation bar cutoff or the overlapping black horizontal bar.",
           "overridden": false
         }
       ],
@@ -27134,7 +27135,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue discusses heart icon background styling inconsistencies on food cards rather than bottom navigation labels being cut off.",
+          "reasoning": "The reported issue discusses favorite icon background inconsistency on restaurant cards, not the bottom navigation bar cutoff.",
           "overridden": false
         }
       ],
@@ -30706,7 +30707,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the delivery time text overlapping the '€0 delivery' fee text in the Tokumaru Ramen Bar card.",
+          "reasoning": "Reported issue 0 describes the exact same overlapping text defect on the Tokumaru Ramen Bar card between delivery time and delivery fee.",
           "overridden": false
         }
       ],
@@ -30757,7 +30758,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 specifically describes the delivery time colliding with and overlapping the delivery fee text in the restaurant card.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping in the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -30802,7 +30803,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the delivery time text colliding with and overlapping the delivery fee text.",
+          "reasoning": "Reported issue 0 describes the exact same defect where the delivery fee text overlaps the delivery time text on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -30852,7 +30853,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 accurately describes the delivery fee text overlapping the delivery time text.",
+          "reasoning": "Reported issue 0 describes the delivery fee and delivery time text overlapping each other in the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -30903,7 +30904,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the delivery time text colliding with the delivery fee text, matching the expected overlap defect.",
+          "reasoning": "Reported issue 0 describes the delivery time colliding with the delivery fee on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -31540,7 +31541,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 directly describes the gesture bar overlapping the navigation icons and the bottom navigation being clipped/missing labels at the screen edge.",
+          "reasoning": "Both describe the bottom navigation being clipped at the bottom screen edge and overlapped by a horizontal bar (system home indicator).",
           "overridden": false
         }
       ],
@@ -31604,7 +31605,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Report 0 describes the system gesture bar overlapping the bottom navigation and the navigation elements being clipped at the bottom edge.",
+          "reasoning": "Reported issue 0 describes the home indicator bar overlapping the bottom navigation and icons being clipped at the bottom edge.",
           "overridden": false
         }
       ],
@@ -31669,7 +31670,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Report 0 describes the system gesture bar overlapping the bottom navigation icons, which is the same layout issue.",
+          "reasoning": "Reported issue 0 correctly describes the system home indicator bar overlapping the bottom navigation icons.",
           "overridden": false
         }
       ],
@@ -31728,7 +31729,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the system gesture bar overlapping the bottom navigation icons and the navigation being positioned too low against the bottom edge.",
+          "reasoning": "Both describe the system/home bar overlapping the bottom navigation bar and icons being pushed too close to or past the bottom edge.",
           "overridden": false
         }
       ],
@@ -31786,7 +31787,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system gesture bar overlapping bottom navigation icons and the navigation being cut off/missing labels at the bottom edge.",
+          "reasoning": "Both describe the bottom navigation being overlapped by the home indicator bar and clipped at the bottom of the screen.",
           "overridden": false
         }
       ],
@@ -34768,7 +34769,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the overlapping text between delivery fee and delivery time.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping on the Tokumaru Ramen Bar listing.",
           "overridden": false
         }
       ],
@@ -34840,7 +34841,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee and delivery time text strings overlapping.",
+          "reasoning": "Both describe the delivery fee text overlapping the delivery time text for Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -34876,7 +34877,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both describe the delivery time and fee text overlapping for Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -34912,7 +34913,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee text overlapping with the delivery time/duration text.",
+          "reasoning": "Both describe the delivery fee and delivery time text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -35390,7 +35391,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "None of the reported issues mention the bottom navigation bar cutoff or gesture bar overlap.",
+          "reasoning": "None of the reported issues mention the bottom navigation bar cutoff or overlapping black bar.",
           "overridden": false
         }
       ],
@@ -35433,7 +35434,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "None of the reported issues mention the bottom navigation bar cutoff or gesture bar overlap.",
+          "reasoning": "None of the reported issues mention the bottom navigation bar, cutoff labels, or the overlapping black bar.",
           "overridden": false
         }
       ],
@@ -35478,7 +35479,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system navigation bar overlapping the bottom navigation menu items.",
+          "reasoning": "Both describe the horizontal gesture bar overlapping the bottom navigation menu icons.",
           "overridden": false
         }
       ],
@@ -35520,7 +35521,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "None of the reported issues mention the bottom navigation bar cutoff or gesture bar overlap.",
+          "reasoning": "None of the reported issues mention the bottom navigation bar cutoff or overlapping black bar.",
           "overridden": false
         }
       ],
@@ -35571,7 +35572,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report that the bottom navigation bar is placed too low and overlaps the system gesture bar.",
+          "reasoning": "Both describe the bottom navigation bar being placed too low and overlapping the system gesture indicator/black bar.",
           "overridden": false
         }
       ],
@@ -38173,7 +38174,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both describe the delivery fee text and delivery time text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -38208,7 +38209,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee text overlapping the delivery time text in the card.",
+          "reasoning": "Both describe the delivery fee text overlapping the delivery time text on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -38243,7 +38244,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time text overlapping with the delivery fee/label text in the restaurant card.",
+          "reasoning": "Both describe the delivery time and delivery/fee text overlapping in the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -38278,7 +38279,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time text overlapping with the delivery fee text.",
+          "reasoning": "Both reports describe the delivery time and delivery fee text overlapping in the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -38319,7 +38320,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes overlapping text between '25–30 min' (delivery time) and 'delivery' text.",
+          "reasoning": "Reported issue 0 correctly describes the overlap between the delivery time ('25–30 min') and the delivery fee ('delivery') text in the Tokumaru Ramen Bar section.",
           "overridden": false
         }
       ],
@@ -38665,7 +38666,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue is about missing text on a pizza card, whereas the expected issue describes the bottom navigation bar being cut off and overlapping the gesture bar.",
+          "reasoning": "The reported issue discusses missing text on a pizza card, which is unrelated to the bottom navigation bar overlap and cutoff.",
           "overridden": false
         }
       ],
@@ -38700,7 +38701,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue describes a restaurant card overlapping the navigation menu, not bottom nav labels being cut off by the screen edge or overlapped by the gesture bar.",
+          "reasoning": "The reported issue describes a restaurant card overlapping the bottom navigation, which is a different defect from the navigation labels being cut off by the screen edge and covered by a black bar.",
           "overridden": false
         }
       ],
@@ -38761,7 +38762,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue concerns a restaurant card clipping at the bottom rather than the bottom navigation labels and gesture bar overlap.",
+          "reasoning": "The reported issue is about a restaurant card being clipped, not the bottom navigation bar labels or overlapping bar.",
           "overridden": false
         }
       ],
@@ -38804,7 +38805,7 @@
           "matchedReportedIndexes": [
             1
           ],
-          "reasoning": "Both describe the bottom navigation bar being cut off and positioned too close to the bottom screen edge.",
+          "reasoning": "Both report that elements in the bottom navigation bar are clipped or cut off by the bottom screen edge.",
           "overridden": false
         }
       ],
@@ -41324,7 +41325,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue describes overlapping text directly below the restaurant title where the delivery fee and time text are located.",
+          "reasoning": "The reported issue describes the overlapping text directly below the Tokumaru Ramen Bar title, which corresponds to the delivery fee and time text.",
           "overridden": false
         }
       ],
@@ -41359,7 +41360,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue identifies the text overlapping defect within the restaurant details section.",
+          "reasoning": "Both describe overlapping text within the Tokumaru Ramen Bar details section.",
           "overridden": false
         }
       ],
@@ -41394,7 +41395,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the overlapping text defect occurring right below the restaurant title where delivery time and fee are displayed.",
+          "reasoning": "Both describe the overlapping text defect located directly beneath the 'Tokumaru Ramen Bar' title.",
           "overridden": false
         }
       ],
@@ -41430,7 +41431,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The subtitle of 'Tokumaru Ramen Bar' typically contains the delivery time and fee, so overlapping text in that subtitle describes the same defect.",
+          "reasoning": "Both describe text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -41466,7 +41467,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue describes text overlapping directly below the restaurant title, which corresponds to the delivery fee and time text overlapping.",
+          "reasoning": "Both describe overlapping text located below the 'Tokumaru Ramen Bar' title/restaurant listing.",
           "overridden": false
         }
       ],
@@ -41855,7 +41856,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the bottom navigation bar elements being cut off or partially hidden.",
+          "reasoning": "Both report that elements in the bottom navigation bar are partially hidden or cut off.",
           "overridden": false
         }
       ],
@@ -41888,7 +41889,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue discusses text clipping for a restaurant name rather than bottom navigation bar truncation and overlap.",
+          "reasoning": "The reported issue describes truncated restaurant text, not the bottom navigation bar being cut off or overlapped.",
           "overridden": false
         }
       ],
@@ -41923,7 +41924,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue is about category chips at the top edge, not the bottom navigation bar and gesture bar overlap.",
+          "reasoning": "The reported issue describes category chips at the top rather than the bottom navigation labels and overlapping bar.",
           "overridden": false
         }
       ],
@@ -41960,7 +41961,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the bottom navigation bar elements being cut off by the bottom edge of the screen.",
+          "reasoning": "Both describe the bottom navigation bar items being cut off by the bottom edge of the screen.",
           "overridden": false
         }
       ],
@@ -41993,7 +41994,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue concerns a heart icon placement, not the bottom navigation bar cutoff or gesture bar overlap.",
+          "reasoning": "The reported issue discusses a heart icon's placement on a restaurant image, not bottom navigation labels or an overlapping black bar.",
           "overridden": false
         }
       ],
@@ -44470,7 +44471,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee and delivery time text overlapping each other.",
+          "reasoning": "Both describe the delivery time and fee labels overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -44506,7 +44507,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee/cost text overlapping.",
+          "reasoning": "Both report the overlap between the delivery fee/cost and delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -44542,7 +44543,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both describe the delivery time and fee text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -44578,7 +44579,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee text overlapping the delivery time text.",
+          "reasoning": "Both reports identify the delivery fee and delivery time text overlapping for Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -44614,7 +44615,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee and delivery time text elements overlapping each other.",
+          "reasoning": "Both describe the overlap between the delivery time and delivery fee text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -44956,7 +44957,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system gesture navigation bar overlapping the bottom navigation bar elements.",
+          "reasoning": "Both describe the navigation bar overlapping the bottom navigation icons at the bottom of the screen.",
           "overridden": false
         }
       ],
@@ -44990,7 +44991,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue is about carousel background styles and does not mention bottom navigation cutoff or gesture bar overlap.",
+          "reasoning": "The reported issue discusses food illustration backgrounds in a carousel, not the cut-off bottom navigation labels or overlapping black bar.",
           "overridden": false
         }
       ],
@@ -45028,7 +45029,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the horizontal gesture bar overlapping icons in the bottom navigation menu.",
+          "reasoning": "Both describe a horizontal bar overlapping icons in the bottom navigation menu.",
           "overridden": false
         }
       ],
@@ -45064,7 +45065,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the gesture bar overlapping the bottom navigation/tab bar icons.",
+          "reasoning": "Both describe the system navigation bar overlapping the bottom tab/nav bar icons.",
           "overridden": false
         }
       ],
@@ -45100,7 +45101,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system gesture navigation bar overlapping icons in the bottom navigation bar due to incorrect bottom padding.",
+          "reasoning": "Both describe the horizontal navigation bar overlapping the bottom navigation bar icons.",
           "overridden": false
         }
       ],
@@ -47450,7 +47451,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery duration/time text overlapping with the delivery information/fee text.",
+          "reasoning": "Both describe the delivery duration/time text overlapping with the delivery information/fee text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -47486,7 +47487,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both describe the delivery fee text overlapping the delivery time text for Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -47522,7 +47523,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time text overlapping with the delivery text/fee under the restaurant title.",
+          "reasoning": "Both describe the delivery time and delivery fee/text overlapping under the Tokumaru Ramen Bar title.",
           "overridden": false
         }
       ],
@@ -47558,7 +47559,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time text overlapping with delivery fee information ('25-35Ordelivery').",
+          "reasoning": "Both describe the overlapping text under 'Tokumaru Ramen Bar' involving the delivery time and delivery fee/details.",
           "overridden": false
         }
       ],
@@ -47594,7 +47595,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue describes the delivery time text overlapping with the delivery information text, directly matching the expected overlap defect.",
+          "reasoning": "Both describe the delivery time and delivery fee/information text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -48006,7 +48007,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system home indicator/gesture bar overlapping the bottom navigation bar icons due to safe area insets.",
+          "reasoning": "Both describe the horizontal bar/home indicator overlapping the bottom navigation bar icons due to layout/safe area issues.",
           "overridden": false
         }
       ],
@@ -50432,7 +50433,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both reports identify the delivery fee and delivery time text overlapping on the Tokumaru Ramen Bar listing.",
           "overridden": false
         }
       ],
@@ -50468,7 +50469,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the overlap between the delivery time and delivery fee text.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -50504,7 +50505,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee and delivery time text overlapping each other.",
+          "reasoning": "Reported issue 0 describes the exact same overlapping text defect between the delivery time and delivery fee under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -50540,7 +50541,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the overlap between delivery fee/cost text and delivery time text.",
+          "reasoning": "Both describe the delivery fee/cost text overlapping with the delivery time text on a restaurant card.",
           "overridden": false
         }
       ],
@@ -50576,7 +50577,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the delivery time and delivery fee text overlapping.",
+          "reasoning": "Both describe the delivery fee and delivery time text labels overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -50925,7 +50926,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "None of the reported issues mention the bottom navigation bar cutoff or gesture bar overlap.",
+          "reasoning": "The reported issue concerns placeholder text contrast in the search bar, not bottom navigation labels being cut off by a black bar.",
           "overridden": false
         }
       ],
@@ -50963,7 +50964,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the bottom navigation bar lacking proper safe area padding, causing the gesture bar to overlap the navigation elements.",
+          "reasoning": "Both describe the bottom navigation bar overlapping with the device gesture bar/horizontal bar due to lack of safe area padding.",
           "overridden": false
         }
       ],
@@ -50999,7 +51000,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the bottom navigation bar lacking proper safe area padding, causing overlap with the gesture bar and screen edge.",
+          "reasoning": "Both describe the bottom navigation bar lacking safe area inset, causing the bottom edge/gesture bar to overlap the nav bar elements.",
           "overridden": false
         }
       ],
@@ -51035,7 +51036,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system home/gesture bar overlapping the bottom navigation icons at the bottom of the screen.",
+          "reasoning": "Both describe the system home bar overlapping the bottom navigation bar icons/labels.",
           "overridden": false
         }
       ],
@@ -53493,7 +53494,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the exact same layout problem where delivery time and delivery fee text overlap.",
+          "reasoning": "Both describe the delivery fee and delivery time text overlapping below Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -53529,7 +53530,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue describes the text overlap in the metadata area below the restaurant title, which directly corresponds to the overlapping delivery fee and delivery time text.",
+          "reasoning": "The reported issue describes the text overlapping metadata directly below the 'Tokumaru Ramen Bar' title, which corresponds to the delivery fee and delivery time text overlap.",
           "overridden": false
         }
       ],
@@ -53565,7 +53566,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both describe the delivery time and fee text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -53601,7 +53602,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the overlapping delivery information text elements under the restaurant item.",
+          "reasoning": "Both report overlapping delivery information text directly under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -53637,7 +53638,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both reports identify the delivery fee text overlapping the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -53952,7 +53953,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the Android gesture bar overlapping the bottom navigation bar icons.",
+          "reasoning": "Both describe the navigation bar at the bottom of the screen overlapping the bottom navigation icons.",
           "overridden": false
         }
       ],
@@ -53988,7 +53989,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system gesture bar overlapping the bottom navigation bar icons due to layout padding issues at the bottom edge.",
+          "reasoning": "Both describe the system home gesture bar overlapping the bottom navigation bar icons.",
           "overridden": false
         }
       ],
@@ -54024,7 +54025,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system navigation bar/gesture bar overlapping the bottom navigation bar.",
+          "reasoning": "Both describe the system navigation bar overlapping the bottom navigation icons at the bottom of the screen.",
           "overridden": false
         }
       ],
@@ -54060,7 +54061,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the system gesture/home indicator bar overlapping the bottom navigation bar.",
+          "reasoning": "Both describe the system home indicator/black horizontal bar overlapping and obscuring the bottom navigation bar icons.",
           "overridden": false
         }
       ],
@@ -54096,7 +54097,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system gesture home indicator bar overlapping the bottom navigation icons.",
+          "reasoning": "Both describe the horizontal home indicator bar overlapping the bottom navigation icons due to improper bottom safe-area layout.",
           "overridden": false
         }
       ],
@@ -56481,7 +56482,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the delivery fee and delivery time text overlapping each other.",
+          "reasoning": "Both report that the delivery time and delivery fee labels overlap under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -56517,7 +56518,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping.",
+          "reasoning": "Both report the delivery time and fee text overlapping under 'Tokumaru Ramen Bar'.",
           "overridden": false
         }
       ],
@@ -56553,7 +56554,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the overlap between the delivery fee and delivery time text labels.",
+          "reasoning": "Both describe the delivery fee and delivery time text overlapping in the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -56589,7 +56590,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee and delivery time text overlapping each other.",
+          "reasoning": "Both describe the delivery time and fee text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -56625,7 +56626,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe an overlap between the delivery fee and delivery time text.",
+          "reasoning": "Both describe the delivery fee text overlapping the delivery time text beneath Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -57043,7 +57044,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the bottom navigation bar overlapping with the system gesture navigation indicator and obscuring navigation elements.",
+          "reasoning": "Both describe the bottom navigation bar overlapping with a horizontal bar/system gesture indicator, obscuring the nav icons/labels.",
           "overridden": false
         }
       ],
@@ -57079,7 +57080,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system gesture bar overlapping the bottom navigation icons due to missing safe area insets.",
+          "reasoning": "Both describe the system home gesture bar (black horizontal bar) overlapping the bottom navigation due to missing safe area insets.",
           "overridden": false
         }
       ],
@@ -57115,7 +57116,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report that the system navigation handle/gesture bar overlaps the bottom navigation bar icons.",
+          "reasoning": "Both describe the system navigation bar/handle overlapping the bottom navigation bar icons due to incorrect safe area padding.",
           "overridden": false
         }
       ],
@@ -57151,7 +57152,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the missing safe area padding causing the system home indicator/gesture bar to overlap bottom navigation icons.",
+          "reasoning": "Both describe the horizontal home indicator bar overlapping the bottom navigation icons due to missing safe area padding.",
           "overridden": false
         }
       ],
@@ -57187,7 +57188,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system gesture bar overlapping the bottom navigation bar icons.",
+          "reasoning": "Both describe the system gesture navigation bar (black horizontal bar) overlapping the bottom navigation bar icons and content.",
           "overridden": false
         }
       ],
@@ -59594,7 +59595,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the delivery fee text overlapping with the delivery time text.",
+          "reasoning": "Both describe the delivery fee text overlapping with the delivery time text in the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -59630,7 +59631,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue specifically describes the delivery time/fee metadata overlapping and running into each other.",
+          "reasoning": "Both reports identify the overlapping text involving the delivery time and fee under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -59664,7 +59665,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue describes the details line colliding with the rating on the right rather than the delivery fee text overlapping the delivery time text.",
+          "reasoning": "The reported issue describes the details line colliding with the rating on the right, rather than the delivery fee text overlapping the delivery time text.",
           "overridden": false
         }
       ],
@@ -59702,7 +59703,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe an overlap issue affecting the delivery time and adjacent metadata details on the restaurant card.",
+          "reasoning": "Both describe the delivery details overlapping with the delivery time text on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -60017,7 +60018,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system gesture bar overlapping the bottom navigation area and icons.",
+          "reasoning": "Both describe an overlap issue on the bottom navigation bar caused by a horizontal system bar or gesture indicator obstructing icons.",
           "overridden": false
         }
       ],
@@ -60080,7 +60081,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the bottom navigation bar overlapping with or sitting under the device gesture bar/home indicator.",
+          "reasoning": "Both describe the bottom navigation bar overlapping with/covered by the system home indicator or a black horizontal bar.",
           "overridden": false
         }
       ],
@@ -62326,7 +62327,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue specifically mentions the delivery time and delivery fee text overlapping or running together.",
+          "reasoning": "Both describe the delivery fee text overlapping with the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -62362,7 +62363,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee information text overlapping each other.",
+          "reasoning": "Both describe the delivery time and fee information overlapping in the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -62398,7 +62399,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe an overlap collision involving the delivery time and delivery/fee text in the metadata line.",
+          "reasoning": "Both report overlapping delivery time and related text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -62434,7 +62435,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the overlapping text issue involving the delivery time and delivery fee/text metadata line.",
+          "reasoning": "Both describe the delivery fee text overlapping with the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -62470,7 +62471,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -62812,7 +62813,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system gesture bar overlapping icons in the bottom navigation bar.",
+          "reasoning": "Both describe a dark horizontal bar overlapping the bottom navigation icons.",
           "overridden": false
         }
       ],
@@ -62848,7 +62849,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported thick dark horizontal line overlapping bottom navigation icons describes the gesture bar overlap issue.",
+          "reasoning": "Both describe a dark horizontal bar overlapping the bottom navigation icons.",
           "overridden": false
         }
       ],
@@ -62884,7 +62885,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system gesture bar/home indicator overlapping the bottom navigation bar icons due to layout padding issues.",
+          "reasoning": "Both describe a dark horizontal bar overlapping the icons on the bottom navigation tab bar.",
           "overridden": false
         }
       ],
@@ -62920,7 +62921,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the gesture bar / dark indicator overlapping the icons in the bottom navigation bar.",
+          "reasoning": "Both describe a dark horizontal bar/line overlapping the icons in the bottom navigation bar.",
           "overridden": false
         }
       ],
@@ -62956,7 +62957,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the gesture bar (thick dark horizontal bar) overlapping the bottom navigation bar icons.",
+          "reasoning": "Both report the black/dark horizontal bar overlapping icons in the bottom navigation bar.",
           "overridden": false
         }
       ],
@@ -65171,7 +65172,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time text overlapping with the delivery/metadata row below it.",
+          "reasoning": "Both describe the delivery time text overlapping with the delivery fee/row text for Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -65207,7 +65208,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes delivery-time text and delivery text overlapping in the restaurant metadata row, matching the expected overlap defect.",
+          "reasoning": "Both describe the delivery time text overlapping with the delivery fee text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -65243,7 +65244,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe an overlap bug involving the delivery time and price/fee metadata under the restaurant listing.",
+          "reasoning": "Both report overlapping metadata (delivery fee/price and delivery time text) under the Tokumaru Ramen Bar entry.",
           "overridden": false
         }
       ],
@@ -65279,7 +65280,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee and delivery time text overlapping in the metadata row.",
+          "reasoning": "Both describe the delivery fee and delivery time text overlapping beneath Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -65315,7 +65316,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue directly describes the delivery fee and delivery time text visibly overlapping.",
+          "reasoning": "Both report the delivery fee text overlapping with the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -65639,7 +65640,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the horizontal gesture bar overlapping bottom navigation icons.",
+          "reasoning": "Both describe a thick dark/black horizontal bar overlapping the icons in the bottom navigation area.",
           "overridden": false
         }
       ],
@@ -65675,7 +65676,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the horizontal gesture bar overlapping icons in the bottom navigation bar.",
+          "reasoning": "Both describe the dark horizontal bar overlapping the icons in the bottom navigation area.",
           "overridden": false
         }
       ],
@@ -65711,7 +65712,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the bottom navigation icons being overlapped by a horizontal bar (gesture bar) across the bottom area.",
+          "reasoning": "Both describe a dark horizontal bar overlapping icons in the bottom navigation area.",
           "overridden": false
         }
       ],
@@ -65747,7 +65748,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe a horizontal bar (gesture bar) overlapping the bottom navigation icons/controls.",
+          "reasoning": "Both report the dark horizontal bar overlapping the bottom navigation bar and its icons.",
           "overridden": false
         }
       ],
@@ -65783,7 +65784,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the horizontal gesture bar overlapping icons in the bottom navigation bar.",
+          "reasoning": "Both describe the dark horizontal bar overlapping icons in the bottom navigation bar.",
           "overridden": false
         }
       ],
@@ -68029,7 +68030,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time text overlapping with the delivery fee metadata.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -68065,7 +68066,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the exact same defect where delivery-time and delivery-fee metadata overlap.",
+          "reasoning": "Reported issue 0 describes the exact same overlapping delivery fee and delivery time text beneath Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -68101,7 +68102,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -68137,7 +68138,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report that the delivery time and delivery fee text overlap each other.",
+          "reasoning": "Both reports describe the delivery fee text overlapping the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -68173,7 +68174,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee text overlapping with the delivery time text.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -68524,7 +68525,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe a horizontal/gesture bar overlapping the bottom navigation icons.",
+          "reasoning": "Both describe a thick dark horizontal bar running across and overlapping the icons in the bottom navigation.",
           "overridden": false
         }
       ],
@@ -68560,7 +68561,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system home indicator/gesture bar overlapping the bottom navigation icons due to missing bottom safe area insets.",
+          "reasoning": "Both report the black horizontal bar/home indicator overlapping the bottom navigation bar icons.",
           "overridden": false
         }
       ],
@@ -68596,7 +68597,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe a horizontal bar overlapping and obscuring the bottom navigation icons.",
+          "reasoning": "Both describe a dark horizontal bar overlaying and obscuring the bottom navigation bar/icons.",
           "overridden": false
         }
       ],
@@ -68632,7 +68633,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the horizontal gesture bar overlapping the bottom navigation icons and cutting off the nav area.",
+          "reasoning": "Both describe the dark horizontal bar overlapping the bottom navigation icons.",
           "overridden": false
         }
       ],
@@ -68668,7 +68669,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system gesture bar improperly overlapping the bottom navigation icons.",
+          "reasoning": "Both report a dark horizontal bar overlapping the icons in the bottom navigation bar.",
           "overridden": false
         }
       ],
@@ -70929,7 +70930,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time text overlapping with the delivery fee text underneath the restaurant name.",
+          "reasoning": "Both reports identify the delivery fee and delivery time text overlapping beneath Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -70965,7 +70966,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time text overlapping with the delivery fee label.",
+          "reasoning": "Both report the delivery fee text overlapping with the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -71001,7 +71002,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time text overlapping with the delivery fee metadata.",
+          "reasoning": "Both describe the delivery time ('25–35 min') overlapping with the delivery information/fee text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -71037,7 +71038,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both descriptions report that the delivery fee text overlaps with the delivery time text.",
+          "reasoning": "Both describe the delivery fee text overlapping with the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -71073,7 +71074,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the delivery time text colliding and overlapping with the delivery fee text beneath the restaurant name.",
+          "reasoning": "Both report the delivery time text overlapping with the delivery fee text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -71415,7 +71416,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system gesture bar overlapping and obscuring the bottom navigation bar icons.",
+          "reasoning": "Both report a dark horizontal bar across the bottom navigation area overlapping navigation icons.",
           "overridden": false
         }
       ],
@@ -71457,7 +71458,7 @@
           "matchedReportedIndexes": [
             1
           ],
-          "reasoning": "Both describe the system gesture bar/home indicator overlapping the bottom navigation bar icons.",
+          "reasoning": "Both describe the system home indicator (black horizontal bar) overlapping the bottom navigation bar icons.",
           "overridden": false
         }
       ],
@@ -71502,7 +71503,7 @@
             0,
             1
           ],
-          "reasoning": "Reported issue 0 describes the gesture bar overlapping the icons, and issue 1 describes the bottom nav bar being cut off at the bottom of the screen, which together cover the expected defect.",
+          "reasoning": "Reported issue 0 describes the horizontal bar overlapping the bottom navigation icons, while issue 1 describes the bottom navigation bar being cut off at the bottom edge.",
           "overridden": false
         }
       ],
@@ -71538,7 +71539,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report that the bottom navigation is cut off/clipped at the bottom screen edge and overlapped by the system gesture bar.",
+          "reasoning": "Both describe the bottom navigation being overlapped by a horizontal bar and cut off at the bottom edge.",
           "overridden": false
         }
       ],
@@ -71574,7 +71575,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the bottom navigation being positioned too low and overlapping with the device gesture bar.",
+          "reasoning": "Both report the bottom navigation being positioned too low and overlapping the device gesture bar/home indicator.",
           "overridden": false
         }
       ],
@@ -74079,7 +74080,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee text overlapping with the delivery time text.",
+          "reasoning": "Both describe the delivery fee text overlapping the delivery time text for Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -74116,7 +74117,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both describe the delivery fee and delivery time overlapping beneath Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -74153,7 +74154,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee overlapping each other.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -74190,7 +74191,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee overlapping each other.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -74227,7 +74228,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee text overlapping with the delivery time text.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping for Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -74634,7 +74635,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system home indicator/gesture bar overlapping the bottom navigation icons due to incorrect safe area insets.",
+          "reasoning": "Both describe the horizontal bar/home indicator overlapping the bottom navigation icons at the bottom of the screen.",
           "overridden": false
         }
       ],
@@ -74671,7 +74672,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the gesture bar (dark horizontal bar) overlapping the bottom navigation icons at the bottom of the screen.",
+          "reasoning": "Both describe a dark horizontal bar overlapping icons in the bottom navigation bar.",
           "overridden": false
         }
       ],
@@ -74708,7 +74709,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system home indicator/gesture bar overlapping the bottom navigation icons due to incorrect bottom padding.",
+          "reasoning": "Both describe the bottom navigation bar overlapping with a horizontal bar / system home indicator obscuring controls.",
           "overridden": false
         }
       ],
@@ -74745,7 +74746,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the gesture bar or dark horizontal bar overlapping the bottom navigation icons.",
+          "reasoning": "Both describe a dark horizontal bar overlapping the bottom navigation icons.",
           "overridden": false
         }
       ],
@@ -74782,7 +74783,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the gesture bar or home indicator improperly overlapping icons in the bottom navigation.",
+          "reasoning": "Both describe a dark horizontal bar overlapping the icons in the bottom navigation bar.",
           "overridden": false
         }
       ],
@@ -77018,7 +77019,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue specifically mentions the delivery time ('25–30 min') and delivery fee ('€3.0 delivery') overlapping.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -77055,7 +77056,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both report the delivery time and delivery fee text overlapping for Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -77092,7 +77093,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the overlapping text defect involving the delivery time information beneath the restaurant title.",
+          "reasoning": "Both describe an overlapping text issue within the metadata line (delivery time / fee / cuisine) under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -77129,7 +77130,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the overlapping text defect involving the delivery time information beneath the restaurant listing.",
+          "reasoning": "Both describe an overlap bug involving delivery time details under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -77166,7 +77167,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue specifically describes overlapping delivery time and delivery price metadata.",
+          "reasoning": "Both describe the delivery time and delivery fee/price overlapping beneath the Tokumaru Ramen Bar title.",
           "overridden": false
         }
       ],
@@ -77519,7 +77520,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system/gesture bar running across and overlapping icons in the bottom navigation bar.",
+          "reasoning": "Both report a dark horizontal bar overlapping elements in the bottom navigation bar.",
           "overridden": false
         }
       ],
@@ -77638,7 +77639,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue discusses an incorrect restaurant image on a card, not the cut-off bottom navigation bar.",
+          "reasoning": "The reported issue concerns an incorrect image on a restaurant card rather than the bottom navigation overlap and cutoff.",
           "overridden": false
         }
       ],
@@ -79930,7 +79931,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee text and delivery time text overlapping each other.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -79967,7 +79968,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee and delivery time text overlapping each other.",
+          "reasoning": "Both describe the delivery fee and delivery time text overlapping beneath Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -80004,7 +80005,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both describe the delivery fee text overlapping the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -80041,7 +80042,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee and delivery time text overlapping.",
+          "reasoning": "Both describe the delivery fee and delivery time text overlapping beneath Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -80078,7 +80079,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -80467,7 +80468,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe a bar (gesture bar) overlapping the bottom navigation icons at the bottom of the screen.",
+          "reasoning": "Both describe a dark horizontal bar overlapping icons in the bottom navigation bar.",
           "overridden": false
         }
       ],
@@ -80504,7 +80505,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the horizontal gesture bar overlapping and obscuring the bottom navigation bar elements.",
+          "reasoning": "Both describe the black horizontal gesture bar overlapping the bottom navigation bar icons.",
           "overridden": false
         }
       ],
@@ -80541,7 +80542,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the gesture/home-indicator bar overlapping and obscuring the bottom navigation bar icons.",
+          "reasoning": "Both describe the dark home-indicator horizontal bar overlapping and obscuring the bottom navigation bar.",
           "overridden": false
         }
       ],
@@ -80578,7 +80579,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the horizontal gesture bar overlapping/obscuring the bottom navigation bar icons.",
+          "reasoning": "Both describe a thick dark/black horizontal bar overlapping/obscuring the bottom navigation bar icons.",
           "overridden": false
         }
       ],
@@ -80615,7 +80616,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the horizontal gesture bar overlapping the bottom navigation bar and covering icons.",
+          "reasoning": "Both describe a dark horizontal bar overlapping the icons on the bottom navigation bar.",
           "overridden": false
         }
       ],
@@ -83085,7 +83086,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -83122,7 +83123,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the overlap between the delivery time and delivery fee text.",
+          "reasoning": "Both describe the delivery fee and delivery time text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -83159,7 +83160,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report that the delivery fee and delivery time texts overlap.",
+          "reasoning": "Both report that the delivery fee and delivery time overlap for Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -83196,7 +83197,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both report the delivery time and delivery fee text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -83233,7 +83234,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee text overlapping with the delivery time text.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping for Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -83640,7 +83641,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the home indicator/gesture bar overlapping the icons in the bottom navigation bar.",
+          "reasoning": "Both report the black horizontal bar/home indicator overlapping the bottom navigation icons.",
           "overridden": false
         }
       ],
@@ -83677,7 +83678,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the home indicator/gesture bar overlapping the bottom navigation bar icons.",
+          "reasoning": "Both describe the black horizontal bar/home indicator overlapping the bottom navigation bar and its icons.",
           "overridden": false
         }
       ],
@@ -83714,7 +83715,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the gesture bar (home indicator) overlapping the icons in the bottom navigation bar.",
+          "reasoning": "Both describe the black bar/home indicator overlapping the bottom navigation icons due to safe area layout issues.",
           "overridden": false
         }
       ],
@@ -83751,7 +83752,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system gesture bar/home indicator overlapping the bottom navigation icons at the bottom edge of the screen.",
+          "reasoning": "Both describe the black system home indicator/bar overlapping the bottom navigation icons due to safe area layout issues.",
           "overridden": false
         }
       ],
@@ -83788,7 +83789,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the bottom navigation bar lacking safe area insets, causing the gesture bar/system home indicator to overlap the navigation icons.",
+          "reasoning": "Both report the system home indicator (black horizontal bar) improperly overlapping the bottom navigation bar icons.",
           "overridden": false
         }
       ],
@@ -86327,7 +86328,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and fee text overlapping each other.",
+          "reasoning": "Both report the delivery fee text overlapping with the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -86365,7 +86366,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee/info text overlapping each other.",
+          "reasoning": "Both describe the delivery fee text and delivery time overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -86409,7 +86410,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the delivery metadata where delivery time and fee/delivery text overlap under the restaurant card.",
+          "reasoning": "Both describe the delivery fee text and delivery time overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -86449,7 +86450,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both describe the delivery fee and delivery time text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -86487,7 +86488,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 directly describes the overlapping delivery time and delivery fee text under the restaurant name.",
+          "reasoning": "Both report the delivery fee and time text overlapping under 'Tokumaru Ramen Bar'.",
           "overridden": false
         }
       ],
@@ -86864,7 +86865,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the bottom navigation bar being overlapped and obscured by a horizontal bar (gesture bar).",
+          "reasoning": "Both describe the bottom navigation bar being obscured and cut off by an overlapping black horizontal bar.",
           "overridden": false
         }
       ],
@@ -86904,7 +86905,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the gesture bar/black horizontal bar overlaying and obscuring the bottom navigation bar icons.",
+          "reasoning": "Both describe a black horizontal bar overlapping/obscuring the bottom navigation bar icons.",
           "overridden": false
         }
       ],
@@ -86942,7 +86943,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the bottom navigation bar icons being overlapped and obscured by the horizontal gesture/system bar at the bottom of the screen.",
+          "reasoning": "Both describe a black horizontal bar overlapping the bottom navigation bar icons.",
           "overridden": false
         }
       ],
@@ -86980,7 +86981,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system gesture bar overlapping icons in the bottom navigation bar.",
+          "reasoning": "Both describe the black horizontal bar overlapping the bottom navigation bar and its icons/labels.",
           "overridden": false
         }
       ],
@@ -87018,7 +87019,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the horizontal gesture bar overlapping and obscuring the bottom navigation bar icons.",
+          "reasoning": "Both describe the black horizontal bar overlapping and partially obscuring the bottom navigation bar icons.",
           "overridden": false
         }
       ],
@@ -89571,7 +89572,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue explicitly describes the delivery fee text and delivery time text rendering on top of each other.",
+          "reasoning": "Both describe the delivery fee text and delivery time text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -89609,7 +89610,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both describe the delivery fee text overlapping the delivery time text for Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -89647,7 +89648,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -89685,7 +89686,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue specifically describes the delivery time and fee values overlapping under the restaurant name.",
+          "reasoning": "Both report the delivery time and fee text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -89723,7 +89724,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time text ('25-30') overlapping with the adjacent delivery info text.",
+          "reasoning": "Both describe overlapping text in the delivery info section under Tokumaru Ramen Bar involving the delivery time.",
           "overridden": false
         }
       ],
@@ -90119,7 +90120,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the bottom navigation bar being overlapped/obscured by a bar at the bottom of the screen.",
+          "reasoning": "Both describe a black horizontal bar obscuring the bottom navigation bar icons.",
           "overridden": false
         }
       ],
@@ -90157,7 +90158,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report a horizontal bar (gesture bar) overlapping and obscuring the bottom navigation bar icons.",
+          "reasoning": "Both describe a black horizontal bar overlapping and obscuring the bottom navigation bar and its icons.",
           "overridden": false
         }
       ],
@@ -90195,7 +90196,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe a horizontal bar overlapping and obscuring the bottom navigation bar icons.",
+          "reasoning": "Both report a black horizontal bar overlapping the bottom navigation bar and obscuring the icons.",
           "overridden": false
         }
       ],
@@ -90233,7 +90234,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the bottom navigation bar and its icons being overlapped by the system bar/gesture bar at the bottom of the screen.",
+          "reasoning": "Both report the bottom navigation bar and its icons being overlapped and obscured by a black horizontal bar.",
           "overridden": false
         }
       ],
@@ -90271,7 +90272,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the gesture bar (thick black bar) incorrectly overlapping the bottom navigation bar and obscuring its elements.",
+          "reasoning": "Both describe the bottom navigation bar being overlapped and obscured by a black horizontal bar.",
           "overridden": false
         }
       ],
@@ -92774,7 +92775,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery text overlapping under the restaurant card.",
+          "reasoning": "Both describe the delivery time and delivery text overlapping or collapsing into each other under the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -92811,7 +92812,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue describes overlapping text where the delivery time appears merged/overlapped with delivery text in the delivery-info line.",
+          "reasoning": "Both report overlapping text in the delivery information line under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -92848,7 +92849,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue misinterprets the overlapping delivery fee text as corrupted/merged delivery time text at the exact same location.",
+          "reasoning": "Both reports refer to the same visual issue under Tokumaru Ramen Bar where delivery fee and delivery time text interfere with each other, causing the corrupted text.",
           "overridden": false
         }
       ],
@@ -92885,7 +92886,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery text overlapping the delivery time label, resulting in garbled text like '25–35Ddelivery'.",
+          "reasoning": "Both describe the delivery time text and delivery text overlapping for Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -92920,7 +92921,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue is about missing space between numbers and 'min', not an overlap between delivery fee and delivery time text.",
+          "reasoning": "The reported issue describes a missing space in the delivery time text rather than an overlap between the delivery fee and delivery time text.",
           "overridden": false
         }
       ],
@@ -93297,7 +93298,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the gesture indicator bar overlapping the bottom navigation bar and icons.",
+          "reasoning": "Both describe the bottom navigation bar being overlapped by the bottom system bar/indicator.",
           "overridden": false
         }
       ],
@@ -93390,7 +93391,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue misidentifies the overlapping gesture bar as a dark horizontal line/divider across the bottom tab bar.",
+          "reasoning": "Both describe a dark horizontal bar or line overlapping across the bottom navigation tab bar.",
           "overridden": false
         }
       ],
@@ -93427,7 +93428,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system gesture bar incorrectly overlapping the bottom navigation bar elements.",
+          "reasoning": "Both report a dark horizontal bar erroneously overlapping the bottom navigation bar.",
           "overridden": false
         }
       ],
@@ -95875,7 +95876,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee text overlapping with the delivery time text on the card.",
+          "reasoning": "Both describe the delivery fee text overlapping the delivery time text in the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -95912,7 +95913,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the delivery time and delivery fee text overlapping each other.",
+          "reasoning": "Both describe the delivery fee text overlapping with the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -95949,7 +95950,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee text overlapping with the delivery time text.",
+          "reasoning": "Both describe the delivery fee text overlapping the delivery time text on the Tokumaru Ramen Bar listing.",
           "overridden": false
         }
       ],
@@ -95986,7 +95987,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue specifically describes the delivery fee and ETA (delivery time) text overlapping on the restaurant card.",
+          "reasoning": "Both describe the delivery fee text overlapping with the delivery time/ETA text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -96023,7 +96024,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping into unreadable text.",
+          "reasoning": "Both describe the delivery fee text overlapping with the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -96448,7 +96449,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the Android gesture bar overlapping the bottom navigation bar icons and causing clipping.",
+          "reasoning": "Both describe the system navigation bar/horizontal bar overlapping the bottom navigation bar icons and causing clipping.",
           "overridden": false
         }
       ],
@@ -96491,7 +96492,7 @@
           "matchedReportedIndexes": [
             1
           ],
-          "reasoning": "Reported issue 1 describes the gesture bar overlapping the bottom navigation icons as a dark horizontal stroke cluttering the icons.",
+          "reasoning": "Reported issue 1 describes a dark horizontal stroke cluttering the bottom navigation icons, which corresponds to the black horizontal bar overlapping the bottom navigation bar.",
           "overridden": false
         }
       ],
@@ -96536,7 +96537,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Report 0 describes the gesture indicator overlapping the bottom navigation icons, matching the expected defect.",
+          "reasoning": "Reported issue 0 describes the horizontal bar overlapping the bottom navigation icons, which matches the expected defect.",
           "overridden": false
         }
       ],
@@ -96603,7 +96604,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the horizontal system gesture bar overlapping the bottom navigation bar icons.",
+          "reasoning": "Both report a dark horizontal bar overlapping the bottom navigation bar icons.",
           "overridden": false
         }
       ],
@@ -98999,7 +99000,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time text overlapping with the delivery-related text in the restaurant listing.",
+          "reasoning": "Both report the delivery time text overlapping with delivery fee text in the Tokumaru Ramen Bar listing.",
           "overridden": false
         }
       ],
@@ -99036,7 +99037,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue specifically describes the delivery fee text and delivery time text overlapping in the card details.",
+          "reasoning": "Reported issue 0 directly describes the delivery fee and delivery time text overlapping in the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -99073,7 +99074,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report overlapping text at the delivery time and fee area on the restaurant card.",
+          "reasoning": "Both describe overlapping text related to the delivery information on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -99110,7 +99111,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue describes the delivery time ('25-30') overlapping with the delivery text, which matches the expected delivery fee and time text overlap.",
+          "reasoning": "Both describe the delivery time text ('25-30') overlapping with the delivery fee text ('Delivery') under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -99147,7 +99148,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time and delivery fee text overlapping.",
+          "reasoning": "Both describe the delivery time and delivery fee text overlapping under the Tokumaru Ramen Bar listing.",
           "overridden": false
         }
       ],
@@ -99509,7 +99510,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the gesture bar/iOS home indicator overlapping bottom navigation bar elements due to safe area inset issues.",
+          "reasoning": "Both describe the bottom navigation icons being overlapped by a horizontal bar (the iOS home indicator).",
           "overridden": false
         }
       ],
@@ -99544,7 +99545,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue discusses a notification badge on a bell icon, not the bottom navigation bar cutoff or gesture bar overlap.",
+          "reasoning": "The reported issue discusses a misaligned notification badge on a bell icon, which does not match the bottom navigation cutoff and overlapping black bar defect.",
           "overridden": false
         }
       ],
@@ -99611,7 +99612,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the bottom navigation bar icons being overlapped by the home indicator / gesture bar.",
+          "reasoning": "Both describe the horizontal bar overlapping the icons on the bottom navigation bar.",
           "overridden": false
         }
       ],
@@ -99648,7 +99649,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the bottom navigation bar elements being cut off at the bottom screen edge and overlapped by a line (gesture bar).",
+          "reasoning": "Both describe the bottom navigation bar being cut off at the bottom edge and overlapped by a horizontal line/bar.",
           "overridden": false
         }
       ],
@@ -102525,7 +102526,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 specifically describes the delivery fee ('€0 delivery') overlapping with the delivery time ('25–30 min').",
+          "reasoning": "Reported issue 0 specifically describes the delivery fee and delivery time text strings overlapping each other under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -102565,7 +102566,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the exact same overlap between the delivery fee text and delivery time text.",
+          "reasoning": "Both report the delivery fee text overlapping with the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -102609,7 +102610,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the exact overlap between the delivery fee text and the delivery time text.",
+          "reasoning": "Reported issue 0 accurately describes the delivery fee text overlapping the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -102649,7 +102650,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the delivery fee text overlapping the delivery time text under the restaurant title.",
+          "reasoning": "Both report the delivery fee text overlapping the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -102687,7 +102688,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the exact same overlap between the delivery fee text and delivery time text.",
+          "reasoning": "Both report the delivery fee text overlapping the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -103204,7 +103205,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the iOS home indicator/gesture bar overlapping the bottom navigation bar icons.",
+          "reasoning": "Report 0 describes the iOS home indicator bar overlapping and obscuring the bottom navigation bar icons, matching the reported layout issue.",
           "overridden": false
         }
       ],
@@ -103257,7 +103258,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the gesture/home indicator bar overlapping the bottom navigation icons due to incorrect safe area insets.",
+          "reasoning": "Report 0 accurately describes the dark horizontal bar misplaced and overlapping the bottom navigation icons.",
           "overridden": false
         }
       ],
@@ -103304,7 +103305,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the gesture bar/home indicator overlapping the bottom navigation bar icons.",
+          "reasoning": "Both report the horizontal bar (device home indicator) overlapping and obscuring the bottom navigation bar icons.",
           "overridden": false
         }
       ],
@@ -103356,7 +103357,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 directly describes the device home indicator overlapping and obscuring the bottom navigation bar icons.",
+          "reasoning": "Reported issue 0 describes the device home indicator (black horizontal bar) overlapping and obscuring the bottom navigation bar icons.",
           "overridden": false
         }
       ],
@@ -103404,7 +103405,7 @@
             0,
             1
           ],
-          "reasoning": "Both reported issues describe the gesture bar/home indicator overlapping the bottom navigation icons.",
+          "reasoning": "Both reported issues describe the horizontal gesture/home indicator bar overlapping the icons in the bottom navigation bar.",
           "overridden": false
         }
       ],
@@ -106957,7 +106958,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time text overlapping with the delivery text/fee on the restaurant card.",
+          "reasoning": "Both report the overlap between the delivery time text and delivery text on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -107008,7 +107009,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the delivery time text overlapping with the delivery fee text ('delivery').",
+          "reasoning": "Reported issue 0 describes the delivery time text overlapping with the delivery text on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -107060,7 +107061,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the delivery time text overlapping with the delivery fee text ('delivery') on the restaurant card.",
+          "reasoning": "Reported issue 0 describes the delivery time text overlapping with the delivery text on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -107118,7 +107119,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the text overlap between the delivery time ('25–30') and delivery text causing garbled text.",
+          "reasoning": "Reported issue 0 identifies the overlapping text defect on the delivery info line of the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -107177,7 +107178,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the text overlap in the delivery info line on the card where the fee and time collide.",
+          "reasoning": "Reported issue 0 describes overlapping delivery text on the Tokumaru Ramen Bar card that creates garbled characters.",
           "overridden": false
         }
       ],
@@ -107720,7 +107721,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "None of the reported issues mention the bottom navigation bar cutoff or gesture bar overlap.",
+          "reasoning": "None of the reported issues describe the bottom navigation bar cutoff or overlapping horizontal bar.",
           "overridden": false
         }
       ],
@@ -107764,7 +107765,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "None of the reported issues mention the bottom navigation bar labels being cut off or overlapped by the gesture bar.",
+          "reasoning": "None of the reported issues describe the bottom navigation labels being cut off or obscured by a black horizontal bar.",
           "overridden": false
         }
       ],
@@ -107808,7 +107809,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Neither reported issue mentions the bottom navigation bar cutoff or gesture bar overlap.",
+          "reasoning": "None of the reported issues describe the bottom navigation bar cutoff or overlap issue.",
           "overridden": false
         }
       ],
@@ -107852,7 +107853,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "None of the reported issues mention the bottom navigation labels being cut off or overlapped by the gesture bar.",
+          "reasoning": "None of the reported issues describe the bottom nav labels being cut off or overlapped by a black bar.",
           "overridden": false
         }
       ],
@@ -107896,7 +107897,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "None of the reported issues mention the bottom navigation bar cutoff or gesture bar overlap.",
+          "reasoning": "None of the reported issues describe the bottom navigation bar clipping or black bar overlap.",
           "overridden": false
         }
       ],
@@ -110894,7 +110895,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time text overlapping with the delivery fee text on the card.",
+          "reasoning": "Reported issue 0 describes the delivery-time text overlapping the delivery text on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -110934,7 +110935,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the overlap between the delivery time text and the delivery fee text.",
+          "reasoning": "Reported issue 0 accurately describes the delivery time text overlapping with delivery text on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -110978,7 +110979,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the overlapping text defect involving the delivery time and delivery text.",
+          "reasoning": "Both describe the text overlap involving the delivery time and delivery fee text on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -111024,7 +111025,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the text collision where 'delivery' overlaps the delivery time range ('25-30').",
+          "reasoning": "Both describe the delivery fee text overlapping the delivery time text on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -111070,7 +111071,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the text overlapping defect involving the delivery time text on the restaurant card.",
+          "reasoning": "Both report an overlap involving the delivery time and delivery text on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -111488,7 +111489,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue discusses text truncation in the restaurant carousel, whereas the expected defect describes bottom nav cutoff and gesture bar overlap.",
+          "reasoning": "The reported issue concerns truncated restaurant text in a content row, not the bottom navigation bar cutoff.",
           "overridden": false
         }
       ],
@@ -111526,7 +111527,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue discusses text truncation in a restaurant row, not the bottom navigation bar cutoff.",
+          "reasoning": "The reported issue describes truncation of a restaurant title in a carousel, not the bottom navigation cutoff and overlapping bar.",
           "overridden": false
         }
       ],
@@ -111564,7 +111565,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue is about a truncated restaurant card title, not the bottom navigation labels and gesture bar overlap.",
+          "reasoning": "The reported issue is about a truncated restaurant card title, not the bottom navigation bar or its overlapping black bar.",
           "overridden": false
         }
       ],
@@ -111602,7 +111603,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue describes a restaurant card title truncated at the right edge, not the bottom navigation bar cutoff or gesture bar overlap.",
+          "reasoning": "The reported issue discusses restaurant card titles cut off on the right, not bottom navigation labels cut off at the bottom with a black bar overlapping icons.",
           "overridden": false
         }
       ],
@@ -111646,7 +111647,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "None of the reported issues describe the bottom navigation bar cutoff or gesture bar overlap.",
+          "reasoning": "None of the reported issues describe the bottom navigation cutoff or overlapping black bar.",
           "overridden": false
         }
       ],
@@ -114263,7 +114264,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue specifically describes the delivery time text ('25-30') colliding with and overlapping the delivery fee text.",
+          "reasoning": "Reported issue 0 accurately describes the delivery fee and time text overlapping beneath Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -114301,7 +114302,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes delivery time ('25–30 min') overlapping with delivery text on the metadata line, which matches the expected defect.",
+          "reasoning": "Both describe the delivery time text overlapping with the delivery/fee text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -114339,7 +114340,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue describes the delivery time range ('25-30') and the delivery fee/label ('delivery') colliding into each other, matching the expected overlap.",
+          "reasoning": "Both describe the delivery time and delivery text colliding or overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -114377,7 +114378,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time text ('25-30 min') overlapping with the delivery text/fee line under the restaurant item.",
+          "reasoning": "Both describe the delivery time and delivery subtitle text overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -114415,7 +114416,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the delivery time text overlapping/colliding with the delivery fee text.",
+          "reasoning": "Both describe the delivery fee text overlapping the delivery time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -114770,7 +114771,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue describes the gesture bar overlapping the bottom navigation area, mistaking it for a misplaced tab indicator artifact.",
+          "reasoning": "Both describe the abnormal dark horizontal bar rendering across the bottom navigation bar.",
           "overridden": false
         }
       ],
@@ -114837,7 +114838,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported stray horizontal gray line overlapping bottom nav icons describes the system gesture bar overlapping the icons due to improper bottom safe-area insets.",
+          "reasoning": "Both report an unintended horizontal bar or line overlapping the bottom navigation icons.",
           "overridden": false
         }
       ],
@@ -114871,15 +114872,15 @@
       "expected": [
         {
           "expectedIndex": 0,
-          "found": false,
-          "matchedReportedIndexes": [],
-          "reasoning": "The reported issue misidentifies the gesture bar as a tab selection indicator and reports conflicting active-state cues rather than labels cut off by the screen edge.",
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Both describe the dark horizontal bar misplaced over/within the bottom navigation bar icons.",
           "overridden": false
         }
       ],
-      "extraReportedIndexes": [
-        0
-      ],
+      "extraReportedIndexes": [],
       "overridden": false,
       "usage": {
         "inputTokens": 1997,
@@ -114913,7 +114914,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the system gesture bar/indicator inappropriately positioned and overlapping the bottom navigation icons.",
+          "reasoning": "Both describe a thick dark horizontal bar improperly overlapping the bottom navigation bar icons.",
           "overridden": false
         }
       ],
@@ -117564,7 +117565,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report overlapping text involving the delivery time and delivery fee/text element.",
+          "reasoning": "Both report overlapping text between the delivery time ('25-30 min delivery') and delivery fee text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -117602,7 +117603,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the overlap of metadata text elements under the restaurant item, specifically involving delivery time and delivery information.",
+          "reasoning": "Both report overlapping text elements including delivery time and delivery info under the Tokumaru Ramen Bar entry.",
           "overridden": false
         }
       ],
@@ -117640,7 +117641,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee text ('Free delivery') overlapping with the delivery time text.",
+          "reasoning": "Both describe the delivery fee text overlapping with the delivery time text on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -117678,7 +117679,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery time text overlapping an adjacent delivery-related text on the restaurant card.",
+          "reasoning": "Both describe a text overlap involving the delivery time on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -117716,7 +117717,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the delivery fee text overlapping with the delivery time text.",
+          "reasoning": "Both report the delivery fee text overlapping the delivery time text under the Tokumaru Ramen Bar entry.",
           "overridden": false
         }
       ],
@@ -118128,7 +118129,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the bottom navigation bar overlapping with a horizontal line (gesture bar) and clipping at the bottom edge of the viewport.",
+          "reasoning": "Both report the dark horizontal bar overlapping bottom navigation icons and clipping at the bottom edge of the screen.",
           "overridden": false
         }
       ],
@@ -118166,7 +118167,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the bottom navigation bar elements being cut off/obscured by the gesture bar at the bottom of the screen.",
+          "reasoning": "Both describe the bottom navigation elements being cut off or overlapped by a black bar/line at the bottom edge.",
           "overridden": false
         }
       ],
@@ -118202,7 +118203,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "The reported issue describes an icon styling inconsistency on the search icon rather than the bottom nav labels being cut off and the gesture bar overlapping the navigation bar.",
+          "reasoning": "The reported issue describes a styling line behind a single icon, missing the cut-off labels and general overlapping bar across the navigation bar.",
           "overridden": false
         }
       ],
@@ -118246,7 +118247,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue 1 describes horizontal icon overlap between the shopping bag and search icons rather than the gesture bar overlap and labels being cut off at the bottom screen edge.",
+          "reasoning": "None of the reported issues mention the bottom nav labels being cut off at the screen edge or overlapped by a black horizontal bar.",
           "overridden": false
         }
       ],
@@ -120971,7 +120972,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe text overlapping the delivery time text on the restaurant card metadata, though the overlapping element is identified differently.",
+          "reasoning": "Both describe a layout overlap defect affecting the delivery time text on the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -121005,15 +121006,15 @@
       "expected": [
         {
           "expectedIndex": 0,
-          "found": false,
-          "matchedReportedIndexes": [],
-          "reasoning": "The reported issue describes an overlap between the delivery info line and the rating, whereas the expected defect is an overlap between the delivery fee and delivery time.",
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Both describe overlapping text elements within the metadata section under the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
-      "extraReportedIndexes": [
-        0
-      ],
+      "extraReportedIndexes": [],
       "overridden": false,
       "usage": {
         "inputTokens": 1882,
@@ -121047,7 +121048,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue describes the delivery fee ('€0 delivery') overlapping with the delivery time ('25–30').",
+          "reasoning": "Reported issue 0 describes the delivery time ('25–30') and delivery fee ('€0 delivery') overlapping in the Tokumaru Ramen Bar card.",
           "overridden": false
         }
       ],
@@ -121085,7 +121086,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The reported issue specifically describes the delivery fee and delivery time texts overlapping each other.",
+          "reasoning": "Both describe the delivery fee and delivery time texts overlapping under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -121123,7 +121124,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe an overlap layout defect affecting the delivery time text on the restaurant card.",
+          "reasoning": "Both report an overlapping text defect on the Tokumaru Ramen Bar card involving the delivery time text.",
           "overridden": false
         }
       ],
@@ -121536,7 +121537,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the bottom gesture/home-indicator bar overlapping the bottom navigation icons due to safe area layout issues.",
+          "reasoning": "Both describe the horizontal home-indicator bar overlapping the bottom navigation icons.",
           "overridden": false
         }
       ],
@@ -121580,7 +121581,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the gesture bar overlapping the bottom nav icon, mistaking the system gesture bar for an odd dark horizontal bar on the tab.",
+          "reasoning": "Reported issue 0 describes the black horizontal bar overlapping the middle navigation icon, which is part of the same underlying bottom nav layout defect.",
           "overridden": false
         }
       ],
@@ -121626,7 +121627,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the gesture bar/dark bar overlapping the icons in the bottom navigation bar.",
+          "reasoning": "Reported issue 0 describes a horizontal dark bar overlapping the bottom navigation bar icons, matching the expected defect.",
           "overridden": false
         }
       ],
@@ -121666,7 +121667,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both report the system gesture bar overlapping icons in the bottom navigation bar.",
+          "reasoning": "Both report the black horizontal bar/system gesture indicator overlapping icons in the bottom navigation bar.",
           "overridden": false
         }
       ],
@@ -121704,7 +121705,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the gesture/home-indicator bar overlapping the bottom navigation icons due to missing bottom safe area padding.",
+          "reasoning": "Both describe the horizontal black bar/system home indicator overlapping the bottom navigation icons at the bottom of the screen.",
           "overridden": false
         }
       ],

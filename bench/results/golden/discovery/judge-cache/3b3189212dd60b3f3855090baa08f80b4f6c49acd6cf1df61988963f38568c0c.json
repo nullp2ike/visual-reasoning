@@ -1,0 +1,28 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "A thick black horizontal line stretches across the middle of the bottom navigation bar, running through the search icon and the orders/receipt icon. It looks like a rendering artifact or a misplaced divider/scrollbar element rather than an intended design.",
+    "The bottom navigation bar is vertically clipped: the home, search, orders, and profile icons are cut off at the bottom of the screen and any labels are not visible. A fixed navigation bar should always be fully visible.",
+    "The two bottom-nav icons on the right (orders and profile) appear noticeably lighter/faded compared to the home icon, and there is no clear active-state indication beyond color, which is subtle."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          1
+        ],
+        "reasoning": "Reported issue 0 covers the black horizontal bar overlapping bottom nav icons, while reported issue 1 covers the bottom nav labels and icons being clipped off at the bottom of the screen."
+      }
+    ],
+    "extraReportedIndexes": [
+      2
+    ]
+  }
+}

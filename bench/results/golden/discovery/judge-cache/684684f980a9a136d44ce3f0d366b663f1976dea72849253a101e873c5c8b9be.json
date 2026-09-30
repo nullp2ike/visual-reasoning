@@ -1,0 +1,26 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Tokumaru Ramen Bar Delivery fee text overlaps the delivery time text"
+  ],
+  "reportedIssues": [
+    "Under the 'Tokumaru Ramen Bar' title, the delivery time text ('25–30 min') and the delivery fee text ('€0 delivery') overlap each other, producing garbled, unreadable text (e.g. '25–3€0 delivery' with strikethrough-like collision).",
+    "The overlapping meta line also duplicates delivery information already shown as a badge on the card image ('€0 delivery'), which can look redundant once the overlap is fixed."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 accurately describes the delivery fee text overlapping the delivery time text under Tokumaru Ramen Bar."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ]
+  }
+}

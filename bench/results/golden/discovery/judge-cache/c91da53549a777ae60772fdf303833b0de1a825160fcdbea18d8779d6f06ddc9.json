@@ -1,0 +1,48 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The device home indicator (horizontal black bar) is rendered overlapping the bottom navigation bar, sitting on top of the search and bookmark/order icons and obscuring them.",
+    "Bottom navigation icons (home, search, orders, profile) have no text labels and the inactive icons are low-contrast gray, making them hard to identify, especially with the home indicator overlapping.",
+    "Secondary metadata text such as '€0.90 delivery' and '25–35 min • €0 delivery • Ramen' uses a light gray on the off-white background, resulting in borderline low contrast."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=0.96, confidence 0.92)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.96,
+        "confidence": 0.92
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.91,
+        "confidence": 0.83
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

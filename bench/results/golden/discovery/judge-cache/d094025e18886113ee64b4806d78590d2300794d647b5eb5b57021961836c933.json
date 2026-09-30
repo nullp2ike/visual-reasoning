@@ -1,0 +1,31 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Tokumaru Ramen Bar Delivery fee text overlaps the delivery time text"
+  ],
+  "reportedIssues": [
+    "In the 'Popular right now' section, the line beneath 'Tokumaru Ramen Bar' renders with colliding text — '25-30' overlaps 'delivery', appearing as '25-30delivery · Ramen'. The delivery time and fee run into each other so the information cannot be read."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=0.96, confidence 0.92)."
+      }
+    ],
+    "extraReportedIndexes": [],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.96,
+        "confidence": 0.92
+      }
+    ]
+  }
+}

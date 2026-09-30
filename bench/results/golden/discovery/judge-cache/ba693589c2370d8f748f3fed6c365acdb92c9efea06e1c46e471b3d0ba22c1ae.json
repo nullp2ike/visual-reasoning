@@ -1,0 +1,39 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "A thick black horizontal bar/line stretches across the bottom navigation between the search icon and the orders (receipt) icon, overlapping both icons. It looks like a rendering artifact or misplaced element (e.g., an iOS home-indicator bar or divider rendered in the wrong position), making the tab bar look broken.",
+    "The bottom navigation icons (home, search, orders, profile) are vertically clipped — the lower portions of the icons are cut off, and there is no visible padding or labels beneath them."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          1
+        ],
+        "reasoning": "Jev matched R0 (p=0.95, confidence 0.90)."
+      }
+    ],
+    "extraReportedIndexes": [],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.95,
+        "confidence": 0.9
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.93,
+        "confidence": 0.86
+      }
+    ]
+  }
+}

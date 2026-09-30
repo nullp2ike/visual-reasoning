@@ -1,0 +1,48 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "A dark horizontal bar overlaps the search and orders (receipt) icons in the bottom navigation bar, partially covering them. It appears the system gesture/home indicator is drawn on top of the tab bar content rather than the bar being inset below it, or a stray element is rendering over the nav.",
+    "Bottom navigation tabs are icon-only with no text labels, and the icons are cut off close to the screen edge, making the destinations less clear.",
+    "The second 'Popular right now' card (pizza, -20%) shows the image only; its title, rating, and delivery info are not visible before the nav bar, so the card reads as incomplete at the current scroll position."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          1
+        ],
+        "reasoning": "Jev matched R0 (p=0.94, confidence 0.89)."
+      }
+    ],
+    "extraReportedIndexes": [
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.94,
+        "confidence": 0.89
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.58,
+        "confidence": 0.17
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.94,
+        "confidence": 0.88
+      }
+    ]
+  }
+}

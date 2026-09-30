@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "A stray horizontal black line/bar stretches across the bottom navigation, cutting through the search (magnifier) and orders (receipt) icons. It looks like a misplaced divider, progress bar, or home-indicator element rendered at the wrong position, obscuring the tab icons.",
+    "Bottom navigation icons have no text labels and no visible active-state indicator besides the green home icon color, which may be ambiguous for users and low-vision accessibility."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the black horizontal bar overlapping the bottom navigation icons, though it does not mention the cut-off labels."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.95,
+        "confidence": 0.92
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.97,
+        "confidence": 0.9
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Tokumaru Ramen Bar Delivery fee text overlaps the delivery time text"
+  ],
+  "reportedIssues": [
+    "In the Tokumaru Ramen Bar card, the metadata line has two text strings rendered on top of each other. The delivery time ('25–35 min') overlaps the delivery fee ('€0 delivery'), so both are garbled and unreadable. This is inconsistent with the clean layout of the other cards.",
+    "The secondary gray text ('€0.90 delivery', the metadata line, and the '(500+)' rating count) is light gray on white and has low contrast. The white time pills over the light Green Bowl Poké image also blend in with the background.",
+    "The '15–25 min' badge on the Green Bowl Poké card overlaps the edge of the plate illustration, and the overlay badges are placed inconsistently relative to the images. The heart icon on the second popular card is also low-contrast against the brown background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.93,
+        "confidence": 0.86
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "In the bottom navigation bar, a dark horizontal pill/bar (likely a selected-tab indicator or home-indicator overlay) is drawn across the middle of the bar, overlapping the search icon and the bookmark/orders icon instead of being positioned beneath the active tab or at the screen's bottom edge.",
+    "Bottom navigation icons (home, search, orders/bookmark, profile) have no text labels, relying on iconography alone, which can hurt discoverability and screen-reader clarity if labels are missing entirely.",
+    "The notification bell button in the top-right shows a red dot badge, but the bell icon itself is low-contrast dark-on-light gray circle; combined with the subtle badge it may be missed, and the badge has no count."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the same dark bar overlapping bottom navigation icons, though it does not mention the cut-off labels."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.98,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.98,
+        "confidence": 0.95
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The device home indicator (horizontal gesture bar) is rendered on top of the bottom tab bar, crossing through the search and orders/bookmarks icons and obscuring them.",
+    "The favorite (heart) buttons on the restaurant cards are icon-only dark circles with no visible label, which is unclear for screen-reader and first-time users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the bottom gesture bar overlapping and obscuring the bottom navigation icons, matching the stated bottom-edge overlap defect."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.98,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.99
+      }
+    ]
+  }
+}

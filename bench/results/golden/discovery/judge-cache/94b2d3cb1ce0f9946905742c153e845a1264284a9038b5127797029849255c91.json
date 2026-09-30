@@ -1,0 +1,40 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "Some secondary text such as search placeholder text and gray delivery-time/metadata labels appears relatively low-contrast against white/light backgrounds.",
+    "Bottom navigation icons look slightly crowded around the search/cart area, with a dark horizontal stroke visually connecting or cluttering those icons."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          1
+        ],
+        "reasoning": "Reported issue 1 describes the same bottom-navigation area being cluttered by a dark horizontal stroke overlapping the icons, though it omits the cut-off labels."
+      }
+    ],
+    "extraReportedIndexes": [
+      0
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.8,
+        "confidence": 0.78
+      },
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.99
+      }
+    ]
+  }
+}

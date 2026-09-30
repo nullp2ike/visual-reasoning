@@ -55,7 +55,7 @@ bullet is a clean control, where anything reported counts as a false positive.
 
 ## 12_overlapping_elements.png
 
-- Delivery fee text overlaps the delivery time text
+- Tokumaru Ramen Bar Delivery fee text overlaps the delivery time text
 
 ## 13_orphaned_notification_badge.png
 
@@ -67,7 +67,7 @@ bullet is a clean control, where anything reported counts as a false positive.
 
 ## 15_safe_area_violation.png
 
-- Bottom nav labels are cut off below the screen edge and the gesture bar overlaps the icons
+- Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons
 
 ## 16_filter_content_mismatch.png
 

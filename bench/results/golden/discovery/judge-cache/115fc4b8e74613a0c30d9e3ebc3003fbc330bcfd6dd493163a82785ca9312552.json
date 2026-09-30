@@ -1,0 +1,56 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The second 'Popular right now' card (pizza image with a -20% badge) has no title, rating, delivery time, or cuisine info row beneath it, unlike the Tokumaru Ramen Bar card above it. The card is effectively unidentifiable.",
+    "In the bottom tab bar, the middle item's icon appears broken: a magnifier glyph is fused with a long horizontal bar that stretches across the bar and overlaps the bookmark-like icon to its right, producing a distorted, unreadable control.",
+    "Bottom navigation items have no text labels, relying solely on icons (one of which is visually broken), which harms clarity and screen-reader/tap-target comprehension.",
+    "Favorite (heart) buttons are inconsistently styled between the two popular cards: the first uses a white circular background with dark outline, the second uses a dark/transparent circle with a white outline."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          1
+        ],
+        "reasoning": "Jev matched R1 (p=0.74, confidence 0.49)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.74,
+        "confidence": 0.49
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.51,
+        "confidence": 0.02
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

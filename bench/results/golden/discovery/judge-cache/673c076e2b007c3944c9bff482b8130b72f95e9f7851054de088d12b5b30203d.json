@@ -1,0 +1,25 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "A thick black horizontal bar/line stretches across the bottom navigation between the search icon and the orders (receipt) icon, overlapping both icons. It looks like a rendering artifact or misplaced element (e.g., an iOS home-indicator bar or divider rendered in the wrong position), making the tab bar look broken.",
+    "The bottom navigation icons (home, search, orders, profile) are vertically clipped — the lower portions of the icons are cut off, and there is no visible padding or labels beneath them."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          1
+        ],
+        "reasoning": "The reported issues split the defect into two reports: issue 0 reports the black horizontal bar overlapping the bottom navigation icons, and issue 1 reports the labels/icons being cut off at the bottom edge."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}
