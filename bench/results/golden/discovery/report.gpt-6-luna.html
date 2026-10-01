@@ -9,6 +9,10 @@
   body { font: 14px/1.5 -apple-system, "Segoe UI", Roboto, sans-serif; margin: 0; color: #111827; background: #fafafa; }
   main { max-width: 1400px; margin: 0 auto; padding: 24px; }
   h1 { font-size: 22px; } h2 { font-size: 18px; margin-top: 32px; } h3 { font-size: 15px; }
+  #about { max-width: 900px; }
+  #about p { margin: 8px 0; }
+  #about ul { margin: 8px 0; padding-left: 20px; }
+  #about code { background: #eef2ff; padding: 1px 4px; border-radius: 3px; }
   .prompt-hero { background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 8px; padding: 14px 18px; margin: 12px 0 8px; }
   .prompt-hero .prompt-text { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 16px; white-space: pre-wrap; }
   .judge-badge { display: inline-block; background: #1e3a8a; color: #fff; border-radius: 6px; padding: 3px 10px; font-size: 13px; margin-top: 8px; }
@@ -111,6 +115,8 @@
 <body>
 <main>
   <h1>Defect discovery benchmark</h1>
+  <section id="about">
+  <p>Can a vision model spot what is visually broken in an app screenshot without being told what to look for? This benchmark shows 18 screenshots (17 with seeded defects and 1 clean control) to each of 37 models, 5 times each, and asks every time:</p>
   <div class="prompt-hero">
     <div class="prompt-text">&#8220;What looks visually broken on this page?
 
@@ -120,16 +126,24 @@ Do not report the following (treat these as features, not defects):
     <span class="judge-badge">Judge: gpt-6-luna · v1</span>
     <span class="sibling-links">Other judges: <a href="report.gemini-3.8-flash.html">gemini-3.8-flash</a> · <a href="report.gpt-5.6-luna.html">gpt-5.6-luna</a> · <a href="report.meta__muse-spark-1.3-contributor.html">meta/muse-spark-1.3-contributor</a> · <a href="report.typesafe__jev-1.13.html">typesafe/jev-1.13</a> · <a href="comparison.html">comparison</a></span>
   </div>
+  <p>Each model answers with a list of issues in its own words. It never sees the file names or the defects it is expected to find. A text-only judge, <code>gpt-6-luna</code> on this page, then reads each answer next to the screenshot's known defect and decides whether any reported issue describes it. A reported issue that matches no known defect counts as an <em>extra</em>, and on a clean control everything reported is an extra.</p>
+  <ul>
+    <li><strong>Recall</strong>: the share of known defects a model finds, averaged over its reps. The leaderboard ranks by it, then by fewest extras.</li>
+    <li><strong>Extras/run</strong>: reported issues that match no known defect. Lower is better.</li>
+    <li><strong>Flakiness</strong>: defects a model finds in some reps of a screenshot but not others.</li>
+  </ul>
+  <p class="meta">Other judges grade the same answers. Their reports, and where they disagree, are linked beside the judge above.</p>
+</section>
   <div class="meta" id="meta"></div>
-  <h2>Screenshot × model matrix</h2>
-  <p class="meta">Cells = reps where the judge matched every expected issue ("clean n/m" on negative controls; † = failed reps excluded). Click a cell to expand that model's reported issues per rep, with judge-matched issues highlighted.</p>
   <details id="model-filter" class="model-filter"><summary></summary><div class="mf-panel"><div class="mf-actions"></div><div class="mf-list"></div></div></details>
   <div id="effort-filter" class="effort-filter"></div>
-  <div style="overflow-x:auto"><table id="matrix"><thead></thead><tbody></tbody></table></div>
   <h2>Leaderboard</h2>
-  <p class="meta">Click a column header to sort (hover a header for its definition); click a row to inspect a model. Flakiness = expected issues found in some reps but not others of the same screenshot. Extras/run = reported issues the judge matched to no expected issue (noise) — lower is better.</p>
+  <p class="meta">Click a column header to sort (hover a header for its definition); click a row to inspect a model. Recall is shaded from red (0%) to green (100%). Flakiness = expected issues found in some reps but not others of the same screenshot. Extras/run = reported issues the judge matched to no expected issue (noise) — lower is better.</p>
   <div style="overflow-x:auto"><table id="leaderboard"><thead></thead><tbody></tbody></table></div>
   <div id="detail"></div>
+  <h2>Screenshot × model matrix</h2>
+  <p class="meta">Cells = reps where the judge matched every expected issue ("clean n/m" on negative controls; † = failed reps excluded). Click a cell to expand that model's reported issues per rep, with judge-matched issues highlighted.</p>
+  <div style="overflow-x:auto"><table id="matrix"><thead></thead><tbody></tbody></table></div>
   <section id="confidence">
   <h2>Judge confidence</h2>
   <p class="meta">gpt-6-luna classifies each reported issue as matching an expected defect or as an extra, with a calibrated confidence. 4 of 2299 judged runs have a decision below confidence 0.80: those verdicts are the ones worth checking by hand. Click a row to open that cell in the matrix.</p>
@@ -522,9 +536,18 @@ const COLUMNS = [
 ];
 let sortKey = "meanRecall", sortDir = -1, selectedModel = null;
 
+// Recall shaded from red (0%) through yellow to green (100%), on a light
+// background so the figure stays readable.
+function recallColor(v) {
+  if (v === null || v === undefined) return "";
+  return "background:hsl(" + Math.round(120 * Math.max(0, Math.min(1, v))) + ",70%,84%)";
+}
 function leaderboardRow(m) {
-  const cells = COLUMNS.map(([key, , get, render]) =>
-    "<td" + (key === "failedRuns" && m.failedRuns ? ' class="errcell"' : "") + ">" + render(get(m)) + "</td>").join("");
+  const cells = COLUMNS.map(([key, , get, render]) => {
+    const style = key === "meanRecall" ? recallColor(m.meanRecall) : "";
+    return "<td" + (key === "failedRuns" && m.failedRuns ? ' class="errcell"' : "") +
+      (style ? ' style="' + style + '"' : "") + ">" + render(get(m)) + "</td>";
+  }).join("");
   return '<tr data-model="' + esc(m.series) + '"' + (m.series === selectedModel ? ' class="selected"' : "") + ">" + cells + "</tr>";
 }
 

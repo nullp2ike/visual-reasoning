@@ -45,6 +45,39 @@ function confidenceSectionHtml(scores: Scores): string {
 </section>`;
 }
 
+const plural = (n: number, word: string): string => `${n} ${word}${n === 1 ? "" : "s"}`;
+
+/**
+ * "What this benchmark measures": a plain-language account of the run, with
+ * the counts taken from the data so it stays true for any dataset. The prompt
+ * hero sits inside it, right where the text says what the models are asked.
+ */
+function aboutSectionHtml(scores: Scores, manifest: Manifest, promptHeroHtml: string): string {
+  const screenshots = manifest.entries.length;
+  const controls = manifest.entries.filter((e) => e.expectedIssues.length === 0).length;
+  const defective = screenshots - controls;
+  const composition = [
+    defective > 0
+      ? `${defective} with ${defective === 1 ? "a seeded defect" : "seeded defects"}`
+      : "",
+    controls > 0 ? plural(controls, "clean control") : "",
+  ]
+    .filter(Boolean)
+    .join(" and ");
+  const judge = escapeHtml(scores.judgeModel);
+  return `<section id="about">
+  <p>Can a vision model spot what is visually broken in an app screenshot without being told what to look for? This benchmark shows ${plural(screenshots, "screenshot")}${composition ? ` (${composition})` : ""} to ${scores.models.length === 1 ? "1 model" : `each of ${scores.models.length} models`}, ${scores.repeats} times each, and asks every time:</p>
+  ${promptHeroHtml}
+  <p>Each model answers with a list of issues in its own words. It never sees the file names or the defects it is expected to find. A text-only judge, <code>${judge}</code> on this page, then reads each answer next to the screenshot's known defect and decides whether any reported issue describes it. A reported issue that matches no known defect counts as an <em>extra</em>, and on a clean control everything reported is an extra.</p>
+  <ul>
+    <li><strong>Recall</strong>: the share of known defects a model finds, averaged over its reps. The leaderboard ranks by it, then by fewest extras.</li>
+    <li><strong>Extras/run</strong>: reported issues that match no known defect. Lower is better.</li>
+    <li><strong>Flakiness</strong>: defects a model finds in some reps of a screenshot but not others.</li>
+  </ul>
+  <p class="meta">Other judges grade the same answers. Their reports, and where they disagree, are linked beside the judge above.</p>
+</section>`;
+}
+
 export interface ReportHtmlOptions {
   /** Other judges with a report beside this one, linked as `report.<judge>.html`. */
   siblingJudges?: readonly string[];
@@ -125,6 +158,10 @@ export function buildReportHtml(
   body { font: 14px/1.5 -apple-system, "Segoe UI", Roboto, sans-serif; margin: 0; color: #111827; background: #fafafa; }
   main { max-width: 1400px; margin: 0 auto; padding: 24px; }
   h1 { font-size: 22px; } h2 { font-size: 18px; margin-top: 32px; } h3 { font-size: 15px; }
+  #about { max-width: 900px; }
+  #about p { margin: 8px 0; }
+  #about ul { margin: 8px 0; padding-left: 20px; }
+  #about code { background: #eef2ff; padding: 1px 4px; border-radius: 3px; }
   .prompt-hero { background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 8px; padding: 14px 18px; margin: 12px 0 8px; }
   .prompt-hero .prompt-text { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 16px; white-space: pre-wrap; }
   .judge-badge { display: inline-block; background: #1e3a8a; color: #fff; border-radius: 6px; padding: 3px 10px; font-size: 13px; margin-top: 8px; }
@@ -214,21 +251,25 @@ ${MODEL_FILTER_CSS}  .effort-filter { display: flex; flex-wrap: wrap; align-item
 <body${readOnly ? ' class="read-only"' : ""}>
 <main>
   <h1>Defect discovery benchmark</h1>
-  <div class="prompt-hero">
+  ${aboutSectionHtml(
+    scores,
+    manifest,
+    `<div class="prompt-hero">
     <div class="prompt-text">&#8220;${escapeHtml(scores.prompt)}&#8221;</div>
     <span class="judge-badge">Judge: ${escapeHtml(scores.judgeModel)} · ${escapeHtml(scores.judgePromptVersion)}</span>
     <span class="sibling-links">${siblingLinksHtml}</span>
-  </div>
+  </div>`,
+  )}
   <div class="meta" id="meta"></div>
-  <h2>Screenshot × model matrix</h2>
-  <p class="meta">Cells = reps where the judge matched every expected issue ("clean n/m" on negative controls; † = failed reps excluded). Click a cell to expand that model's reported issues per rep, with judge-matched issues highlighted.</p>
   ${MODEL_FILTER_MARKUP}
   <div id="effort-filter" class="effort-filter"></div>
-  <div style="overflow-x:auto"><table id="matrix"><thead></thead><tbody></tbody></table></div>
   <h2>Leaderboard</h2>
-  <p class="meta">Click a column header to sort (hover a header for its definition); click a row to inspect a model. Flakiness = expected issues found in some reps but not others of the same screenshot. Extras/run = reported issues the judge matched to no expected issue (noise) — lower is better.</p>
+  <p class="meta">Click a column header to sort (hover a header for its definition); click a row to inspect a model. Recall is shaded from red (0%) to green (100%). Flakiness = expected issues found in some reps but not others of the same screenshot. Extras/run = reported issues the judge matched to no expected issue (noise) — lower is better.</p>
   <div style="overflow-x:auto"><table id="leaderboard"><thead></thead><tbody></tbody></table></div>
   <div id="detail"></div>
+  <h2>Screenshot × model matrix</h2>
+  <p class="meta">Cells = reps where the judge matched every expected issue ("clean n/m" on negative controls; † = failed reps excluded). Click a cell to expand that model's reported issues per rep, with judge-matched issues highlighted.</p>
+  <div style="overflow-x:auto"><table id="matrix"><thead></thead><tbody></tbody></table></div>
   ${confidenceSectionHtml(scores)}
 </main>
 ${
@@ -553,9 +594,18 @@ const COLUMNS = [
 ];
 let sortKey = "meanRecall", sortDir = -1, selectedModel = null;
 
+// Recall shaded from red (0%) through yellow to green (100%), on a light
+// background so the figure stays readable.
+function recallColor(v) {
+  if (v === null || v === undefined) return "";
+  return "background:hsl(" + Math.round(120 * Math.max(0, Math.min(1, v))) + ",70%,84%)";
+}
 function leaderboardRow(m) {
-  const cells = COLUMNS.map(([key, , get, render]) =>
-    "<td" + (key === "failedRuns" && m.failedRuns ? ' class="errcell"' : "") + ">" + render(get(m)) + "</td>").join("");
+  const cells = COLUMNS.map(([key, , get, render]) => {
+    const style = key === "meanRecall" ? recallColor(m.meanRecall) : "";
+    return "<td" + (key === "failedRuns" && m.failedRuns ? ' class="errcell"' : "") +
+      (style ? ' style="' + style + '"' : "") + ">" + render(get(m)) + "</td>";
+  }).join("");
   return '<tr data-model="' + esc(m.series) + '"' + (m.series === selectedModel ? ' class="selected"' : "") + ">" + cells + "</tr>";
 }
 

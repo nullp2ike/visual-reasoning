@@ -296,6 +296,40 @@ describe("buildReportHtml", () => {
     expect(html).toContain('"defaultSeries":null');
   });
 
+  it("explains the benchmark first, then the leaderboard, then the matrix", () => {
+    const html = buildReportHtml(scores, manifest, {});
+    const about = html.indexOf('<section id="about">');
+    const filter = html.indexOf('<details id="model-filter"');
+    const leaderboard = html.indexOf("<h2>Leaderboard</h2>");
+    const matrix = html.indexOf("<h2>Screenshot × model matrix</h2>");
+    expect(about).toBeGreaterThan(-1);
+    expect(about).toBeLessThan(filter);
+    expect(filter).toBeLessThan(leaderboard);
+    expect(leaderboard).toBeLessThan(matrix);
+  });
+
+  it("describes the run from the data: screenshots, controls, reps, models and judge", () => {
+    const withControl: typeof manifest = {
+      ...manifest,
+      entries: [
+        ...manifest.entries,
+        { imageId: "img_02", filename: "clean.png", sha256: "s2", expectedIssues: [] },
+      ],
+    };
+    const html = buildReportHtml(scores, withControl, {});
+    const about = html.slice(html.indexOf('<section id="about">'), html.indexOf("</section>"));
+    expect(about).toContain("2 screenshots (1 with a seeded defect and 1 clean control)");
+    expect(about).toContain("to 1 model, 5 times each");
+    expect(about).toContain("<code>gemini-3.8-flash</code>");
+    expect(about).toContain("What looks visually broken on this page?");
+  });
+
+  it("colour-codes the recall column from red to green", () => {
+    const html = buildReportHtml(scores, manifest, {});
+    expect(html).toContain("function recallColor(");
+    expect(() => new Script(inlineScript(html))).not.toThrow();
+  });
+
   it("shows the per-model reasoning effort in the leaderboard column set", () => {
     const html = buildReportHtml(scores, manifest, {});
     expect(html).toContain('"reasoningEffort", "Effort"');
