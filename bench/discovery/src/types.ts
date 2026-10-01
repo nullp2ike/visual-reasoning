@@ -95,6 +95,13 @@ export const JudgeVerdictSchema = z.object({
 });
 export type JudgeVerdict = z.infer<typeof JudgeVerdictSchema>;
 
+/**
+ * What a chat-model judge returns: a verdict without `decisions`. Probabilities
+ * and confidence only come from a decision judge; a chat judge asked for them
+ * would invent the numbers, so its schema (and anything it returns) has none.
+ */
+export const ChatJudgeVerdictSchema = JudgeVerdictSchema.omit({ decisions: true });
+
 export const JudgeCacheEntrySchema = z.object({
   judgeModel: z.string(),
   judgePromptVersion: z.string(),

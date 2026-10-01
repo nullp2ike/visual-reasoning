@@ -1,9 +1,10 @@
-import { mkdtemp, readdir, readFile } from "node:fs/promises";
+import { mkdtemp, readdir, readFile, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it, vi } from "vitest";
 import {
   buildJudgeUserPrompt,
+  chatJudgeJsonSchema,
   judgeCacheKey,
   judgeRun,
   trivialVerdict,
@@ -234,5 +235,45 @@ describe("resolveCell override merge", () => {
     expect(cell.expected).toEqual([]);
     expect(cell.reportedIssues).toEqual([]);
     expect(cell.error?.message).toBe("boom");
+  });
+});
+
+describe("chat judges never carry decisions", () => {
+  // decisions (probability + confidence per reported issue) only come from a
+  // decision judge. A chat judge asked for them would invent the numbers.
+  const fabricated = {
+    ...validVerdict,
+    decisions: [{ reportedIndex: 0, expectedIndex: 0, probability: 0.9, confidence: 0.8 }],
+  };
+
+  it("leaves decisions out of the response schema sent to OpenAI", () => {
+    expect(JSON.stringify(chatJudgeJsonSchema())).not.toContain("decisions");
+    expect(JSON.stringify(chatJudgeJsonSchema())).toContain("extraReportedIndexes");
+  });
+
+  it("drops decisions a chat judge returns anyway", async () => {
+    const cacheDir = await tempCacheDir();
+    const completion = vi.fn().mockResolvedValue(JSON.stringify(fabricated));
+    const verdict = await judgeRun(request, { judgeModel: "gpt-6-luna", cacheDir, completion });
+    expect(verdict.decisions).toBeUndefined();
+    expect(verdict.extraReportedIndexes).toEqual([1]);
+  });
+
+  it("drops decisions from a chat judge's cached verdict", async () => {
+    const cacheDir = await tempCacheDir();
+    await writeFile(
+      join(cacheDir, `${judgeCacheKey(request, "gpt-6-luna")}.json`),
+      JSON.stringify({
+        judgeModel: "gpt-6-luna",
+        judgePromptVersion: "v1",
+        expectedIssues: request.expectedIssues,
+        reportedIssues: request.reportedIssues.map((i) => i.description),
+        verdict: fabricated,
+      }),
+    );
+    const completion = vi.fn();
+    const verdict = await judgeRun(request, { judgeModel: "gpt-6-luna", cacheDir, completion });
+    expect(completion).not.toHaveBeenCalled();
+    expect(verdict.decisions).toBeUndefined();
   });
 });

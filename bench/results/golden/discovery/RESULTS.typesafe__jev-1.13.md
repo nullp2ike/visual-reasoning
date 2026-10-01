@@ -110,19 +110,19 @@ Least confident decisions:
 | Model | Image | Rep | Issue | Decision | p | Confidence | Reported issue |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | gemini-3.1-flash-lite | img_03 | 4 | R0 | extra | 0.50 | 0.00 | The 'Popular right now' section contains a large, empty gra… |
-| gpt-6.1-sol | img_09 | 1 | R0 | E0 | 0.50 | 0.00 | The “Tokumaru Ramen” title under “Popular right now” cuts o… |
+| gpt-6.1-sol | img_09 | 1 | R0 | matches expected defect | 0.50 | 0.00 | The “Tokumaru Ramen” title under “Popular right now” cuts o… |
 | claude-opus-4-8 | img_07 | 5 | R0 | extra | 0.51 | 0.01 | The 'Tokumaru Ramen Bar' card image shows a loading spinner… |
-| gemini-3-flash-preview | img_09 | 2 | R0 | E0 | 0.50 | 0.01 | The restaurant title 'Tokumaru Ramen' is vertically clipped… |
+| gemini-3-flash-preview | img_09 | 2 | R0 | matches expected defect | 0.50 | 0.01 | The restaurant title 'Tokumaru Ramen' is vertically clipped… |
 | gemini-3.1-flash-lite | img_03 | 2 | R0 | extra | 0.50 | 0.01 | The 'Popular right now' section contains a large card that … |
 | gemini-3.1-pro-preview | img_12 | 5 | R0 | extra | 0.51 | 0.01 | Text overlaps below the 'Tokumaru Ramen Bar' title. |
-| xiaomi/mimo-v2.6-pro | img_09 | 2 | R0 | E0 | 0.50 | 0.01 | The restaurant name 'Tokumaru Rame' contains a typo (missin… |
+| xiaomi/mimo-v2.6-pro | img_09 | 2 | R0 | matches expected defect | 0.50 | 0.01 | The restaurant name 'Tokumaru Rame' contains a typo (missin… |
 | claude-opus-5 | img_15 | 5 | R2 | extra | 0.51 | 0.02 | Bottom navigation items have no text labels, relying solely… |
-| gemini-3.1-flash-lite | img_11 | 4 | R0 | E0 | 0.51 | 0.02 | The promotional card at the bottom of the screen contains a… |
+| gemini-3.1-flash-lite | img_11 | 4 | R0 | matches expected defect | 0.51 | 0.02 | The promotional card at the bottom of the screen contains a… |
 | qwen/qwen3.8-max | img_04 | 3 | R1 | extra | 0.51 | 0.02 | The '-0%' badge and the '€0 delivery' badge use a leading s… |
-| gpt-6-astra | img_09 | 2 | R0 | E0 | 0.52 | 0.03 | The “Tokumaru Ramen” title under “Popular right now” is cli… |
+| gpt-6-astra | img_09 | 2 | R0 | matches expected defect | 0.52 | 0.03 | The “Tokumaru Ramen” title under “Popular right now” is cli… |
 | x-ai/grok-4.7 | img_15 | 1 | R0 | extra | 0.52 | 0.04 | A thick dark rounded horizontal bar sits inside the bottom … |
-| claude-haiku-4-5 | img_12 | 2 | R0 | E0 | 0.52 | 0.05 | In the Tokumaru Ramen Bar card under 'Popular right now', t… |
-| gemini-3-flash-preview | img_13 | 2 | R1 | E0 | 0.52 | 0.05 | Top-right profile icon is overly simplistic, appearing unfi… |
+| claude-haiku-4-5 | img_12 | 2 | R0 | matches expected defect | 0.52 | 0.05 | In the Tokumaru Ramen Bar card under 'Popular right now', t… |
+| gemini-3-flash-preview | img_13 | 2 | R1 | matches expected defect | 0.52 | 0.05 | Top-right profile icon is overly simplistic, appearing unfi… |
 | qwen/qwen3.8-max | img_04 | 1 | R1 | extra | 0.53 | 0.06 | The '€0 delivery' badge on the Tokumaru Ramen Bar card and … |
 
 - **Generated:** 2026-09-30T11:06:32.408Z

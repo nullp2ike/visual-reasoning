@@ -162,12 +162,18 @@ const IMAGE_BASE = DATA.imageBase;
 // Decision judges (Jev) attach a probability and calibrated confidence to each
 // reported issue's classification; chat-model judges leave cell.decisions unset.
 const UNCERTAIN_CONFIDENCE = 0.8;
+// Mirrors decisionLabel() in bench/discovery/src/confidence.ts.
 function decisionBadge(cell, reportedIndex) {
   const d = (cell.decisions || []).find(x => x.reportedIndex === reportedIndex);
   if (!d) return "";
-  const what = d.expectedIndex === null ? "extra" : "matches E" + d.expectedIndex;
+  const expected = (manifestByImage[cell.imageId] || { expectedIssues: [] }).expectedIssues;
+  const what = d.expectedIndex === null ? "extra"
+    : expected.length > 1 ? "matches expected defect " + (d.expectedIndex + 1) : "matches expected defect";
+  const about = d.expectedIndex === null
+    ? "The judge matched this reported issue to no expected defect."
+    : "The judge matched this reported issue to the expected defect: " + (expected[d.expectedIndex] || "");
   const low = d.confidence < UNCERTAIN_CONFIDENCE;
-  return ' <span class="decision' + (low ? " low" : "") + '" title="Judge decision: probability of the chosen option and the calibrated confidence of the judge">' +
+  return ' <span class="decision' + (low ? " low" : "") + '" title="' + esc(about + "\np = probability of that choice; conf = the judge’s calibrated confidence.") + '">' +
     what + " · p " + d.probability.toFixed(2) + " · conf " + d.confidence.toFixed(2) + "</span>";
 }
 const scores = DATA.scores;

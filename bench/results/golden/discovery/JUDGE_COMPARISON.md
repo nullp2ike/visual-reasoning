@@ -10,41 +10,41 @@ Judges compared: `gemini-3.8-flash` vs `gpt-5.6-luna` vs `gpt-6-luna` vs `meta/m
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | claude-fable-5 | 94% | 0.9 | 94% | 0.9 | 94% | 0.9 | 94% | 0.9 | 94% | 0.9 | 0% |
 | claude-fable-5-1 | 94% | 0.2 | 94% | 0.2 | 94% | 0.2 | 94% | 0.2 | 94% | 0.2 | 0% |
-| claude-haiku-4-5 | 26% | 0.0 | 25% | 0.0 | 26% | 0.0 | 27% | 0.0 | 26% | 0.0 | 2% |
-| claude-opus-4-8 | 54% | 0.4 | 51% | 0.4 | 53% | 0.4 | 54% | 0.4 | 53% | 0.4 | 4% |
+| claude-haiku-4-5 | 26% | 0.0 | 26% | 0.0 | 26% | 0.0 | 27% | 0.0 | 26% | 0.0 | 1% |
+| claude-opus-4-8 | 54% | 0.4 | 51% | 0.4 | 49% | 0.4 | 54% | 0.4 | 53% | 0.4 | 5% |
 | claude-opus-5 | 95% | 2.2 | 95% | 2.2 | 95% | 2.2 | 95% | 2.2 | 95% | 2.2 | 0% |
 | claude-opus-5-5 | 100% | 0.5 | 100% | 0.5 | 100% | 0.5 | 100% | 0.5 | 100% | 0.5 | 0% |
 | claude-sonnet-4-6 | 59% | 0.5 | 59% | 0.5 | 59% | 0.5 | 59% | 0.5 | 59% | 0.5 | 0% |
-| claude-sonnet-5 | 45% | 0.7 | 44% | 0.7 | 46% | 0.7 | 45% | 0.7 | 45% | 0.7 | 2% |
+| claude-sonnet-5 | 45% | 0.7 | 44% | 0.7 | 45% | 0.7 | 45% | 0.7 | 45% | 0.7 | 1% |
 | claude-sonnet-5-5 | 94% | 2.8 | 93% | 2.8 | 93% | 2.8 | 93% | 2.8 | 93% | 2.8 | 1% |
-| gemini-3-flash-preview | 66% | 0.9 | 68% | 0.9 | 66% | 0.9 | 66% | 0.9 | 68% | 0.9 | 2% |
+| gemini-3-flash-preview | 66% | 0.9 | 67% | 0.9 | 66% | 0.9 | 66% | 0.9 | 68% | 0.9 | 2% |
 | gemini-3.1-flash-lite | 47% | 0.6 | 44% | 0.6 | 44% | 0.6 | 45% | 0.6 | 46% | 0.6 | 4% |
-| gemini-3.1-pro-preview | 74% | 0.3 | 69% | 0.4 | 71% | 0.4 | 73% | 0.4 | 74% | 0.3 | 5% |
-| gemini-3.5-flash | 69% | 0.1 | 68% | 0.1 | 66% | 0.1 | 66% | 0.1 | 68% | 0.1 | 4% |
-| gemini-3.5-flash-lite | 51% | 0.2 | 52% | 0.2 | 51% | 0.2 | 51% | 0.2 | 49% | 0.2 | 2% |
+| gemini-3.1-pro-preview | 74% | 0.3 | 69% | 0.4 | 69% | 0.4 | 73% | 0.4 | 74% | 0.3 | 5% |
+| gemini-3.5-flash | 69% | 0.1 | 68% | 0.1 | 68% | 0.1 | 66% | 0.1 | 68% | 0.1 | 4% |
+| gemini-3.5-flash-lite | 51% | 0.2 | 51% | 0.2 | 48% | 0.2 | 51% | 0.2 | 49% | 0.2 | 2% |
 | gemini-3.6-flash | 81% | 0.1 | 82% | 0.1 | 81% | 0.1 | 81% | 0.1 | 81% | 0.1 | 1% |
-| gemini-3.7-flash | 74% | 0.0 | 73% | 0.0 | 73% | 0.0 | 74% | 0.0 | 74% | 0.0 | 1% |
-| gemini-3.8-flash | 87% | 0.3 | 86% | 0.4 | 86% | 0.4 | 87% | 0.3 | 87% | 0.3 | 1% |
-| gpt-5.4-mini | 42% | 0.0 | 42% | 0.0 | 42% | 0.0 | 41% | 0.0 | 42% | 0.0 | 1% |
+| gemini-3.7-flash | 74% | 0.0 | 73% | 0.0 | 74% | 0.0 | 74% | 0.0 | 74% | 0.0 | 1% |
+| gemini-3.8-flash | 87% | 0.3 | 87% | 0.3 | 87% | 0.3 | 87% | 0.3 | 87% | 0.3 | 0% |
+| gpt-5.4-mini | 42% | 0.0 | 42% | 0.0 | 40% | 0.0 | 41% | 0.0 | 42% | 0.0 | 2% |
 | gpt-5.5 | 62% | 0.0 | 62% | 0.0 | 62% | 0.0 | 62% | 0.0 | 62% | 0.0 | 0% |
-| gpt-5.6-luna | 51% | 0.0 | 51% | 0.0 | 48% | 0.0 | 51% | 0.0 | 51% | 0.0 | 2% |
+| gpt-5.6-luna | 51% | 0.0 | 49% | 0.0 | 48% | 0.0 | 51% | 0.0 | 51% | 0.0 | 2% |
 | gpt-5.6-sol | 67% | 0.0 | 67% | 0.0 | 67% | 0.0 | 67% | 0.0 | 67% | 0.0 | 0% |
 | gpt-5.6-terra | 55% | 0.2 | 55% | 0.2 | 55% | 0.2 | 55% | 0.2 | 55% | 0.2 | 0% |
-| gpt-6-astra | 89% | 0.0 | 89% | 0.0 | 89% | 0.0 | 89% | 0.0 | 88% | 0.0 | 1% |
-| gpt-6-luna | 47% | 0.0 | 45% | 0.0 | 45% | 0.0 | 47% | 0.0 | 46% | 0.0 | 2% |
+| gpt-6-astra | 89% | 0.0 | 89% | 0.0 | 88% | 0.0 | 89% | 0.0 | 88% | 0.0 | 1% |
+| gpt-6-luna | 47% | 0.0 | 44% | 0.0 | 45% | 0.0 | 47% | 0.0 | 46% | 0.0 | 4% |
 | gpt-6-sol | 64% | 0.0 | 64% | 0.0 | 64% | 0.0 | 64% | 0.0 | 64% | 0.0 | 0% |
 | gpt-6.1-sol | 93% | 0.0 | 93% | 0.0 | 93% | 0.0 | 93% | 0.0 | 93% | 0.0 | 0% |
 | meta/muse-spark-1.3 | 78% | 0.1 | 78% | 0.1 | 78% | 0.1 | 78% | 0.1 | 78% | 0.1 | 0% |
 | meta/muse-spark-1.3-contributor | 81% | 0.1 | 81% | 0.1 | 81% | 0.1 | 81% | 0.1 | 81% | 0.1 | 0% |
-| moonshotai/kimi-k2.7-code | 72% | 0.1 | 71% | 0.1 | 71% | 0.1 | 69% | 0.1 | 68% | 0.1 | 4% |
+| moonshotai/kimi-k2.7-code | 72% | 0.1 | 71% | 0.1 | 69% | 0.1 | 69% | 0.1 | 68% | 0.1 | 4% |
 | moonshotai/kimi-k3 | 75% | 0.2 | 74% | 0.2 | 74% | 0.2 | 75% | 0.2 | 75% | 0.2 | 1% |
-| qwen/qwen3.7-plus | 55% | 0.1 | 53% | 0.2 | 53% | 0.2 | 53% | 0.2 | 54% | 0.1 | 2% |
-| qwen/qwen3.8-max | 86% | 1.0 | 86% | 0.9 | 85% | 0.9 | 86% | 1.0 | 86% | 0.9 | 1% |
+| qwen/qwen3.7-plus | 55% | 0.1 | 54% | 0.1 | 51% | 0.2 | 53% | 0.2 | 54% | 0.1 | 5% |
+| qwen/qwen3.8-max | 86% | 1.0 | 86% | 0.9 | 84% | 1.0 | 86% | 1.0 | 86% | 0.9 | 2% |
 | x-ai/grok-4.5 | 62% | 2.2 | 62% | 2.2 | 62% | 2.2 | 62% | 2.2 | 62% | 2.2 | 0% |
-| x-ai/grok-4.6 | 71% | 0.7 | 69% | 0.7 | 71% | 0.7 | 71% | 0.7 | 71% | 0.7 | 1% |
-| x-ai/grok-4.7 | 72% | 0.1 | 69% | 0.1 | 71% | 0.1 | 71% | 0.1 | 67% | 0.1 | 5% |
+| x-ai/grok-4.6 | 71% | 0.7 | 71% | 0.7 | 71% | 0.7 | 71% | 0.7 | 71% | 0.7 | 0% |
+| x-ai/grok-4.7 | 72% | 0.1 | 69% | 0.1 | 69% | 0.1 | 71% | 0.1 | 67% | 0.1 | 5% |
 | xiaomi/mimo-v2.6-pro | 52% | 0.6 | 49% | 0.6 | 49% | 0.6 | 49% | 0.6 | 53% | 0.6 | 4% |
-| z-ai/glm-5.3-flash | 74% | 0.5 | 71% | 0.5 | 72% | 0.5 | 71% | 0.5 | 71% | 0.5 | 4% |
+| z-ai/glm-5.3-flash | 74% | 0.5 | 72% | 0.5 | 71% | 0.5 | 71% | 0.5 | 71% | 0.5 | 4% |
 
 ## Disagreements (55)
 
@@ -65,11 +65,11 @@ Expected: Section title shows the raw translation key home_feed.popul…
   - rep 4: Reported issue identifies the same raw translation key being shown instead of the translated section title.
   - rep 5: The reported issue identifies the same raw localization key being displayed as the section header.
 - **gpt-6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The report says only that a raw string key is shown and does not identify the section title.
-  - rep 2: Both describe a section header showing a translation key instead of translated text.
-  - rep 3: Both describe the section header showing the raw translation key home_feed.popular_title.
-  - rep 4: Both reports describe the section title showing the raw home_feed.popular_title translation key instead of translated text.
-  - rep 5: Both describe the section header displaying the raw home_feed.popular_title localization key.
+  - rep 1: The report mentions a raw string key but does not identify the section title or otherwise tie it to this defect.
+  - rep 2: Both describe the section header showing a translation key instead of translated text.
+  - rep 3: Both describe the section title displaying the untranslated key home_feed.popular_title.
+  - rep 4: Both describe the section title showing the raw translation key home_feed.popular_title instead of translated text.
+  - rep 5: Both describe the section header displaying the raw key home_feed.popular_title instead of translated text.
 - **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Reported issue is vague and does not identify the section title element.
   - rep 2: Both describe section title showing translation key instead of text.
@@ -99,12 +99,12 @@ Expected: Restaurant cover image failed to load
   - rep 3: The reported broken image in the restaurant card describes the restaurant cover image failing to load.
   - rep 4: The report describes a broken image in the 'Popular right now' section, not the restaurant cover image.
   - rep 5: The reported Tokumaru Ramen Bar card has a missing featured image and shows a gray placeholder, matching the failed restaurant cover image.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: The missing restaurant imagery on the “Popular right now” card matches the failed restaurant cover image.
-  - rep 2: The broken image on the large restaurant card describes the failed restaurant cover image.
-  - rep 3: The reported broken image in the restaurant card describes the failed restaurant cover imagery.
-  - rep 4: The broken image is described in the “Popular right now” section, not as the restaurant cover image.
-  - rep 5: The report describes the restaurant card's featured image failing to load and showing a placeholder.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The missing restaurant imagery on the card describes a failed restaurant image load.
+  - rep 2: The broken image on the large card likely refers to the restaurant’s cover image failing to load.
+  - rep 3: Both describe the restaurant card’s cover image failing to load and showing a broken-image icon.
+  - rep 4: The broken image icon in the Popular right now section describes a failed image load, consistent with the restaurant cover image defect.
+  - rep 5: The report says the restaurant card’s featured image is missing and replaced by a placeholder.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: found
   - rep 1: Both describe the restaurant card image missing showing a broken icon.
   - rep 2: Reported issue is a broken image in the 'Popular right now' card, not the restaurant cover image.
@@ -169,12 +169,12 @@ Expected: Loading spinner is shown on top of already loaded content
   - rep 3: The report describes a loading spinner overlaid on the already displayed restaurant card image, matching the defect.
   - rep 4: Reported issue 0 describes a loading spinner overlaid on the already displayed card content.
   - rep 5: The reported spinner is attributed to an unfinished or stuck card image, not a spinner appearing over already loaded content.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: The report describes a loading spinner overlaid on the card image, matching a spinner shown over content.
-  - rep 2: The reported spinner overlays the already visible ramen card image, matching the described loading spinner over loaded content.
-  - rep 3: The report describes a loading spinner overlaid on an already loaded card image.
-  - rep 4: The report describes a loading spinner overlaid on the Tokumaru Ramen Bar image.
-  - rep 5: The report describes a spinner indicating an image is still loading, not a spinner over already loaded content.
+- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
+  - rep 1: The report describes a loading spinner overlaid on a card image, matching the spinner shown over content.
+  - rep 2: The report describes a spinner over an image that may still be loading, not a spinner over already loaded content.
+  - rep 3: The report describes a spinner while the card image is still loading or failed, not a spinner persisting over already loaded content.
+  - rep 4: The report describes a loading spinner overlaid on the card image, matching the spinner displayed over content.
+  - rep 5: The reported spinner is described as an image that has not loaded, not as a spinner over already loaded content.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Both describe a loading spinner overlaid on already visible card image content.
   - rep 2: Both describe a loading spinner overlaid on the card image content.
@@ -205,11 +205,11 @@ Expected: Loading spinner is shown on top of already loaded content
   - rep 4: The report describes a circular loading spinner overlaid on fully loaded content, matching the expected defect.
   - rep 5: The report describes a circular loading spinner over already displayed image content, matching the unresolved spinner defect.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The reported spinner overlays already loaded restaurant image content, matching the described defect.
-  - rep 2: The report describes a loading spinner over an image that has already loaded alongside other content.
-  - rep 3: The report describes a loading indicator over content that is already displayed.
-  - rep 4: The report describes a loading spinner over a fully rendered image.
-  - rep 5: The reported spinner overlays an already loaded image, matching the described loading spinner over loaded content.
+  - rep 1: The reported spinner overlays restaurant image content that should already be loaded.
+  - rep 2: The reported spinner overlays content while other page images have loaded, matching a spinner shown on already loaded content.
+  - rep 3: Both describe a loading indicator overlaid on content in the card.
+  - rep 4: The report describes a loading spinner overlaid on fully rendered content.
+  - rep 5: Both describe a loading spinner remaining visible over already loaded content.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Both describe a loading spinner displayed over the loaded restaurant image area.
   - rep 2: Both describe a loading spinner displayed on top of loaded image content.
@@ -240,11 +240,11 @@ Expected: Loading spinner is shown on top of already loaded content
   - rep 4: The reported loading spinner obstructs the already visible ramen image content and appears stuck.
   - rep 5: The reported loading spinner is overlaid on the card's already displayed main image, matching the defect.
 - **gpt-6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The report describes a spinner replacing an image that failed to load, not a spinner overlaying already loaded content.
-  - rep 2: The reported spinner overlays already-loaded restaurant content, matching the expected defect.
-  - rep 3: The reported spinner overlays the promotional card's food imagery, matching a loading spinner shown over loaded content.
-  - rep 4: The report describes a loading spinner obstructing the already loaded ramen bowl content.
-  - rep 5: The report describes a loading spinner overlaid on the card’s main image, matching a spinner shown on already loaded content.
+  - rep 1: The report describes a spinner replacing a failed-to-load hero image, not a spinner overlaying already loaded content.
+  - rep 2: The spinner overlays an already loaded featured image and restaurant information.
+  - rep 3: Reported issue 0 describes a loading spinner overlaying the promotional card’s food imagery.
+  - rep 4: The report describes a loading spinner obstructing already-loaded content in the image card.
+  - rep 5: Both describe a loading spinner overlaid on already displayed content.
 - **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Reported describes a hero image that never loaded, not a spinner overlaid on already-loaded content.
   - rep 2: Both describe a spinning loader displayed over already-loaded content.
@@ -274,12 +274,12 @@ Expected: Loading spinner is shown on top of already loaded content
   - rep 3: The reported issue describes a loading spinner remaining visible over already loaded image content.
   - rep 4: The report describes a loading spinner remaining visible over already loaded card content.
   - rep 5: The report describes a visible circular loading spinner over loaded content, specifically the Tokumaru Ramen Bar illustration.
-- **gpt-6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The report places the spinner over a placeholder illustration, not over already loaded content.
-  - rep 2: The reported spinner remains visible over the loaded banner image, matching the defect.
-  - rep 3: The reported spinner remains over the loaded image card, matching the loading spinner shown on loaded content.
-  - rep 4: The report describes a loading spinner remaining visible over an already loaded card image.
-  - rep 5: The report describes an active loading spinner over the already displayed Tokumaru Ramen Bar illustration.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The reported spinner overlays the card illustration, matching the defect of a spinner remaining over displayed content.
+  - rep 2: The report describes a loading spinner remaining visible over already loaded banner content.
+  - rep 3: The reported spinner overlays an already loaded image card, matching the expected defect.
+  - rep 4: The reported spinner remains over a loaded card image, matching the defect.
+  - rep 5: The reported spinner is visible over the Tokumaru Ramen Bar illustration, matching a spinner displayed on top of content.
 - **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Reported spinner is over placeholder illustration, not over already loaded content.
   - rep 2: Both describe a loading spinner visible over already loaded banner content.
@@ -309,12 +309,12 @@ Expected: Loading spinner is shown on top of already loaded content
   - rep 3: The reported centered spinner overlay on the already displayed card content matches the loading spinner shown over loaded content.
   - rep 4: The reported loading spinner overlays the image area instead of showing the loaded final content, matching the defect.
   - rep 5: The report describes a loading spinner overlaying an already visible card image, matching the expected defect.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: missed
   - rep 1: The report describes a loading spinner overlaying an otherwise visible, loaded image.
-  - rep 2: The report describes a loading spinner over the already loaded food image.
-  - rep 3: The reported spinner overlays the card’s already displayed content, matching the loading spinner over loaded content.
-  - rep 4: The report describes a loading spinner overlaying the already loaded card content.
-  - rep 5: The report describes a loading spinner over the card image, matching a spinner displayed over content.
+  - rep 2: The report describes a loading spinner over the already displayed food image.
+  - rep 3: The report describes a spinner replacing the card image, not a spinner displayed over already loaded content.
+  - rep 4: The reported spinner overlays the already displayed Tokumaru Ramen Bar image.
+  - rep 5: The report describes a spinner replacing or obscuring an image that has not fully rendered, not a spinner over already loaded content.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
   - rep 1: Both describe a loading spinner overlaying already visible image content.
   - rep 2: Both describe a loading spinner overlaying an already visible image.
@@ -345,11 +345,11 @@ Expected: Loading spinner is shown on top of already loaded content
   - rep 4: The report describes a spinner replacing an unloaded restaurant image, not a spinner displayed over already loaded content.
   - rep 5: The report describes a loading spinner over already rendered content in the restaurant card.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: The reported spinner overlays an already loaded restaurant hero image, matching the described defect.
-  - rep 2: The report describes a loading spinner over an already visible food image.
-  - rep 3: The reported loading indicator overlays the already displayed card image, matching the spinner shown over loaded content.
-  - rep 4: The report says the photo is replaced by a loading spinner, not that a spinner overlays already loaded content.
-  - rep 5: The report describes a spinner over content that is already loaded.
+  - rep 1: The reported spinner overlays an already displayed restaurant hero image, matching the loading spinner shown over loaded content.
+  - rep 2: The Tokumaru food photo is visible with a centered loading spinner over it.
+  - rep 3: The report describes a loading indicator over already visible card content.
+  - rep 4: The report says the spinner appears instead of the restaurant photo, not on top of already loaded content.
+  - rep 5: The report describes a loading spinner over a card whose content is already rendered.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Both describe a loading spinner overlaying already-visible restaurant card content.
   - rep 2: Both describe a centered circular loading spinner over the Tokumaru hero food photo.
@@ -379,12 +379,12 @@ Expected: Loading spinner is shown on top of already loaded content
   - rep 3: The reported spinner on the Tokumaru Ramen Bar card describes the same loading-spinner overlay defect, even though it interprets the loading state differently.
   - rep 4: The reported loading spinner overlays the already displayed Tokumaru Ramen Bar card image, matching the expected defect.
   - rep 5: The report describes a loading spinner over the card's already displayed main image, matching a spinner overlaying loaded content.
-- **gpt-6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The report describes a spinner indicating the card image is still loading or failed, not one over already loaded content.
-  - rep 2: The reported spinner overlays the card image, matching the spinner shown over content.
-  - rep 3: Both describe a loading spinner displayed over content in the card.
-  - rep 4: The report describes a loading spinner displayed over an already loaded card image.
-  - rep 5: The report describes a loading spinner over the card’s already displayed main image.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
+  - rep 1: Both describe a loading spinner displayed over content in the card image.
+  - rep 2: The reported spinner is centered over the card image, matching a loading spinner displayed on top of content.
+  - rep 3: The report says the card content has not fully loaded, rather than describing a spinner over already loaded content.
+  - rep 4: Both describe a loading spinner displayed over content that is already visible.
+  - rep 5: The report describes a loading spinner overlaying the card’s main image, matching the spinner shown over loaded content.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Both describe a loading spinner visible on the card image.
   - rep 2: Both describe a loading spinner visible over the card image content.
@@ -415,11 +415,11 @@ Expected: Loading spinner is shown on top of already loaded content
   - rep 4: The report describes a loading spinner remaining over an already loaded restaurant card image.
   - rep 5: The reported spinner overlays the restaurant image/content, matching a spinner shown on top of already loaded content.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: The reported spinner overlays an already loaded dish image and appears stuck loading.
-  - rep 2: Reported issue 0 describes a loading spinner obscuring restaurant content after it has loaded.
-  - rep 3: The report describes a spinner replacing an unloaded food image, not appearing over already loaded content.
-  - rep 4: The report describes a stuck loading spinner overlaying an already loaded restaurant card image.
-  - rep 5: The reported spinner overlays the restaurant image, which is already loaded content.
+  - rep 1: The reported stuck loading spinner overlays an already loaded dish image, matching the expected defect.
+  - rep 2: Reported issue 0 describes a loading spinner overlaying an already loaded restaurant image.
+  - rep 3: The report says the image is replaced by a loading spinner, while the expected defect is a spinner over already loaded content.
+  - rep 4: The reported spinner overlays a restaurant card image after its content has loaded.
+  - rep 5: The spinner overlays already-loaded restaurant image content.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
   - rep 1: Reported spinner overlaid on loaded dish image matches spinner on loaded content.
   - rep 2: Both describe a loading spinner overlaying already-loaded restaurant content.
@@ -450,11 +450,11 @@ Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
   - rep 4: The expected issue is mid-word horizontal text truncation, while the reported issue describes vertical clipping at the baseline.
   - rep 5: The expected defect is mid-word horizontal truncation without an ellipsis, while report 0 describes vertical clipping and report 1 concerns baseline alignment.
 - **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: The report describes vertical clipping of descenders, not the heading being cut off mid-word without an ellipsis.
-  - rep 2: The expected defect is mid-word text truncation without an ellipsis, while report 0 describes vertical clipping.
-  - rep 3: The expected defect is incorrect mid-word truncation without an ellipsis, while the report describes vertical clipping at the bottom.
-  - rep 4: The expected issue is a mid-word text truncation, while the report describes vertical clipping at the title’s baseline.
-  - rep 5: The reported title is clipped vertically, not cut off mid-word without an ellipsis.
+  - rep 1: The expected defect truncates the heading mid-word, while the report describes vertical clipping of the title and subtext.
+  - rep 2: The reported title issue describes vertical clipping, not truncation mid-word without an ellipsis.
+  - rep 3: The expected issue is a mid-word text truncation, while the report describes vertical clipping at the bottom.
+  - rep 4: The expected issue is mid-word text truncation, while the report describes vertical clipping of the letters.
+  - rep 5: Neither report describes the heading being truncated mid-word without an ellipsis.
 - **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
   - rep 1: Reported describes vertical bottom clipping, not horizontal mid-word truncation.
   - rep 2: Reported 0 describes vertical bottom clipping, not horizontal mid-word truncation.
@@ -485,11 +485,11 @@ Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
   - rep 4: The expected defect concerns the Tokumaru Ramen Bar heading being truncated, while the reported issue concerns a discount tag overlapping a pizza image.
   - rep 5: Neither reported issue concerns the truncated "Tokumaru Ramen Bar" heading.
 - **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: Both describe the restaurant name heading being cut off at the card or container edge.
-  - rep 2: Neither report describes the Tokumaru Ramen Bar heading being truncated mid-word.
-  - rep 3: The reported truncation affects a different restaurant name, so it does not identify the Tokumaru Ramen Bar defect.
-  - rep 4: The expected defect concerns a truncated restaurant heading, while the report describes a misaligned discount tag.
-  - rep 5: Neither reported issue concerns the truncated “Tokumaru Ramen Bar” heading.
+  - rep 1: Both describe the restaurant heading being cut off, though the reported issue names a different restaurant.
+  - rep 2: Neither reported issue describes the Tokumaru Ramen Bar heading being cut off mid-word.
+  - rep 3: The reported issue truncates a different restaurant name in the “Fastest near you” carousel, not the Tokumaru Ramen Bar heading.
+  - rep 4: The reported issue concerns a clipped discount tag on a pizza image, not the Tokumaru Ramen Bar heading.
+  - rep 5: Neither report describes the Tokumaru Ramen Bar heading being cut off mid-word.
 - **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
   - rep 1: Reported names a different restaurant (Trattoria Piccolo) than the expected Tokumaru Ramen Bar heading.
   - rep 2: No reported issue mentions the Tokumaru Ramen Bar heading being cut off.
@@ -519,12 +519,12 @@ Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
   - rep 3: The reported issue describes the same restaurant heading being clipped on the right, altering its final character.
   - rep 4: The reported issue describes the same restaurant heading being clipped on the right and the final letter rendering incorrectly.
   - rep 5: The reported issue describes the same heading being clipped, causing the final letter to appear incorrect.
-- **gpt-6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: The expected issue is horizontal truncation mid-word, while the report describes vertical clipping of the title text.
-  - rep 2: Both describe the title being clipped on the right, cutting off its final character.
-  - rep 3: Both describe the restaurant heading being clipped on the right so its final character renders incorrectly.
-  - rep 4: Both describe the restaurant title being clipped at the right edge, altering its final character.
-  - rep 5: The expected issue is mid-word text truncation, while the report describes vertical clipping of the title’s letter bottoms.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
+  - rep 1: Both reports describe the same title clipping that makes the final letter of “Tokumaru Ramen” appear as an “i.”
+  - rep 2: Both describe the Tokumaru Ramen heading being clipped on the right, cutting off its final character.
+  - rep 3: Both describe the restaurant heading being clipped on the right, distorting its final letter.
+  - rep 4: Both describe the restaurant heading being clipped on the right so the final letter appears incorrect.
+  - rep 5: Both mention the title, but the report describes vertical clipping of the letters rather than the heading being cut off mid-word.
 - **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
   - rep 1: Reported describes vertical bottom clipping, while expected describes horizontal mid-word truncation with no ellipsis.
   - rep 2: Both describe the Tokumaru Ramen title being horizontally clipped on the right.
@@ -554,12 +554,12 @@ Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
   - rep 3: Both issues describe the same malformed 'Tokumaru Ramen Bar' heading, where the restaurant name is incorrectly truncated or rendered at the final character.
   - rep 4: The report describes overlapping letters in the restaurant name, not the heading being cut off mid-word without an ellipsis.
   - rep 5: The reported issue identifies the same restaurant heading's malformed ending, corresponding to the cut-off or incorrect final character in 'Tokumaru Ramei'.
-- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: The expected issue is text truncation without an ellipsis, while the report describes overlapping characters.
-  - rep 2: The report describes a dotless-i encoding issue, not the heading being cut off mid-word without an ellipsis.
-  - rep 3: Both describe the restaurant heading ending incorrectly as “Ramei” instead of “Ramen.”
-  - rep 4: The reported issue describes overlapping letters, not the heading being cut off mid-word.
-  - rep 5: The report describes the same restaurant heading with its final characters rendered incorrectly.
+- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: found
+  - rep 1: The report describes overlapping title characters, not the heading being cut off mid-word without an ellipsis.
+  - rep 2: The report attributes the name’s appearance to a dotless-i encoding issue, not truncation without an ellipsis.
+  - rep 3: The report describes a dotless-i character substitution, not the heading being cut off without an ellipsis.
+  - rep 4: The report describes overlapping letters, not the heading being cut off mid-word without an ellipsis.
+  - rep 5: Both reports describe the restaurant heading ending incorrectly as “Tokumaru Ramei” rather than the full name.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
   - rep 1: Both describe the same restaurant title garbled at the end as 'RameI'.
   - rep 2: Both describe the same restaurant heading displaying incorrectly as Tokumaru Ramei/Rameı.
@@ -590,11 +590,11 @@ Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
   - rep 4: Both describe the Tokumaru Ramen Bar heading being visibly clipped rather than fully rendered.
   - rep 5: The reported issue identifies the same restaurant heading with its final character clipped, matching the expected truncated title.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: Both describe the restaurant heading being truncated mid-word as “Tokumaru Ramei.”
-  - rep 2: Both describe the restaurant title being truncated at the end.
-  - rep 3: Both issues describe the heading being clipped at the right edge before the full title is shown.
-  - rep 4: The expected issue truncates the heading mid-word, while the report describes vertical clipping at the bottom.
-  - rep 5: Both describe the Tokumaru Ramen heading with its final character clipped and no ellipsis.
+  - rep 1: Both describe the restaurant title being truncated to “Tokumaru Rameı” without an ellipsis.
+  - rep 2: Both describe the restaurant heading being cut off mid-word.
+  - rep 3: Both describe the Tokumaru Ramen Bar heading being clipped at the right edge.
+  - rep 4: The expected issue is mid-word text truncation without an ellipsis, while the report describes vertical clipping at the bottom.
+  - rep 5: Both describe the restaurant title being clipped at its final character.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
   - rep 1: Both describe the restaurant heading truncated mid-word to Tokumaru Ramei without ellipsis.
   - rep 2: Both describe the same restaurant title heading being truncated/cut off.
@@ -607,41 +607,6 @@ Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
   - rep 3: Jev matched R0 (p=0.89, confidence 0.78).
   - rep 4: Jev matched no reported issue; closest was R0 (p=0.23).
   - rep 5: Jev matched R0 (p=0.98, confidence 0.96).
-
-### img_09 09_text_truncation.png — gemini-3.8-flash
-
-Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
-
-- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both reports identify the Tokumaru Ramen heading being clipped on the right edge mid-word.
-  - rep 2: Both describe the heading/title starting with 'Tokumaru Ramen' being cut off or clipped at the end.
-  - rep 3: Both describe the heading text 'Tokumaru Ramen' being cut off at the letter 'n'.
-  - rep 4: Both describe the Tokumaru Ramen title being clipped mid-word/mid-character without an ellipsis.
-  - rep 5: Both describe the restaurant title being abruptly cut off/truncated mid-word at 'Ramei'/'Rameı'.
-- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the Tokumaru Ramen Bar heading being cut off on the right before the full title is shown.
-  - rep 2: Both issues describe the Tokumaru Ramen Bar heading being visibly clipped mid-word without proper truncation.
-  - rep 3: Both describe the Tokumaru Ramen Bar heading being clipped at the end of the title.
-  - rep 4: The reported issue describes the same heading being abruptly clipped mid-text without wrapping or an ellipsis.
-  - rep 5: The reported issue describes the same Tokumaru Ramen Bar heading being abruptly truncated mid-word without an ellipsis.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: Both describe the “Tokumaru Ramen Bar” heading being clipped mid-word.
-  - rep 2: Both describe the Tokumaru Ramen heading being clipped at the end.
-  - rep 3: The expected issue truncates the heading mid-word, while the report describes the final letter being clipped vertically.
-  - rep 4: Both describe the Tokumaru Ramen heading being clipped mid-word without an ellipsis.
-  - rep 5: Both describe the “Tokumaru Ramen” heading being cut off mid-word as “Tokumaru Rameı.”
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the Tokumaru Ramen title being clipped on the right.
-  - rep 2: Both describe the same Tokumaru Ramen title being clipped mid-glyph.
-  - rep 3: Both describe the same title's end being cut off with the final 'n' half-visible looking like 'i'.
-  - rep 4: Both describe the Tokumaru Ramen title clipped mid-character without ellipsis.
-  - rep 5: Both describe the same title truncated mid-word without ellipsis.
-- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Jev matched R0 (p=0.83, confidence 0.66).
-  - rep 2: Jev matched R0 (p=0.92, confidence 0.83).
-  - rep 3: Jev matched R0 (p=0.68, confidence 0.36).
-  - rep 4: Jev matched R0 (p=0.95, confidence 0.90).
-  - rep 5: Jev matched R0 (p=0.95, confidence 0.91).
 
 ### img_09 09_text_truncation.png — gpt-6-astra
 
@@ -659,12 +624,12 @@ Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
   - rep 3: Both describe the restaurant heading/name being clipped at the end instead of displaying fully.
   - rep 4: Both describe the restaurant heading’s final character being clipped mid-word rather than properly displayed.
   - rep 5: Both describe the Tokumaru Ramen Bar title being visibly truncated mid-character without proper completion.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the Tokumaru Ramen heading clipped at its final character.
-  - rep 2: Both describe the Tokumaru Ramen title being clipped at its final letter.
-  - rep 3: Both reports describe the restaurant name heading being clipped at its final character.
+- **gpt-6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The report describes a restaurant name in the “Popular right now” section, not the “Tokumaru Ramen Bar” heading.
+  - rep 2: Both describe the Tokumaru Ramen Bar title being clipped at its final character.
+  - rep 3: Both describe the Tokumaru Ramen heading being clipped at the end of its name.
   - rep 4: Both describe the restaurant heading being clipped at the end of its name.
-  - rep 5: Both describe the “Tokumaru Ramen” heading being cut off at the end.
+  - rep 5: Both describe the Tokumaru Ramen title being cut off mid-character.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Both describe the Tokumaru Ramen name being clipped/cut off.
   - rep 2: Both describe the Tokumaru Ramen title being clipped/cut off.
@@ -694,10 +659,10 @@ Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
   - rep 3: The report identifies the same restaurant name rendered as “Tokumaru Ramei,” corresponding to the cut-off heading.
   - rep 4: No issues were reported.
   - rep 5: No issues were reported.
-- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: missed, rep 5: missed
+- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
   - rep 1: No issues were reported.
-  - rep 2: The report concerns inconsistent heart-icon styling, not the Tokumaru Ramen Bar heading being cut off.
-  - rep 3: The reported restaurant name 'Tokumaru Ramei' describes the same cutoff text defect.
+  - rep 2: The reported issue concerns inconsistent heart icon styling, not the truncated Tokumaru Ramen Bar heading.
+  - rep 3: The report describes the displayed name as a typo, not as text cut off without an ellipsis.
   - rep 4: No issues were reported.
   - rep 5: No issues were reported.
 - **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
@@ -731,10 +696,10 @@ Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
   - rep 5: Both describe the restaurant name heading being cut off mid-word without fully rendering its text.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Both describe the restaurant name heading being cut off mid-word without an ellipsis.
-  - rep 2: Both describe the Tokumaru Ramen Bar heading being truncated mid-name without an ellipsis.
-  - rep 3: Both describe the Tokumaru Ramen restaurant name being clipped at the end.
-  - rep 4: Both describe the restaurant title being cut off at its right edge.
-  - rep 5: Both describe the restaurant heading truncated mid-word, with the final character cut off.
+  - rep 2: Both describe the Tokumaru Ramen Bar name being cut off in the Popular right now section.
+  - rep 3: Both describe the Tokumaru Ramen heading in the Popular right now section being clipped at the end.
+  - rep 4: Both describe the restaurant heading being cut off at its right edge.
+  - rep 5: Both reports describe the restaurant heading being truncated mid-word without an ellipsis.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Both describe truncation of the Tokumaru Ramen name on the card/heading.
   - rep 2: Both describe the Tokumaru Ramen heading truncated mid-word in the same area.
@@ -747,6 +712,41 @@ Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
   - rep 3: Jev matched R0 (p=0.85, confidence 0.69).
   - rep 4: Jev matched R0 (p=0.82, confidence 0.65).
   - rep 5: Jev matched R0 (p=0.77, confidence 0.55).
+
+### img_09 09_text_truncation.png — qwen/qwen3.8-max
+
+Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
+
+- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
+  - rep 1: Both describe the 'Tokumaru Ramen' title being truncated mid-word as 'Tokumaru Rameı' without proper ellipsis.
+  - rep 2: Both describe the Tokumaru restaurant title being clipped mid-word/glyph without an ellipsis.
+  - rep 3: Both report the Tokumaru restaurant title being truncated mid-word without an ellipsis.
+  - rep 4: Both report the Tokumaru Ramen title being truncated mid-word without an ellipsis.
+  - rep 5: The reported issue describes vertical clipping of the letters' bottom edges, whereas the expected defect is horizontal truncation cutting off the text mid-word.
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
+  - rep 1: Reported issue 0 describes the Tokumaru Ramen title being cut off mid-word without graceful ellipsis, matching the expected truncation defect.
+  - rep 2: Reported issue 0 describes the Tokumaru Ramen title being clipped mid-word without an ellipsis, matching the expected heading defect.
+  - rep 3: Reported issue 0 describes the same Tokumaru Ramen title being clipped mid-word without an ellipsis.
+  - rep 4: Both describe the Tokumaru Ramen title being clipped mid-word without an ellipsis.
+  - rep 5: The expected issue is mid-word horizontal truncation without an ellipsis, while report 0 describes vertical clipping of the title text.
+- **gpt-6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
+  - rep 1: The report describes a truncated card title in the 'Popular right now' list, not the 'Tokumaru Ramen Bar' heading.
+  - rep 2: Reported issue 0 describes the Tokumaru Ramen title clipped mid-word without an ellipsis.
+  - rep 3: Reported issue 0 describes the Tokumaru Ramen title being clipped mid-word without an ellipsis.
+  - rep 4: Both describe the Tokumaru Ramen title being clipped mid-word without an ellipsis.
+  - rep 5: The expected defect is mid-word text truncation without an ellipsis, while report 0 describes vertical clipping of the title letters.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
+  - rep 1: Both describe the Tokumaru Ramen title cut off mid-word without ellipsis.
+  - rep 2: Reported 0 describes the same Tokumaru Ramen title clipped mid-word without ellipsis.
+  - rep 3: Both describe the Tokumaru Ramen title truncated mid-glyph without an ellipsis.
+  - rep 4: Both describe the Tokumaru title truncated mid-word without ellipsis.
+  - rep 5: Reported 0 describes vertical clipping of letter bottoms, not horizontal mid-word truncation to 'Ramei'.
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
+  - rep 1: Jev matched R0 (p=0.81, confidence 0.62).
+  - rep 2: Jev matched R0 (p=0.87, confidence 0.74).
+  - rep 3: Jev matched R0 (p=0.98, confidence 0.96).
+  - rep 4: Jev matched R0 (p=0.89, confidence 0.78).
+  - rep 5: Jev matched no reported issue; closest was R0 (p=0.26).
 
 ### img_09 09_text_truncation.png — x-ai/grok-4.7
 
@@ -764,9 +764,9 @@ Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
   - rep 3: No issues were reported.
   - rep 4: No issues were reported.
   - rep 5: No issues were reported.
-- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: The report describes a misspelling in the heading, not text visibly cut off mid-word without an ellipsis.
-  - rep 2: The report concerns placeholder contrast in the search field, not the cut-off restaurant heading.
+- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: Both reports identify the restaurant heading as incorrectly cut off or misspelled instead of displaying “Tokumaru Ramen Bar.”
+  - rep 2: The reported issue concerns low contrast in the search field placeholder, not the cut-off Tokumaru Ramen Bar heading.
   - rep 3: No issues were reported.
   - rep 4: No issues were reported.
   - rep 5: No issues were reported.
@@ -800,11 +800,11 @@ Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
   - rep 4: No issues were reported.
   - rep 5: The expected issue concerns the truncated Tokumaru Ramen Bar heading, while the reported issue concerns misplaced icons over the Green Bowl Poké image.
 - **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: Both describe the Tokumaru Ramen Bar heading with its restaurant name cut off mid-word.
+  - rep 1: Both describe the Tokumaru Ramen name being cut off mid-character without proper truncation.
   - rep 2: The report describes a missing-letter typo, not the heading being cut off mid-word without an ellipsis.
   - rep 3: No issues were reported.
   - rep 4: No issues were reported.
-  - rep 5: The expected defect is a truncated Tokumaru Ramen Bar heading, while the report describes misplaced icons on a different restaurant card image.
+  - rep 5: The reported issue concerns icons over a dish image, not the Tokumaru Ramen Bar heading being cut off.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
   - rep 1: Both describe the Tokumaru Ramen name being truncated/cut off mid-character with no complete rendering.
   - rep 2: Reported describes a spelling typo, not a heading cut off mid-word without ellipsis.
@@ -817,6 +817,41 @@ Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
   - rep 3: No issues were reported.
   - rep 4: No issues were reported.
   - rep 5: Jev matched no reported issue; closest was R0 (p=0.00).
+
+### img_10 10_duplicate_elements.png — claude-opus-4-8
+
+Expected: Green Bowl Poké card appears twice in the carousel
+
+- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both report the duplicate Green Bowl Poké card appearing in the carousel/row.
+  - rep 2: Reported issue 0 directly describes the duplicate Green Bowl Poké cards appearing in the carousel.
+  - rep 3: Both report the duplicate appearance of the 'Green Bowl Poké' card in the carousel section.
+  - rep 4: Both describe the Green Bowl Poké entry appearing twice as a duplicate listing.
+  - rep 5: Reported issue 0 describes the duplicate 'Green Bowl Poké' entry appearing in the carousel.
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue 0 describes the Green Bowl Poké card appearing twice as duplicate entries in a carousel-like row.
+  - rep 2: Reported issue 0 describes the Green Bowl Poké card appearing twice in the carousel.
+  - rep 3: Reported issue 0 describes the Green Bowl Poké card appearing twice with identical content, matching the expected duplicate-card defect.
+  - rep 4: The reported issue identifies two identical Green Bowl Poké listings, matching the duplicated card in the carousel.
+  - rep 5: The report identifies two identical Green Bowl Poké entries in the carousel, matching the duplicate-card defect.
+- **gpt-6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue 0 describes duplicate listings in the “Fastest near you” row, not the carousel.
+  - rep 2: Reported issue 0 describes two identical Green Bowl Poké entries in a carousel.
+  - rep 3: Reported issue 0 describes the same Green Bowl Poké card appearing twice.
+  - rep 4: The report describes Green Bowl Poké appearing twice as duplicate listings.
+  - rep 5: Both describe the Green Bowl Poké card appearing twice in the carousel.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe duplicated Green Bowl Poké cards with identical details.
+  - rep 2: Both describe duplicate Green Bowl Poké entries in the carousel.
+  - rep 3: Both describe duplicate Green Bowl Poké cards appearing twice.
+  - rep 4: Both describe duplicate Green Bowl Poké cards in the same list.
+  - rep 5: Both describe duplicate Green Bowl Poké entries in the carousel.
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=0.98, confidence 0.96).
+  - rep 2: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 3: Jev matched R0 (p=0.99, confidence 0.99).
+  - rep 4: Jev matched R0 (p=0.93, confidence 0.86).
+  - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
 
 ### img_10 10_duplicate_elements.png — gemini-3.1-flash-lite
 
@@ -834,12 +869,12 @@ Expected: Green Bowl Poké card appears twice in the carousel
   - rep 3: Both issues describe Green Bowl Poké appearing as a duplicate entry in the restaurant carousel/section.
   - rep 4: The report describes a duplicate entry in the 'Fastest near you' section, not the Green Bowl Poké card duplicated in the carousel.
   - rep 5: The report describes the Green Bowl Poké card appearing twice side-by-side in the carousel.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The report describes two identical Green Bowl Poké cards, matching the duplicate card defect.
-  - rep 2: Reported issue 0 describes duplicate restaurant listings in the carousel section, matching the duplicated Green Bowl Poké card.
-  - rep 3: Both describe the Green Bowl Poké entry appearing more than once.
-  - rep 4: Both issues describe Green Bowl Poké appearing twice in the same restaurant carousel or section.
-  - rep 5: The report describes two identical Green Bowl Poké cards, matching the duplicate card defect.
+- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe duplicate Green Bowl Poké cards appearing in the carousel.
+  - rep 2: The report mentions duplicate listings in a different named section but does not identify the Green Bowl Poké card in the carousel.
+  - rep 3: Both describe duplicate Green Bowl Poké entries in the restaurant listing carousel/section.
+  - rep 4: Both reports describe Green Bowl Poké appearing twice in a restaurant carousel or section.
+  - rep 5: Both describe the Green Bowl Poké card appearing twice in the carousel.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Reported issue describes two identical Green Bowl Poké cards side-by-side.
   - rep 2: No report specifically identifies the Green Bowl Poké card duplicated in the carousel.
@@ -870,11 +905,11 @@ Expected: Green Bowl Poké card appears twice in the carousel
   - rep 4: Reported issue describes duplicate Green Bowl Poké entries in the carousel, matching the expected defect.
   - rep 5: Both describe duplicate Green Bowl Poké entries in the carousel.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe Green Bowl Poké appearing twice in the carousel.
-  - rep 2: Both reports describe the Green Bowl Poké card appearing twice in the carousel section.
-  - rep 3: Both describe duplicate Green Bowl Poké cards in the carousel/list.
-  - rep 4: Both describe the Green Bowl Poké restaurant appearing twice in the carousel.
-  - rep 5: The report identifies duplicate Green Bowl Poké entries in the first carousel, matching the expected duplicate card.
+  - rep 1: Both reports describe Green Bowl Poké appearing twice in the carousel.
+  - rep 2: Both describe the Green Bowl Poké card appearing twice in the carousel section.
+  - rep 3: Both describe duplicate Green Bowl Poké cards, despite referring to the section differently.
+  - rep 4: Both describe the Green Bowl Poké card appearing twice in the carousel.
+  - rep 5: Both reports describe duplicate Green Bowl Poké entries in the carousel.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Both describe duplicate Green Bowl Poké card in the same carousel area.
   - rep 2: Both describe the same duplicate Green Bowl Poké card in the carousel section.
@@ -887,41 +922,6 @@ Expected: Green Bowl Poké card appears twice in the carousel
   - rep 3: Jev matched R0 (p=0.93, confidence 0.87).
   - rep 4: Jev matched R0 (p=1.00, confidence 0.99).
   - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
-
-### img_11 11_impossible_discount_value.png — claude-sonnet-5
-
-Expected: Discount badge shows −100%
-
-- **gemini-3.8-flash**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: The reported issue concerns inconsistent heart icon background styling rather than a discount badge showing -100%.
-  - rep 2: The reported issue discusses visual styling inconsistency of the badge rather than the incorrect −100% discount value itself.
-  - rep 3: The reported issue discusses an inconsistent heart icon background rather than a discount badge showing −100%.
-  - rep 4: The reported issue is about poor color contrast/readability of the badge, not the incorrect -100% discount value itself.
-  - rep 5: The reported issue focuses on styling inconsistency between badges rather than the discount badge displaying an incorrect value of −100%.
-- **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: The reported issue concerns inconsistent heart icon backgrounds, not a discount badge showing −100%.
-  - rep 2: The report concerns the badge's color and styling, not whether it displays −100%.
-  - rep 3: The reported issue concerns inconsistent favorite-icon backgrounds, not the discount badge showing −100%.
-  - rep 4: The report describes poor text contrast on the badge, not that the badge incorrectly shows −100%.
-  - rep 5: The report mentions the −100% badge but describes its placement and styling inconsistency, not that it displays the wrong discount value.
-- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
-  - rep 1: The reported issue concerns inconsistent heart-icon backgrounds, not the discount badge.
-  - rep 2: The report describes the badge’s color and style, not the defect of showing −100%.
-  - rep 3: The reported issue concerns inconsistent favorite-icon backgrounds, not the discount badge.
-  - rep 4: The report identifies the same −100% discount badge.
-  - rep 5: The report discusses the badge’s placement and styling, not a defect in its −100% text.
-- **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: Reported issue is about heart icon background inconsistency, not discount badge value.
-  - rep 2: Reported issue complains about badge style inconsistency, not the incorrect -100% value.
-  - rep 3: Reported issue concerns heart icon background inconsistency, not discount badge value.
-  - rep 4: Reported issue flags poor text contrast, not the incorrect -100% value itself.
-  - rep 5: Reported flags styling inconsistency, not the incorrect -100% value itself.
-- **typesafe/jev-1.13**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: Jev matched no reported issue; closest was R0 (p=0.00).
-  - rep 2: Jev matched no reported issue; closest was R0 (p=0.11).
-  - rep 3: Jev matched no reported issue; closest was R0 (p=0.00).
-  - rep 4: Jev matched no reported issue; closest was R0 (p=0.24).
-  - rep 5: Jev matched no reported issue; closest was R0 (p=0.13).
 
 ### img_11 11_impossible_discount_value.png — gemini-3.1-flash-lite
 
@@ -940,11 +940,11 @@ Expected: Discount badge shows −100%
   - rep 4: The report mentions the −100% badge but identifies missing restaurant information in the promotional card as the defect, not the badge displaying −100%.
   - rep 5: The expected defect is a discount badge showing −100%, while the reported issue concerns a truncated restaurant name.
 - **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: The reported issue identifies the same −100% discount badge as the defect.
-  - rep 2: The pizza card report mentions a −100% badge but identifies missing card details, not a defect with the badge.
-  - rep 3: The reported issue concerns clipped bottom navigation labels, not a discount badge showing −100%.
-  - rep 4: The report mentions the −100% badge only incidentally and describes missing restaurant information as the defect.
-  - rep 5: The expected defect concerns a discount badge, while the report describes a truncated restaurant name.
+  - rep 1: The report identifies the −100% badge as an erroneous discount display.
+  - rep 2: The reported issue mentions a −100% badge but identifies missing card details—not a defect with the badge value.
+  - rep 3: The reported issue concerns clipped bottom navigation labels, not the discount badge showing −100%.
+  - rep 4: The report notes the −100% badge but identifies missing restaurant information, not an incorrect discount badge.
+  - rep 5: The expected defect concerns a discount badge showing −100%, while the report describes a truncated restaurant name.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: missed
   - rep 1: Both describe the -100% discount badge defect.
   - rep 2: Reported 1 describes the same -100% badge on the bottom pizza card.
@@ -974,12 +974,12 @@ Expected: Discount badge shows −100%
   - rep 3: Reported issue explicitly identifies the pizza card’s discount badge as displaying “-100%,” matching the expected defect.
   - rep 4: The reported issue concerns a partially visible category filter chip, not a discount badge showing −100%.
   - rep 5: The reported issue concerns a clipped category filter pill, not a discount badge showing −100%.
-- **gpt-6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: missed, rep 5: missed
+- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: missed, rep 5: missed
   - rep 1: No issues were reported.
-  - rep 2: The report explicitly notes the pizza card’s discount badge shows “-100%.”
-  - rep 3: Reported issue 0 explicitly mentions the '-100%' badge on the pizza image.
-  - rep 4: The reported issue concerns a partially visible category filter chip, not a discount badge showing −100%.
-  - rep 5: The reported issue concerns a clipped category filter pill, not a discount badge showing −100%.
+  - rep 2: The report mentions the badge’s −100% text but raises only a possible clipping concern, not the displayed value as a defect.
+  - rep 3: The report explicitly mentions the pizza card’s “-100%” discount badge, matching the expected defect.
+  - rep 4: The reported issue concerns category filter chips and does not mention the discount badge.
+  - rep 5: The reported issue concerns a clipped category filter pill, not the discount badge showing −100%.
 - **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
   - rep 1: No issues were reported.
   - rep 2: Reported only observes '-100%' while discussing clipping and concludes no bug, not flagging the wrong value.
@@ -1003,18 +1003,18 @@ Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
   - rep 3: Both describe the delivery time text overlapping with other text on the Tokumaru Ramen Bar card.
   - rep 4: The reported issue describes a character encoding/rendering bug and missing spacing, which does not match the expected defect of delivery fee text overlapping delivery time text.
   - rep 5: The reported issue describes a text wrapping or truncation problem resulting in 'rdelivery' rather than an overlap between the delivery fee and delivery time text.
-- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: missed
-  - rep 1: The report describes overlapping or malformed delivery fee and delivery time text on the Tokumaru Ramen Bar card.
-  - rep 2: The report describes corrupted delivery-time text but does not identify overlap with the delivery fee text.
-  - rep 3: The report describes corrupted overlapping text in the Tokumaru Ramen Bar delivery time area, matching the delivery fee and time text overlap.
-  - rep 4: The report describes corrupted delivery-time text and missing spacing with “delivery,” not overlap between the delivery fee and delivery time.
-  - rep 5: The report describes a line-wrapping error in the delivery word, not the delivery fee text overlapping the delivery time.
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: missed
+  - rep 1: The report describes overlapping or mispositioned text in the Tokumaru Ramen Bar card involving the delivery time, matching the expected delivery fee/time text overlap.
+  - rep 2: The reported corrupted delivery text in the Tokumaru Ramen Bar card describes the same overlapping or merged delivery information.
+  - rep 3: The report describes corrupted overlapping text in the Tokumaru Ramen Bar delivery time area, matching the delivery fee/time text overlap defect.
+  - rep 4: The report describes corrupted characters and missing spacing in the delivery-time text, not an overlap between the delivery fee and delivery-time text.
+  - rep 5: The report describes a word-wrapping error in the delivery text, not the delivery fee overlapping the delivery time.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: missed
-  - rep 1: The Tokumaru card’s malformed delivery text describes the same overlap between delivery fee and delivery time.
-  - rep 2: The malformed '350rdelivery' text indicates the delivery fee and delivery-time text are running together.
-  - rep 3: The reported delivery-time text is corrupted by overlapping text in the same Tokumaru Ramen Bar card.
-  - rep 4: The report describes malformed delivery-time text and missing spacing before “delivery,” not the delivery fee overlapping the time.
-  - rep 5: The report describes a wrapping issue in the delivery-time and category line, not delivery-fee text overlapping the delivery time.
+  - rep 1: The reported malformed text on the Tokumaru Ramen Bar card describes the delivery fee and time overlapping.
+  - rep 2: The malformed delivery text in the same Tokumaru Ramen Bar card is consistent with the delivery fee overlapping the delivery time.
+  - rep 3: The report describes overlapping text in the same Tokumaru Ramen Bar delivery-time area.
+  - rep 4: The report describes corrupted delivery-time text and missing spacing, not the delivery fee overlapping the delivery time.
+  - rep 5: The report describes a wrapping issue in the category line, not delivery fee text overlapping the delivery time.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
   - rep 1: Both describe overlapping delivery fee and time text on the Tokumaru Ramen Bar card.
   - rep 2: Both refer to garbled delivery time text in the Tokumaru Ramen Bar card caused by overlapping fee text.
@@ -1028,6 +1028,41 @@ Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
   - rep 4: Jev matched no reported issue; closest was R0 (p=0.12).
   - rep 5: Jev matched no reported issue; closest was R0 (p=0.02).
 
+### img_12 12_overlapping_elements.png — gemini-3-flash-preview
+
+Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
+
+- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe the delivery time and delivery fee text overlapping on the Tokumaru Ramen Bar listing.
+  - rep 2: Both describe the delivery fee text overlapping with the delivery time text.
+  - rep 3: Both describe the delivery fee text overlapping the delivery time text for Tokumaru Ramen Bar.
+  - rep 4: Both describe the delivery time and fee text overlapping for Tokumaru Ramen Bar.
+  - rep 5: Both describe the delivery fee and delivery time text overlapping under Tokumaru Ramen Bar.
+- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue describes the delivery fee and delivery time text overlapping on the Tokumaru Ramen Bar listing.
+  - rep 2: The reported overlap is described only for the 'Popular right now' section and does not identify Tokumaru Ramen Bar.
+  - rep 3: Both issues describe the delivery fee and delivery time text overlapping for Tokumaru Ramen Bar.
+  - rep 4: Both issues describe overlapping delivery fee and delivery time text for the Tokumaru Ramen Bar listing.
+  - rep 5: Reported issue describes the delivery fee and delivery duration text overlapping for Tokumaru Ramen Bar.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe the delivery fee text overlapping the delivery time on the Tokumaru Ramen Bar listing.
+  - rep 2: Both describe the delivery fee and delivery time text overlapping in the same section.
+  - rep 3: The reported issue describes the delivery time and fee text overlapping beneath the Tokumaru Ramen Bar title.
+  - rep 4: The report describes the delivery time and fee text overlapping in the Tokumaru Ramen Bar listing.
+  - rep 5: Both describe the delivery fee and delivery time text overlapping under Tokumaru Ramen Bar.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe overlapping delivery fee and time text on Tokumaru Ramen Bar.
+  - rep 2: Both describe delivery fee text overlapping delivery time text.
+  - rep 3: Both describe overlapping delivery fee and time text under Tokumaru Ramen Bar.
+  - rep 4: Both describe overlapping delivery time and fee text under Tokumaru Ramen Bar.
+  - rep 5: Both describe overlapping fee and time text under Tokumaru Ramen Bar.
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 2: Jev matched R0 (p=0.99, confidence 0.97).
+  - rep 3: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 4: Jev matched R0 (p=1.00, confidence 0.99).
+  - rep 5: Jev matched R0 (p=1.00, confidence 0.99).
+
 ### img_12 12_overlapping_elements.png — gemini-3.1-flash-lite
 
 Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
@@ -1039,17 +1074,17 @@ Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
   - rep 4: Both reports describe the delivery time and delivery fee text overlapping in the Tokumaru Ramen Bar card.
   - rep 5: Reported issue 0 correctly describes the overlap between the delivery time ('25–30 min') and the delivery fee ('delivery') text in the Tokumaru Ramen Bar section.
 - **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The report describes the delivery time and delivery fee text overlapping under Tokumaru Ramen Bar.
-  - rep 2: The report identifies the €0 delivery fee overlapping the delivery time text in the Tokumaru Ramen Bar card.
-  - rep 3: Both issues describe the Tokumaru Ramen Bar delivery time text overlapping nearby delivery-related text.
-  - rep 4: Both issues describe the delivery fee or delivery text overlapping the delivery time in the Tokumaru Ramen Bar card.
-  - rep 5: Reported issue 0 describes overlapping delivery-related text in the Tokumaru Ramen Bar information block, matching the delivery fee and delivery time overlap.
+  - rep 1: The report identifies the delivery time and delivery fee text for Tokumaru Ramen Bar overlapping each other.
+  - rep 2: The reported issue describes the €0 delivery fee label overlapping the delivery time text in the Tokumaru Ramen Bar card.
+  - rep 3: Both issues describe the delivery time text overlapping the delivery-related fee/label text in the Tokumaru Ramen Bar card.
+  - rep 4: The reported issue identifies overlapping delivery-related text in the Tokumaru Ramen Bar card, matching the delivery fee and delivery time text overlap.
+  - rep 5: Reported issue 0 describes the delivery time and delivery text overlapping in the Tokumaru Ramen Bar information block.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: The report describes the delivery time and delivery fee text overlapping under Tokumaru Ramen Bar.
-  - rep 2: The €0 delivery label overlaps the delivery time text in the Tokumaru Ramen Bar card.
-  - rep 3: The report describes the delivery time overlapping the delivery label, not the delivery fee overlapping the delivery time.
-  - rep 4: Both describe the delivery fee or delivery text overlapping the delivery time in the Tokumaru Ramen Bar card.
-  - rep 5: Report 0 describes overlapping delivery-time and delivery text in the Tokumaru Ramen Bar information block.
+  - rep 1: Both issues describe the delivery fee text overlapping the delivery time under Tokumaru Ramen Bar.
+  - rep 2: Both describe the €0 delivery fee label overlapping the delivery-time text on the Tokumaru Ramen Bar card.
+  - rep 3: The expected issue is an overlap between the delivery fee and delivery time, while the report describes the delivery time overlapping the delivery label.
+  - rep 4: Both describe overlapping delivery-fee wording and delivery-time text in the Tokumaru Ramen Bar card.
+  - rep 5: Reported issue 0 describes the delivery time and delivery text overlapping in the Tokumaru Ramen Bar information block.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Both describe overlapping delivery fee and time text under Tokumaru Ramen Bar.
   - rep 2: Both describe €0 delivery label overlapping delivery time text in Tokumaru Ramen Bar card.
@@ -1073,18 +1108,18 @@ Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
   - rep 3: Both describe the overlapping text defect located directly beneath the 'Tokumaru Ramen Bar' title.
   - rep 4: Both describe text overlapping under Tokumaru Ramen Bar.
   - rep 5: Both describe overlapping text located below the 'Tokumaru Ramen Bar' title/restaurant listing.
-- **gpt-5.6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: The report vaguely mentions overlapping text below the title but does not identify the delivery fee and delivery time texts overlapping.
-  - rep 2: The reported text-overlap issue refers to the Tokumaru Ramen Bar details area and matches the described overlapping text defect.
-  - rep 3: The report describes overlapping text strings in the area directly below the Tokumaru Ramen Bar title, matching the delivery fee and delivery time overlap.
-  - rep 4: The reported overlapping subtitle text refers to the same Tokumaru Ramen Bar text-overlap defect involving the delivery information.
-  - rep 5: The reported overlap is below the restaurant title, not between the delivery fee and delivery time text.
-- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: The report only vaguely mentions overlapping text below the title and does not identify the delivery fee and delivery time.
-  - rep 2: The report only mentions text overlap in the restaurant details and does not identify the delivery fee and delivery time texts.
-  - rep 3: The reported overlapping text below the Tokumaru Ramen Bar title corresponds to the delivery fee and delivery time text.
-  - rep 4: The overlapping subtitle text corresponds to the delivery fee and delivery time shown for Tokumaru Ramen Bar.
-  - rep 5: The report only mentions unspecified text overlapping below the title, not the delivery fee and delivery time overlapping.
+- **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: found, rep 5: missed
+  - rep 1: The report only vaguely mentions overlapping text below the restaurant title and does not identify the delivery fee and delivery time texts.
+  - rep 2: The report only vaguely mentions overlapping text in the restaurant details and does not identify the delivery fee and delivery time texts.
+  - rep 3: The reported overlapping text below the Tokumaru Ramen Bar title corresponds to the delivery fee and delivery time text overlap.
+  - rep 4: The reported overlap in the Tokumaru Ramen Bar subtitle describes the same text-overlap problem affecting the delivery information area.
+  - rep 5: The expected overlap is specifically between the delivery fee and delivery time, while the reported issue only mentions text overlapping below the restaurant title.
+- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
+  - rep 1: The report vaguely notes overlapping text below the title but does not identify the delivery fee and delivery time texts.
+  - rep 2: The report only says text overlaps in the restaurant details and does not identify the delivery fee and delivery time.
+  - rep 3: The report only vaguely mentions overlapping text below the title and does not identify the delivery fee and delivery time.
+  - rep 4: The report describes overlapping text in the same restaurant subtitle area, matching the delivery fee and delivery time overlap.
+  - rep 5: The report vaguely mentions overlapping text below the title but does not identify the delivery fee and delivery time.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Both describe overlapping text below the Tokumaru Ramen Bar title.
   - rep 2: Both describe text overlapping in the Tokumaru Ramen Bar details area.
@@ -1098,6 +1133,41 @@ Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
   - rep 4: Jev matched R0 (p=0.70, confidence 0.40).
   - rep 5: Jev matched no reported issue; closest was R0 (p=0.49).
 
+### img_12 12_overlapping_elements.png — gemini-3.5-flash-lite
+
+Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
+
+- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe the delivery duration/time text overlapping with the delivery information/fee text under Tokumaru Ramen Bar.
+  - rep 2: Both describe the delivery fee text overlapping the delivery time text for Tokumaru Ramen Bar.
+  - rep 3: Both describe the delivery time and delivery fee/text overlapping under the Tokumaru Ramen Bar title.
+  - rep 4: Both describe the overlapping text under 'Tokumaru Ramen Bar' involving the delivery time and delivery fee/details.
+  - rep 5: Both describe the delivery time and delivery fee/information text overlapping under Tokumaru Ramen Bar.
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
+  - rep 1: The reported overlap between delivery duration and delivery information matches the Tokumaru Ramen Bar delivery fee and delivery time text overlap.
+  - rep 2: The reported issue identifies the delivery time and delivery fee text overlapping below the Tokumaru Ramen Bar card.
+  - rep 3: The reported issue describes the delivery time and delivery fee text overlapping for Tokumaru Ramen Bar.
+  - rep 4: The report describes overlap between delivery time and category text, not the delivery fee text overlapping the delivery time.
+  - rep 5: The report describes overlapping delivery time and delivery information text for Tokumaru Ramen Bar, matching the delivery fee/time overlap.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe overlapping delivery fee/information text and delivery time beneath the Tokumaru Ramen Bar card.
+  - rep 2: Both describe the delivery fee text overlapping the delivery time beneath the Tokumaru Ramen Bar card.
+  - rep 3: The report describes overlapping delivery-time and delivery text beneath the Tokumaru Ramen Bar title.
+  - rep 4: The report describes overlapping text in the delivery-time area for Tokumaru Ramen Bar, consistent with the delivery fee colliding with the time.
+  - rep 5: The report describes overlapping delivery information and delivery time text under Tokumaru Ramen Bar.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe overlapping delivery time and fee text below the Tokumaru Ramen Bar card.
+  - rep 2: Both describe overlapping delivery time and fee text under Tokumaru Ramen Bar.
+  - rep 3: Both describe overlapping delivery time and delivery text under Tokumaru Ramen Bar.
+  - rep 4: Both describe overlapping delivery-related text under Tokumaru Ramen Bar.
+  - rep 5: Both describe overlapping delivery fee/time text under Tokumaru Ramen Bar.
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=0.97, confidence 0.93).
+  - rep 2: Jev matched R0 (p=1.00, confidence 0.99).
+  - rep 3: Jev matched R0 (p=0.93, confidence 0.87).
+  - rep 4: Jev matched R0 (p=0.67, confidence 0.34).
+  - rep 5: Jev matched R0 (p=0.95, confidence 0.89).
+
 ### img_12 12_overlapping_elements.png — gemini-3.7-flash
 
 Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
@@ -1109,17 +1179,17 @@ Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
   - rep 4: Both report overlapping delivery information text directly under Tokumaru Ramen Bar.
   - rep 5: Both reports identify the delivery fee text overlapping the delivery time text under Tokumaru Ramen Bar.
 - **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The report describes the delivery time and delivery fee text overlapping for Tokumaru Ramen Bar.
-  - rep 2: The report vaguely mentions overlapping metadata below the title but does not identify the delivery fee and delivery time texts overlapping.
-  - rep 3: The reported issue describes overlapping delivery time and fee text under Tokumaru Ramen Bar, matching the expected defect.
-  - rep 4: Both describe overlapping delivery information text beneath Tokumaru Ramen Bar, making it garbled and unreadable.
-  - rep 5: Reported issue describes the delivery fee and delivery time overlapping under Tokumaru Ramen Bar.
-- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The reported issue describes the delivery time and delivery fee text overlapping for Tokumaru Ramen Bar.
-  - rep 2: The report only vaguely mentions overlapping metadata and does not identify the delivery fee and delivery time texts.
-  - rep 3: The report describes the delivery time and fee text overlapping under Tokumaru Ramen Bar.
+  - rep 1: The reported issue describes the delivery fee text overlapping or combining with the delivery time text for Tokumaru Ramen Bar.
+  - rep 2: The report only vaguely mentions overlapping metadata below the title and does not identify the delivery fee and delivery time texts.
+  - rep 3: The reported issue describes overlapping delivery time and fee metadata for Tokumaru Ramen Bar, matching the expected defect.
+  - rep 4: The reported overlapping delivery information text under Tokumaru Ramen Bar describes the same fee and delivery-time text overlap.
+  - rep 5: The reported issue describes overlapping delivery fee and delivery time text for Tokumaru Ramen Bar.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The reported issue describes the delivery fee overlapping and merging with the delivery time for Tokumaru Ramen Bar.
+  - rep 2: The reported overlap in unreadable metadata below the Tokumaru Ramen Bar title describes the same delivery details area.
+  - rep 3: Both describe the delivery fee text overlapping or merging with the delivery time under Tokumaru Ramen Bar.
   - rep 4: The report describes overlapping delivery information text beneath Tokumaru Ramen Bar, matching the fee and delivery time overlap.
-  - rep 5: The report describes the delivery fee overlapping the delivery time for Tokumaru Ramen Bar.
+  - rep 5: Both describe the delivery fee overlapping the delivery time under Tokumaru Ramen Bar.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Both describe overlapping delivery fee and time text under Tokumaru Ramen Bar.
   - rep 2: Both describe overlapping unreadable text directly below Tokumaru Ramen Bar title.
@@ -1143,18 +1213,18 @@ Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
   - rep 3: Both report overlapping metadata (delivery fee/price and delivery time text) under the Tokumaru Ramen Bar entry.
   - rep 4: Both describe the delivery fee and delivery time text overlapping beneath Tokumaru Ramen Bar.
   - rep 5: Both report the delivery fee text overlapping with the delivery time text under Tokumaru Ramen Bar.
-- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The report describes the Tokumaru Ramen Bar delivery-time text overlapping the delivery-related row, which corresponds to the delivery fee text collision.
-  - rep 2: The reported issue identifies overlapping delivery-time and delivery-fee text in the Tokumaru Ramen Bar metadata row.
-  - rep 3: The reported metadata overlap involves the delivery time and price/fee text in the same restaurant information area.
-  - rep 4: Reported issue 0 identifies the delivery fee and delivery time text overlapping in the Tokomaru Ramen Bar metadata row.
-  - rep 5: The reported issue describes the delivery time and delivery-fee text overlapping beneath Tokumaru Ramen Bar.
+- **gpt-5.6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The report describes delivery-time text overlapping the row below, not the delivery fee text overlapping the delivery time.
+  - rep 2: The reported overlap in the metadata row involves the delivery-time text and the delivery label, matching the delivery fee/time text overlap.
+  - rep 3: The report describes overlapping delivery metadata for Tokumaru Ramen Bar, including the delivery time and price/fee text.
+  - rep 4: The reported metadata-row overlap explicitly includes the delivery fee and delivery time for Tokomaru Ramen Bar.
+  - rep 5: Reported issue describes the delivery time and delivery fee text overlapping beneath Tokumaru Ramen Bar.
 - **gpt-6-luna**: rep 1: missed, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: The report describes the delivery-time text colliding with the row below, not overlapping the delivery-fee text.
-  - rep 2: The report describes the delivery-time text overlapping the delivery information in the Tokumaru Ramen Bar metadata row.
-  - rep 3: The report describes delivery time/price text overlapping cuisine details, not the delivery fee overlapping the delivery time.
-  - rep 4: The report describes delivery fee and delivery time text overlapping in the restaurant metadata row.
-  - rep 5: Both describe the delivery time and fee text overlapping beneath Tokumaru Ramen Bar.
+  - rep 1: The report describes the delivery time colliding with the row below, not with the delivery-fee text.
+  - rep 2: The report describes overlapping delivery-related text in the Tokumaru Ramen Bar metadata row, matching the expected defect.
+  - rep 3: The report describes delivery time/price colliding with cuisine and delivery details, not the fee overlapping the delivery time.
+  - rep 4: The report describes the delivery fee and delivery time overlapping in the restaurant metadata row.
+  - rep 5: The report describes the delivery-time and delivery-fee text overlapping beneath Tokumaru Ramen Bar.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Both describe the Tokumaru Ramen Bar delivery-time text overlapping nearby delivery info.
   - rep 2: Both describe overlapping delivery fee and delivery time text in the row below Tokumaru Ramen Bar.
@@ -1178,18 +1248,18 @@ Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
   - rep 3: Both describe an overlapping text issue within the metadata line (delivery time / fee / cuisine) under Tokumaru Ramen Bar.
   - rep 4: Both describe an overlap bug involving delivery time details under Tokumaru Ramen Bar.
   - rep 5: Both describe the delivery time and delivery fee/price overlapping beneath the Tokumaru Ramen Bar title.
-- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: The report describes the delivery fee and delivery time text overlapping beneath Tokumaru Ramen Bar.
-  - rep 2: The reported issue identifies the same Tokumaru Ramen Bar delivery-time and delivery-fee text overlap.
-  - rep 3: The report describes overlap between delivery-time and cuisine text, not the delivery-fee text overlapping delivery time.
-  - rep 4: Both describe overlapping listing text beneath Tokumaru Ramen Bar, including the delivery-time details.
-  - rep 5: The reported issue describes the delivery fee/price overlapping the delivery time for Tokumaru Ramen Bar.
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: missed, rep 5: found
+  - rep 1: The reported issue identifies the same Tokumaru Ramen Bar delivery fee and delivery time text overlapping.
+  - rep 2: The reported issue identifies the delivery-time and delivery-fee text overlapping under Tokumaru Ramen Bar.
+  - rep 3: The report describes overlap between delivery-time and cuisine text, not the delivery fee text overlapping the delivery time.
+  - rep 4: The report describes overlapping delivery-time and category text, not the delivery fee text overlapping the delivery time.
+  - rep 5: The report identifies overlapping delivery time and delivery price text for Tokumaru Ramen Bar, matching the expected delivery fee/time overlap.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: missed, rep 5: found
   - rep 1: Both reports describe Tokumaru Ramen Bar’s delivery fee and delivery time overlapping.
-  - rep 2: Both reports describe the delivery fee and delivery-time text overlapping under Tokumaru Ramen Bar.
-  - rep 3: The report describes delivery-time and cuisine text overlapping, not the delivery fee text overlapping the delivery time.
-  - rep 4: The report describes duplicated delivery-time and category text, not delivery-fee text overlapping the delivery time.
-  - rep 5: The report describes the delivery price overlapping the delivery time in the Tokumaru Ramen Bar metadata.
+  - rep 2: Both describe the delivery fee and delivery time text overlapping beneath Tokumaru Ramen Bar.
+  - rep 3: The report describes overlap involving delivery-time and cuisine text, not the delivery fee text.
+  - rep 4: The report describes duplicated delivery-time and category text, not the delivery fee overlapping the delivery time.
+  - rep 5: The report describes the delivery price overlapping the delivery time in the metadata below Tokumaru Ramen Bar.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Both describe overlapping delivery time and fee text under Tokumaru Ramen Bar.
   - rep 2: Both describe overlapping delivery-time and delivery-fee text under Tokumaru Ramen Bar.
@@ -1214,17 +1284,17 @@ Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
   - rep 4: Both describe the delivery time text and delivery text overlapping for Tokumaru Ramen Bar.
   - rep 5: The reported issue describes a missing space in the delivery time text rather than an overlap between the delivery fee and delivery time text.
 - **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: missed
-  - rep 1: The reported delivery-info text describes the same overlapping or collapsed text problem in the Tokumaru Ramen Bar card.
-  - rep 2: The reported malformed delivery-info text describes the delivery fee/time text overlapping in the Tokumaru Ramen Bar delivery line.
-  - rep 3: The report describes corrupted or missing text in the delivery-time label, not the delivery-fee text overlapping it.
-  - rep 4: The reported garbled delivery-time text describes the same overlap affecting the delivery information area.
-  - rep 5: The expected defect is an overlap between delivery fee and delivery time text, while the reported issue only describes missing spacing within the delivery time label.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: The report describes overlapping or collapsed delivery information in the Tokumaru Ramen Bar card, matching the delivery text overlap.
-  - rep 2: The report describes malformed, overlapped text in the delivery-info line, matching the delivery fee and delivery time overlap.
-  - rep 3: The report describes overlapping or merged text in the same Tokumaru delivery-time label.
-  - rep 4: The report describes the delivery fee overlapping the delivery-time text for Tokumaru Ramen Bar.
-  - rep 5: The report describes missing spacing within the delivery time text, not an overlap between the delivery fee and delivery time.
+  - rep 1: The reported broken delivery-info label describes the same overlapping or collapsed text issue between the delivery time and delivery-related text under the Tokumaru Ramen Bar card.
+  - rep 2: The reported malformed and overlapped delivery-info text describes the same overlap between the delivery time and delivery text.
+  - rep 3: The report describes corrupted or missing delivery-time text, not an overlap between the delivery fee and delivery time text.
+  - rep 4: The reported garbled delivery-time text for Tokumaru Ramen Bar describes the same overlapping delivery information.
+  - rep 5: The expected defect is overlapping delivery fee and delivery time text, while the report describes missing spacing within the delivery time label.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: missed
+  - rep 1: The reported delivery-info text is collapsed where the delivery time and delivery label meet, matching the described overlap.
+  - rep 2: The report describes the delivery-time and delivery text overlapping in the Tokumaru Ramen Bar info line.
+  - rep 3: The report describes corrupted delivery-time wording, not delivery-fee text overlapping the delivery time.
+  - rep 4: The report describes Tokumaru Ramen Bar’s delivery-time text overlapping and becoming garbled, matching the expected text overlap.
+  - rep 5: The report describes missing spacing in the delivery-time label, not overlap between delivery-fee and delivery-time text.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
   - rep 1: Both describe overlapped/unreadable delivery time text under the Tokumaru Ramen Bar card.
   - rep 2: Both describe overlapped/malformed delivery time text under Tokumaru Ramen Bar.
@@ -1249,17 +1319,17 @@ Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
   - rep 4: Both describe the delivery time text ('25-30') overlapping with the delivery fee text ('Delivery') under Tokumaru Ramen Bar.
   - rep 5: Both describe the delivery time and delivery fee text overlapping under the Tokumaru Ramen Bar listing.
 - **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both issues describe the delivery fee and delivery time text overlapping or being poorly aligned in the Tokumaru Ramen Bar listing.
-  - rep 2: The report identifies overlapping delivery fee and delivery time text in the Tokumaru Ramen Bar card.
-  - rep 3: The reported overlapping or garbled delivery text in the Tokumaru Ramen Bar card describes the same delivery fee and time text overlap.
-  - rep 4: Both describe overlapping delivery-related text in the Tokumaru Ramen Bar listing, specifically the delivery time and delivery label or fee text.
-  - rep 5: The report identifies overlapping delivery time and delivery fee text for Tokumaru Ramen Bar.
+  - rep 1: The report identifies overlapping text in the Tokumaru Ramen Bar delivery information, matching the delivery fee/time text overlap.
+  - rep 2: The reported issue identifies overlapping delivery fee and delivery time text in the Tokumaru Ramen Bar card.
+  - rep 3: The reported overlap in the Tokumaru Ramen Bar card describes garbled delivery timing text, matching the delivery fee and delivery time text overlap.
+  - rep 4: Both reports describe overlapping delivery-related text in the Tokumaru Ramen Bar listing, involving the delivery time and delivery information.
+  - rep 5: The reported issue identifies overlapping delivery time and delivery fee text for Tokumaru Ramen Bar.
 - **gpt-6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The report describes the delivery time overlapping the word “delivery,” not the delivery fee text overlapping the delivery time.
-  - rep 2: The report describes the delivery fee text overlapping or poorly spaced with the delivery time on the Tokumaru Ramen Bar card.
-  - rep 3: Both describe overlapping text in the Tokumaru Ramen Bar delivery information.
-  - rep 4: The reported time text '25-30' overlaps 'Delivery' in the same listing, matching the described overlap between delivery fee and delivery time text.
-  - rep 5: The report describes the delivery fee and time overlapping under the Tokumaru Ramen Bar listing.
+  - rep 1: The report describes the delivery time overlapping the word “delivery,” not the delivery fee text overlapping the time.
+  - rep 2: Both reports describe the delivery fee text overlapping the delivery time on the Tokumaru Ramen Bar card.
+  - rep 3: Both describe overlapping text in the Tokumaru Ramen Bar delivery-time area.
+  - rep 4: Both describe overlapping delivery-related text in the Tokumaru Ramen Bar listing.
+  - rep 5: Both reports describe the delivery fee and delivery time text overlapping under Tokumaru Ramen Bar.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Both describe overlap between delivery time and delivery fee text in Tokumaru Ramen Bar listing.
   - rep 2: Both describe overlapping delivery time and fee text in Tokumaru Ramen Bar card.
@@ -1283,18 +1353,18 @@ Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
   - rep 3: Both describe the text overlap involving the delivery time and delivery fee text on the Tokumaru Ramen Bar card.
   - rep 4: Both describe the delivery fee text overlapping the delivery time text on the Tokumaru Ramen Bar card.
   - rep 5: Both report an overlap involving the delivery time and delivery text on the Tokumaru Ramen Bar card.
-- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: Both reports describe overlapping delivery metadata text on the Tokumaru Ramen Bar card, making it unreadable.
-  - rep 2: The reported issue describes the same overlap between the Tokumaru Ramen Bar delivery metadata texts.
-  - rep 3: Reported issue 0 describes the Tokumaru Ramen Bar delivery time overlapping the delivery text, matching the expected overlap defect.
-  - rep 4: Reported issue 0 describes the Tokumaru Ramen Bar delivery time and delivery text overlapping, matching the expected defect.
-  - rep 5: Reported issue 0 describes the delivery-time text overlapping itself, not the delivery-fee text overlapping the delivery-time text.
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue 0 describes the same overlap between the Tokumaru Ramen Bar delivery metadata texts.
+  - rep 2: The reported issue describes the delivery fee/label text overlapping the delivery time on the Tokumaru Ramen Bar card.
+  - rep 3: Reported issue 0 describes the Tokumaru Ramen Bar delivery time and delivery text overlapping, matching the expected defect.
+  - rep 4: Reported issue 0 describes overlapping delivery-related text on the Tokumaru Ramen Bar card, matching the expected text overlap.
+  - rep 5: Reported issue 0 describes overlapping delivery-related text on the Tokumaru Ramen Bar card, matching the expected text-overlap defect.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both reports describe overlapping text in the Tokumaru Ramen Bar delivery metadata involving the delivery time.
-  - rep 2: The report describes overlapping delivery metadata on the same Tokumaru Ramen Bar card.
-  - rep 3: Both describe overlapping delivery information on the Tokumaru Ramen Bar card, making the time and delivery text collide.
-  - rep 4: Reported issue 0 describes the delivery text colliding with the time range on the same restaurant card.
-  - rep 5: Reported issue 0 describes overlapping text on the same Tokumaru delivery-time line.
+  - rep 1: Reported issue 0 describes overlapping delivery-time and delivery text on the Tokumaru Ramen Bar card.
+  - rep 2: Both describe overlapping delivery fee/delivery wording and delivery time text on the Tokumaru Ramen Bar card.
+  - rep 3: Reported issue 0 describes overlapping delivery information on the Tokumaru Ramen Bar card.
+  - rep 4: Reported issue 0 describes overlapping delivery-time text on the Tokumaru Ramen Bar card.
+  - rep 5: Both describe overlapping text in the Tokumaru Ramen Bar card’s delivery-information line.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Both describe overlapping delivery time and fee text on the Tokumaru Ramen Bar card.
   - rep 2: Both describe overlapping delivery time and delivery text on the Tokumaru Ramen Bar card.
@@ -1318,18 +1388,18 @@ Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
   - rep 3: Both describe the delivery time and delivery text colliding or overlapping under Tokumaru Ramen Bar.
   - rep 4: Both describe the delivery time and delivery subtitle text overlapping under Tokumaru Ramen Bar.
   - rep 5: Both describe the delivery fee text overlapping the delivery time text under Tokumaru Ramen Bar.
-- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: The report describes the Tokumaru Ramen Bar delivery fee and delivery time text colliding in the same line.
-  - rep 2: Reported issue describes the delivery time text overlapping the delivery fee text for Tokumaru Ramen Bar.
-  - rep 3: The reported metadata collision between the delivery time and “delivery” text describes the same overlap defect.
-  - rep 4: The report describes overlap within the delivery-time subtitle, not a delivery fee text overlapping the delivery time.
-  - rep 5: Reported issue 0 describes the delivery-time and delivery-fee text overlapping for Tokumaru Ramen Bar.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The Tokumaru Ramen Bar report describes delivery-time text colliding with the delivery information.
-  - rep 2: Both describe overlapping delivery-related text and delivery time in Tokumaru Ramen Bar’s metadata line.
-  - rep 3: The report describes the delivery text colliding with the time range in the same metadata line.
-  - rep 4: The report describes delivery-time text colliding with the adjacent delivery text in the same subtitle area.
-  - rep 5: The report describes the delivery-time text colliding with the delivery-fee text for Tokumaru Ramen Bar.
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The reported issue describes the delivery time and fee text overlapping for Tokumaru Ramen Bar.
+  - rep 2: The report describes overlapping delivery time and delivery fee text in the Tokumaru Ramen Bar metadata line.
+  - rep 3: The report describes the delivery-related text colliding with the delivery time in the Tokumaru Ramen Bar metadata line.
+  - rep 4: The reported collision between the delivery-time text ('25-30 min') and adjacent 'delivery' text describes the same overlapping text defect.
+  - rep 5: Reported issue describes the delivery-time text colliding with the delivery-fee text for Tokumaru Ramen Bar.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: missed, rep 5: found
+  - rep 1: Both describe Tokumaru Ramen Bar’s delivery time and fee text overlapping.
+  - rep 2: Both describe the delivery fee or delivery text overlapping the delivery-time text under Tokumaru Ramen Bar.
+  - rep 3: The report describes the delivery time colliding with the word “delivery,” not a delivery fee overlapping the delivery time.
+  - rep 4: The report describes delivery-time text overlapping the word “delivery,” not the delivery fee text overlapping the delivery time.
+  - rep 5: The report describes Tokumaru Ramen Bar’s delivery-time text colliding with its delivery-fee text.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Both describe delivery time and fee text overlapping beneath Tokumaru Ramen Bar.
   - rep 2: Both describe overlapping delivery time and fee text under Tokumaru Ramen Bar.
@@ -1354,17 +1424,17 @@ Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
   - rep 4: Both describe a text overlap involving the delivery time on the Tokumaru Ramen Bar card.
   - rep 5: Both report the delivery fee text overlapping the delivery time text under the Tokumaru Ramen Bar entry.
 - **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: Reported issue 0 describes overlapping delivery-related text for Tokumaru Ramen Bar, matching the delivery fee and delivery time text collision.
-  - rep 2: The reported overlap among Tokumaru Ramen Bar's supporting text explicitly includes the delivery time and delivery fee text area.
-  - rep 3: Both issues describe the Tokumaru Ramen Bar card's delivery fee/free-delivery text overlapping the delivery time text.
-  - rep 4: The reported issue describes delivery time overlapping 'Order delivery' text, not delivery fee text overlapping delivery time text.
-  - rep 5: Both reports describe the delivery fee and delivery time text overlapping in the Tokumaru Ramen Bar card.
+  - rep 1: The reported overlapping delivery text in the Tokumaru Ramen Bar section describes the same delivery-information text collision.
+  - rep 2: The report describes overlapping delivery-related text under the Tokumaru Ramen Bar entry, including the delivery time and delivery label.
+  - rep 3: The report identifies overlapping delivery-related text in the Tokumaru Ramen Bar card, matching the delivery fee and delivery time overlap.
+  - rep 4: The expected issue concerns delivery fee text overlapping delivery time, while the report concerns delivery time overlapping 'Order delivery' text.
+  - rep 5: Reported issue 0 describes the delivery fee text overlapping the delivery time text for Tokumaru Ramen Bar.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
-  - rep 1: The report describes overlapping delivery text for Tokumaru Ramen Bar, matching the expected collision involving the delivery time.
-  - rep 2: The report describes overlapping delivery-related supporting text, including the delivery time, in the same Tokumaru Ramen Bar entry.
+  - rep 1: The report describes overlapping delivery text beside Tokumaru Ramen Bar, matching the delivery fee and delivery time collision.
+  - rep 2: The report describes overlapping supporting text in the Tokumaru Ramen Bar entry, including the delivery time and delivery text.
   - rep 3: Both describe the delivery fee text overlapping the delivery time in the Tokumaru Ramen Bar card.
-  - rep 4: The report describes delivery time overlapping “Order delivery,” not delivery fee overlapping delivery time.
-  - rep 5: The report describes the delivery fee and delivery time overlapping on the Tokumaru Ramen Bar card.
+  - rep 4: The report describes delivery time overlapping “Order delivery,” not delivery fee text overlapping delivery time.
+  - rep 5: Both reports describe the delivery fee and delivery time text overlapping on the Tokumaru Ramen Bar card.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Both describe overlapping delivery texts for Tokumaru Ramen Bar.
   - rep 2: Both describe overlapping delivery-related text under the Tokumaru Ramen Bar entry.
@@ -1388,18 +1458,18 @@ Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
   - rep 3: Reported issue 0 describes the delivery time ('25–30') and delivery fee ('€0 delivery') overlapping in the Tokumaru Ramen Bar card.
   - rep 4: Both describe the delivery fee and delivery time texts overlapping under Tokumaru Ramen Bar.
   - rep 5: Both report an overlapping text defect on the Tokumaru Ramen Bar card involving the delivery time text.
-- **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: The report describes an Order label overlapping the delivery-time text, not the delivery-fee text overlapping the delivery-time text.
-  - rep 2: The expected defect concerns delivery fee text overlapping delivery time, while the report describes the delivery info line overlapping the rating.
-  - rep 3: The reported Tokumaru Ramen Bar card issue describes the delivery time '25–30' overlapping the delivery fee text '€0 delivery'.
-  - rep 4: The reported issue describes the delivery fee and delivery time overlapping under Tokumaru Ramen Bar.
-  - rep 5: The expected overlap is between the delivery fee and delivery time, while the reported issue describes overlap with an 'Order' link.
-- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: The reported issue describes overlapping text in Tokumaru Ramen Bar’s delivery metadata line, matching the delivery fee and time text overlap.
-  - rep 2: The expected overlap is between the delivery fee and delivery time, while the report describes the delivery info and rating overlapping.
-  - rep 3: The report describes the delivery fee text overlapping the delivery time in the Tokumaru Ramen Bar card.
-  - rep 4: Both reports describe the delivery fee text overlapping the delivery time under Tokumaru Ramen Bar.
-  - rep 5: The expected issue is an overlap between the delivery fee and delivery time, while the report describes delivery details overlapping the Order link.
+- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: missed
+  - rep 1: The report describes overlapping text on the Tokumaru Ramen Bar card, though it attributes the overlap to the Order label rather than the delivery fee.
+  - rep 2: The expected issue concerns delivery fee overlapping delivery time, while the report describes the delivery info line overlapping the rating.
+  - rep 3: The reported Tokumaru Ramen Bar card issue describes the delivery time and delivery fee text overlapping.
+  - rep 4: Reported issue 0 describes the delivery fee and delivery time overlapping under Tokumaru Ramen Bar.
+  - rep 5: The expected overlap is between delivery fee and delivery time, while the reported issue describes delivery-time/category text overlapping an Order link.
+- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: found, rep 5: missed
+  - rep 1: The report describes an Order label overlapping the delivery-time text, not the delivery-fee text overlapping the delivery time.
+  - rep 2: The expected issue is an overlap between the delivery fee and delivery time, while the reported issue is an overlap between delivery information and the rating.
+  - rep 3: The Tokumaru Ramen Bar card’s delivery fee overlaps its delivery time text.
+  - rep 4: The report describes the delivery fee and delivery time overlapping under Tokumaru Ramen Bar.
+  - rep 5: The report describes delivery-time text overlapping an Order link, not delivery-fee text overlapping delivery-time text.
 - **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: found, rep 5: missed
   - rep 1: Reported describes an Order label/button overlapping delivery time, not delivery fee text overlapping delivery time.
   - rep 2: Reported describes rating overlapping delivery info, not delivery fee overlapping delivery time.
@@ -1430,11 +1500,11 @@ Expected: An icon is missing from the top right corner, only a red do…
   - rep 4: Neither report describes a missing icon in the top-right corner with only a red dot visible.
   - rep 5: The reported off-center notification indicator is a positioning issue, not the missing top-right icon described in the expected defect.
 - **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: missed, rep 5: missed
-  - rep 1: Neither report describes a missing icon in the top-right corner or a red dot in its place.
-  - rep 2: Neither report describes a missing top-right icon with only a red dot visible.
-  - rep 3: The top-right placeholder profile icon is missing, leaving only its notification dot visible.
-  - rep 4: Neither report describes a missing icon in the top-right corner with only a red dot visible.
-  - rep 5: The reported issue describes a misaligned notification indicator, not a missing icon with only a red dot visible.
+  - rep 1: Neither report describes a missing top-right icon with only a red dot visible.
+  - rep 2: The expected issue describes a missing icon with only a red dot visible, while the report describes an existing but overly simplistic profile icon.
+  - rep 3: The report describes the top-right profile icon as a placeholder alongside a notification dot, matching the missing-icon defect.
+  - rep 4: Neither report describes a missing top-right icon or a red dot.
+  - rep 5: The expected issue is a missing top-right icon, while the report describes a red notification indicator positioned incorrectly.
 - **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: missed, rep 5: missed
   - rep 1: Neither report describes a missing top-right corner icon showing only a red dot.
   - rep 2: Reported 1 describes simplistic styling, not a missing icon leaving only a red dot.
@@ -1465,11 +1535,11 @@ Expected: An icon is missing from the top right corner, only a red do…
   - rep 4: Both describe the top-right circular profile icon being missing or blank, leaving only a colored dot/empty button.
   - rep 5: The reported top-right circular element lacking an icon matches the missing icon with only a red dot visible.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe a missing icon in the top-right area, with only a red dot visible.
-  - rep 2: The missing profile avatar in the top-right area leaves only a red notification dot, matching the described missing icon.
-  - rep 3: Both describe the icon missing in the top-right area, leaving only an empty circular placeholder or red dot.
-  - rep 4: Both describe a missing visual element in the top-right profile area, leaving only a red dot or blank button.
-  - rep 5: Both describe a missing icon in the top-right circular element.
+  - rep 1: Both describe a missing icon in the top-right area, with only a red dot or circle visible.
+  - rep 2: Both describe the top-right profile icon or avatar missing while a red notification dot remains visible.
+  - rep 3: The empty circular placeholder at the top right describes the missing icon in that location.
+  - rep 4: Both describe missing content in the top-right circular profile area, with only a red dot visible.
+  - rep 5: Both describe the top-right circular element missing its icon.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
   - rep 1: Both describe a missing icon in the top right corner/circle.
   - rep 2: Both describe the missing top-right avatar/icon leaving a red dot visible.
@@ -1500,10 +1570,10 @@ Expected: An icon is missing from the top right corner, only a red do…
   - rep 4: The reported blank circular control in the upper-right with only a red dot describes the missing icon.
   - rep 5: No issues were reported.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: Both describe a missing icon in the top-right control, where only a red dot is visible.
+  - rep 1: Both describe a top-right control where only a red dot is visible and the icon is missing.
   - rep 2: Both describe a missing icon in the upper-right control, where only a red dot is visible.
-  - rep 3: Both describe a missing icon in a circular UI element, with only a red dot visible.
-  - rep 4: Both describe a missing icon in the upper-right area, with only a red dot visible.
+  - rep 3: The reported empty circular control with only a red dot describes the missing icon.
+  - rep 4: Both describe a missing icon in the upper-right corner, where only a red dot is visible.
   - rep 5: No issues were reported.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
   - rep 1: Both describe top-right missing icon with only red dot visible.
@@ -1534,11 +1604,11 @@ Expected: An icon is missing from the top right corner, only a red do…
   - rep 3: No issues were reported.
   - rep 4: The report notes a red dot in the top-right area but does not identify the expected missing icon.
   - rep 5: No issues were reported.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: missed
-  - rep 1: Both describe a red dot in the top-right corner with its associated icon missing.
-  - rep 2: The report describes the top-right icon appearing missing and showing only a red dot.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: The report describes a red dot in the top-right corner with no associated icon visible.
+  - rep 2: Both describe the top-right icon appearing as only a red dot because its expected icon or avatar is missing.
   - rep 3: No issues were reported.
-  - rep 4: The report describes only a red dot in the top-right corner, consistent with the icon being missing.
+  - rep 4: The report notes a red dot in the top-right corner but does not describe the icon being missing.
   - rep 5: No issues were reported.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: missed, rep 4: missed, rep 5: missed
   - rep 1: Both describe a top-right red dot with no visible icon.
@@ -1573,8 +1643,8 @@ Expected: An icon is missing from the top right corner, only a red do…
   - rep 1: No issues were reported.
   - rep 2: No issues were reported.
   - rep 3: No issues were reported.
-  - rep 4: The report describes the top-right profile/avatar icon appearing as only a red dot.
-  - rep 5: The report describes an unclear red notification dot, not a missing icon.
+  - rep 4: The top-right profile/avatar button is described as showing only a red dot, matching the missing icon.
+  - rep 5: The report notes a missing label or badge count, not a missing icon beside the red dot.
 - **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
   - rep 1: No issues were reported.
   - rep 2: No issues were reported.
@@ -1605,11 +1675,11 @@ Expected: Middle card in the carousel is not aligned with the other c…
   - rep 4: Reported issue 0 describes the carousel cards being vertically misaligned, including the middle card's image and text baselines.
   - rep 5: The reported alignment issue concerns the first carousel card, not the middle card specified in the expected defect.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: Reported issue 0 describes misaligned carousel cards, including differing image and text positions.
-  - rep 2: Reported issue 0 describes inconsistent card image heights and vertical alignment in the carousel, including the middle card.
-  - rep 3: Reported issue 0 describes vertical misalignment among the carousel cards.
-  - rep 4: Reported issue 0 describes a carousel card positioned vertically out of alignment with the other cards.
-  - rep 5: The expected defect concerns the middle card, while report 0 describes the first card as misaligned.
+  - rep 1: Reported issue 0 describes misaligned cards in the carousel, including differing vertical positions.
+  - rep 2: Reported issue 0 describes misaligned cards in the same carousel, including the middle card's differing image and text positions.
+  - rep 3: Reported issue 0 describes vertical misalignment between carousel cards, including the middle card.
+  - rep 4: The Green Bowl Poké card is described as vertically misaligned relative to the other carousel cards.
+  - rep 5: The expected defect concerns the middle card, while report 0 identifies the first card as misaligned.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
   - rep 1: Both describe the Fastest near you carousel cards being vertically misaligned.
   - rep 2: Both describe the Fastest carousel cards being vertically misaligned due to inconsistent image sizes.
@@ -1640,11 +1710,11 @@ Expected: Middle card in the carousel is not aligned with the other c…
   - rep 4: Reported issue 0 directly describes the carousel cards, including the middle card, being vertically misaligned with the others.
   - rep 5: Reported issue 0 describes the carousel restaurant cards being vertically misaligned, including the middle card relative to the others.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: Reported issue 0 describes the carousel cards sitting at different vertical offsets, matching the middle card alignment defect.
-  - rep 2: Both reports describe vertical misalignment among cards in the same carousel, with report 1 noting the resulting badge offsets.
-  - rep 3: The report says the first card is higher while the middle card aligns with the third, so it does not describe the middle card being misaligned.
-  - rep 4: Reported issue 0 describes the Green Bowl Poké card sitting out of vertical alignment with the other carousel cards.
-  - rep 5: Reported issue 0 describes the carousel cards sitting at different vertical positions, including the middle card.
+  - rep 1: Reported issue 0 describes the carousel cards, including the middle card, sitting at inconsistent vertical offsets.
+  - rep 2: Both reports describe inconsistent vertical alignment of cards and their badges in the carousel.
+  - rep 3: Reported issue 0 identifies the Green Bowl Poké card as misaligned, while issue 1 concerns badge placement rather than the middle card's alignment.
+  - rep 4: Reported issue 0 explicitly describes the carousel cards as vertically misaligned, creating a ragged row.
+  - rep 5: Report 0 describes the carousel cards, including the middle card, at different vertical positions.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: Reported 0 describes the carousel cards as vertically misaligned with different offsets.
   - rep 2: Both report vertical misalignment in the Fastest near you carousel affecting cards and their badges.
@@ -1675,11 +1745,11 @@ Expected: Middle card in the carousel is not aligned with the other c…
   - rep 4: The reported carousel card has a shorter image that makes its content sit lower than adjacent cards, causing the same misalignment.
   - rep 5: The reported issue concerns text truncation within a card, not the middle card being misaligned with the other cards.
 - **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
-  - rep 1: The report describes inconsistent delivery-badge placement, not the middle card itself being misaligned.
-  - rep 2: The report describes clipped restaurant text and prices, not a misaligned middle carousel card.
-  - rep 3: The expected issue is card alignment, while the report describes a restaurant name being clipped.
-  - rep 4: The Smash Bros Burgers middle card is shorter than adjacent cards, making the carousel row look uneven.
-  - rep 5: The reported issue is truncated text, not misalignment of the middle carousel card.
+  - rep 1: The report describes inconsistent badge placement, not misalignment of the middle card itself.
+  - rep 2: The report describes clipped restaurant names and delivery prices, not misalignment of the middle carousel card.
+  - rep 3: The expected issue is misalignment of the middle carousel card, while the report describes the rightmost card’s restaurant name being cut off.
+  - rep 4: The reported shorter card and lower pill make the carousel row uneven, matching the misaligned middle card.
+  - rep 5: The report describes a truncated restaurant name, not a misaligned carousel card.
 - **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
   - rep 1: Reported describes inconsistent badge placement, not misalignment of the middle card itself.
   - rep 2: Reported describes clipped text, not misaligned middle card.
@@ -1712,9 +1782,9 @@ Expected: Middle card in the carousel is not aligned with the other c…
 - **gpt-6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: No issues were reported.
   - rep 2: Reported issue 0 describes vertical misalignment among cards in the carousel row.
-  - rep 3: Reported issue 0 describes the middle card sitting lower than its neighboring cards, breaking carousel alignment.
-  - rep 4: The Smash Bros Burgers middle card is vertically misaligned with its neighboring cards.
-  - rep 5: The report describes the middle carousel card as vertically misaligned with its neighboring cards.
+  - rep 3: Reported issue 0 describes the middle card sitting lower than its neighboring cards, breaking alignment.
+  - rep 4: The reported issue describes the middle carousel card as vertically misaligned with its neighboring cards.
+  - rep 5: The report describes the middle carousel card sitting higher and appearing misaligned with its neighbors.
 - **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
   - rep 1: No issues were reported.
   - rep 2: Both describe vertical misalignment of cards in the Fastest near you carousel row.
@@ -1739,17 +1809,17 @@ Expected: Bottom nav labels are cut off below the screen edge and a b…
   - rep 4: The reported issue is about a restaurant card being clipped, not the bottom navigation bar labels or overlapping bar.
   - rep 5: Both report that elements in the bottom navigation bar are clipped or cut off by the bottom screen edge.
 - **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: found
-  - rep 1: The expected defect concerns bottom navigation labels and an overlapping black bar, while the reported issue concerns a missing title on a pizza card.
-  - rep 2: The report describes a restaurant card overlapping the bottom navigation, not navigation labels being cut off or a black bar overlapping the icons.
+  - rep 1: The reported issue concerns a missing title on a pizza card, not cut-off bottom navigation labels or a black bar overlapping icons.
+  - rep 2: The expected defect concerns clipped bottom navigation labels and a black bar over the icons, while the report concerns a restaurant card overlapping the navigation menu.
   - rep 3: No issues were reported.
-  - rep 4: The reported issue concerns a restaurant card clipped at the viewport bottom, not bottom navigation labels or a black bar overlapping icons.
-  - rep 5: Reported issue 1 describes the bottom navigation elements being cut off at the screen edge, matching the expected bottom-nav clipping defect.
+  - rep 4: The expected defect concerns bottom navigation labels and an overlapping black bar, while the reported issue concerns a clipped restaurant card.
+  - rep 5: Reported issue 1 describes the bottom navigation elements being too close to and slightly cut off by the screen edge, matching the expected bottom-area overlap/cutoff.
 - **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: The report concerns a missing title on a pizza card, not the cut-off navigation labels or overlapping black bar.
-  - rep 2: The report describes a restaurant card overlapping the navigation menu, not cut-off navigation labels or a black bar over the icons.
+  - rep 1: The reported issue concerns a missing title on a pizza card, not clipped bottom navigation labels or an overlapping black bar.
+  - rep 2: The report describes a restaurant card overlapping the navigation menu, not clipped navigation labels or a black bar covering its icons.
   - rep 3: No issues were reported.
-  - rep 4: The report describes a restaurant card clipped by the viewport, not bottom navigation labels or icons obscured by a black bar.
-  - rep 5: The report only vaguely notes bottom-edge clipping and does not describe cut-off labels or a black bar overlapping the icons.
+  - rep 4: The expected defect affects bottom navigation labels and icons, while the report describes a clipped restaurant card.
+  - rep 5: The report notes a slightly cut-off navigation graphic, but does not describe the labels being cut off or a black bar overlapping the icons.
 - **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: found
   - rep 1: Reported issue is about a missing pizza card title, not cut-off nav labels or black bar overlap.
   - rep 2: Reported describes pizza card overlapping the nav, not nav labels cut off with black bar over icons.
@@ -1763,76 +1833,6 @@ Expected: Bottom nav labels are cut off below the screen edge and a b…
   - rep 4: Jev matched no reported issue; closest was R0 (p=0.07).
   - rep 5: Jev matched R1 (p=0.75, confidence 0.50).
 
-### img_15 15_safe_area_violation.png — gemini-3.1-pro-preview
-
-Expected: Bottom nav labels are cut off below the screen edge and a b…
-
-- **gemini-3.8-flash**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
-  - rep 1: Both report that elements in the bottom navigation bar are partially hidden or cut off.
-  - rep 2: The reported issue describes truncated restaurant text, not the bottom navigation bar being cut off or overlapped.
-  - rep 3: The reported issue describes category chips at the top rather than the bottom navigation labels and overlapping bar.
-  - rep 4: Both describe the bottom navigation bar items being cut off by the bottom edge of the screen.
-  - rep 5: The reported issue discusses a heart icon's placement on a restaurant image, not bottom navigation labels or an overlapping black bar.
-- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
-  - rep 1: Both issues describe bottom navigation content being partially obscured or clipped, despite referring to different nav elements.
-  - rep 2: The expected defect concerns bottom navigation labels and an overlapping black bar, while the report concerns unrelated text clipped at the right edge.
-  - rep 3: The expected defect concerns bottom navigation labels and an overlapping black bar, while the reported issue concerns top category chips cut off at the right edge.
-  - rep 4: The report describes bottom-navigation icons being clipped, whereas the expected defect concerns labels being cut off and a black bar overlapping the icons.
-  - rep 5: The reported issue concerns a heart icon near the image edge, not bottom navigation labels or a black bar overlapping icons.
-- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
-  - rep 1: The reported bottom-navigation icons being partially hidden matches the expected overlap affecting the same navigation area.
-  - rep 2: The report concerns clipped text at the right edge, not bottom navigation labels or an overlapping black bar.
-  - rep 3: The report concerns category chips clipped at the right edge, not bottom navigation labels or icons obscured by a black bar.
-  - rep 4: The report describes bottom navigation elements being cut off at the screen edge, matching the expected clipping issue.
-  - rep 5: The report concerns the heart icon’s position, not the bottom navigation labels or overlapping black bar.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
-  - rep 1: Both describe bottom navigation icons being partially hidden/cut off.
-  - rep 2: Reported clipping concerns restaurant name at right edge, not bottom nav labels.
-  - rep 3: Reported describes top category chips cutoff, not bottom nav labels or black bar.
-  - rep 4: Both describe bottom navigation bar elements cut off by the bottom screen edge.
-  - rep 5: Reported issue concerns heart icon position, not bottom nav labels or black bar.
-- **typesafe/jev-1.13**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
-  - rep 1: Jev matched R0 (p=0.69, confidence 0.37).
-  - rep 2: Jev matched no reported issue; closest was R0 (p=0.01).
-  - rep 3: Jev matched no reported issue; closest was R0 (p=0.00).
-  - rep 4: Jev matched R0 (p=0.85, confidence 0.69).
-  - rep 5: Jev matched no reported issue; closest was R0 (p=0.00).
-
-### img_15 15_safe_area_violation.png — gemini-3.8-flash
-
-Expected: Bottom nav labels are cut off below the screen edge and a b…
-
-- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the bottom navigation bar overlapping with a horizontal bar/system gesture indicator, obscuring the nav icons/labels.
-  - rep 2: Both describe the system home gesture bar (black horizontal bar) overlapping the bottom navigation due to missing safe area insets.
-  - rep 3: Both describe the system navigation bar/handle overlapping the bottom navigation bar icons due to incorrect safe area padding.
-  - rep 4: Both describe the horizontal home indicator bar overlapping the bottom navigation icons due to missing safe area padding.
-  - rep 5: Both describe the system gesture navigation bar (black horizontal bar) overlapping the bottom navigation bar icons and content.
-- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: The report describes the bottom navigation overlapping the system gesture indicator and obscuring icons, which is the same bottom-edge overlap defect.
-  - rep 2: The reported issue describes the bottom navigation icons being overlapped by the system gesture bar, matching the expected bottom-edge overlap and cutoff.
-  - rep 3: The report mentions a system navigation handle overlapping icons, but does not describe the cut-off labels or black bar overlapping the bottom navigation.
-  - rep 4: Both describe the bottom navigation being overlapped by the system/home indicator bar due to insufficient bottom safe-area space.
-  - rep 5: The report describes the black system navigation bar overlapping the bottom navigation icons, matching the stated bottom-area obstruction.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The report describes the bottom navigation icons being obscured by the system gesture bar, matching the overlapping black bar and cutoff navigation area.
-  - rep 2: Both describe the bottom navigation icons being overlapped by the system gesture area because of missing safe-area spacing.
-  - rep 3: The system navigation handle overlaps the bottom navigation icons, matching the reported overlap in the expected defect.
-  - rep 4: The report describes the black system bar overlapping the bottom navigation icons because safe-area padding is missing, matching the cutoff navigation area.
-  - rep 5: Both describe the black system gesture bar overlapping the bottom navigation icons.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe bottom navigation icons obscured by an overlapping black system bar.
-  - rep 2: Both describe the black system gesture bar overlapping bottom navigation icons.
-  - rep 3: Both describe the bottom nav icons overlapped by the black system navigation handle/bar.
-  - rep 4: Both describe black home indicator bar overlapping bottom navigation icons.
-  - rep 5: Both describe the system bar overlapping the bottom navigation icons.
-- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Jev matched R0 (p=0.71, confidence 0.41).
-  - rep 2: Jev matched R0 (p=0.93, confidence 0.86).
-  - rep 3: Jev matched R0 (p=0.72, confidence 0.43).
-  - rep 4: Jev matched R0 (p=0.93, confidence 0.86).
-  - rep 5: Jev matched R0 (p=0.94, confidence 0.87).
-
 ### img_15 15_safe_area_violation.png — moonshotai/kimi-k2.7-code
 
 Expected: Bottom nav labels are cut off below the screen edge and a b…
@@ -1844,17 +1844,17 @@ Expected: Bottom nav labels are cut off below the screen edge and a b…
   - rep 4: Both describe a dark horizontal bar or line overlapping across the bottom navigation tab bar.
   - rep 5: Both report a dark horizontal bar erroneously overlapping the bottom navigation bar.
 - **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: Both issues describe an obstruction from the system gesture area overlapping the bottom navigation and its icons.
+  - rep 1: The reported gesture indicator overlaps the bottom navigation and icon area, describing the same bottom-edge obstruction as the cut-off labels and overlapping bar.
   - rep 2: No issues were reported.
   - rep 3: No issues were reported.
-  - rep 4: The reported dark horizontal bar across the bottom tab bar describes the same bar overlapping the bottom navigation area, though it does not mention the cut-off labels.
-  - rep 5: The reported dark horizontal bar overlaps the bottom navigation icons, matching the overlapping black bar defect even though label clipping is not mentioned.
-- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: found
-  - rep 1: The report describes the bottom navigation being overlapped by the system gesture indicator, matching the reported bar-overlap defect.
+  - rep 4: The reported dark horizontal bar in the bottom tab bar matches the expected black bar overlapping the bottom navigation area, though it omits the label cutoff.
+  - rep 5: The reported dark horizontal bar overlapping the bottom navigation describes the same bottom-nav rendering defect, though it does not explicitly mention the cut-off labels.
+- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: found
+  - rep 1: The report describes the system gesture indicator overlapping the bottom navigation, matching the reported bar-overlap defect.
   - rep 2: No issues were reported.
   - rep 3: No issues were reported.
-  - rep 4: The report describes a divider between the tab icons, not labels cut off at the screen edge with a bar overlapping the icons.
-  - rep 5: The report describes a horizontal bar overlapping the bottom navigation, matching the expected bar overlap, though it does not mention the cut-off labels.
+  - rep 4: The report describes the same dark horizontal bar defect in the bottom tab bar, though it does not mention the clipped labels.
+  - rep 5: The report describes a dark horizontal bar overlapping the bottom navigation, matching the bar defect.
 - **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: found, rep 5: found
   - rep 1: Reported describes a gray system pill merging with Search icon, not cut-off labels and a black bar overlapping icons.
   - rep 2: No issues were reported.
@@ -1878,18 +1878,18 @@ Expected: Bottom nav labels are cut off below the screen edge and a b…
   - rep 3: No issues were reported.
   - rep 4: Both describe the horizontal bar overlapping the icons on the bottom navigation bar.
   - rep 5: Both describe the bottom navigation bar being cut off at the bottom edge and overlapped by a horizontal line/bar.
-- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
-  - rep 1: The report describes the bottom navigation being overlapped by the home indicator bar, matching the expected bottom-edge obstruction.
-  - rep 2: The reported issue concerns a misaligned notification badge, not the bottom navigation labels or overlapping black bar.
+- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: found
+  - rep 1: The reported home-indicator overlap affects the bottom navigation area and corresponds to the expected black bar overlapping the navigation icons.
+  - rep 2: The expected defect concerns bottom navigation labels and a black bar overlapping icons, while the reported issue concerns a misaligned notification badge on the bell icon.
   - rep 3: No issues were reported.
-  - rep 4: The reported bottom-navigation home-indicator line overlapping the icons describes the same bottom-edge obstruction as the expected defect.
-  - rep 5: The report describes bottom-nav icons being clipped or misaligned, but the expected defect specifically concerns labels being cut off and a black bar overlapping the icons.
-- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: The report describes the bottom navigation being overlapped by the home indicator, matching the reported bar overlap with its icons.
-  - rep 2: The report concerns a misaligned notification badge, not the cut-off bottom navigation labels or overlapping black bar.
+  - rep 4: The report identifies the bottom navigation area and the horizontal bar overlapping its icons, matching the core reported defect.
+  - rep 5: The report identifies the same bottom navigation area as cut off at the screen edge, with a line overlapping the search icon consistent with the described black bar.
+- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
+  - rep 1: Both describe the bottom navigation being overlapped by the home indicator, though the report does not mention the cut-off labels.
+  - rep 2: The report describes a misaligned notification badge, not clipped bottom navigation labels or a bar overlapping the icons.
   - rep 3: No issues were reported.
-  - rep 4: The report describes a horizontal bar overlapping bottom navigation icons, matching the stated overlap defect.
-  - rep 5: The report describes bottom navigation content cut off at the screen edge and a line crossing an icon, consistent with the same clipping and overlap defect.
+  - rep 4: Both describe a horizontal indicator overlapping the bottom navigation icons, though the report does not mention the clipped labels.
+  - rep 5: The report describes clipped or misaligned icons, not labels cut off below the screen or a black bar overlapping the icons.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: found
   - rep 1: Both describe the black home-indicator bar overlapping the bottom navigation icons.
   - rep 2: Reported issue describes bell badge misalignment, not bottom nav cutoff or black bar.
@@ -1913,18 +1913,18 @@ Expected: Bottom nav labels are cut off below the screen edge and a b…
   - rep 3: Both report an unintended horizontal bar or line overlapping the bottom navigation icons.
   - rep 4: Both describe the dark horizontal bar misplaced over/within the bottom navigation bar icons.
   - rep 5: Both describe a thick dark horizontal bar improperly overlapping the bottom navigation bar icons.
-- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The reported misplaced dark horizontal bar in the bottom navigation corresponds to the black bar overlapping the bottom-nav icons, which is the same underlying rendering defect.
+- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: found
+  - rep 1: The report describes the same misplaced dark horizontal bar overlapping the bottom navigation icons, which is part of the expected defect.
   - rep 2: No issues were reported.
-  - rep 3: The reported stray horizontal line overlapping the bottom-navigation icons describes the same bottom-bar overlap artifact, though it uses different color wording.
-  - rep 4: The report identifies the same bottom-navigation dark horizontal bar disrupting the icons, although it does not explicitly mention the clipped labels.
-  - rep 5: The reported detached dark bar overlaps the bottom navigation icons, matching the expected bottom-nav obstruction even though label clipping is not mentioned.
+  - rep 3: The reported stray horizontal line in the bottom navigation overlaps the icons, matching the expected overlapping bar defect.
+  - rep 4: The report describes a misplaced dark bar and confusing active-state cues, but does not identify bottom labels being cut off or a bar overlapping the icons.
+  - rep 5: The reported detached dark bar in the bottom navigation overlaps the icons, matching the expected bottom-area overlap defect.
 - **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: The report describes the same misplaced dark horizontal bar overlapping the bottom navigation, though it does not mention the clipped labels.
+  - rep 1: Both describe a dark horizontal bar misplaced in the bottom navigation; the reported issue does not mention the clipped labels.
   - rep 2: No issues were reported.
-  - rep 3: The reported horizontal line overlaps bottom navigation icons, matching the described bar overlapping the icons.
-  - rep 4: The report describes the same dark horizontal bar in the bottom navigation, though it does not mention the clipped labels.
-  - rep 5: The report describes the same dark horizontal bar overlapping the bottom navigation icons.
+  - rep 3: Both describe a misplaced horizontal bar overlapping the bottom navigation icons.
+  - rep 4: The report describes the same dark horizontal bar anomaly in the bottom navigation, though it does not mention the clipped labels.
+  - rep 5: The report describes a dark horizontal bar overlapping the bottom navigation icons, matching the reported bar defect.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: found
   - rep 1: Both describe a dark horizontal bar inside/overlapping the bottom navigation icons.
   - rep 2: No issues were reported.
@@ -1949,16 +1949,16 @@ Expected: Bottom nav labels are cut off below the screen edge and a b…
   - rep 4: None of the reported issues mention the bottom nav labels being cut off at the screen edge or overlapped by a black horizontal bar.
   - rep 5: No issues were reported.
 - **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: missed
-  - rep 1: Reported issue 0 describes the same bottom navigation clipping and overlapping dark horizontal bar.
-  - rep 2: The reported issue describes the bottom navigation icons being cut off by a black line at the screen edge, matching the expected defect.
-  - rep 3: The reported horizontal line behind the bottom navigation search icon describes the same overlapping-bar defect in the bottom navigation area.
-  - rep 4: The reported navigation issue describes misplaced or overlapping icons, not labels cut off below the screen with a black bar overlapping the icons.
+  - rep 1: The reported bottom navigation issue describes the overlapping black bar and clipping at the bottom edge affecting the navigation icons.
+  - rep 2: The reported issue describes the bottom navigation icons being cut off by a black bar at the bottom edge, matching the expected defect.
+  - rep 3: The reported horizontal line behind the bottom navigation search icon corresponds to the black bar overlapping the navigation icons.
+  - rep 4: The reported navigation issue concerns misplaced icons overlapping each other, not labels being cut off or a black bar overlapping the icons.
   - rep 5: No issues were reported.
 - **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: missed
-  - rep 1: The report describes the same bottom navigation bar obstruction and clipping at the screen edge.
-  - rep 2: The report describes the black line at the bottom overlapping and cutting off the bottom navigation icons.
-  - rep 3: The reported horizontal line behind the search icon describes the black bar overlapping the bottom navigation icons.
-  - rep 4: The reported navigation overlap does not describe labels cut off below the screen edge or a black bar overlapping the icons.
+  - rep 1: The report describes the same bottom navigation bar with a dark horizontal bar overlapping its icons and content clipped at the bottom edge.
+  - rep 2: The report describes the bottom navigation icons being cut off by a black line at the screen edge.
+  - rep 3: The reported horizontal line behind a bottom navigation icon matches the expected bar overlapping the navigation icons.
+  - rep 4: The report describes a misplaced shopping bag icon overlapping the search area, not labels cut off by the screen edge or a black bar overlapping the icons.
   - rep 5: No issues were reported.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: missed, rep 4: missed, rep 5: missed
   - rep 1: Both describe bottom nav clipped at bottom edge with a dark bar overlapping the icons.

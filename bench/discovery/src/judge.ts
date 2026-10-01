@@ -16,7 +16,7 @@ import {
   verdictFromJev,
   type JevDecide,
 } from "./jev.js";
-import { JudgeCacheEntrySchema, JudgeVerdictSchema, type JudgeVerdict } from "./types.js";
+import { ChatJudgeVerdictSchema, JudgeCacheEntrySchema, type JudgeVerdict } from "./types.js";
 import {
   discoveryResultsDir,
   atomicWriteJson,
@@ -102,8 +102,14 @@ function extractJson(text: string): unknown {
   }
 }
 
+/** The strict response schema sent to OpenAI chat judges: a verdict without decisions. */
+export function chatJudgeJsonSchema(): Record<string, unknown> {
+  return zodToJsonSchema(ChatJudgeVerdictSchema, { target: "openAi" }) as Record<string, unknown>;
+}
+
 function validateVerdict(raw: unknown, request: JudgeRequest): JudgeVerdict {
-  const verdict = JudgeVerdictSchema.parse(raw);
+  // Parsing with the chat schema strips any decisions the model returned anyway.
+  const verdict = ChatJudgeVerdictSchema.parse(raw);
   if (verdict.expected.length !== request.expectedIssues.length) {
     throw new Error(
       `Judge verdict covers ${verdict.expected.length} expected issues, dataset has ${request.expectedIssues.length}`,
@@ -174,10 +180,7 @@ export function createJudgeCompletion(judgeModel: string): JudgeCompletion {
   const options: SendMessageOptions | undefined =
     provider === "openai"
       ? {
-          responseSchema: zodToJsonSchema(JudgeVerdictSchema, { target: "openAi" }) as Record<
-            string,
-            unknown
-          >,
+          responseSchema: chatJudgeJsonSchema(),
         }
       : undefined;
 
@@ -249,7 +252,12 @@ export async function judgeRun(
   const cachedRaw = await readJsonIfExists(cachePath);
   if (cachedRaw !== undefined) {
     const cached = JudgeCacheEntrySchema.safeParse(cachedRaw);
-    if (cached.success) return cached.data.verdict;
+    if (cached.success) {
+      // Chat-judge verdicts cached before decisions were kept out of their schema may carry invented ones.
+      return isDecisionJudge(judgeModel)
+        ? cached.data.verdict
+        : ChatJudgeVerdictSchema.parse(cached.data.verdict);
+    }
   }
 
   const verdict = isDecisionJudge(judgeModel)

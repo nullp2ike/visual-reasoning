@@ -16,9 +16,9 @@ Do not report the following (treat these as features, not defects):
 
 ## Screenshot × model matrix
 
-| Screenshot | Expected issue | xiaomi/mimo-v2.6-pro | gpt-5.4-mini | gpt-6-luna | gpt-5.6-luna | gpt-5.6-terra | gpt-5.5 | gpt-6-sol | gpt-5.6-sol | gpt-6-astra | gpt-6.1-sol | x-ai/grok-4.5 | x-ai/grok-4.6 | x-ai/grok-4.7 | gemini-3.1-flash-lite | gemini-3.5-flash-lite | gemini-3-flash-preview | gemini-3.5-flash | gemini-3.1-pro-preview | gemini-3.7-flash | gemini-3.6-flash | gemini-3.8-flash | qwen/qwen3.7-plus | qwen/qwen3.8-max | z-ai/glm-5.3-flash | moonshotai/kimi-k2.7-code | moonshotai/kimi-k3 | claude-haiku-4-5 | claude-sonnet-5 | claude-opus-4-8 | claude-sonnet-4-6 | claude-sonnet-5-5 | claude-fable-5 | claude-fable-5-1 | claude-opus-5 | claude-opus-5-5 | meta/muse-spark-1.3 | meta/muse-spark-1.3-contributor |
+| Screenshot | Expected issue | xiaomi/mimo-v2.6-pro | gpt-5.4-mini | gpt-6-luna | gpt-5.6-luna | gpt-5.6-terra | gpt-5.5 | gpt-6-sol | gpt-5.6-sol | gpt-6-astra | gpt-6.1-sol | x-ai/grok-4.5 | x-ai/grok-4.7 | x-ai/grok-4.6 | gemini-3.1-flash-lite | gemini-3.5-flash-lite | gemini-3-flash-preview | gemini-3.5-flash | gemini-3.1-pro-preview | gemini-3.7-flash | gemini-3.6-flash | gemini-3.8-flash | qwen/qwen3.7-plus | qwen/qwen3.8-max | z-ai/glm-5.3-flash | moonshotai/kimi-k2.7-code | moonshotai/kimi-k3 | claude-haiku-4-5 | claude-sonnet-5 | claude-opus-4-8 | claude-sonnet-4-6 | claude-sonnet-5-5 | claude-fable-5 | claude-fable-5-1 | claude-opus-5 | claude-opus-5-5 | meta/muse-spark-1.3 | meta/muse-spark-1.3-contributor |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| img_18 00_clean_control.png | no expected issues (negative control) | clean 3/5 | clean 5/5 | clean 5/5 | clean 5/5 | clean 4/5 | clean 5/5 | clean 5/5 | clean 5/5 | clean 5/5 | clean 5/5 | clean 0/5 | clean 0/5 | clean 5/5 | clean 1/5 | clean 3/5 | clean 0/5 | clean 3/5 | clean 0/5 | clean 5/5 | clean 3/5 | clean 1/5 | clean 3/5 | clean 0/5 | clean 2/5 | clean 5/5 | clean 4/5 | clean 5/5 | clean 0/5 | clean 5/5 | clean 0/5 | clean 0/5 | clean 0/5 | clean 4/5 | clean 0/5 | clean 0/5 | clean 5/5 | clean 5/5 |
+| img_18 00_clean_control.png | no expected issues (negative control) | clean 3/5 | clean 5/5 | clean 5/5 | clean 5/5 | clean 4/5 | clean 5/5 | clean 5/5 | clean 5/5 | clean 5/5 | clean 5/5 | clean 0/5 | clean 5/5 | clean 0/5 | clean 1/5 | clean 3/5 | clean 0/5 | clean 3/5 | clean 0/5 | clean 5/5 | clean 3/5 | clean 1/5 | clean 3/5 | clean 0/5 | clean 2/5 | clean 5/5 | clean 4/5 | clean 5/5 | clean 0/5 | clean 5/5 | clean 0/5 | clean 0/5 | clean 0/5 | clean 4/5 | clean 0/5 | clean 0/5 | clean 5/5 | clean 5/5 |
 | img_01 01_raw_localization_key.png | Section title shows the raw translation key home_feed.popul… | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 4/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 |
 | img_02 02_invalid_placeholder_data.png | Delivery fee shows €NaN | 5/5 | 5/5 | 5/5 | 3/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 4/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 |
 | img_03 03_broken_image.png | Restaurant cover image failed to load | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 4/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 |
@@ -26,16 +26,16 @@ Do not report the following (treat these as features, not defects):
 | img_05 05_contrast_failure.png | Promo banner text is unreadable, white text on a pale mint … | 4/5 | 4/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 1/5 | 1/5 | 1/5 | 0/5 | 0/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 0/5 | 5/5 | 5/5 | 5/5 | 5/5 | 0/5 | 5/5 | 0/5 | 1/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 |
 | img_06 06_missing_nav_icon.png | Orders icon is missing from the bottom nav bar | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 5/5 | 0/5 | 4/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 0/5 | 2/5 | 0/5 | 1/5 | 0/5 | 4/5 | 4/5 | 3/5 | 0/5 | 5/5 | 2/5 | 4/5 | 5/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 1/5 | 5/5 | 2/5 | 4/5 |
 | img_07 07_state_inconsistency.png | Loading spinner is shown on top of already loaded content | 4/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 4/5 | 5/5 | 5/5 | 4/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 4/5 | 0/5 | 4/5 | 2/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 |
-| img_08 08_typo_in_text.png | The word Restaurants is misspelled Restarants | 4/5 | 5/5 | 0/5 | 0/5 | 1/5 | 0/5 | 0/5 | 4/5 | 5/5 | 5/5 | 4/5 | 5/5 | 4/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 0/5 | 0/5 | 5/5 | 4/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 |
-| img_09 09_text_truncation.png | The "Tokumaru Ramen Bar" heading is cut off mid-word, rende… | 1/5 | 0/5 | 0/5 | 0/5 | 0/5 | 1/5 | 0/5 | 0/5 | 5/5 | 5/5 | 0/5 | 5/5 | 0/5 | 0/5 | 3/5 | 1/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 4/5 | 0/5 | 1/5 | 0/5 | 0/5 | 0/5 | 1/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 |
+| img_08 08_typo_in_text.png | The word Restaurants is misspelled Restarants | 4/5 | 5/5 | 0/5 | 0/5 | 1/5 | 0/5 | 0/5 | 4/5 | 5/5 | 5/5 | 4/5 | 4/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 0/5 | 0/5 | 5/5 | 4/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 |
+| img_09 09_text_truncation.png | The "Tokumaru Ramen Bar" heading is cut off mid-word, rende… | 1/5 | 0/5 | 0/5 | 0/5 | 0/5 | 1/5 | 0/5 | 0/5 | 5/5 | 5/5 | 0/5 | 0/5 | 5/5 | 0/5 | 3/5 | 1/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 4/5 | 0/5 | 1/5 | 0/5 | 0/5 | 0/5 | 1/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 |
 | img_10 10_duplicate_elements.png | Green Bowl Poké card appears twice in the carousel | 3/5 | 1/5 | 1/5 | 5/5 | 2/5 | 0/5 | 5/5 | 0/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 3/5 | 4/5 | 5/5 | 5/5 | 4/5 | 5/5 | 5/5 | 5/5 | 1/5 | 5/5 | 5/5 | 5/5 | 5/5 | 3/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 4/5 |
-| img_11 11_impossible_discount_value.png | Discount badge shows −100% | 1/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 1/5 | 1/5 | 4/5 | 5/5 | 1/5 | 4/5 | 2/5 | 2/5 | 5/5 | 2/5 | 2/5 | 3/5 | 5/5 | 3/5 | 3/5 | 0/5 | 5/5 | 5/5 | 3/5 | 1/5 | 0/5 | 3/5 | 3/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 1/5 | 0/5 |
-| img_12 12_overlapping_elements.png | Tokumaru Ramen Bar Delivery fee text overlaps the delivery … | 4/5 | 3/5 | 4/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 4/5 | 4/5 | 5/5 | 5/5 | 5/5 | 5/5 | 3/5 | 4/5 | 5/5 | 5/5 | 5/5 | 5/5 | 2/5 | 3/5 | 5/5 | 2/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 |
-| img_13 13_orphaned_notification_badge.png | An icon is missing from the top right corner, only a red do… | 0/5 | 1/5 | 3/5 | 2/5 | 4/5 | 4/5 | 3/5 | 4/5 | 5/5 | 5/5 | 2/5 | 3/5 | 2/5 | 0/5 | 0/5 | 2/5 | 0/5 | 5/5 | 1/5 | 1/5 | 5/5 | 2/5 | 5/5 | 1/5 | 1/5 | 4/5 | 0/5 | 1/5 | 0/5 | 2/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 1/5 | 0/5 |
-| img_14 14_misalignment.png | Middle card in the carousel is not aligned with the other c… | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 5/5 | 1/5 | 5/5 | 5/5 | 0/5 | 1/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 5/5 | 4/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 4/5 | 5/5 | 5/5 | 5/5 | 5/5 | 2/5 | 4/5 |
-| img_15 15_safe_area_violation.png | Bottom nav labels are cut off below the screen edge and a b… | 3/5 | 2/5 | 1/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 0/5 | 0/5 | 4/5 | 1/5 | 1/5 | 2/5 | 4/5 | 1/5 | 5/5 | 3/5 | 4/5 | 2/5 | 5/5 | 5/5 | 3/5 | 4/5 | 0/5 | 0/5 | 2/5 | 0/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 |
+| img_11 11_impossible_discount_value.png | Discount badge shows −100% | 1/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 1/5 | 1/5 | 4/5 | 5/5 | 4/5 | 1/5 | 2/5 | 2/5 | 5/5 | 2/5 | 2/5 | 3/5 | 5/5 | 3/5 | 3/5 | 0/5 | 5/5 | 5/5 | 3/5 | 1/5 | 0/5 | 3/5 | 3/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 1/5 | 0/5 |
+| img_12 12_overlapping_elements.png | Tokumaru Ramen Bar Delivery fee text overlaps the delivery … | 4/5 | 3/5 | 3/5 | 4/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 4/5 | 4/5 | 5/5 | 2/5 | 4/5 | 5/5 | 5/5 | 5/5 | 5/5 | 3/5 | 3/5 | 5/5 | 3/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 |
+| img_13 13_orphaned_notification_badge.png | An icon is missing from the top right corner, only a red do… | 0/5 | 1/5 | 3/5 | 2/5 | 4/5 | 4/5 | 3/5 | 4/5 | 5/5 | 5/5 | 2/5 | 2/5 | 3/5 | 0/5 | 0/5 | 2/5 | 0/5 | 5/5 | 1/5 | 1/5 | 5/5 | 2/5 | 5/5 | 1/5 | 1/5 | 4/5 | 0/5 | 1/5 | 0/5 | 2/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 1/5 | 0/5 |
+| img_14 14_misalignment.png | Middle card in the carousel is not aligned with the other c… | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 5/5 | 1/5 | 5/5 | 5/5 | 0/5 | 0/5 | 1/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 5/5 | 4/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 4/5 | 5/5 | 5/5 | 5/5 | 5/5 | 2/5 | 4/5 |
+| img_15 15_safe_area_violation.png | Bottom nav labels are cut off below the screen edge and a b… | 3/5 | 2/5 | 1/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 0/5 | 3/5 | 0/5 | 1/5 | 1/5 | 2/5 | 4/5 | 2/5 | 5/5 | 3/5 | 5/5 | 3/5 | 5/5 | 5/5 | 3/5 | 4/5 | 0/5 | 0/5 | 2/5 | 0/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 |
 | img_16 16_filter_content_mismatch.png | Pizza category is selected but the feed still shows all cui… | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 1/5 | 0/5 | 0/5 | 0/5 | 1/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 1/5 | 0/5 | 3/5 | 5/5 | 0/5 | 1/5 | 0/5 | 0/5 | 2/5 | 0/5 | 0/5 | 0/5 | 0/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 1/5 | 2/5 |
-| img_17 17_wrong_active_nav_state.png | Profile is highlighted in the bottom nav bar while the home… | 0/5 | 0/5 | 4/5 | 0/5 | 4/5 | 5/5 | 2/5 | 3/5 | 5/5 | 5/5 | 0/5 | 4/5 | 5/5 | 0/5 | 0/5 | 3/5 | 2/5 | 4/5 | 0/5 | 4/5 | 3/5 | 0/5 | 3/5 | 1/5 | 3/5 | 3/5 | 0/5 | 1/5 | 0/5 | 0/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 4/5 | 5/5 |
+| img_17 17_wrong_active_nav_state.png | Profile is highlighted in the bottom nav bar while the home… | 0/5 | 0/5 | 4/5 | 0/5 | 4/5 | 5/5 | 2/5 | 3/5 | 5/5 | 5/5 | 0/5 | 5/5 | 4/5 | 0/5 | 0/5 | 3/5 | 2/5 | 4/5 | 0/5 | 4/5 | 3/5 | 0/5 | 3/5 | 1/5 | 3/5 | 3/5 | 0/5 | 1/5 | 0/5 | 0/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 4/5 | 5/5 |
 
 Cells count reps where the judge matched every expected issue ("clean n/m" = reps with zero reported issues on negative controls; † = some reps failed and are excluded from the denominator).
 
@@ -62,70 +62,38 @@ No composite score: with a small issue set, rank by the columns that matter to y
 | gpt-6.1-sol | openai | medium | 93% | 94% | 6% | 0.0 | 5.4s / 8.4s | $0.0055 | $0.4937 | 70 | 84% |  |
 | claude-sonnet-5-5 | anthropic | medium | 93% | 94% | 6% | 2.8 | 6.0s / 7.4s | $0.0109 | $0.9787 | – | 0% |  |
 | gpt-6-astra | openai | medium | 89% | 94% | 6% | 0.0 | 5.8s / 9.5s | $0.0269 | $2.4239 | 56 | 84% |  |
-| gemini-3.8-flash | google | medium | 86% | 94% | 24% | 0.4 | 6.0s / 15.0s | $0.0050 | $0.4460 | 920 | – |  |
+| gemini-3.8-flash | google | medium | 87% | 94% | 18% | 0.3 | 6.0s / 15.0s | $0.0050 | $0.4460 | 920 | – |  |
 | qwen/qwen3.8-max | openrouter | medium | 86% | 94% | 18% | 0.9 | 78.2s / 154.5s | $0.0232 | $2.0849 | 3189 | 49% |  |
 | gemini-3.6-flash | google | medium | 82% | 94% | 29% | 0.1 | 15.3s / 63.2s | $0.0093 | $0.8391 | 873 | – |  |
 | meta/muse-spark-1.3-contributor | openrouter | medium | 81% | 88% | 24% | 0.1 | 18.2s / 226.4s | $0.0004 | $0.0333 | 1348 | 66% |  |
 | meta/muse-spark-1.3 | openrouter | medium | 78% | 100% | 35% | 0.1 | 19.3s / 138.2s | $0.0081 | $0.7250 | 1363 | 38% |  |
 | moonshotai/kimi-k3 | openrouter | medium | 74% | 88% | 47% | 0.2 | 52.6s / 519.2s | $0.0143 | $1.2863 | 429 | – |  |
 | gemini-3.7-flash | google | medium | 73% | 82% | 24% | 0.0 | 4.9s / 17.3s | $0.0029 | $0.2575 | 393 | – |  |
-| z-ai/glm-5.3-flash | openrouter | medium | 71% | 88% | 29% | 0.5 | 8.1s / 18.3s | $0.0002 | $0.0144 | 55 | 62% |  |
+| z-ai/glm-5.3-flash | openrouter | medium | 72% | 88% | 29% | 0.5 | 8.1s / 18.3s | $0.0002 | $0.0144 | 55 | 62% |  |
 | moonshotai/kimi-k2.7-code | openrouter | medium | 71% | 88% | 35% | 0.1 | 45.6s / 133.9s | $0.0126 | $1.1366 | 1967 | – |  |
-| x-ai/grok-4.7 | openrouter | medium | 69% | 82% | 35% | 0.1 | 51.2s / 129.7s | $0.0219 | $1.9739 | 4118 | 73% |  |
+| x-ai/grok-4.6 | openrouter | medium | 71% | 88% | 29% | 0.7 | 12.1s / 16.0s | $0.0026 | $0.2307 | 0 | 78% |  |
+| x-ai/grok-4.7 | openrouter | medium | 69% | 82% | 29% | 0.1 | 51.2s / 129.7s | $0.0219 | $1.9739 | 4118 | 73% |  |
 | gemini-3.1-pro-preview | google | medium | 69% | 88% | 41% | 0.4 | 76.6s / 2904.0s | $0.0122 | $1.1010 | 1077 | – |  |
-| x-ai/grok-4.6 | openrouter | medium | 69% | 88% | 35% | 0.7 | 12.1s / 16.0s | $0.0026 | $0.2307 | 0 | 78% |  |
 | gemini-3.5-flash | google | medium | 68% | 82% | 29% | 0.1 | 14.8s / 135.8s | $0.0129 | $1.1574 | 1091 | – |  |
-| gemini-3-flash-preview | google | medium | 68% | 82% | 24% | 0.9 | 18.4s / 90.6s | $0.0083 | $0.7493 | 2391 | – |  |
 | gpt-5.6-sol | openai | medium | 67% | 82% | 35% | 0.0 | 20.6s / 133.1s | $0.0181 | $1.6322 | 204 | – |  |
+| gemini-3-flash-preview | google | medium | 67% | 82% | 29% | 0.9 | 18.4s / 90.6s | $0.0083 | $0.7493 | 2391 | – |  |
 | gpt-6-sol | openai | medium | 64% | 76% | 24% | 0.0 | 5.3s / 8.2s | $0.0065 | $0.5872 | 205 | 78% |  |
 | gpt-5.5 | openai | medium | 62% | 71% | 18% | 0.0 | 59.1s / 109.5s | $0.0234 | $2.1040 | 372 | – |  |
 | x-ai/grok-4.5 | openrouter | medium | 62% | 76% | 24% | 2.2 | 53.6s / 97.4s | $0.0036 | $0.3199 | 92 | – |  |
 | claude-sonnet-4-6 | anthropic | medium | 59% | 71% | 24% | 0.5 | 8.5s / 53.4s | $0.0087 | $0.7833 | – | – |  |
 | gpt-5.6-terra | openai | medium | 55% | 71% | 29% | 0.2 | 7.5s / 61.9s | $0.0066 | $0.5971 | 135 | – |  |
-| qwen/qwen3.7-plus | openrouter | medium | 53% | 71% | 29% | 0.2 | 82.4s / 130.2s | $0.0055 | $0.4948 | 3732 | – |  |
-| gemini-3.5-flash-lite | google | medium | 52% | 71% | 35% | 0.2 | 3.9s / 7.6s | $0.0017 | $0.1524 | 626 | – |  |
-| gpt-5.6-luna | openai | medium | 51% | 59% | 18% | 0.0 | 7.4s / 24.3s | $0.0008 | $0.0736 | 282 | 70% |  |
+| qwen/qwen3.7-plus | openrouter | medium | 54% | 71% | 29% | 0.1 | 82.4s / 130.2s | $0.0055 | $0.4948 | 3732 | – |  |
+| gemini-3.5-flash-lite | google | medium | 51% | 71% | 41% | 0.2 | 3.9s / 7.6s | $0.0017 | $0.1524 | 626 | – |  |
 | claude-opus-4-8 | anthropic | medium | 51% | 65% | 24% | 0.4 | 20.9s / 146.3s | $0.0161 | $1.4484 | – | – |  |
+| gpt-5.6-luna | openai | medium | 49% | 59% | 24% | 0.0 | 7.4s / 24.3s | $0.0008 | $0.0736 | 282 | 70% |  |
 | xiaomi/mimo-v2.6-pro | openrouter | medium | 49% | 71% | 53% | 0.6 | 16.9s / 58.6s | $0.0009 | $0.0815 | 601 | 66% |  |
-| gpt-6-luna | openai | medium | 45% | 59% | 29% | 0.0 | 7.5s / 11.4s | $0.0004 | $0.0362 | 358 | 80% |  |
 | gemini-3.1-flash-lite | google | medium | 44% | 59% | 35% | 0.6 | 3.4s / 6.2s | $0.0006 | $0.0570 | 372 | – |  |
 | claude-sonnet-5 | anthropic | medium | 44% | 59% | 24% | 0.7 | 12.3s / 85.5s | $0.0095 | $0.8555 | – | – |  |
+| gpt-6-luna | openai | medium | 44% | 59% | 29% | 0.0 | 7.5s / 11.4s | $0.0004 | $0.0362 | 358 | 80% |  |
 | gpt-5.4-mini | openai | medium | 42% | 59% | 29% | 0.0 | 48.3s / 461.8s | $0.0039 | $0.3479 | 463 | – |  |
-| claude-haiku-4-5 | anthropic | medium | 25% | 35% | 18% | 0.0 | 15.8s / 67.9s | $0.0064 | $0.5754 | – | – |  |
+| claude-haiku-4-5 | anthropic | medium | 26% | 35% | 18% | 0.0 | 15.8s / 67.9s | $0.0064 | $0.5754 | – | – |  |
 
-## Judge confidence
-
-`gpt-5.6-luna` classified each reported issue as matching an expected defect or as an extra, with a calibrated confidence. 2 of 277 judged run(s) have a decision below confidence 0.80; those are the verdicts worth checking by hand.
-
-| Confidence | Decisions |
-| --- | --- |
-| 0.00–0.50 | 0 |
-| 0.50–0.80 | 2 |
-| 0.80–0.90 | 17 |
-| 0.90–0.95 | 40 |
-| 0.95–1.00 | 336 |
-
-Least confident decisions:
-
-| Model | Image | Rep | Issue | Decision | p | Confidence | Reported issue |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| moonshotai/kimi-k3 | img_15 | 2 | R1 | E0 | 0.80 | 0.78 | Bottom navigation icons look slightly crowded around the se… |
-| moonshotai/kimi-k3 | img_15 | 3 | R1 | E0 | 0.70 | 0.78 | The bottom navigation icons have weak differentiation betwe… |
-| gemini-3.1-pro-preview | img_12 | 3 | R0 | E0 | 0.85 | 0.80 | Overlapping text strings below the 'Tokumaru Ramen Bar' tit… |
-| x-ai/grok-4.7 | img_15 | 4 | R0 | E0 | 0.82 | 0.80 | In the bottom navigation bar, a thick dark horizontal bar f… |
-| gemini-3.1-pro-preview | img_15 | 1 | R0 | E0 | 0.78 | 0.82 | The bottom navigation bar has misaligned icons, specificall… |
-| claude-fable-5-1 | img_15 | 3 | R1 | extra | 0.85 | 0.84 | The bottom navigation tabs have icons only with no text lab… |
-| moonshotai/kimi-k2.7-code | img_15 | 1 | R0 | E0 | 0.86 | 0.84 | The system home/gesture indicator (gray pill) overlaps the … |
-| xiaomi/mimo-v2.6-pro | img_15 | 3 | R0 | E0 | 0.82 | 0.84 | The bottom navigation bar's search icon (magnifying glass) … |
-| claude-fable-5 | img_12 | 4 | R1 | extra | 0.80 | 0.85 | The Tokumaru Ramen Bar card shows '€0 delivery' as a badge … |
-| z-ai/glm-5.3-flash | img_15 | 2 | R0 | E0 | 0.85 | 0.85 | In the bottom navigation bar, the middle tab (presumably Se… |
-| gpt-5.6-luna | img_12 | 1 | R0 | E0 | 0.90 | 0.86 | The Tokumaru Ramen Bar metadata is overlapping: the deliver… |
-| x-ai/grok-4.7 | img_15 | 3 | R0 | E0 | 0.86 | 0.86 | The bottom navigation bar contains a stray horizontal gray … |
-| claude-fable-5-1 | img_15 | 2 | R1 | extra | 0.90 | 0.88 | Bottom navigation tabs have no text labels and only the hom… |
-| claude-fable-5-1 | img_15 | 4 | R1 | extra | 0.90 | 0.88 | Bottom navigation tabs are icon-only with no text labels, a… |
-| claude-opus-4-8 | img_15 | 1 | R1 | E0 | 0.90 | 0.88 | The bottom navigation bar appears visually cluttered, with … |
-
-- **Generated:** 2026-09-30T11:13:42.658Z
+- **Generated:** 2026-10-01T08:36:08.169Z
 - **Prompt sha256:** `eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571`
 - **Reasoning effort:** `medium` (fixed for all models; per-provider mapping documented in the library)
 - **Repeats:** 5 per model × image
