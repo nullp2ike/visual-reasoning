@@ -32,7 +32,7 @@ Do not report the following (treat these as features, not defects):
 | img_11 11_impossible_discount_value.png | Discount badge shows −100% | 1/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 1/5 | 1/5 | 4/5 | 5/5 | 1/5 | 4/5 | 1/5 | 0/5 | 5/5 | 2/5 | 2/5 | 3/5 | 5/5 | 3/5 | 3/5 | 0/5 | 1/5 | 0/5 | 3/5 | 3/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 3/5 | 5/5 | 1/5 | 0/5 |
 | img_12 12_overlapping_elements.png | Tokumaru Ramen Bar Delivery fee text overlaps the delivery … | 5/5 | 3/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 3/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 4/5 | 5/5 | 5/5 | 5/5 | 5/5 |
 | img_13 13_orphaned_notification_badge.png | An icon is missing from the top right corner, only a red do… | 0/5 | 1/5 | 4/5 | 2/5 | 4/5 | 4/5 | 3/5 | 4/5 | 5/5 | 5/5 | 2/5 | 3/5 | 2/5 | 0/5 | 0/5 | 1/5 | 0/5 | 5/5 | 1/5 | 1/5 | 5/5 | 3/5 | 5/5 | 0/5 | 1/5 | 0/5 | 2/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 1/5 | 4/5 | 1/5 | 1/5 | 0/5 |
-| img_14 14_misalignment.png | Middle card in the carousel is not aligned with the other c… | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 5/5 | 1/5 | 5/5 | 5/5 | 0/5 | 1/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 5/5 | 0/5 | 0/5 | 0/5 | 0/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 0/5 | 0/5 | 4/5 | 2/5 | 4/5 |
+| img_14 14_misalignment.png | Fastest near you carousel card heights are misaligned with … | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 5/5 | 1/5 | 5/5 | 5/5 | 0/5 | 1/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 5/5 | 0/5 | 0/5 | 0/5 | 0/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 0/5 | 0/5 | 4/5 | 2/5 | 4/5 |
 | img_15 15_safe_area_violation.png | Bottom nav labels are cut off below the screen edge and a b… | 2/5 | 2/5 | 1/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 0/5 | 0/5 | 4/5 | 1/5 | 1/5 | 2/5 | 4/5 | 2/5 | 5/5 | 3/5 | 5/5 | 3/5 | 5/5 | 0/5 | 0/5 | 2/5 | 0/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 3/5 | 4/5 | 5/5 | 5/5 | 5/5 |
 | img_16 16_filter_content_mismatch.png | Pizza category is selected but the feed still shows all cui… | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 1/5 | 0/5 | 0/5 | 0/5 | 1/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 1/5 | 0/5 | 3/5 | 5/5 | 0/5 | 1/5 | 0/5 | 0/5 | 0/5 | 0/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 0/5 | 2/5 | 0/5 | 1/5 | 2/5 |
 | img_17 17_wrong_active_nav_state.png | Profile is highlighted in the bottom nav bar while the home… | 0/5 | 0/5 | 4/5 | 0/5 | 4/5 | 5/5 | 2/5 | 3/5 | 5/5 | 5/5 | 0/5 | 4/5 | 5/5 | 0/5 | 0/5 | 3/5 | 2/5 | 4/5 | 0/5 | 4/5 | 3/5 | 0/5 | 3/5 | 0/5 | 1/5 | 0/5 | 0/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 3/5 | 3/5 | 1/5 | 4/5 | 5/5 |
@@ -93,7 +93,7 @@ No composite score: with a small issue set, rank by the columns that matter to y
 | gpt-5.4-mini | openai | medium | 42% | 59% | 29% | 0.0 | 48.3s / 461.8s | $0.0039 | $0.3479 | 463 | – |  |
 | claude-haiku-4-5 | anthropic | medium | 26% | 35% | 18% | 0.0 | 15.8s / 67.9s | $0.0064 | $0.5754 | – | – |  |
 
-- **Generated:** 2026-09-30T11:10:11.810Z
+- **Generated:** 2026-10-01T09:30:11.570Z
 - **Prompt sha256:** `eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571`
 - **Reasoning effort:** `medium` (fixed for all models; per-provider mapping documented in the library)
 - **Repeats:** 5 per model × image

@@ -63,7 +63,7 @@ bullet is a clean control, where anything reported counts as a false positive.
 
 ## 14_misalignment.png
 
-- Middle card in the carousel is not aligned with the other cards
+- Fastest near you carousel card heights are misaligned with each other
 
 ## 15_safe_area_violation.png
 

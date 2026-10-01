@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-30T11:11:49.795Z",
+  "generatedAt": "2026-10-01T09:31:23.207Z",
   "prompt": "What looks visually broken on this page?\n\nDo not report the following (treat these as features, not defects):\n- A horizontally scrollable row (restaurant carousels, category filter chips) whose last item is only partially visible at the right screen edge, including that item's title being clipped by the edge.\n- Content cut off by the bottom of the viewport, such as a partially visible card at the end of a vertical list.",
   "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
   "reasoningEffort": "medium",
@@ -82,7 +82,7 @@
       "meanRecall": 0.9411764705882353,
       "anyRecall": 0.9411764705882353,
       "flakiness": 0,
-      "extrasPerRun": 0.8888888888888888,
+      "extrasPerRun": 0.8666666666666667,
       "noBugsCleanRate": 0,
       "latencyMedianSeconds": 47.75336368749998,
       "latencyP95Seconds": 88.51462570899993,
@@ -92,6 +92,27 @@
       "meanOutputTokens": 510.0888888888889,
       "meanReasoningTokens": null,
       "cacheHitRate": null
+    },
+    {
+      "series": "claude-sonnet-5-5",
+      "model": "claude-sonnet-5-5",
+      "provider": "anthropic",
+      "reasoningEffort": "medium",
+      "okRuns": 90,
+      "failedRuns": 0,
+      "meanRecall": 0.9411764705882353,
+      "anyRecall": 0.9411764705882353,
+      "flakiness": 0,
+      "extrasPerRun": 2.8,
+      "noBugsCleanRate": 0,
+      "latencyMedianSeconds": 6.033239854500003,
+      "latencyP95Seconds": 7.440982999999993,
+      "meanCostPerRun": 0.010874111111111114,
+      "totalCost": 0.9786700000000003,
+      "meanInputTokens": 2089,
+      "meanOutputTokens": 669.6111111111111,
+      "meanReasoningTokens": null,
+      "cacheHitRate": 0
     },
     {
       "series": "gpt-6.1-sol",
@@ -113,27 +134,6 @@
       "meanOutputTokens": 175.61111111111111,
       "meanReasoningTokens": 69.84444444444445,
       "cacheHitRate": 0.8430860887697349
-    },
-    {
-      "series": "claude-sonnet-5-5",
-      "model": "claude-sonnet-5-5",
-      "provider": "anthropic",
-      "reasoningEffort": "medium",
-      "okRuns": 90,
-      "failedRuns": 0,
-      "meanRecall": 0.9294117647058824,
-      "anyRecall": 0.9411764705882353,
-      "flakiness": 0.058823529411764705,
-      "extrasPerRun": 2.811111111111111,
-      "noBugsCleanRate": 0,
-      "latencyMedianSeconds": 6.033239854500003,
-      "latencyP95Seconds": 7.440982999999993,
-      "meanCostPerRun": 0.010874111111111114,
-      "totalCost": 0.9786700000000003,
-      "meanInputTokens": 2089,
-      "meanOutputTokens": 669.6111111111111,
-      "meanReasoningTokens": null,
-      "cacheHitRate": 0
     },
     {
       "series": "gpt-6-astra",
@@ -3398,7 +3398,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported 0 describes the same vertically offset middle card in the Fastest near you carousel.",
+          "reasoning": "Reported 0 describes the same vertically offset cards in the 'Fastest near you' carousel.",
           "overridden": false
         }
       ],
@@ -3441,7 +3441,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle carousel card vertically offset from neighboring cards.",
+          "reasoning": "Reported 0 describes the same vertically offset Smash Bros card in the Fastest near you carousel.",
           "overridden": false
         }
       ],
@@ -3490,7 +3490,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported 0 describes the same vertically misaligned middle carousel card.",
+          "reasoning": "Reported 0 describes the same Fastest near you cards with the same vertical misalignment problem.",
           "overridden": false
         }
       ],
@@ -3540,7 +3540,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported 0 describes the same middle carousel card vertical misalignment.",
+          "reasoning": "Reported 0 describes the same staggered card heights in the Fastest near you carousel.",
           "overridden": false
         }
       ],
@@ -3588,16 +3588,15 @@
           "expectedIndex": 0,
           "found": true,
           "matchedReportedIndexes": [
-            0
+            0,
+            1,
+            2
           ],
-          "reasoning": "Reported 0 describes the same middle card vertical offset and row misalignment.",
+          "reasoning": "All three describe the same Fastest near you row misalignment with the middle card offset lower than the others.",
           "overridden": false
         }
       ],
-      "extraReportedIndexes": [
-        1,
-        2
-      ],
+      "extraReportedIndexes": [],
       "overridden": false,
       "usage": {
         "inputTokens": 2087,
@@ -6865,7 +6864,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle carousel card sitting lower than adjacent cards.",
+          "reasoning": "Reported issue describes the same misaligned Fastest near you carousel cards.",
           "overridden": false
         }
       ],
@@ -6901,7 +6900,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle carousel card shifted down out of alignment.",
+          "reasoning": "Both describe misalignment of cards in the Fastest near you carousel.",
           "overridden": false
         }
       ],
@@ -6937,7 +6936,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue describes the middle carousel card shifted down relative to adjacent cards.",
+          "reasoning": "Both describe vertical misalignment of cards in the Fastest near you carousel.",
           "overridden": false
         }
       ],
@@ -6973,7 +6972,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue describes the same middle carousel card vertical misalignment.",
+          "reasoning": "Both describe misaligned cards in the Fastest near you carousel.",
           "overridden": false
         }
       ],
@@ -7009,7 +7008,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the carousel middle card being vertically misaligned with the neighboring cards.",
+          "reasoning": "Both describe vertical misalignment of cards in Fastest near you carousel.",
           "overridden": false
         }
       ],
@@ -16468,7 +16467,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported 0 describes the same middle carousel card vertical misalignment.",
+          "reasoning": "Reported 0 describes the same Fastest near you cards misaligned on baseline.",
           "overridden": false
         }
       ],
@@ -16525,7 +16524,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported 0 describes the middle Smash Bros Burgers card sitting lower than its neighbours, same misalignment.",
+          "reasoning": "Both describe Fastest near you cards lacking shared baseline alignment producing a ragged row.",
           "overridden": false
         }
       ],
@@ -16576,7 +16575,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported 0 describes the same middle card sitting lower than the other carousel cards.",
+          "reasoning": "Reported 0 describes the same Fastest near you cards misaligned vertically with different image heights.",
           "overridden": false
         }
       ],
@@ -16632,7 +16631,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported 0 describes the middle Smash Bros card offset lower than adjacent cards, matching the misalignment.",
+          "reasoning": "Reported 0 describes the same Fastest-near-you card vertical offset.",
           "overridden": false
         }
       ],
@@ -16695,7 +16694,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe vertical misalignment of the carousel cards.",
+          "reasoning": "Reported 0 describes the same Fastest near you cards being vertically misaligned.",
           "overridden": false
         }
       ],
@@ -20293,7 +20292,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe a carousel card sitting lower than adjacent cards causing misalignment.",
+          "reasoning": "Reported 0 describes the same misaligned cards in the Fastest near you carousel.",
           "overridden": false
         }
       ],
@@ -20343,7 +20342,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported 0 describes the middle carousel card sitting lower than its neighbors, matching the alignment defect.",
+          "reasoning": "Reported 0 describes the same misaligned Smash Bros card in the Fastest near you carousel.",
           "overridden": false
         }
       ],
@@ -20388,7 +20387,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle carousel card sitting lower than its neighbors.",
+          "reasoning": "Both describe vertical misalignment of cards in the Fastest near you carousel.",
           "overridden": false
         }
       ],
@@ -20438,7 +20437,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported 0 describes the middle carousel card sitting lower than its neighbors, same misalignment.",
+          "reasoning": "Both describe vertical misalignment of cards in the Fastest near you carousel.",
           "overridden": false
         }
       ],
@@ -20483,7 +20482,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported 0 describes the middle carousel card sitting lower than neighbors, matching the misalignment.",
+          "reasoning": "Both describe vertical misalignment of Fastest near you carousel cards.",
           "overridden": false
         }
       ],
@@ -23614,7 +23613,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported describes a dark background issue, not a card alignment problem.",
+          "reasoning": "Reported issue describes dark background inconsistency, not height misalignment.",
           "overridden": false
         }
       ],
@@ -23649,7 +23648,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue describes dark background mismatch, not card misalignment.",
+          "reasoning": "Reported describes dark background color, not misaligned card heights.",
           "overridden": false
         }
       ],
@@ -23690,7 +23689,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported 1 describes badge placement, not carousel card alignment.",
+          "reasoning": "No reported issue describes carousel card heights being misaligned.",
           "overridden": false
         }
       ],
@@ -23726,7 +23725,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported describes badge position within the card, not card alignment in the carousel.",
+          "reasoning": "Reported describes badge positioning inconsistency, not card height misalignment.",
           "overridden": false
         }
       ],
@@ -23761,7 +23760,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue is about darkness/blur, not vertical alignment.",
+          "reasoning": "Reported issue is about darker/blurred card image, not misaligned card heights.",
           "overridden": false
         }
       ],
@@ -26784,7 +26783,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue describes heart icon styling, not card alignment.",
+          "reasoning": "Reported issue is about heart icon background style, not carousel card height misalignment.",
           "overridden": false
         }
       ],
@@ -26819,7 +26818,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue is about heart icon styling, not carousel card alignment.",
+          "reasoning": "Reported issue describes heart icon styling inconsistency, not carousel card height misalignment.",
           "overridden": false
         }
       ],
@@ -26860,7 +26859,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Neither report describes vertical misalignment of a carousel card.",
+          "reasoning": "Neither report describes vertically misaligned card heights in the carousel.",
           "overridden": false
         }
       ],
@@ -26902,7 +26901,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Neither report describes vertical misalignment, only icon background color and image style differences.",
+          "reasoning": "Reported 1 describes inconsistent image treatments, not misaligned card heights.",
           "overridden": false
         }
       ],
@@ -26938,7 +26937,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue is about heart icon background styling, not carousel card alignment.",
+          "reasoning": "Reported issue describes heart icon background inconsistency, not carousel card height misalignment.",
           "overridden": false
         }
       ],
@@ -31250,7 +31249,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the Fastest near you carousel cards being vertically misaligned.",
+          "reasoning": "Both describe misaligned card heights in the Fastest near you carousel.",
           "overridden": false
         }
       ],
@@ -31308,7 +31307,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the Fastest carousel cards being vertically misaligned due to inconsistent image sizes.",
+          "reasoning": "Reported 0 describes the same Fastest near you cards with inconsistent image heights and vertical misalignment.",
           "overridden": false
         }
       ],
@@ -31372,7 +31371,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe vertical misalignment of cards in the Fastest near you carousel.",
+          "reasoning": "Reported 0 describes the same vertical misalignment and differing image heights in the Fastest near you carousel.",
           "overridden": false
         }
       ],
@@ -31425,7 +31424,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe vertical misalignment of a carousel card relative to the other cards.",
+          "reasoning": "Reported 0 describes the same vertical misalignment of Fastest near you cards and baselines.",
           "overridden": false
         }
       ],
@@ -31478,14 +31477,15 @@
       "expected": [
         {
           "expectedIndex": 0,
-          "found": false,
-          "matchedReportedIndexes": [],
-          "reasoning": "Reported 0 describes the first card as the outlier with middle and last aligned, not the middle card misaligned.",
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Reported 0 describes the same carousel cards with differing image heights and misaligned positions.",
           "overridden": false
         }
       ],
       "extraReportedIndexes": [
-        0,
         1,
         2,
         3
@@ -35173,7 +35173,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "No reported issue describes a misaligned middle carousel card.",
+          "reasoning": "No report describes misaligned card heights within the Fastest carousel.",
           "overridden": false
         }
       ],
@@ -35217,7 +35217,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Neither report mentions carousel card alignment.",
+          "reasoning": "No reported issue describes misaligned card heights in the Fastest near you carousel.",
           "overridden": false
         }
       ],
@@ -35260,7 +35260,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "No reported issue describes misalignment of the middle carousel card.",
+          "reasoning": "Reported card issue is about hierarchy placement, not misaligned heights.",
           "overridden": false
         }
       ],
@@ -35303,7 +35303,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Both reports describe promotional banner text issues, not carousel card misalignment.",
+          "reasoning": "Both reports concern the promotional banner, not carousel card heights.",
           "overridden": false
         }
       ],
@@ -35346,7 +35346,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Neither reported issue mentions card alignment.",
+          "reasoning": "No reported issue mentions misaligned carousel card heights.",
           "overridden": false
         }
       ],
@@ -38519,7 +38519,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue describes right-edge clipping, not middle-card misalignment.",
+          "reasoning": "Reported issue describes horizontal edge clipping, not carousel card height misalignment.",
           "overridden": false
         }
       ],
@@ -38560,7 +38560,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Neither report mentions card misalignment, only missing names and info.",
+          "reasoning": "Neither report describes misaligned card heights in the Fastest near you carousel.",
           "overridden": false
         }
       ],
@@ -38628,7 +38628,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Neither report mentions misalignment of the middle carousel card.",
+          "reasoning": "Neither report describes unequal card heights, only title truncation and cramped distance text.",
           "overridden": false
         }
       ],
@@ -41677,7 +41677,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue describes a clipped title, not carousel card misalignment.",
+          "reasoning": "Reported issue describes clipped title text, not misaligned card heights.",
           "overridden": false
         }
       ],
@@ -41712,7 +41712,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue describes truncated text, not card alignment.",
+          "reasoning": "Reported issue describes truncated text, not misaligned card heights.",
           "overridden": false
         }
       ],
@@ -41747,7 +41747,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue describes clipped restaurant name text, not misaligned middle card.",
+          "reasoning": "Reported clipping of restaurant name is a different problem than misaligned carousel card heights.",
           "overridden": false
         }
       ],
@@ -41782,7 +41782,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue describes truncated title, not misaligned middle card.",
+          "reasoning": "Title truncation is a different problem than misaligned carousel card heights.",
           "overridden": false
         }
       ],
@@ -41817,7 +41817,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue describes truncated text, not card misalignment.",
+          "reasoning": "Reported issue describes text truncation, not misaligned card heights.",
           "overridden": false
         }
       ],
@@ -44827,7 +44827,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue is about duplicate delivery text, not carousel card alignment.",
+          "reasoning": "Reported issue is about duplicate delivery badge, not misaligned card heights.",
           "overridden": false
         }
       ],
@@ -44890,7 +44890,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue describes imagery style mismatch, not card alignment.",
+          "reasoning": "Reported issue is about image style inconsistency, not card height misalignment.",
           "overridden": false
         }
       ],
@@ -50753,7 +50753,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue is about illustration style, not card alignment.",
+          "reasoning": "Reported issue is about illustration style, not misaligned card heights.",
           "overridden": false
         }
       ],
@@ -56852,7 +56852,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Neither report describes a misaligned middle carousel card.",
+          "reasoning": "No reported issue mentions misaligned carousel card heights.",
           "overridden": false
         }
       ],
@@ -56889,7 +56889,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue concerns text contrast in green banner, not carousel card alignment.",
+          "reasoning": "Reported issue is about banner text contrast, not carousel card heights.",
           "overridden": false
         }
       ],
@@ -56931,7 +56931,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "No reported issue mentions misalignment of the middle carousel card.",
+          "reasoning": "Neither report describes misaligned carousel card heights.",
           "overridden": false
         }
       ],
@@ -56968,7 +56968,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported describes badge misalignment, not whole middle card misalignment.",
+          "reasoning": "Reported issue is about badge vertical position, not carousel card heights.",
           "overridden": false
         }
       ],
@@ -57004,7 +57004,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue is about banner text contrast, not carousel card alignment.",
+          "reasoning": "Reported issue is about promo banner contrast, not carousel card heights.",
           "overridden": false
         }
       ],
@@ -68406,7 +68406,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle restaurant card vertically offset from neighboring cards.",
+          "reasoning": "Both describe vertical misalignment of neighboring restaurant cards in the same carousel row.",
           "overridden": false
         }
       ],
@@ -74189,7 +74189,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe overlapping delivery fee and time under Tokumaru Ramen Bar.",
+          "reasoning": "Both describe delivery fee and time overlapping beneath Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -74448,7 +74448,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the same carousel card sitting lower than neighboring cards.",
+          "reasoning": "Both describe carousel cards vertically misaligned lower/staggered versus neighbors.",
           "overridden": false
         }
       ],
@@ -74485,7 +74485,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle carousel card sitting lower than neighboring cards.",
+          "reasoning": "Both describe vertical misalignment of cards in the Fastest near you carousel.",
           "overridden": false
         }
       ],
@@ -74522,7 +74522,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle carousel card sitting lower than neighbors.",
+          "reasoning": "Both describe carousel cards misaligned with one card sitting lower than neighbors.",
           "overridden": false
         }
       ],
@@ -74559,7 +74559,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle restaurant card sitting lower and misaligned with adjacent cards.",
+          "reasoning": "Both describe misaligned restaurant card heights within the same carousel row.",
           "overridden": false
         }
       ],
@@ -74596,7 +74596,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle carousel card sitting lower than adjacent cards.",
+          "reasoning": "Both describe vertical misalignment of Fastest near you carousel cards.",
           "overridden": false
         }
       ],
@@ -80003,7 +80003,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe overlapping delivery fee and delivery time text under Tokumaru Ramen Bar.",
+          "reasoning": "Both describe overlapping delivery fee and time text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -80281,7 +80281,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle carousel card sitting lower than the others.",
+          "reasoning": "Both describe carousel cards misaligned with one card sitting lower than neighbors.",
           "overridden": false
         }
       ],
@@ -80318,7 +80318,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle restaurant card sitting lower/misaligned versus neighbors.",
+          "reasoning": "Both describe neighboring restaurant cards misaligned in height with Smash Bros Burgers sitting lower.",
           "overridden": false
         }
       ],
@@ -80355,7 +80355,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle restaurant card being vertically misaligned with adjacent cards.",
+          "reasoning": "Both describe restaurant carousel cards vertically misaligned with one card lower.",
           "overridden": false
         }
       ],
@@ -80392,7 +80392,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle carousel card sitting lower than adjacent cards.",
+          "reasoning": "Both describe restaurant carousel cards misaligned with Smash Bros card sitting lower.",
           "overridden": false
         }
       ],
@@ -80429,7 +80429,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe a restaurant card vertically misaligned lower than its neighboring cards.",
+          "reasoning": "Both describe vertical misalignment of neighboring restaurant carousel cards.",
           "overridden": false
         }
       ],
@@ -83454,7 +83454,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle carousel card sitting lower than adjacent cards.",
+          "reasoning": "Reported Smash Bros Burgers card sitting lower matches misaligned carousel card heights.",
           "overridden": false
         }
       ],
@@ -83491,7 +83491,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle restaurant card sitting lower than adjacent cards.",
+          "reasoning": "Both describe vertically misaligned adjacent restaurant cards in the same carousel.",
           "overridden": false
         }
       ],
@@ -83528,7 +83528,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle card sitting lower than neighboring cards.",
+          "reasoning": "Both describe vertical misalignment of Fastest near you carousel cards.",
           "overridden": false
         }
       ],
@@ -83565,7 +83565,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe a carousel restaurant card sitting lower than adjacent cards.",
+          "reasoning": "Both describe a restaurant card sitting lower than adjacent cards.",
           "overridden": false
         }
       ],
@@ -83602,7 +83602,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle carousel card sitting lower than neighboring cards.",
+          "reasoning": "Both describe carousel cards misaligned with one card sitting lower than neighbors.",
           "overridden": false
         }
       ],
@@ -86713,7 +86713,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue notes the middle card image is vertically offset lower than adjacent cards.",
+          "reasoning": "Reported 0 notes the middle card image is vertically offset lower than adjacent cards in Fastest near you.",
           "overridden": false
         }
       ],
@@ -86788,7 +86788,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported 0 describes the same middle card vertical misalignment.",
+          "reasoning": "Both describe vertical misalignment of cards in the 'Fastest near you' row.",
           "overridden": false
         }
       ],
@@ -89911,7 +89911,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported 0 describes the same vertically misaligned middle carousel card.",
+          "reasoning": "Both describe vertical misalignment of Fastest near you carousel cards.",
           "overridden": false
         }
       ],
@@ -89957,7 +89957,7 @@
           "matchedReportedIndexes": [
             1
           ],
-          "reasoning": "Reported 1 describes the middle carousel card vertically misaligned versus neighbors.",
+          "reasoning": "Both describe vertical misalignment of cards in the Fastest near you carousel.",
           "overridden": false
         }
       ],
@@ -90003,7 +90003,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported 0 describes the middle card sitting lower than adjacent cards.",
+          "reasoning": "Both describe vertical misalignment of the Fastest near you carousel cards.",
           "overridden": false
         }
       ],
@@ -90049,7 +90049,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle carousel card as vertically misaligned with adjacent cards.",
+          "reasoning": "Both describe vertical misalignment of the Fastest near you cards.",
           "overridden": false
         }
       ],
@@ -93135,7 +93135,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Both reports describe pill and icon styling differences, not carousel card alignment.",
+          "reasoning": "Reported issues describe pill and heart styles, not card height misalignment.",
           "overridden": false
         }
       ],
@@ -93201,7 +93201,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue describes badge position difference, not card alignment mismatch.",
+          "reasoning": "Reported issue describes badge position difference, not card height misalignment.",
           "overridden": false
         }
       ],
@@ -96253,7 +96253,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "No reported issue mentions carousel card misalignment.",
+          "reasoning": "No report describes misaligned card heights, only badge overlap and unrelated issues.",
           "overridden": false
         }
       ],
@@ -96298,7 +96298,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Neither report mentions card misalignment, only truncation and readability.",
+          "reasoning": "Neither reported issue describes misaligned card heights in the carousel.",
           "overridden": false
         }
       ],
@@ -96364,7 +96364,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue describes text clipping on third card, not misalignment of middle card.",
+          "reasoning": "Reported describes horizontal text clipping at screen edge, not vertical card height misalignment.",
           "overridden": false
         }
       ],
@@ -96407,7 +96407,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Neither reported issue mentions carousel card alignment, only text contrast problems.",
+          "reasoning": "Neither report mentions carousel card heights, only low-contrast text issues.",
           "overridden": false
         }
       ],
@@ -99376,7 +99376,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue concerns home indicator spacing, not carousel card alignment.",
+          "reasoning": "Reported issue concerns bottom home indicator spacing, not carousel card heights.",
           "overridden": false
         }
       ],
@@ -99441,7 +99441,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue is about Order now button styling, not carousel card alignment.",
+          "reasoning": "Reported issue describes banner button styling, not carousel card height misalignment.",
           "overridden": false
         }
       ],
@@ -102562,7 +102562,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe delivery fee overlapping delivery time under Tokumaru Ramen Bar.",
+          "reasoning": "Both describe overlapping delivery time and fee text under Tokumaru Ramen Bar.",
           "overridden": false
         }
       ],
@@ -102956,7 +102956,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported 0 describes the carousel cards as vertically misaligned with different offsets.",
+          "reasoning": "Both describe vertically misaligned cards in the Fastest near you carousel.",
           "overridden": false
         }
       ],
@@ -103009,7 +103009,7 @@
             0,
             1
           ],
-          "reasoning": "Both report vertical misalignment in the Fastest near you carousel affecting cards and their badges.",
+          "reasoning": "Both report vertical misalignment of the Fastest near you carousel cards and their badges.",
           "overridden": false
         }
       ],
@@ -103055,7 +103055,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe vertical misalignment of cards in the 'Fastest near you' carousel.",
+          "reasoning": "Reported 0 describes the same Fastest near you cards with different vertical baselines and jagged row.",
           "overridden": false
         }
       ],
@@ -103101,7 +103101,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe vertical misalignment of cards in the Fastest near you carousel.",
+          "reasoning": "Reported 0 describes the same Fastest near you cards as vertically misaligned due to differing image heights.",
           "overridden": false
         }
       ],
@@ -103147,7 +103147,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported 0 describes the same vertical misalignment of the carousel restaurant cards.",
+          "reasoning": "Reported 0 describes the same vertically misaligned Fastest near you cards at different baselines.",
           "overridden": false
         }
       ],
@@ -107495,7 +107495,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Neither report describes vertical misalignment of the middle carousel card.",
+          "reasoning": "Neither report mentions card height misalignment, only title truncation and a filter chip issue.",
           "overridden": false
         }
       ],
@@ -107539,7 +107539,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Neither report describes card misalignment; one is about truncated name and the other about badge horizontal position.",
+          "reasoning": "Reported issues describe name truncation and badge placement, not misaligned card heights.",
           "overridden": false
         }
       ],
@@ -107583,7 +107583,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Neither report mentions card alignment, only name truncation and rating text.",
+          "reasoning": "Reported issues cover name truncation and rating format, not carousel card height misalignment.",
           "overridden": false
         }
       ],
@@ -107627,7 +107627,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Neither report describes carousel card misalignment, only truncation and chip visibility.",
+          "reasoning": "Neither report describes misaligned card heights, only truncation and chip visibility.",
           "overridden": false
         }
       ],
@@ -107671,7 +107671,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Neither report describes misaligned carousel cards, only name truncation and badge inconsistency.",
+          "reasoning": "Neither reported issue mentions misaligned card heights, only truncation and badge styles.",
           "overridden": false
         }
       ],
@@ -111293,7 +111293,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported describes inconsistent badge placement, not misalignment of the middle card itself.",
+          "reasoning": "Reported describes inconsistent badge placement and clipping, not misaligned card heights.",
           "overridden": false
         }
       ],
@@ -111331,7 +111331,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported describes clipped text, not misaligned middle card.",
+          "reasoning": "Reported describes clipped names and prices, not misaligned card heights.",
           "overridden": false
         }
       ],
@@ -111369,7 +111369,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue is about truncated name on rightmost card, not misalignment of middle card.",
+          "reasoning": "Reported describes truncated restaurant name, not misaligned card heights.",
           "overridden": false
         }
       ],
@@ -111409,7 +111409,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle carousel card sitting uneven/lower than adjacent cards.",
+          "reasoning": "Both describe uneven card heights in the Fastest near you carousel.",
           "overridden": false
         }
       ],
@@ -111445,7 +111445,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue describes truncated restaurant name, not misaligned middle card.",
+          "reasoning": "Reported issue describes horizontal name truncation, not misaligned card heights.",
           "overridden": false
         }
       ],
@@ -117939,7 +117939,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Neither report mentions carousel cards or alignment.",
+          "reasoning": "Neither report mentions carousel cards or height misalignment.",
           "overridden": false
         }
       ],
@@ -117978,7 +117978,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue concerns banner text contrast, not carousel card alignment.",
+          "reasoning": "Reported issue describes banner text contrast, not carousel card height misalignment.",
           "overridden": false
         }
       ],
@@ -118045,7 +118045,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported describes third-card cutoff as intended scroll behavior and denies other issues, not middle-card misalignment.",
+          "reasoning": "Reported issue describes horizontal truncation as intentional and denies other issues, not height misalignment.",
           "overridden": false
         }
       ],
@@ -118083,7 +118083,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Reported issue concerns dash characters, not card alignment.",
+          "reasoning": "Reported issue is about dash inconsistency, not card height misalignment.",
           "overridden": false
         }
       ],
@@ -121369,7 +121369,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe vertical misalignment of cards in the Fastest near you carousel row.",
+          "reasoning": "Reported issue 0 describes the same misaligned Fastest near you cards.",
           "overridden": false
         }
       ],
@@ -121415,7 +121415,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported 0 describes the same vertically misaligned middle card in the Fastest near you carousel.",
+          "reasoning": "Reported 0 describes the same vertical misalignment of the Fastest near you cards.",
           "overridden": false
         }
       ],
@@ -121455,7 +121455,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle card vertically misaligned relative to neighboring cards.",
+          "reasoning": "Reported issue describes the same vertical misalignment of Fastest near you carousel cards.",
           "overridden": false
         }
       ],
@@ -121493,7 +121493,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the middle carousel card being vertically misaligned higher than its neighbors.",
+          "reasoning": "Reported describes same Fastest near you carousel card height misalignment.",
           "overridden": false
         }
       ],

@@ -1,0 +1,56 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Fastest near you carousel card heights are misaligned with each other"
+  ],
+  "reportedIssues": [
+    "The cards in the 'Fastest near you' carousel are not aligned. Green Bowl Poké has a taller image (starting near y≈631) than Smash Bros Burgers and Trattoria Piccola (starting near y≈658). Their titles and delivery-fee text therefore sit at different vertical positions (801 vs 829), and the time badges are offset too.",
+    "The secondary gray text (delivery fees, '25–35 min · €0 delivery · Ramen', the '(500+)' rating count) and the inactive tab labels are light gray on white and have low contrast.",
+    "The heart/favorite buttons are inconsistent. On the ramen card the heart has no background, so it may be hard to see against the image. On the pizza card it has a dark circular background.",
+    "The promo banner's decorative circles are cropped awkwardly at the right and bottom edges, and one of them has a hard-edged corner artifact at the bottom right."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

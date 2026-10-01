@@ -1,0 +1,30 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Fastest near you carousel card heights are misaligned with each other"
+  ],
+  "reportedIssues": [
+    "The cards in the 'Fastest near you' carousel are not aligned. The first card (Green Bowl Poké) has a taller image starting at y≈631, while the second and third cards have shorter images starting at y≈658. Their titles and delivery text therefore sit at different vertical positions (801 vs 829). The image sizes are inconsistent and the row looks broken.",
+    "The time badges overlap the bottom-left corner of the images inconsistently. On the first card the badge extends past the image edge and overlaps the plate, and its position relative to the image differs between cards.",
+    "The secondary gray text (delivery fees, inactive tab labels, placeholder text) has low contrast against the white and light gray backgrounds. The heart icon on the second popular card (-20%) sits on a semi-transparent dark circle, unlike the first card, which has no circle.",
+    "The promo banner has decorative circles that are cut off and slightly clash with the banner's rounded corner in the bottom right. This creates a visible edge artifact."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes misaligned card image heights and vertically displaced content in the same carousel."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Fastest near you carousel card heights are misaligned with each other"
+  ],
+  "reportedIssues": [
+    "In the 'Fastest near you' horizontal carousel, the cards are not vertically aligned: the Green Bowl Poké card's image starts higher (top edge ~y=830) while Smash Bros Burgers and Trattoria Piccola cards start lower (~y=865), so titles and delivery fees land at different baselines and the row looks jagged/broken.",
+    "The delivery-time badge position is inconsistent across carousel cards: on Green Bowl Poké it overlaps the bottom-left of the image, on Smash Bros Burgers it sits lower overlapping the image bottom edge, and on Trattoria Piccola it overlaps the middle-left of the image, reinforcing the misaligned appearance."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.75,
+        "confidence": 0.51
+      }
+    ]
+  }
+}

@@ -8,7 +8,7 @@ Judges compared: `gemini-3.8-flash` vs `gpt-5.6-luna` vs `gpt-6-luna` vs `meta/m
 
 | Model | gemini-3.8-flash recall | gemini-3.8-flash extras/run | gpt-5.6-luna recall | gpt-5.6-luna extras/run | gpt-6-luna recall | gpt-6-luna extras/run | meta/muse-spark-1.3-contributor recall | meta/muse-spark-1.3-contributor extras/run | typesafe/jev-1.13 recall | typesafe/jev-1.13 extras/run | Recall Δ |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| claude-fable-5 | 94% | 0.9 | 94% | 0.9 | 94% | 0.9 | 94% | 0.9 | 94% | 0.9 | 0% |
+| claude-fable-5 | 94% | 0.9 | 94% | 0.8 | 94% | 0.8 | 94% | 0.9 | 94% | 0.9 | 0% |
 | claude-fable-5-1 | 94% | 0.2 | 94% | 0.2 | 94% | 0.2 | 94% | 0.2 | 94% | 0.2 | 0% |
 | claude-haiku-4-5 | 26% | 0.0 | 26% | 0.0 | 26% | 0.0 | 27% | 0.0 | 26% | 0.0 | 1% |
 | claude-opus-4-8 | 54% | 0.4 | 51% | 0.4 | 49% | 0.4 | 54% | 0.4 | 53% | 0.4 | 5% |
@@ -16,7 +16,7 @@ Judges compared: `gemini-3.8-flash` vs `gpt-5.6-luna` vs `gpt-6-luna` vs `meta/m
 | claude-opus-5-5 | 100% | 0.5 | 100% | 0.5 | 100% | 0.5 | 100% | 0.5 | 100% | 0.5 | 0% |
 | claude-sonnet-4-6 | 59% | 0.5 | 59% | 0.5 | 59% | 0.5 | 59% | 0.5 | 59% | 0.5 | 0% |
 | claude-sonnet-5 | 45% | 0.7 | 44% | 0.7 | 45% | 0.7 | 45% | 0.7 | 45% | 0.7 | 1% |
-| claude-sonnet-5-5 | 94% | 2.8 | 93% | 2.8 | 93% | 2.8 | 93% | 2.8 | 93% | 2.8 | 1% |
+| claude-sonnet-5-5 | 94% | 2.8 | 94% | 2.8 | 94% | 2.8 | 94% | 2.8 | 94% | 2.8 | 0% |
 | gemini-3-flash-preview | 66% | 0.9 | 67% | 0.9 | 66% | 0.9 | 66% | 0.9 | 68% | 0.9 | 2% |
 | gemini-3.1-flash-lite | 47% | 0.6 | 44% | 0.6 | 44% | 0.6 | 45% | 0.6 | 46% | 0.6 | 4% |
 | gemini-3.1-pro-preview | 74% | 0.3 | 69% | 0.4 | 69% | 0.4 | 73% | 0.4 | 74% | 0.3 | 5% |
@@ -24,7 +24,7 @@ Judges compared: `gemini-3.8-flash` vs `gpt-5.6-luna` vs `gpt-6-luna` vs `meta/m
 | gemini-3.5-flash-lite | 51% | 0.2 | 51% | 0.2 | 48% | 0.2 | 51% | 0.2 | 49% | 0.2 | 2% |
 | gemini-3.6-flash | 81% | 0.1 | 82% | 0.1 | 81% | 0.1 | 81% | 0.1 | 81% | 0.1 | 1% |
 | gemini-3.7-flash | 74% | 0.0 | 73% | 0.0 | 74% | 0.0 | 74% | 0.0 | 74% | 0.0 | 1% |
-| gemini-3.8-flash | 87% | 0.3 | 87% | 0.3 | 87% | 0.3 | 87% | 0.3 | 87% | 0.3 | 0% |
+| gemini-3.8-flash | 87% | 0.3 | 87% | 0.3 | 87% | 0.3 | 87% | 0.3 | 88% | 0.3 | 1% |
 | gpt-5.4-mini | 42% | 0.0 | 42% | 0.0 | 40% | 0.0 | 41% | 0.0 | 42% | 0.0 | 2% |
 | gpt-5.5 | 62% | 0.0 | 62% | 0.0 | 62% | 0.0 | 62% | 0.0 | 62% | 0.0 | 0% |
 | gpt-5.6-luna | 51% | 0.0 | 49% | 0.0 | 48% | 0.0 | 51% | 0.0 | 51% | 0.0 | 2% |
@@ -35,16 +35,16 @@ Judges compared: `gemini-3.8-flash` vs `gpt-5.6-luna` vs `gpt-6-luna` vs `meta/m
 | gpt-6-sol | 64% | 0.0 | 64% | 0.0 | 64% | 0.0 | 64% | 0.0 | 64% | 0.0 | 0% |
 | gpt-6.1-sol | 93% | 0.0 | 93% | 0.0 | 93% | 0.0 | 93% | 0.0 | 93% | 0.0 | 0% |
 | meta/muse-spark-1.3 | 78% | 0.1 | 78% | 0.1 | 78% | 0.1 | 78% | 0.1 | 78% | 0.1 | 0% |
-| meta/muse-spark-1.3-contributor | 81% | 0.1 | 81% | 0.1 | 81% | 0.1 | 81% | 0.1 | 81% | 0.1 | 0% |
+| meta/muse-spark-1.3-contributor | 81% | 0.1 | 81% | 0.1 | 80% | 0.1 | 81% | 0.1 | 81% | 0.1 | 1% |
 | moonshotai/kimi-k2.7-code | 72% | 0.1 | 71% | 0.1 | 69% | 0.1 | 69% | 0.1 | 68% | 0.1 | 4% |
 | moonshotai/kimi-k3 | 75% | 0.2 | 74% | 0.2 | 74% | 0.2 | 75% | 0.2 | 75% | 0.2 | 1% |
 | qwen/qwen3.7-plus | 55% | 0.1 | 54% | 0.1 | 51% | 0.2 | 53% | 0.2 | 54% | 0.1 | 5% |
-| qwen/qwen3.8-max | 86% | 1.0 | 86% | 0.9 | 84% | 1.0 | 86% | 1.0 | 86% | 0.9 | 2% |
-| x-ai/grok-4.5 | 62% | 2.2 | 62% | 2.2 | 62% | 2.2 | 62% | 2.2 | 62% | 2.2 | 0% |
+| qwen/qwen3.8-max | 86% | 1.0 | 86% | 0.9 | 85% | 0.9 | 86% | 1.0 | 86% | 0.9 | 1% |
+| x-ai/grok-4.5 | 62% | 2.2 | 62% | 2.2 | 62% | 2.2 | 62% | 2.2 | 64% | 2.2 | 1% |
 | x-ai/grok-4.6 | 71% | 0.7 | 71% | 0.7 | 71% | 0.7 | 71% | 0.7 | 71% | 0.7 | 0% |
 | x-ai/grok-4.7 | 72% | 0.1 | 69% | 0.1 | 69% | 0.1 | 71% | 0.1 | 67% | 0.1 | 5% |
 | xiaomi/mimo-v2.6-pro | 52% | 0.6 | 49% | 0.6 | 49% | 0.6 | 49% | 0.6 | 53% | 0.6 | 4% |
-| z-ai/glm-5.3-flash | 74% | 0.5 | 72% | 0.5 | 71% | 0.5 | 71% | 0.5 | 71% | 0.5 | 4% |
+| z-ai/glm-5.3-flash | 74% | 0.5 | 72% | 0.5 | 71% | 0.5 | 71% | 0.5 | 72% | 0.5 | 4% |
 
 ## Disagreements (55)
 
@@ -870,7 +870,7 @@ Expected: Green Bowl Poké card appears twice in the carousel
   - rep 4: The report describes a duplicate entry in the 'Fastest near you' section, not the Green Bowl Poké card duplicated in the carousel.
   - rep 5: The report describes the Green Bowl Poké card appearing twice side-by-side in the carousel.
 - **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe duplicate Green Bowl Poké cards appearing in the carousel.
+  - rep 1: Both describe the Green Bowl Poké card appearing twice in the carousel.
   - rep 2: The report mentions duplicate listings in a different named section but does not identify the Green Bowl Poké card in the carousel.
   - rep 3: Both describe duplicate Green Bowl Poké entries in the restaurant listing carousel/section.
   - rep 4: Both reports describe Green Bowl Poké appearing twice in a restaurant carousel or section.
@@ -1658,145 +1658,145 @@ Expected: An icon is missing from the top right corner, only a red do…
   - rep 4: Jev matched R1 (p=1.00, confidence 0.99).
   - rep 5: Jev matched R0 (p=0.78, confidence 0.55).
 
-### img_14 14_misalignment.png — claude-sonnet-5-5
+### img_14 14_misalignment.png — gemini-3.8-flash
 
-Expected: Middle card in the carousel is not aligned with the other c…
+Expected: Fastest near you carousel card heights are misaligned with …
 
-- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the carousel cards being vertically misaligned due to one card being positioned differently than the others.
-  - rep 2: Both report vertical misalignment among cards in the carousel row.
-  - rep 3: Reported issue 0 describes the vertical misalignment of the cards in the carousel, specifically noting Green Bowl Poké sits higher than the adjacent cards.
-  - rep 4: Reported issue 0 specifically describes the vertical misalignment of the carousel cards, identifying the middle card (Green Bowl Poké) as sitting higher than the neighboring cards.
-  - rep 5: Both describe the vertical misalignment among the cards in the carousel row.
+- **gemini-3.8-flash**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: None of the reported issues describe carousel card heights being misaligned.
+  - rep 2: The reported issue discusses text contrast in a promo banner rather than height misalignment in carousel cards.
+  - rep 3: None of the reported issues describe the card heights being misaligned in the carousel.
+  - rep 4: The reported issue concerns the vertical alignment of the delivery time badge rather than the unequal heights of the carousel cards themselves.
+  - rep 5: The reported issue is about text contrast on a promo banner, whereas the expected defect describes misaligned card heights in a carousel.
+- **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: Neither report describes misaligned heights among the Fastest near you carousel cards.
+  - rep 2: The reported issue concerns text color contrast in a green banner, not misaligned carousel card heights.
+  - rep 3: Neither reported issue describes misaligned heights among the Fastest near you carousel cards.
+  - rep 4: The expected issue concerns mismatched carousel card heights, while the report concerns a delivery time badge's vertical alignment.
+  - rep 5: The reported issue concerns text color contrast in a promo banner, not misaligned heights among Fastest near you carousel cards.
+- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: Neither report describes misaligned heights among cards in the “Fastest near you” carousel.
+  - rep 2: The reported issue concerns text contrast in a green banner, not misaligned carousel card heights.
+  - rep 3: Neither report describes misaligned heights among the carousel cards.
+  - rep 4: The report describes a delivery-time badge misalignment, not inconsistent heights among the carousel cards.
+  - rep 5: The reported issue concerns text contrast in a promo banner, not misaligned carousel card heights.
+- **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: No reported issue mentions misaligned carousel card heights.
+  - rep 2: Reported issue is about banner text contrast, not carousel card heights.
+  - rep 3: Neither report describes misaligned carousel card heights.
+  - rep 4: Reported issue is about badge vertical position, not carousel card heights.
+  - rep 5: Reported issue is about promo banner contrast, not carousel card heights.
+- **typesafe/jev-1.13**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
+  - rep 1: Jev matched no reported issue; closest was R1 (p=0.03).
+  - rep 2: Jev matched no reported issue; closest was R0 (p=0.00).
+  - rep 3: Jev matched no reported issue; closest was R0 (p=0.00).
+  - rep 4: Jev matched R0 (p=0.70, confidence 0.40).
+  - rep 5: Jev matched no reported issue; closest was R0 (p=0.00).
+
+### img_14 14_misalignment.png — meta/muse-spark-1.3-contributor
+
+Expected: Fastest near you carousel card heights are misaligned with …
+
+- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
+  - rep 1: Both report vertical misalignment of the cards in the 'Fastest near you' carousel.
+  - rep 2: Both describe the vertical alignment and height discrepancy among cards in the Fastest near you carousel.
+  - rep 3: Both report vertical misalignment of the cards in the 'Fastest near you' carousel.
+  - rep 4: Reported issue 0 describes the middle card in the 'Fastest near you' row being vertically misaligned with adjacent cards, matching the expected defect.
+  - rep 5: No issues were reported.
 - **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: Reported issue 0 describes the carousel cards being vertically misaligned, matching the expected card alignment defect.
-  - rep 2: The report describes inconsistent card image heights and vertical positions in the same carousel, causing the cards to be misaligned.
-  - rep 3: Reported issue 0 describes the carousel cards being vertically misaligned, matching the expected middle-card alignment defect.
-  - rep 4: Reported issue 0 describes the carousel cards being vertically misaligned, including the middle card's image and text baselines.
-  - rep 5: The reported alignment issue concerns the first carousel card, not the middle card specified in the expected defect.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: Reported issue 0 describes misaligned cards in the carousel, including differing vertical positions.
-  - rep 2: Reported issue 0 describes misaligned cards in the same carousel, including the middle card's differing image and text positions.
-  - rep 3: Reported issue 0 describes vertical misalignment between carousel cards, including the middle card.
-  - rep 4: The Green Bowl Poké card is described as vertically misaligned relative to the other carousel cards.
-  - rep 5: The expected defect concerns the middle card, while report 0 identifies the first card as misaligned.
+  - rep 1: Reported issue 0 describes the Fastest near you carousel cards being vertically misaligned, matching the height/alignment defect.
+  - rep 2: Reported issue 1 identifies misaligned card positioning and inconsistent vertical layout within the Fastest near you carousel.
+  - rep 3: Reported issue 0 identifies misaligned vertical heights and badge positions among cards in the 'Fastest near you' row.
+  - rep 4: Reported issue 0 describes misaligned heights and vertical positioning among cards in the 'Fastest near you' carousel.
+  - rep 5: No issues were reported.
+- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: missed
+  - rep 1: The reported issue says the middle card in the same carousel is vertically misaligned with its neighboring cards.
+  - rep 2: The report describes misaligned image top positions and pill padding, not differing card heights.
+  - rep 3: Reported issue 0 describes cards in the 'Fastest near you' row sitting at different vertical positions.
+  - rep 4: The middle card in the 'Fastest near you' row is vertically misaligned with adjacent cards.
+  - rep 5: No issues were reported.
 - **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: Both describe the Fastest near you carousel cards being vertically misaligned.
-  - rep 2: Both describe the Fastest carousel cards being vertically misaligned due to inconsistent image sizes.
-  - rep 3: Both describe vertical misalignment of cards in the Fastest near you carousel.
-  - rep 4: Both describe vertical misalignment of a carousel card relative to the other cards.
-  - rep 5: Reported 0 describes the first card as the outlier with middle and last aligned, not the middle card misaligned.
+  - rep 1: Both describe vertical misalignment of Fastest near you carousel cards.
+  - rep 2: Both describe vertical misalignment of cards in the Fastest near you carousel.
+  - rep 3: Both describe vertical misalignment of the Fastest near you carousel cards.
+  - rep 4: Both describe vertical misalignment of the Fastest near you cards.
+  - rep 5: No issues were reported.
 - **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
-  - rep 1: Jev matched R0 (p=0.99, confidence 0.98).
-  - rep 2: Jev matched R0 (p=0.97, confidence 0.93).
-  - rep 3: Jev matched R0 (p=0.99, confidence 0.98).
-  - rep 4: Jev matched R0 (p=0.88, confidence 0.75).
-  - rep 5: Jev matched no reported issue; closest was R0 (p=0.20).
+  - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 2: Jev matched R1 (p=1.00, confidence 0.99).
+  - rep 3: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 5: No issues were reported.
 
-### img_14 14_misalignment.png — qwen/qwen3.8-max
+### img_14 14_misalignment.png — x-ai/grok-4.5
 
-Expected: Middle card in the carousel is not aligned with the other c…
+Expected: Fastest near you carousel card heights are misaligned with …
 
-- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Both describe the vertical misalignment of the cards in the horizontal carousel.
-  - rep 2: Reported issue 0 describes the vertical misalignment of cards in the carousel where one card sits higher than the others.
-  - rep 3: Reported issue 0 describes the vertical misalignment of cards in the carousel, directly matching the expected defect.
-  - rep 4: Reported issue 0 describes vertical misalignment of the middle card (Green Bowl Poké) with the surrounding cards in the carousel.
-  - rep 5: Reported issue 0 describes the vertical misalignment among the restaurant cards in the horizontal carousel row.
-- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Report 0 directly describes the carousel cards, including the middle card, sitting at different vertical offsets and lacking shared alignment.
-  - rep 2: Reports 0 and 1 both describe the carousel cards and their contents being vertically misaligned.
-  - rep 3: Reported issue 0 directly describes the carousel cards being vertically misaligned, including the middle card's lower position.
-  - rep 4: Reported issue 0 directly describes the carousel cards, including the middle card, being vertically misaligned with the others.
-  - rep 5: Reported issue 0 describes the carousel restaurant cards being vertically misaligned, including the middle card relative to the others.
-- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
-  - rep 1: Reported issue 0 describes the carousel cards, including the middle card, sitting at inconsistent vertical offsets.
-  - rep 2: Both reports describe inconsistent vertical alignment of cards and their badges in the carousel.
-  - rep 3: Reported issue 0 identifies the Green Bowl Poké card as misaligned, while issue 1 concerns badge placement rather than the middle card's alignment.
-  - rep 4: Reported issue 0 explicitly describes the carousel cards as vertically misaligned, creating a ragged row.
-  - rep 5: Report 0 describes the carousel cards, including the middle card, at different vertical positions.
-- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Reported 0 describes the carousel cards as vertically misaligned with different offsets.
-  - rep 2: Both report vertical misalignment in the Fastest near you carousel affecting cards and their badges.
-  - rep 3: Both describe vertical misalignment of cards in the 'Fastest near you' carousel.
-  - rep 4: Both describe vertical misalignment of cards in the Fastest near you carousel.
-  - rep 5: Reported 0 describes the same vertical misalignment of the carousel restaurant cards.
-- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: Jev matched R0 (p=0.97, confidence 0.95).
-  - rep 2: Jev matched R0 (p=0.93, confidence 0.87).
-  - rep 3: Jev matched R0 (p=0.93, confidence 0.86).
-  - rep 4: Jev matched R0 (p=0.88, confidence 0.75).
-  - rep 5: Jev matched R0 (p=0.92, confidence 0.84).
+- **gemini-3.8-flash**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: None of the reported issues describe the card heights being misaligned in the carousel.
+  - rep 2: None of the reported issues describe carousel cards having misaligned heights; they report text truncation and badge placement inconsistency instead.
+  - rep 3: Neither reported issue mentions misaligned card heights in the carousel.
+  - rep 4: None of the reported issues mention the uneven or misaligned card heights in the carousel.
+  - rep 5: None of the reported issues describe the card heights being misaligned in the Fastest near you carousel.
+- **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: Neither report describes misaligned heights among the Fastest near you carousel cards.
+  - rep 2: Neither report describes misaligned card heights; they describe text truncation and inconsistent badge placement.
+  - rep 3: Neither report describes inconsistent heights among the Fastest near you carousel cards.
+  - rep 4: Neither report describes misaligned heights among the Fastest near you carousel cards.
+  - rep 5: Neither report describes misaligned heights between the cards in the 'Fastest near you' carousel.
+- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: Neither report describes misaligned heights among cards in the Fastest near you carousel.
+  - rep 2: Neither report describes inconsistent card heights; they describe a truncated name and uneven badge placement.
+  - rep 3: Neither report describes the Fastest near you carousel cards having misaligned heights.
+  - rep 4: Neither report describes misaligned heights among the Fastest near you carousel cards.
+  - rep 5: Neither report describes the carousel cards having misaligned heights.
+- **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: Neither report mentions card height misalignment, only title truncation and a filter chip issue.
+  - rep 2: Reported issues describe name truncation and badge placement, not misaligned card heights.
+  - rep 3: Reported issues cover name truncation and rating format, not carousel card height misalignment.
+  - rep 4: Neither report describes misaligned card heights, only truncation and chip visibility.
+  - rep 5: Neither reported issue mentions misaligned card heights, only truncation and badge styles.
+- **typesafe/jev-1.13**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: found
+  - rep 1: Jev matched no reported issue; closest was R0 (p=0.06).
+  - rep 2: Jev matched no reported issue; closest was R0 (p=0.18).
+  - rep 3: Jev matched no reported issue; closest was R0 (p=0.07).
+  - rep 4: Jev matched no reported issue; closest was R0 (p=0.02).
+  - rep 5: Jev matched R0 (p=0.52, confidence 0.05).
 
 ### img_14 14_misalignment.png — x-ai/grok-4.6
 
-Expected: Middle card in the carousel is not aligned with the other c…
+Expected: Fastest near you carousel card heights are misaligned with …
 
 - **gemini-3.8-flash**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
-  - rep 1: The reported issue is about misaligned delivery-time badges within the cards rather than the alignment of the middle card itself in the carousel.
-  - rep 2: The reported issue discusses text truncation on carousel cards rather than card misalignment.
-  - rep 3: The expected defect describes the middle card being misaligned, whereas the reported issue is about text truncation on the rightmost card.
-  - rep 4: Both describe misalignment/unevenness of a card in the carousel relative to adjacent cards.
-  - rep 5: The reported issue discusses text truncation on a restaurant card, not card alignment in the carousel.
+  - rep 1: The reported issue discusses misaligned delivery-time badges rather than the carousel card heights being misaligned.
+  - rep 2: The reported issue concerns text truncation and clipping within cards rather than uneven card heights.
+  - rep 3: The reported issue is about text truncation in a card's name, not misaligned card heights.
+  - rep 4: Both describe the uneven alignment and height mismatch between cards in the 'Fastest near you' carousel.
+  - rep 5: The reported issue describes restaurant name text truncation rather than card heights being misaligned.
 - **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
-  - rep 1: The report describes inconsistent delivery-time badge placement within the cards, not misalignment of the middle card itself.
-  - rep 2: The report describes clipped restaurant names and delivery prices in the cards, not misalignment of the middle carousel card.
-  - rep 3: The expected defect concerns the middle card's alignment, while the reported issue concerns truncated text on the rightmost card.
-  - rep 4: The reported carousel card has a shorter image that makes its content sit lower than adjacent cards, causing the same misalignment.
-  - rep 5: The reported issue concerns text truncation within a card, not the middle card being misaligned with the other cards.
+  - rep 1: The report describes inconsistently positioned delivery-time badges, not misaligned heights of the carousel cards themselves.
+  - rep 2: The report describes clipped restaurant names and delivery prices, not misaligned heights between carousel cards.
+  - rep 3: The report describes a restaurant name being clipped, not misaligned heights among the carousel cards.
+  - rep 4: The report identifies the Fastest near you carousel cards as having unequal heights, specifically noting one card is shorter than its adjacent cards.
+  - rep 5: The report describes text truncation within a card, not misaligned heights between carousel cards.
 - **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
-  - rep 1: The report describes inconsistent badge placement, not misalignment of the middle card itself.
-  - rep 2: The report describes clipped restaurant names and delivery prices, not misalignment of the middle carousel card.
-  - rep 3: The expected issue is misalignment of the middle carousel card, while the report describes the rightmost card’s restaurant name being cut off.
-  - rep 4: The reported shorter card and lower pill make the carousel row uneven, matching the misaligned middle card.
-  - rep 5: The report describes a truncated restaurant name, not a misaligned carousel card.
+  - rep 1: The report describes inconsistent delivery-time badge placement, not misaligned card heights.
+  - rep 2: The report describes clipped restaurant names and delivery prices, not misaligned carousel card heights.
+  - rep 3: The report describes a restaurant name being cut off, not misaligned card heights.
+  - rep 4: The Smash Bros Burgers card is shorter than adjacent cards, making the Fastest near you carousel heights uneven.
+  - rep 5: The report describes a restaurant name being truncated, not misaligned carousel card heights.
 - **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
-  - rep 1: Reported describes inconsistent badge placement, not misalignment of the middle card itself.
-  - rep 2: Reported describes clipped text, not misaligned middle card.
-  - rep 3: Reported issue is about truncated name on rightmost card, not misalignment of middle card.
-  - rep 4: Both describe the middle carousel card sitting uneven/lower than adjacent cards.
-  - rep 5: Reported issue describes truncated restaurant name, not misaligned middle card.
+  - rep 1: Reported describes inconsistent badge placement and clipping, not misaligned card heights.
+  - rep 2: Reported describes clipped names and prices, not misaligned card heights.
+  - rep 3: Reported describes truncated restaurant name, not misaligned card heights.
+  - rep 4: Both describe uneven card heights in the Fastest near you carousel.
+  - rep 5: Reported issue describes horizontal name truncation, not misaligned card heights.
 - **typesafe/jev-1.13**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
-  - rep 1: Jev matched R0 (p=0.68, confidence 0.36).
-  - rep 2: Jev matched no reported issue; closest was R0 (p=0.01).
-  - rep 3: Jev matched no reported issue; closest was R0 (p=0.00).
-  - rep 4: Jev matched R0 (p=0.94, confidence 0.88).
+  - rep 1: Jev matched R0 (p=0.59, confidence 0.17).
+  - rep 2: Jev matched no reported issue; closest was R0 (p=0.10).
+  - rep 3: Jev matched no reported issue; closest was R0 (p=0.03).
+  - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
   - rep 5: Jev matched no reported issue; closest was R0 (p=0.01).
-
-### img_14 14_misalignment.png — z-ai/glm-5.3-flash
-
-Expected: Middle card in the carousel is not aligned with the other c…
-
-- **gemini-3.8-flash**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: No issues were reported.
-  - rep 2: Both describe the vertical misalignment of cards within the horizontal carousel row.
-  - rep 3: Reported issue 0 specifically describes the middle card being vertically offset and misaligned compared to the adjacent cards in the carousel.
-  - rep 4: Both report that the middle card in the carousel/row is vertically misaligned compared to the adjacent cards.
-  - rep 5: The reported defect describes the middle card ('Green Bowl Poké') in the carousel being misaligned and positioned higher than the surrounding cards.
-- **gpt-5.6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: No issues were reported.
-  - rep 2: Reported issue 0 describes inconsistent vertical alignment among cards in the restaurant carousel row, matching the misaligned middle card defect.
-  - rep 3: Reported issue 0 describes the middle card being vertically offset from the neighboring cards in the carousel.
-  - rep 4: The reported Smash Bros Burgers card is vertically misaligned relative to neighboring carousel cards, matching the expected middle-card alignment defect.
-  - rep 5: The reported carousel card has a different image height and vertical position, making the middle card misaligned with its neighbors.
-- **gpt-6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: No issues were reported.
-  - rep 2: Reported issue 0 describes vertical misalignment among cards in the carousel row.
-  - rep 3: Reported issue 0 describes the middle card sitting lower than its neighboring cards, breaking alignment.
-  - rep 4: The reported issue describes the middle carousel card as vertically misaligned with its neighboring cards.
-  - rep 5: The report describes the middle carousel card sitting higher and appearing misaligned with its neighbors.
-- **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: No issues were reported.
-  - rep 2: Both describe vertical misalignment of cards in the Fastest near you carousel row.
-  - rep 3: Reported 0 describes the same vertically misaligned middle card in the Fastest near you carousel.
-  - rep 4: Both describe the middle card vertically misaligned relative to neighboring cards.
-  - rep 5: Both describe the middle carousel card being vertically misaligned higher than its neighbors.
-- **typesafe/jev-1.13**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
-  - rep 1: No issues were reported.
-  - rep 2: Jev matched no reported issue; closest was R0 (p=0.18).
-  - rep 3: Jev matched R0 (p=0.99, confidence 0.97).
-  - rep 4: Jev matched R0 (p=0.95, confidence 0.90).
-  - rep 5: Jev matched R0 (p=0.97, confidence 0.94).
 
 ### img_15 15_safe_area_violation.png — gemini-3.1-flash-lite
 

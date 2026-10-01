@@ -1,0 +1,56 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Fastest near you carousel card heights are misaligned with each other"
+  ],
+  "reportedIssues": [
+    "In the 'Fastest near you' horizontal carousel, the 'Smash Bros Burgers' card is offset roughly 25px lower than the adjacent 'Green Bowl Poké' and 'Trattoria Piccol...' cards. Its image top edge, the '20–30 min' badge and the restaurant name/delivery-fee lines all sit below the same elements on the neighbouring cards, giving the row a staggered, broken appearance.",
+    "Time-badge placement differs between cards in the same carousel: on the first card the '15–25 min' pill sits near the bottom-left of the image, while on the other cards it is positioned lower/overlapping differently, creating visual inconsistency.",
+    "Favourite (heart) buttons in the 'Popular right now' list are styled inconsistently — the Tokumaru Ramen Bar card shows a bare white outline heart, while the card below shows a heart inside a dark circular background.",
+    "The 'Green Bowl Poké' thumbnail uses a light grey background while all other food thumbnails use dark photographic backgrounds, making the first card look like a placeholder or failed image load."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.94,
+        "confidence": 0.88
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 0.99
+      }
+    ]
+  }
+}

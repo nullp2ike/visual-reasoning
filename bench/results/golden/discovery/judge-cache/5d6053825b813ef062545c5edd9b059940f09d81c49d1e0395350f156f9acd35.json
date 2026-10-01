@@ -1,0 +1,28 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Fastest near you carousel card heights are misaligned with each other"
+  ],
+  "reportedIssues": [
+    "The cards in the 'Fastest near you' carousel are misaligned vertically. The Green Bowl Poké image is taller and starts higher (~y=631 to 776) than the Smash Bros Burgers and Trattoria images (~y=658 to 803). As a result, the titles and delivery-fee lines sit at different baselines (801 vs 829).",
+    "The first carousel card's image has a light gray, washed-out background with rounded corners that differ visually from the dark photos on the other cards. The white time badge also blends into the pale image, which makes the card look inconsistent.",
+    "The secondary gray text (delivery fees, 'Ramen' and the review count) and the inactive tab labels have fairly low contrast against the white background. The heart icon on the second card sits on a semi-transparent dark circle, while the first card's heart has no background, so the two look inconsistent."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 directly describes the vertical misalignment and differing heights/baselines of the cards in the 'Fastest near you' carousel."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

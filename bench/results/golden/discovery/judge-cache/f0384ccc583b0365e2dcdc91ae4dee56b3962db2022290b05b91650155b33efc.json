@@ -1,0 +1,39 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Fastest near you carousel card heights are misaligned with each other"
+  ],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel, the 'Smash Bros Burgers' card is vertically offset compared to the adjacent cards ('Green Bowl Poké' and 'Trattoria Piccol...'). Its image starts lower and its title/price text sits noticeably below the baselines of the neighboring cards, making the row look broken.",
+    "The delivery-time pill badges within the carousel cards are placed inconsistently: bottom-left on some cards ('15–25 min', '20–30 min' on the burger card) but the third card's badge appears at a different vertical position due to the row misalignment."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          1
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.69,
+        "confidence": 0.38
+      }
+    ]
+  }
+}

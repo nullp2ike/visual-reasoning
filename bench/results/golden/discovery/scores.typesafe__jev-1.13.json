@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-30T11:06:32.408Z",
+  "generatedAt": "2026-10-01T09:29:57.039Z",
   "prompt": "What looks visually broken on this page?\n\nDo not report the following (treat these as features, not defects):\n- A horizontally scrollable row (restaurant carousels, category filter chips) whose last item is only partially visible at the right screen edge, including that item's title being clipped by the edge.\n- Content cut off by the bottom of the viewport, such as a partially visible card at the end of a vertical list.",
   "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
   "reasoningEffort": "medium",
@@ -82,7 +82,7 @@
       "meanRecall": 0.9411764705882353,
       "anyRecall": 0.9411764705882353,
       "flakiness": 0,
-      "extrasPerRun": 0.8666666666666667,
+      "extrasPerRun": 0.8555555555555555,
       "noBugsCleanRate": 0,
       "latencyMedianSeconds": 47.75336368749998,
       "latencyP95Seconds": 88.51462570899993,
@@ -92,6 +92,27 @@
       "meanOutputTokens": 510.0888888888889,
       "meanReasoningTokens": null,
       "cacheHitRate": null
+    },
+    {
+      "series": "claude-sonnet-5-5",
+      "model": "claude-sonnet-5-5",
+      "provider": "anthropic",
+      "reasoningEffort": "medium",
+      "okRuns": 90,
+      "failedRuns": 0,
+      "meanRecall": 0.9411764705882353,
+      "anyRecall": 0.9411764705882353,
+      "flakiness": 0,
+      "extrasPerRun": 2.811111111111111,
+      "noBugsCleanRate": 0,
+      "latencyMedianSeconds": 6.033239854500003,
+      "latencyP95Seconds": 7.440982999999993,
+      "meanCostPerRun": 0.010874111111111114,
+      "totalCost": 0.9786700000000003,
+      "meanInputTokens": 2089,
+      "meanOutputTokens": 669.6111111111111,
+      "meanReasoningTokens": null,
+      "cacheHitRate": 0
     },
     {
       "series": "gpt-6.1-sol",
@@ -113,27 +134,6 @@
       "meanOutputTokens": 175.61111111111111,
       "meanReasoningTokens": 69.84444444444445,
       "cacheHitRate": 0.8430860887697349
-    },
-    {
-      "series": "claude-sonnet-5-5",
-      "model": "claude-sonnet-5-5",
-      "provider": "anthropic",
-      "reasoningEffort": "medium",
-      "okRuns": 90,
-      "failedRuns": 0,
-      "meanRecall": 0.9294117647058824,
-      "anyRecall": 0.9411764705882353,
-      "flakiness": 0.058823529411764705,
-      "extrasPerRun": 2.8222222222222224,
-      "noBugsCleanRate": 0,
-      "latencyMedianSeconds": 6.033239854500003,
-      "latencyP95Seconds": 7.440982999999993,
-      "meanCostPerRun": 0.010874111111111114,
-      "totalCost": 0.9786700000000003,
-      "meanInputTokens": 2089,
-      "meanOutputTokens": 669.6111111111111,
-      "meanReasoningTokens": null,
-      "cacheHitRate": 0
     },
     {
       "series": "gpt-6-astra",
@@ -163,10 +163,10 @@
       "reasoningEffort": "medium",
       "okRuns": 90,
       "failedRuns": 0,
-      "meanRecall": 0.8705882352941176,
-      "anyRecall": 0.9411764705882353,
-      "flakiness": 0.17647058823529413,
-      "extrasPerRun": 0.34444444444444444,
+      "meanRecall": 0.8823529411764705,
+      "anyRecall": 1,
+      "flakiness": 0.23529411764705882,
+      "extrasPerRun": 0.3333333333333333,
       "noBugsCleanRate": 0.2,
       "latencyMedianSeconds": 6.035555833499997,
       "latencyP95Seconds": 14.960154083,
@@ -331,10 +331,10 @@
       "reasoningEffort": "medium",
       "okRuns": 90,
       "failedRuns": 0,
-      "meanRecall": 0.7058823529411765,
+      "meanRecall": 0.7176470588235295,
       "anyRecall": 0.8823529411764706,
       "flakiness": 0.29411764705882354,
-      "extrasPerRun": 0.5333333333333333,
+      "extrasPerRun": 0.5222222222222223,
       "noBugsCleanRate": 0.4,
       "latencyMedianSeconds": 8.12104510400002,
       "latencyP95Seconds": 18.267099167000037,
@@ -493,6 +493,27 @@
       "cacheHitRate": 0.7765432098765432
     },
     {
+      "series": "x-ai/grok-4.5",
+      "model": "x-ai/grok-4.5",
+      "provider": "openrouter",
+      "reasoningEffort": "medium",
+      "okRuns": 90,
+      "failedRuns": 0,
+      "meanRecall": 0.6352941176470588,
+      "anyRecall": 0.8235294117647058,
+      "flakiness": 0.29411764705882354,
+      "extrasPerRun": 2.1666666666666665,
+      "noBugsCleanRate": 0,
+      "latencyMedianSeconds": 53.58332647899998,
+      "latencyP95Seconds": 97.41412475000007,
+      "meanCostPerRun": 0.003554475555555555,
+      "totalCost": 0.3199028,
+      "meanInputTokens": 1962,
+      "meanOutputTokens": 382.47777777777776,
+      "meanReasoningTokens": 91.82222222222222,
+      "cacheHitRate": null
+    },
+    {
       "series": "gpt-5.5",
       "model": "gpt-5.5",
       "provider": "openai",
@@ -511,27 +532,6 @@
       "meanInputTokens": 1890,
       "meanOutputTokens": 464.25555555555553,
       "meanReasoningTokens": 372.3888888888889,
-      "cacheHitRate": null
-    },
-    {
-      "series": "x-ai/grok-4.5",
-      "model": "x-ai/grok-4.5",
-      "provider": "openrouter",
-      "reasoningEffort": "medium",
-      "okRuns": 90,
-      "failedRuns": 0,
-      "meanRecall": 0.6235294117647059,
-      "anyRecall": 0.7647058823529411,
-      "flakiness": 0.23529411764705882,
-      "extrasPerRun": 2.1777777777777776,
-      "noBugsCleanRate": 0,
-      "latencyMedianSeconds": 53.58332647899998,
-      "latencyP95Seconds": 97.41412475000007,
-      "meanCostPerRun": 0.003554475555555555,
-      "totalCost": 0.3199028,
-      "meanInputTokens": 1962,
-      "meanOutputTokens": 382.47777777777776,
-      "meanReasoningTokens": 91.82222222222222,
       "cacheHitRate": null
     },
     {
@@ -4176,8 +4176,8 @@
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 0.91,
-          "confidence": 0.81
+          "probability": 0.9,
+          "confidence": 0.8
         }
       ],
       "usage": {
@@ -4216,7 +4216,7 @@
             0,
             1
           ],
-          "reasoning": "Jev matched R0 (p=0.99, confidence 0.99).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -4226,14 +4226,14 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.99,
-          "confidence": 0.99
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
           "expectedIndex": 0,
-          "probability": 0.58,
-          "confidence": 0.16
+          "probability": 0.69,
+          "confidence": 0.38
         }
       ],
       "usage": {
@@ -4275,14 +4275,14 @@
           "expectedIndex": 0,
           "found": true,
           "matchedReportedIndexes": [
-            0
+            0,
+            1
           ],
-          "reasoning": "Jev matched R0 (p=0.99, confidence 0.99).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
       "extraReportedIndexes": [
-        1,
         2
       ],
       "overridden": false,
@@ -4290,20 +4290,20 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.99,
-          "confidence": 0.99
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
-          "expectedIndex": null,
-          "probability": 0.77,
-          "confidence": 0.53
+          "expectedIndex": 0,
+          "probability": 0.86,
+          "confidence": 0.73
         },
         {
           "reportedIndex": 2,
           "expectedIndex": null,
-          "probability": 0.68,
-          "confidence": 0.37
+          "probability": 0.65,
+          "confidence": 0.31
         }
       ],
       "usage": {
@@ -4347,7 +4347,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.97, confidence 0.95).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -4360,19 +4360,19 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.97,
-          "confidence": 0.95
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 0.7,
-          "confidence": 0.39
+          "probability": 0.52,
+          "confidence": 0.05
         },
         {
           "reportedIndex": 2,
           "expectedIndex": null,
-          "probability": 1,
+          "probability": 0.99,
           "confidence": 0.99
         }
       ],
@@ -4416,14 +4416,14 @@
           "found": true,
           "matchedReportedIndexes": [
             0,
-            2
+            1
           ],
-          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 0.99).",
           "overridden": false
         }
       ],
       "extraReportedIndexes": [
-        1
+        2
       ],
       "overridden": false,
       "decisions": [
@@ -4431,19 +4431,19 @@
           "reportedIndex": 0,
           "expectedIndex": 0,
           "probability": 1,
-          "confidence": 1
+          "confidence": 0.99
         },
         {
           "reportedIndex": 1,
-          "expectedIndex": null,
-          "probability": 0.76,
-          "confidence": 0.52
+          "expectedIndex": 0,
+          "probability": 0.9,
+          "confidence": 0.8
         },
         {
           "reportedIndex": 2,
-          "expectedIndex": 0,
-          "probability": 0.73,
-          "confidence": 0.45
+          "expectedIndex": null,
+          "probability": 0.55,
+          "confidence": 0.11
         }
       ],
       "usage": {
@@ -8493,7 +8493,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=1.00, confidence 0.99).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -8504,7 +8504,7 @@
           "reportedIndex": 0,
           "expectedIndex": 0,
           "probability": 1,
-          "confidence": 0.99
+          "confidence": 1
         }
       ],
       "usage": {
@@ -8537,7 +8537,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.99, confidence 0.99).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 0.99).",
           "overridden": false
         }
       ],
@@ -8547,7 +8547,7 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.99,
+          "probability": 1,
           "confidence": 0.99
         }
       ],
@@ -8625,7 +8625,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -8635,8 +8635,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.99,
-          "confidence": 0.98
+          "probability": 1,
+          "confidence": 1
         }
       ],
       "usage": {
@@ -20373,8 +20373,8 @@
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 1,
-          "confidence": 1
+          "probability": 0.86,
+          "confidence": 0.73
         },
         {
           "reportedIndex": 2,
@@ -20436,7 +20436,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.90, confidence 0.79).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -20450,14 +20450,14 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.9,
-          "confidence": 0.79
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 0.99,
-          "confidence": 0.98
+          "probability": 0.92,
+          "confidence": 0.84
         },
         {
           "reportedIndex": 2,
@@ -20589,7 +20589,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.97, confidence 0.94).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -20603,14 +20603,14 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.97,
-          "confidence": 0.94
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 0.97,
-          "confidence": 0.93
+          "probability": 0.94,
+          "confidence": 0.88
         },
         {
           "reportedIndex": 2,
@@ -20622,7 +20622,7 @@
           "reportedIndex": 3,
           "expectedIndex": null,
           "probability": 1,
-          "confidence": 1
+          "confidence": 0.99
         }
       ],
       "usage": {
@@ -20678,7 +20678,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.97, confidence 0.93).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -20693,20 +20693,20 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.97,
-          "confidence": 0.93
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 0.99,
-          "confidence": 0.99
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 2,
           "expectedIndex": null,
-          "probability": 0.78,
-          "confidence": 0.57
+          "probability": 0.6,
+          "confidence": 0.21
         },
         {
           "reportedIndex": 3,
@@ -25338,7 +25338,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.94, confidence 0.88).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -25350,8 +25350,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.94,
-          "confidence": 0.88
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
@@ -25402,7 +25402,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.99, confidence 0.99).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -25415,8 +25415,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.99,
-          "confidence": 0.99
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
@@ -25467,7 +25467,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 0.99).",
           "overridden": false
         }
       ],
@@ -25479,8 +25479,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.99,
-          "confidence": 0.98
+          "probability": 1,
+          "confidence": 0.99
         },
         {
           "reportedIndex": 1,
@@ -25531,7 +25531,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=1.00, confidence 0.99).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -25545,7 +25545,7 @@
           "reportedIndex": 0,
           "expectedIndex": 0,
           "probability": 1,
-          "confidence": 0.99
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
@@ -25557,7 +25557,7 @@
           "reportedIndex": 2,
           "expectedIndex": null,
           "probability": 1,
-          "confidence": 0.99
+          "confidence": 1
         }
       ],
       "usage": {
@@ -25596,7 +25596,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.98, confidence 0.97).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 0.99).",
           "overridden": false
         }
       ],
@@ -25608,8 +25608,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.98,
-          "confidence": 0.97
+          "probability": 1,
+          "confidence": 0.99
         },
         {
           "reportedIndex": 1,
@@ -29447,7 +29447,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.02).",
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
           "overridden": false
         }
       ],
@@ -29459,8 +29459,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 0.98,
-          "confidence": 0.96
+          "probability": 1,
+          "confidence": 0.99
         }
       ],
       "usage": {
@@ -29490,7 +29490,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.01).",
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
           "overridden": false
         }
       ],
@@ -29502,8 +29502,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 0.99,
-          "confidence": 0.98
+          "probability": 1,
+          "confidence": 0.99
         }
       ],
       "usage": {
@@ -29539,7 +29539,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R1 (p=0.11).",
+          "reasoning": "Jev matched no reported issue; closest was R1 (p=0.02).",
           "overridden": false
         }
       ],
@@ -29558,8 +29558,8 @@
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 0.89,
-          "confidence": 0.77
+          "probability": 0.98,
+          "confidence": 0.95
         }
       ],
       "usage": {
@@ -29589,7 +29589,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.40).",
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.24).",
           "overridden": false
         }
       ],
@@ -29601,8 +29601,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 0.6,
-          "confidence": 0.19
+          "probability": 0.76,
+          "confidence": 0.52
         }
       ],
       "usage": {
@@ -29632,7 +29632,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.07).",
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
           "overridden": false
         }
       ],
@@ -29644,8 +29644,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 0.93,
-          "confidence": 0.87
+          "probability": 1,
+          "confidence": 0.99
         }
       ],
       "usage": {
@@ -33435,7 +33435,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R1 (p=0.02).",
+          "reasoning": "Jev matched no reported issue; closest was R1 (p=0.06).",
           "overridden": false
         }
       ],
@@ -33454,8 +33454,8 @@
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 0.98,
-          "confidence": 0.96
+          "probability": 0.94,
+          "confidence": 0.88
         }
       ],
       "usage": {
@@ -33491,7 +33491,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
+          "reasoning": "Jev matched no reported issue; closest was R1 (p=0.04).",
           "overridden": false
         }
       ],
@@ -33510,8 +33510,8 @@
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 1,
-          "confidence": 1
+          "probability": 0.96,
+          "confidence": 0.92
         }
       ],
       "usage": {
@@ -39521,7 +39521,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -39535,8 +39535,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.99,
-          "confidence": 0.98
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
@@ -39605,7 +39605,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.97, confidence 0.93).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -39619,14 +39619,14 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.97,
-          "confidence": 0.93
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
           "expectedIndex": null,
           "probability": 0.99,
-          "confidence": 0.98
+          "confidence": 0.99
         },
         {
           "reportedIndex": 2,
@@ -39695,7 +39695,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -39710,14 +39710,14 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.99,
-          "confidence": 0.98
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 0.98,
-          "confidence": 0.96
+          "probability": 0.99,
+          "confidence": 0.98
         },
         {
           "reportedIndex": 2,
@@ -39780,7 +39780,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.88, confidence 0.75).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -39793,8 +39793,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.88,
-          "confidence": 0.75
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
@@ -39853,14 +39853,15 @@
       "expected": [
         {
           "expectedIndex": 0,
-          "found": false,
-          "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.20).",
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
       "extraReportedIndexes": [
-        0,
         1,
         2,
         3
@@ -39869,9 +39870,9 @@
       "decisions": [
         {
           "reportedIndex": 0,
-          "expectedIndex": null,
-          "probability": 0.8,
-          "confidence": 0.59
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
@@ -44642,7 +44643,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.01).",
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.04).",
           "overridden": false
         }
       ],
@@ -44656,8 +44657,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 0.99,
-          "confidence": 0.99
+          "probability": 0.96,
+          "confidence": 0.93
         },
         {
           "reportedIndex": 1,
@@ -44763,7 +44764,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R1 (p=0.01).",
+          "reasoning": "Jev matched no reported issue; closest was R1 (p=0.22).",
           "overridden": false
         }
       ],
@@ -44782,8 +44783,8 @@
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 0.99,
-          "confidence": 0.97
+          "probability": 0.78,
+          "confidence": 0.56
         }
       ],
       "usage": {
@@ -48839,7 +48840,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R1 (p=0.01).",
+          "reasoning": "Jev matched no reported issue; closest was R1 (p=0.02).",
           "overridden": false
         }
       ],
@@ -48852,14 +48853,14 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 1,
-          "confidence": 0.99
+          "probability": 0.99,
+          "confidence": 0.97
         },
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 0.99,
-          "confidence": 0.99
+          "probability": 0.98,
+          "confidence": 0.97
         }
       ],
       "usage": {
@@ -48921,7 +48922,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.01).",
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.07).",
           "overridden": false
         }
       ],
@@ -48934,14 +48935,14 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 0.99,
-          "confidence": 0.99
+          "probability": 0.93,
+          "confidence": 0.85
         },
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 1,
-          "confidence": 1
+          "probability": 0.99,
+          "confidence": 0.99
         }
       ],
       "usage": {
@@ -52669,7 +52670,7 @@
           "reportedIndex": 0,
           "expectedIndex": null,
           "probability": 1,
-          "confidence": 1
+          "confidence": 0.99
         }
       ],
       "usage": {
@@ -52699,7 +52700,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.03).",
           "overridden": false
         }
       ],
@@ -52711,8 +52712,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 1,
-          "confidence": 0.99
+          "probability": 0.97,
+          "confidence": 0.93
         }
       ],
       "usage": {
@@ -52742,7 +52743,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.02).",
           "overridden": false
         }
       ],
@@ -52754,8 +52755,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 1,
-          "confidence": 1
+          "probability": 0.98,
+          "confidence": 0.96
         }
       ],
       "usage": {
@@ -52785,7 +52786,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.01).",
           "overridden": false
         }
       ],
@@ -52797,8 +52798,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 1,
-          "confidence": 1
+          "probability": 0.99,
+          "confidence": 0.98
         }
       ],
       "usage": {
@@ -70619,7 +70620,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
+          "reasoning": "Jev matched no reported issue; closest was R1 (p=0.03).",
           "overridden": false
         }
       ],
@@ -70638,8 +70639,8 @@
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 1,
-          "confidence": 1
+          "probability": 0.97,
+          "confidence": 0.94
         }
       ],
       "usage": {
@@ -70769,22 +70770,22 @@
       "expected": [
         {
           "expectedIndex": 0,
-          "found": false,
-          "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.16).",
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.70, confidence 0.40).",
           "overridden": false
         }
       ],
-      "extraReportedIndexes": [
-        0
-      ],
+      "extraReportedIndexes": [],
       "overridden": false,
       "decisions": [
         {
           "reportedIndex": 0,
-          "expectedIndex": null,
-          "probability": 0.84,
-          "confidence": 0.69
+          "expectedIndex": 0,
+          "probability": 0.7,
+          "confidence": 0.4
         }
       ],
       "usage": {
@@ -83861,7 +83862,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.97).",
           "overridden": false
         }
       ],
@@ -83872,7 +83873,7 @@
           "reportedIndex": 0,
           "expectedIndex": 0,
           "probability": 0.99,
-          "confidence": 0.98
+          "confidence": 0.97
         }
       ],
       "usage": {
@@ -90977,7 +90978,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=1.00, confidence 0.99).",
+          "reasoning": "Jev matched R0 (p=0.96, confidence 0.93).",
           "overridden": false
         }
       ],
@@ -90987,8 +90988,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 1,
-          "confidence": 0.99
+          "probability": 0.96,
+          "confidence": 0.93
         }
       ],
       "usage": {
@@ -91022,7 +91023,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.98, confidence 0.95).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -91032,8 +91033,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.98,
-          "confidence": 0.95
+          "probability": 1,
+          "confidence": 1
         }
       ],
       "usage": {
@@ -91067,7 +91068,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=1.00, confidence 0.99).",
+          "reasoning": "Jev matched R0 (p=0.98, confidence 0.96).",
           "overridden": false
         }
       ],
@@ -91077,8 +91078,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 1,
-          "confidence": 0.99
+          "probability": 0.98,
+          "confidence": 0.96
         }
       ],
       "usage": {
@@ -91112,7 +91113,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=1.00, confidence 0.99).",
+          "reasoning": "Jev matched R0 (p=0.95, confidence 0.91).",
           "overridden": false
         }
       ],
@@ -91122,8 +91123,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 1,
-          "confidence": 0.99
+          "probability": 0.95,
+          "confidence": 0.91
         }
       ],
       "usage": {
@@ -91157,7 +91158,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.98, confidence 0.97).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -91167,8 +91168,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.98,
-          "confidence": 0.97
+          "probability": 1,
+          "confidence": 1
         }
       ],
       "usage": {
@@ -97586,7 +97587,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=1.00, confidence 0.99).",
+          "reasoning": "Jev matched R0 (p=0.98, confidence 0.96).",
           "overridden": false
         }
       ],
@@ -97596,8 +97597,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 1,
-          "confidence": 0.99
+          "probability": 0.98,
+          "confidence": 0.96
         }
       ],
       "usage": {
@@ -97631,7 +97632,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.99, confidence 0.99).",
+          "reasoning": "Jev matched R0 (p=0.98, confidence 0.96).",
           "overridden": false
         }
       ],
@@ -97641,8 +97642,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.99,
-          "confidence": 0.99
+          "probability": 0.98,
+          "confidence": 0.96
         }
       ],
       "usage": {
@@ -97676,7 +97677,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.99, confidence 0.99).",
+          "reasoning": "Jev matched R0 (p=0.98, confidence 0.95).",
           "overridden": false
         }
       ],
@@ -97686,8 +97687,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.99,
-          "confidence": 0.99
+          "probability": 0.98,
+          "confidence": 0.95
         }
       ],
       "usage": {
@@ -97721,7 +97722,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=1.00, confidence 0.99).",
+          "reasoning": "Jev matched R0 (p=0.98, confidence 0.96).",
           "overridden": false
         }
       ],
@@ -97731,8 +97732,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 1,
-          "confidence": 0.99
+          "probability": 0.98,
+          "confidence": 0.96
         }
       ],
       "usage": {
@@ -97766,7 +97767,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "reasoning": "Jev matched R0 (p=0.95, confidence 0.90).",
           "overridden": false
         }
       ],
@@ -97776,8 +97777,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.99,
-          "confidence": 0.98
+          "probability": 0.95,
+          "confidence": 0.9
         }
       ],
       "usage": {
@@ -101375,7 +101376,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=1.00, confidence 0.99).",
+          "reasoning": "Jev matched R0 (p=0.97, confidence 0.94).",
           "overridden": false
         }
       ],
@@ -101385,8 +101386,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 1,
-          "confidence": 0.99
+          "probability": 0.97,
+          "confidence": 0.94
         }
       ],
       "usage": {
@@ -101420,7 +101421,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=1.00, confidence 0.99).",
+          "reasoning": "Jev matched R0 (p=0.95, confidence 0.89).",
           "overridden": false
         }
       ],
@@ -101430,8 +101431,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 1,
-          "confidence": 0.99
+          "probability": 0.95,
+          "confidence": 0.89
         }
       ],
       "usage": {
@@ -101465,7 +101466,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.97, confidence 0.94).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -101475,8 +101476,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.97,
-          "confidence": 0.94
+          "probability": 1,
+          "confidence": 1
         }
       ],
       "usage": {
@@ -101510,7 +101511,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.99, confidence 0.99).",
+          "reasoning": "Jev matched R0 (p=0.95, confidence 0.91).",
           "overridden": false
         }
       ],
@@ -101520,8 +101521,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.99,
-          "confidence": 0.99
+          "probability": 0.95,
+          "confidence": 0.91
         }
       ],
       "usage": {
@@ -101555,7 +101556,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.99, confidence 0.99).",
+          "reasoning": "Jev matched R0 (p=0.97, confidence 0.93).",
           "overridden": false
         }
       ],
@@ -101565,8 +101566,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.99,
-          "confidence": 0.99
+          "probability": 0.97,
+          "confidence": 0.93
         }
       ],
       "usage": {
@@ -105234,7 +105235,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.97, confidence 0.94).",
+          "reasoning": "Jev matched R0 (p=0.96, confidence 0.93).",
           "overridden": false
         }
       ],
@@ -105246,8 +105247,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.97,
-          "confidence": 0.94
+          "probability": 0.96,
+          "confidence": 0.93
         },
         {
           "reportedIndex": 1,
@@ -105323,7 +105324,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.99, confidence 0.99).",
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.97).",
           "overridden": false
         }
       ],
@@ -105336,7 +105337,7 @@
           "reportedIndex": 0,
           "expectedIndex": 0,
           "probability": 0.99,
-          "confidence": 0.99
+          "confidence": 0.97
         },
         {
           "reportedIndex": 1,
@@ -109066,7 +109067,7 @@
           "matchedReportedIndexes": [
             1
           ],
-          "reasoning": "Jev matched R1 (p=0.98, confidence 0.96).",
+          "reasoning": "Jev matched R1 (p=1.00, confidence 0.99).",
           "overridden": false
         }
       ],
@@ -109084,8 +109085,8 @@
         {
           "reportedIndex": 1,
           "expectedIndex": 0,
-          "probability": 0.98,
-          "confidence": 0.96
+          "probability": 1,
+          "confidence": 0.99
         }
       ],
       "usage": {
@@ -109126,7 +109127,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.97, confidence 0.95).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -109138,8 +109139,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.97,
-          "confidence": 0.95
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
@@ -109186,7 +109187,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.99, confidence 0.99).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -109198,8 +109199,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.99,
-          "confidence": 0.99
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
@@ -112864,7 +112865,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.04).",
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.03).",
           "overridden": false
         }
       ],
@@ -112877,8 +112878,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 0.96,
-          "confidence": 0.93
+          "probability": 0.97,
+          "confidence": 0.94
         },
         {
           "reportedIndex": 1,
@@ -112944,7 +112945,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.19).",
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.11).",
           "overridden": false
         }
       ],
@@ -112956,8 +112957,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 0.81,
-          "confidence": 0.62
+          "probability": 0.89,
+          "confidence": 0.78
         }
       ],
       "usage": {
@@ -116538,7 +116539,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.01).",
           "overridden": false
         }
       ],
@@ -116552,8 +116553,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 1,
-          "confidence": 1
+          "probability": 0.99,
+          "confidence": 0.98
         },
         {
           "reportedIndex": 1,
@@ -116603,7 +116604,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.01).",
           "overridden": false
         }
       ],
@@ -116616,8 +116617,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 1,
-          "confidence": 1
+          "probability": 0.99,
+          "confidence": 0.99
         },
         {
           "reportedIndex": 1,
@@ -116696,7 +116697,7 @@
           "reportedIndex": 0,
           "expectedIndex": null,
           "probability": 1,
-          "confidence": 1
+          "confidence": 0.99
         }
       ],
       "usage": {
@@ -124655,7 +124656,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.97, confidence 0.95).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -124667,14 +124668,14 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.97,
-          "confidence": 0.95
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 0.85,
-          "confidence": 0.69
+          "probability": 0.8,
+          "confidence": 0.59
         }
       ],
       "usage": {
@@ -124722,7 +124723,7 @@
             0,
             1
           ],
-          "reasoning": "Jev matched R0 (p=0.93, confidence 0.87).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -124734,14 +124735,14 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.93,
-          "confidence": 0.87
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
           "expectedIndex": 0,
-          "probability": 0.63,
-          "confidence": 0.26
+          "probability": 0.83,
+          "confidence": 0.65
         },
         {
           "reportedIndex": 2,
@@ -124788,7 +124789,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.93, confidence 0.86).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -124800,14 +124801,14 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.93,
-          "confidence": 0.86
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 0.77,
-          "confidence": 0.55
+          "probability": 0.75,
+          "confidence": 0.51
         }
       ],
       "usage": {
@@ -124848,7 +124849,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.88, confidence 0.75).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -124860,14 +124861,14 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.88,
-          "confidence": 0.75
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 0.65,
-          "confidence": 0.3
+          "probability": 0.61,
+          "confidence": 0.22
         }
       ],
       "usage": {
@@ -124908,7 +124909,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.92, confidence 0.84).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -124920,14 +124921,14 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.92,
-          "confidence": 0.84
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 0.73,
-          "confidence": 0.45
+          "probability": 0.7,
+          "confidence": 0.41
         }
       ],
       "usage": {
@@ -130846,7 +130847,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.06).",
           "overridden": false
         }
       ],
@@ -130859,8 +130860,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 1,
-          "confidence": 1
+          "probability": 0.94,
+          "confidence": 0.88
         },
         {
           "reportedIndex": 1,
@@ -130904,7 +130905,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R1 (p=0.10).",
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.18).",
           "overridden": false
         }
       ],
@@ -130917,14 +130918,14 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 1,
-          "confidence": 0.99
+          "probability": 0.82,
+          "confidence": 0.65
         },
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 0.9,
-          "confidence": 0.8
+          "probability": 0.93,
+          "confidence": 0.85
         }
       ],
       "usage": {
@@ -130962,7 +130963,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.07).",
           "overridden": false
         }
       ],
@@ -130975,14 +130976,14 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 1,
-          "confidence": 0.99
+          "probability": 0.93,
+          "confidence": 0.85
         },
         {
           "reportedIndex": 1,
           "expectedIndex": null,
           "probability": 1,
-          "confidence": 1
+          "confidence": 0.99
         }
       ],
       "usage": {
@@ -131020,7 +131021,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.02).",
           "overridden": false
         }
       ],
@@ -131033,8 +131034,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 1,
-          "confidence": 1
+          "probability": 0.98,
+          "confidence": 0.96
         },
         {
           "reportedIndex": 1,
@@ -131076,29 +131077,30 @@
       "expected": [
         {
           "expectedIndex": 0,
-          "found": false,
-          "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R1 (p=0.08).",
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.52, confidence 0.05).",
           "overridden": false
         }
       ],
       "extraReportedIndexes": [
-        0,
         1
       ],
       "overridden": false,
       "decisions": [
         {
           "reportedIndex": 0,
-          "expectedIndex": null,
-          "probability": 0.99,
-          "confidence": 0.98
+          "expectedIndex": 0,
+          "probability": 0.52,
+          "confidence": 0.05
         },
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 0.92,
-          "confidence": 0.84
+          "probability": 0.83,
+          "confidence": 0.67
         }
       ],
       "usage": {
@@ -135643,7 +135645,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.68, confidence 0.36).",
+          "reasoning": "Jev matched R0 (p=0.59, confidence 0.17).",
           "overridden": false
         }
       ],
@@ -135653,8 +135655,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.68,
-          "confidence": 0.36
+          "probability": 0.59,
+          "confidence": 0.17
         }
       ],
       "usage": {
@@ -135687,7 +135689,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.01).",
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.10).",
           "overridden": false
         }
       ],
@@ -135699,8 +135701,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 0.99,
-          "confidence": 0.99
+          "probability": 0.9,
+          "confidence": 0.81
         }
       ],
       "usage": {
@@ -135733,7 +135735,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.03).",
           "overridden": false
         }
       ],
@@ -135745,8 +135747,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 1,
-          "confidence": 1
+          "probability": 0.97,
+          "confidence": 0.93
         }
       ],
       "usage": {
@@ -135781,7 +135783,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.94, confidence 0.88).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -135791,8 +135793,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.94,
-          "confidence": 0.88
+          "probability": 1,
+          "confidence": 1
         }
       ],
       "usage": {
@@ -135838,7 +135840,7 @@
           "reportedIndex": 0,
           "expectedIndex": null,
           "probability": 0.99,
-          "confidence": 0.99
+          "confidence": 0.98
         }
       ],
       "usage": {
@@ -143691,7 +143693,7 @@
           "expectedIndex": 0,
           "found": false,
           "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.01).",
           "overridden": false
         }
       ],
@@ -143703,7 +143705,7 @@
         {
           "reportedIndex": 0,
           "expectedIndex": null,
-          "probability": 1,
+          "probability": 0.99,
           "confidence": 0.99
         }
       ],
@@ -147701,23 +147703,24 @@
       "expected": [
         {
           "expectedIndex": 0,
-          "found": false,
-          "matchedReportedIndexes": [],
-          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.18).",
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
       "extraReportedIndexes": [
-        0,
         1
       ],
       "overridden": false,
       "decisions": [
         {
           "reportedIndex": 0,
-          "expectedIndex": null,
-          "probability": 0.82,
-          "confidence": 0.64
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
@@ -147764,7 +147767,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.99, confidence 0.97).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -147776,14 +147779,14 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.99,
-          "confidence": 0.97
+          "probability": 1,
+          "confidence": 1
         },
         {
           "reportedIndex": 1,
           "expectedIndex": null,
-          "probability": 0.86,
-          "confidence": 0.72
+          "probability": 0.67,
+          "confidence": 0.35
         }
       ],
       "usage": {
@@ -147818,7 +147821,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.95, confidence 0.90).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 0.99).",
           "overridden": false
         }
       ],
@@ -147828,8 +147831,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.95,
-          "confidence": 0.9
+          "probability": 1,
+          "confidence": 0.99
         }
       ],
       "usage": {
@@ -147864,7 +147867,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Jev matched R0 (p=0.97, confidence 0.94).",
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
           "overridden": false
         }
       ],
@@ -147874,8 +147877,8 @@
         {
           "reportedIndex": 0,
           "expectedIndex": 0,
-          "probability": 0.97,
-          "confidence": 0.94
+          "probability": 1,
+          "confidence": 1
         }
       ],
       "usage": {

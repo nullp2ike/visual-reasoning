@@ -1,0 +1,48 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Fastest near you carousel card heights are misaligned with each other"
+  ],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel, the 'Smash Bros Burgers' card sits about 28px lower than its neighbors. Its image, time badge, title and delivery fee all start lower than those on the 'Green Bowl Poké' and 'Trattoria Piccola' cards, producing a jagged row.",
+    "The 'Green Bowl Poké' card image looks faded and low-contrast compared with the other carousel images. It resembles a translucent or overlay state, as if it were stuck in a loading or disabled look.",
+    "The favorite (heart) buttons are styled inconsistently. On the 'Tokumaru Ramen Bar' card, the heart has no background, while on the pizza card below it sits in a dark circular container."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}
