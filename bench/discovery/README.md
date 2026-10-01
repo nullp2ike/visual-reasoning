@@ -130,8 +130,10 @@ disagree. A cell's number is its outvoted found/missed verdicts summed over its
 reps: judges on the losing side of a rep's vote, so a 4-1 split adds 1 and a 3-2
 split adds 2. Darker cells disagree more, and models are ordered most contested
 first. Each cell links to its disagreement below: a rep × judge grid of verdicts
-(hover for the reasoning), what the model reported, and the screenshot. Every
-report's "comparison" link points here.
+beside the screenshot. Clicking a verdict opens that rep: the clicked judge's
+reasoning first, the other judges' verdicts, and what the model reported, with
+each issue tagged by the judges that matched it to the defect. Every report's
+"comparison" link points here.
 
 ## Publishing
 

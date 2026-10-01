@@ -297,3 +297,68 @@ describe("buildComparisonHtml model filter", () => {
     expect(() => new Script(match?.[1] ?? "")).not.toThrow();
   });
 });
+
+describe("buildComparisonHtml verdict drill-down", () => {
+  const reported: ResolvedCell["reportedIssues"] = [
+    { priority: "major", category: "content", description: "Title typo", suggestion: "" },
+    { priority: "minor", category: "layout", description: "Card spacing", suggestion: "" },
+  ];
+  const comparison = buildJudgeComparison(
+    [
+      scores("judge-a", [cell(true, { reportedIssues: reported })], 1.0),
+      scores(
+        "judge-b",
+        [
+          cell(false, {
+            reportedIssues: reported,
+            expected: [
+              {
+                expectedIndex: 0,
+                found: false,
+                matchedReportedIndexes: [],
+                reasoning: "Report 0 is about a different word.",
+                overridden: false,
+              },
+            ],
+          }),
+        ],
+        0.5,
+      ),
+    ],
+    manifest,
+  );
+  const html = buildComparisonHtml(comparison, { backHref: "report.html" });
+  const section = html.slice(
+    html.indexOf('<section class="disagreement"'),
+    html.indexOf("</section>"),
+  );
+
+  it("makes every verdict cell a control that opens its rep", () => {
+    expect(section).toMatch(
+      /<td class="verdict missed split" tabindex="0" role="button" data-judge="judge-b" data-rep="1"/,
+    );
+    expect(section).toMatch(
+      /<td class="verdict found split" tabindex="0" role="button" data-judge="judge-a" data-rep="1"/,
+    );
+  });
+
+  it("has one hidden panel per rep with every judge's verdict and reasoning", () => {
+    expect(section).toContain('<div class="rep-panel" data-rep="1" hidden>');
+    expect(section).toContain('<div class="rp-judge" data-judge="judge-b">');
+    expect(section).toContain("Report 0 is about a different word.");
+  });
+
+  it("lists what the model reported, tagging the issues each judge matched", () => {
+    expect(section).toMatch(
+      /<li class="matched">Title typo <span class="matched-by">matched by judge-a<\/span><\/li>/,
+    );
+    expect(section).toContain("<li>Card spacing</li>");
+  });
+
+  it("drops the old all-reps lists and keeps the inline script valid", () => {
+    expect(html).not.toContain("Judge reasoning on the split reps");
+    expect(html).not.toContain("What the model reported in the split reps");
+    const match = /<script>\n([\s\S]*?)<\/script>/.exec(html);
+    expect(() => new Script(match?.[1] ?? "")).not.toThrow();
+  });
+});

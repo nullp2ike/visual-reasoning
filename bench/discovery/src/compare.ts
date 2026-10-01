@@ -24,6 +24,8 @@ export interface RepVerdict {
   rep: number;
   found: boolean;
   reasoning: string;
+  /** Reported issues this judge matched to the expected defect in this rep. */
+  matchedReportedIndexes: number[];
 }
 
 export interface Disagreement {
@@ -66,7 +68,14 @@ function verdictVector(
     )
     .map((c) => {
       const entry = c.expected.find((e) => e.expectedIndex === expectedIndex);
-      return entry ? { rep: c.rep, found: entry.found, reasoning: entry.reasoning } : undefined;
+      return entry
+        ? {
+            rep: c.rep,
+            found: entry.found,
+            reasoning: entry.reasoning,
+            matchedReportedIndexes: entry.matchedReportedIndexes,
+          }
+        : undefined;
     })
     .filter((v): v is RepVerdict => v !== undefined)
     .sort((a, b) => a.rep - b.rep);
@@ -408,29 +417,51 @@ export function buildComparisonHtml(
         ...new Set(Object.values(d.perJudge).flatMap((vs) => vs.map((v) => v.rep))),
       ].sort((a, b) => a - b);
       const split = outvotedByRep(d);
+      // Every verdict cell opens its rep's panel: the judges' verdicts and
+      // reasoning for that rep (the clicked judge first and highlighted), then
+      // what the model reported, tagged with which judges matched each issue.
       const grid = comparison.judges.map((judge) => {
         const byRep = new Map((d.perJudge[judge] ?? []).map((v) => [v.rep, v]));
         const chips = reps.map((rep) => {
           const v = byRep.get(rep);
           if (!v) return `<td class="na">–</td>`;
-          return `<td class="${v.found ? "found" : "missed"}${split.has(rep) ? " split" : ""}" title="${e(v.reasoning)}">${v.found ? "✓ found" : "✗ missed"}</td>`;
+          return (
+            `<td class="verdict ${v.found ? "found" : "missed"}${split.has(rep) ? " split" : ""}" tabindex="0" role="button" ` +
+            `data-judge="${e(judge)}" data-rep="${rep}" title="Show ${e(judge)}'s reasoning for rep ${rep}">` +
+            `${v.found ? "✓ found" : "✗ missed"}</td>`
+          );
         });
         return `<tr><th>${e(judge)}</th>${chips.join("")}</tr>`;
       });
-      const reasoning = comparison.judges
-        .flatMap((judge) =>
-          (d.perJudge[judge] ?? [])
-            .filter((v) => split.has(v.rep))
-            .map((v) => `<li><strong>${e(judge)}</strong>, rep ${v.rep}: ${e(v.reasoning)}</li>`),
-        )
-        .join("");
-      const reported = reps
-        .filter((rep) => split.has(rep))
-        .map((rep) => {
-          const issues = d.reportedByRep[String(rep)] ?? [];
-          return `<li>rep ${rep}<ol start="0">${issues.map((t) => `<li>${e(t)}</li>`).join("")}</ol></li>`;
-        })
-        .join("");
+      const panels = reps.map((rep) => {
+        const verdicts = comparison.judges.flatMap((judge) => {
+          const v = (d.perJudge[judge] ?? []).find((x) => x.rep === rep);
+          return v ? [{ judge, v }] : [];
+        });
+        const judgeRows = verdicts
+          .map(
+            ({ judge, v }) =>
+              `<div class="rp-judge" data-judge="${e(judge)}"><span class="${v.found ? "found" : "missed"}">${v.found ? "✓ found" : "✗ missed"}</span> ` +
+              `<strong>${e(judge)}</strong>: ${e(v.reasoning)}</div>`,
+          )
+          .join("");
+        const issues = (d.reportedByRep[String(rep)] ?? [])
+          .map((text, i) => {
+            const by = verdicts
+              .filter(({ v }) => v.matchedReportedIndexes.includes(i))
+              .map(({ judge }) => judge);
+            return by.length > 0
+              ? `<li class="matched">${e(text)} <span class="matched-by">matched by ${e(by.join(", "))}</span></li>`
+              : `<li>${e(text)}</li>`;
+          })
+          .join("");
+        return `<div class="rep-panel" data-rep="${rep}" hidden>
+<h4>Rep ${rep}</h4>
+<div class="rp-judges">${judgeRows}</div>
+<p class="rp-label">What the model reported in rep ${rep}:</p>
+${issues ? `<ol start="0" class="rp-issues">${issues}</ol>` : `<p class="muted">Nothing reported.</p>`}
+</div>`;
+      });
       const shot = imageBase
         ? `<img src="${e(imageBase)}/${e(d.filename)}" alt="${e(d.imageId)}" loading="lazy">`
         : "";
@@ -438,8 +469,8 @@ export function buildComparisonHtml(
 ${shot}<h3>${e(d.imageId)} ${e(d.filename)} — ${e(d.model)} <span class="badge" style="${shade(outvoted)}">${outvoted} outvoted</span></h3>
 <p class="muted">Expected: ${e(d.expectedText)}</p>
 <table class="verdicts"><thead><tr><th>Judge</th>${reps.map((r) => `<th>rep ${r}</th>`).join("")}</tr></thead><tbody>${grid.join("")}</tbody></table>
-<details><summary>Judge reasoning on the split reps</summary><ul>${reasoning}</ul></details>
-<details><summary>What the model reported in the split reps</summary><ul>${reported}</ul></details>
+<p class="muted rp-hint">Click a verdict to see that judge's reasoning and what the model reported in that rep.</p>
+${panels.join("\n")}
 </section>`;
     });
 
@@ -478,6 +509,18 @@ ${shot}<h3>${e(d.imageId)} ${e(d.filename)} — ${e(d.model)} <span class="badge
   table.verdicts td { text-align: center; font-size: 12px; }
   table.verdicts td.found { color: var(--ok); } table.verdicts td.missed { color: var(--bad); }
   table.verdicts td.split { background: #fef2f2; font-weight: 600; }
+  table.verdicts td.verdict { cursor: pointer; }
+  table.verdicts td.verdict:hover, table.verdicts td.verdict:focus { outline: 2px solid var(--accent); outline-offset: -2px; }
+  table.verdicts td.verdict.selected { outline: 2px solid var(--accent); outline-offset: -2px; background: #dbeafe; }
+  .rp-hint { margin-top: 6px; }
+  .rep-panel { margin-top: 10px; border-top: 1px solid var(--line); padding-top: 8px; }
+  .rep-panel h4 { margin: 0 0 6px; font-size: 14px; }
+  .rp-judge { margin: 3px 0; color: var(--muted); }
+  .rp-judge.selected { color: #111827; background: #eff6ff; border-left: 3px solid var(--accent); padding: 4px 8px; }
+  .rp-label { margin: 10px 0 4px; font-weight: 600; }
+  .rp-issues li { margin: 3px 0; }
+  .rp-issues li.matched { background: #dcfce7; border-radius: 4px; padding: 2px 6px; }
+  .matched-by { color: var(--ok); font-size: 12px; font-weight: 600; margin-left: 4px; }
   details { margin-top: 6px; } summary { cursor: pointer; color: var(--accent); font-size: 13px; }
   details.model-filter { margin-top: 0; }
 ${MODEL_FILTER_CSS}
@@ -537,6 +580,33 @@ function applyModelFilter() {
     count.textContent = shown === all ? String(all) : shown + " of " + all;
   }
 }
+// Clicking a verdict opens its rep's panel within the section, with the
+// clicked judge's line first and highlighted; clicking it again closes it.
+function openVerdict(cell) {
+  const section = cell.closest("section.disagreement");
+  const already = cell.classList.contains("selected");
+  section.querySelectorAll("td.verdict.selected").forEach(c => c.classList.remove("selected"));
+  section.querySelectorAll(".rep-panel").forEach(p => { p.hidden = true; });
+  const hint = section.querySelector(".rp-hint");
+  if (already) { if (hint) hint.hidden = false; return; }
+  cell.classList.add("selected");
+  if (hint) hint.hidden = true;
+  const panel = section.querySelector('.rep-panel[data-rep="' + cell.dataset.rep + '"]');
+  if (!panel) return;
+  const judges = panel.querySelector(".rp-judges");
+  panel.querySelectorAll(".rp-judge").forEach(row => {
+    const mine = row.dataset.judge === cell.dataset.judge;
+    row.classList.toggle("selected", mine);
+    if (mine) judges.prepend(row);
+  });
+  panel.hidden = false;
+}
+document.querySelectorAll("td.verdict").forEach(cell => {
+  cell.addEventListener("click", () => openVerdict(cell));
+  cell.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openVerdict(cell); }
+  });
+});
 MODEL_FILTER.onChange(applyModelFilter);
 MODEL_FILTER.render();
 applyModelFilter();
