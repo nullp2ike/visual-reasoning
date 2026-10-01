@@ -1,4 +1,4 @@
-import type { Scores } from "./types.js";
+import type { Manifest, Scores } from "./types.js";
 
 /**
  * A decision below this confidence counts as uncertain. For Jev's two-option
@@ -26,8 +26,13 @@ export interface LowConfidenceDecision {
   imageId: string;
   rep: number;
   reportedIndex: number;
-  /** "extra" when the judge picked none, else the expected defect it matched ("E0"). */
+  /**
+   * "extra" when the judge picked none, else "matches expected defect" (numbered
+   * when the screenshot has several).
+   */
   label: string;
+  /** The matched expected defect's text, for a tooltip; absent for extras. */
+  expectedText?: string;
   probability: number;
   confidence: number;
   description: string;
@@ -45,22 +50,37 @@ export interface ConfidenceSummary {
  * Summarise a decision judge's confidence across every scored cell, or return
  * undefined for a chat-model judge, whose cells carry no decisions.
  */
-export function summarizeConfidence(scores: Scores, limit = 25): ConfidenceSummary | undefined {
+/** How a decision reads on the page: the matched defect in words, or "extra". */
+export function decisionLabel(expectedIndex: number | null, expectedCount: number): string {
+  if (expectedIndex === null) return "extra";
+  return expectedCount > 1
+    ? `matches expected defect ${expectedIndex + 1}`
+    : "matches expected defect";
+}
+
+export function summarizeConfidence(
+  scores: Scores,
+  manifest: Manifest,
+  limit = 25,
+): ConfidenceSummary | undefined {
+  const expectedByImage = new Map(manifest.entries.map((e) => [e.imageId, e.expectedIssues]));
   const cells = scores.cells.filter((c) => c.decisions && c.decisions.length > 0);
   if (cells.length === 0) return undefined;
 
-  const all: LowConfidenceDecision[] = cells.flatMap((cell) =>
-    (cell.decisions ?? []).map((d) => ({
+  const all: LowConfidenceDecision[] = cells.flatMap((cell) => {
+    const expected = expectedByImage.get(cell.imageId) ?? [];
+    return (cell.decisions ?? []).map((d) => ({
       series: cell.series,
       imageId: cell.imageId,
       rep: cell.rep,
       reportedIndex: d.reportedIndex,
-      label: d.expectedIndex === null ? "extra" : `E${d.expectedIndex}`,
+      label: decisionLabel(d.expectedIndex, expected.length),
+      expectedText: d.expectedIndex === null ? undefined : expected[d.expectedIndex],
       probability: d.probability,
       confidence: d.confidence,
       description: cell.reportedIssues[d.reportedIndex]?.description ?? "",
-    })),
-  );
+    }));
+  });
 
   const buckets = BUCKETS.map(({ from, to }, i) => ({
     label: `${from.toFixed(2)}–${to.toFixed(2)}`,

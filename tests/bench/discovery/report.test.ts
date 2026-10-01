@@ -133,6 +133,10 @@ describe("buildResultsMarkdown judge confidence", () => {
     expect(md).toContain("| 0.95–1.00 | 1 |");
     expect(md).toContain("1 of 1 judged run(s) have a decision below confidence 0.80");
     expect(md).toContain("| model-a | img_01 | 1 | R1 | extra | 0.62 | 0.24 | Card spacing |");
+    expect(md).toContain(
+      "| model-a | img_01 | 1 | R0 | matches expected defect | 0.99 | 0.98 | Typo in title |",
+    );
+    expect(md).not.toMatch(/\| E0 \|/);
   });
 
   it("omits the section for chat-model judges, which report no confidence", () => {
@@ -269,6 +273,10 @@ describe("buildReportHtml", () => {
     expect(html).toContain('<section id="confidence">');
     expect(html).toContain("function decisionBadge(");
     expect(html).toContain('"confidence":0.24');
+    // Decisions read in words, with the expected defect's text on hover.
+    expect(html).toContain('<td title="Expected defect: A typo">matches expected defect</td>');
+    expect(html).not.toMatch(/<td>E0<\/td>/);
+    expect(html).toContain('"matches expected defect"');
     expect(() => new Script(inlineScript(html))).not.toThrow();
   });
 

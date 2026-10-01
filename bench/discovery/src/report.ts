@@ -105,8 +105,8 @@ function leaderboardRow(m: ModelMetrics): string {
 }
 
 /** Section for decision judges (Jev), which attach a probability and confidence to every decision. */
-function confidenceMarkdown(scores: Scores): string[] {
-  const summary = summarizeConfidence(scores, 15);
+function confidenceMarkdown(scores: Scores, manifest: Manifest): string[] {
+  const summary = summarizeConfidence(scores, manifest, 15);
   if (!summary) return [];
   const cell = (text: string): string => text.replaceAll("|", "\\|");
   return [
@@ -169,7 +169,7 @@ export function buildResultsMarkdown(scores: Scores, manifest: Manifest): string
     "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ...scores.models.map(leaderboardRow),
     "",
-    ...confidenceMarkdown(scores),
+    ...confidenceMarkdown(scores, manifest),
     `- **Generated:** ${scores.generatedAt}`,
     `- **Prompt sha256:** \`${scores.promptHash}\``,
     `- **Reasoning effort:** \`${scores.reasoningEffort}\` (fixed for all models; per-provider mapping documented in the library)`,

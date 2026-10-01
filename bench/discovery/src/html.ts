@@ -16,8 +16,8 @@ export function escapeHtml(text: string): string {
  * decision confidence and the least confident decisions, each row opening the
  * matching matrix cell. Empty for chat-model judges, which report no confidence.
  */
-function confidenceSectionHtml(scores: Scores): string {
-  const summary = summarizeConfidence(scores);
+function confidenceSectionHtml(scores: Scores, manifest: Manifest): string {
+  const summary = summarizeConfidence(scores, manifest);
   if (!summary) return "";
   const max = Math.max(1, ...summary.buckets.map((b) => b.count));
   const bars = summary.buckets
@@ -33,7 +33,11 @@ function confidenceSectionHtml(scores: Scores): string {
       (d) =>
         `<tr class="conf-row" data-image="${escapeHtml(d.imageId)}" data-model="${escapeHtml(d.series)}">` +
         `<td>${escapeHtml(d.series)}</td><td>${escapeHtml(d.imageId)}</td><td>${d.rep}</td>` +
-        `<td>R${d.reportedIndex}</td><td>${escapeHtml(d.label)}</td><td>${d.probability.toFixed(2)}</td>` +
+        `<td>R${d.reportedIndex}</td>` +
+        (d.expectedText === undefined
+          ? `<td>${escapeHtml(d.label)}</td>`
+          : `<td title="Expected defect: ${escapeHtml(d.expectedText)}">${escapeHtml(d.label)}</td>`) +
+        `<td>${d.probability.toFixed(2)}</td>` +
         `<td>${d.confidence.toFixed(2)}</td><td class="conf-desc">${escapeHtml(d.description)}</td></tr>`,
     )
     .join("");
@@ -270,7 +274,7 @@ ${MODEL_FILTER_CSS}  .effort-filter { display: flex; flex-wrap: wrap; align-item
   <h2>Screenshot × model matrix</h2>
   <p class="meta">Cells = reps where the judge matched every expected issue ("clean n/m" on negative controls; † = failed reps excluded). Click a cell to expand that model's reported issues per rep, with judge-matched issues highlighted.</p>
   <div style="overflow-x:auto"><table id="matrix"><thead></thead><tbody></tbody></table></div>
-  ${confidenceSectionHtml(scores)}
+  ${confidenceSectionHtml(scores, manifest)}
 </main>
 ${
   readOnly
@@ -292,12 +296,18 @@ const IMAGE_BASE = DATA.imageBase;
 // Decision judges (Jev) attach a probability and calibrated confidence to each
 // reported issue's classification; chat-model judges leave cell.decisions unset.
 const UNCERTAIN_CONFIDENCE = ${UNCERTAIN_CONFIDENCE};
+// Mirrors decisionLabel() in bench/discovery/src/confidence.ts.
 function decisionBadge(cell, reportedIndex) {
   const d = (cell.decisions || []).find(x => x.reportedIndex === reportedIndex);
   if (!d) return "";
-  const what = d.expectedIndex === null ? "extra" : "matches E" + d.expectedIndex;
+  const expected = (manifestByImage[cell.imageId] || { expectedIssues: [] }).expectedIssues;
+  const what = d.expectedIndex === null ? "extra"
+    : expected.length > 1 ? "matches expected defect " + (d.expectedIndex + 1) : "matches expected defect";
+  const about = d.expectedIndex === null
+    ? "The judge matched this reported issue to no expected defect."
+    : "The judge matched this reported issue to the expected defect: " + (expected[d.expectedIndex] || "");
   const low = d.confidence < UNCERTAIN_CONFIDENCE;
-  return ' <span class="decision' + (low ? " low" : "") + '" title="Judge decision: probability of the chosen option and the calibrated confidence of the judge">' +
+  return ' <span class="decision' + (low ? " low" : "") + '" title="' + esc(about + "\\np = probability of that choice; conf = the judge\u2019s calibrated confidence.") + '">' +
     what + " · p " + d.probability.toFixed(2) + " · conf " + d.confidence.toFixed(2) + "</span>";
 }
 const scores = DATA.scores;
