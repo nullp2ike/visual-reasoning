@@ -100,7 +100,8 @@ reported issue picks it, and an issue that picks none is an extra. It writes no
 explanations; each verdict records the probability of the choice and Jev's
 calibrated confidence instead, shown as badges in the report's drill-down and
 summarised in a "Judge confidence" section listing the least confident
-decisions. Decisions below confidence 0.8 are the ones worth checking by hand:
+matches beside the defect each was matched to; a toggle adds the least
+confident extras, which are often near misses. Decisions below confidence 0.8 are the ones worth checking by hand:
 on golden, nearly all of Jev's disagreements with the chat judges, and every
 verdict that changed between two identical runs, fell below it. The question
 wording lives in `bench/discovery/src/jev.ts` and is versioned by

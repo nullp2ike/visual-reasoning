@@ -87,8 +87,11 @@
   .conf-fill { display: inline-block; height: 12px; background: var(--accent); border-radius: 2px; min-width: 1px; }
   .conf-count { font-variant-numeric: tabular-nums; }
   #confidence-table tbody tr { cursor: pointer; }
+  #confidence-table:not(.show-extras) tr.conf-extra { display: none; }
+  #confidence-table tr.conf-extra td { background: #fafafa; }
+  .conf-toggle { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #374151; margin: 0 0 8px; cursor: pointer; user-select: none; }
   #confidence-table tbody tr:hover { background: #eff6ff; }
-  #confidence-table td.conf-desc { text-align: left; white-space: normal; min-width: 280px; }
+  #confidence-table td.conf-desc { text-align: left; white-space: normal; min-width: 180px; }
   .ovr-badge { display: inline-block; background: #111827; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: 11px; margin-left: 6px; }
   .imgcard { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin: 16px 0; }
   .imgcard img { max-width: 320px; max-height: 220px; border: 1px solid var(--line); border-radius: 4px; float: right; margin: 0 0 12px 16px; }
@@ -643,6 +646,13 @@ if (exportButton) exportButton.onclick = () => {
   a.click();
   URL.revokeObjectURL(a.href);
 };
+
+// The extras toggle only flips a class: the CSS hides extra rows without it, so
+// it combines with the model filter's per-row display without either undoing the other.
+const showExtras = document.getElementById("show-extras");
+if (showExtras) showExtras.addEventListener("change", () => {
+  document.getElementById("confidence-table").classList.toggle("show-extras", showExtras.checked);
+});
 
 // Least-confident decisions open the matching matrix cell.
 document.querySelectorAll("#confidence-table tr.conf-row").forEach(tr => tr.onclick = () => {

@@ -105,25 +105,25 @@ No composite score: with a small issue set, rank by the columns that matter to y
 | 0.90–0.95 | 93 |
 | 0.95–1.00 | 3001 |
 
-Least confident decisions:
+Least confident matches, each reported issue beside the expected defect it was matched to:
 
-| Model | Image | Rep | Issue | Decision | p | Confidence | Reported issue |
+| Model | Image | Rep | Issue | p | Confidence | Reported issue | Expected defect |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| gemini-3.1-flash-lite | img_03 | 4 | R0 | extra | 0.50 | 0.00 | The 'Popular right now' section contains a large, empty gra… |
-| gpt-6.1-sol | img_09 | 1 | R0 | matches expected defect | 0.50 | 0.00 | The “Tokumaru Ramen” title under “Popular right now” cuts o… |
-| claude-opus-4-8 | img_07 | 5 | R0 | extra | 0.51 | 0.01 | The 'Tokumaru Ramen Bar' card image shows a loading spinner… |
-| gemini-3-flash-preview | img_09 | 2 | R0 | matches expected defect | 0.50 | 0.01 | The restaurant title 'Tokumaru Ramen' is vertically clipped… |
-| gemini-3.1-flash-lite | img_03 | 2 | R0 | extra | 0.50 | 0.01 | The 'Popular right now' section contains a large card that … |
-| gemini-3.1-pro-preview | img_12 | 5 | R0 | extra | 0.51 | 0.01 | Text overlaps below the 'Tokumaru Ramen Bar' title. |
-| xiaomi/mimo-v2.6-pro | img_09 | 2 | R0 | matches expected defect | 0.50 | 0.01 | The restaurant name 'Tokumaru Rame' contains a typo (missin… |
-| claude-opus-5 | img_15 | 5 | R2 | extra | 0.51 | 0.02 | Bottom navigation items have no text labels, relying solely… |
-| gemini-3.1-flash-lite | img_11 | 4 | R0 | matches expected defect | 0.51 | 0.02 | The promotional card at the bottom of the screen contains a… |
-| qwen/qwen3.8-max | img_04 | 3 | R1 | extra | 0.51 | 0.02 | The '-0%' badge and the '€0 delivery' badge use a leading s… |
-| gpt-6-astra | img_09 | 2 | R0 | matches expected defect | 0.52 | 0.03 | The “Tokumaru Ramen” title under “Popular right now” is cli… |
-| x-ai/grok-4.7 | img_15 | 1 | R0 | extra | 0.52 | 0.04 | A thick dark rounded horizontal bar sits inside the bottom … |
-| claude-haiku-4-5 | img_12 | 2 | R0 | matches expected defect | 0.52 | 0.05 | In the Tokumaru Ramen Bar card under 'Popular right now', t… |
-| gemini-3-flash-preview | img_13 | 2 | R1 | matches expected defect | 0.52 | 0.05 | Top-right profile icon is overly simplistic, appearing unfi… |
-| qwen/qwen3.8-max | img_04 | 1 | R1 | extra | 0.53 | 0.06 | The '€0 delivery' badge on the Tokumaru Ramen Bar card and … |
+| gpt-6.1-sol | img_09 | 1 | R0 | 0.50 | 0.00 | The “Tokumaru Ramen” title under “Popular right now” cuts o… | The "Tokumaru Ramen Bar" heading is cut off mid-word, rende… |
+| gemini-3-flash-preview | img_09 | 2 | R0 | 0.50 | 0.01 | The restaurant title 'Tokumaru Ramen' is vertically clipped… | The "Tokumaru Ramen Bar" heading is cut off mid-word, rende… |
+| xiaomi/mimo-v2.6-pro | img_09 | 2 | R0 | 0.50 | 0.01 | The restaurant name 'Tokumaru Rame' contains a typo (missin… | The "Tokumaru Ramen Bar" heading is cut off mid-word, rende… |
+| gemini-3.1-flash-lite | img_11 | 4 | R0 | 0.51 | 0.02 | The promotional card at the bottom of the screen contains a… | Discount badge shows −100% |
+| gpt-6-astra | img_09 | 2 | R0 | 0.52 | 0.03 | The “Tokumaru Ramen” title under “Popular right now” is cli… | The "Tokumaru Ramen Bar" heading is cut off mid-word, rende… |
+| claude-haiku-4-5 | img_12 | 2 | R0 | 0.52 | 0.05 | In the Tokumaru Ramen Bar card under 'Popular right now', t… | Tokumaru Ramen Bar Delivery fee text overlaps the delivery … |
+| gemini-3-flash-preview | img_13 | 2 | R1 | 0.52 | 0.05 | Top-right profile icon is overly simplistic, appearing unfi… | An icon is missing from the top right corner, only a red do… |
+| x-ai/grok-4.5 | img_03 | 1 | R2 | 0.54 | 0.07 | The €0 delivery badge and heart icon sit on an empty gray b… | Restaurant cover image failed to load |
+| z-ai/glm-5.3-flash | img_15 | 2 | R0 | 0.54 | 0.07 | In the bottom navigation bar, the middle tab (presumably Se… | Bottom nav labels are cut off below the screen edge and a b… |
+| qwen/qwen3.8-max | img_06 | 5 | R1 | 0.54 | 0.08 | The bottom navigation labels/icons are not evenly spaced: t… | Orders icon is missing from the bottom nav bar |
+| qwen/qwen3.8-max | img_07 | 2 | R1 | 0.55 | 0.09 | The loading spinner (white circle with green arc) sits dire… | Loading spinner is shown on top of already loaded content |
+| qwen/qwen3.8-max | img_13 | 1 | R1 | 0.54 | 0.09 | The red notification dot on the top-right circular button i… | An icon is missing from the top right corner, only a red do… |
+| claude-opus-4-8 | img_15 | 1 | R1 | 0.56 | 0.12 | The bottom navigation bar appears visually cluttered, with … | Bottom nav labels are cut off below the screen edge and a b… |
+| claude-sonnet-4-6 | img_12 | 4 | R0 | 0.56 | 0.12 | The subtitle line under 'Tokumaru Ramen Bar' shows '25-3[?]… | Tokumaru Ramen Bar Delivery fee text overlaps the delivery … |
+| xiaomi/mimo-v2.6-pro | img_15 | 4 | R1 | 0.56 | 0.12 | The bottom navigation bar has misaligned or overlapping ico… | Bottom nav labels are cut off below the screen edge and a b… |
 
 - **Generated:** 2026-09-30T11:06:32.408Z
 - **Prompt sha256:** `eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571`

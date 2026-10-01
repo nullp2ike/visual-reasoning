@@ -28,24 +28,29 @@ function confidenceSectionHtml(scores: Scores, manifest: Manifest): string {
         `<span class="conf-count">${b.count}</span></div>`,
     )
     .join("");
-  const rows = summary.leastConfident
-    .map(
-      (d) =>
-        `<tr class="conf-row" data-image="${escapeHtml(d.imageId)}" data-model="${escapeHtml(d.series)}">` +
+  // Matches and extras in one confidence-ordered table; extras stay hidden
+  // until the reader ticks "Show extras too".
+  const rows = [...summary.leastConfident, ...summary.leastConfidentExtras]
+    .sort((a, b) => a.confidence - b.confidence || a.series.localeCompare(b.series))
+    .map((d) => {
+      const extra = d.expectedText === undefined;
+      return (
+        `<tr class="conf-row${extra ? " conf-extra" : ""}" data-image="${escapeHtml(d.imageId)}" data-model="${escapeHtml(d.series)}">` +
         `<td>${escapeHtml(d.series)}</td><td>${escapeHtml(d.imageId)}</td><td>${d.rep}</td>` +
-        `<td>R${d.reportedIndex}</td>` +
-        (d.expectedText === undefined
-          ? `<td>${escapeHtml(d.label)}</td>`
-          : `<td title="Expected defect: ${escapeHtml(d.expectedText)}">${escapeHtml(d.label)}</td>`) +
-        `<td>${d.probability.toFixed(2)}</td>` +
-        `<td>${d.confidence.toFixed(2)}</td><td class="conf-desc">${escapeHtml(d.description)}</td></tr>`,
-    )
+        `<td>R${d.reportedIndex}</td><td>${d.probability.toFixed(2)}</td><td>${d.confidence.toFixed(2)}</td>` +
+        `<td class="conf-desc">${escapeHtml(d.description)}</td>` +
+        (extra
+          ? `<td class="conf-desc"><em>extra, matches no expected defect</em></td></tr>`
+          : `<td class="conf-desc">${escapeHtml(d.expectedText ?? "")}</td></tr>`)
+      );
+    })
     .join("");
   return `<section id="confidence">
   <h2>Judge confidence</h2>
-  <p class="meta">${escapeHtml(scores.judgeModel)} classifies each reported issue as matching an expected defect or as an extra, with a calibrated confidence. ${summary.uncertainRuns} of ${summary.judgedRuns} judged runs have a decision below confidence ${UNCERTAIN_CONFIDENCE.toFixed(2)}: those verdicts are the ones worth checking by hand. Click a row to open that cell in the matrix.</p>
+  <p class="meta">${escapeHtml(scores.judgeModel)} classifies each reported issue as matching an expected defect or as an extra, with a calibrated confidence. ${summary.uncertainRuns} of ${summary.judgedRuns} judged runs have a decision below confidence ${UNCERTAIN_CONFIDENCE.toFixed(2)}: those verdicts are the ones worth checking by hand. The table lists the least confident matches, each reported issue beside the expected defect it was matched to; click a row to open that cell in the matrix.</p>
   <div class="conf-hist">${bars}</div>
-  <div style="overflow-x:auto"><table id="confidence-table"><thead><tr><th>Model</th><th>Image</th><th>Rep</th><th>Issue</th><th>Decision</th><th>p</th><th>Confidence</th><th>Reported issue</th></tr></thead><tbody>${rows}</tbody></table></div>
+  <label class="conf-toggle"><input type="checkbox" id="show-extras"> Show extras too: the least confident issues the judge matched to no expected defect, which are often near misses</label>
+  <div style="overflow-x:auto"><table id="confidence-table"><thead><tr><th>Model</th><th>Image</th><th>Rep</th><th>Issue</th><th>p</th><th>Confidence</th><th>Reported issue</th><th>Expected defect</th></tr></thead><tbody>${rows}</tbody></table></div>
 </section>`;
 }
 
@@ -227,8 +232,11 @@ ${MODEL_FILTER_CSS}  .effort-filter { display: flex; flex-wrap: wrap; align-item
   .conf-fill { display: inline-block; height: 12px; background: var(--accent); border-radius: 2px; min-width: 1px; }
   .conf-count { font-variant-numeric: tabular-nums; }
   #confidence-table tbody tr { cursor: pointer; }
+  #confidence-table:not(.show-extras) tr.conf-extra { display: none; }
+  #confidence-table tr.conf-extra td { background: #fafafa; }
+  .conf-toggle { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #374151; margin: 0 0 8px; cursor: pointer; user-select: none; }
   #confidence-table tbody tr:hover { background: #eff6ff; }
-  #confidence-table td.conf-desc { text-align: left; white-space: normal; min-width: 280px; }
+  #confidence-table td.conf-desc { text-align: left; white-space: normal; min-width: 180px; }
   .ovr-badge { display: inline-block; background: #111827; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: 11px; margin-left: 6px; }
   .imgcard { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin: 16px 0; }
   .imgcard img { max-width: 320px; max-height: 220px; border: 1px solid var(--line); border-radius: 4px; float: right; margin: 0 0 12px 16px; }
@@ -710,6 +718,13 @@ if (exportButton) exportButton.onclick = () => {
   a.click();
   URL.revokeObjectURL(a.href);
 };
+
+// The extras toggle only flips a class: the CSS hides extra rows without it, so
+// it combines with the model filter's per-row display without either undoing the other.
+const showExtras = document.getElementById("show-extras");
+if (showExtras) showExtras.addEventListener("change", () => {
+  document.getElementById("confidence-table").classList.toggle("show-extras", showExtras.checked);
+});
 
 // Least-confident decisions open the matching matrix cell.
 document.querySelectorAll("#confidence-table tr.conf-row").forEach(tr => tr.onclick = () => {

@@ -132,10 +132,9 @@ describe("buildResultsMarkdown judge confidence", () => {
     expect(md).toContain("| 0.00–0.50 | 1 |");
     expect(md).toContain("| 0.95–1.00 | 1 |");
     expect(md).toContain("1 of 1 judged run(s) have a decision below confidence 0.80");
-    expect(md).toContain("| model-a | img_01 | 1 | R1 | extra | 0.62 | 0.24 | Card spacing |");
-    expect(md).toContain(
-      "| model-a | img_01 | 1 | R0 | matches expected defect | 0.99 | 0.98 | Typo in title |",
-    );
+    // Only matches are listed, each with the defect it was matched to; extras are left out.
+    expect(md).toContain("| model-a | img_01 | 1 | R0 | 0.99 | 0.98 | Typo in title | A typo |");
+    expect(md).not.toContain("Card spacing");
     expect(md).not.toMatch(/\| E0 \|/);
   });
 
@@ -273,9 +272,21 @@ describe("buildReportHtml", () => {
     expect(html).toContain('<section id="confidence">');
     expect(html).toContain("function decisionBadge(");
     expect(html).toContain('"confidence":0.24');
-    // Decisions read in words, with the expected defect's text on hover.
-    expect(html).toContain('<td title="Expected defect: A typo">matches expected defect</td>');
-    expect(html).not.toMatch(/<td>E0<\/td>/);
+    // The least-confident table lists matches only, with the defect each was matched to.
+    const table = html.slice(
+      html.indexOf('<table id="confidence-table">'),
+      html.indexOf("</table>", html.indexOf('<table id="confidence-table">')),
+    );
+    expect(table).toContain("<th>Expected defect</th>");
+    expect(table).not.toContain("<th>Decision</th>");
+    expect(table).toContain('<td class="conf-desc">A typo</td>');
+    // Extras are in the table too, but hidden until the "show extras" toggle is ticked.
+    expect(html).toContain('<input type="checkbox" id="show-extras">');
+    expect(table).toMatch(/<tr class="conf-row conf-extra"[^>]*>[\s\S]*?Card spacing/);
+    expect(table).toContain("extra, matches no expected defect");
+    expect(html).toContain("#confidence-table:not(.show-extras) tr.conf-extra { display: none; }");
+    expect(() => new Script(inlineScript(html))).not.toThrow();
+    // The drill-down badges still name both kinds of decision.
     expect(html).toContain('"matches expected defect"');
     expect(() => new Script(inlineScript(html))).not.toThrow();
   });

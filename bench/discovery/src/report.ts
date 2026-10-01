@@ -120,13 +120,13 @@ function confidenceMarkdown(scores: Scores, manifest: Manifest): string[] {
     "| --- | --- |",
     ...summary.buckets.map((b) => `| ${b.label} | ${b.count} |`),
     "",
-    "Least confident decisions:",
+    "Least confident matches, each reported issue beside the expected defect it was matched to:",
     "",
-    "| Model | Image | Rep | Issue | Decision | p | Confidence | Reported issue |",
+    "| Model | Image | Rep | Issue | p | Confidence | Reported issue | Expected defect |",
     "| --- | --- | --- | --- | --- | --- | --- | --- |",
     ...summary.leastConfident.map(
       (d) =>
-        `| ${d.series} | ${d.imageId} | ${d.rep} | R${d.reportedIndex} | ${d.label} | ${d.probability.toFixed(2)} | ${d.confidence.toFixed(2)} | ${cell(truncateDescription(d.description))} |`,
+        `| ${d.series} | ${d.imageId} | ${d.rep} | R${d.reportedIndex} | ${d.probability.toFixed(2)} | ${d.confidence.toFixed(2)} | ${cell(truncateDescription(d.description))} | ${cell(truncateDescription(d.expectedText ?? ""))} |`,
     ),
     "",
   ];

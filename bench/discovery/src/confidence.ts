@@ -43,7 +43,13 @@ export interface ConfidenceSummary {
   buckets: ConfidenceBucket[];
   judgedRuns: number;
   uncertainRuns: number;
+  /** The least confident matches. */
   leastConfident: LowConfidenceDecision[];
+  /**
+   * The least confident extras, listed separately: an uncertain extra is often
+   * a near miss of a real defect, which reports may want to offer on demand.
+   */
+  leastConfidentExtras: LowConfidenceDecision[];
 }
 
 /**
@@ -94,8 +100,15 @@ export function summarizeConfidence(
     (c.decisions ?? []).some((d) => d.confidence < UNCERTAIN_CONFIDENCE),
   ).length;
 
-  const leastConfident = [...all]
-    .sort((a, b) => a.confidence - b.confidence || a.series.localeCompare(b.series))
+  const byConfidence = (a: LowConfidenceDecision, b: LowConfidenceDecision): number =>
+    a.confidence - b.confidence || a.series.localeCompare(b.series);
+  const leastConfident = all
+    .filter((d) => d.expectedText !== undefined)
+    .sort(byConfidence)
+    .slice(0, limit);
+  const leastConfidentExtras = all
+    .filter((d) => d.expectedText === undefined)
+    .sort(byConfidence)
     .slice(0, limit);
 
   return {
@@ -104,5 +117,6 @@ export function summarizeConfidence(
     judgedRuns: cells.length,
     uncertainRuns,
     leastConfident,
+    leastConfidentExtras,
   };
 }
