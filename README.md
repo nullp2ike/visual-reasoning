@@ -2,6 +2,8 @@
 
 AI-powered visual assertions for E2E tests. Send screenshots — or short video recordings — to Claude, GPT, Gemini — or Grok, Kimi, Qwen, and GLM via OpenRouter — and get structured, typed results.
 
+Every supported model is benchmarked against hand-labelled screenshots — **[see how they compare](https://nullp2ike.github.io/visual-reasoning/)** ([methodology](#benchmarks)).
+
 ## Installation
 
 ```bash
@@ -688,6 +690,63 @@ Any [OpenRouter](https://openrouter.ai/models) model slug (always `vendor/model`
 Meta also publishes `meta/muse-spark-1.3-contributor`, the same model at $0.10 / $0.20 per MTok — about 12x cheaper — because Meta uses everything submitted through it for product improvement. It has **no named constant** (`Model.OpenRouter` does not expose it) and never appears by default anywhere in this library, so using it takes a deliberate, explicit choice: pass the slug directly as a plain string, `visualAI({ model: "meta/muse-spark-1.3-contributor" })`. Any OpenRouter slug works this way — see the note above the table — and cost tracking works correctly once you opt in. OpenRouter itself blocks it with HTTP 404 (`paid-model-training-violation-by-account`) until the account's privacy settings allow training endpoints, at [openrouter.ai/settings/privacy](https://openrouter.ai/settings/privacy). Only use it if sending your screenshots to Meta for training is a trade you've deliberately made.
 
 `qwen/qwen3.7-max` and the DeepSeek V4 family (`deepseek/deepseek-v4-pro`, `deepseek/deepseek-v4-flash`, and dated variants such as `deepseek/deepseek-v4-pro-0813`) are not listed because they accept no image input on OpenRouter.
+
+## Benchmarks
+
+Which model should you actually pick? This repo benchmarks every supported model
+against hand-labelled screenshots and publishes the results:
+
+**📊 [Live results — nullp2ike.github.io/visual-reasoning](https://nullp2ike.github.io/visual-reasoning/)**
+
+The site carries the defect-discovery leaderboard, a screenshot × model matrix you
+can drill into for any individual answer, and the same runs graded independently by
+five different judges so you can see where the grading itself is contested.
+
+Two benchmarks run against the same screenshots, answering different questions:
+
+|                | Defect discovery                                          | Assertion accuracy                                                  |
+| -------------- | --------------------------------------------------------- | ------------------------------------------------------------------- |
+| **Asks**       | "What looks visually broken on this page?" — no hints     | One claim per element, via `elementsVisible()` / `elementsHidden()` |
+| **Answer**     | Free prose; the model chooses what to report              | One boolean per element                                             |
+| **Graded by**  | An LLM judge matching reported issues to seeded ones      | Deterministically, against the ground truth                         |
+| **Headline**   | Recall of seeded defects, against extras invented per run | Accuracy, including on elements that are genuinely absent           |
+| **Fails when** | A defect is overlooked, or invented on a clean page       | The model agrees with a claim that is false                         |
+
+The two failure modes cost a test suite differently: a missed defect is a bug that
+ships, a false assertion is a test that passes when it should not. A model can be
+strong at one and weak at the other, so they do not share a leaderboard.
+
+### The `golden` dataset
+
+18 screenshots — 17 with exactly one deliberately seeded defect, plus a clean
+control where anything reported counts as a false positive. The prompt names a
+short list of out-of-scope non-defects (edge-clipped carousel items, content cut
+off by the viewport bottom) so models are not penalised for reporting framing as
+breakage.
+
+Current coverage, at `medium` effort with 5 repeats per cell:
+
+- **Discovery**: 37 model/effort/fidelity series over 3,330 graded runs
+- **Assertion**: 13 series over 1,170 runs and 33,016 individual element answers
+
+A few results worth knowing before you choose a default:
+
+| Model                                     | Discovery recall | Extras / run | Cost / run |
+| ----------------------------------------- | ---------------- | ------------ | ---------- |
+| `claude-opus-5-5`                         | 100%             | 0.53         | $0.023     |
+| `claude-sonnet-5-5` _(Anthropic default)_ | 94%              | 2.81         | $0.011     |
+| `gpt-6.1-sol` _(OpenAI default)_          | 93%              | 0.02         | $0.0055    |
+| `gemini-3.8-flash` _(Google default)_     | 87%              | 0.34         | $0.0050    |
+
+Recall is not the whole picture. `claude-sonnet-5-5` matches the Fable tier on
+recall but reports 2.81 extras per run against `gpt-6.1-sol`'s 0.02 — for
+open-ended discovery that is a lot of noise to triage, while for targeted
+assertions it costs nothing. On the assertion benchmark the spread is far tighter:
+the top models cluster at 98% accuracy, but getting _every_ element in a run right
+is much harder — `claude-opus-5` leads at 62%.
+
+Full methodology, how to run a sweep, and how to add your own dataset:
+[`bench/README.md`](bench/README.md).
 
 ## License
 
