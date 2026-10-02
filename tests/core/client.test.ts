@@ -451,7 +451,13 @@ describe("visualAI", () => {
       expect(result.changes).toHaveLength(0);
     });
 
-    it("returns default AI diff image for gemini-3-flash-preview", async () => {
+    it.each([
+      Model.Google.GEMINI_3_FLASH_PREVIEW,
+      Model.Google.GEMINI_3_5_FLASH,
+      Model.Google.GEMINI_3_6_FLASH,
+      Model.Google.GEMINI_3_7_FLASH,
+      Model.Google.GEMINI_3_8_FLASH,
+    ])("returns a default AI diff image for %s", async (flashModel) => {
       mockGoogleGenerate.mockResolvedValueOnce({
         text: makeCompareResponse(false),
         usageMetadata: { promptTokenCount: 300, candidatesTokenCount: 150 },
@@ -475,10 +481,7 @@ describe("visualAI", () => {
         usageMetadata: { promptTokenCount: 500, candidatesTokenCount: 200 },
       });
 
-      const ai = visualAI({
-        model: Model.Google.GEMINI_3_FLASH_PREVIEW,
-        apiKey: "test",
-      });
+      const ai = visualAI({ model: flashModel, apiKey: "test" });
       const image = await readFile(join(FIXTURES_DIR, "diff-base.png"));
       const result = await ai.compare(image, image);
 
@@ -487,6 +490,25 @@ describe("visualAI", () => {
       expect(result.diffImage!.width).toBe(20);
       expect(result.diffImage!.height).toBe(20);
     });
+
+    // Flash-Lite is a separate tier from flash and is absent from
+    // DIFF_ALLOWED_MODELS, so it must not pick up the flash auto-trigger.
+    it.each([Model.Google.GEMINI_3_5_FLASH_LITE, Model.Google.GEMINI_3_1_FLASH_LITE])(
+      "returns no default AI diff image for %s",
+      async (liteModel) => {
+        mockGoogleGenerate.mockResolvedValueOnce({
+          text: makeCompareResponse(true),
+          usageMetadata: { promptTokenCount: 300, candidatesTokenCount: 150 },
+        });
+
+        const ai = visualAI({ model: liteModel, apiKey: "test" });
+        const image = await readFile(join(FIXTURES_DIR, "small.png"));
+        const result = await ai.compare(image, image);
+
+        expect(result.diffImage).toBeUndefined();
+        expect(mockGoogleGenerate).toHaveBeenCalledTimes(1);
+      },
+    );
 
     it("returns no default AI diff image for gemini-3.1-pro-preview", async () => {
       mockGoogleGenerate.mockResolvedValueOnce({

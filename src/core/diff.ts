@@ -5,10 +5,13 @@ import type { DiffImageResult, NormalizedImage } from "../types.js";
 import { buildAiDiffPrompt } from "./prompt.js";
 
 /**
- * Models proven to return annotated diff images via Gemini code execution.
- * `gemini-3-flash-preview` is the baseline; `gemini-3.5-flash`,
- * `gemini-3.6-flash`, `gemini-3.7-flash`, and `gemini-3.8-flash` are opt-in
- * (mechanism works but annotation quality has not been validated end-to-end).
+ * Models that return annotated diff images via Gemini code execution: the whole
+ * Gemini flash tier. `compare()` auto-enables a diff image on every model in
+ * this set, and `generateAiDiff` refuses any model outside it.
+ *
+ * The Flash-Lite models (`gemini-3.5-flash-lite`, `gemini-3.1-flash-lite`) and
+ * the Pro tier (`gemini-3.1-pro-preview`) are deliberately absent: they do not
+ * drive code execution reliably enough to annotate an image.
  */
 export const DIFF_ALLOWED_MODELS: ReadonlySet<string> = new Set([
   Model.Google.GEMINI_3_FLASH_PREVIEW,

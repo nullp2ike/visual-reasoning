@@ -140,12 +140,23 @@ export type KnownModelName =
 
 // --- Default model per provider ---
 
-/** Default model selection used when a caller omits `config.model`. */
+/**
+ * Default model selection used when a caller omits `config.model`.
+ *
+ * Two of these carry constraints the older defaults did not:
+ * - `gpt-6.1-sol` rejects `reasoningEffort: "minimal"` (and `none`) with HTTP
+ *   400; `low` is the floor. See the `ReasoningEffort` note above.
+ * - `meta/muse-spark-1.3` is age-gated on OpenRouter and returns HTTP 403 until
+ *   the account completes the 18+ confirmation at
+ *   openrouter.ai/settings/preferences. It also reasons by default (~370-814
+ *   reasoning tokens per call) even with no effort configured, so cost per call
+ *   runs above what its headline rate suggests.
+ */
 export const DEFAULT_MODELS = {
-  [Provider.ANTHROPIC]: Model.Anthropic.SONNET_4_6,
-  [Provider.OPENAI]: Model.OpenAI.GPT_5_6_LUNA,
-  [Provider.GOOGLE]: Model.Google.GEMINI_3_FLASH_PREVIEW,
-  [Provider.OPENROUTER]: Model.OpenRouter.QWEN_3_6_FLASH,
+  [Provider.ANTHROPIC]: Model.Anthropic.SONNET_5_5,
+  [Provider.OPENAI]: Model.OpenAI.GPT_6_1_SOL,
+  [Provider.GOOGLE]: Model.Google.GEMINI_3_8_FLASH,
+  [Provider.OPENROUTER]: Model.OpenRouter.MUSE_SPARK_1_3,
 } as const satisfies Record<ProviderName, KnownModelName>;
 
 export const DEFAULT_MAX_TOKENS = 4096;

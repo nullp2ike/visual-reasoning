@@ -8,6 +8,8 @@ import {
   MODELS_REQUIRING_LARGE_OUTPUT_BUDGET,
   OPENAI_HEAVY_REASONING_MAX_TOKENS,
   OPENAI_REASONING_MAX_TOKENS,
+  ReasoningEffort,
+  type ReasoningEffortLevel,
 } from "../constants.js";
 import { VisualAIConfigError } from "../errors.js";
 import type { ProviderName, VisualAIConfig } from "../types.js";
@@ -80,6 +82,25 @@ function parseBooleanEnv(envName: string, value: string | undefined): boolean | 
   );
 }
 
+/**
+ * `reasoningEffort` is a closed enum, so an unrecognised value is a typo rather
+ * than a preference: throw like `parseBooleanEnv` instead of silently running at
+ * the provider's default. The accepted list is derived from `ReasoningEffort` so
+ * it cannot drift from the type.
+ */
+function parseReasoningEffortEnv(
+  envName: string,
+  value: string | undefined,
+): ReasoningEffortLevel | undefined {
+  if (value === undefined || value === "") return undefined;
+  const levels: readonly string[] = Object.values(ReasoningEffort);
+  const lower = value.toLowerCase();
+  if (levels.includes(lower)) return lower as ReasoningEffortLevel;
+  throw new VisualAIConfigError(
+    `Invalid ${envName} value: "${value}". Use one of: ${levels.join(", ")}.`,
+  );
+}
+
 let debugDeprecationWarned = false;
 
 /** @internal Reset the deprecation warning guard. For testing only. */
@@ -90,6 +111,11 @@ export function resetDebugDeprecationWarning(): void {
 export function resolveConfig(config: VisualAIConfig): ResolvedConfig {
   const provider = resolveProvider(config);
   const model = config.model ?? process.env.VISUAL_AI_MODEL ?? DEFAULT_MODELS[provider];
+  // Resolved before the maxTokens rules below, which branch on the effort: an
+  // env-set effort has to raise the OpenAI budget exactly as a param-set one does.
+  const reasoningEffort =
+    config.reasoningEffort ??
+    parseReasoningEffortEnv("VISUAL_AI_REASONING_EFFORT", process.env.VISUAL_AI_REASONING_EFFORT);
   const debug =
     config.debug ?? parseBooleanEnv("VISUAL_AI_DEBUG", process.env.VISUAL_AI_DEBUG) ?? false;
   const debugPrompt =
@@ -121,8 +147,7 @@ export function resolveConfig(config: VisualAIConfig): ResolvedConfig {
   // 4096 default can be consumed entirely by reasoning. Auto-increase either
   // when the effort is high/xhigh, or when the model reasons heavily enough to
   // truncate at every effort level (see MODELS_REQUIRING_LARGE_OUTPUT_BUDGET).
-  const effortNeedsLargeBudget =
-    config.reasoningEffort === "high" || config.reasoningEffort === "xhigh";
+  const effortNeedsLargeBudget = reasoningEffort === "high" || reasoningEffort === "xhigh";
   const modelNeedsLargeBudget = MODELS_REQUIRING_LARGE_OUTPUT_BUDGET.has(model);
   if (
     !userSetMaxTokens &&
@@ -135,7 +160,7 @@ export function resolveConfig(config: VisualAIConfig): ResolvedConfig {
     if (debug) {
       const reason = modelNeedsLargeBudget
         ? `model "${model}", which exhausts smaller budgets on reasoning at any effort`
-        : `provider "${provider}" with reasoningEffort "${config.reasoningEffort}"`;
+        : `provider "${provider}" with reasoningEffort "${reasoningEffort}"`;
       process.stderr.write(
         `[visual-ai-assertions] Auto-increased maxTokens from ${DEFAULT_MAX_TOKENS} to ${maxTokens} for ${reason}.\n`,
       );
@@ -147,7 +172,7 @@ export function resolveConfig(config: VisualAIConfig): ResolvedConfig {
     apiKey: config.apiKey,
     model,
     maxTokens,
-    reasoningEffort: config.reasoningEffort,
+    reasoningEffort,
     maxImageDimension: config.maxImageDimension ?? DEFAULT_MAX_IMAGE_DIMENSION,
     imageDetail: config.imageDetail ?? DEFAULT_IMAGE_DETAIL,
     timeout: config.timeout,

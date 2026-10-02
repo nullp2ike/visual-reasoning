@@ -99,7 +99,7 @@ const ai = visualAI();
 
 // Explicit configuration
 const ai = visualAI({
-  model: "claude-sonnet-4-6", // optional, sensible defaults per provider
+  model: "claude-sonnet-5-5", // optional, sensible defaults per provider
   apiKey: "sk-...", // optional, defaults to provider env var
   debug: true, // optional, logs prompts/responses to stderr
   maxTokens: 4096, // optional, default 4096
@@ -110,7 +110,7 @@ const ai = visualAI({
 
 // Use constants for IDE autocomplete
 const ai = visualAI({
-  model: Model.Anthropic.SONNET_4_6,
+  model: Model.Anthropic.SONNET_5_5,
 });
 ```
 
@@ -198,8 +198,8 @@ import { writeFileSync } from "node:fs";
 // Basic comparison
 const result = await ai.compare(before, after);
 
-// gemini-3-flash-preview includes an annotated diff by default.
-// Pass { diffImage: false } to opt out.
+// Every Gemini flash model — the gemini-3.8-flash default included — auto-includes
+// an annotated diff. Pass { diffImage: false } to opt out.
 
 // With custom prompt and instructions
 const result = await ai.compare(before, after, {
@@ -207,8 +207,9 @@ const result = await ai.compare(before, after, {
   instructions: ["Ignore date/time differences"],
 });
 
-// With AI-generated diff image (supported by gemini-3-flash-preview and gemini-3.5-flash;
-// only gemini-3-flash-preview auto-enables it — pass diffImage: true explicitly for 3.5-flash)
+// Requesting the diff image explicitly (it is already on by default for the flash tier).
+// Supported on gemini-3-flash-preview, 3.5, 3.6, 3.7 and 3.8-flash (DIFF_ALLOWED_MODELS);
+// Flash-Lite and Pro tiers produce none even when asked.
 const result = await ai.compare(before, after, {
   diffImage: true,
 });
@@ -224,7 +225,7 @@ if (result.diffImage) {
   pass: boolean;               // true if no critical/major changes
   reasoning: string;           // overall summary
   changes: ChangeEntry[];      // list of visual differences
-  diffImage?: {                // present when diffing is enabled explicitly or by Gemini 3 preview defaults
+  diffImage?: {                // present when diffing is enabled explicitly or by the Gemini flash default
     data: Buffer;              // PNG image data
     width: number;
     height: number;
@@ -513,15 +514,16 @@ The `VisualAIKnownError` union and `isVisualAIKnownError()` helper are useful wh
 
 ### Optional Configuration
 
-| Variable                     | Description                                                                                                                                                                                                                        |
-| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `VISUAL_AI_MODEL`            | Default model when `model` is not set in config. Overrides the provider's default model.                                                                                                                                           |
-| `VISUAL_AI_DEBUG`            | Enable error diagnostic logging to stderr. Does **not** enable prompt/response logging. Use `"true"` or `"1"`.                                                                                                                     |
-| `VISUAL_AI_DEBUG_PROMPT`     | Enable prompt-only debug logging to stderr. Use `"true"` or `"1"`.                                                                                                                                                                 |
-| `VISUAL_AI_DEBUG_RESPONSE`   | Enable response-only debug logging to stderr. Use `"true"` or `"1"`.                                                                                                                                                               |
-| `VISUAL_AI_DEBUG_FRAMES`     | Persist sampled video frames to disk for offline inspection. Use `"true"` or `"1"`. Frames are written to `./visual-ai-debug-frames/<timestamp>-<id>/` (override path with the next variable). Has no effect on image-only inputs. |
-| `VISUAL_AI_DEBUG_FRAMES_DIR` | Override the base directory for `VISUAL_AI_DEBUG_FRAMES`. Each call still gets its own timestamped subdirectory inside it.                                                                                                         |
-| `VISUAL_AI_TRACK_USAGE`      | Enable usage tracking (token counts and cost) to stderr. Use `"true"` or `"1"`.                                                                                                                                                    |
+| Variable                     | Description                                                                                                                                                                                                                               |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `VISUAL_AI_MODEL`            | Model used when `model` is not set in config, overriding the provider's default. It also **selects the provider**, since the provider is inferred from the model name — so this is how you pick a provider when several API keys are set. |
+| `VISUAL_AI_REASONING_EFFORT` | Reasoning effort when `reasoningEffort` is not set in config. One of `minimal`, `low`, `medium`, `high`, `xhigh` (case-insensitive). An unrecognised value throws `VisualAIConfigError` rather than being ignored.                        |
+| `VISUAL_AI_DEBUG`            | Enable error diagnostic logging to stderr. Does **not** enable prompt/response logging. Use `"true"` or `"1"`.                                                                                                                            |
+| `VISUAL_AI_DEBUG_PROMPT`     | Enable prompt-only debug logging to stderr. Use `"true"` or `"1"`.                                                                                                                                                                        |
+| `VISUAL_AI_DEBUG_RESPONSE`   | Enable response-only debug logging to stderr. Use `"true"` or `"1"`.                                                                                                                                                                      |
+| `VISUAL_AI_DEBUG_FRAMES`     | Persist sampled video frames to disk for offline inspection. Use `"true"` or `"1"`. Frames are written to `./visual-ai-debug-frames/<timestamp>-<id>/` (override path with the next variable). Has no effect on image-only inputs.        |
+| `VISUAL_AI_DEBUG_FRAMES_DIR` | Override the base directory for `VISUAL_AI_DEBUG_FRAMES`. Each call still gets its own timestamped subdirectory inside it.                                                                                                                |
+| `VISUAL_AI_TRACK_USAGE`      | Enable usage tracking (token counts and cost) to stderr. Use `"true"` or `"1"`.                                                                                                                                                           |
 
 ## Configuration
 
@@ -566,12 +568,12 @@ type SupportedMimeType = "image/jpeg" | "image/png" | "image/webp" | "image/gif"
 
 **Default models:**
 
-| Provider   | Default Model            |
-| ---------- | ------------------------ |
-| Anthropic  | `claude-sonnet-4-6`      |
-| OpenAI     | `gpt-5.6-luna`           |
-| Google     | `gemini-3-flash-preview` |
-| OpenRouter | `qwen/qwen3.6-flash`     |
+| Provider   | Default Model         |
+| ---------- | --------------------- |
+| Anthropic  | `claude-sonnet-5-5`   |
+| OpenAI     | `gpt-6.1-sol`         |
+| Google     | `gemini-3.8-flash`    |
+| OpenRouter | `meta/muse-spark-1.3` |
 
 ## Reasoning Effort
 
@@ -579,19 +581,22 @@ Control how deeply the model reasons before responding. Higher effort produces m
 
 ```typescript
 const ai = visualAI({
-  reasoningEffort: "high", // "low" | "medium" | "high" | "xhigh"
+  reasoningEffort: "high", // "minimal" | "low" | "medium" | "high" | "xhigh"
 });
 ```
 
-When omitted, each provider uses its default behavior. The `"xhigh"` level enables maximum reasoning depth.
+Set `VISUAL_AI_REASONING_EFFORT` to apply one without touching code; an explicit `reasoningEffort` wins over it.
 
-| Provider                                  | Native Parameter                                      | `"xhigh"` maps to    |
-| ----------------------------------------- | ----------------------------------------------------- | -------------------- |
-| Anthropic (Fable 5/Opus 4.8/4.7/Sonnet 5) | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "xhigh"`    |
-| Anthropic (other)                         | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "max"`      |
-| OpenAI                                    | `reasoning.effort` (Responses API)                    | `effort: "xhigh"`    |
-| Google                                    | `thinkingConfig.thinkingLevel` (1:1: low/medium/high) | `"high"` (max level) |
-| OpenRouter                                | `reasoning.effort` (normalized low/medium/high)       | `effort: "high"`     |
+When omitted, each provider uses its default behavior. The `"xhigh"` level enables maximum reasoning depth. `"minimal"` is **not portable** — several OpenAI models reject it with HTTP 400 (including the `gpt-6.1-sol` default), and Google/OpenRouter clamp it to `low` rather than send it; use `"low"` as the floor unless you know the model accepts it.
+
+| Provider                                                  | Native Parameter                                      | `"xhigh"` maps to    |
+| --------------------------------------------------------- | ----------------------------------------------------- | -------------------- |
+| Anthropic (Fable 5.1/5, Opus 5.5/5/4.8/4.7, Sonnet 5.5/5) | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "xhigh"`    |
+| Anthropic (Opus 4.6, Sonnet 4.6)                          | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "max"`      |
+| Anthropic (Haiku 4.5)                                     | budget-based extended thinking (token budget)         | 16384-token budget   |
+| OpenAI                                                    | `reasoning.effort` (Responses API)                    | `effort: "xhigh"`    |
+| Google                                                    | `thinkingConfig.thinkingLevel` (1:1: low/medium/high) | `"high"` (max level) |
+| OpenRouter                                                | `reasoning.effort` (normalized low/medium/high)       | `effort: "high"`     |
 
 ## Supported Models
 
@@ -599,31 +604,31 @@ All listed models support image/vision input. Pass any model ID to the `model` c
 
 ### Anthropic
 
-| Model             | Model ID            | Input $/MTok | Output $/MTok | Notes                                       |
-| ----------------- | ------------------- | ------------ | ------------- | ------------------------------------------- |
-| Claude Fable 5.1  | `claude-fable-5-1`  | $10          | $50           | Most capable; long-horizon agentic work     |
-| Claude Fable 5    | `claude-fable-5`    | $10          | $50           | Predecessor to Fable 5.1, same price        |
-| Claude Opus 5.5   | `claude-opus-5-5`   | $4           | $20           | Newest Opus; >30% faster output than Opus 5 |
-| Claude Opus 5     | `claude-opus-5`     | $5           | $25           | Previous Opus flagship; supports `xhigh`    |
-| Claude Opus 4.8   | `claude-opus-4-8`   | $5           | $25           | Prior Opus tier; supports `xhigh`           |
-| Claude Opus 4.7   | `claude-opus-4-7`   | $5           | $25           | Previous Opus; supports `xhigh` effort tier |
-| Claude Opus 4.6   | `claude-opus-4-6`   | $5           | $25           | Previous flagship, 128K max output          |
-| Claude Sonnet 5.5 | `claude-sonnet-5-5` | $2           | $10           | Newest Sonnet; fast, supports `xhigh`       |
-| Claude Sonnet 5   | `claude-sonnet-5`   | $3           | $15           | Near-Opus quality on coding/agentic work    |
-| Claude Sonnet 4.6 | `claude-sonnet-4-6` | $3           | $15           | **Default** — best value                    |
-| Claude Haiku 4.5  | `claude-haiku-4-5`  | $1           | $5            | Fastest, budget-friendly                    |
+| Model             | Model ID            | Input $/MTok | Output $/MTok | Notes                                         |
+| ----------------- | ------------------- | ------------ | ------------- | --------------------------------------------- |
+| Claude Fable 5.1  | `claude-fable-5-1`  | $10          | $50           | Most capable; long-horizon agentic work       |
+| Claude Fable 5    | `claude-fable-5`    | $10          | $50           | Predecessor to Fable 5.1, same price          |
+| Claude Opus 5.5   | `claude-opus-5-5`   | $4           | $20           | Newest Opus; >30% faster output than Opus 5   |
+| Claude Opus 5     | `claude-opus-5`     | $5           | $25           | Previous Opus flagship; supports `xhigh`      |
+| Claude Opus 4.8   | `claude-opus-4-8`   | $5           | $25           | Prior Opus tier; supports `xhigh`             |
+| Claude Opus 4.7   | `claude-opus-4-7`   | $5           | $25           | Previous Opus; supports `xhigh` effort tier   |
+| Claude Opus 4.6   | `claude-opus-4-6`   | $5           | $25           | Previous flagship, 128K max output            |
+| Claude Sonnet 5.5 | `claude-sonnet-5-5` | $2           | $10           | **Default** — newest Sonnet; supports `xhigh` |
+| Claude Sonnet 5   | `claude-sonnet-5`   | $3           | $15           | Near-Opus quality on coding/agentic work      |
+| Claude Sonnet 4.6 | `claude-sonnet-4-6` | $3           | $15           | Prior default; best value in its generation   |
+| Claude Haiku 4.5  | `claude-haiku-4-5`  | $1           | $5            | Fastest, budget-friendly                      |
 
 ### OpenAI
 
 | Model         | Model ID        | Input $/MTok | Output $/MTok | Notes                               |
 | ------------- | --------------- | ------------ | ------------- | ----------------------------------- |
 | GPT-6 Astra   | `gpt-6-astra`   | $10          | $50           | Most capable; restricted access¹    |
-| GPT-6.1 Sol   | `gpt-6.1-sol`   | $2           | $10           | Upgraded Sol, near-Astra quality²   |
+| GPT-6.1 Sol   | `gpt-6.1-sol`   | $2           | $10           | **Default** — near-Astra quality²   |
 | GPT-6 Sol     | `gpt-6-sol`     | $2           | $10           | GPT-6 generation, frontier tier     |
 | GPT-6 Luna    | `gpt-6-luna`    | $0.10        | $0.50         | GPT-6 generation, fastest/cheapest  |
 | GPT-5.6 Sol   | `gpt-5.6-sol`   | $5           | $30           | Previous flagship, frontier tier    |
 | GPT-5.6 Terra | `gpt-5.6-terra` | $2           | $12           | Newest balanced, everyday tier      |
-| GPT-5.6 Luna  | `gpt-5.6-luna`  | $0.20        | $1.20         | **Default** — fast and cheap        |
+| GPT-5.6 Luna  | `gpt-5.6-luna`  | $0.20        | $1.20         | Prior default — fast and cheap      |
 | GPT-5.5       | `gpt-5.5`       | $5           | $30           | Previous flagship, 1M context       |
 | GPT-5.4 Pro   | `gpt-5.4-pro`   | $30          | $180          | Most capable, extended context      |
 | GPT-5.4       | `gpt-5.4`       | $2.50        | $15           | Best vision quality                 |
@@ -640,16 +645,16 @@ Astra uses the same output budget as other OpenAI models: the 4096 default, rais
 
 ### Google
 
-| Model                 | Model ID                 | Input $/MTok | Output $/MTok | Notes                             |
-| --------------------- | ------------------------ | ------------ | ------------- | --------------------------------- |
-| Gemini 3.8 Flash      | `gemini-3.8-flash`       | $0.75        | $3.75         | Newest GA flash; intro pricing¹   |
-| Gemini 3.7 Flash      | `gemini-3.7-flash`       | $0.75        | $3.75         | Prior GA flash; intro pricing¹    |
-| Gemini 3.6 Flash      | `gemini-3.6-flash`       | $1.50        | $7.50         | Prior GA flash; fewer out-tokens  |
-| Gemini 3.5 Flash      | `gemini-3.5-flash`       | $1.50        | $9            | Strongest agentic & coding model  |
-| Gemini 3.5 Flash Lite | `gemini-3.5-flash-lite`  | $0.30        | $2.50         | GA — fast, cheap, agentic tier    |
-| Gemini 3.1 Pro        | `gemini-3.1-pro-preview` | $2           | $12           | Preview — most advanced reasoning |
-| Gemini 3.1 Flash Lite | `gemini-3.1-flash-lite`  | $0.25        | $1.50         | GA — lightweight and cheap        |
-| Gemini 3 Flash        | `gemini-3-flash-preview` | $0.50        | $3            | **Default** — fast and capable    |
+| Model                 | Model ID                 | Input $/MTok | Output $/MTok | Notes                              |
+| --------------------- | ------------------------ | ------------ | ------------- | ---------------------------------- |
+| Gemini 3.8 Flash      | `gemini-3.8-flash`       | $0.75        | $3.75         | **Default** — newest GA flash¹     |
+| Gemini 3.7 Flash      | `gemini-3.7-flash`       | $0.75        | $3.75         | Prior GA flash; intro pricing¹     |
+| Gemini 3.6 Flash      | `gemini-3.6-flash`       | $1.50        | $7.50         | Prior GA flash; fewer out-tokens   |
+| Gemini 3.5 Flash      | `gemini-3.5-flash`       | $1.50        | $9            | Strongest agentic & coding model   |
+| Gemini 3.5 Flash Lite | `gemini-3.5-flash-lite`  | $0.30        | $2.50         | GA — fast, cheap, agentic tier     |
+| Gemini 3.1 Pro        | `gemini-3.1-pro-preview` | $2           | $12           | Preview — most advanced reasoning  |
+| Gemini 3.1 Flash Lite | `gemini-3.1-flash-lite`  | $0.25        | $1.50         | GA — lightweight and cheap         |
+| Gemini 3 Flash        | `gemini-3-flash-preview` | $0.50        | $3            | Prior default; cheapest flash tier |
 
 ¹ Gemini 3.8 Flash and 3.7 Flash introductory pricing runs through 2026-12-31; both revert to $1.50 / $7.50 per MTok on 2027-01-01.
 
@@ -657,18 +662,18 @@ Astra uses the same output budget as other OpenAI models: the 4096 default, rais
 
 Any [OpenRouter](https://openrouter.ai/models) model slug (always `vendor/model`) is accepted — the vendor prefix is how the library recognizes an OpenRouter model. The models below are tested and have pricing built in. Note that OpenRouter may route a request to different upstream hosts with different quantizations; keep that in mind when comparing benchmark numbers.
 
-| Model          | Model ID                    | Input $/MTok | Output $/MTok | Notes                                 |
-| -------------- | --------------------------- | ------------ | ------------- | ------------------------------------- |
-| Muse Spark 1.3 | `meta/muse-spark-1.3`       | $1.25        | $4.25         | Meta flagship, 1M context; gated¹     |
-| Grok 4.6       | `x-ai/grok-4.6`             | $2           | $6            | Newest xAI flagship, 500K context     |
-| Grok 4.5       | `x-ai/grok-4.5`             | $2           | $6            | Prior xAI flagship, 500K context      |
-| Kimi K3        | `moonshotai/kimi-k3`        | $3           | $15           | Moonshot flagship, 1M context         |
-| Kimi K2.7 Code | `moonshotai/kimi-k2.7-code` | $0.82        | $3.75         | Agentic/coding tier with vision⁵      |
-| Qwen3.8 Max    | `qwen/qwen3.8-max`          | $2           | $6            | First Max tier with image input⁴      |
-| Qwen3.7 Plus   | `qwen/qwen3.7-plus`         | $0.32        | $1.28         | Cost-effective, GUI/screen-reading⁴   |
-| Qwen3.6 Flash  | `qwen/qwen3.6-flash`        | $0.19        | $1.13         | **Default** — cheap flash vision tier |
-| GLM 5.3 Flash  | `z-ai/glm-5.3-flash`        | $0.15        | $0.50         | Z.ai flash tier, 1.3M context²        |
-| MiMo V2.6 Pro  | `xiaomi/mimo-v2.6-pro`      | $0.435       | $0.87         | Xiaomi flagship, 1M context³          |
+| Model          | Model ID                    | Input $/MTok | Output $/MTok | Notes                               |
+| -------------- | --------------------------- | ------------ | ------------- | ----------------------------------- |
+| Muse Spark 1.3 | `meta/muse-spark-1.3`       | $1.25        | $4.25         | **Default** — Meta flagship; gated¹ |
+| Grok 4.6       | `x-ai/grok-4.6`             | $2           | $6            | Newest xAI flagship, 500K context   |
+| Grok 4.5       | `x-ai/grok-4.5`             | $2           | $6            | Prior xAI flagship, 500K context    |
+| Kimi K3        | `moonshotai/kimi-k3`        | $3           | $15           | Moonshot flagship, 1M context       |
+| Kimi K2.7 Code | `moonshotai/kimi-k2.7-code` | $0.82        | $3.75         | Agentic/coding tier with vision⁵    |
+| Qwen3.8 Max    | `qwen/qwen3.8-max`          | $2           | $6            | First Max tier with image input⁴    |
+| Qwen3.7 Plus   | `qwen/qwen3.7-plus`         | $0.32        | $1.28         | Cost-effective, GUI/screen-reading⁴ |
+| Qwen3.6 Flash  | `qwen/qwen3.6-flash`        | $0.19        | $1.13         | Prior default — cheap flash vision  |
+| GLM 5.3 Flash  | `z-ai/glm-5.3-flash`        | $0.15        | $0.50         | Z.ai flash tier, 1.3M context²      |
+| MiMo V2.6 Pro  | `xiaomi/mimo-v2.6-pro`      | $0.435       | $0.87         | Xiaomi flagship, 1M context³        |
 
 ¹ Muse Spark 1.3 is age-gated by OpenRouter: calls return HTTP 403 (`VisualAIAuthError`) until the account completes the 18+ confirmation at [openrouter.ai/settings/preferences](https://openrouter.ai/settings/preferences). It also reasons by default — expect several hundred reasoning tokens per call even with no `reasoningEffort` set.
 

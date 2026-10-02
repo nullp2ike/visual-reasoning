@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   DEFAULT_MAX_TOKENS,
   DEFAULT_MODELS,
@@ -14,6 +14,7 @@ const ORIGINAL_ENV = {
   VISUAL_AI_DEBUG_PROMPT: process.env.VISUAL_AI_DEBUG_PROMPT,
   VISUAL_AI_DEBUG_RESPONSE: process.env.VISUAL_AI_DEBUG_RESPONSE,
   VISUAL_AI_TRACK_USAGE: process.env.VISUAL_AI_TRACK_USAGE,
+  VISUAL_AI_REASONING_EFFORT: process.env.VISUAL_AI_REASONING_EFFORT,
   ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY,
   OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
@@ -37,6 +38,10 @@ function restoreEnv(): void {
   if (ORIGINAL_ENV.VISUAL_AI_TRACK_USAGE === undefined) delete process.env.VISUAL_AI_TRACK_USAGE;
   else process.env.VISUAL_AI_TRACK_USAGE = ORIGINAL_ENV.VISUAL_AI_TRACK_USAGE;
 
+  if (ORIGINAL_ENV.VISUAL_AI_REASONING_EFFORT === undefined)
+    delete process.env.VISUAL_AI_REASONING_EFFORT;
+  else process.env.VISUAL_AI_REASONING_EFFORT = ORIGINAL_ENV.VISUAL_AI_REASONING_EFFORT;
+
   if (ORIGINAL_ENV.ANTHROPIC_API_KEY === undefined) delete process.env.ANTHROPIC_API_KEY;
   else process.env.ANTHROPIC_API_KEY = ORIGINAL_ENV.ANTHROPIC_API_KEY;
 
@@ -51,6 +56,10 @@ function restoreEnv(): void {
 }
 
 describe("resolveConfig", () => {
+  beforeEach(() => {
+    delete process.env.VISUAL_AI_REASONING_EFFORT;
+  });
+
   afterEach(() => {
     restoreEnv();
     resetDebugDeprecationWarning();
@@ -84,6 +93,83 @@ describe("resolveConfig", () => {
     expect(resolved.model).toBe("gpt-5.4");
     expect(resolved.debug).toBe(true);
     expect(resolved.trackUsage).toBe(true);
+  });
+
+  it("reads reasoningEffort from VISUAL_AI_REASONING_EFFORT when config omits it", () => {
+    process.env.VISUAL_AI_REASONING_EFFORT = "high";
+
+    expect(resolveConfig({ model: "gpt-5-mini", apiKey: "test-key" }).reasoningEffort).toBe("high");
+  });
+
+  it.each(["minimal", "low", "medium", "high", "xhigh"])(
+    "accepts %s from VISUAL_AI_REASONING_EFFORT",
+    (level) => {
+      process.env.VISUAL_AI_REASONING_EFFORT = level;
+
+      expect(resolveConfig({ model: "gpt-5-mini", apiKey: "test-key" }).reasoningEffort).toBe(
+        level,
+      );
+    },
+  );
+
+  it("accepts VISUAL_AI_REASONING_EFFORT case-insensitively", () => {
+    process.env.VISUAL_AI_REASONING_EFFORT = "XHigh";
+
+    expect(resolveConfig({ model: "gpt-5-mini", apiKey: "test-key" }).reasoningEffort).toBe(
+      "xhigh",
+    );
+  });
+
+  it("lets an explicit reasoningEffort override VISUAL_AI_REASONING_EFFORT", () => {
+    process.env.VISUAL_AI_REASONING_EFFORT = "minimal";
+
+    const resolved = resolveConfig({
+      model: "gpt-5-mini",
+      apiKey: "test-key",
+      reasoningEffort: "high",
+    });
+
+    expect(resolved.reasoningEffort).toBe("high");
+  });
+
+  it("treats an empty VISUAL_AI_REASONING_EFFORT as unset", () => {
+    process.env.VISUAL_AI_REASONING_EFFORT = "";
+
+    expect(
+      resolveConfig({ model: "gpt-5-mini", apiKey: "test-key" }).reasoningEffort,
+    ).toBeUndefined();
+  });
+
+  it("throws on an unrecognised VISUAL_AI_REASONING_EFFORT instead of silently ignoring it", () => {
+    process.env.VISUAL_AI_REASONING_EFFORT = "maximum";
+
+    expect(() => resolveConfig({ model: "gpt-5-mini", apiKey: "test-key" })).toThrow(
+      VisualAIConfigError,
+    );
+    expect(() => resolveConfig({ model: "gpt-5-mini", apiKey: "test-key" })).toThrow(
+      /VISUAL_AI_REASONING_EFFORT/,
+    );
+  });
+
+  // The budget rules branch on the effort, so an env-set effort has to raise the
+  // OpenAI output budget exactly as a param-set one does.
+  it.each(["high", "xhigh"])(
+    "raises the OpenAI maxTokens for %s set via VISUAL_AI_REASONING_EFFORT",
+    (level) => {
+      process.env.VISUAL_AI_REASONING_EFFORT = level;
+
+      expect(resolveConfig({ model: "gpt-5-mini", apiKey: "test-key" }).maxTokens).toBe(
+        OPENAI_REASONING_MAX_TOKENS,
+      );
+    },
+  );
+
+  it("leaves the OpenAI maxTokens alone for a low effort set via the env var", () => {
+    process.env.VISUAL_AI_REASONING_EFFORT = "low";
+
+    expect(resolveConfig({ model: "gpt-5-mini", apiKey: "test-key" }).maxTokens).toBe(
+      DEFAULT_MAX_TOKENS,
+    );
   });
 
   it("lets explicit config values override env flags", () => {

@@ -108,10 +108,10 @@ describe("Model", () => {
 
 describe("DEFAULT_MODELS", () => {
   it("maps each provider to a known model", () => {
-    expect(DEFAULT_MODELS[Provider.ANTHROPIC]).toBe(Model.Anthropic.SONNET_4_6);
-    expect(DEFAULT_MODELS[Provider.OPENAI]).toBe(Model.OpenAI.GPT_5_6_LUNA);
-    expect(DEFAULT_MODELS[Provider.GOOGLE]).toBe(Model.Google.GEMINI_3_FLASH_PREVIEW);
-    expect(DEFAULT_MODELS[Provider.OPENROUTER]).toBe(Model.OpenRouter.QWEN_3_6_FLASH);
+    expect(DEFAULT_MODELS[Provider.ANTHROPIC]).toBe(Model.Anthropic.SONNET_5_5);
+    expect(DEFAULT_MODELS[Provider.OPENAI]).toBe(Model.OpenAI.GPT_6_1_SOL);
+    expect(DEFAULT_MODELS[Provider.GOOGLE]).toBe(Model.Google.GEMINI_3_8_FLASH);
+    expect(DEFAULT_MODELS[Provider.OPENROUTER]).toBe(Model.OpenRouter.MUSE_SPARK_1_3);
   });
 
   it("has an entry for every provider", () => {

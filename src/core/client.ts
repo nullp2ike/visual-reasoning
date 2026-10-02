@@ -1,4 +1,3 @@
-import { Model } from "../constants.js";
 import { VisualAIConfigError } from "../errors.js";
 import {
   buildAccessibilityPrompt,
@@ -48,7 +47,7 @@ import {
   timedSendVideoMessage,
   withErrorDebug,
 } from "./debug.js";
-import { generateAiDiff } from "./diff.js";
+import { DIFF_ALLOWED_MODELS, generateAiDiff } from "./diff.js";
 import { normalizeImage } from "./image.js";
 import { isFramesInput, isVideoInput, normalizeMedia, type NormalizedMedia } from "./media.js";
 import {
@@ -158,8 +157,9 @@ export interface VisualAIClient {
    * @param imageA Baseline image source.
    * @param imageB Candidate image source.
    * @param options Optional comparison prompt, instructions, and diff-image settings.
-   *   `gemini-3-flash-preview` generates an annotated diff image by default;
-   *   pass `{ diffImage: false }` to opt out.
+   *   Gemini flash models (`DIFF_ALLOWED_MODELS`) generate an annotated diff image
+   *   by default; pass `{ diffImage: false }` to opt out. Flash-Lite and Pro tiers
+   *   produce none even when asked.
    * @returns A structured comparison result with optional diff image metadata.
    * @throws {VisualAIImageError} When either image cannot be loaded or decoded.
    * @throws {VisualAIError} When the provider rejects the request or returns invalid output.
@@ -556,9 +556,11 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
         const response = await timedSendMessage(driver, [imgA, imgB], prompt, compareSchemaOptions);
         debugLog(resolvedConfig, "compare response", response.text, "response");
 
+        // Every Gemini flash model returns annotated diffs via code execution, so
+        // the auto-trigger follows the allowlist rather than naming one model.
+        // Flash-Lite and Pro tiers are absent from it and so never auto-enable.
         const supportsAnnotatedDiff =
-          resolvedConfig.provider === "google" &&
-          resolvedConfig.model === Model.Google.GEMINI_3_FLASH_PREVIEW;
+          resolvedConfig.provider === "google" && DIFF_ALLOWED_MODELS.has(resolvedConfig.model);
         const effectiveDiffImage = options?.diffImage ?? (supportsAnnotatedDiff ? true : false);
 
         let diffImage;
