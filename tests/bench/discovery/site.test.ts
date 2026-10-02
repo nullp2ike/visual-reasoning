@@ -23,10 +23,10 @@ describe("assertPublishable", () => {
     }).not.toThrow();
   });
 
-  it("refuses any dataset not on the allowlist, above all the private primary", () => {
+  it("refuses any dataset not on the allowlist, above all `private`", () => {
     expect(() => {
-      assertPublishable("primary");
-    }).toThrow(/primary/);
+      assertPublishable("private");
+    }).toThrow(/private/);
     expect(() => {
       assertPublishable("my-set");
     }).toThrow(/not publishable/);

@@ -14,7 +14,7 @@ answers, and emits a leaderboard, a screenshot × model matrix, and an interacti
 HTML report.
 
 `golden` (18 screenshots, one seeded defect each plus a clean control) is tracked
-and is the default; the `primary` dataset is gitignored, being private product UI.
+and is the default; the `private` dataset is gitignored, being real product UI.
 See [`../datasets/README.md`](../datasets/README.md) for the format to add your own.
 
 The sibling benchmark asks the opposite way round: [assertion
@@ -153,8 +153,8 @@ The published reports are read-only: the override chips can't be clicked and
 the export toolbar is gone, since overrides only mean something to someone
 re-grading locally. Only datasets in `PUBLISHABLE_DATASETS` in
 `bench/discovery/src/site.ts` can be built, which is just `golden`; the command
-ignores `BENCH_DATASET`, so the private `primary` dataset can never be
-published by accident. To preview the site locally:
+ignores `BENCH_DATASET`, so the `private` dataset can never be published by
+accident. To preview the site locally:
 
 ```bash
 pnpm discovery:site

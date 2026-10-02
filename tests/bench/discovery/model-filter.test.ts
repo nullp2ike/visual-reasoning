@@ -101,7 +101,7 @@ describe("model filter selection", () => {
   it("keeps selections apart for different results directories", () => {
     const storage = tabStorage();
     clickAll(storage, "/results/golden/discovery/report.html");
-    expect(loadPage(storage, "/results/primary/discovery/report.html").shown()).toEqual(["a", "b"]);
+    expect(loadPage(storage, "/results/private/discovery/report.html").shown()).toEqual(["a", "b"]);
   });
 
   it("falls back to the defaults when storage is unavailable", () => {

@@ -8,7 +8,7 @@ each screenshot) and `prompt.md` (the question put to the models), [assertion ac
 directory may carry both, and the two benchmarks keep their results apart.
 
 Datasets are tracked, so the ground truth and the runs graded against it are not
-one laptop away from being lost. The exception is `primary/`: screenshots of a
+one laptop away from being lost. The exception is `private/`: screenshots of a
 real product, and the model output quoting them, stay on the machine that
 produced them, so it and its results are gitignored.
 
@@ -69,7 +69,7 @@ as little as possible. On `golden`, a four-category list cut extras per run from
 exclusion list names, the more conservative models become beyond it. Its current
 prompt names only the two scroll and viewport-edge cases, which were about 84% of
 the clean control's noise on their own, framed as features rather than defects.
-`primary` has its own list; reused on `golden`, it would suppress 4 of the 17
+`private` has its own list; reused on `golden`, it would suppress 4 of the 17
 expected defects, because clipping, overlap and alignment are real ground truth
 there.
 
@@ -147,7 +147,7 @@ benchmark are selected with `--dataset` or `assertion.config.ts` only —
 | Dataset             | Ground truth             | What it is                                                                                     |
 | ------------------- | ------------------------ | ---------------------------------------------------------------------------------------------- |
 | `golden`  | `issues_per_file.md` + `prompt.md` + `assertions_per_file.md` | 18 screenshots, one seeded defect each plus a clean control, labelled for both benchmarks over one copy of the images. The default for both. |
-| `primary` | `issues_per_file.md` + `prompt.md`                            | Private product UI. Gitignored, so only present on the machine that captured it.                                                            |
+| `private` | `issues_per_file.md` + `prompt.md`                            | Real product UI. Gitignored and never publishable, so only present on the machine that captured it.                                         |
 
 Adding your own needs no more than a directory, a handful of screenshots, one
 `## <filename>` heading each, and at least one clean control for the screenshot

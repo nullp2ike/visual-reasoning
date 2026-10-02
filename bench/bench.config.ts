@@ -7,8 +7,9 @@ export interface BenchConfig {
    * for good with `BENCH_DATASET` in `.env`. Results are namespaced by dataset,
    * so switching datasets never mixes manifests, runs, or reports.
    *
-   * Datasets are tracked apart from `primary`, which is gitignored because its
-   * screenshots are private product UI. See bench/datasets/README.md.
+   * Datasets are tracked apart from `private`, which is gitignored: its
+   * screenshots are real product UI and its run records quote model output
+   * about them verbatim. See bench/datasets/README.md.
    */
   readonly dataset: string;
   /** Models under test. Provider is inferred from the model name by the library. */

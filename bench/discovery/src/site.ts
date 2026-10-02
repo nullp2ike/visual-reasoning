@@ -14,9 +14,9 @@ import { OverridesSchema, type Overrides } from "./types.js";
 
 /**
  * Datasets whose screenshots and model output may be published. An allowlist
- * rather than "whatever is selected": `primary` holds private product UI, and
- * neither `BENCH_DATASET` nor `benchConfig.dataset` may ever route it onto a
- * public site.
+ * rather than "whatever is selected": the `private` dataset holds real product
+ * UI, and neither `BENCH_DATASET` nor `benchConfig.dataset` may ever route it
+ * onto a public site.
  */
 export const PUBLISHABLE_DATASETS: readonly string[] = ["golden"];
 

@@ -2,7 +2,7 @@ name: Pages
 
 # Publishes the golden discovery benchmark report as a static site. Only the
 # `golden` dataset is publishable (PUBLISHABLE_DATASETS in
-# bench/discovery/src/site.ts); `primary` is private and never tracked anyway.
+# bench/discovery/src/site.ts); the `private` dataset is never tracked anyway.
 on:
   push:
     branches: [main]
@@ -32,6 +32,8 @@ jobs:
     steps:
       # Run records and the judge cache are most of the repository's files and
       # the site needs neither: the reports are built from the scores alone.
+      # The `private` dataset is excluded too: it is gitignored, so it should
+      # never be here, and a force-add must not reach the build either.
       - uses: actions/checkout@v4
         with:
           sparse-checkout-cone-mode: false
@@ -39,6 +41,8 @@ jobs:
             /*
             !/bench/results/**/runs/
             !/bench/results/**/judge-cache/
+            !/bench/datasets/private/
+            !/bench/results/private/
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:

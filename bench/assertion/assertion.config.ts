@@ -9,7 +9,7 @@ export interface AssertionBenchConfig {
    * Deliberately separate from `benchConfig.dataset` (and from the
    * `BENCH_DATASET` env var) even while both name `golden`: this benchmark
    * needs `assertions_per_file.md`, which a discovery-only dataset does not
-   * carry, so `BENCH_DATASET=primary` must not reach an assertion run.
+   * carry, so `BENCH_DATASET=private` must not reach an assertion run.
    */
   readonly dataset: string;
   /** Models under test when `--models` is omitted. Shared with the discovery bench. */

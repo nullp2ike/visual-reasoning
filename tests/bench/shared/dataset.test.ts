@@ -89,7 +89,7 @@ describe("resolveDatasetRef", () => {
 
 describe("listDatasetIds", () => {
   it("lists only directories carrying the requested ground-truth file", () => {
-    // Which datasets exist varies by checkout (`primary` is gitignored), so
+    // Which datasets exist varies by checkout (`private` is gitignored), so
     // assert the filter rather than any particular id.
     for (const id of listDatasetIds()) {
       expect(existsSync(join(DATASETS_DIR, id, "issues_per_file.md"))).toBe(true);
