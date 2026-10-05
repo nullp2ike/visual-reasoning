@@ -7,9 +7,9 @@ export interface BenchConfig {
    * for good with `BENCH_DATASET` in `.env`. Results are namespaced by dataset,
    * so switching datasets never mixes manifests, runs, or reports.
    *
-   * Datasets are tracked apart from `private`, which is gitignored: its
-   * screenshots are real product UI and its run records quote model output
-   * about them verbatim. See bench/datasets/README.md.
+   * Datasets are tracked apart from `private` and `rsi`, which are gitignored:
+   * their screenshots are real product UI and their run records quote model
+   * output about them verbatim. See bench/datasets/README.md.
    */
   readonly dataset: string;
   /** Models under test. Provider is inferred from the model name by the library. */
@@ -134,7 +134,7 @@ export const benchConfig: BenchConfig = {
   reasoningEffort: "medium",
   imageFidelity: "auto",
   maxTokens: 8192,
-  judgeModel: "gpt-5.6-luna",
+  judgeModel: "gpt-6-luna",
   reportRankJudge: "gpt-6-luna",
   reportDefaultModels: 10,
   // Rate-limit errors retry with backoff and failed cells resume on the next

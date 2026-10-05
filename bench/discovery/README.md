@@ -14,7 +14,7 @@ answers, and emits a leaderboard, a screenshot × model matrix, and an interacti
 HTML report.
 
 `golden` (18 screenshots, one seeded defect each plus a clean control) is tracked
-and is the default; the `private` dataset is gitignored, being real product UI.
+and is the default; the `private` and `rsi` datasets are gitignored, being real product UI.
 See [`../datasets/README.md`](../datasets/README.md) for the format to add your own.
 
 The sibling benchmark asks the opposite way round: [assertion
@@ -86,9 +86,9 @@ model can be compared against itself across settings.
 ## Judges
 
 The judge is text-only: it never sees the screenshot, only the expected issues
-and what the model reported. It is an LLM (`gpt-5.6-luna`, `gemini-3.8-flash`,
+and what the model reported. It is an LLM (`gpt-6-luna`, `gemini-3.8-flash`,
 …). Reports are written per judge so you can see how much the grading choice
-moves the ranking; the one named in `judgeModel` (`gpt-5.6-luna`) also owns the
+moves the ranking; the one named in `judgeModel` (`gpt-6-luna`) also owns the
 canonical `RESULTS.md` and `report.html`.
 
 `typesafe/jev-1.13` is a different kind of judge: a decision model that returns

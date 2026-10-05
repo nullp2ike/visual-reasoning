@@ -53,7 +53,7 @@ describe("buildSite", () => {
     expect(summary.judges).toContain("gpt-5.6-luna");
 
     const index = await readFile(join(out, "index.html"), "utf8");
-    expect(index).toContain("judge gpt-5.6-luna");
+    expect(index).toContain("judge gpt-6-luna");
     expect(index).toContain("const READ_ONLY = true;");
     expect(index).toContain('"imageBase":"screenshots"');
     expect(index).toContain('<a href="comparison.html">comparison</a>');

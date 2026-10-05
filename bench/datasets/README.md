@@ -8,9 +8,9 @@ each screenshot) and `prompt.md` (the question put to the models), [assertion ac
 directory may carry both, and the two benchmarks keep their results apart.
 
 Datasets are tracked, so the ground truth and the runs graded against it are not
-one laptop away from being lost. The exception is `private/`: screenshots of a
-real product, and the model output quoting them, stay on the machine that
-produced them, so it and its results are gitignored.
+one laptop away from being lost. The exceptions are `private/` and `rsi/`:
+screenshots of a real product, and the model output quoting them, stay on the
+machine that produced them, so they and their results are gitignored.
 
 ## Layout
 
@@ -148,6 +148,7 @@ benchmark are selected with `--dataset` or `assertion.config.ts` only —
 | ------------------- | ------------------------ | ---------------------------------------------------------------------------------------------- |
 | `golden`  | `issues_per_file.md` + `prompt.md` + `assertions_per_file.md` | 18 screenshots, one seeded defect each plus a clean control, labelled for both benchmarks over one copy of the images. The default for both. |
 | `private` | `issues_per_file.md` + `prompt.md`                            | Real product UI. Gitignored and never publishable, so only present on the machine that captured it.                                         |
+| `rsi`     | `issues_per_file.md` + `prompt.md`                            | Real product UI seeded with golden's 17 defect kinds, in the same order. Gitignored and never publishable, so only present locally.        |
 
 Adding your own needs no more than a directory, a handful of screenshots, one
 `## <filename>` heading each, and at least one clean control for the screenshot
