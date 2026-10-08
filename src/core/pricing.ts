@@ -50,6 +50,12 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
     inputPricePerToken: 3 / PER_MILLION,
     outputPricePerToken: 15 / PER_MILLION,
   },
+  // Prompts above 100K tokens bill at $0.50/$2.50, far beyond screenshot-sized
+  // calls. Cached input is $0.01/MTok and cache writes $0.125/MTok (not modelled).
+  [`${Provider.ANTHROPIC}:${Model.Anthropic.HAIKU_5_5}`]: {
+    inputPricePerToken: 0.1 / PER_MILLION,
+    outputPricePerToken: 0.5 / PER_MILLION,
+  },
   [`${Provider.ANTHROPIC}:${Model.Anthropic.HAIKU_4_5}`]: {
     inputPricePerToken: 1 / PER_MILLION,
     outputPricePerToken: 5 / PER_MILLION,

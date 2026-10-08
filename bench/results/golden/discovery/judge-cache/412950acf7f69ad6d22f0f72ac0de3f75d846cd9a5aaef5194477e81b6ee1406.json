@@ -1,0 +1,28 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "A dark horizontal bar (likely the system gesture indicator) overlaps the search icon and sits on top of the bottom navigation, partly obscuring the search tab icon and making it look broken.",
+    "The search placeholder text 'Restaurants, dishes, groceries' is light gray on a light gray background, which gives low contrast.",
+    "The bottom navigation icons have no visible text labels, so the home, search, orders, and account destinations are not clear."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          2
+        ],
+        "reasoning": "Report 0 describes the overlapping dark bar, while report 2 describes the bottom navigation labels being absent, consistent with them being cut off."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ]
+  }
+}

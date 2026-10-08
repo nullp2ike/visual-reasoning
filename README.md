@@ -591,14 +591,14 @@ Set `VISUAL_AI_REASONING_EFFORT` to apply one without touching code; an explicit
 
 When omitted, each provider uses its default behavior. The `"xhigh"` level enables maximum reasoning depth. `"minimal"` is **not portable** — several OpenAI models reject it with HTTP 400 (including the `gpt-6.1-sol` default), and Google/OpenRouter clamp it to `low` rather than send it; use `"low"` as the floor unless you know the model accepts it.
 
-| Provider                                                  | Native Parameter                                      | `"xhigh"` maps to    |
-| --------------------------------------------------------- | ----------------------------------------------------- | -------------------- |
-| Anthropic (Fable 5.1/5, Opus 5.5/5/4.8/4.7, Sonnet 5.5/5) | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "xhigh"`    |
-| Anthropic (Opus 4.6, Sonnet 4.6)                          | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "max"`      |
-| Anthropic (Haiku 4.5)                                     | budget-based extended thinking (token budget)         | 16384-token budget   |
-| OpenAI                                                    | `reasoning.effort` (Responses API)                    | `effort: "xhigh"`    |
-| Google                                                    | `thinkingConfig.thinkingLevel` (1:1: low/medium/high) | `"high"` (max level) |
-| OpenRouter                                                | `reasoning.effort` (normalized low/medium/high)       | `effort: "high"`     |
+| Provider                                                             | Native Parameter                                      | `"xhigh"` maps to    |
+| -------------------------------------------------------------------- | ----------------------------------------------------- | -------------------- |
+| Anthropic (Fable 5.1/5, Opus 5.5/5/4.8/4.7, Sonnet 5.5/5, Haiku 5.5) | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "xhigh"`    |
+| Anthropic (Opus 4.6, Sonnet 4.6)                                     | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "max"`      |
+| Anthropic (Haiku 4.5)                                                | budget-based extended thinking (token budget)         | 16384-token budget   |
+| OpenAI                                                               | `reasoning.effort` (Responses API)                    | `effort: "xhigh"`    |
+| Google                                                               | `thinkingConfig.thinkingLevel` (1:1: low/medium/high) | `"high"` (max level) |
+| OpenRouter                                                           | `reasoning.effort` (normalized low/medium/high)       | `effort: "high"`     |
 
 ## Supported Models
 
@@ -606,19 +606,22 @@ All listed models support image/vision input. Pass any model ID to the `model` c
 
 ### Anthropic
 
-| Model             | Model ID            | Input $/MTok | Output $/MTok | Notes                                         |
-| ----------------- | ------------------- | ------------ | ------------- | --------------------------------------------- |
-| Claude Fable 5.1  | `claude-fable-5-1`  | $10          | $50           | Most capable; long-horizon agentic work       |
-| Claude Fable 5    | `claude-fable-5`    | $10          | $50           | Predecessor to Fable 5.1, same price          |
-| Claude Opus 5.5   | `claude-opus-5-5`   | $4           | $20           | Newest Opus; >30% faster output than Opus 5   |
-| Claude Opus 5     | `claude-opus-5`     | $5           | $25           | Previous Opus flagship; supports `xhigh`      |
-| Claude Opus 4.8   | `claude-opus-4-8`   | $5           | $25           | Prior Opus tier; supports `xhigh`             |
-| Claude Opus 4.7   | `claude-opus-4-7`   | $5           | $25           | Previous Opus; supports `xhigh` effort tier   |
-| Claude Opus 4.6   | `claude-opus-4-6`   | $5           | $25           | Previous flagship, 128K max output            |
-| Claude Sonnet 5.5 | `claude-sonnet-5-5` | $2           | $10           | **Default** — newest Sonnet; supports `xhigh` |
-| Claude Sonnet 5   | `claude-sonnet-5`   | $3           | $15           | Near-Opus quality on coding/agentic work      |
-| Claude Sonnet 4.6 | `claude-sonnet-4-6` | $3           | $15           | Prior default; best value in its generation   |
-| Claude Haiku 4.5  | `claude-haiku-4-5`  | $1           | $5            | Fastest, budget-friendly                      |
+| Model             | Model ID            | Input $/MTok | Output $/MTok | Notes                                             |
+| ----------------- | ------------------- | ------------ | ------------- | ------------------------------------------------- |
+| Claude Fable 5.1  | `claude-fable-5-1`  | $10          | $50           | Most capable; long-horizon agentic work           |
+| Claude Fable 5    | `claude-fable-5`    | $10          | $50           | Predecessor to Fable 5.1, same price              |
+| Claude Opus 5.5   | `claude-opus-5-5`   | $4           | $20           | Newest Opus; >30% faster output than Opus 5       |
+| Claude Opus 5     | `claude-opus-5`     | $5           | $25           | Previous Opus flagship; supports `xhigh`          |
+| Claude Opus 4.8   | `claude-opus-4-8`   | $5           | $25           | Prior Opus tier; supports `xhigh`                 |
+| Claude Opus 4.7   | `claude-opus-4-7`   | $5           | $25           | Previous Opus; supports `xhigh` effort tier       |
+| Claude Opus 4.6   | `claude-opus-4-6`   | $5           | $25           | Previous flagship, 128K max output                |
+| Claude Sonnet 5.5 | `claude-sonnet-5-5` | $2           | $10           | **Default** — newest Sonnet; supports `xhigh`     |
+| Claude Sonnet 5   | `claude-sonnet-5`   | $3           | $15           | Near-Opus quality on coding/agentic work          |
+| Claude Sonnet 4.6 | `claude-sonnet-4-6` | $3           | $15           | Prior default; best value in its generation       |
+| Claude Haiku 5.5  | `claude-haiku-5-5`  | $0.10        | $0.50         | Newest Haiku; cheapest Claude; supports `xhigh` † |
+| Claude Haiku 4.5  | `claude-haiku-4-5`  | $1           | $5            | Fastest, budget-friendly                          |
+
+† Haiku 5.5 prices apply to prompts up to 100K tokens; longer prompts bill at $0.50 / $2.50, far beyond screenshot-sized calls. Unlike Haiku 4.5 it uses adaptive thinking like the other current Claude models, and it thinks even when `reasoningEffort` is not set.
 
 ### OpenAI
 
@@ -726,7 +729,7 @@ breakage.
 
 Current coverage, at `medium` effort with 5 repeats per cell:
 
-- **Discovery**: 37 model/effort/fidelity series over 3,330 graded runs
+- **Discovery**: 38 model/effort/fidelity series over 3,420 graded runs
 - **Assertion**: 13 series over 1,170 runs and 33,016 individual element answers
 
 A few results worth knowing before you choose a default:

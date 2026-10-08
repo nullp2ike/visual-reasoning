@@ -422,6 +422,27 @@ describe("AnthropicDriver", () => {
     expect(callArgs).toHaveProperty("output_config", { effort: "high" });
   });
 
+  it("uses adaptive thinking and passes xhigh through for Haiku 5.5", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: "text", text: "{}" }],
+      usage: { input_tokens: 0, output_tokens: 0 },
+    });
+
+    const driver = new AnthropicDriver({
+      apiKey: "test-key",
+      model: "claude-haiku-5-5",
+      maxTokens: 4096,
+      reasoningEffort: "xhigh",
+    });
+    await driver.sendMessage([makeImage()], "test");
+
+    const callArgs = mockCreate.mock.calls[0]![0] as Record<string, unknown>;
+    // Unlike Haiku 4.5, Haiku 5.5 rejects budget_tokens with a 400.
+    expect(callArgs).toHaveProperty("thinking", { type: "adaptive" });
+    expect(callArgs).toHaveProperty("output_config", { effort: "xhigh" });
+    expect(callArgs.max_tokens).toBe(4096);
+  });
+
   it("uses budget-based thinking for Haiku 4.5, which rejects adaptive thinking", async () => {
     mockCreate.mockResolvedValueOnce({
       content: [{ type: "text", text: "{}" }],

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-5-5",
+  "provider": "anthropic",
+  "imageId": "img_11",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-08T17:02:27.848Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders cleanly overall, with no overlapping, misaligned, or broken elements. The only findings are minor content and contrast concerns. The clipped carousel items and the cut-off card at the bottom are excluded as intended scroll/viewport behavior.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Secondary gray text (delivery fees such as '€0.90 delivery', rating count '(500+)', and the bottom navigation labels 'Search', 'Orders', 'Profile') is light gray on white, which may fall below recommended contrast ratios and reduce readability.",
+        "suggestion": "Darken the secondary text color to meet WCAG AA contrast (at least 4.5:1 for normal text)."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The Tokumaru Ramen Bar card shows '€0 delivery' twice, once in the image badge and again in the metadata line, which is redundant.",
+        "suggestion": "Show the free-delivery information in only one location on the card."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The '–100%' badge on the pizza card has no context (100% off what, and on which items), so its meaning is unclear.",
+        "suggestion": "Add a clear label such as '100% off first order' or remove the badge if the promotion is not explained elsewhere."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 942,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0006799,
+    "durationSeconds": 5.116532417000002
+  }
+}

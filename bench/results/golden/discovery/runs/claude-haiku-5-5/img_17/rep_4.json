@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-5-5",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-08T17:02:53.527Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders cleanly overall: no overlapping text, broken images, or misaligned components are visible. The clipped chips, carousel card, and bottom card are intentional scroll affordances and were not reported. Two minor issues were found: a navigation state mismatch and some low-contrast secondary text.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "functionality",
+        "description": "The bottom navigation highlights 'Profile' in green, but the visible screen is the Home feed. The active tab state does not match the displayed content.",
+        "suggestion": "Set the active navigation state to 'Home' when the home screen is displayed, and reserve the 'Profile' highlight for the profile view."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary text such as the light gray delivery fees (e.g., '€0.90 delivery'), the review count '(500+)', and the inactive navigation labels appears to be a light gray on white with relatively low contrast.",
+        "suggestion": "Darken the secondary gray text to meet WCAG AA contrast (at least 4.5:1 for body-size text) so it remains readable in bright conditions."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 1018,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0007179,
+    "durationSeconds": 5.226634917000003
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Profile is highlighted in the bottom nav bar while the home feed is shown"
+  ],
+  "reportedIssues": [
+    "The bottom navigation highlights the 'Profile' tab in green, but the screen shows the Home feed. The active tab state does not match the visible content, which is confusing and suggests a navigation or state bug.",
+    "The inactive bottom navigation labels ('Home', 'Search', 'Orders') and their icons are light gray on white, which gives low color contrast and may be hard to read."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both describe the Profile tab being incorrectly highlighted in the bottom navigation bar while viewing the Home feed."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ]
+  }
+}

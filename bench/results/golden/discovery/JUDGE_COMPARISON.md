@@ -11,6 +11,7 @@ Judges compared: `gemini-3.8-flash` vs `gpt-5.6-luna` vs `gpt-6-luna` vs `meta/m
 | claude-fable-5 | 94% | 0.9 | 94% | 0.8 | 94% | 0.8 | 94% | 0.9 | 94% | 0.9 | 0% |
 | claude-fable-5-1 | 94% | 0.2 | 94% | 0.2 | 94% | 0.2 | 94% | 0.2 | 94% | 0.2 | 0% |
 | claude-haiku-4-5 | 26% | 0.0 | 26% | 0.0 | 26% | 0.0 | 27% | 0.0 | 26% | 0.0 | 1% |
+| claude-haiku-5-5 | 88% | 0.9 | 86% | 1.0 | 82% | 1.0 | 86% | 0.9 | 86% | 1.0 | 6% |
 | claude-opus-4-8 | 54% | 0.4 | 51% | 0.4 | 49% | 0.4 | 54% | 0.4 | 53% | 0.4 | 5% |
 | claude-opus-5 | 95% | 2.2 | 95% | 2.2 | 95% | 2.2 | 95% | 2.2 | 95% | 2.2 | 0% |
 | claude-opus-5-5 | 100% | 0.5 | 100% | 0.5 | 100% | 0.5 | 100% | 0.5 | 100% | 0.5 | 0% |
@@ -46,7 +47,7 @@ Judges compared: `gemini-3.8-flash` vs `gpt-5.6-luna` vs `gpt-6-luna` vs `meta/m
 | xiaomi/mimo-v2.6-pro | 52% | 0.6 | 49% | 0.6 | 49% | 0.6 | 49% | 0.6 | 53% | 0.6 | 4% |
 | z-ai/glm-5.3-flash | 74% | 0.5 | 72% | 0.5 | 71% | 0.5 | 71% | 0.5 | 72% | 0.5 | 4% |
 
-## Disagreements (55)
+## Disagreements (57)
 
 ### img_01 01_raw_localization_key.png — gemini-3.1-pro-preview
 
@@ -432,6 +433,41 @@ Expected: Loading spinner is shown on top of already loaded content
   - rep 3: Jev matched R0 (p=0.72, confidence 0.43).
   - rep 4: Jev matched R0 (p=1.00, confidence 0.99).
   - rep 5: Jev matched R0 (p=0.99, confidence 0.99).
+
+### img_09 09_text_truncation.png — claude-haiku-5-5
+
+Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
+
+- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe the restaurant heading being improperly truncated/rendered, displaying as 'Ramei' or 'Rameı'.
+  - rep 2: Both describe the restaurant heading being truncated or rendered abnormally at the end of the word Ramen ('Ramei' vs 'Rameı').
+  - rep 3: Both report the restaurant name heading incorrectly displaying as 'Ramei' / 'Rameı', though reported attributes it to an encoding/glyph issue rather than text truncation.
+  - rep 4: Both report the restaurant name heading incorrectly ending with an 'i' or dotless 'ı' instead of the full word.
+  - rep 5: Both report the restaurant title being cut off or malformed so that it displays as 'Ramei' / 'Rameı'.
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Report 0 describes the restaurant title's final visible character as malformed, corresponding to the heading being incorrectly rendered as “Ramei” without the intended continuation.
+  - rep 2: Reported issue 0 identifies the same restaurant title's malformed final character, corresponding to the heading appearing as 'Rameı' instead of the complete word.
+  - rep 3: Both issues identify the restaurant heading as incorrectly ending in a malformed character, rendering the name as “Rameı” rather than the intended text.
+  - rep 4: Reported issue 0 describes the same Tokumaru Ramen heading/name ending incorrectly with a malformed final character instead of displaying the full text.
+  - rep 5: Both describe the restaurant heading being incorrectly rendered at the end as “Rameı” instead of the intended title.
+- **gpt-6-luna**: rep 1: missed, rep 2: found, rep 3: missed, rep 4: missed, rep 5: found
+  - rep 1: The expected issue is title text being cut off without an ellipsis, while report 0 describes a malformed final glyph.
+  - rep 2: Both describe the restaurant title ending in a dotless-i-like character instead of the final “n.”
+  - rep 3: The report describes a glyph or encoding problem in the restaurant name, not the heading being cut off mid-word without an ellipsis.
+  - rep 4: The report describes a malformed final glyph, not the heading being cut off mid-word without an ellipsis.
+  - rep 5: Both describe the restaurant heading ending incorrectly as “Ramei” instead of showing the full name.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
+  - rep 1: Both describe the same restaurant title visibly rendering as 'Ramei' despite differing cause guesses.
+  - rep 2: Both describe the same restaurant title rendering as Ramei/Rameı instead of Ramen.
+  - rep 3: Both describe the same restaurant heading where 'Ramen' appears as 'Ramei/Rameı' due to clipping.
+  - rep 4: Reported describes a glyph/encoding error, not mid-word truncation without ellipsis.
+  - rep 5: Both describe the same restaurant title where the final 'n' appears as 'i' due to clipping.
+- **typesafe/jev-1.13**: rep 1: found, rep 2: missed, rep 3: missed, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=0.55, confidence 0.10).
+  - rep 2: Jev matched no reported issue; closest was R0 (p=0.28).
+  - rep 3: Jev matched no reported issue; closest was R0 (p=0.40).
+  - rep 4: Jev matched R0 (p=0.53, confidence 0.06).
+  - rep 5: Jev matched R0 (p=0.57, confidence 0.13).
 
 ### img_09 09_text_truncation.png — gemini-3-flash-preview
 
@@ -922,6 +958,41 @@ Expected: Green Bowl Poké card appears twice in the carousel
   - rep 3: Jev matched R0 (p=0.93, confidence 0.87).
   - rep 4: Jev matched R0 (p=1.00, confidence 0.99).
   - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
+
+### img_11 11_impossible_discount_value.png — claude-haiku-5-5
+
+Expected: Discount badge shows −100%
+
+- **gemini-3.8-flash**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: None of the reported issues mention a discount badge displaying −100%.
+  - rep 2: Both describe the '-100%' discount badge on the card.
+  - rep 3: Both report the problematic '–100%' discount badge on the card.
+  - rep 4: Both report the anomalous '−100%' discount badge on the food card.
+  - rep 5: Reported issue 1 directly identifies the image badge showing '−100%'.
+- **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: missed, rep 5: found
+  - rep 1: Neither reported issue describes a discount badge showing −100%.
+  - rep 2: The report mentions the −100% badge but identifies unclear context as the problem, not that the badge displays −100%.
+  - rep 3: Reported issue 2 refers to the same −100% badge on a card, describing a problem with that badge.
+  - rep 4: The reported badge issue concerns missing context about what the discount applies to, not that the badge displays −100%.
+  - rep 5: Reported issue 1 identifies a card image badge displaying the same −100% discount label.
+- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: missed, rep 5: found
+  - rep 1: Neither reported issue describes the discount badge showing −100%.
+  - rep 2: Report 0 mentions the same badge but flags missing context, not the displayed −100% value.
+  - rep 3: Reported issue 2 identifies the same pizza-card badge displaying −100%.
+  - rep 4: The report mentions the same badge but complains about missing discount context, not that it shows −100%.
+  - rep 5: Reported issue 1 identifies a pizza card image badge reading '−100%', the same discount label.
+- **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
+  - rep 1: Neither report describes a -100% discount badge, only search contrast and duplicate delivery text.
+  - rep 2: Both describe the '-100%' badge on the pizza card.
+  - rep 3: Both refer to the -100% badge on the pizza card as defective.
+  - rep 4: Reported 1 mentions the −100% badge but complains about unclear context, not that the −100% value itself is wrong.
+  - rep 5: Reported 1 describes the same −100% badge on the pizza card image.
+- **typesafe/jev-1.13**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched no reported issue; closest was R0 (p=0.00).
+  - rep 2: Jev matched R0 (p=0.68, confidence 0.36).
+  - rep 3: Jev matched R2 (p=0.74, confidence 0.48).
+  - rep 4: Jev matched R1 (p=0.65, confidence 0.30).
+  - rep 5: Jev matched R1 (p=1.00, confidence 0.99).
 
 ### img_11 11_impossible_discount_value.png — gemini-3.1-flash-lite
 

@@ -81,6 +81,7 @@ export const Model = {
     SONNET_5_5: "claude-sonnet-5-5",
     SONNET_5: "claude-sonnet-5",
     SONNET_4_6: "claude-sonnet-4-6",
+    HAIKU_5_5: "claude-haiku-5-5",
     HAIKU_4_5: "claude-haiku-4-5",
   },
   OpenAI: {

@@ -1,0 +1,26 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section heading reads 'home_feed.popular_title', a raw localization key that was not translated, so the developer identifier is displayed to users.",
+    "Secondary text such as delivery fees ('€0.90 delivery') and ratings metadata ('25–35 min • €0 delivery') is rendered in a light grey that appears to have low contrast against the white background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 identifies the section heading displaying the raw key 'home_feed.popular_title' instead of translated text."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ]
+  }
+}

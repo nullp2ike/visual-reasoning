@@ -1,0 +1,28 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The 'Pizza' category chip is selected, but the 'Popular right now' feed shows Tokumaru Ramen Bar first and the other visible content is not pizza-related. The selected filter does not appear to be reflected in the results.",
+    "The Tokumaru Ramen Bar card shows '€0 delivery' twice, once as a badge on the image and again in the metadata line below.",
+    "The selected 'Pizza' chip uses near-black fill, which clashes with the green accent used for the promo banner, 'See all' links, and the active nav item."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "The selected Pizza filter is not reflected in the feed, which still shows non-pizza results."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

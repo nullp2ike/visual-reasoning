@@ -1,0 +1,28 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "Secondary gray text (delivery fees such as '€0.90 delivery', rating count '(500+)', and the bottom navigation labels 'Search', 'Orders', 'Profile') is light gray on white, which may fall below recommended contrast ratios and reduce readability.",
+    "The Tokumaru Ramen Bar card shows '€0 delivery' twice, once in the image badge and again in the metadata line, which is redundant.",
+    "The '–100%' badge on the pizza card has no context (100% off what, and on which items), so its meaning is unclear."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          2
+        ],
+        "reasoning": "Reported issue 2 identifies the same pizza-card badge displaying −100%."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-5-5",
+  "provider": "anthropic",
+  "imageId": "img_10",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-08T17:02:23.381Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders cleanly overall: the header, search bar, category chips, promo banner, carousels, and bottom navigation are aligned and legible. I found two minor content issues: a duplicated restaurant card and redundant delivery-fee information. The clipped chip and carousel items at the right edge and the cut-off pizza card at the bottom are intentional scroll affordances and were not counted.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The 'Fastest near you' carousel shows two identical 'Green Bowl Poké' cards with the same image, time, and delivery fee, which looks like duplicated data.",
+        "suggestion": "Verify the data source and remove the duplicate, or replace it with a distinct restaurant."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The Tokumaru Ramen Bar card shows '€0 delivery' twice, once as a badge on the image and again in the metadata line below.",
+        "suggestion": "Show the delivery fee in only one place to reduce redundancy."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 868,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0006429,
+    "durationSeconds": 4.670694042000003
+  }
+}

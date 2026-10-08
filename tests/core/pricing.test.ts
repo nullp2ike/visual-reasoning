@@ -38,6 +38,12 @@ describe("calculateCost", () => {
     expect(cost).toBeCloseTo(0.007, 10);
   });
 
+  it("calculates cost for anthropic claude-haiku-5-5", () => {
+    const cost = calculateCost("anthropic", "claude-haiku-5-5", 1000, 500);
+    // 1000 * (0.1/1M) + 500 * (0.5/1M) = 0.0001 + 0.00025 = 0.00035
+    expect(cost).toBeCloseTo(0.00035, 10);
+  });
+
   it("calculates cost for anthropic claude-sonnet-5", () => {
     const cost = calculateCost("anthropic", "claude-sonnet-5", 1000, 500);
     // 1000 * (3/1M) + 500 * (15/1M) = 0.003 + 0.0075 = 0.0105

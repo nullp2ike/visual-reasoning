@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-5-5",
+  "provider": "anthropic",
+  "imageId": "img_14",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-08T17:02:39.920Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen is largely well-structured, with a clear header, category chips, promo banner, and bottom navigation. The main visual defects are in the 'Fastest near you' row, where cards don't align, and in inconsistent favorite-button styling between the popular restaurant cards. The clipped 'Trattoria Piccola' item at the right edge is an intended horizontal-scroll affordance and is not reported.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' row, the cards are vertically misaligned. The Green Bowl Poké image starts higher than the Smash Bros Burgers image, so their titles and delivery fees sit at different heights (about y=800 vs y=828).",
+        "suggestion": "Use a consistent card structure with fixed-height image containers and align text blocks to the same baseline across all cards in the row."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) button is styled inconsistently between cards. The Tokumaru Ramen Bar card shows a heart with no background, while the next card shows a heart on a dark circular backdrop.",
+        "suggestion": "Apply one consistent style for the favorite button (for example, a semi-transparent circular backdrop) across all restaurant cards so they read as the same component."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 1042,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0007299,
+    "durationSeconds": 5.4358638339999965
+  }
+}

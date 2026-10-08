@@ -35,6 +35,7 @@ describe("Model", () => {
     expect(Model.Anthropic.SONNET_5_5).toBe("claude-sonnet-5-5");
     expect(Model.Anthropic.SONNET_5).toBe("claude-sonnet-5");
     expect(Model.Anthropic.SONNET_4_6).toBe("claude-sonnet-4-6");
+    expect(Model.Anthropic.HAIKU_5_5).toBe("claude-haiku-5-5");
     expect(Model.Anthropic.HAIKU_4_5).toBe("claude-haiku-4-5");
   });
 

@@ -1,0 +1,28 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Green Bowl Poké card appears twice in the carousel"
+  ],
+  "reportedIssues": [
+    "The two 'Fastest near you' cards are identical (same image, same name 'Green Bowl Poké', same delivery time and fee), which looks like a duplicated data entry or placeholder.",
+    "The Tokumaru Ramen Bar card shows '€0 delivery' twice: once as a badge on the image and again in the metadata line below it.",
+    "Secondary grey text (search placeholder, delivery fees, '(500+)' review count, inactive bottom nav labels) appears to have low contrast against the white background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Report 0 describes two identical Green Bowl Poké cards, matching the duplicated carousel card."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

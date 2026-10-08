@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-5-5",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-08T17:01:43.060Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found one clear visual/content defect: a raw localization key is displayed as a section heading. The clipped chips, carousel items, and partially visible bottom card are excluded as intended features.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Popular' section heading displays the raw translation key 'home_feed.popular_title' instead of readable text, indicating a missing or unloaded localization string.",
+        "suggestion": "Add the 'home_feed.popular_title' key to the localization files for the active locale (e.g., 'Popular near you') and add a fallback so raw keys never render in production."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 540,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0004789,
+    "durationSeconds": 4.078248209000001
+  }
+}

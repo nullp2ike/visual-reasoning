@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-5-5",
+  "provider": "anthropic",
+  "imageId": "img_16",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-08T17:02:48.888Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely clean with no clear layout breakage. The main concern is a logic mismatch: the Pizza filter is active, but the listings shown are Poké, Burgers, and Ramen. Secondary gray text also has low contrast. Clipped carousel items and the cut-off card at the bottom were excluded per the instructions.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The 'Pizza' category chip is selected, yet the 'Fastest near you' and 'Popular right now' sections show non-pizza restaurants (Green Bowl Poké, Smash Bros Burgers, Tokumaru Ramen Bar). The filter state and the displayed content are inconsistent.",
+        "suggestion": "Filter the restaurant sections by the selected category, or reset the chip selection to 'All' when the content is not filtered, so the UI state matches the results shown."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary gray text, such as the delivery fees (e.g., '€0.90 delivery'), the 'DELIVER TO' label, and the rating count '(500+)', appears light gray on white and may fall below recommended WCAG contrast ratios for small text.",
+        "suggestion": "Darken the secondary text color to meet at least a 4.5:1 contrast ratio against the white background."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 1202,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0008099,
+    "durationSeconds": 6.012658916999993
+  }
+}

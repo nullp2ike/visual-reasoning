@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-5-5",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-08T17:02:54.480Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen renders cleanly overall with no overlapping or broken elements. The main defects are a navigation state mismatch, where the Profile tab is highlighted while Home content is shown, and low-contrast gray text in several places. Clipped carousel items and the partially visible bottom card were excluded as intended.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom navigation shows the Profile tab as active (green), but the screen displays the Home feed. The Home tab is not highlighted, so the selected state does not match the content.",
+        "suggestion": "Highlight the Home tab when the home feed is displayed, and make sure the active tab state updates on navigation."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary gray text (delivery fees in the Fastest near you row, the 'Restaurants, dishes, groceries' placeholder, the inactive bottom nav labels, and the '(500+)' rating count) has low contrast against white or light gray backgrounds.",
+        "suggestion": "Darken these gray tones to meet at least WCAG AA contrast of 4.5:1 for normal text."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 1011,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0007144,
+    "durationSeconds": 5.386013707999998
+  }
+}

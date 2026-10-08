@@ -1,0 +1,28 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The Tokumaru Ramen Bar card shows delivery information twice: a '€0 delivery' badge on the image and '€0 delivery' again in the metadata line below.",
+    "The pizza card's image badge reads '−100%', which is an unusual or possibly placeholder discount label with no visible restaurant name or context.",
+    "Delivery fee formatting is inconsistent: some cards show '€0.90 delivery' and '€2.40 delivery' while the popular card shows '€0 delivery', with no visible currency-precision standard."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          1
+        ],
+        "reasoning": "Reported issue 1 identifies a pizza card image badge reading '−100%', the same discount label."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      2
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-5-5",
+  "provider": "anthropic",
+  "imageId": "img_02",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-08T17:01:48.984Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well laid out, with clean cards, consistent spacing, and clear hierarchy. The most visible defect is a broken delivery fee showing '€NaN' on the Smash Bros Burgers card. A minor low-contrast issue also appears in the bottom navigation labels. Clipped carousel items and the partially visible card at the bottom were excluded as intended scroll features.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The Smash Bros Burgers card shows '€NaN delivery', a calculation or data error where the delivery fee is not a valid number.",
+        "suggestion": "Fix the delivery fee calculation or data source so a valid amount (e.g., '€X.XX delivery') or a fallback such as 'Delivery fee unavailable' is displayed."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The inactive bottom navigation labels (Search, Orders, Profile) and their icons are light gray on white, giving weak contrast.",
+        "suggestion": "Darken the inactive navigation icon and label colors to meet WCAG AA contrast of at least 4.5:1 against the white background."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 840,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0006288999999999999,
+    "durationSeconds": 5.016184459
+  }
+}

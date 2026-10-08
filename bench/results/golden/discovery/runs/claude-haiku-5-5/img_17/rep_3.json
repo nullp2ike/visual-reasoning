@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-5-5",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-08T17:02:52.476Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen renders cleanly overall: the layout, cards, promo banner, and images are well aligned. The main defect is a navigation state mismatch, where the Profile tab is highlighted while the Home screen is displayed. Secondary gray text is also lighter than ideal for readability. Edge-clipped carousel and chip items and the cut-off card at the bottom were intentionally excluded as expected behavior.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom navigation highlights the 'Profile' tab in green, while the displayed screen is the Home feed. The Home tab is shown in gray, so the active-tab state does not match the current screen.",
+        "suggestion": "Sync the bottom navigation's active state with the current route so the Home tab is highlighted on the home screen and Profile is highlighted only when the Profile screen is open."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Several secondary text elements are light gray on white, including delivery fees, the '25–35 min' and '(500+)' metadata, and the inactive bottom tab labels. Their contrast is likely below the WCAG AA 4.5:1 threshold for small text.",
+        "suggestion": "Darken the secondary gray text (for example to about #6B6B6B or darker) so it meets WCAG AA contrast on white backgrounds."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 1062,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0007399,
+    "durationSeconds": 5.329455540999988
+  }
+}

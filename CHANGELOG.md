@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.27.0]
+
+### Added
+
+- **Claude Haiku 5.5 (`claude-haiku-5-5`)** as a supported Anthropic model: the newest Haiku tier, released 2026-10-07, at **$0.10 / $0.50 per MTok**, a tenth of Haiku 4.5's $1 / $5 and the cheapest Claude model. Those rates apply to prompts up to 100K tokens. Longer prompts bill at $0.50 / $2.50, which screenshot-sized calls never reach, so `calculateCost` models only the lower tier. Cached input ($0.01/MTok) and cache writes ($0.125/MTok) are not modelled either, since `calculateCost` applies no cache discount on any provider. Unlike Haiku 4.5, it takes the same adaptive-thinking path (`thinking: {type: "adaptive"}` plus `output_config.effort`) as the other current Anthropic models: Haiku 5.5 rejects the budget-based thinking that Haiku 4.5 required. It is listed as `xhigh`-capable, so `reasoningEffort: "xhigh"` passes through rather than being remapped to `max`. Note that it thinks by default even with no `reasoningEffort` set, where Haiku 4.5 did not. Verified live: `ask()` and `elementsVisible()` succeeded with no effort set and at `low`, `medium` and `xhigh` (no 400), using 350–610 output tokens per call. On the `golden` discovery bench (judged by `gpt-6-luna`, `medium` effort, 5 reps) it scored 82% recall (94% in any rep, 24% flakiness), up from 26% for Haiku 4.5 and ahead of the same-priced `gpt-6-luna` (45%), at a median 5.0s per call and $0.0006 per run. The other four judges put it at 86–88%. It missed the missing Orders nav icon in every rep, as every Claude model except Opus 5 and Opus 5.5 does, and found the typo, the truncated heading and the −100% discount badge in only 2–3 of 5 reps. It found the filter/content mismatch in 3 of 5 reps, which most models miss in every rep. It reports 1.0 extras per run and reported something on the clean control in all 5 reps. Available as `Model.Anthropic.HAIKU_5_5`, and it is in the bench roster.
+
+### Changed
+
+- **`meta/muse-spark-1.3-contributor` is now in the bench roster**, which both the discovery and assertion benches use when `--models` is omitted. It had been swept and scored on `golden` by naming it explicitly, so its results were already tracked, but scoring with the roster alone dropped its rows. It is the data-sharing tier: Meta uses every screenshot sent through it for product improvement, so a default-roster sweep of a private dataset now sends that dataset's screenshots to Meta as well. Pass `--models` without it for `rsi` or any dataset you would not share. The library itself is unchanged: the slug still has no named constant and is never a default.
+
 ## [0.26.0] - 2026-10-02
 
 ### Added

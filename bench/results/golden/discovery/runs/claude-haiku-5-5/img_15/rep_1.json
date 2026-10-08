@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-5-5",
+  "provider": "anthropic",
+  "imageId": "img_15",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-08T17:02:41.365Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-structured, with clear hierarchy, consistent card layouts, and no major rendering failures. The main visual defect is a system gesture bar overlapping the bottom navigation icons. A minor contrast concern appears in the grey secondary text. Horizontally clipped carousel items and the partially visible bottom card were excluded as intentional scroll affordances.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The black home-indicator/gesture bar at the bottom of the screen overlaps the bottom navigation, partially covering the search icon and crowding the bookmark icon.",
+        "suggestion": "Add bottom safe-area padding so the navigation icons sit above the system gesture area, and keep the nav bar's icons fully visible and unobstructed."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary grey text (delivery fees, delivery times, the review count '(500+)', and the 'Ramen' category label) appears light against the white background, which may fall below recommended contrast ratios.",
+        "suggestion": "Darken the secondary text colour to meet at least WCAG AA contrast (4.5:1 for normal text)."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 1078,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0007479,
+    "durationSeconds": 5.441895875000002
+  }
+}

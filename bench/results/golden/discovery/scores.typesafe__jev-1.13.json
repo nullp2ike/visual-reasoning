@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-01T09:29:57.039Z",
+  "generatedAt": "2026-10-08T17:04:22.868Z",
   "prompt": "What looks visually broken on this page?\n\nDo not report the following (treat these as features, not defects):\n- A horizontally scrollable row (restaurant carousels, category filter chips) whose last item is only partially visible at the right screen edge, including that item's title being clipped by the edge.\n- Content cut off by the bottom of the viewport, such as a partially visible card at the end of a vertical list.",
   "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
   "reasoningEffort": "medium",
@@ -197,6 +197,27 @@
       "meanOutputTokens": 3524.0222222222224,
       "meanReasoningTokens": 3188.677777777778,
       "cacheHitRate": 0.4943040738661177
+    },
+    {
+      "series": "claude-haiku-5-5",
+      "model": "claude-haiku-5-5",
+      "provider": "anthropic",
+      "reasoningEffort": "medium",
+      "okRuns": 90,
+      "failedRuns": 0,
+      "meanRecall": 0.8588235294117647,
+      "anyRecall": 0.9411764705882353,
+      "flakiness": 0.23529411764705882,
+      "extrasPerRun": 0.9666666666666667,
+      "noBugsCleanRate": 0,
+      "latencyMedianSeconds": 4.9892570415,
+      "latencyP95Seconds": 6.010572874999998,
+      "meanCostPerRun": 0.0006479333333333333,
+      "totalCost": 0.058314,
+      "meanInputTokens": 2089,
+      "meanOutputTokens": 878.0666666666667,
+      "meanReasoningTokens": null,
+      "cacheHitRate": 0
     },
     {
       "series": "meta/muse-spark-1.3-contributor",
@@ -12244,6 +12265,4835 @@
         "outputTokens": 1040,
         "estimatedCost": 0.007139,
         "durationSeconds": 23.02973916700002
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_01",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The 'Popular' section heading displays the raw translation key 'home_feed.popular_title' instead of readable text, indicating a missing or unloaded localization string.",
+          "suggestion": "Add the 'home_feed.popular_title' key to the localization files for the active locale (e.g., 'Popular near you') and add a fallback so raw keys never render in production."
+        }
+      ],
+      "summary": "Found one clear visual/content defect: a raw localization key is displayed as a section heading. The clipped chips, carousel items, and partially visible bottom card are excluded as intended features.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 540,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0004789,
+        "durationSeconds": 4.078248209000001
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_01",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The section heading above the popular restaurants list displays the raw localization key 'home_feed.popular_title' instead of translated human-readable text.",
+          "suggestion": "Verify the translation file contains a value for 'home_feed.popular_title' and that the i18n library is resolving it correctly before rendering, or add a fallback label such as 'Popular near you'."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary gray text (search placeholder, delivery fee and time metadata, inactive bottom navigation labels) appears light against white or light gray backgrounds, which may fall below recommended WCAG contrast ratios.",
+          "suggestion": "Darken the secondary text and inactive tab colors to meet at least a 4.5:1 contrast ratio against their backgrounds."
+        }
+      ],
+      "summary": "The page is mostly well laid out, with clear hierarchy and consistent cards. The most visible defect is an untranslated i18n key shown as a section heading. A minor contrast concern appears in the light gray secondary text and inactive tab labels. Clipped carousel items and the partially visible bottom card were excluded as intended features.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 709,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0005634,
+        "durationSeconds": 4.252304208000001
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_01",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The section heading above the Tokumaru Ramen Bar card displays the raw localization key 'home_feed.popular_title' instead of translated user-facing text.",
+          "suggestion": "Add the missing translation for 'home_feed.popular_title' (e.g., 'Popular near you') to the localization files for the active locale, and add a fallback so keys are never rendered directly."
+        }
+      ],
+      "summary": "The page is mostly well laid out: the header, search bar, category chips, promo banner, carousels, and bottom navigation are aligned and readable. The main visible defect is an untranslated localization key used as a section heading. Clipped carousel items and the partially visible bottom card were excluded as intended features.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 604,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0005109,
+        "durationSeconds": 3.934918584
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_01",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The section heading reads 'home_feed.popular_title', a raw localization key that was not translated, so the developer identifier is displayed to users.",
+          "suggestion": "Add the missing translation for 'home_feed.popular_title' (e.g., 'Popular near you') and add a fallback or build check so untranslated keys are caught before release."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary text such as delivery fees ('€0.90 delivery') and ratings metadata ('25–35 min • €0 delivery') is rendered in a light grey that appears to have low contrast against the white background.",
+          "suggestion": "Darken the secondary text color to meet WCAG AA contrast (at least 4.5:1 for small text)."
+        }
+      ],
+      "summary": "Found 2 issues: an untranslated localization key shown as the section heading, which is a major content defect, and light grey secondary text that may be hard to read, which is a minor accessibility concern. The clipped carousel item and the partially visible card at the bottom were excluded as intended features.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 772,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0005949,
+        "durationSeconds": 4.391344792
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_01",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The section heading reads 'home_feed.popular_title', a raw translation key, instead of human-readable text such as 'Popular near you'.",
+          "suggestion": "Add the missing translation for 'home_feed.popular_title' to the localization files, and add a fallback so untranslated keys never reach the UI."
+        }
+      ],
+      "summary": "The page is mostly well laid out, with clear hierarchy, consistent card styling, and a readable bottom navigation bar. The main defect is a raw localization key shown as a section title. Edge-clipped carousel items and cards cut off at the viewport bottom were excluded as intended features.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 555,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0004864,
+        "durationSeconds": 4.266236125
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_02",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The Smash Bros Burgers card shows '€NaN delivery', a calculation or data error where the delivery fee is not a valid number.",
+          "suggestion": "Fix the delivery fee calculation or data source so a valid amount (e.g., '€X.XX delivery') or a fallback such as 'Delivery fee unavailable' is displayed."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "The inactive bottom navigation labels (Search, Orders, Profile) and their icons are light gray on white, giving weak contrast.",
+          "suggestion": "Darken the inactive navigation icon and label colors to meet WCAG AA contrast of at least 4.5:1 against the white background."
+        }
+      ],
+      "summary": "The page is mostly well laid out, with clean cards, consistent spacing, and clear hierarchy. The most visible defect is a broken delivery fee showing '€NaN' on the Smash Bros Burgers card. A minor low-contrast issue also appears in the bottom navigation labels. Clipped carousel items and the partially visible card at the bottom were excluded as intended scroll features.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 840,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006288999999999999,
+        "durationSeconds": 5.016184459
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_02",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The Smash Bros Burgers card displays '€NaN delivery' instead of a valid delivery fee, indicating a failed number calculation or missing data.",
+          "suggestion": "Fix the delivery fee calculation or data source so it returns a numeric value, and add a fallback such as 'Delivery fee unavailable' or hide the fee when it cannot be computed."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card shows '€0 delivery' twice, once as a badge on the image and again in the metadata line, which is redundant.",
+          "suggestion": "Show the free-delivery information in only one location on the card."
+        }
+      ],
+      "summary": "The page is mostly well laid out, but one clear data bug stands out: the Smash Bros Burgers card shows a '€NaN delivery' fee, which is a broken value. Other possible concerns, such as clipped carousel items and the cut-off card at the bottom, are intentional scroll affordances and were not counted.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 0.99).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 0.99
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 714,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0005659,
+        "durationSeconds": 4.498329958
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_02",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The 'Smash Bros Burgers' card shows '€NaN delivery', a 'Not a Number' value that indicates a failed calculation or missing data for the delivery fee.",
+          "suggestion": "Fix the delivery fee calculation or data source so a valid amount is shown. If the fee is unavailable, display a fallback such as 'Delivery fee unavailable' or hide the fee label instead of rendering NaN."
+        }
+      ],
+      "summary": "The page is mostly well laid out, with consistent card styling, clear hierarchy, and a functional bottom navigation bar. One clear data-rendering defect is visible: a delivery fee displays as 'NaN'. Clipped carousel items and the cut-off card at the bottom were excluded as intended features.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 788,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006029,
+        "durationSeconds": 4.410970207999998
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_02",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The Smash Bros Burgers card displays '€NaN delivery', indicating the delivery fee failed to calculate or render and shows an invalid value to users.",
+          "suggestion": "Fix the delivery fee calculation or data mapping so a valid amount is shown, and add a fallback such as 'Delivery fee unavailable' or hide the fee when the value is missing."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card repeats the free-delivery information: a '€0 delivery' badge sits on the image and '€0 delivery' appears again in the metadata line.",
+          "suggestion": "Show the delivery fee in only one location to reduce clutter."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "The search placeholder text 'Restaurants, dishes, groceries' and the grey secondary text (delivery fees, 'Fastest near you' labels) appear light grey on a light background, which may fall below recommended contrast ratios.",
+          "suggestion": "Darken the placeholder and secondary text colours to meet WCAG AA contrast of at least 4.5:1."
+        }
+      ],
+      "summary": "The page is mostly well laid out, but the Smash Bros Burgers card shows a broken delivery fee ('€NaN delivery'), which is a clear data or rendering error. Two minor issues were also noted: a redundant free-delivery label and low-contrast placeholder text. Clipped carousel items and the cut-off card at the bottom were treated as intended scrolling behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1,
+        2
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 2,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 989,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007034,
+        "durationSeconds": 5.089171083000001
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_02",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The Smash Bros Burgers card shows '€NaN delivery', a 'Not a Number' value that indicates a failed price calculation or missing data.",
+          "suggestion": "Fix the delivery fee calculation or data source so a valid amount is shown, and add a fallback such as 'Delivery fee unavailable' when the value cannot be computed."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary gray text, such as the delivery fees under the 'Fastest near you' cards and the '(500+)' rating count, appears low contrast against the white background.",
+          "suggestion": "Darken the secondary text color to meet WCAG AA contrast of at least 4.5:1 for normal text."
+        }
+      ],
+      "summary": "The page is mostly well laid out, with clean cards, consistent spacing, and clear navigation. The main visible defect is a broken delivery fee string on the Smash Bros Burgers card. A few minor contrast and text-legibility concerns also stand out. The clipped carousel item and the cut-off card at the bottom were excluded as intentional scroll behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 841,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006294,
+        "durationSeconds": 5.237312083999999
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_03",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card in the 'Popular right now' section shows a broken-image placeholder icon on a flat grey background instead of a food photo, making the most prominent listing look unfinished.",
+          "suggestion": "Ensure the image URL resolves, add a fallback food image or branded placeholder, and handle image load errors gracefully."
+        },
+        {
+          "priority": "minor",
+          "category": "styling",
+          "description": "The heart (favorite) button on the Tokumaru Ramen Bar card is a semi-transparent grey circle with a white icon over a light grey image area, so its contrast is weak and it is hard to see.",
+          "suggestion": "Use a more opaque or darker button background, or add a subtle shadow or border so the favorite control stands out on light backgrounds."
+        }
+      ],
+      "summary": "The page is mostly well laid out, with clean spacing, consistent card structure, and a clear bottom navigation bar. The main visual defect is a missing restaurant image in the 'Popular right now' section, which shows a broken-image placeholder. A minor contrast issue also affects the favorite button on that card. Clipped carousel items and cut-off cards at the viewport edges were excluded as intentional.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.99,
+          "confidence": 0.98
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 0.99,
+          "confidence": 0.99
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 890,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006539,
+        "durationSeconds": 4.4425352920000005
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_03",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card displays a broken-image placeholder icon on a flat gray background instead of a restaurant photo, making the top listing look unfinished.",
+          "suggestion": "Verify the image URL and add a fallback. Use a branded placeholder or a skeleton loader, and show a proper restaurant image."
+        },
+        {
+          "priority": "minor",
+          "category": "styling",
+          "description": "The heart (favorite) button on the gray placeholder card has weak contrast against its background, so it is hard to see.",
+          "suggestion": "Use a darker or outlined heart button, or add a subtle shadow so the control stands out on light backgrounds."
+        }
+      ],
+      "summary": "The page is mostly well laid out, but the Tokumaru Ramen Bar card shows a broken or missing image placeholder instead of a food photo. Other visual elements (promo banner, carousels, bottom navigation, status bar) render correctly. Clipped carousel items and content cut off at the viewport bottom were excluded as intended features.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 0.99,
+          "confidence": 0.98
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 801,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006094,
+        "durationSeconds": 4.358999333
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_03",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The hero image for 'Tokumaru Ramen Bar' fails to load and shows a broken-image placeholder icon on a flat gray box, so the featured card looks empty and unfinished.",
+          "suggestion": "Verify the image URL and asset pipeline, add a fallback food image or branded placeholder with a proper background, and handle image load errors gracefully."
+        },
+        {
+          "priority": "minor",
+          "category": "styling",
+          "description": "The heart (favorite) button on the first 'Popular right now' card is a gray circle with a white icon. It has weak contrast against the gray placeholder background and is hard to distinguish.",
+          "suggestion": "Give the favorite button a darker or semi-opaque backdrop, or a subtle shadow, so it stands out consistently over both light and dark imagery."
+        }
+      ],
+      "summary": "The page is mostly well laid out, with a clear header, search, category chips, promo banner, and carousels. The main visual defect is a missing restaurant image in the 'Popular right now' section, which shows a broken-image placeholder. Clipped carousel items and the cut-off card at the bottom are intentional and were not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 844,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006309,
+        "durationSeconds": 4.540763666000001
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_03",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The Tokumaru Ramen Bar card in the 'Popular right now' section shows a broken-image placeholder icon instead of a food photo, leaving a large empty gray area.",
+          "suggestion": "Make sure the image URL resolves and add a fallback image or a styled placeholder with a food-related background color, so the card still looks intentional if the image fails to load."
+        },
+        {
+          "priority": "minor",
+          "category": "styling",
+          "description": "The heart (favorite) button on the Tokumaru Ramen Bar card is a semi-transparent gray circle sitting on a light gray placeholder, so it has low contrast and blends into the background.",
+          "suggestion": "Give the heart button a solid white or darker background with a sufficient contrast ratio, or add a subtle shadow so it stands out on any image."
+        }
+      ],
+      "summary": "The page is mostly well laid out, with clean spacing, consistent card styling, and a clear bottom navigation bar. The main visible defect is a missing image in the first 'Popular right now' card, which shows a broken-image placeholder. A minor contrast issue also affects the heart button on that card.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.97, confidence 0.94).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.97,
+          "confidence": 0.94
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 0.99,
+          "confidence": 0.97
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 862,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006399,
+        "durationSeconds": 4.482309666000001
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_03",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The hero image for Tokumaru Ramen Bar failed to load. A grey placeholder with a broken-image icon appears in its place, which makes the featured card look broken.",
+          "suggestion": "Fix the image URL or add a fallback image. Show a neutral branded placeholder with no broken-image icon if the photo is unavailable."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "The heart (favorite) button on the Tokumaru Ramen Bar card is a semi-transparent grey circle on a grey placeholder, so its icon has low contrast and is hard to see.",
+          "suggestion": "Give the favorite button a solid background or a stronger outline so the icon stands out against any image or placeholder."
+        }
+      ],
+      "summary": "The page is mostly well-structured, but the Tokumaru Ramen Bar card shows a broken or missing image placeholder. The clipped carousel items and the partially visible card at the bottom are intentional scroll cues and were not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 0.94,
+          "confidence": 0.88
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 722,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0005699,
+        "durationSeconds": 4.331135667000001
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_04",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The pizza restaurant card shows a '-0%' badge, which is a meaningless discount label that looks like a placeholder or data error.",
+          "suggestion": "Hide the discount badge when the discount is zero, or show a real promotion value only when one exists."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary gray text (delivery times, delivery fees, rating count, and bottom navigation labels such as 'Search', 'Orders', and 'Profile') sits on white with relatively low contrast.",
+          "suggestion": "Darken the secondary text and inactive nav icon/label colors to meet WCAG AA contrast ratio of at least 4.5:1."
+        }
+      ],
+      "summary": "The page is mostly well-formed with no major layout breakage. The main visible defect is a meaningless '-0%' discount badge on the pizza card. Secondary gray text on white is also somewhat low in contrast. Clipped chips, carousel items, and the cut-off card at the bottom were treated as intentional features and not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 832,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006249,
+        "durationSeconds": 5.058966916999999
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_04",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The 'Popular right now' pizza card shows a discount badge reading '–0%', which is meaningless and looks like a rendering error.",
+          "suggestion": "Hide the discount badge when the discount is zero, or show a real discount value."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card shows '€0 delivery' twice: once as a badge on the image and again in the metadata line below.",
+          "suggestion": "Remove the duplicate delivery-fee mention from either the image badge or the metadata line."
+        }
+      ],
+      "summary": "The page layout is largely intact: header, search, chips, promo banner, carousels, and bottom navigation render cleanly with no overlapping or misaligned elements. The only defects are content-level: a meaningless discount badge and redundant delivery-fee information. Clipped carousel items and the cut-off card at the bottom were excluded as intended features.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 788,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006029,
+        "durationSeconds": 4.645053333999998
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_04",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The pizza restaurant card displays a '-0%' discount badge, which is meaningless and looks like a data or formatting error.",
+          "suggestion": "Hide the discount badge when the discount is zero, or show a meaningful promotion label only when a real discount exists."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card shows free delivery twice: once in the '€0 delivery' badge on the image and again in the metadata line '25–35 min • €0 delivery • Ramen'.",
+          "suggestion": "Remove the duplicate delivery fee from either the image badge or the metadata line to reduce clutter."
+        }
+      ],
+      "summary": "The page is largely well-structured, with clear hierarchy, consistent cards, and a readable bottom navigation. The main visual defect is a nonsensical '-0%' discount badge on the pizza card. A minor redundancy also appears in the delivery-fee labels. Clipped carousel items and the cut-off card at the bottom were excluded as intended behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 824,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006209,
+        "durationSeconds": 4.4588635
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_04",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The pizza card in the 'Popular right now' section shows a '–0%' discount badge. A zero percent discount is meaningless and looks like a data or rendering error.",
+          "suggestion": "Hide the discount badge when the discount is 0%, or display a meaningful label such as a promotion or rating instead."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary gray text, such as the delivery fees under the 'Fastest near you' cards and the meta line under 'Tokumaru Ramen Bar', and the inactive bottom navigation labels, appears light gray on white and may fall below recommended contrast ratios.",
+          "suggestion": "Darken the secondary text and inactive nav colors to meet WCAG AA contrast of at least 4.5:1 for normal text."
+        }
+      ],
+      "summary": "The page layout is generally clean and well-structured. The main defect is a meaningless '–0%' discount badge on the pizza card. A minor contrast concern appears in the secondary gray text. Clipped carousel items and content below the fold were excluded as intended.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 841,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006294,
+        "durationSeconds": 4.986383208000001
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_04",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The pizza card in 'Popular right now' shows a '−0%' discount badge. A zero percent discount is meaningless and looks like a rendering or data error.",
+          "suggestion": "Hide the discount badge when the discount is 0%, or show a real offer when one exists."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card shows '€0 delivery' twice: once as a badge on the image and again in the meta line below the title.",
+          "suggestion": "Show the free-delivery information in only one place, such as the image badge or the meta line, to reduce clutter."
+        }
+      ],
+      "summary": "The page is mostly well laid out, with consistent card spacing, clear section headers, and a tidy bottom navigation bar. The main visual problems are content-level: a meaningless '−0%' discount badge on the pizza card and a redundant '€0 delivery' message on the ramen card. Clipped carousel items and the cut-off pizza card were excluded as intentional scroll behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 795,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006064,
+        "durationSeconds": 4.527265667
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_05",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "critical",
+          "category": "accessibility",
+          "description": "The promo banner's heading '3 free deliveries for you' and its subtext 'Use code TALLINN3 at checkout · min. order €10' are white on a very light mint green background. The contrast is far below WCAG AA, so the offer and promo code are hard to read.",
+          "suggestion": "Use dark text (such as the dark green or near-black used elsewhere) for the banner heading and subtext, or darken the banner background so white text meets at least a 4.5:1 contrast ratio."
+        },
+        {
+          "priority": "minor",
+          "category": "styling",
+          "description": "The light gray delivery fee and time metadata under the restaurant cards (e.g., '€0.90 delivery') is fairly faint on white, which slightly reduces legibility.",
+          "suggestion": "Darken the secondary text color slightly to improve contrast while keeping the visual hierarchy."
+        }
+      ],
+      "summary": "The page is mostly clean and well-structured. The main visual defect is the promo banner, where white text sits on a very light mint background and is nearly unreadable. Clipped carousel items and the cut-off bottom card were excluded as intended features.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 1089,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007534,
+        "durationSeconds": 5.773000583999997
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_05",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "accessibility",
+          "description": "The promo banner text '3 free deliveries for you' and the subtext 'Use code TALLINN3 at checkout · min. order €10' are white on a very light mint green background. The contrast is far below WCAG minimums, so the offer and promo code are hard to read.",
+          "suggestion": "Use dark text (for example the dark green or near-black used elsewhere) on the mint background, or darken the banner background so white text meets at least a 4.5:1 contrast ratio."
+        }
+      ],
+      "summary": "The page is largely well-formed: the header, search bar, category chips, restaurant cards, and bottom navigation align cleanly. The main visual defect is the promotional banner, where white text sits on a pale mint background and is nearly unreadable. Clipped carousel items and the cut-off card at the bottom were treated as intentional and not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 725,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0005714,
+        "durationSeconds": 4.230011750000002
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_05",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "accessibility",
+          "description": "The promo banner's heading '3 free deliveries for you' and its subtext 'Use code TALLINN3 at checkout · min. order €10' are white on a very pale mint green background. The contrast ratio is far below WCAG AA, so the offer code and minimum order details are barely legible.",
+          "suggestion": "Change the banner text to a dark color (e.g., near-black or dark green) or use a darker banner background so the heading and code text meet at least a 4.5:1 contrast ratio."
+        }
+      ],
+      "summary": "The page is mostly well laid out, with consistent card styling, clear hierarchy, and no overlapping or misaligned elements. The main visual defect is the low-contrast promo banner, where white text sits on a pale mint background and is nearly unreadable. Clipped carousel items and the cut-off card at the bottom were excluded per the instructions.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 724,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0005708999999999999,
+        "durationSeconds": 4.1720176250000005
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_05",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "critical",
+          "category": "accessibility",
+          "description": "The '3 free deliveries for you' heading and the 'Use code TALLINN3 at checkout · min. order €10' subtext are white text on a very light mint green background. The contrast ratio is far below WCAG AA minimums, so the key promotional information is barely legible.",
+          "suggestion": "Use dark text (for example, the dark green or near-black used elsewhere in the app) on the mint background, or darken the banner background so white text reaches at least a 4.5:1 contrast ratio."
+        }
+      ],
+      "summary": "Found 1 significant issue: the promo banner text has very low contrast against its light mint background, making the heading and code details hard or impossible to read. The rest of the layout (header, search, category chips, carousels, restaurant cards, bottom navigation) renders cleanly. Clipped carousel items and the partially visible card at the bottom were excluded as intended behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 884,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006508999999999999,
+        "durationSeconds": 4.9282031669999995
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_05",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "critical",
+          "category": "accessibility",
+          "description": "The promo banner text '3 free deliveries for you' and the subtext 'Use code TALLINN3 at checkout · min. order €10' are white on a very light mint green background. The contrast is far below WCAG minimums, so the offer code and conditions are effectively invisible.",
+          "suggestion": "Change the banner text to a dark color (such as the near-black used for headings or a dark green) or use a darker background behind the white text. Verify the result meets at least a 4.5:1 contrast ratio."
+        }
+      ],
+      "summary": "The page is largely well laid out, with consistent spacing, clear restaurant cards, and a clean bottom navigation bar. The main visual defect is the promo banner, where the white text is nearly unreadable against the pale mint background. Clipped carousel items and the cut-off card at the bottom were treated as intended scrolling behavior and not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 832,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006249,
+        "durationSeconds": 4.509587959
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_06",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [],
+      "summary": "The page appears visually intact. Layout, spacing, icons, badges, and the bottom navigation render cleanly with no overlapping, misaligned, or missing elements. The clipped category chips, the partially visible Trattoria card, and the cut-off pizza card at the bottom are intentional scroll affordances and were excluded. No visual defects were found.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": false,
+          "matchedReportedIndexes": [],
+          "reasoning": "No issues were reported.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 718,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0005679,
+        "durationSeconds": 3.940498667
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_06",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary text such as the delivery fees (e.g., '€0.90 delivery'), the rating count '(500+)', and the meta line '25–35 min • €0 delivery • Ramen' is light gray on a white background, which may fall below recommended WCAG contrast ratios.",
+          "suggestion": "Darken the secondary text color to meet at least a 4.5:1 contrast ratio against white."
+        }
+      ],
+      "summary": "The page appears visually intact. The layout, images, badges, and navigation render cleanly with no overlapping, misaligned, or missing elements. The only notable finding is a minor contrast concern with some light gray secondary text. The clipped chip row, partially visible carousel card, and cut-off card at the bottom were excluded as intended scroll and viewport behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": false,
+          "matchedReportedIndexes": [],
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        0
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 905,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006614,
+        "durationSeconds": 4.925939958999999
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_06",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Light gray secondary text, such as the search placeholder, delivery fees, and the '(500+)' rating count, appears to have low contrast against the white or light gray backgrounds, which may be hard to read.",
+          "suggestion": "Darken the secondary text color to meet WCAG AA contrast of at least 4.5:1 for small text and 3:1 for placeholder text."
+        }
+      ],
+      "summary": "The page renders cleanly overall: the layout is aligned, images load, and the typography and spacing are consistent. The only findings are minor low-contrast gray text. Intentionally clipped carousel items and the cut-off card at the bottom were excluded per the instructions.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": false,
+          "matchedReportedIndexes": [],
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        0
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 865,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006414,
+        "durationSeconds": 4.757789292000001
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_06",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary gray text (e.g., '€0.90 delivery', '€2.40 delivery', '25–35 min • €0 delivery • Ramen', and the '(500+)' rating count) appears to be a light gray on white, which may fall below the recommended 4.5:1 contrast ratio for small text.",
+          "suggestion": "Darken the secondary text color (e.g., to a gray around #6B6B6B or darker) so it meets WCAG AA contrast on white backgrounds."
+        }
+      ],
+      "summary": "The page layout is clean and largely well-structured. The only visual problems found are minor: some secondary gray text may be low-contrast on white. The clipped carousel items and the cut-off card at the bottom were excluded as intended features.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": false,
+          "matchedReportedIndexes": [],
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        0
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 1033,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007254,
+        "durationSeconds": 5.1813870830000015
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_06",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary gray text (delivery fees such as '€0.90 delivery', the '(500+)' review count, and the inactive bottom nav labels 'Search', 'Orders', 'Profile') appears to be light gray on white, which may fall below WCAG AA contrast ratios.",
+          "suggestion": "Darken the secondary text and inactive nav label colors to meet at least a 4.5:1 contrast ratio against the white background."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card shows '€0 delivery' both as a badge on the image and again in the metadata line below, which is redundant.",
+          "suggestion": "Show the free delivery information in only one place, such as the image badge or the metadata line."
+        }
+      ],
+      "summary": "The page renders cleanly with no obvious layout breakage, overlapping elements, missing images, or misaligned components. The only items I'd flag are minor: some secondary gray text and icons are low contrast, and delivery fee information is repeated. The clipped chip row, clipped restaurant card at the right edge, and partially visible card at the bottom are intentional scroll affordances and were not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": false,
+          "matchedReportedIndexes": [],
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.01).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        0,
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": null,
+          "probability": 0.99,
+          "confidence": 0.98
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 937,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006774,
+        "durationSeconds": 4.992130874999999
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_07",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "A circular loading spinner is displayed in the center of the Tokumaru Ramen Bar hero image, suggesting the image or card failed to finish loading and looks stuck.",
+          "suggestion": "Show the loaded food photo, or hide the spinner once the image has loaded. Add a timeout and fallback placeholder if the image request fails."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card shows '€0 delivery' twice, once as a badge on the image and again in the meta line below the title.",
+          "suggestion": "Show the free-delivery information in only one place to reduce redundancy."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary text such as the search placeholder, delivery fees, and '25–35 min' meta text is light grey on white or light grey backgrounds, which may fall below recommended contrast ratios.",
+          "suggestion": "Darken the grey secondary text to meet WCAG AA contrast of at least 4.5:1 for normal-size text."
+        }
+      ],
+      "summary": "The home screen is mostly clean and well laid out. The most visible defect is a loading spinner stuck over the Tokumaru Ramen Bar hero image. Minor issues include redundant delivery-fee information and low-contrast grey secondary text. Clipped carousel items and the cut-off card at the bottom are intentional scroll affordances and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.74, confidence 0.48).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1,
+        2
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.74,
+          "confidence": 0.48
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 2,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 1085,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007514,
+        "durationSeconds": 5.272346458
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_07",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "A circular loading spinner is displayed in the center of the Tokumaru Ramen Bar hero image, covering the food photo. It appears to be a loading state that never resolved or was left visible.",
+          "suggestion": "Hide the spinner once the image has loaded, or show a placeholder or skeleton instead. Add a fallback so a failed image load does not leave a spinner over the content."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "The search placeholder text 'Restaurants, dishes, groceries' is light gray on a very light gray field, so its contrast is low.",
+          "suggestion": "Darken the placeholder color or the field background to meet at least WCAG AA contrast (4.5:1) for text."
+        }
+      ],
+      "summary": "The page is mostly well laid out, but the Tokumaru Ramen Bar card shows a loading spinner stuck over its hero image, which looks like an unfinished state. The search placeholder text is also faint. Clipped carousel items and the cut-off card at the bottom are intentional and not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.99).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.99,
+          "confidence": 0.99
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 791,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006044,
+        "durationSeconds": 4.250914458
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_07",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "styling",
+          "description": "A circular loading spinner remains displayed in the center of the Tokumaru Ramen Bar image, covering the food photo and suggesting the image or card has not finished loading.",
+          "suggestion": "Ensure the spinner is removed once the image loads, and add a placeholder or fallback image so the card never shows a persistent loading overlay."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card shows '€0 delivery' twice, once as a badge on the image and again in the metadata line, which is redundant.",
+          "suggestion": "Show the delivery fee in only one place on the card, such as the image badge or the metadata row."
+        }
+      ],
+      "summary": "Found one clearly visible visual defect: a loading spinner is stuck over the Tokumaru Ramen Bar hero image, obscuring the food photo. A minor content redundancy also appears in that card's metadata. Clipped carousel items and the cut-off card at the bottom were excluded as intended features.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.99,
+          "confidence": 0.98
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 964,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006908999999999999,
+        "durationSeconds": 5.170308875000003
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_07",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "styling",
+          "description": "A circular loading spinner is displayed in the center of the Tokumaru Ramen Bar hero image, covering the food photo. It appears to be a stuck loading state, so the card looks unfinished.",
+          "suggestion": "Make sure the image finishes loading and the spinner is removed once content is ready. Add a timeout or error fallback so a placeholder or retry state appears instead of an indefinite spinner."
+        }
+      ],
+      "summary": "Found 1 visual defect: a loading spinner is stuck over the Tokumaru Ramen Bar image in the 'Popular right now' section, suggesting an unfinished or failed image load. The rest of the layout appears intact.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.99,
+          "confidence": 0.98
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 699,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0005584,
+        "durationSeconds": 3.794591666999997
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_07",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "A circular loading spinner is displayed in the center of the Tokumaru Ramen Bar hero image, making it look like the image failed to load or is stuck in a loading state.",
+          "suggestion": "Hide the spinner once the image and card data have loaded, and add a fallback image or placeholder if loading fails."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card shows delivery information twice: a '€0 delivery' badge on the image and '€0 delivery' again in the metadata line below.",
+          "suggestion": "Remove one of the duplicate delivery labels, keeping the one in the metadata line or the image badge."
+        }
+      ],
+      "summary": "The page is mostly well laid out, with clear sections, consistent spacing, and readable typography. The main visual defect is a loading spinner stuck on top of the Tokumaru Ramen Bar hero image. A minor content redundancy also appears in that card's delivery info.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.96, confidence 0.92).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.96,
+          "confidence": 0.92
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 740,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0005789,
+        "durationSeconds": 3.7699044159999975
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_08",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "styling",
+          "description": "The '15–25 min' badge on the Green Bowl Poké card overlaps the lower-left part of the dish image, partially covering the food.",
+          "suggestion": "Move the time badge to a consistent corner of the card, or add padding so it sits over a less important area of the image."
+        }
+      ],
+      "summary": "The page renders cleanly overall: the header, search bar, promo banner, carousels, and bottom navigation are aligned and legible. The only visible concern is a minor overlap of the delivery-time badge on the Green Bowl Poké image. The clipped chip and carousel items at the right edge and the cut-off card at the bottom were excluded as intended scroll and viewport behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": false,
+          "matchedReportedIndexes": [],
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        0
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 865,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006414,
+        "durationSeconds": 5.816748124999998
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_08",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The search placeholder appears to read \"Restarants, dishes, groceries\", which is misspelled.",
+          "suggestion": "Correct the placeholder text to \"Restaurants, dishes, groceries\"."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary grey text (delivery fees, the \"(500+)\" review count, and the \"25–35 min\" meta line) is light grey on white, which may fall below recommended contrast ratios for small text.",
+          "suggestion": "Darken the secondary text color to meet WCAG AA contrast (at least 4.5:1) for small text."
+        }
+      ],
+      "summary": "The page renders cleanly overall: the header, location, search bar, filter chips, promo banner, carousels, and restaurant cards are aligned and legible. The clipped chip and carousel items at the right edge and the card cut off at the bottom are intentional scroll affordances and were not counted. I found one likely copy typo and one minor contrast concern.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.99,
+          "confidence": 0.98
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 916,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006669,
+        "durationSeconds": 5.183013917
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_08",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The search bar placeholder reads 'Restarants, dishes, groceries', which misspells 'Restaurants'.",
+          "suggestion": "Correct the placeholder text to 'Restaurants, dishes, groceries'."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary metadata text (delivery fees, rating count '(500+)', and the '25–35 min' line) is light gray on white, which may fall below recommended contrast ratios for small text.",
+          "suggestion": "Darken the secondary gray text to meet at least WCAG AA contrast (4.5:1) for small text."
+        }
+      ],
+      "summary": "The page is largely well-formed: the header, search bar, promo banner, carousels, and bottom navigation align cleanly with consistent spacing. The only clear defect is a misspelled search placeholder. Light gray secondary text is a possible minor contrast concern. Clipped carousel items and the cut-off card at the bottom were excluded as intended scroll/viewport behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.99,
+          "confidence": 0.98
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 870,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006439,
+        "durationSeconds": 4.671596500000003
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_08",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The search placeholder text appears to read 'Restarants, dishes, groceries', which looks like a misspelling of 'Restaurants'.",
+          "suggestion": "Correct the placeholder text to 'Restaurants, dishes, groceries'."
+        },
+        {
+          "priority": "minor",
+          "category": "styling",
+          "description": "The '15–25 min' delivery-time badge on the Green Bowl Poké card overlaps the left part of the food photo, partly covering the dish.",
+          "suggestion": "Move the badge to a corner with consistent padding, or crop the image so the main food subject stays unobstructed."
+        }
+      ],
+      "summary": "The page layout appears intact overall: cards, badges, banner, icons, and bottom navigation are aligned and render correctly. The only clipping (category chips, the last carousel card, and the bottom pop-up card) falls under the allowed scrolling/viewport exceptions. Two minor issues were found: a likely spelling error in the search placeholder and a time badge overlapping a food image.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 1136,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007769,
+        "durationSeconds": 6.579670083000001
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_08",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Some secondary text is light gray on a white or light gray background, including the search placeholder, the delivery fee labels, and the '(500+)' review count. Contrast may fall below WCAG AA recommendations.",
+          "suggestion": "Darken the secondary gray text (for example to at least #6B6B6B on white) so it meets a 4.5:1 contrast ratio."
+        }
+      ],
+      "summary": "The page renders cleanly with no obvious broken layout, overlapping, or missing images. The only findings are minor low-contrast text, which is a readability concern rather than a visual break. The clipped carousel items and the cut-off card at the bottom are intentional scroll affordances and were not counted as defects.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": false,
+          "matchedReportedIndexes": [],
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        0
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 658,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0005379,
+        "durationSeconds": 4.210970084
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_09",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "styling",
+          "description": "The restaurant title 'Tokumaru Ramen' renders its final letter as a malformed glyph (it looks like 'Rameı'), suggesting a font or character-encoding rendering problem.",
+          "suggestion": "Verify the title string uses standard UTF-8 characters and that the app font includes the glyph. Check for a stray or lookalike character in the source data."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary text such as delivery fees ('€0.90 delivery'), the rating count '(500+)', and the 'Deliver to' label is light gray on white, which may fall below recommended contrast ratios, especially at small sizes.",
+          "suggestion": "Darken the secondary gray text to meet WCAG AA contrast (at least 4.5:1 for normal text) and keep consistent sizing for readability."
+        }
+      ],
+      "summary": "The page is largely clean and well-aligned. The main visual defect is a rendering glitch in the restaurant title 'Tokumaru Ramen', which appears to show a malformed final letter. A minor contrast concern exists for light gray secondary text. Clipped carousel items and the cut-off card at the bottom are intentional scroll affordances and were not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.55, confidence 0.10).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.55,
+          "confidence": 0.1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 1041,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007294000000000001,
+        "durationSeconds": 5.742260332999998
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_09",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "styling",
+          "description": "The restaurant title 'Tokumaru Ramen' renders its final 'n' as a dotless-i-like glyph ('Rameı'), which looks like a font or character-encoding rendering error.",
+          "suggestion": "Verify the font file includes the full Latin character set and that the text is encoded as standard UTF-8 'n'. Check for stray or substituted characters in the source data."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "The search placeholder text and secondary metadata (delivery fees, delivery times) are light gray on white or light gray backgrounds, which may fall below recommended contrast ratios.",
+          "suggestion": "Darken the placeholder and secondary text colors to meet WCAG AA contrast of at least 4.5:1 for normal text."
+        }
+      ],
+      "summary": "The page is largely well-formed: the header, location, search bar, promo banner, carousel, and bottom navigation align cleanly with consistent spacing. The only visible defect is a glyph rendering problem in the restaurant title 'Tokumaru Ramen', which displays as 'Rameı'. Clipped carousel items and the partially visible bottom card were excluded as intended features.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": false,
+          "matchedReportedIndexes": [],
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.28).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        0,
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": null,
+          "probability": 0.72,
+          "confidence": 0.44
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 963,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006904,
+        "durationSeconds": 5.1138529170000036
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_09",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "styling",
+          "description": "The restaurant name 'Tokumaru Ramen' renders with a final character that looks like a dotless 'ı' (it reads 'Rameı'), which suggests a font glyph or encoding problem.",
+          "suggestion": "Verify the font includes the standard 'n' glyph and that the string is encoded as plain UTF-8 'Ramen'; correct the text or font fallback if needed."
+        }
+      ],
+      "summary": "The page is largely well-formed: the header, search bar, promo banner, carousels, and bottom navigation are aligned and legible. The only visible defect is a text rendering problem in the 'Tokumaru Ramen' card title. Clipped carousel items and the cut-off card at the bottom were excluded as intended features.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": false,
+          "matchedReportedIndexes": [],
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.40).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        0
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": null,
+          "probability": 0.6,
+          "confidence": 0.2
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 892,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006549,
+        "durationSeconds": 5.056148582999994
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_09",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "styling",
+          "description": "The restaurant name 'Tokumaru Ramen' renders with a malformed final character (it appears as 'Rameı'), suggesting a font glyph or encoding problem.",
+          "suggestion": "Verify the font file includes the standard Latin 'n' glyph and that the text is encoded as UTF-8; check for a stray Unicode character in the source string."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The delivery fee '€0 delivery' is shown twice on the Tokumaru Ramen card: once as a badge on the image and again in the metadata line below.",
+          "suggestion": "Remove the duplicate, keeping the fee in one location (e.g., the metadata line) to reduce visual clutter."
+        }
+      ],
+      "summary": "The page is largely clean and well laid out. The only visual defect I can identify is a rendering glitch in the 'Tokumaru Ramen' card title, which appears to show a malformed final character. A minor content redundancy is also present. Clipped carousel items and the cut-off card at the bottom were excluded per the instructions.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.53, confidence 0.06).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.53,
+          "confidence": 0.06
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 1016,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007169,
+        "durationSeconds": 5.668397791999996
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_09",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The restaurant title 'Tokumaru Ramen' renders with a malformed final character that looks like 'Rameı' (dotless i), so the name appears misspelled.",
+          "suggestion": "Check the font's glyph support for the 'n' character or the text encoding, and confirm the title string is 'Tokumaru Ramen' in the source data."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary gray text (delivery fees, the '(500+)' review count, and the '25–35 min' metadata) is light gray on a white background, which may fall below recommended contrast ratios.",
+          "suggestion": "Darken the secondary text color to meet at least a 4.5:1 contrast ratio against white."
+        }
+      ],
+      "summary": "The page is largely visually intact: the layout is clean, images load, and the navigation and cards are aligned. The only clear defect is a text rendering glitch in the 'Tokumaru Ramen' title. Light gray secondary text is a possible minor contrast concern. Clipped carousel items and the partially visible card at the bottom were excluded as intentional.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.57, confidence 0.13).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.57,
+          "confidence": 0.13
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 943,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006804,
+        "durationSeconds": 5.136589417000003
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_10",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The 'Fastest near you' row shows two identical 'Green Bowl Poké' cards with the same image, delivery time, and fee, which looks like duplicated data.",
+          "suggestion": "Verify the restaurant feed and remove the duplicate entry, or show distinct restaurants."
+        },
+        {
+          "priority": "minor",
+          "category": "styling",
+          "description": "The delivery-time pills (e.g., '15–25 min') sit directly over the food images and partially cover the poké bowls and burger.",
+          "suggestion": "Position the time badges in a consistent corner or below the image so they don't obscure the product photography."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary gray text such as the rating count '(500+)', the delivery fee lines, and the meta line under 'Tokumaru Ramen Bar' is light gray on white, which may fall below recommended contrast for small text.",
+          "suggestion": "Darken the secondary text color to meet WCAG AA contrast (at least 4.5:1) for small text."
+        }
+      ],
+      "summary": "The page renders cleanly overall: layout, spacing, icons, chips, promo banner, and bottom navigation are aligned and legible. The main findings are a duplicated restaurant card and a few minor readability and styling concerns. Clipped carousel items and the cut-off card at the bottom were excluded as intentional.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.99).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1,
+        2
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.99,
+          "confidence": 0.99
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 2,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 1161,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007894,
+        "durationSeconds": 5.964193625
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_10",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The two 'Fastest near you' cards are identical (same image, name 'Green Bowl Poké', and €0.90 delivery fee), which looks like duplicated placeholder or data.",
+          "suggestion": "Verify the data source and show distinct restaurants, or remove the duplicate entry."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary gray text (the 'DELIVER TO' label, the search placeholder, and the delivery fee and time metadata) appears light gray on a white background, which may fall below recommended WCAG contrast ratios.",
+          "suggestion": "Darken the secondary text colors to meet at least a 4.5:1 contrast ratio against the white background."
+        }
+      ],
+      "summary": "The page renders cleanly overall with no clear layout breakage. Findings are limited to a duplicated restaurant card and some low-contrast gray text. The clipped chip and carousel items at the right edge and the partially visible pizza card at the bottom were excluded as intended scroll/viewport behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.99,
+          "confidence": 0.98
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 851,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006344,
+        "durationSeconds": 4.379515625
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_10",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The 'Fastest near you' carousel shows two identical 'Green Bowl Poké' cards with the same image, time, and delivery fee, which looks like duplicated data.",
+          "suggestion": "Verify the data source and remove the duplicate, or replace it with a distinct restaurant."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card shows '€0 delivery' twice, once as a badge on the image and again in the metadata line below.",
+          "suggestion": "Show the delivery fee in only one place to reduce redundancy."
+        }
+      ],
+      "summary": "The page renders cleanly overall: the header, search bar, category chips, promo banner, carousels, and bottom navigation are aligned and legible. I found two minor content issues: a duplicated restaurant card and redundant delivery-fee information. The clipped chip and carousel items at the right edge and the cut-off pizza card at the bottom are intentional scroll affordances and were not counted.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 868,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006429,
+        "durationSeconds": 4.670694042000003
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_10",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The 'Fastest near you' carousel shows two identical 'Green Bowl Poké' cards with the same image, title, and delivery fee, which looks like duplicated or placeholder data.",
+          "suggestion": "Verify the data source and show distinct restaurants, or deduplicate the list before rendering."
+        },
+        {
+          "priority": "minor",
+          "category": "styling",
+          "description": "The delivery-time pills ('15–25 min') sit directly over the bottom of the poké bowl images and partially cover the food.",
+          "suggestion": "Move the time badge to a corner or a consistent position outside the image area so the product photo is not obscured."
+        }
+      ],
+      "summary": "The page layout is largely intact: the header, search bar, category chips, promo banner, carousel, and bottom navigation all render cleanly. The only issues found are minor content and styling concerns. The clipped chips and carousel items at the right edge and the partially visible card at the bottom are expected scroll behavior and were not counted.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 906,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006619,
+        "durationSeconds": 4.960710374999995
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_10",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The two 'Fastest near you' cards are identical (same image, same name 'Green Bowl Poké', same delivery time and fee), which looks like a duplicated data entry or placeholder.",
+          "suggestion": "Verify the data source and show distinct restaurants, or remove the duplicate card."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card shows '€0 delivery' twice: once as a badge on the image and again in the metadata line below it.",
+          "suggestion": "Remove one of the two repeated delivery-fee indicators to reduce clutter."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary grey text (search placeholder, delivery fees, '(500+)' review count, inactive bottom nav labels) appears to have low contrast against the white background.",
+          "suggestion": "Darken the grey text to meet WCAG AA contrast (at least 4.5:1 for body text)."
+        }
+      ],
+      "summary": "The page is largely well-formed: the layout is clean, the header, promo banner, carousels, and bottom navigation align properly, and no elements overlap or render incorrectly. I found only minor issues: duplicated card content, redundant delivery-fee information, and some low-contrast grey secondary text. The clipped chips, the clipped 'Smash Bros' card, and the partially visible pizza card were excluded per the instructions.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1,
+        2
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 2,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 1145,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007814,
+        "durationSeconds": 5.946466708
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_11",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "The search bar placeholder text 'Restaurants, dishes, groceries' is light gray on a very light gray background, which likely falls below recommended contrast ratios and may be hard to read.",
+          "suggestion": "Darken the placeholder text color to meet at least WCAG AA contrast (4.5:1) against the search field background."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card shows '€0 delivery' twice: once as a badge on the image and again in the metadata line below the title.",
+          "suggestion": "Show the delivery fee in only one location to reduce redundancy and visual clutter."
+        }
+      ],
+      "summary": "The page layout is largely clean and well aligned, with no overlapping elements, broken images, or misaligned text. I found two minor issues: low-contrast placeholder text in the search bar and redundant delivery-fee information on the ramen card. The clipped carousel items and the cut-off pizza card at the bottom were excluded as intentional scroll affordances.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": false,
+          "matchedReportedIndexes": [],
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        0,
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 778,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0005979,
+        "durationSeconds": 4.521254500000003
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_11",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The '-100%' badge on the pizza card has no context (such as a discount label or the item it applies to), so its meaning is unclear.",
+          "suggestion": "Add a label such as 'Free item' or 'Up to 100% off', or show the discounted item or price explicitly."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card repeats '€0 delivery' both as the top-left badge and in the metadata line below the title.",
+          "suggestion": "Show the delivery fee in one place only to reduce redundancy."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "The grey placeholder text in the search field ('Restaurants, dishes, groceries') has fairly low contrast against the light grey input background.",
+          "suggestion": "Darken the placeholder color to meet a 4.5:1 contrast ratio against the field background."
+        }
+      ],
+      "summary": "The page renders cleanly overall, with no overlapping, misaligned, or broken elements. The clipped chips, carousel card, and bottom-cropped pizza card were excluded as intentional scroll affordances. Only minor content and contrast observations remain.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.68, confidence 0.36).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1,
+        2
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.68,
+          "confidence": 0.36
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 2,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 963,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006904,
+        "durationSeconds": 5.491118916
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_11",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "styling",
+          "description": "Secondary gray text (delivery fees such as '€0.90 delivery', rating count '(500+)', and the bottom navigation labels 'Search', 'Orders', 'Profile') is light gray on white, which may fall below recommended contrast ratios and reduce readability.",
+          "suggestion": "Darken the secondary text color to meet WCAG AA contrast (at least 4.5:1 for normal text)."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card shows '€0 delivery' twice, once in the image badge and again in the metadata line, which is redundant.",
+          "suggestion": "Show the free-delivery information in only one location on the card."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The '–100%' badge on the pizza card has no context (100% off what, and on which items), so its meaning is unclear.",
+          "suggestion": "Add a clear label such as '100% off first order' or remove the badge if the promotion is not explained elsewhere."
+        }
+      ],
+      "summary": "The page renders cleanly overall, with no overlapping, misaligned, or broken elements. The only findings are minor content and contrast concerns. The clipped carousel items and the cut-off card at the bottom are excluded as intended scroll/viewport behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            2
+          ],
+          "reasoning": "Jev matched R2 (p=0.74, confidence 0.48).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        0,
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 0.97,
+          "confidence": 0.94
+        },
+        {
+          "reportedIndex": 2,
+          "expectedIndex": 0,
+          "probability": 0.74,
+          "confidence": 0.48
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 942,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006799,
+        "durationSeconds": 5.116532417000002
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_11",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar meta line repeats delivery information already shown in the '€0 delivery' badge on the card image.",
+          "suggestion": "Show the free-delivery message in only one place, or keep the badge and drop the duplicate text from the meta line, to reduce clutter."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The '−100%' badge on the pizza card has no context about what it discounts (item price, delivery fee, or the whole order).",
+          "suggestion": "Add a short qualifier such as 'Item −100%' or a tooltip so the promotion is clear at a glance."
+        }
+      ],
+      "summary": "The page renders cleanly overall. Layout, spacing, images, badges, and the bottom navigation are aligned and legible. The only items I noticed are minor content and clarity points. The clipped category chips, clipped restaurant card, and partially visible card at the bottom are intentional scroll affordances and were not counted as defects.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            1
+          ],
+          "reasoning": "Jev matched R1 (p=0.65, confidence 0.30).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        0
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": 0,
+          "probability": 0.65,
+          "confidence": 0.3
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 808,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006129,
+        "durationSeconds": 5.073571167000002
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_11",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card shows delivery information twice: a '€0 delivery' badge on the image and '€0 delivery' again in the metadata line below.",
+          "suggestion": "Remove the duplicate delivery fee from either the image badge or the metadata line so the card shows it once."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The pizza card's image badge reads '−100%', which is an unusual or possibly placeholder discount label with no visible restaurant name or context.",
+          "suggestion": "Verify the promotional data. If the discount is real, make it clearer (e.g., 'Free item' or a specific offer); if not, hide the badge."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "Delivery fee formatting is inconsistent: some cards show '€0.90 delivery' and '€2.40 delivery' while the popular card shows '€0 delivery', with no visible currency-precision standard.",
+          "suggestion": "Apply a consistent price format across all delivery fee labels, such as always showing two decimals (€0.00)."
+        }
+      ],
+      "summary": "The page renders cleanly overall with no overlapping, misaligned, or broken elements. Carousel and card clipping at the screen edges and the bottom viewport cutoff are intentional and excluded. The only findings are minor content and redundancy issues.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            1
+          ],
+          "reasoning": "Jev matched R1 (p=1.00, confidence 0.99).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        0,
+        2
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 0.99
+        },
+        {
+          "reportedIndex": 2,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 1072,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007449000000000001,
+        "durationSeconds": 6.010572874999998
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_12",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "On the Tokumaru Ramen Bar card, the delivery time text (\"25–35 min\") overlaps the delivery fee text (\"€0 delivery\"), making both illegible.",
+          "suggestion": "Place the delivery time and fee on separate lines or in separate containers, or add spacing so they do not share the same position. Check the text container's width and wrapping behavior."
+        }
+      ],
+      "summary": "Found one clear visual defect: the delivery time and delivery fee text overlap on the Tokumaru Ramen Bar card. The clipped carousel item at the right edge and the partially visible card at the bottom are intentional and were not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 460,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0004389,
+        "durationSeconds": 2.5999608329999973
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_12",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "On the Tokumaru Ramen Bar card, the delivery time text (\"25–35 min\") and the delivery fee text (\"€0 delivery\") overlap in the same position below the restaurant name, so both are garbled and unreadable.",
+          "suggestion": "Place the delivery time and fee on separate lines or in separate flex items with proper spacing, and make sure the metadata row wraps or truncates instead of overlapping when text is long."
+        }
+      ],
+      "summary": "The page is mostly well laid out, but the Tokumaru Ramen Bar card has a clear text overlap: the delivery-time line and the delivery-fee line are drawn on top of each other, making both unreadable. Carousel edge clipping and the cut-off pizza card at the bottom were excluded as intended features.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 585,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0005014,
+        "durationSeconds": 3.312899749999997
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_12",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "On the Tokumaru Ramen Bar card, the delivery-time text ('25–35 min') and the delivery-fee text ('€0 delivery') are rendered on top of each other in the same line, producing garbled, unreadable text.",
+          "suggestion": "Give the delivery time and delivery fee separate lines or flex containers, or allow the metadata row to wrap, so the two strings never occupy the same space. Verify the fix at narrow viewport widths."
+        }
+      ],
+      "summary": "Found one visible layout defect: the delivery-time and delivery-fee text overlaps on the Tokumaru Ramen Bar card, making both illegible. The rest of the page renders cleanly. Clipped carousel items and the cut-off card at the bottom are intentional scroll affordances and were not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 744,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0005809,
+        "durationSeconds": 4.163405375000002
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_12",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "Under 'Tokumaru Ramen Bar', the delivery time text ('25–35 min') overlaps the '€0 delivery' text on the same line, so both are garbled and unreadable.",
+          "suggestion": "Place the delivery time and delivery fee on separate lines, or give the metadata row a flex layout with wrapping and proper gaps so the two strings never occupy the same position."
+        }
+      ],
+      "summary": "The page is mostly well laid out, but one text collision is clearly visible. Under the Tokumaru Ramen Bar card, the delivery time '25–35 min' overlaps the delivery fee '€0 delivery', making both illegible. The clipped carousel item and the partially visible card at the bottom were excluded per the instructions.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 0.99).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 0.99
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 510,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.00046389999999999995,
+        "durationSeconds": 3.067924583
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_12",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "On the Tokumaru Ramen Bar card, the delivery time text (\"25–35 min\") and the delivery fee text (\"€0 delivery\") are rendered on top of each other in the same line, so both are garbled and unreadable.",
+          "suggestion": "Fix the flex or inline layout so the delivery time and fee sit on separate lines or in separate containers with proper spacing, and make sure the text wraps instead of overlapping when space is tight."
+        }
+      ],
+      "summary": "The page is mostly well laid out, but one clear rendering defect stands out: the delivery time and fee text overlaps on the Tokumaru Ramen Bar card, making both unreadable. Clipped carousel items and the partially visible card at the bottom are intentional scroll affordances and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 609,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0005134,
+        "durationSeconds": 3.6667065409999995
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_13",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "missing-element",
+          "description": "The top-right circular button shows only a red notification dot with no visible icon, so it reads as an empty or broken avatar placeholder.",
+          "suggestion": "Render the intended icon or profile image inside the circle, and add an accessible label such as 'Notifications' or 'Account' so the purpose of the button is clear."
+        }
+      ],
+      "summary": "The page renders cleanly overall: the header, search bar, category chips, promo banner, carousels, and bottom navigation are aligned and legible. The only possible defect is the top-right circular control, which shows a red dot with no visible icon. Clipped chips, carousel items, and the bottom card were excluded as intended scroll and viewport behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 807,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006124,
+        "durationSeconds": 4.669707791
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_13",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "missing-element",
+          "description": "The circular button at the top right shows only a red notification dot with no icon or avatar, so it looks empty or like a failed image load.",
+          "suggestion": "Render a profile avatar or a bell/profile icon inside the circle, or confirm the avatar image loads and add a fallback placeholder."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card repeats delivery information: the '€0 delivery' badge on the image and '€0 delivery' again in the metadata line.",
+          "suggestion": "Show the free-delivery information once, either as the image badge or in the metadata line, to reduce redundancy."
+        }
+      ],
+      "summary": "The page renders cleanly overall: the header, search bar, category chips, promo banner, carousels, and bottom navigation are aligned and legible. The only items I flagged are minor. The clipped chip and carousel items at the right edge and the card cut off at the bottom are intentional scroll affordances, so I did not report them.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 977,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006974,
+        "durationSeconds": 5.508568709000007
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_13",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "missing-element",
+          "description": "The top-right circular control is an empty gray circle with only a small red dot. It is unclear whether it is a profile avatar that failed to load or a notification button, and it has no icon or label.",
+          "suggestion": "Show a user avatar or a clear bell/notification icon, and add an accessible label such as 'Notifications' or 'Account'."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card repeats the '€0 delivery' information in both the image badge and the metadata line below it.",
+          "suggestion": "Show the delivery fee once, either as the badge or in the metadata row, to reduce redundancy."
+        }
+      ],
+      "summary": "The page renders cleanly overall, with consistent spacing, aligned text, and readable contrast. The only clipped elements (category chips, the third 'Fastest near you' card, and the bottom 'Popular' card) are excluded as intended scroll/viewport cropping. Two minor issues were found: an ambiguous top-right control and redundant delivery-fee information.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.99,
+          "confidence": 0.98
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 980,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006989,
+        "durationSeconds": 5.441868708000002
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_13",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "missing-element",
+          "description": "The top-right profile button is an empty grey circle with only a red dot, so the user's avatar or icon appears to be missing. The red dot is also unexplained, with no visible notification count.",
+          "suggestion": "Show a user avatar or profile icon in the circle, and add a count or label to the notification badge so its meaning is clear."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Several secondary text elements use light grey on white or light grey backgrounds, including the search placeholder, the delivery-fee lines, and the '(500+)' rating count. Their contrast may fall below WCAG AA guidance.",
+          "suggestion": "Darken these grey tones to meet at least a 4.5:1 contrast ratio against their backgrounds."
+        }
+      ],
+      "summary": "The page renders cleanly overall, with no overlapping elements, broken images, or misaligned sections. The only findings are minor: a possibly missing avatar in the top-right corner and some low-contrast grey text. Clipped carousel items and the cut-off card at the bottom were excluded as intended features.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 0.99).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 0.99
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 947,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006824,
+        "durationSeconds": 5.365576332999997
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_13",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "missing-element",
+          "description": "The top-right profile control is a blank gray circle with only a red dot, so it looks like a missing avatar image or placeholder.",
+          "suggestion": "Show the user's avatar or initials, or a proper profile icon, and give the control an accessible label that describes its purpose and any notification state."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "The search placeholder text 'Restaurants, dishes, groceries' and the secondary gray delivery-fee and metadata text have fairly low contrast against their light gray or white backgrounds.",
+          "suggestion": "Darken the placeholder and secondary text so it meets WCAG AA contrast ratios (at least 4.5:1 for normal text)."
+        }
+      ],
+      "summary": "The page renders cleanly overall with no major layout breaks. The only findings are minor: a possibly missing profile avatar and some low-contrast gray text. Clipped carousel items and the partially visible card at the bottom were excluded per the instructions.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.99,
+          "confidence": 0.98
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 831,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006244,
+        "durationSeconds": 4.673725249999996
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_14",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "In the 'Fastest near you' carousel, the Smash Bros Burgers card is vertically offset by roughly 28px. Its image top (about y=659) and title (about y=828) don't align with Green Bowl Poké (image top about y=631, title about y=800) or Trattoria Piccola, so the row looks misaligned.",
+          "suggestion": "Align all carousel cards to the same top edge by fixing the card container's vertical offset or margin, and make sure every card uses the same image height and text block structure."
+        }
+      ],
+      "summary": "The home screen is mostly well-structured. The one clear visual defect is that the Smash Bros Burgers card in the 'Fastest near you' carousel sits about 28px lower than its neighbours, so its image and title don't line up with the rest of the row. The clipped carousel items and the cut-off card at the bottom are intentional scroll affordances and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 0.99).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 0.99
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 1144,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007809000000000001,
+        "durationSeconds": 6.462311333999998
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_14",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "In the 'Fastest near you' row, the Smash Bros Burgers card is offset downward relative to the Green Bowl Poké and Trattoria cards. Its image top, title ('Smash Bros Burgers') and delivery fee sit about 28px lower, so the card titles and prices are misaligned across the row.",
+          "suggestion": "Make the carousel cards share the same top alignment and fixed height, so image, title and delivery fee baselines line up across all cards."
+        },
+        {
+          "priority": "minor",
+          "category": "styling",
+          "description": "The heart (favorite) buttons on the restaurant cards use inconsistent backgrounds. The Tokumaru card uses a light-translucent circle while the pizza card uses a darker, more opaque circle, so the control looks different from card to card.",
+          "suggestion": "Apply one consistent background style and size to the favorite button across all restaurant cards."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary gray text, such as the search placeholder, delivery fees and the '25–35 min' meta line, appears low in contrast against the white background, which may be hard to read for some users.",
+          "suggestion": "Darken the secondary text color to meet WCAG AA contrast (at least 4.5:1 for normal text)."
+        }
+      ],
+      "summary": "The page is largely well-structured, with consistent typography, a clear promo banner, and a tidy bottom navigation bar. The main visible defect is a vertical misalignment in the 'Fastest near you' row, where the Smash Bros Burgers card sits lower than its neighbors, so its title and delivery fee don't line up. A few minor styling and contrast points were also noted. Clipped carousel items and the partially visible card at the bottom were excluded as intended features.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1,
+        2
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 2,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 1034,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007259,
+        "durationSeconds": 5.684773666000001
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_14",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "layout",
+          "description": "In the 'Fastest near you' carousel, the cards are not top-aligned. 'Smash Bros Burgers' starts about 27px lower than 'Green Bowl Poké', so its image and title sit at different heights, which looks uneven.",
+          "suggestion": "Top-align the carousel items and give the image containers a fixed height and consistent vertical offset so the titles and delivery fees line up across cards."
+        }
+      ],
+      "summary": "Overall the page renders cleanly. The one visible defect is vertical misalignment among the cards in the 'Fastest near you' carousel. The clipped chip and carousel item at the right edge and the partially visible card at the bottom are intentional and were not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 762,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0005899,
+        "durationSeconds": 4.540230084000003
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_14",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "layout",
+          "description": "In the 'Fastest near you' row, the cards are vertically misaligned. The Green Bowl Poké image starts higher than the Smash Bros Burgers image, so their titles and delivery fees sit at different heights (about y=800 vs y=828).",
+          "suggestion": "Use a consistent card structure with fixed-height image containers and align text blocks to the same baseline across all cards in the row."
+        },
+        {
+          "priority": "minor",
+          "category": "styling",
+          "description": "The favorite (heart) button is styled inconsistently between cards. The Tokumaru Ramen Bar card shows a heart with no background, while the next card shows a heart on a dark circular backdrop.",
+          "suggestion": "Apply one consistent style for the favorite button (for example, a semi-transparent circular backdrop) across all restaurant cards so they read as the same component."
+        }
+      ],
+      "summary": "The home screen is largely well-structured, with a clear header, category chips, promo banner, and bottom navigation. The main visual defects are in the 'Fastest near you' row, where cards don't align, and in inconsistent favorite-button styling between the popular restaurant cards. The clipped 'Trattoria Piccola' item at the right edge is an intended horizontal-scroll affordance and is not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 1042,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007299,
+        "durationSeconds": 5.4358638339999965
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_14",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "layout",
+          "description": "In the 'Fastest near you' carousel, the Smash Bros Burgers card is vertically offset from the Green Bowl Poké card. Its image starts about 27px lower, and its title and delivery fee sit about 28px lower, so the row looks uneven.",
+          "suggestion": "Align the carousel cards to the top edge with consistent image heights and a shared top margin, so each image, title, and delivery fee sits on the same baseline."
+        }
+      ],
+      "summary": "The page is mostly well laid out. The main visible defect is a vertical misalignment in the 'Fastest near you' carousel: the Smash Bros Burgers card sits about 28px lower than the Green Bowl Poké card, so their images, time badges, and titles don't line up. The clipped carousel item and the cut-off card at the bottom are intentional scroll affordances and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 777,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0005974,
+        "durationSeconds": 4.729738750000004
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_15",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "The black home-indicator/gesture bar at the bottom of the screen overlaps the bottom navigation, partially covering the search icon and crowding the bookmark icon.",
+          "suggestion": "Add bottom safe-area padding so the navigation icons sit above the system gesture area, and keep the nav bar's icons fully visible and unobstructed."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary grey text (delivery fees, delivery times, the review count '(500+)', and the 'Ramen' category label) appears light against the white background, which may fall below recommended contrast ratios.",
+          "suggestion": "Darken the secondary text colour to meet at least WCAG AA contrast (4.5:1 for normal text)."
+        }
+      ],
+      "summary": "The page is largely well-structured, with clear hierarchy, consistent card layouts, and no major rendering failures. The main visual defect is a system gesture bar overlapping the bottom navigation icons. A minor contrast concern appears in the grey secondary text. Horizontally clipped carousel items and the partially visible bottom card were excluded as intentional scroll affordances.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.94, confidence 0.88).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.94,
+          "confidence": 0.88
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 1078,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007479,
+        "durationSeconds": 5.441895875000002
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_15",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "A black home-indicator bar is drawn over the bottom navigation bar, covering the search icon and crowding the bookmark icon. The search tab is partly obscured and looks broken.",
+          "suggestion": "Reserve bottom safe-area padding for the navigation bar so the system gesture indicator sits below the nav icons without overlapping them."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Bottom navigation items (home, search, orders, profile) show icons only, with no visible text labels.",
+          "suggestion": "Add short text labels under each icon, or confirm that the icons are clearly recognizable and provide accessible names."
+        }
+      ],
+      "summary": "The screen is mostly clean, with no broken images or misaligned cards. The main visual defect is in the bottom navigation, where a system home-indicator bar overlaps the search icon. The bottom nav icons also lack text labels. Clipped carousel items and the cut-off card at the bottom were excluded as intended features.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.89, confidence 0.78).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.89,
+          "confidence": 0.78
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 0.85,
+          "confidence": 0.7
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 936,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006769,
+        "durationSeconds": 5.147694082999995
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_15",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "A dark horizontal bar (likely the system gesture indicator) overlaps the search icon and sits on top of the bottom navigation, partly obscuring the search tab icon and making it look broken.",
+          "suggestion": "Add bottom padding or safe-area inset to the bottom navigation so the system gesture bar sits below the nav icons, and keep the search icon fully visible."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "The search placeholder text 'Restaurants, dishes, groceries' is light gray on a light gray background, which gives low contrast.",
+          "suggestion": "Darken the placeholder text color to meet at least a 4.5:1 contrast ratio against the input background."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "The bottom navigation icons have no visible text labels, so the home, search, orders, and account destinations are not clear.",
+          "suggestion": "Add short text labels under each bottom navigation icon."
+        }
+      ],
+      "summary": "The page is mostly well laid out. The main visual defect is in the bottom navigation bar, where a dark horizontal bar overlaps the search and bookmark icons. A few minor contrast and label concerns also exist. Clipped carousel items and the partially visible bottom card were excluded as intended features.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.90, confidence 0.79).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1,
+        2
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.9,
+          "confidence": 0.79
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 2,
+          "expectedIndex": null,
+          "probability": 0.67,
+          "confidence": 0.35
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 823,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006204,
+        "durationSeconds": 4.435533791999995
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_15",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "The black system home-indicator bar is drawn over the bottom navigation bar, overlapping the search icon and partially obscuring the saved/bookmark icon.",
+          "suggestion": "Reserve safe-area padding at the bottom of the navigation bar so the home indicator sits below the nav icons rather than on top of them."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary gray text (search placeholder, delivery fees, and time/meta labels) appears low in contrast against the white and light gray backgrounds.",
+          "suggestion": "Darken the secondary text color to meet at least WCAG AA contrast (4.5:1 for normal text)."
+        }
+      ],
+      "summary": "The page is mostly well laid out. The main visual defect is in the bottom navigation bar, where the system home indicator overlaps the search and saved icons. Secondary gray text on light backgrounds is also somewhat low in contrast. Clipped carousel items and cut-off cards at the viewport edges were treated as intended scrolling behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.90, confidence 0.80).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.9,
+          "confidence": 0.8
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 988,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007029,
+        "durationSeconds": 5.168756999999998
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_15",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "A dark horizontal home-indicator bar is drawn over the bottom navigation, partially covering the search icon and overlapping the saved/bookmark icon. The nav icons look collided and the search tab is hard to see or tap.",
+          "suggestion": "Keep the system home indicator in its own safe-area inset below the navigation bar, and add bottom padding so the nav icons are fully visible and unobstructed."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary grey text (delivery fees such as '€0.90 delivery', and the review count '(500+)') appears light grey on white, which may not meet WCAG AA contrast for small text.",
+          "suggestion": "Darken the secondary text color to at least a 4.5:1 contrast ratio against the white background."
+        }
+      ],
+      "summary": "The page is mostly well laid out, but the bottom navigation has a clear overlap defect: a dark bar sits on top of the search and saved icons. A minor contrast concern is also visible in the grey secondary text. Clipped carousel items and the cut-off card at the bottom were excluded as intended.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.93, confidence 0.86).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.93,
+          "confidence": 0.86
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 990,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007039,
+        "durationSeconds": 5.757093666999994
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_16",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary grey text, such as the delivery fees (e.g., '€0.90 delivery'), the review count '(500+)', and the search placeholder, appears light grey on white and may fall below recommended contrast ratios.",
+          "suggestion": "Darken the secondary text color to meet WCAG AA contrast (at least 4.5:1 for body text) while keeping a visual hierarchy."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card shows '€0 delivery' twice, once as a badge on the image and again in the metadata line, which is redundant.",
+          "suggestion": "Show the free-delivery information in only one place, or remove the duplicate from the metadata line."
+        }
+      ],
+      "summary": "The page is largely well-structured with no obvious rendering breaks, overlaps, or misalignments. Clipped carousel items and the cut-off card at the bottom were excluded per the instructions. The only findings are minor readability and content-consistency concerns.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": false,
+          "matchedReportedIndexes": [],
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        0,
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 1017,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007174,
+        "durationSeconds": 5.427759708000005
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_16",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "The 'Pizza' category chip is selected, but the 'Popular right now' section leads with Tokumaru Ramen Bar and shows no pizza-specific results above it. The filter state and the displayed content appear inconsistent.",
+          "suggestion": "Confirm the active filter is applied to all sections, or update the chip selection to reflect the content shown. Ensure the 'Popular right now' list refreshes when a category is selected."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary gray text, such as the delivery fees under the 'Fastest near you' cards, the '(500+)' review count, the '25–35 min' and '€0 delivery' metadata, and the search placeholder, appears light gray on white and may fall below recommended contrast ratios.",
+          "suggestion": "Darken these secondary text colors to meet WCAG AA contrast (at least 4.5:1 for normal text)."
+        }
+      ],
+      "summary": "The page is largely well-structured with no obvious rendering breaks, overlaps, or misaligned elements. The main concerns are a filter state that doesn't match the content shown and some low-contrast secondary text. Edge-clipped carousel items and the cut-off card at the bottom were excluded as intended.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 1053,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007354,
+        "durationSeconds": 5.581651374999994
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_16",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "The inactive bottom navigation labels (Search, Orders, Profile) and icons appear in light gray on white, which may fall below the recommended 4.5:1 contrast ratio for small text.",
+          "suggestion": "Darken the inactive nav label and icon color to meet WCAG AA contrast, while keeping the active green state distinct."
+        }
+      ],
+      "summary": "The page renders cleanly with no obvious layout breakage, overlapping elements, or missing images. The only findings are minor: the inactive bottom navigation labels are light gray and may have borderline contrast. The clipped category chip, clipped carousel card, and cut-off pizza card at the bottom were excluded as intentional scroll behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": false,
+          "matchedReportedIndexes": [],
+          "reasoning": "Jev matched no reported issue; closest was R0 (p=0.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        0
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 973,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006954,
+        "durationSeconds": 5.361319959
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_16",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "The 'Pizza' category chip is selected, but the 'Popular right now' feed shows Tokumaru Ramen Bar first and the other visible content is not pizza-related. The selected filter does not appear to be reflected in the results.",
+          "suggestion": "Apply the Pizza filter to all sections, or reset the selection to 'All' when showing mixed content. Make the active filter state match the displayed results."
+        },
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The Tokumaru Ramen Bar card shows '€0 delivery' twice, once as a badge on the image and again in the metadata line below.",
+          "suggestion": "Show the delivery fee once, either as the image badge or in the metadata row, to reduce redundancy."
+        },
+        {
+          "priority": "minor",
+          "category": "styling",
+          "description": "The selected 'Pizza' chip uses near-black fill, which clashes with the green accent used for the promo banner, 'See all' links, and the active nav item.",
+          "suggestion": "Use the brand green for the selected chip state so the color system stays consistent."
+        }
+      ],
+      "summary": "The page is mostly clean and well laid out. The main concern is that the Pizza filter chip is selected, but the 'Popular right now' section leads with a ramen restaurant, so the filter may not be applied. Smaller issues include a duplicated delivery-fee label and a dark selected chip that doesn't match the green brand accent. Clipped carousel items and the cut-off card at the bottom were excluded as intended.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1,
+        2
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 2,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 1177,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007974,
+        "durationSeconds": 6.043733750000007
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_16",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "The 'Pizza' category chip is selected, yet the 'Fastest near you' and 'Popular right now' sections show non-pizza restaurants (Green Bowl Poké, Smash Bros Burgers, Tokumaru Ramen Bar). The filter state and the displayed content are inconsistent.",
+          "suggestion": "Filter the restaurant sections by the selected category, or reset the chip selection to 'All' when the content is not filtered, so the UI state matches the results shown."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary gray text, such as the delivery fees (e.g., '€0.90 delivery'), the 'DELIVER TO' label, and the rating count '(500+)', appears light gray on white and may fall below recommended WCAG contrast ratios for small text.",
+          "suggestion": "Darken the secondary text color to meet at least a 4.5:1 contrast ratio against the white background."
+        }
+      ],
+      "summary": "The page is largely clean with no clear layout breakage. The main concern is a logic mismatch: the Pizza filter is active, but the listings shown are Poké, Burgers, and Ramen. Secondary gray text also has low contrast. Clipped carousel items and the cut-off card at the bottom were excluded per the instructions.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 1202,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0008099,
+        "durationSeconds": 6.012658916999993
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_17",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "The bottom navigation shows 'Profile' as the active tab (green icon and label), but the screen displays the Home feed. The 'Home' tab is not highlighted, so the active state contradicts the content.",
+          "suggestion": "Set the active state to match the current screen: highlight 'Home' while the feed is shown, and only highlight 'Profile' on the profile screen."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary metadata text (e.g., '25–35 min', '€0 delivery', 'Ramen', and the delivery fees under the carousel cards) is light gray on a white background, which may fall below recommended contrast ratios and be hard to read.",
+          "suggestion": "Darken the secondary gray text to meet WCAG AA contrast (at least 4.5:1 for normal text)."
+        }
+      ],
+      "summary": "The page is mostly well laid out. Spacing, imagery, and the promo banner are consistent. The main defect is a navigation state mismatch: the home feed is displayed while the Profile tab is highlighted. A minor low-contrast issue also appears in the gray metadata text. Edge-clipped carousels and the cut-off card at the bottom were excluded as intended features.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 946,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006819,
+        "durationSeconds": 4.939437124999997
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_17",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "The bottom navigation highlights the 'Profile' tab in green, but the screen shows the Home feed. The active tab state does not match the visible content, which is confusing and suggests a navigation or state bug.",
+          "suggestion": "Highlight the 'Home' tab when the home feed is displayed, and make sure the active tab updates whenever the user navigates between sections."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "The inactive bottom navigation labels ('Home', 'Search', 'Orders') and their icons are light gray on white, which gives low color contrast and may be hard to read.",
+          "suggestion": "Darken the inactive tab label and icon color to meet at least WCAG AA contrast (4.5:1 for text)."
+        }
+      ],
+      "summary": "The home screen layout is largely intact: the header, search, chips, promo banner, and restaurant cards render cleanly. The main defect is a state mismatch in the bottom navigation, and there is a minor contrast concern with the inactive tab labels. Clipped carousel items and the partially visible card at the bottom were excluded as intended behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 971,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006944,
+        "durationSeconds": 5.13930733299999
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_17",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "The bottom navigation highlights the 'Profile' tab in green, while the displayed screen is the Home feed. The Home tab is shown in gray, so the active-tab state does not match the current screen.",
+          "suggestion": "Sync the bottom navigation's active state with the current route so the Home tab is highlighted on the home screen and Profile is highlighted only when the Profile screen is open."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Several secondary text elements are light gray on white, including delivery fees, the '25–35 min' and '(500+)' metadata, and the inactive bottom tab labels. Their contrast is likely below the WCAG AA 4.5:1 threshold for small text.",
+          "suggestion": "Darken the secondary gray text (for example to about #6B6B6B or darker) so it meets WCAG AA contrast on white backgrounds."
+        }
+      ],
+      "summary": "The home screen renders cleanly overall: the layout, cards, promo banner, and images are well aligned. The main defect is a navigation state mismatch, where the Profile tab is highlighted while the Home screen is displayed. Secondary gray text is also lighter than ideal for readability. Edge-clipped carousel and chip items and the cut-off card at the bottom were intentionally excluded as expected behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 1062,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007399,
+        "durationSeconds": 5.329455540999988
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_17",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "functionality",
+          "description": "The bottom navigation highlights 'Profile' in green, but the visible screen is the Home feed. The active tab state does not match the displayed content.",
+          "suggestion": "Set the active navigation state to 'Home' when the home screen is displayed, and reserve the 'Profile' highlight for the profile view."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary text such as the light gray delivery fees (e.g., '€0.90 delivery'), the review count '(500+)', and the inactive navigation labels appears to be a light gray on white with relatively low contrast.",
+          "suggestion": "Darken the secondary gray text to meet WCAG AA contrast (at least 4.5:1 for body-size text) so it remains readable in bright conditions."
+        }
+      ],
+      "summary": "The page renders cleanly overall: no overlapping text, broken images, or misaligned components are visible. The clipped chips, carousel card, and bottom card are intentional scroll affordances and were not reported. Two minor issues were found: a navigation state mismatch and some low-contrast secondary text.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 1018,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007179,
+        "durationSeconds": 5.226634917000003
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_17",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "The bottom navigation shows the Profile tab as active (green), but the screen displays the Home feed. The Home tab is not highlighted, so the selected state does not match the content.",
+          "suggestion": "Highlight the Home tab when the home feed is displayed, and make sure the active tab state updates on navigation."
+        },
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary gray text (delivery fees in the Fastest near you row, the 'Restaurants, dishes, groceries' placeholder, the inactive bottom nav labels, and the '(500+)' rating count) has low contrast against white or light gray backgrounds.",
+          "suggestion": "Darken these gray tones to meet at least WCAG AA contrast of 4.5:1 for normal text."
+        }
+      ],
+      "summary": "The home screen renders cleanly overall with no overlapping or broken elements. The main defects are a navigation state mismatch, where the Profile tab is highlighted while Home content is shown, and low-contrast gray text in several places. Clipped carousel items and the partially visible bottom card were excluded as intended.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [
+        1
+      ],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        },
+        {
+          "reportedIndex": 1,
+          "expectedIndex": null,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 1011,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0007144,
+        "durationSeconds": 5.386013707999998
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_18",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary text such as the delivery fees (e.g., '€0.90 delivery'), the rating count '(500+)', and the light gray placeholder in the search bar appears to be light gray on white, which may fall below recommended WCAG contrast ratios.",
+          "suggestion": "Darken the secondary gray text (e.g., to around #6B6B6B or darker on white) to meet at least a 4.5:1 contrast ratio."
+        }
+      ],
+      "summary": "The page renders cleanly overall: the status bar, header, search, category chips, promo banner, carousels, and bottom navigation are aligned and legible, with no overlapping or misplaced elements. The only visual concern is low-contrast secondary text. The clipped chips, carousel items, and bottom card were excluded as intentional scroll affordances.",
+      "expected": [],
+      "extraReportedIndexes": [
+        0
+      ],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 842,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006299,
+        "durationSeconds": 5.163312958000001
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_18",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary text such as the search placeholder, the delivery fee and time lines under restaurant names, and the inactive bottom navigation labels (Search, Orders, Profile) is light gray on white, which may fall below recommended contrast ratios.",
+          "suggestion": "Darken these gray tones to meet WCAG AA contrast (at least 4.5:1 for normal text) while keeping the visual hierarchy."
+        }
+      ],
+      "summary": "The page renders cleanly overall. Layout, images, badges, and navigation are aligned and readable. The only notable concern is low-contrast light gray secondary text. The clipped carousel items and the partially visible card at the bottom were excluded as intended scroll and viewport behavior.",
+      "expected": [],
+      "extraReportedIndexes": [
+        0
+      ],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 718,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0005679,
+        "durationSeconds": 4.897961917000001
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_18",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary text such as the delivery fees (e.g., '€0.90 delivery'), the rating count '(500+)', and the 'DELIVER TO' label is a light gray on white and may fall below recommended WCAG contrast ratios.",
+          "suggestion": "Darken the secondary gray text (roughly #6B6B6B or darker on white) to meet at least a 4.5:1 contrast ratio."
+        }
+      ],
+      "summary": "The page renders cleanly overall: the status bar, header, search, promo banner, carousels, and bottom navigation are aligned and legible. The only visible concern is low-contrast light gray secondary text. The clipped chips, carousel items, and bottom card were excluded as intentional scroll affordances.",
+      "expected": [],
+      "extraReportedIndexes": [
+        0
+      ],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 761,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0005894,
+        "durationSeconds": 4.837329209000001
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_18",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary text such as the delivery fees (e.g., '€0.90 delivery'), the meta line under 'Tokumaru Ramen Bar' ('25–35 min • €0 delivery • Ramen'), and the review count '(500+)' is light gray on white, which may fall below recommended WCAG contrast ratios.",
+          "suggestion": "Darken the secondary text color to meet at least a 4.5:1 contrast ratio against the white background."
+        },
+        {
+          "priority": "minor",
+          "category": "styling",
+          "description": "The inactive bottom navigation labels and icons ('Search', 'Orders', 'Profile') are a light gray that is hard to distinguish from the background.",
+          "suggestion": "Use a slightly darker gray for inactive tab items so they remain visible while keeping the active green state clearly distinguishable."
+        }
+      ],
+      "summary": "The page looks largely intact. Layout, spacing, images, badges, and the bottom navigation render cleanly. The only items I found are minor contrast concerns with light gray secondary text. The clipped chip row, clipped carousel card, and cut-off card at the bottom were excluded as intended scroll and viewport behavior.",
+      "expected": [],
+      "extraReportedIndexes": [
+        0,
+        1
+      ],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 961,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006894,
+        "durationSeconds": 5.85224725
+      }
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "series": "claude-haiku-5-5",
+      "imageId": "img_18",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "accessibility",
+          "description": "Secondary gray text (delivery fees such as '€2.40 delivery', the '(500+)' review count, and the '25–35 min' meta line) appears light gray on white, which may fall below the recommended 4.5:1 contrast ratio for small text.",
+          "suggestion": "Darken the secondary text color to meet WCAG AA contrast for small text while keeping the visual hierarchy."
+        },
+        {
+          "priority": "minor",
+          "category": "styling",
+          "description": "The time badges (e.g., '15–25 min', '20–30 min') sit over the food photos with a semi-transparent white background, which slightly obscures the bottom edge of the images and makes the badge placement feel inconsistent with the '€0 delivery' and '-20%' badges placed at the top-left of the larger cards.",
+          "suggestion": "Standardize badge placement across card types, for example by placing all time and promo badges in the same corner of each card image."
+        }
+      ],
+      "summary": "The page renders cleanly overall: header, search, category chips, promo banner, carousels, and bottom navigation are aligned and legible. The only findings are minor. The clipped last chip and carousel item and the cut-off pizza card were excluded as intentional scroll affordances.",
+      "expected": [],
+      "extraReportedIndexes": [
+        0,
+        1
+      ],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 954,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.0006859,
+        "durationSeconds": 5.904303959000001
       }
     },
     {

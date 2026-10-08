@@ -1,0 +1,40 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "An icon is missing from the top right corner, only a red dot is visible"
+  ],
+  "reportedIssues": [
+    "The top-right circular control is an empty gray circle with only a small red dot. It is unclear whether it is a profile avatar that failed to load or a notification button, and it has no icon or label.",
+    "The Tokumaru Ramen Bar card repeats the '€0 delivery' information in both the image badge and the metadata line below it."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Jev matched R0 (p=0.99, confidence 0.98)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

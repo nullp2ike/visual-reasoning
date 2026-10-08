@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-5-5",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-08T17:02:51.201Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well laid out. Spacing, imagery, and the promo banner are consistent. The main defect is a navigation state mismatch: the home feed is displayed while the Profile tab is highlighted. A minor low-contrast issue also appears in the gray metadata text. Edge-clipped carousels and the cut-off card at the bottom were excluded as intended features.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom navigation shows 'Profile' as the active tab (green icon and label), but the screen displays the Home feed. The 'Home' tab is not highlighted, so the active state contradicts the content.",
+        "suggestion": "Set the active state to match the current screen: highlight 'Home' while the feed is shown, and only highlight 'Profile' on the profile screen."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary metadata text (e.g., '25–35 min', '€0 delivery', 'Ramen', and the delivery fees under the carousel cards) is light gray on a white background, which may fall below recommended contrast ratios and be hard to read.",
+        "suggestion": "Darken the secondary gray text to meet WCAG AA contrast (at least 4.5:1 for normal text)."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 946,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0006819,
+    "durationSeconds": 4.939437124999997
+  }
+}

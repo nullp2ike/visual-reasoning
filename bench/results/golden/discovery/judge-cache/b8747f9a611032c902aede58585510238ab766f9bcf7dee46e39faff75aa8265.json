@@ -1,0 +1,27 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The '-100%' badge on the pizza card has no context (such as a discount label or the item it applies to), so its meaning is unclear.",
+    "The Tokumaru Ramen Bar card repeats '€0 delivery' both as the top-left badge and in the metadata line below the title.",
+    "The grey placeholder text in the search field ('Restaurants, dishes, groceries') has fairly low contrast against the light grey input background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "Report 0 mentions the same badge but flags missing context, not the displayed −100% value."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1,
+      2
+    ]
+  }
+}

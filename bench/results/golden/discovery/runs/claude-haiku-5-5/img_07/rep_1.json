@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-5-5",
+  "provider": "anthropic",
+  "imageId": "img_07",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-08T17:02:08.210Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen is mostly clean and well laid out. The most visible defect is a loading spinner stuck over the Tokumaru Ramen Bar hero image. Minor issues include redundant delivery-fee information and low-contrast grey secondary text. Clipped carousel items and the cut-off card at the bottom are intentional scroll affordances and are not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "A circular loading spinner is displayed in the center of the Tokumaru Ramen Bar hero image, suggesting the image or card failed to finish loading and looks stuck.",
+        "suggestion": "Show the loaded food photo, or hide the spinner once the image has loaded. Add a timeout and fallback placeholder if the image request fails."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The Tokumaru Ramen Bar card shows '€0 delivery' twice, once as a badge on the image and again in the meta line below the title.",
+        "suggestion": "Show the free-delivery information in only one place to reduce redundancy."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary text such as the search placeholder, delivery fees, and '25–35 min' meta text is light grey on white or light grey backgrounds, which may fall below recommended contrast ratios.",
+        "suggestion": "Darken the grey secondary text to meet WCAG AA contrast of at least 4.5:1 for normal-size text."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 1085,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0007514,
+    "durationSeconds": 5.272346458
+  }
+}

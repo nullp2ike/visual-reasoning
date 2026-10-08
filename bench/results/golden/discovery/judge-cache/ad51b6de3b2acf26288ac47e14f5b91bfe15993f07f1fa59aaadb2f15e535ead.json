@@ -1,0 +1,26 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The 'Pizza' category chip is selected, yet the 'Fastest near you' and 'Popular right now' sections show non-pizza restaurants (Green Bowl Poké, Smash Bros Burgers, Tokumaru Ramen Bar). The filter state and the displayed content are inconsistent.",
+    "Secondary gray text, such as the delivery fees (e.g., '€0.90 delivery'), the 'DELIVER TO' label, and the rating count '(500+)', appears light gray on white and may fall below recommended WCAG contrast ratios for small text."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the selected Pizza filter displaying non-pizza restaurants, matching the inconsistent feed content defect."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ]
+  }
+}

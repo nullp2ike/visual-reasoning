@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-5-5",
+  "provider": "anthropic",
+  "imageId": "img_10",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-08T17:02:22.333Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders cleanly overall with no clear layout breakage. Findings are limited to a duplicated restaurant card and some low-contrast gray text. The clipped chip and carousel items at the right edge and the partially visible pizza card at the bottom were excluded as intended scroll/viewport behavior.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The two 'Fastest near you' cards are identical (same image, name 'Green Bowl Poké', and €0.90 delivery fee), which looks like duplicated placeholder or data.",
+        "suggestion": "Verify the data source and show distinct restaurants, or remove the duplicate entry."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary gray text (the 'DELIVER TO' label, the search placeholder, and the delivery fee and time metadata) appears light gray on a white background, which may fall below recommended WCAG contrast ratios.",
+        "suggestion": "Darken the secondary text colors to meet at least a 4.5:1 contrast ratio against the white background."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 851,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0006344,
+    "durationSeconds": 4.379515625
+  }
+}

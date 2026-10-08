@@ -1,0 +1,26 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Loading spinner is shown on top of already loaded content"
+  ],
+  "reportedIssues": [
+    "A circular loading spinner is displayed in the center of the Tokumaru Ramen Bar hero image, making it look like the image failed to load or is stuck in a loading state.",
+    "The Tokumaru Ramen Bar card shows delivery information twice: a '€0 delivery' badge on the image and '€0 delivery' again in the metadata line below."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "The reported circular spinner overlays the already visible hero image, matching a loading indicator shown on loaded content."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ]
+  }
+}

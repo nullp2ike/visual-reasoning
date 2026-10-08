@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-5-5",
+  "provider": "anthropic",
+  "imageId": "img_02",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-08T17:01:52.447Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well laid out, with clean cards, consistent spacing, and clear navigation. The main visible defect is a broken delivery fee string on the Smash Bros Burgers card. A few minor contrast and text-legibility concerns also stand out. The clipped carousel item and the cut-off card at the bottom were excluded as intentional scroll behavior.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The Smash Bros Burgers card shows '€NaN delivery', a 'Not a Number' value that indicates a failed price calculation or missing data.",
+        "suggestion": "Fix the delivery fee calculation or data source so a valid amount is shown, and add a fallback such as 'Delivery fee unavailable' when the value cannot be computed."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary gray text, such as the delivery fees under the 'Fastest near you' cards and the '(500+)' rating count, appears low contrast against the white background.",
+        "suggestion": "Darken the secondary text color to meet WCAG AA contrast of at least 4.5:1 for normal text."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 841,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0006294,
+    "durationSeconds": 5.237312083999999
+  }
+}

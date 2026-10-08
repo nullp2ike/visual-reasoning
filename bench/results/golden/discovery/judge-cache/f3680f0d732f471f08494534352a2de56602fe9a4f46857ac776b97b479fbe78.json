@@ -1,0 +1,26 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant title 'Tokumaru Ramen' renders its final letter as a malformed glyph (it looks like 'Rameı'), suggesting a font or character-encoding rendering problem.",
+    "Secondary text such as delivery fees ('€0.90 delivery'), the rating count '(500+)', and the 'Deliver to' label is light gray on white, which may fall below recommended contrast ratios, especially at small sizes."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Report 0 describes the restaurant title's final visible character as malformed, corresponding to the heading being incorrectly rendered as “Ramei” without the intended continuation."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ]
+  }
+}

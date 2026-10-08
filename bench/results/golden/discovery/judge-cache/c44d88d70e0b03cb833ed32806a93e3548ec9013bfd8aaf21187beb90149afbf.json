@@ -1,0 +1,26 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant title 'Tokumaru Ramen' renders its final 'n' as a dotless-i-like glyph ('Rameı'), which looks like a font or character-encoding rendering error.",
+    "The search placeholder text and secondary metadata (delivery fees, delivery times) are light gray on white or light gray backgrounds, which may fall below recommended contrast ratios."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both describe the restaurant heading being truncated or rendered abnormally at the end of the word Ramen ('Ramei' vs 'Rameı')."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ]
+  }
+}

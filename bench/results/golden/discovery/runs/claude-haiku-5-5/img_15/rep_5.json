@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-5-5",
+  "provider": "anthropic",
+  "imageId": "img_15",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-08T17:02:45.399Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well laid out, but the bottom navigation has a clear overlap defect: a dark bar sits on top of the search and saved icons. A minor contrast concern is also visible in the grey secondary text. Clipped carousel items and the cut-off card at the bottom were excluded as intended.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "A dark horizontal home-indicator bar is drawn over the bottom navigation, partially covering the search icon and overlapping the saved/bookmark icon. The nav icons look collided and the search tab is hard to see or tap.",
+        "suggestion": "Keep the system home indicator in its own safe-area inset below the navigation bar, and add bottom padding so the nav icons are fully visible and unobstructed."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary grey text (delivery fees such as '€0.90 delivery', and the review count '(500+)') appears light grey on white, which may not meet WCAG AA contrast for small text.",
+        "suggestion": "Darken the secondary text color to at least a 4.5:1 contrast ratio against the white background."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 990,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0007039,
+    "durationSeconds": 5.757093666999994
+  }
+}

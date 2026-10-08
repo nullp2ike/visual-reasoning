@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-5-5",
+  "provider": "anthropic",
+  "imageId": "img_06",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-08T17:02:07.412Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders cleanly with no obvious layout breakage, overlapping elements, missing images, or misaligned components. The only items I'd flag are minor: some secondary gray text and icons are low contrast, and delivery fee information is repeated. The clipped chip row, clipped restaurant card at the right edge, and partially visible card at the bottom are intentional scroll affordances and were not reported.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary gray text (delivery fees such as '€0.90 delivery', the '(500+)' review count, and the inactive bottom nav labels 'Search', 'Orders', 'Profile') appears to be light gray on white, which may fall below WCAG AA contrast ratios.",
+        "suggestion": "Darken the secondary text and inactive nav label colors to meet at least a 4.5:1 contrast ratio against the white background."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The Tokumaru Ramen Bar card shows '€0 delivery' both as a badge on the image and again in the metadata line below, which is redundant.",
+        "suggestion": "Show the free delivery information in only one place, such as the image badge or the metadata line."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 937,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0006774,
+    "durationSeconds": 4.992130874999999
+  }
+}

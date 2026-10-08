@@ -1,0 +1,25 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The Tokumaru Ramen Bar meta line repeats delivery information already shown in the '€0 delivery' badge on the card image.",
+    "The '−100%' badge on the pizza card has no context about what it discounts (item price, delivery fee, or the whole order)."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "The report mentions the same badge but complains about missing discount context, not that it shows −100%."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1
+    ]
+  }
+}

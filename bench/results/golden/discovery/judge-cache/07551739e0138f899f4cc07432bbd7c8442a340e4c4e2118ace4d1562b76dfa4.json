@@ -1,0 +1,26 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The Tokumaru Ramen Bar meta line repeats delivery information already shown in the '€0 delivery' badge on the card image.",
+    "The '−100%' badge on the pizza card has no context about what it discounts (item price, delivery fee, or the whole order)."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          1
+        ],
+        "reasoning": "Both report the anomalous '−100%' discount badge on the food card."
+      }
+    ],
+    "extraReportedIndexes": [
+      0
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-5-5",
+  "provider": "anthropic",
+  "imageId": "img_11",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-08T17:02:28.388Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders cleanly overall with no overlapping, misaligned, or broken elements. Carousel and card clipping at the screen edges and the bottom viewport cutoff are intentional and excluded. The only findings are minor content and redundancy issues.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The Tokumaru Ramen Bar card shows delivery information twice: a '€0 delivery' badge on the image and '€0 delivery' again in the metadata line below.",
+        "suggestion": "Remove the duplicate delivery fee from either the image badge or the metadata line so the card shows it once."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The pizza card's image badge reads '−100%', which is an unusual or possibly placeholder discount label with no visible restaurant name or context.",
+        "suggestion": "Verify the promotional data. If the discount is real, make it clearer (e.g., 'Free item' or a specific offer); if not, hide the badge."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Delivery fee formatting is inconsistent: some cards show '€0.90 delivery' and '€2.40 delivery' while the popular card shows '€0 delivery', with no visible currency-precision standard.",
+        "suggestion": "Apply a consistent price format across all delivery fee labels, such as always showing two decimals (€0.00)."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 1072,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0007449000000000001,
+    "durationSeconds": 6.010572874999998
+  }
+}

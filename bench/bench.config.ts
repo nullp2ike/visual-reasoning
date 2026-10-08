@@ -67,6 +67,7 @@ export const benchConfig: BenchConfig = {
     "claude-sonnet-5-5",
     "claude-sonnet-5",
     "claude-sonnet-4-6",
+    "claude-haiku-5-5",
     "claude-haiku-4-5",
     // OpenAI: GPT-6 Astra, GPT-6.1 Sol, GPT-6 Sol/Luna, flagship / mini + 5.6 variants.
     // Astra is gated behind OpenAI's Trusted Access Program; keys without
@@ -113,6 +114,12 @@ export const benchConfig: BenchConfig = {
     // default even with no effort configured (~370-814 reasoning tokens/call),
     // so its cost per run sits above the headline $1.25/$4.25 rate suggests.
     "meta/muse-spark-1.3",
+    // Muse Spark 1.3's data-sharing tier: the same model at $0.10/$0.20 per MTok,
+    // because Meta uses every submitted screenshot for product improvement.
+    // Sweeping a private dataset with the default roster sends its screenshots
+    // to Meta too; pass `--models` without it there. Returns HTTP 404 until the
+    // OpenRouter account allows training endpoints at openrouter.ai/settings/privacy.
+    "meta/muse-spark-1.3-contributor",
     "x-ai/grok-4.7",
     "x-ai/grok-4.6",
     "x-ai/grok-4.5",

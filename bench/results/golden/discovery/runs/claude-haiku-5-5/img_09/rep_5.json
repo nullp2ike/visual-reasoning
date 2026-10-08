@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-haiku-5-5",
+  "provider": "anthropic",
+  "imageId": "img_09",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-08T17:02:20.451Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely visually intact: the layout is clean, images load, and the navigation and cards are aligned. The only clear defect is a text rendering glitch in the 'Tokumaru Ramen' title. Light gray secondary text is a possible minor contrast concern. Clipped carousel items and the partially visible card at the bottom were excluded as intentional.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The restaurant title 'Tokumaru Ramen' renders with a malformed final character that looks like 'Rameı' (dotless i), so the name appears misspelled.",
+        "suggestion": "Check the font's glyph support for the 'n' character or the text encoding, and confirm the title string is 'Tokumaru Ramen' in the source data."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary gray text (delivery fees, the '(500+)' review count, and the '25–35 min' metadata) is light gray on a white background, which may fall below recommended contrast ratios.",
+        "suggestion": "Darken the secondary text color to meet at least a 4.5:1 contrast ratio against white."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 943,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0006804,
+    "durationSeconds": 5.136589417000003
+  }
+}

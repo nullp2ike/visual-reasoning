@@ -1,0 +1,26 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Delivery fee shows €NaN"
+  ],
+  "reportedIssues": [
+    "The Smash Bros Burgers card displays '€NaN delivery' instead of a valid delivery fee, indicating a failed number calculation or missing data.",
+    "The Tokumaru Ramen Bar card shows '€0 delivery' twice, once as a badge on the image and again in the metadata line, which is redundant."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes a card displaying an invalid €NaN delivery fee."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ]
+  }
+}
