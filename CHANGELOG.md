@@ -12,7 +12,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
-- **`meta/muse-spark-1.3-contributor` is now in the bench roster**, which both the discovery and assertion benches use when `--models` is omitted. It had been swept and scored on `golden` by naming it explicitly, so its results were already tracked, but scoring with the roster alone dropped its rows. It is the data-sharing tier: Meta uses every screenshot sent through it for product improvement, so a default-roster sweep of a private dataset now sends that dataset's screenshots to Meta as well. Pass `--models` without it for `rsi` or any dataset you would not share. The library itself is unchanged: the slug still has no named constant and is never a default.
+- **`meta/muse-spark-1.3-contributor` is now in the bench roster**, which the discovery bench uses when `--models` is omitted. It had been swept and scored on `golden` by naming it explicitly, so its results were already tracked, but scoring with the roster alone dropped its rows. It is the data-sharing tier: Meta uses every screenshot sent through it for product improvement, so a default-roster sweep of a private dataset now sends that dataset's screenshots to Meta as well. Pass `--models` without it for any dataset you would not share. The library itself is unchanged: the slug still has no named constant and is never a default.
+
+### Removed
+
+- **The assertion-accuracy benchmark** (`pnpm assertion:run` / `assertion:report`, `bench/assertion/`), together with its results under `bench/results/golden/assertion/` and its ground truth, `bench/datasets/golden/assertions_per_file.md`. Its leaderboard had gone stale: every tracked run predated the reworded `elementsVisible()` prompt, so a fresh report held only the newest model. It will come back in a different form. The defect-discovery benchmark is unchanged, and the library's `elementsVisible()` / `elementsHidden()` are unaffected.
 
 ## [0.26.0] - 2026-10-02
 

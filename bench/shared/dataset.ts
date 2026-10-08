@@ -34,9 +34,8 @@ export interface Dataset {
 
 /**
  * Dataset ids present on disk, in display order. `requiredFile` is the
- * ground-truth file a directory must contain to count as a dataset: the
- * discovery bench looks for `issues_per_file.md`, the assertion bench for
- * `assertions_per_file.md`, and a directory may hold both.
+ * ground-truth file a directory must contain to count as a dataset; the
+ * discovery bench looks for `issues_per_file.md`.
  */
 export function listDatasetIds(requiredFile: string = ISSUES_FILE): string[] {
   if (!existsSync(DATASETS_DIR)) return [];
@@ -63,9 +62,9 @@ export function datasetFrom(idOrPath: string): Dataset {
 
 /**
  * Verify a dataset directory carries the ground-truth file the caller needs,
- * and fail with the list of directories that do. Parameterised so a second
- * harness (see bench/assertion/) can require its own ground-truth file without
- * duplicating this resolution logic.
+ * and fail with the list of directories that do. Parameterised so another
+ * harness can require its own ground-truth file without duplicating this
+ * resolution logic.
  */
 export function assertDatasetHasFile(
   dataset: Dataset,

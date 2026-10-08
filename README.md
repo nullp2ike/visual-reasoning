@@ -705,19 +705,11 @@ The site carries the defect-discovery leaderboard, a screenshot × model matrix 
 can drill into for any individual answer, and the same runs graded independently by
 five different judges so you can see where the grading itself is contested.
 
-Two benchmarks run against the same screenshots, answering different questions:
-
-|                | Defect discovery                                          | Assertion accuracy                                                  |
-| -------------- | --------------------------------------------------------- | ------------------------------------------------------------------- |
-| **Asks**       | "What looks visually broken on this page?" — no hints     | One claim per element, via `elementsVisible()` / `elementsHidden()` |
-| **Answer**     | Free prose; the model chooses what to report              | One boolean per element                                             |
-| **Graded by**  | An LLM judge matching reported issues to seeded ones      | Deterministically, against the ground truth                         |
-| **Headline**   | Recall of seeded defects, against extras invented per run | Accuracy, including on elements that are genuinely absent           |
-| **Fails when** | A defect is overlooked, or invented on a clean page       | The model agrees with a claim that is false                         |
-
-The two failure modes cost a test suite differently: a missed defect is a bug that
-ships, a false assertion is a test that passes when it should not. A model can be
-strong at one and weak at the other, so they do not share a leaderboard.
+The benchmark asks each model one open question — "What looks visually broken on
+this page?" — with no hints, and an LLM judge matches what it reports against the
+defects seeded into each screenshot. The headline is recall of those defects,
+weighed against the extras a model invents per run: a missed defect is a bug that
+ships, and an invented one is noise someone has to triage.
 
 ### The `golden` dataset
 
@@ -729,8 +721,7 @@ breakage.
 
 Current coverage, at `medium` effort with 5 repeats per cell:
 
-- **Discovery**: 38 model/effort/fidelity series over 3,420 graded runs
-- **Assertion**: 13 series over 1,170 runs and 33,016 individual element answers
+- 38 model/effort/fidelity series over 3,420 graded runs
 
 A few results worth knowing before you choose a default:
 
@@ -743,10 +734,7 @@ A few results worth knowing before you choose a default:
 
 Recall is not the whole picture. `claude-sonnet-5-5` matches the Fable tier on
 recall but reports 2.81 extras per run against `gpt-6.1-sol`'s 0.02 — for
-open-ended discovery that is a lot of noise to triage, while for targeted
-assertions it costs nothing. On the assertion benchmark the spread is far tighter:
-the top models cluster at 98% accuracy, but getting _every_ element in a run right
-is much harder — `claude-opus-5` leads at 62%.
+open-ended discovery that is a lot of noise to triage.
 
 Full methodology, how to run a sweep, and how to add your own dataset:
 [`bench/README.md`](bench/README.md).

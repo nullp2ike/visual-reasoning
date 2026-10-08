@@ -1,16 +1,13 @@
 # Benchmark datasets
 
-A **dataset** is a directory of screenshots plus ground truth about them. Which
-ground-truth file it carries decides which benchmark can use it: [defect
+A **dataset** is a directory of screenshots plus ground truth about them. [Defect
 discovery](../discovery/README.md) needs `issues_per_file.md` (what is wrong with
-each screenshot) and `prompt.md` (the question put to the models), [assertion accuracy](../assertion/README.md) needs
-`assertions_per_file.md` (which elements are there and which are not). One
-directory may carry both, and the two benchmarks keep their results apart.
+each screenshot) and `prompt.md` (the question put to the models).
 
 Datasets are tracked, so the ground truth and the runs graded against it are not
-one laptop away from being lost. The exceptions are `private/` and `rsi/`:
+one laptop away from being lost. The exception is a `private/` dataset:
 screenshots of a real product, and the model output quoting them, stay on the
-machine that produced them, so they and their results are gitignored.
+machine that produced them, so it and its results are gitignored.
 
 ## Layout
 
@@ -69,9 +66,9 @@ as little as possible. On `golden`, a four-category list cut extras per run from
 exclusion list names, the more conservative models become beyond it. Its current
 prompt names only the two scroll and viewport-edge cases, which were about 84% of
 the clean control's noise on their own, framed as features rather than defects.
-`private` has its own list; reused on `golden`, it would suppress 4 of the 17
-expected defects, because clipping, overlap and alignment are real ground truth
-there.
+A list written for another dataset can be as harmful: one tuned for real
+product UI, reused on `golden`, suppressed 4 of the 17 expected defects, because
+clipping, overlap and alignment are real ground truth there.
 
 ## Selecting a dataset
 
@@ -109,46 +106,11 @@ images regenerates it automatically (ids stay stable, removed images are
 retired), but editing an existing image's bytes or its expected issues
 invalidates prior runs and requires `--force`. So does editing `prompt.md`.
 
-## Datasets for the assertion benchmark
-
-The [assertion accuracy benchmark](../assertion/README.md) uses its own ground
-truth file, `assertions_per_file.md`, listing for each image the elements that
-are on screen and plausible elements that are not:
-
-```markdown
-## orbit_home.png
-
-### visible
-
-- The "Orbit" app title in the header
-- The "Orbit" chewing gum logo in the header | FALSE
-
-### absent
-
-- A settings gear icon in the header
-```
-
-The section chooses the prompt: `### visible` elements are asked with
-`elementsVisible()` ("X is visible on the page"), `### absent` ones with
-`elementsHidden()` ("X is NOT visible"), so a rep makes one call per section.
-Elements are sorted within each call, so their order never hints at the expected
-answers. A bullet may end with `| TRUE` or `| FALSE` (default `TRUE`) saying
-whether its section's claim really holds — that is how a near-miss statement
-about an element that does exist is written, and how you keep a call's expected
-answers from being uniform. A directory may carry both ground-truth files; the
-two benchmarks keep their results apart (`assertion/` and `discovery/` each nest
-under the dataset's results directory). Datasets for this
-benchmark are selected with `--dataset` or `assertion.config.ts` only —
-`BENCH_DATASET` is not consulted, since it usually names a discovery dataset. See
-[`bench/assertion/README.md`](../assertion/README.md) for the full grammar.
-
 ## The datasets in this repo
 
 | Dataset             | Ground truth             | What it is                                                                                     |
 | ------------------- | ------------------------ | ---------------------------------------------------------------------------------------------- |
-| `golden`  | `issues_per_file.md` + `prompt.md` + `assertions_per_file.md` | 18 screenshots, one seeded defect each plus a clean control, labelled for both benchmarks over one copy of the images. The default for both. |
-| `private` | `issues_per_file.md` + `prompt.md`                            | Real product UI. Gitignored and never publishable, so only present on the machine that captured it.                                         |
-| `rsi`     | `issues_per_file.md` + `prompt.md`                            | Real product UI seeded with golden's 17 defect kinds, in the same order. Gitignored and never publishable, so only present locally.        |
+| `golden` | `issues_per_file.md` + `prompt.md` | 18 screenshots, one seeded defect each plus a clean control. The default. |
 
 Adding your own needs no more than a directory, a handful of screenshots, one
 `## <filename>` heading each, and at least one clean control for the screenshot

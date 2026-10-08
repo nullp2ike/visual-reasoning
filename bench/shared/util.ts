@@ -12,8 +12,7 @@ export function datasetDir(): string {
 
 /**
  * Where every discovery-bench artifact for the active dataset lands:
- * results/<dataset>/discovery/, beside (never inside) the assertion bench's
- * results/<dataset>/assertion/.
+ * results/<dataset>/discovery/.
  */
 export function discoveryResultsDir(): string {
   return join(activeDataset().resultsDir, "discovery");

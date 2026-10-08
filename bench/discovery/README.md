@@ -14,14 +14,8 @@ answers, and emits a leaderboard, a screenshot × model matrix, and an interacti
 HTML report.
 
 `golden` (18 screenshots, one seeded defect each plus a clean control) is tracked
-and is the default; the `private` and `rsi` datasets are gitignored, being real product UI.
+and is the default.
 See [`../datasets/README.md`](../datasets/README.md) for the format to add your own.
-
-The sibling benchmark asks the opposite way round: [assertion
-accuracy](../assertion/README.md) hands the model a specific claim about a
-specific element and checks whether it judges it correctly, with no judge and no
-prose in between. A model good at one is not automatically good at the other —
-see [`../README.md`](../README.md) for the side-by-side.
 
 For **video** input — the bugs a model sees in a screen recording — see
 [`../video/README.md`](../video/README.md).
@@ -109,8 +103,7 @@ wording lives in `bench/discovery/src/jev.ts` and is versioned by
 
 ## Output
 
-Everything lands in `bench/results/<dataset-id>/discovery/`, beside the
-assertion bench's artifacts for the same dataset rather than mixed into them:
+Everything lands in `bench/results/<dataset-id>/discovery/`:
 
 ```
 manifest.json          image ids, hashes, expected issues, prompt hash

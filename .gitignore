@@ -9,19 +9,12 @@ coverage/
 .history/
 
 # Benchmark datasets and results are tracked, so the seeded-defect ground truth
-# and the runs graded against it have a home outside one laptop. The `private`
-# and `rsi` datasets are the exception: those screenshots are real product UI,
-# and their run records quote model output about them verbatim. Keep these
-# patterns even if the directories move: nothing under them is ever committed
-# or published.
+# and the runs graded against it have a home outside one laptop. A `private`
+# dataset is the exception: it is for screenshots of real product UI, and its
+# run records quote model output about them verbatim. Keep these patterns even
+# if no such dataset exists: nothing under them is ever committed or published.
 bench/datasets/private/
 bench/results/private/
-bench/datasets/rsi/
-bench/results/rsi/
-
-# Presence-only visibility records, kept on disk but out of the tracked history:
-# the bench judges rendering quality now, and these runs are not comparable.
-bench/results/*/assertion/_archive-presence-only/
 
 # Video bug-hunting harness: recordings are private product footage and results
 # quote model output about them verbatim, so neither is tracked.
