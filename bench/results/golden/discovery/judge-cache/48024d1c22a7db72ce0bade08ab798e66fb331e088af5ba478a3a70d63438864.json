@@ -1,0 +1,48 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "A dark horizontal bar (likely the system gesture indicator) overlaps the search icon and sits on top of the bottom navigation, partly obscuring the search tab icon and making it look broken.",
+    "The search placeholder text 'Restaurants, dishes, groceries' is light gray on a light gray background, which gives low contrast.",
+    "The bottom navigation icons have no visible text labels, so the home, search, orders, and account destinations are not clear."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.97, confidence 0.94)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.97,
+        "confidence": 0.94
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.66,
+        "confidence": 0.32
+      }
+    ]
+  }
+}

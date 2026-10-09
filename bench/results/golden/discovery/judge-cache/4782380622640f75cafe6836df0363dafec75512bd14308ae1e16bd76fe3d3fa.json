@@ -1,0 +1,31 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "At the top category filter chips, the 'Healthy' chip is partially visible at the right edge, but the instruction explicitly allows horizontally scrollable rows to have partially visible last items as features. Let's look closer: are there any other layout issues? Wait, the bottom pizza card shows '-100%' discount badge, but it is cut off slightly at the top or fits okay. Let's check the bottom navigation or header elements. Actually, looking at the delivery banner, everything seems fine. Let's re-examine: no obvious visual bugs except possibly the rightmost category chip being clipped, but that's explicitly allowed. Let's return no issues if nothing is broken."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "OpenAI Decisions matched no reported issue; closest was R0 (p=0.20)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.8,
+        "confidence": 0.6
+      }
+    ]
+  }
+}

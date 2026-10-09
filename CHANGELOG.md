@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.28.0]
+
+### Added
+
+- **OpenAI's Decisions API as a discovery bench judge, `openai-decisions/gpt-6-luna`**, grading all 38 models on `golden`. Like Jev it is a decision model: it returns a choice with probabilities and a confidence for each reported issue instead of prose, and it is asked Jev's questions with Jev's options, so the two differ only in the model answering. It calls `https://api.openai.com/v1/decisions` (public beta, `gpt-6-luna` only) with `OPENAI_API_KEY`. The `openai-decisions/` prefix is part of the judge id because plain `gpt-6-luna` is already the default chat judge; it keeps the two apart in the judge cache and in results file names. A refused answer fails the run rather than being counted as "no match". It agrees with `gpt-6-luna` on 98.0% of found/missed verdicts (Cohen's kappa 0.953), close to Jev's 98.2% (0.957), and contradicts a verdict all four chat judges agree on 20 times in 3,158 (0.63%, against Jev's 0.47%), leaning strict: 12 of the 20 are misses. 19 of those 20 carry a decision below confidence 0.8, so its confidence flags its mistakes as Jev's does. Measured on the same 100 requests, it answers faster than Jev through OpenRouter (median 230–250 ms against about 355 ms) but costs about 1.6x as much ($0.040 against $0.025 per 1,000 calls): its prompts are a third shorter, at $0.10 per million input tokens against an effective $0.042 for Jev. A full `golden` pass took under a minute and costs about $0.10. Its scores, `RESULTS` and report are tracked, and `JUDGE_COMPARISON.md` now compares six judges. `gpt-6-luna` remains the default judge.
+
 ## [0.27.0] - 2026-10-08
 
 ### Added

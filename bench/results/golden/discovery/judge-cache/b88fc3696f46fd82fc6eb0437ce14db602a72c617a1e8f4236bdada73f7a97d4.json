@@ -1,0 +1,40 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Restaurant cover image failed to load"
+  ],
+  "reportedIssues": [
+    "The featured card image for 'Tokumaru Ramen Bar' in the 'Popular right now' section failed to load: the card shows a gray placeholder background with a broken-image icon instead of a photo, while other cards (e.g., the pizza card below) display images correctly.",
+    "The heart/favorite button on the broken-image card sits on a plain gray placeholder, making the gray circular button blend with the gray background and look unfinished compared to the same button over images elsewhere."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.99, confidence 0.98)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.96,
+        "confidence": 0.92
+      }
+    ]
+  }
+}

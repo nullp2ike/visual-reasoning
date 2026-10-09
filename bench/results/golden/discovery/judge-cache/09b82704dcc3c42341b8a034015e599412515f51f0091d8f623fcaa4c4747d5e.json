@@ -1,0 +1,48 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant name 'Tokumaru Ramen' renders with a clipped or malformed last character (it reads 'Rameı'). This is not a carousel edge, since the card is full width and there is plenty of space. It looks like a text-rendering or clipping bug, or a font glyph problem.",
+    "Secondary text (delivery fees, '25–35 min · €0 delivery · Ramen', the '(500+)' rating count) is light gray on white and has low contrast.",
+    "The time pills ('15–25 min', etc.) on the 'Fastest near you' cards sit tight against the bottom-left corner of the image and slightly overlap the image edge. This looks cramped, and the pill on the first card appears to collide with the plate image."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.94, confidence 0.88)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.94,
+        "confidence": 0.88
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.95,
+        "confidence": 0.9
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.98,
+        "confidence": 0.96
+      }
+    ]
+  }
+}

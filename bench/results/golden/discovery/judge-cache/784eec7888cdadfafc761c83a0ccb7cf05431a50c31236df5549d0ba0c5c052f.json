@@ -1,0 +1,39 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Fastest near you carousel card heights are misaligned with each other"
+  ],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off on the third card in the Fastest near you row, making the full name unreadable.",
+    "Delivery time badges are inconsistently placed on Fastest near you cards—bottom-left on the first card vs. bottom-center on the second and third—creating a messy, uneven look."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "OpenAI Decisions matched no reported issue; closest was R0 (p=0.16)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.84,
+        "confidence": 0.68
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.94,
+        "confidence": 0.88
+      }
+    ]
+  }
+}

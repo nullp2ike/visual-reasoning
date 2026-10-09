@@ -1,0 +1,48 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Orders icon is missing from the bottom nav bar"
+  ],
+  "reportedIssues": [
+    "Orders tab in the bottom navigation has no visible icon above the label, while Home, Search and Profile all display icons",
+    "Favorite heart button styling is inconsistent in Popular right now cards: Tokumaru Ramen Bar shows a bare white heart outline with no background container, while the next pizza card shows the heart inside a dark circular background",
+    "Delivery time badge format is inconsistent in Fastest near you row: third card shows '20-30 min' with spaces around the hyphen while first two cards show '15-25 min' and '20-30 min' without spaces"
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.99, confidence 0.98)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.97,
+        "confidence": 0.94
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

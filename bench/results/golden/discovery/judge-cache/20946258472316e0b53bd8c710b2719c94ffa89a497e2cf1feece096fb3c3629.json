@@ -1,0 +1,56 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "The word Restaurants is misspelled Restarants"
+  ],
+  "reportedIssues": [
+    "The search field placeholder reads 'Restarants, dishes, groceries'. 'Restaurants' is misspelled.",
+    "On the first 'Fastest near you' card (Green Bowl Poké), the '15–25 min' pill sits against the bottom-left edge of the image. It appears to overlap and extend slightly past the image bounds, and it looks misaligned compared with the pills on the other cards.",
+    "The placeholder text, the secondary gray text (delivery fees, '25–35 min · €0 delivery · Ramen') and the inactive tab labels are light gray on a light background. Contrast is low.",
+    "The heart/favorite buttons are inconsistent. The ramen card's heart has a nearly invisible dark background, while the pizza card's heart uses a semi-transparent circle at a slightly different position and size. The white icons also have weak separation from busy photos."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.98,
+        "confidence": 0.96
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

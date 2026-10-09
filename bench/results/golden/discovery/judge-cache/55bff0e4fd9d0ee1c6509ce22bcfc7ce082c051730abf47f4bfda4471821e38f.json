@@ -1,0 +1,39 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Promo banner text is unreadable, white text on a pale mint background"
+  ],
+  "reportedIssues": [
+    "The third restaurant name under Fastest near you is truncated to 'Trattoria Piccol' instead of showing the full name.",
+    "The category filter row ends with a partially visible empty/light chip after Healthy, suggesting an incomplete or awkwardly clipped control."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "OpenAI Decisions matched no reported issue; closest was R1 (p=0.02)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.98,
+        "confidence": 0.96
+      }
+    ]
+  }
+}

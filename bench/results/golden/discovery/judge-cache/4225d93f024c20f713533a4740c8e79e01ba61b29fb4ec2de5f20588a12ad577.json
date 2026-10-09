@@ -1,0 +1,47 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Orders icon is missing from the bottom nav bar"
+  ],
+  "reportedIssues": [
+    "The restaurant name 'Trattoria Piccol' is truncated and appears to be cut off, which is not just a scrollable row partial item issue here because the name is truncated beyond the right edge in a way that the full name is unreadable even with scrolling.",
+    "The notification bell icon has a red dot indicating unread notifications, but the dot is positioned slightly off-center and could be more prominent for better visual clarity.",
+    "The text 'Fastest near you' and 'Popular right now' section titles are clear, but the delivery time range for 'Green Bowl Poké' (15-25 min) is inconsistent with others (20-30 min) in the same section, which might cause user confusion without clear explanation."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "OpenAI Decisions matched no reported issue; closest was R0 (p=0.04)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.96,
+        "confidence": 0.92
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      }
+    ]
+  }
+}

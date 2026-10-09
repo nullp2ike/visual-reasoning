@@ -1,0 +1,39 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Fastest near you carousel card heights are misaligned with each other"
+  ],
+  "reportedIssues": [
+    "In the 'Fastest near you' horizontal carousel, the cards are not vertically aligned: the Green Bowl Poké card's image is taller and its time badge sits lower, so its title and delivery fee appear at a different vertical position than Smash Bros Burgers and Trattoria Piccola, producing a ragged, misaligned row.",
+    "The delivery-time badge placement is inconsistent across carousel cards: on Green Bowl Poké it overlays the bottom-left of the image, on Smash Bros Burgers it overlaps the bottom edge of the image, and on Trattoria Piccola it sits near the vertical middle-left, making the pattern look unintentional."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          1
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.99, confidence 0.98)."
+      }
+    ],
+    "extraReportedIndexes": [],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.75,
+        "confidence": 0.5
+      }
+    ]
+  }
+}

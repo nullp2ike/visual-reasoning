@@ -1,0 +1,48 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Orders icon is missing from the bottom nav bar"
+  ],
+  "reportedIssues": [
+    "In the bottom navigation bar, the 'Orders' tab shows only a text label with no icon above it, while 'Home', 'Search' and 'Profile' each have an icon. This leaves an awkward empty gap and makes the tab look broken/inconsistent.",
+    "The horizontally scrollable category chip row ends with a chip that is cut off abruptly at the right screen edge with no visual affordance (fade gradient or peeking padding), which can look like a rendering glitch rather than intentional scrollability.",
+    "The notification bell button in the top-right uses a very light gray circle on a near-white background, giving low contrast for the control boundary; only the small red dot signals state."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.99, confidence 0.98)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

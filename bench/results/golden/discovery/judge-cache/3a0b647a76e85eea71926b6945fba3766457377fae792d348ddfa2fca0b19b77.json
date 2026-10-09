@@ -1,0 +1,56 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "The word Restaurants is misspelled Restarants"
+  ],
+  "reportedIssues": [
+    "The third restaurant card title in 'Fastest near you' is truncated to 'Trattoria Piccol' with no ellipsis or full name visible.",
+    "The category filter row shows a partial empty/white chip on the far right after 'Healthy', looking like a broken or incomplete control.",
+    "The lower 'Popular right now' promo card (pizza with -20%) is heavily cropped by the bottom nav, so most of the image and any title/meta below it are not visible in the viewport.",
+    "Search field placeholder reads 'Restarants, dishes, grocery' — 'Restarants' appears misspelled."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          3
+        ],
+        "reasoning": "OpenAI Decisions matched R3 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

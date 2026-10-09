@@ -1,0 +1,55 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Orders icon is missing from the bottom nav bar"
+  ],
+  "reportedIssues": [
+    "In the 'Fastest near you' row, the '15–25 min' badge on the Green Bowl Poké card sits lower and further left than the badges on the other cards. It overlaps the edge of the bowl image, so the badge placement looks inconsistent.",
+    "Secondary text such as '€0.90 delivery', 'See all' links, the '(500+)' rating count, and the inactive tab labels (Search, Orders, Profile) is light gray or small. Contrast against the white background is low.",
+    "The heart/favorite buttons are styled inconsistently. The ramen card has a nearly invisible dark circle behind the heart, while the pizza card has a more visible translucent circle, so the icon's contrast varies with the image.",
+    "The decorative circles on the green promo banner are clipped and overlap awkwardly at the bottom right. The white text on the mid-green gradient also has modest contrast."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "OpenAI Decisions matched no reported issue; closest was R1 (p=0.05)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.95,
+        "confidence": 0.9
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      }
+    ]
+  }
+}

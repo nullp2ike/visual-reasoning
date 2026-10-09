@@ -1,0 +1,40 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The second restaurant card in 'Popular right now' shows a '−100%' discount badge. This reads as the whole order being free and looks like a calculation or formatting bug, such as a free-delivery promo rendered as a percentage or a missing discount value defaulting to 100%. The card above uses a clear '€0 delivery' label for comparison.",
+    "The favorite (heart) button on the Tokumaru Ramen Bar card has a dark circular background that nearly blends into the dark image. It looks inconsistent with the clearly visible circle on the card below."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.99, confidence 0.98)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      }
+    ]
+  }
+}

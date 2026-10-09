@@ -1,0 +1,47 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The decorative translucent circles in the green promo banner are cut off abruptly at the banner's right and bottom edges, creating a slightly unfinished look against the rounded card corners.",
+    "The notification bell icon in the top-right has a small red dot badge with no numeric count or label, which may be ambiguous for users and screen readers.",
+    "The '€0 delivery' and '-100%' badge pills on the popular cards use different text colors (green vs dark) on white backgrounds inconsistently with the time badges on the carousel cards (dark text), creating slight inconsistency in badge styling."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "OpenAI Decisions matched no reported issue; closest was R2 (p=0.09)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.91,
+        "confidence": 0.82
+      }
+    ]
+  }
+}

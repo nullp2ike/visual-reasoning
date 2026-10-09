@@ -1,0 +1,40 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Delivery fee shows €NaN"
+  ],
+  "reportedIssues": [
+    "The Smash Bros Burgers card shows '€NaN delivery' instead of a valid delivery fee. This is a data or formatting bug leaking into the UI, and it makes the price unclear to users.",
+    "Secondary text in light gray (delivery fees under the restaurant names, the meta line under Tokumaru Ramen Bar, and the search placeholder) is small and has low contrast against the white background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.98, confidence 0.96)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.98,
+        "confidence": 0.96
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.88,
+        "confidence": 0.76
+      }
+    ]
+  }
+}

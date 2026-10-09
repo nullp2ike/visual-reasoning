@@ -1,0 +1,56 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Loading spinner is shown on top of already loaded content"
+  ],
+  "reportedIssues": [
+    "The 'Tokumaru Ramen Bar' hero card shows a circular loading spinner in the middle of the image. The image appears to be still loading or stuck, while the other images on the page have loaded. The spinner covers the main subject (the ramen bowl).",
+    "The white 'Order now' pill and the white time badges ('15–25 min', etc.) sit on busy or gradient backgrounds. The secondary gray text ('€0.90 delivery', 'Ramen', '25–35 min') is light gray on white and has low contrast.",
+    "The time badges on the 'Fastest near you' cards overlap the bottom-left edge of the image, and the first badge overlaps the plate illustration. The heart icon on the second popular card sits on a semi-transparent dark circle that looks different from the heart on the first card (dark on the ramen image).",
+    "The decorative translucent circles on the green promo banner are cut off at the right edge and overlap awkwardly with the banner's rounded corner, which looks like a rendering artifact."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.99, confidence 0.98)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.97,
+        "confidence": 0.94
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

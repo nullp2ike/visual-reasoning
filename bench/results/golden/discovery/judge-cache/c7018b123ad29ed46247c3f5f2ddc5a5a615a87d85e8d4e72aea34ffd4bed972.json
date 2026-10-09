@@ -1,0 +1,40 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "Heart icons (favorite buttons) in the 'Popular right now' section (e.g., on the ramen and pizza cards) use black outlines on dark backgrounds, resulting in insufficient color contrast for visibility. This hinders usability for users with visual impairments or color blindness.",
+    "The bottom navigation bar has misaligned or overlapping icons/labels. The shopping bag icon appears misplaced, overlapping with the search icon’s area or text, disrupting the visual layout and usability of the navigation bar."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          1
+        ],
+        "reasoning": "OpenAI Decisions matched R1 (p=0.61, confidence 0.22)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.61,
+        "confidence": 0.22
+      }
+    ]
+  }
+}

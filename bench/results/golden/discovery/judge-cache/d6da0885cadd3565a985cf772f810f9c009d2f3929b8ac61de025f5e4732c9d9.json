@@ -1,0 +1,39 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "In the bottom navigation bar, the middle tab (presumably Search) is rendered as an odd wide dark horizontal bar with a small bookmark icon on it, instead of a proper search icon/label. It looks broken and inconsistent with the other tabs (home and profile).",
+    "Bottom navigation tabs lack text labels, which can reduce clarity for users unfamiliar with the icons."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "OpenAI Decisions matched no reported issue; closest was R0 (p=0.34)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.66,
+        "confidence": 0.32
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.7,
+        "confidence": 0.4
+      }
+    ]
+  }
+}

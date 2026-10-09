@@ -1,0 +1,56 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Orders icon is missing from the bottom nav bar"
+  ],
+  "reportedIssues": [
+    "Restaurant name 'Trattoria Piccol' is truncated/cut off in the Fastest near you section.",
+    "Bottom navigation is missing the Orders icon; only the label 'Orders' appears with a blank space where the icon should be.",
+    "Category filter chip on the far right is only partially visible (edge of next chip shown), which can look unfinished even if horizontal scroll is intended.",
+    "Promo banner and section cards use illustration-style images; one popular card shows only food with no restaurant name visible above the fold cut for the second card title area—second popular item name is not shown in the visible area (only image)."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          1
+        ],
+        "reasoning": "OpenAI Decisions matched R1 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.96,
+        "confidence": 0.92
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.98,
+        "confidence": 0.96
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 0.97,
+        "confidence": 0.94
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "The word Restaurants is misspelled Restarants"
+  ],
+  "reportedIssues": [
+    "The search placeholder appears to read \"Restarants, dishes, groceries\", which is misspelled.",
+    "Secondary grey text (delivery fees, the \"(500+)\" review count, and the \"25–35 min\" meta line) is light grey on white, which may fall below recommended contrast ratios for small text."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.99, confidence 0.98)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.88,
+        "confidence": 0.76
+      }
+    ]
+  }
+}

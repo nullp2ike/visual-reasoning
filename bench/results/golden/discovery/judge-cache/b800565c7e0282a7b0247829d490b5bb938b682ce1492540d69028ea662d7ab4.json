@@ -1,0 +1,39 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "Inconsistent placement of information tags across restaurant cards: cards in the 'Fastest near you' section have time tags anchored to the bottom-left of their images, while the card in the 'Popular right now' section has its delivery fee tag anchored to the top-left of its image, creating a disjointed visual layout.",
+    "Secondary text (delivery fees, order time ranges, restaurant categories) uses a light gray color against a white background, which likely fails WCAG 4.5:1 contrast requirements, reducing readability for users with low vision or in bright lighting."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "OpenAI Decisions matched no reported issue; closest was R1 (p=0.01)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Promo banner text is unreadable, white text on a pale mint background"
+  ],
+  "reportedIssues": [
+    "The third restaurant card title in 'Fastest near you' is truncated mid-word ('Trattoria Piccol'), cutting off the full name.",
+    "On the Tokumaru Ramen Bar card, the green '€0 delivery' pill overlaps the food image content (noodles/bowl), reducing legibility of both the badge and the imagery.",
+    "Category filter chips row shows a partially cut-off chip on the far right with no clear affordance beyond the expected carousel edge treatment.",
+    "Promo banner text ('3 free deliveries for you') uses a light green on a light green background, which may reduce contrast for some users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          3
+        ],
+        "reasoning": "OpenAI Decisions matched R3 (p=0.54, confidence 0.08)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.98,
+        "confidence": 0.96
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": 0,
+        "probability": 0.54,
+        "confidence": 0.08
+      }
+    ]
+  }
+}

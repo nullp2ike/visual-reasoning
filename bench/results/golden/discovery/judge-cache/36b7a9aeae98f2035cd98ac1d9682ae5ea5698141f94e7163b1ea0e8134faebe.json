@@ -1,0 +1,40 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant title 'Tokumaru Ramen' in the 'Popular right now' section is cut off mid-glyph ('Ramen' appears as 'Rameı' / clipped) even though there is empty horizontal space to the left of the rating block; the text is truncated without an ellipsis, making the name look broken.",
+    "In the 'Fastest near you' carousel, the third card ('Trattoria Piccol...') is clipped at the right edge; while horizontal scroll affordance is expected, the card title is cut mid-word with no visual fade or peek padding to signal scrollability."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.96, confidence 0.92)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.96,
+        "confidence": 0.92
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.81,
+        "confidence": 0.62
+      }
+    ]
+  }
+}

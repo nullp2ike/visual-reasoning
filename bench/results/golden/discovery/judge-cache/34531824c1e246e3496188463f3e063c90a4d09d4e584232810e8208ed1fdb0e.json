@@ -1,0 +1,40 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "The word Restaurants is misspelled Restarants"
+  ],
+  "reportedIssues": [
+    "The search bar placeholder reads 'Restarants, dishes, groceries'. 'Restaurants' is misspelled in the app's most prominent input field.",
+    "In the green '3 free deliveries for you' banner, a dark green sliver appears at the bottom-right corner. The decorative circle does not seem to be clipped by the banner's rounded corners, so it breaks the corner shape."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      }
+    ]
+  }
+}

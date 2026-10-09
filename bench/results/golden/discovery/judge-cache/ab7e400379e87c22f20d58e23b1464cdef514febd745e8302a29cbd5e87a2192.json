@@ -1,0 +1,56 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The 'Pizza' category chip is selected (dark filled), but the content below is not filtered. The 'Fastest near you' and 'Popular right now' sections show poke, burgers, pasta and ramen. The selected state contradicts the results, and the 'All' chip is not highlighted.",
+    "The secondary gray text (delivery fees, the '25–35 min • €0 delivery • Ramen' meta line, the search placeholder and the inactive tab labels) is light gray on white or light gray backgrounds and has low contrast. The white time pills over light images, such as '15–25 min' on the poke card, blend into the pale background.",
+    "The heart/favorite button is styled inconsistently. On the ramen card it is almost invisible against the dark image, and on the pizza card it sits in a semi-transparent dark circle. The white '-20%' and '€0 delivery' badges also vary in visual weight.",
+    "The time pill on the first carousel card overlaps the plate image and looks awkwardly placed. The promo banner's decorative circles are clipped at the corner and are a little distracting."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.97,
+        "confidence": 0.94
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.94,
+        "confidence": 0.88
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 0.96,
+        "confidence": 0.92
+      }
+    ]
+  }
+}

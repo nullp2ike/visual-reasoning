@@ -1,0 +1,40 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Restaurant cover image failed to load"
+  ],
+  "reportedIssues": [
+    "The first Popular restaurant card (Tokumaru Ramen Bar) shows a broken-image placeholder instead of a food photo, leaving a large empty gray area.",
+    "The large pizza promo card overlaps the Tokumaru Ramen Bar block: the restaurant name, rating, and meta sit above the image, and the card covers the lower part of that listing."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.98, confidence 0.96)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.98,
+        "confidence": 0.96
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.87,
+        "confidence": 0.74
+      }
+    ]
+  }
+}

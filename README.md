@@ -703,7 +703,7 @@ against hand-labelled screenshots and publishes the results:
 
 The site carries the defect-discovery leaderboard, a screenshot × model matrix you
 can drill into for any individual answer, and the same runs graded independently by
-five different judges so you can see where the grading itself is contested.
+six different judges so you can see where the grading itself is contested.
 
 The benchmark asks each model one open question — "What looks visually broken on
 this page?" — with no hints, and an LLM judge matches what it reports against the

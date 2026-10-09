@@ -1,0 +1,48 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "An icon is missing from the top right corner, only a red dot is visible"
+  ],
+  "reportedIssues": [
+    "The third restaurant name in 'Fastest near you' is cut off mid-word as 'Trattoria Piccol' instead of the full name.",
+    "The top-right circular control shows only a red status dot on an empty light-gray circle, with no profile avatar or icon.",
+    "Delivery/promo badges on the Popular cards use different treatments (light pill for '€0 delivery' vs dark circular heart; '-20%' on a light pill) without a clear visual system, and the heart buttons sit on busy photo areas with uneven contrast."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          1
+        ],
+        "reasoning": "OpenAI Decisions matched R1 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.97,
+        "confidence": 0.94
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      }
+    ]
+  }
+}

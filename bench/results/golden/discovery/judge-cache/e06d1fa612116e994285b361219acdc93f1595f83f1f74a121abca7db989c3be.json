@@ -1,0 +1,48 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Restaurant cover image failed to load"
+  ],
+  "reportedIssues": [
+    "The Tokumaru Ramen Bar card in \"Popular right now\" shows a blank gray area with a broken-image glyph instead of the restaurant photo, while sibling cards (e.g. the pizza card below) load correctly.",
+    "The heart/favorite button on the broken-image card uses a light gray translucent circle with a gray outline icon, giving low contrast and an inconsistent look compared to the dark circle with white icon on the pizza card.",
+    "The empty image container for the ramen card is noticeably shorter than the neighbouring pizza card's image, causing uneven card heights in the vertical list."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.98,
+        "confidence": 0.96
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.64,
+        "confidence": 0.28
+      }
+    ]
+  }
+}

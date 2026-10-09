@@ -1,0 +1,48 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section heading shows the raw localization key 'home_feed.popular_title' instead of translated text such as 'Popular near you'. This is a missing translation and looks unfinished.",
+    "In the 'Fastest near you' cards, the time pill (e.g. '15–25 min') sits over the bottom-left of the image and overlaps the edge of the plate in the Green Bowl Poké card. This looks cramped and inconsistent with the other cards.",
+    "Secondary text is light gray on a white background (delivery fees, the 'Restaurants, dishes, groceries' placeholder, inactive tab labels). Its contrast is low and it is hard to read. The white '−20%' and '€0 delivery' badge text is also small."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.99, confidence 0.98)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.96,
+        "confidence": 0.92
+      }
+    ]
+  }
+}

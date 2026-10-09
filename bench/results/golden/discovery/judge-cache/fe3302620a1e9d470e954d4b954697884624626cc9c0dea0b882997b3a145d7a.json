@@ -1,0 +1,56 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Tokumaru Ramen Bar Delivery fee text overlaps the delivery time text"
+  ],
+  "reportedIssues": [
+    "On the Tokumaru Ramen Bar card, the delivery info text '25–30 delivery · Ramen' overlaps itself (garbled as '25-30delivery'), making the delivery time unreadable.",
+    "The third 'Fastest near you' restaurant name is truncated to 'Trattoria Piccol' with no ellipsis, so the full name is cut off.",
+    "Delivery line under Tokumaru Ramen Bar is missing units and separators (reads like '25-30delivery' instead of e.g. '25–30 min delivery · Ramen').",
+    "Category chips row and 'Fastest near you' cards intentionally peek off-screen, but the Healthy chip and third card title sit flush against the edge in a way that can look unfinished next to the broken text below."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          2
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.97, confidence 0.94)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.97,
+        "confidence": 0.94
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.91,
+        "confidence": 0.82
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": 0,
+        "probability": 0.56,
+        "confidence": 0.12
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 0.83,
+        "confidence": 0.66
+      }
+    ]
+  }
+}

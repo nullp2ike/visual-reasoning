@@ -1,0 +1,64 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The pizza card shows a '-100%' badge. This implies the item is completely free, which is almost certainly a data or formatting error (a wrong discount value) and could mislead users.",
+    "The secondary gray text (delivery fees under the 'Fastest near you' cards, the '25–35 min · €0 delivery · Ramen' line, and the '(500+)' rating count) has low contrast against the white background. The search placeholder is also light gray on light gray.",
+    "The white time pills (e.g. '15–25 min') sit over the food images and overlap the image edge, so they look cramped. The white '€0 delivery' and '-100%' badges are small, and the dark heart icon buttons have weak contrast over the busy imagery.",
+    "The illustrated food images are inconsistent. The poke bowl card has a light background while the others are dark, and the images are flat vector art rather than real photos, so the cards look uneven.",
+    "The badge styles are inconsistent. '€0 delivery' uses green text on a white pill, and the '-100%' badge uses the same style even though it carries a different kind of information. The pizza card also lacks the rating and info shown on other cards."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.99, confidence 0.98)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.98,
+        "confidence": 0.96
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.97,
+        "confidence": 0.94
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 4,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      }
+    ]
+  }
+}

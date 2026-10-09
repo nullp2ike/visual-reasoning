@@ -1,0 +1,48 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Promo banner text is unreadable, white text on a pale mint background"
+  ],
+  "reportedIssues": [
+    "The promo banner text ('3 free deliveries for you' and 'Use code TALLINN3 at checkout · min. order €10') is rendered in white on a very light mint-green background, resulting in extremely low contrast. The headline and especially the promo code are barely readable, so users may miss the offer or the code.",
+    "Within the same washed-out banner, the white 'Order now' button blends with the pale background and the surrounding white text, weakening the visual hierarchy of the call to action.",
+    "Secondary metadata such as '€0.90 delivery' and '25–35 min • €0 delivery • Ramen' uses light grey text that is lower contrast against the white background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.8,
+        "confidence": 0.6
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.95,
+        "confidence": 0.9
+      }
+    ]
+  }
+}

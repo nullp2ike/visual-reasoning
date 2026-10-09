@@ -1,0 +1,56 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Fastest near you carousel card heights are misaligned with each other"
+  ],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel, the first card (Green Bowl Poké) has a taller image that starts higher (about y=631) than the Smash Bros Burgers and Trattoria cards (about y=658). The images differ in height, so the time badges, titles and delivery-fee text sit at different vertical positions and the row looks misaligned.",
+    "The first carousel card has a pale, washed-out background. Its white time badge ('15–25 min') blends into it and has little separation, unlike the badges on the dark images.",
+    "Secondary text such as the '€0.90 delivery' lines, the search placeholder and the inactive tab labels is light gray on white or light gray. Contrast is low and the text may be hard to read.",
+    "The heart (favorite) buttons are styled inconsistently. The ramen card's heart has no background, while the pizza card's heart sits on a dark translucent circle."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.98,
+        "confidence": 0.96
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 0.98,
+        "confidence": 0.96
+      }
+    ]
+  }
+}

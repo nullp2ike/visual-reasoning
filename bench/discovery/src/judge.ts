@@ -15,7 +15,16 @@ import {
   parseJevResponse,
   verdictFromJev,
   type JevDecide,
+  type JevRequestBody,
 } from "./jev.js";
+import {
+  OPENAI_DECISIONS_PROMPT_VERSION,
+  buildOpenAIDecisionsRequest,
+  createOpenAIDecide,
+  isOpenAIDecisionsJudge,
+  parseOpenAIDecisionsResponse,
+  type OpenAIDecisionsRequestBody,
+} from "./openai-decisions.js";
 import { ChatJudgeVerdictSchema, JudgeCacheEntrySchema, type JudgeVerdict } from "./types.js";
 import {
   discoveryResultsDir,
@@ -39,6 +48,7 @@ export const JUDGE_PROMPT_VERSION = "v1";
 
 /** The prompt version a judge's verdicts are cached and reported under. */
 export function judgePromptVersion(judgeModel: string): string {
+  if (isOpenAIDecisionsJudge(judgeModel)) return OPENAI_DECISIONS_PROMPT_VERSION;
   return isDecisionJudge(judgeModel) ? JEV_PROMPT_VERSION : JUDGE_PROMPT_VERSION;
 }
 
@@ -190,10 +200,23 @@ export function createJudgeCompletion(judgeModel: string): JudgeCompletion {
   };
 }
 
+/** Posts one Decisions request, to OpenRouter (Jev) or OpenAI, and returns the raw JSON body. */
+export type DecisionsCall = (body: JevRequestBody | OpenAIDecisionsRequestBody) => Promise<unknown>;
+
+/** The Decisions call a decision judge is served by. */
+export function createDecisionsCall(judgeModel: string): DecisionsCall {
+  if (isOpenAIDecisionsJudge(judgeModel)) {
+    const decide = createOpenAIDecide();
+    return (body) => decide(body as OpenAIDecisionsRequestBody);
+  }
+  const decide: JevDecide = createJevDecide();
+  return (body) => decide(body as JevRequestBody);
+}
+
 export interface JudgeOptions {
   completion?: JudgeCompletion;
-  /** Decisions call for decision judges (Jev); defaults to OpenRouter's Decisions API. */
-  decide?: JevDecide;
+  /** Decisions call for decision judges (Jev, OpenAI Decisions); defaults to the judge's own endpoint. */
+  decide?: DecisionsCall;
   cacheDir?: string;
   /** Judge model to attribute (and cache) verdicts under. Defaults to benchConfig.judgeModel. */
   judgeModel?: string;
@@ -233,6 +256,20 @@ async function llmJudge(
   return verdict;
 }
 
+/** Ask a decision judge one choice question per reported issue and derive the verdict. */
+async function decisionJudge(
+  request: JudgeRequest,
+  judgeModel: string,
+  decide: DecisionsCall,
+): Promise<JudgeVerdict> {
+  if (isOpenAIDecisionsJudge(judgeModel)) {
+    const raw = await decide(buildOpenAIDecisionsRequest(request, judgeModel));
+    return verdictFromJev(parseOpenAIDecisionsResponse(raw, request), request, "OpenAI Decisions");
+  }
+  const raw = await decide(buildJevRequest(request, judgeModel));
+  return verdictFromJev(parseJevResponse(raw, request), request);
+}
+
 /**
  * Resolve a verdict for one run: trivial short-circuit, then cache, then the judge model
  * (with one retry nudge on malformed JSON). Verdicts are cached on disk keyed by content,
@@ -261,13 +298,7 @@ export async function judgeRun(
   }
 
   const verdict = isDecisionJudge(judgeModel)
-    ? verdictFromJev(
-        parseJevResponse(
-          await (options.decide ?? createJevDecide())(buildJevRequest(request, judgeModel)),
-          request,
-        ),
-        request,
-      )
+    ? await decisionJudge(request, judgeModel, options.decide ?? createDecisionsCall(judgeModel))
     : await llmJudge(request, judgeModel, options);
 
   await atomicWriteJson(cachePath, {

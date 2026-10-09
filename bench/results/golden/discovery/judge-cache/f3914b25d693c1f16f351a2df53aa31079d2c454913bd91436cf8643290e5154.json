@@ -1,0 +1,56 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Green Bowl Poké card appears twice in the carousel"
+  ],
+  "reportedIssues": [
+    "The 'Fastest near you' carousel shows two identical cards side by side (Green Bowl Poké, 15–25 min, €0.90 delivery, same image). This looks like a duplicated data entry or a rendering bug, and it wastes prime space in the carousel.",
+    "Secondary text is light gray on a white or light background (delivery fees, the search placeholder, inactive tab labels, the '(500+)' rating count). Its contrast is low and may fall below WCAG AA.",
+    "The time badges on the carousel cards overlap the bottom-left corner of the image and sit tight against the card edge. On the first cards the badge also partially overlaps the bowl image, which looks slightly cramped.",
+    "The favorite heart buttons sit on busy image backgrounds with a semi-transparent dark circle. The button is barely distinguishable on the dark ramen image and inconsistent with the pizza card."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.87, confidence 0.74)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.87,
+        "confidence": 0.74
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.98,
+        "confidence": 0.96
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

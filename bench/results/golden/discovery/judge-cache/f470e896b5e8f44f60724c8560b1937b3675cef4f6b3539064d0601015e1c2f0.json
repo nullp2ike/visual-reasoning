@@ -1,0 +1,56 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Promo banner text is unreadable, white text on a pale mint background"
+  ],
+  "reportedIssues": [
+    "The promo banner headline '3 free deliveries for you' and the subtext 'Use code TALLINN3 at checkout · min. order €10' are white on a very light mint background. The contrast is extremely low and the text is barely legible. The promo code is the key information in the banner.",
+    "In the 'Fastest near you' carousel, the time pill on the first card (15–25 min) overlaps and hides part of the bowl image. Its position also looks inconsistent with the image content on the other cards.",
+    "The first 'Fastest near you' card has a pale, washed-out background, while the other cards are dark. This makes the card set look visually inconsistent. The dish image also looks small and low-fidelity relative to its card.",
+    "The heart (favorite) icon on the '-20%' pizza card sits on a semi-transparent dark circle over a busy image. The white heart has weak separation there. The gray inactive tab labels (Search, Orders, Profile) are also low-contrast."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.98,
+        "confidence": 0.96
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 0.75,
+        "confidence": 0.5
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Loading spinner is shown on top of already loaded content"
+  ],
+  "reportedIssues": [
+    "A circular loading spinner is displayed in the center of the Tokumaru Ramen Bar hero image, suggesting the image or card failed to finish loading and looks stuck.",
+    "The Tokumaru Ramen Bar card shows '€0 delivery' twice, once as a badge on the image and again in the meta line below the title.",
+    "Secondary text such as the search placeholder, delivery fees, and '25–35 min' meta text is light grey on white or light grey backgrounds, which may fall below recommended contrast ratios."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.78, confidence 0.56)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.78,
+        "confidence": 0.56
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.95,
+        "confidence": 0.9
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.97,
+        "confidence": 0.94
+      }
+    ]
+  }
+}

@@ -16,11 +16,21 @@ import type { JudgeDecision, JudgeVerdict } from "./types.js";
 export const JEV_PROMPT_VERSION = "jev-v2";
 
 const DECISIONS_URL = "https://openrouter.ai/api/alpha/decisions";
-const NONE = "none";
+export const NONE = "none";
 
-/** Decision judges are TypeSafe models, addressed by id or by the `~typesafe/…` alias. */
+/**
+ * Judge-id prefix for OpenAI's own Decisions API (see openai-decisions.ts). It
+ * only serves `gpt-6-luna`, which is also a chat judge, so the prefix keeps the
+ * two apart in judge ids, cache keys and results file names.
+ */
+export const OPENAI_DECISIONS_JUDGE_PREFIX = "openai-decisions/";
+
+/**
+ * Decision judges are TypeSafe models, addressed by id or by the `~typesafe/…`
+ * alias, and models behind OpenAI's Decisions API, under `openai-decisions/`.
+ */
 export function isDecisionJudge(judgeModel: string): boolean {
-  return /^~?typesafe\//.test(judgeModel);
+  return /^~?typesafe\//.test(judgeModel) || judgeModel.startsWith(OPENAI_DECISIONS_JUDGE_PREFIX);
 }
 
 export interface JevRequest {
@@ -43,29 +53,45 @@ export interface JevRequestBody {
   questions: Record<string, JevChoiceQuestion>;
 }
 
-const expectedKey = (i: number): string => `E${i}`;
-const reportedKey = (j: number): string => `R${j}`;
+export const expectedKey = (i: number): string => `E${i}`;
+export const reportedKey = (j: number): string => `R${j}`;
 
-export function buildJevRequest(request: JevRequest, judgeModel: string): JevRequestBody {
-  const criteria: Record<string, string> = Object.fromEntries(
-    request.expectedIssues.map((text, i) => [expectedKey(i), `R describes this defect: ${text}`]),
+/** The options every question offers, keyed by option id: one per expected defect, plus "none". */
+export function matchOptions(expectedIssues: readonly string[]): Record<string, string> {
+  const options: Record<string, string> = Object.fromEntries(
+    expectedIssues.map((text, i) => [expectedKey(i), `R describes this defect: ${text}`]),
   );
-  criteria[NONE] =
+  options[NONE] =
     "R describes a different UI element or a different problem than every expected defect. " +
     "This includes a separate, additional problem in the same area as an expected defect " +
     "(for example another styling flaw on the same card or component), and a report that " +
     "mentions the defect only vaguely.";
+  return options;
+}
 
+/** The question asked about one reported issue; `where` says where the judge finds it. */
+export function matchInstructions(key: string, where: string): string {
+  return (
+    "Two QA bug reports describe the same app screenshot; nobody sees the screenshot. " +
+    `Does reported issue ${key} (${where}) describe the same ` +
+    "underlying defect as one of the expected defects: the same UI element or area with " +
+    "the same problem? Wording may differ completely; match on meaning."
+  );
+}
+
+/** A reported issue as the judge sees it. */
+export function reportedIssueText(issue: JevRequest["reportedIssues"][number]): string {
+  return `[${issue.priority}/${issue.category}] ${issue.description}`;
+}
+
+export function buildJevRequest(request: JevRequest, judgeModel: string): JevRequestBody {
+  const criteria = matchOptions(request.expectedIssues);
   const questions = Object.fromEntries(
     request.reportedIssues.map((_, j) => {
       const key = reportedKey(j);
       const question: JevChoiceQuestion = {
         type: "choice",
-        instructions:
-          "Two QA bug reports describe the same app screenshot; nobody sees the screenshot. " +
-          `Does reported issue ${key} (reported_issues.${key} in the state) describe the same ` +
-          "underlying defect as one of the expected defects: the same UI element or area with " +
-          "the same problem? Wording may differ completely; match on meaning.",
+        instructions: matchInstructions(key, `reported_issues.${key} in the state`),
         criteria,
       };
       return [key, question];
@@ -79,10 +105,7 @@ export function buildJevRequest(request: JevRequest, judgeModel: string): JevReq
         request.expectedIssues.map((text, i) => [expectedKey(i), text]),
       ),
       reported_issues: Object.fromEntries(
-        request.reportedIssues.map((issue, j) => [
-          reportedKey(j),
-          `[${issue.priority}/${issue.category}] ${issue.description}`,
-        ]),
+        request.reportedIssues.map((issue, j) => [reportedKey(j), reportedIssueText(issue)]),
       ),
     },
     questions,
@@ -120,7 +143,15 @@ function expectedIndexOf(choice: string): number | null {
 
 const fmt = (p: number): string => p.toFixed(2);
 
-export function verdictFromJev(response: JevResponse, request: JevRequest): JudgeVerdict {
+/**
+ * Turn per-issue choices into a verdict. `judgeName` labels the reasoning;
+ * OpenAI Decisions answers are normalised into the same shape first.
+ */
+export function verdictFromJev(
+  response: JevResponse,
+  request: JevRequest,
+  judgeName = "Jev",
+): JudgeVerdict {
   const decisions: JudgeDecision[] = request.reportedIssues.map((_, j) => {
     const answer = response.answers[reportedKey(j)];
     if (!answer) throw new Error(`Jev response has no answer for ${reportedKey(j)}`);
@@ -140,14 +171,14 @@ export function verdictFromJev(response: JevResponse, request: JevRequest): Judg
     );
     let reasoning: string;
     if (best) {
-      reasoning = `Jev matched R${best.reportedIndex} (p=${fmt(best.probability)}, confidence ${fmt(best.confidence)}).`;
+      reasoning = `${judgeName} matched R${best.reportedIndex} (p=${fmt(best.probability)}, confidence ${fmt(best.confidence)}).`;
     } else {
       const candidates = request.reportedIssues.map((_, j) => ({
         j,
         p: response.answers[reportedKey(j)]?.probabilities[expectedKey(i)] ?? 0,
       }));
       const closest = candidates.reduce((a, c) => (c.p > a.p ? c : a));
-      reasoning = `Jev matched no reported issue; closest was R${closest.j} (p=${fmt(closest.p)}).`;
+      reasoning = `${judgeName} matched no reported issue; closest was R${closest.j} (p=${fmt(closest.p)}).`;
     }
     return {
       expectedIndex: i,
@@ -169,17 +200,43 @@ export function verdictFromJev(response: JevResponse, request: JevRequest): Judg
 /** Posts one Decisions request and returns the raw JSON body. Injectable for tests. */
 export type JevDecide = (body: JevRequestBody) => Promise<unknown>;
 
-class JevHttpError extends Error {
+class DecisionsHttpError extends Error {
   constructor(
+    label: string,
     readonly status: number,
     body: string,
   ) {
-    super(`Jev decisions request failed: HTTP ${status}: ${body.slice(0, 300)}`);
-    this.name = "JevHttpError";
+    super(`${label} decisions request failed: HTTP ${status}: ${body.slice(0, 300)}`);
+    this.name = "DecisionsHttpError";
   }
 }
 
 const RETRYABLE_STATUS = new Set([408, 429, 500, 502, 503, 524, 529]);
+
+/** POST bodies to a Decisions endpoint, retrying transient failures; `label` names it in errors. */
+export function createDecisionsPost(
+  url: string,
+  apiKey: string,
+  label: string,
+): (body: object) => Promise<unknown> {
+  return (body) =>
+    retryWithBackoff(
+      async () => {
+        const res = await fetch(url, {
+          method: "POST",
+          headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+        if (!res.ok) throw new DecisionsHttpError(label, res.status, await res.text());
+        return (await res.json()) as unknown;
+      },
+      {
+        maxAttempts: 4,
+        isRetryable: (error) =>
+          !(error instanceof DecisionsHttpError) || RETRYABLE_STATUS.has(error.status),
+      },
+    );
+}
 
 export function createJevDecide(): JevDecide {
   const apiKey = process.env.OPENROUTER_API_KEY;
@@ -188,21 +245,5 @@ export function createJevDecide(): JevDecide {
       "Missing OPENROUTER_API_KEY: Jev is called through OpenRouter's Decisions API.",
     );
   }
-  return (body) =>
-    retryWithBackoff(
-      async () => {
-        const res = await fetch(DECISIONS_URL, {
-          method: "POST",
-          headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-          body: JSON.stringify(body),
-        });
-        if (!res.ok) throw new JevHttpError(res.status, await res.text());
-        return (await res.json()) as unknown;
-      },
-      {
-        maxAttempts: 4,
-        isRetryable: (error) =>
-          !(error instanceof JevHttpError) || RETRYABLE_STATUS.has(error.status),
-      },
-    );
+  return createDecisionsPost(DECISIONS_URL, apiKey, "Jev");
 }

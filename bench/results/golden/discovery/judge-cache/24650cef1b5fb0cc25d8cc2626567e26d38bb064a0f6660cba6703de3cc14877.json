@@ -1,0 +1,48 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "The word Restaurants is misspelled Restarants"
+  ],
+  "reportedIssues": [
+    "The search placeholder reads 'Restarants, dishes, groceries'. 'Restaurants' is misspelled.",
+    "In the 'Fastest near you' cards, the time pills (e.g. '15–25 min') sit on the bottom-left edge of the image and overlap the plate illustration. On the first card, the pill also extends slightly beyond the image's rounded corner area. They look inconsistent with the card padding.",
+    "The gray secondary text (delivery fees, '25–35 min • €0 delivery • Ramen') and the placeholder text are light gray on white or light gray. Contrast is low, and the small size makes them harder to read."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.95,
+        "confidence": 0.9
+      }
+    ]
+  }
+}

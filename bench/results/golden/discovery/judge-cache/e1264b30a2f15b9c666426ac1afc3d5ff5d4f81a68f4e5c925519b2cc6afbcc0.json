@@ -1,0 +1,48 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Fastest near you carousel card heights are misaligned with each other"
+  ],
+  "reportedIssues": [
+    "In the 'Fastest near you' horizontal carousel, the cards are vertically misaligned: the Green Bowl Poké card's image is taller/positioned higher while Smash Bros Burgers and Trattoria Piccola images start lower, so image tops, delivery-time badges, and restaurant titles sit at different vertical offsets across the row instead of aligning on a common baseline.",
+    "Because of the misalignment, the delivery-time badges ('15–25 min', '20–30 min') appear at inconsistent vertical positions relative to their images (overlapping the bottom edge on some cards but sitting inside the image area on others).",
+    "The category chip row after 'Healthy' shows a sliver of another chip at the right edge with no visual affordance (fade or scroll hint), which can look like a rendering artifact rather than intentional scrollability."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          1
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.95,
+        "confidence": 0.9
+      }
+    ]
+  }
+}

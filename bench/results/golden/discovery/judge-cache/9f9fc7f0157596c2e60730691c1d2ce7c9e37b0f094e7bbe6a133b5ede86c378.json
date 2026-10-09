@@ -1,0 +1,39 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "An icon is missing from the top right corner, only a red dot is visible"
+  ],
+  "reportedIssues": [
+    "The circular button in the top-right corner (next to the delivery address) renders as a blank light-gray circle with only a small red notification dot; no bell, avatar, or icon glyph is visible inside it, making the control's purpose unclear and looking like a failed asset load.",
+    "The red notification badge on the empty gray circle is very small and has no accompanying visible icon or label, so sighted users cannot tell what the badge refers to; screen-reader users also get no textual cue from the visual alone."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          1
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.61,
+        "confidence": 0.22
+      }
+    ]
+  }
+}

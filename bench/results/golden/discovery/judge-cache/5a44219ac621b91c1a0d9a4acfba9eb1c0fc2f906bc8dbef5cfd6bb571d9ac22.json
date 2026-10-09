@@ -1,0 +1,40 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "In the bottom navigation bar, a thick dark horizontal line/bar is drawn across the search and orders tab icons, partially covering them. It looks like a misplaced active-tab indicator or a stray divider element overlapping the icons.",
+    "The bottom navigation icons have no text labels, and the (partially obscured) search and orders icons are hard to identify, reducing clarity of navigation."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.70, confidence 0.40)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.7,
+        "confidence": 0.4
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.57,
+        "confidence": 0.14
+      }
+    ]
+  }
+}

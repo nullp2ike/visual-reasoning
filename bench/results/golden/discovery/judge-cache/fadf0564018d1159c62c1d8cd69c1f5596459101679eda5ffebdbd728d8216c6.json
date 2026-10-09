@@ -1,0 +1,40 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The pizza restaurant card in 'Popular right now' displays a '−100%' discount badge. A 100% discount implies the order is completely free, which is implausible and looks like a data/calculation error (e.g., missing or zero price used in the percentage formula, or a wrong field mapped to the badge).",
+    "On the Tokumaru Ramen Bar card, '€0 delivery' appears twice — once as an overlay badge on the image and again in the metadata line below the title — which is redundant."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.95,
+        "confidence": 0.9
+      }
+    ]
+  }
+}

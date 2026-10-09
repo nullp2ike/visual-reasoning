@@ -4,8 +4,13 @@ import { join } from "node:path";
 import { parseArgs } from "node:util";
 import { benchConfig } from "../../bench.config.js";
 import { selectDataset } from "../../shared/dataset.js";
-import { createJudgeCompletion, judgePromptVersion, judgeRun } from "./judge.js";
-import { createJevDecide, isDecisionJudge } from "./jev.js";
+import {
+  createDecisionsCall,
+  createJudgeCompletion,
+  judgePromptVersion,
+  judgeRun,
+} from "./judge.js";
+import { isDecisionJudge } from "./jev.js";
 import { ensureManifest } from "./manifest.js";
 import { computeModelMetrics, sortLeaderboard } from "./metrics.js";
 import { loadPrompt } from "./prompt.js";
@@ -233,10 +238,10 @@ async function main(): Promise<void> {
   const expectedByImage = new Map(manifest.entries.map((e) => [e.imageId, e.expectedIssues]));
 
   console.log(`Judging with ${judgeModel} (cached verdicts are reused).`);
-  // A decision judge (Jev) answers typed questions rather than chat prompts.
+  // A decision judge (Jev, OpenAI Decisions) answers typed questions rather than chat prompts.
   const decisionJudge = isDecisionJudge(judgeModel);
   const completion = decisionJudge ? undefined : createJudgeCompletion(judgeModel);
-  const decide = decisionJudge ? createJevDecide() : undefined;
+  const decide = decisionJudge ? createDecisionsCall(judgeModel) : undefined;
   let judged = 0;
   const tasks = records.map((record) => async (): Promise<ResolvedCell> => {
     if (record.status !== "ok" || !record.result) {

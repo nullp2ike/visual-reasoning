@@ -1,0 +1,39 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Orders icon is missing from the bottom nav bar"
+  ],
+  "reportedIssues": [
+    "In the 'Fastest near you' carousel, the first card (Green Bowl Poké) uses an image with a light/white background and visible padding around the bowl, while the adjacent cards (Smash Bros Burgers, Trattoria Piccolo) use photos that fill the entire image area with a dark background. This makes the first card look unfinished or inconsistently cropped.",
+    "On the Tokumaru Ramen Bar card, the delivery information is shown twice: a '€0 delivery' pill overlaid on the image and '€0 delivery' repeated in the meta line ('25–35 min · €0 delivery · Ramen')."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "OpenAI Decisions matched no reported issue; closest was R1 (p=0.08)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.95,
+        "confidence": 0.9
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.92,
+        "confidence": 0.84
+      }
+    ]
+  }
+}

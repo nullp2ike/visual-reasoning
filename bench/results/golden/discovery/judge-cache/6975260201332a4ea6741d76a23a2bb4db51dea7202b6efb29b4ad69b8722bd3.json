@@ -1,0 +1,39 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Fastest near you carousel card heights are misaligned with each other"
+  ],
+  "reportedIssues": [
+    "In the 'Fastest near you' row, the 'Smash Bros Burgers' card is offset vertically compared to 'Green Bowl Poké' and 'Trattoria Piccolo' — its image starts lower and its title/delivery-fee text sits lower than the neighboring cards, breaking row alignment.",
+    "The time-badge pills on the cards ('15–25 min', '20–30 min', '20–30 min') are positioned at slightly different vertical offsets on their respective images, contributing to the inconsistent look of the carousel."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          1
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.51,
+        "confidence": 0.02
+      }
+    ]
+  }
+}

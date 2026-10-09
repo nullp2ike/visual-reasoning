@@ -1,0 +1,47 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The third restaurant card title in 'Fastest near you' is truncated to 'Trattoria Piccol' with the rest cut off, and its delivery fee text may also be incomplete at the edge.",
+    "The bottom pizza promotional card is cropped such that only the top portion of the pizza image and discount badge are visible, with no restaurant name or details shown in the viewport for that card.",
+    "Category chips row ends with a partial empty/white chip on the far right, which can look like a broken or incomplete UI element."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "OpenAI Decisions matched no reported issue; closest was R2 (p=0.12)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.89,
+        "confidence": 0.78
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.94,
+        "confidence": 0.88
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.88,
+        "confidence": 0.76
+      }
+    ]
+  }
+}

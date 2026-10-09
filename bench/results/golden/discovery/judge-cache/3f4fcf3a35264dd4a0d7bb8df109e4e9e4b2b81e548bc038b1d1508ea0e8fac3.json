@@ -1,0 +1,48 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Promo banner text is unreadable, white text on a pale mint background"
+  ],
+  "reportedIssues": [
+    "In the '3 free deliveries for you' banner, the heading text is rendered in a very light, washed-out color that is actually fainter and harder to read than the smaller subtext ('Use code TALLINN3 at checkout • min. order €10') beneath it, producing insufficient contrast against the pale green background.",
+    "The favorite/heart button is styled inconsistently between cards: the Tokumaru Ramen Bar card shows a bare outline heart on the image, while the pizza card shows the same heart inside a dark circular background.",
+    "On the Tokumaru Ramen Bar card the delivery information is duplicated: an '€0 delivery' pill badge appears on the image and '€0 delivery' is repeated again in the metadata line ('25–35 min • €0 delivery • Ramen')."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.98,
+        "confidence": 0.96
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      }
+    ]
+  }
+}

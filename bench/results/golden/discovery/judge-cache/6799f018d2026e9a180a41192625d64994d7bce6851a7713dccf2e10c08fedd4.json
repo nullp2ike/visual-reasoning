@@ -1,0 +1,48 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Tokumaru Ramen Bar Delivery fee text overlaps the delivery time text"
+  ],
+  "reportedIssues": [
+    "In the Tokumaru Ramen Bar card, the metadata line has overlapping text. The delivery time ('25–35 min') collides with the delivery fee ('€0 delivery'), producing a garbled string like '25–35mindelivery'. Both values are unreadable.",
+    "The '15–25 min' time badge on the Green Bowl Poké card overlaps and slightly clips the plate image, and its placement looks inconsistent with the other cards' badges.",
+    "The secondary gray text (delivery fees, 'Ramen' label) has low contrast against the white background, and the metadata text is small."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.99, confidence 0.98)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.89,
+        "confidence": 0.78
+      }
+    ]
+  }
+}

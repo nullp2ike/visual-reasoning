@@ -101,6 +101,23 @@ verdict that changed between two identical runs, fell below it. The question
 wording lives in `bench/discovery/src/jev.ts` and is versioned by
 `JEV_PROMPT_VERSION`, which keys its judge-cache entries.
 
+`openai-decisions/gpt-6-luna` is OpenAI's own Decisions API (public beta,
+`gpt-6-luna` only), called directly with `OPENAI_API_KEY`. It is asked Jev's
+questions with Jev's options and its answers go through the same verdict logic,
+so it differs from Jev only in the model answering. The `openai-decisions/`
+prefix is what makes it a decision judge: plain `gpt-6-luna` is the default chat
+judge, and the prefix keeps the two apart in judge ids, the cache and results
+file names. OpenAI's API has no `state` field, so both issue lists go into the
+input text. A refused answer fails the run rather than counting as "none". On
+golden it agrees with the chat judges about as closely as Jev does, and 19 of the
+20 verdicts where it contradicts all four of them carry a decision below
+confidence 0.8. Its input layout is versioned by `OPENAI_DECISIONS_PROMPT_VERSION`
+in `bench/discovery/src/openai-decisions.ts`.
+
+```bash
+pnpm discovery:score --judge openai-decisions/gpt-6-luna
+```
+
 ## Output
 
 Everything lands in `bench/results/<dataset-id>/discovery/`:

@@ -1,0 +1,40 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Promo banner text is unreadable, white text on a pale mint background"
+  ],
+  "reportedIssues": [
+    "In the '3 free deliveries for you' promo banner, the white heading and the 'Use code TALLINN3 at checkout · min. order €10' subtext sit on a very light mint-green background, resulting in extremely low text contrast that is hard to read and fails WCAG contrast requirements.",
+    "The promo banner's 'Order now' button uses green text on a white pill, which is fine, but the banner's pale background makes the whole banner look washed out / unintentionally disabled compared to the rest of the high-contrast UI."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.99, confidence 0.98)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.71,
+        "confidence": 0.42
+      }
+    ]
+  }
+}

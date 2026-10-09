@@ -1,0 +1,56 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Green Bowl Poké card appears twice in the carousel"
+  ],
+  "reportedIssues": [
+    "The first two cards under 'Fastest near you' show identical images, names ('Green Bowl Poké'), delivery times, and fees, appearing as unintended duplicates.",
+    "The third restaurant name is truncated to 'Smash Bros Bu' instead of the full name, cutting off mid-word.",
+    "The delivery-time badges (e.g. '15–25 min') sit over the food photos and partially obscure the dish imagery.",
+    "Category filter chips after 'All' use very light gray text/background, giving weak visual hierarchy and low emphasis compared to the selected chip."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.61, confidence 0.22)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.61,
+        "confidence": 0.22
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.86,
+        "confidence": 0.72
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.98,
+        "confidence": 0.96
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 0.95,
+        "confidence": 0.9
+      }
+    ]
+  }
+}

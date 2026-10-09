@@ -1,0 +1,56 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Loading spinner is shown on top of already loaded content"
+  ],
+  "reportedIssues": [
+    "The Tokumaru Ramen Bar card in 'Popular right now' displays a circular loading spinner centered on top of an image that has already fully loaded, so the overlay looks like a stuck/never-dismissed loader obscuring the food photo.",
+    "The favorite heart buttons on the two 'Popular right now' cards use different treatments: the first has a white circular background with a dark outline heart, while the second has a dark/transparent circular background. This inconsistency looks unintentional.",
+    "The 'Green Bowl Poké' thumbnail renders on a very light grey background while the neighboring carousel images use dark photographic backgrounds, making it look like a missing/placeholder image within the row.",
+    "The white '15–25 min' time badge sits on a very light grey thumbnail background, giving low contrast compared with the same badge on the darker adjacent cards."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.99, confidence 0.98)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.96,
+        "confidence": 0.92
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.95,
+        "confidence": 0.9
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 0.91,
+        "confidence": 0.82
+      }
+    ]
+  }
+}
