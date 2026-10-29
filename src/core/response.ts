@@ -1,6 +1,11 @@
 import { z } from "zod";
 import { VisualAIResponseParseError } from "../errors.js";
-import { AskResultSchema, CheckResultSchema, CompareResultSchema } from "../types.js";
+import {
+  AskResultSchema,
+  CheckResultSchema,
+  CompareResultSchema,
+  StatementResultSchema,
+} from "../types.js";
 import type { AskResult, CheckResult, CompareResult } from "../types.js";
 
 function stripCodeFences(text: string): string {
@@ -10,6 +15,18 @@ function stripCodeFences(text: string): string {
 }
 
 export const CheckResponseSchema = CheckResultSchema.omit({ usage: true });
+/**
+ * What image `check()` and the image-only check helpers request from strict
+ * structured-output providers. Only the video check prompts ask for a
+ * per-statement `timestampSeconds`; requiring it on image calls made
+ * nemotron-3.5-super-vl loop in whitespace until the output budget ran out
+ * (6 of 12 `elementsVisible()` calls, against 0 of 12 without it), the same
+ * failure `AskImageResponseSchema` fixed for `ask()`. Video checks keep
+ * `CheckResponseSchema`, and parsing uses it for every kind.
+ */
+export const CheckImageResponseSchema = CheckResponseSchema.extend({
+  statements: z.array(StatementResultSchema.omit({ timestampSeconds: true })),
+});
 export const AskResponseSchema = AskResultSchema.omit({ usage: true });
 /**
  * What `ask()` requests from strict structured-output providers, one schema per

@@ -1,0 +1,25 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The delivery fee for Green Bowl Poké is displayed as \"€0.90 delivery\", which appears to be formatted inconsistently with the other delivery labels (e.g., \"€0 delivery\" and \"€2.40 delivery\"), making it ambiguous whether the amount is a fee or a price.",
+    "The restaurant rating shows \"4.8 (500+)\" without any indication of whether the number in parentheses represents review counts, and the star icon is rendered in a color that differs from the rating text."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "None of the reported issues describe the category filter failing to filter the feed."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1
+    ]
+  }
+}

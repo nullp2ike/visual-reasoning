@@ -42,6 +42,7 @@ describe("Model", () => {
   it("has correct OpenAI model values", () => {
     expect(Model.OpenAI.GPT_6_ASTRA).toBe("gpt-6-astra");
     expect(Model.OpenAI.GPT_6_1_SOL).toBe("gpt-6.1-sol");
+    expect(Model.OpenAI.GPT_6_1_TERRA).toBe("gpt-6.1-terra");
     expect(Model.OpenAI.GPT_6_SOL).toBe("gpt-6-sol");
     expect(Model.OpenAI.GPT_6_LUNA).toBe("gpt-6-luna");
     expect(Model.OpenAI.GPT_5_6_SOL).toBe("gpt-5.6-sol");
@@ -72,6 +73,10 @@ describe("Model", () => {
     expect(Model.OpenRouter.MUSE_SPARK_1_3).toBe("meta/muse-spark-1.3");
     expect(Model.OpenRouter.GROK_4_7).toBe("x-ai/grok-4.7");
     expect(Model.OpenRouter.MIMO_V2_6_PRO).toBe("xiaomi/mimo-v2.6-pro");
+    expect(Model.OpenRouter.MUSE_WONDER).toBe("meta/muse-wonder");
+    expect(Model.OpenRouter.NEMOTRON_3_5_SUPER_VL).toBe("nvidia/nemotron-3.5-super-vl");
+    expect(Model.OpenRouter.DEEPSEEK_V4_1_FLASH_1017).toBe("deepseek/deepseek-v4.1-flash-1017");
+    expect(Model.OpenRouter.MINIMAX_M3_1_FLASH).toBe("minimax/minimax-m3.1-flash");
     expect(Model.OpenRouter.GROK_4_6).toBe("x-ai/grok-4.6");
     expect(Model.OpenRouter.GROK_4_5).toBe("x-ai/grok-4.5");
     expect(Model.OpenRouter.KIMI_K3).toBe("moonshotai/kimi-k3");
@@ -111,7 +116,7 @@ describe("Model", () => {
 describe("DEFAULT_MODELS", () => {
   it("maps each provider to a known model", () => {
     expect(DEFAULT_MODELS[Provider.ANTHROPIC]).toBe(Model.Anthropic.SONNET_5_5);
-    expect(DEFAULT_MODELS[Provider.OPENAI]).toBe(Model.OpenAI.GPT_6_1_SOL);
+    expect(DEFAULT_MODELS[Provider.OPENAI]).toBe(Model.OpenAI.GPT_6_1_TERRA);
     expect(DEFAULT_MODELS[Provider.GOOGLE]).toBe(Model.Google.GEMINI_3_8_FLASH);
     expect(DEFAULT_MODELS[Provider.OPENROUTER]).toBe(Model.OpenRouter.MUSE_SPARK_1_3);
   });

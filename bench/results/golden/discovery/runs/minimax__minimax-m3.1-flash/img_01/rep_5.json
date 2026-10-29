@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "minimax/minimax-m3.1-flash",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-29T18:12:11.330Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly functional and visually coherent, but a raw localization placeholder string (\"home_feed.popular_title\") is exposed as a section title. Minor formatting inconsistency also appears in the delivery-fee labels.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "A raw localization key is displayed as a section heading: \"home_feed.popular_title\".",
+        "suggestion": "Replace the placeholder key with the intended localized heading text (e.g., \"Popular near you\")."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The delivery fee uses an unusual localized format (\"€0.90 delivery\" and \"€1.90 delivery\"), with the decimal separator and currency placement looking inconsistent with the rest of the UI.",
+        "suggestion": "Use a consistent locale-aware currency format such as \"€0.90 delivery fee\" or \"Delivery €0.90\" across all cards."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1999,
+    "outputTokens": 227,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1920,
+    "estimatedCost": 0.00043605,
+    "reportedCost": 0.00017685,
+    "durationSeconds": 1.8510333340000362
+  }
+}

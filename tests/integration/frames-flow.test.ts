@@ -85,6 +85,44 @@ describe("integration: pre-sampled frames → check()", () => {
     expect(textBlock?.text).not.toContain("dropped");
   });
 
+  it("sends an OpenAI frames check() a statement schema with timestampSeconds", async () => {
+    // The video check prompt asks for timestampSeconds, so unlike image check()
+    // its strict schema keeps the field.
+    mockOpenAICreate.mockResolvedValueOnce({
+      output_text: JSON.stringify({
+        pass: true,
+        reasoning: "Toast appeared.",
+        issues: [],
+        statements: [
+          {
+            statement: "A toast appears",
+            pass: true,
+            reasoning: "At 1.0s",
+            confidence: "high",
+            timestampSeconds: 1,
+          },
+        ],
+      }),
+      usage: { input_tokens: 700, output_tokens: 90 },
+    });
+
+    const frame = await png();
+    const ai = visualAI({ model: "gpt-5-mini", apiKey: "test-key" });
+    const result = await ai.check({ frames: [frame, frame], dedupe: false }, ["A toast appears"]);
+
+    expect(result.statements[0]?.timestampSeconds).toBe(1);
+    const params = mockOpenAICreate.mock.calls[0]![0] as {
+      text: {
+        format: {
+          schema: { properties: { statements: { items: { required: string[] } } } };
+        };
+      };
+    };
+    expect(params.text.format.schema.properties.statements.items.required).toContain(
+      "timestampSeconds",
+    );
+  });
+
   it("drops an unchanged frame by default and tells the model so", async () => {
     mockAnthropicCreate.mockResolvedValueOnce({
       content: [

@@ -1,0 +1,40 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The promo banner contains an empty green circular shape on the right side that looks like an unrendered image placeholder or a graphic element missing its image.",
+    "The second 'Popular right now' card shows a discount badge reading '-100%', which is likely an incorrect or malformed discount value."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          1
+        ],
+        "reasoning": "Jev matched R1 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

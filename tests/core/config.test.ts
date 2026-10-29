@@ -357,6 +357,34 @@ describe("resolveConfig", () => {
       },
     );
 
+    it("increases maxTokens for deepseek-v4.1-flash-1017 at every effort level", () => {
+      // Verified live at the 4096 default: 2/15 ask() calls truncated at both
+      // low and medium, every token spent on prose reasoning (no JSON yet).
+      // With the large budget 20/20 completed, the longest at 6135 tokens.
+      for (const reasoningEffort of [undefined, "low", "medium", "high"] as const) {
+        const resolved = resolveConfig({
+          model: "deepseek/deepseek-v4.1-flash-1017",
+          apiKey: "k",
+          reasoningEffort,
+        });
+        expect(resolved.maxTokens).toBe(OPENAI_HEAVY_REASONING_MAX_TOKENS);
+      }
+    });
+
+    it("increases maxTokens for nemotron-3.5-super-vl at every effort level", () => {
+      // On the golden discovery bench (medium, 8192 budget) 13/90 calls went
+      // past 4096 output tokens, all of it reasoning (up to 7908 tokens), so
+      // they would truncate at the default.
+      for (const reasoningEffort of [undefined, "low", "medium", "high"] as const) {
+        const resolved = resolveConfig({
+          model: "nvidia/nemotron-3.5-super-vl",
+          apiKey: "k",
+          reasoningEffort,
+        });
+        expect(resolved.maxTokens).toBe(OPENAI_HEAVY_REASONING_MAX_TOKENS);
+      }
+    });
+
     it("leaves kimi-k2.7-code at the default budget", () => {
       // Its truncated calls are ones where it writes prose instead of JSON; a
       // larger budget turns them into parse errors rather than fixing them.

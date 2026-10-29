@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "meta/muse-wonder",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-29T18:07:42.193Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 visually broken issue: overlapping, unreadable metadata text under Tokumaru Ramen Bar; other partially visible carousel and bottom content is intentional scrolling behavior.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Under 'Tokumaru Ramen Bar' in the 'Popular right now' section, the metadata line is garbled with overlapping text. Characters in the delivery time / delivery info area (around '25-30 min delivery') are rendered on top of each other, making the line unreadable.",
+        "suggestion": "Remove the duplicate/overlapping text layer, ensure only one metadata string is rendered on a single line (e.g. '25-30 min · Ramen'), and check constraints/auto-layout so the time, delivery info, and cuisine labels do not overlap."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1819,
+    "outputTokens": 961,
+    "reasoningTokens": 733,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.026496,
+    "reportedCost": 0.026496,
+    "durationSeconds": 12.034204291999995
+  }
+}

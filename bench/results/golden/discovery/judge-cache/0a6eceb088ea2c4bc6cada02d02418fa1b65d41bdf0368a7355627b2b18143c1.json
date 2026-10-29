@@ -1,0 +1,40 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Loading spinner is shown on top of already loaded content"
+  ],
+  "reportedIssues": [
+    "The promo banner contains a large, blurry, semi-transparent circle/arc shape that appears to be an incorrectly rendered or oversized decorative graphic overlapping the right side of the banner.",
+    "A loading spinner is shown on top of the ramen card image, obscuring the food photo and appearing as a stray floating overlay."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          1
+        ],
+        "reasoning": "OpenAI Decisions matched R1 (p=0.98, confidence 0.96)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.98,
+        "confidence": 0.96
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.98,
+        "confidence": 0.96
+      }
+    ]
+  }
+}

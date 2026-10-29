@@ -71,6 +71,12 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
     inputPricePerToken: 2 / PER_MILLION,
     outputPricePerToken: 10 / PER_MILLION,
   },
+  // Cached input is $0.05/MTok and cache writes $1.25/MTok; neither is
+  // modelled. Prompts above 272K input tokens bill at 2x input / 1.5x output.
+  [`${Provider.OPENAI}:${Model.OpenAI.GPT_6_1_TERRA}`]: {
+    inputPricePerToken: 1 / PER_MILLION,
+    outputPricePerToken: 5 / PER_MILLION,
+  },
   // Cached input is $0.20/MTok (not modelled). Prompts above 272K input tokens
   // bill at 2x input / 1.5x output, which is far beyond screenshot-sized calls.
   [`${Provider.OPENAI}:${Model.OpenAI.GPT_6_SOL}`]: {
@@ -228,6 +234,27 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
   [`${Provider.OPENROUTER}:${Model.OpenRouter.MIMO_V2_6_PRO}`]: {
     inputPricePerToken: 0.435 / PER_MILLION,
     outputPricePerToken: 0.87 / PER_MILLION,
+  },
+  // Verified 2026-10-29 against https://openrouter.ai/api/v1/models for the
+  // four entries below. Cached input (not modelled, as everywhere here) is
+  // $0.20, $0.02, $0.003 and $0.015/MTok respectively.
+  [`${Provider.OPENROUTER}:${Model.OpenRouter.MUSE_WONDER}`]: {
+    inputPricePerToken: 4 / PER_MILLION,
+    outputPricePerToken: 20 / PER_MILLION,
+  },
+  [`${Provider.OPENROUTER}:${Model.OpenRouter.NEMOTRON_3_5_SUPER_VL}`]: {
+    inputPricePerToken: 0.15 / PER_MILLION,
+    outputPricePerToken: 0.5 / PER_MILLION,
+  },
+  // Off-peak rate. DeepSeek doubles it ($0.30 / $1.20) on weekdays during
+  // 01:00-04:00 and 06:00-10:00 UTC; the estimate does not follow the clock.
+  [`${Provider.OPENROUTER}:${Model.OpenRouter.DEEPSEEK_V4_1_FLASH_1017}`]: {
+    inputPricePerToken: 0.15 / PER_MILLION,
+    outputPricePerToken: 0.6 / PER_MILLION,
+  },
+  [`${Provider.OPENROUTER}:${Model.OpenRouter.MINIMAX_M3_1_FLASH}`]: {
+    inputPricePerToken: 0.15 / PER_MILLION,
+    outputPricePerToken: 0.6 / PER_MILLION,
   },
 };
 

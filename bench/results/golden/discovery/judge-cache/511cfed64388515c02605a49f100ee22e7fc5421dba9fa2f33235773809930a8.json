@@ -1,0 +1,39 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The delivery fee for Green Bowl Poké is displayed as \"€0.90 delivery\", which appears to be formatted inconsistently with the other delivery labels (e.g., \"€0 delivery\" and \"€2.40 delivery\"), making it ambiguous whether the amount is a fee or a price.",
+    "The restaurant rating shows \"4.8 (500+)\" without any indication of whether the number in parentheses represents review counts, and the star icon is rendered in a color that differs from the rating text."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "OpenAI Decisions matched no reported issue; closest was R1 (p=0.07)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.93,
+        "confidence": 0.86
+      }
+    ]
+  }
+}

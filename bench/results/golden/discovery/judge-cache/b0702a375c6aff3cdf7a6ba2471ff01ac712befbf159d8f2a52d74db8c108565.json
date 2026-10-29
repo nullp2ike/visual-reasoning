@@ -1,0 +1,40 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "A section heading displays the raw localization key 'home_feed.popular_title' instead of a human-readable title.",
+    "The 'Tokumaru Ramen Bar' card shows '€0 delivery' in a badge while the metadata line below repeats '€0 delivery', creating duplicated and slightly inconsistent delivery-fee labeling."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.98, confidence 0.96)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.98,
+        "confidence": 0.96
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      }
+    ]
+  }
+}

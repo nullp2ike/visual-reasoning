@@ -1,0 +1,40 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The section header displays 'home_feed.popular_title' which appears to be an untranslated or unrendered placeholder string instead of a proper section title.",
+    "The bottom navigation bar appears to overlap with the bottom edge of the screen, which may cause usability issues on certain devices or screen sizes."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.99, confidence 0.98)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}

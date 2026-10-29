@@ -1,0 +1,55 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "The word Restaurants is misspelled Restarants"
+  ],
+  "reportedIssues": [
+    "The promo banner says \"3 free deliveries for you\" but the subtext says \"min. order €10\", which reads as if the offer is conditional rather than describing 3 free deliveries. The wording may confuse users about what they actually get.",
+    "The \"€0 delivery\" badge on the Tokumaru Ramen Bar card overlaps the dish image and is positioned where it could obscure food details.",
+    "Small text in promo and metadata lines (e.g. \"€0.90 delivery\", \"Use code TALLINN3...\", category chips) appears low-contrast against light gray/green backgrounds.",
+    "The notification bell icon shows a red badge dot with no visible count, and the bell appears faint/greyed relative to the active page state, which can look like an unfinished or disabled element."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "OpenAI Decisions matched no reported issue; closest was R0 (p=0.02)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.98,
+        "confidence": 0.96
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 3,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      }
+    ]
+  }
+}

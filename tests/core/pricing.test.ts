@@ -86,6 +86,12 @@ describe("calculateCost", () => {
     expect(cost).toBeCloseTo(0.035, 10);
   });
 
+  it("calculates cost for openai gpt-6.1-terra", () => {
+    const cost = calculateCost("openai", "gpt-6.1-terra", 1000, 500);
+    // 1000 * (1/1M) + 500 * (5/1M) = 0.001 + 0.0025 = 0.0035
+    expect(cost).toBeCloseTo(0.0035, 10);
+  });
+
   it("calculates cost for openai gpt-6.1-sol", () => {
     const cost = calculateCost("openai", "gpt-6.1-sol", 1000, 500);
     // 1000 * (2/1M) + 500 * (10/1M) = 0.002 + 0.005 = 0.007
@@ -186,6 +192,30 @@ describe("calculateCost", () => {
     const cost = calculateCost("openrouter", "meta/muse-spark-1.3-contributor", 1000, 500);
     // 1000 * (0.1/1M) + 500 * (0.2/1M) = 0.0001 + 0.0001 = 0.0002
     expect(cost).toBeCloseTo(0.0002, 10);
+  });
+
+  it("calculates cost for openrouter meta/muse-wonder", () => {
+    const cost = calculateCost("openrouter", "meta/muse-wonder", 1000, 500);
+    // 1000 * (4/1M) + 500 * (20/1M) = 0.004 + 0.01 = 0.014
+    expect(cost).toBeCloseTo(0.014, 10);
+  });
+
+  it("calculates cost for openrouter nvidia/nemotron-3.5-super-vl", () => {
+    const cost = calculateCost("openrouter", "nvidia/nemotron-3.5-super-vl", 1000, 500);
+    // 1000 * (0.15/1M) + 500 * (0.5/1M) = 0.00015 + 0.00025 = 0.0004
+    expect(cost).toBeCloseTo(0.0004, 10);
+  });
+
+  it("calculates cost for openrouter deepseek/deepseek-v4.1-flash-1017", () => {
+    const cost = calculateCost("openrouter", "deepseek/deepseek-v4.1-flash-1017", 1000, 500);
+    // 1000 * (0.15/1M) + 500 * (0.6/1M) = 0.00015 + 0.0003 = 0.00045
+    expect(cost).toBeCloseTo(0.00045, 10);
+  });
+
+  it("calculates cost for openrouter minimax/minimax-m3.1-flash", () => {
+    const cost = calculateCost("openrouter", "minimax/minimax-m3.1-flash", 1000, 500);
+    // 1000 * (0.15/1M) + 500 * (0.6/1M) = 0.00015 + 0.0003 = 0.00045
+    expect(cost).toBeCloseTo(0.00045, 10);
   });
 
   it("calculates cost for openrouter xiaomi/mimo-v2.6-pro", () => {

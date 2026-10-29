@@ -1,0 +1,32 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −0%"
+  ],
+  "reportedIssues": [
+    "The delivery address line reads \"Weizenergi 20, Tallinn\", which appears to be a misspelling or concatenation of the street name and house number (\"Weizen\" + street number \"20\").",
+    "The pizza card in the \"Popular right now\" section shows a \"-0%\" discount badge, which is a nonsensical value and renders as an odd empty discount.",
+    "The heart (favorite) icons on the restaurant cards are icon-only buttons without visible labels or accessible names.",
+    "The notification bell icon in the top-right is an icon-only control with no visible text label.",
+    "The green primary action button (\"Order now\") inside the promotional banner uses white text on green, and the banner's secondary line of text (light text on green) appears low-contrast."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          1
+        ],
+        "reasoning": "Reported issue 1 describes the same pizza-card discount badge displaying −0%."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      2,
+      3,
+      4
+    ]
+  }
+}

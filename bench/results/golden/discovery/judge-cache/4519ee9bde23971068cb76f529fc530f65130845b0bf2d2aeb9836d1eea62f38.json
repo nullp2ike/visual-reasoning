@@ -1,0 +1,47 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Fastest near you carousel card heights are misaligned with each other"
+  ],
+  "reportedIssues": [
+    "The promo banner's text and discount code are rendered in a low-contrast pale green on the green gradient background, making them noticeably harder to read than the white headline.",
+    "The promo copy reads \"3 free deliveries for you\" with a minimum order of €10, which is inconsistent with delivering three free orders and is confusing about what the offer actually includes.",
+    "In the \"Fastest near you\" row, the \"20–30 min\" badge on the Smash Bros Burgers card overlaps the restaurant photo instead of sitting cleanly in a consistent badge treatment like the neighboring cards, and it is vertically offset relative to the other badges."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "OpenAI Decisions matched no reported issue; closest was R2 (p=0.25)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1,
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 0.75,
+        "confidence": 0.5
+      }
+    ]
+  }
+}

@@ -87,6 +87,7 @@ export const Model = {
   OpenAI: {
     GPT_6_ASTRA: "gpt-6-astra",
     GPT_6_1_SOL: "gpt-6.1-sol",
+    GPT_6_1_TERRA: "gpt-6.1-terra",
     GPT_6_SOL: "gpt-6-sol",
     GPT_6_LUNA: "gpt-6-luna",
     GPT_5_6_SOL: "gpt-5.6-sol",
@@ -128,6 +129,10 @@ export const Model = {
     QWEN_3_6_FLASH: "qwen/qwen3.6-flash",
     GLM_5_3_FLASH: "z-ai/glm-5.3-flash",
     MIMO_V2_6_PRO: "xiaomi/mimo-v2.6-pro",
+    MUSE_WONDER: "meta/muse-wonder",
+    NEMOTRON_3_5_SUPER_VL: "nvidia/nemotron-3.5-super-vl",
+    DEEPSEEK_V4_1_FLASH_1017: "deepseek/deepseek-v4.1-flash-1017",
+    MINIMAX_M3_1_FLASH: "minimax/minimax-m3.1-flash",
   },
 } as const;
 
@@ -146,8 +151,8 @@ export type KnownModelName =
  * Default model selection used when a caller omits `config.model`.
  *
  * Two of these carry constraints the older defaults did not:
- * - `gpt-6.1-sol` rejects `reasoningEffort: "minimal"` (and `none`) with HTTP
- *   400; `low` is the floor. See the `ReasoningEffort` note above.
+ * - `gpt-6.1-terra` rejects `reasoningEffort: "minimal"` with HTTP 400; `low`
+ *   is the floor. See the `ReasoningEffort` note above.
  * - `meta/muse-spark-1.3` is age-gated on OpenRouter and returns HTTP 403 until
  *   the account completes the 18+ confirmation at
  *   openrouter.ai/settings/preferences. It also reasons by default (~370-814
@@ -156,7 +161,7 @@ export type KnownModelName =
  */
 export const DEFAULT_MODELS = {
   [Provider.ANTHROPIC]: Model.Anthropic.SONNET_5_5,
-  [Provider.OPENAI]: Model.OpenAI.GPT_6_1_SOL,
+  [Provider.OPENAI]: Model.OpenAI.GPT_6_1_TERRA,
   [Provider.GOOGLE]: Model.Google.GEMINI_3_8_FLASH,
   [Provider.OPENROUTER]: Model.OpenRouter.MUSE_SPARK_1_3,
 } as const satisfies Record<ProviderName, KnownModelName>;
@@ -200,6 +205,14 @@ export const OPENAI_HEAVY_REASONING_MAX_TOKENS = 32768;
  * budget both completed 16/16. grok-4.7 reasons as long but never truncated,
  * since its upstream does not count reasoning against `max_tokens`.
  *
+ * deepseek-v4.1-flash-1017 deliberates in prose before answering: at 4096,
+ * 2/15 `ask()` calls truncated at both `low` and `medium` with every token
+ * spent on reasoning, and unset effort reached 2987. With this budget 20/20
+ * completed, the longest at 6135 tokens; a full budget costs about $0.02.
+ * On the golden discovery bench (8192 budget) it went past 4096 on 20/90
+ * calls, and nemotron-3.5-super-vl on 13/90, nearly all reasoning (up to 7908
+ * tokens), so it is listed too; a full budget costs it about $0.016.
+ *
  * kimi-k2.7-code is deliberately absent. It truncates ~8% of calls at 4096,
  * but those are calls where it writes prose instead of JSON: at 32768 they
  * finish and fail to parse instead (~12%), so a larger budget only makes each
@@ -208,6 +221,8 @@ export const OPENAI_HEAVY_REASONING_MAX_TOKENS = 32768;
 export const MODELS_REQUIRING_LARGE_OUTPUT_BUDGET: ReadonlySet<string> = new Set<string>([
   Model.OpenRouter.QWEN_3_8_MAX,
   Model.OpenRouter.QWEN_3_7_PLUS,
+  Model.OpenRouter.DEEPSEEK_V4_1_FLASH_1017,
+  Model.OpenRouter.NEMOTRON_3_5_SUPER_VL,
 ]);
 
 // --- Reverse map: model → provider ---

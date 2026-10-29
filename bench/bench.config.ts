@@ -74,6 +74,7 @@ export const benchConfig: BenchConfig = {
     // access fail every cell with a VisualAIProviderError naming the model.
     "gpt-6-astra",
     "gpt-6.1-sol",
+    "gpt-6.1-terra",
     "gpt-6-sol",
     "gpt-6-luna",
     "gpt-5.5",
@@ -115,6 +116,9 @@ export const benchConfig: BenchConfig = {
     // default even with no effort configured (~370-814 reasoning tokens/call),
     // so its cost per run sits above the headline $1.25/$4.25 rate suggests.
     "meta/muse-spark-1.3",
+    // Meta's frontier reasoning tier above Muse Spark. Slow for its tier: a
+    // ~15s median call on golden, reasoning ~950 tokens at medium.
+    "meta/muse-wonder",
     // Muse Spark 1.3's data-sharing tier: the same model at $0.10/$0.20 per MTok,
     // because Meta uses every submitted screenshot for product improvement.
     // Sweeping a private dataset with the default roster sends its screenshots
@@ -137,6 +141,13 @@ export const benchConfig: BenchConfig = {
     // price; DeepInfra's throughput (~4 tok/s p50) is far below Xiaomi's own
     // (~36 tok/s), so latency here depends on which host OpenRouter picks.
     "xiaomi/mimo-v2.6-pro",
+    // NVIDIA open MoE (12B active / 120B), trained on GUI screenshots; served
+    // by several hosts (Together, Crusoe, CoreWeave, Nebius, DeepInfra, …).
+    "nvidia/nemotron-3.5-super-vl",
+    // A dated snapshot: DeepSeek may retire the -1017 slug when V4.1 Flash
+    // moves on. Bills double on weekdays 01:00-04:00 and 06:00-10:00 UTC.
+    "deepseek/deepseek-v4.1-flash-1017",
+    "minimax/minimax-m3.1-flash",
   ],
   repeats: 5,
   reasoningEffort: "medium",

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "minimax/minimax-m3.1-flash",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-29T18:12:12.189Z",
+  "status": "ok",
+  "result": {
+    "summary": "The main visual defect is the \"€NaN delivery\" label on the Smash Bros Burgers card, which indicates a broken price calculation or missing data. The promotional banner also has a decorative shape overlapping its text, and its left padding appears tight. The partially clipped carousel items at the right edge and the cut-off card at the bottom are expected scroll/viewport behaviors and were not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The delivery price for Smash Bros Burgers displays the literal placeholder text \"€NaN delivery\" instead of a valid amount.",
+        "suggestion": "Fix the pricing calculation or data binding so the delivery fee renders as a proper currency value, and add a fallback for missing price data."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The \"3 free deliveries for you\" promotional banner has an overlapping translucent circle graphic that collides with the subtitle text and the \"Order now\" button area, creating a muddled, low-contrast appearance.",
+        "suggestion": "Adjust or reduce the decorative shapes so they do not overlap the banner copy and button, or lower their opacity and reposition them to the right side."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The promotional banner text and button sit very close to the left edge of the card, making the banner feel cramped and inconsistent with the padding used elsewhere on the page.",
+        "suggestion": "Increase the internal horizontal padding of the banner to match the spacing used in the surrounding sections."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1999,
+    "outputTokens": 353,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1920,
+    "estimatedCost": 0.00051165,
+    "reportedCost": 0.00025245,
+    "durationSeconds": 5.395887209000066
+  }
+}

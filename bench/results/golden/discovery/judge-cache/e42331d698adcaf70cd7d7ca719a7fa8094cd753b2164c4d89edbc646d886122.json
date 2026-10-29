@@ -1,0 +1,26 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The inactive bottom-navigation icons and labels are light gray on white, making them difficult to read.",
+    "The Pizza category appears selected, but the visible restaurant listings include burgers, poké and ramen."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          1
+        ],
+        "reasoning": "Both report that selecting the Pizza category fails to filter the feed, still displaying other types of cuisines."
+      }
+    ],
+    "extraReportedIndexes": [
+      0
+    ]
+  }
+}

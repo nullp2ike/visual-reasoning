@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-29T18:11:41.245Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 2 issues: a major navigation state mismatch and a minor contrast issue on an image badge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "Visual state mismatch: The bottom navigation bar highlights the 'Profile' tab in green, but the main content area displays a Home/Discovery feed with search, categories, and restaurant lists. The 'Home' tab should be the active one.",
+        "suggestion": "Ensure the active state of the bottom navigation corresponds to the currently displayed screen. The 'Home' tab should be highlighted when showing this feed."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Poor contrast on time badge: The '15-25 min' badge on the 'Green Bowl Poké' card has a white background that blends into the light-colored image behind it, reducing readability compared to the badges on darker images.",
+        "suggestion": "Add a subtle border or shadow to the badge, or use a darker semi-transparent background to ensure consistent contrast across all image backgrounds."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1137,
+    "outputTokens": 3705,
+    "reasoningTokens": 3459,
+    "cachedInputTokens": 1024,
+    "estimatedCost": 0.0023935499999999995,
+    "reportedCost": 0.002243022,
+    "durationSeconds": 30.917754791999933
+  }
+}

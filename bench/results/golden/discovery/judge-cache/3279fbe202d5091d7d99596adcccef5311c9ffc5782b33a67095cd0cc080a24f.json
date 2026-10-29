@@ -1,0 +1,48 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Green Bowl Poké card appears twice in the carousel"
+  ],
+  "reportedIssues": [
+    "The delivery address shows the truncated value \"Weizenbergi 20, Tallinn\" with a dropdown chevron, and no visible space or separator between the address elements.",
+    "The promotional banner has a decorative circular shape that appears clipped at the right edge of the banner.",
+    "The two \"Green Bowl Poké\" entries in the \"Fastest near you\" row appear to be duplicate listings with identical names, images, delivery fees, and time ranges."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          2
+        ],
+        "reasoning": "Jev matched R2 (p=0.98, confidence 0.96)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": 0,
+        "probability": 0.98,
+        "confidence": 0.96
+      }
+    ]
+  }
+}

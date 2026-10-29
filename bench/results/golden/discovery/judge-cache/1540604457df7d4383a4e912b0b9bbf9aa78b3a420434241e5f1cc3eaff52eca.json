@@ -1,0 +1,40 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Tokumaru Ramen Bar Delivery fee text overlaps the delivery time text"
+  ],
+  "reportedIssues": [
+    "In the 'Popular right now' section, the Tokumaru Ramen Bar metadata line has overlapping text: the delivery time ('25–30 min') and price ('€0 delivery') are drawn on top of each other, producing garbled, unreadable text.",
+    "The rating row for Tokumaru Ramen Bar ('4.8 (500+)') is pushed to the far right edge of the screen and appears partially clipped by the viewport edge."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.98, confidence 0.96)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.98,
+        "confidence": 0.96
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.97,
+        "confidence": 0.94
+      }
+    ]
+  }
+}

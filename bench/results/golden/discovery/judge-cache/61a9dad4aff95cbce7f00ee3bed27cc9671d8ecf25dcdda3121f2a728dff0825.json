@@ -1,0 +1,39 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "In the bottom navigation bar, a search icon is overlapped by a long dark horizontal bar (likely a stray input/divider element) that extends across the middle of the screen and crosses the search icon.",
+    "The bottom navigation bar appears clipped, showing only the icons without labels and with the home icon partially cut off at the bottom edge."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          1
+        ],
+        "reasoning": "Jev matched R1 (p=0.88, confidence 0.76)."
+      }
+    ],
+    "extraReportedIndexes": [],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.78,
+        "confidence": 0.56
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.88,
+        "confidence": 0.76
+      }
+    ]
+  }
+}

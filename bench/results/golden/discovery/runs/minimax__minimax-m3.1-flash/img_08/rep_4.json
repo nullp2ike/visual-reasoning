@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "minimax/minimax-m3.1-flash",
+  "provider": "openrouter",
+  "imageId": "img_08",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-29T18:12:30.094Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely intact and functional. Only minor polish issues were found: ambiguous promo wording for the '3 free deliveries' banner, an overlapping delivery badge on a food image, low-contrast small text in several places, and a notification bell with an empty red badge dot.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The promo banner says \"3 free deliveries for you\" but the subtext says \"min. order €10\", which reads as if the offer is conditional rather than describing 3 free deliveries. The wording may confuse users about what they actually get.",
+        "suggestion": "Clarify the copy, e.g. \"Get 3 free deliveries with code TALLINN3 (min. order €10)\"."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The \"€0 delivery\" badge on the Tokumaru Ramen Bar card overlaps the dish image and is positioned where it could obscure food details.",
+        "suggestion": "Keep badges in a consistent, less intrusive position, or place them outside the image on a solid background strip."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Small text in promo and metadata lines (e.g. \"€0.90 delivery\", \"Use code TALLINN3...\", category chips) appears low-contrast against light gray/green backgrounds.",
+        "suggestion": "Increase text contrast to meet WCAG AA (at least 4.5:1 for body-size text)."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The notification bell icon shows a red badge dot with no visible count, and the bell appears faint/greyed relative to the active page state, which can look like an unfinished or disabled element.",
+        "suggestion": "Make the bell clearly legible and give the badge an explicit count or remove the empty dot."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1999,
+    "outputTokens": 441,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1920,
+    "estimatedCost": 0.00056445,
+    "reportedCost": 0.00030525,
+    "durationSeconds": 1.987847375000012
+  }
+}

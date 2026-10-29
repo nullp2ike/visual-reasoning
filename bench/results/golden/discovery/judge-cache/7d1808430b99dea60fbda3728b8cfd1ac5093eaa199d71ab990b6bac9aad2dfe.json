@@ -1,0 +1,40 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Green Bowl Poké card appears twice in the carousel"
+  ],
+  "reportedIssues": [
+    "The search placeholder and inactive bottom-navigation labels appear too light against their backgrounds, making them harder to read.",
+    "Green Bowl Poké appears twice consecutively in the “Fastest near you” row with identical images, delivery times, and fees."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          1
+        ],
+        "reasoning": "OpenAI Decisions matched R1 (p=0.99, confidence 0.98)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.97,
+        "confidence": 0.94
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.98
+      }
+    ]
+  }
+}

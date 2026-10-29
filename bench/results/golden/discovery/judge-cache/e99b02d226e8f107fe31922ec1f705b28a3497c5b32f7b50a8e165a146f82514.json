@@ -1,0 +1,48 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Fastest near you carousel card heights are misaligned with each other"
+  ],
+  "reportedIssues": [
+    "The promo banner's text and discount code are rendered in a low-contrast pale green on the green gradient background, making them noticeably harder to read than the white headline.",
+    "The promo copy reads \"3 free deliveries for you\" with a minimum order of €10, which is inconsistent with delivering three free orders and is confusing about what the offer actually includes.",
+    "In the \"Fastest near you\" row, the \"20–30 min\" badge on the Smash Bros Burgers card overlaps the restaurant photo instead of sitting cleanly in a consistent badge treatment like the neighboring cards, and it is vertically offset relative to the other badges."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          2
+        ],
+        "reasoning": "Jev matched R2 (p=0.72, confidence 0.44)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": 0,
+        "probability": 0.72,
+        "confidence": 0.44
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Promo banner text is unreadable, white text on a pale mint background"
+  ],
+  "reportedIssues": [
+    "The promotional banner's white headline and subtitle text are nearly invisible against the light mint-green background, making the offer details difficult to read.",
+    "The 'Order now' button label is green on a white pill with low contrast, and the banner's faint white text would be hard to read for users with low vision."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=1.00, confidence 1.00)."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.7,
+        "confidence": 0.4
+      }
+    ]
+  }
+}

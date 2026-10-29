@@ -1,0 +1,40 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Green Bowl Poké card appears twice in the carousel"
+  ],
+  "reportedIssues": [
+    "The promo banner's decorative circle graphic is clipped and appears as an oddly shaped partial blob on the right side of the banner, looking like a rendering artifact.",
+    "Duplicate restaurant entries appear side by side in the 'Fastest near you' row ('Green Bowl Poké' shown twice with identical images, delivery times, and fees), which looks like a data or layout bug."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          1
+        ],
+        "reasoning": "Jev matched R1 (p=0.83, confidence 0.66)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.83,
+        "confidence": 0.66
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Delivery fee shows €NaN"
+  ],
+  "reportedIssues": [
+    "Under 'Fastest near you', the Smash Bros Burgers card displays '€NaN delivery' instead of a valid delivery fee, while neighboring cards show '€0.90 delivery' and '€1.90 delivery'. This indicates a failed price value/format being rendered to the user."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "OpenAI Decisions matched R0 (p=0.99, confidence 0.98)."
+      }
+    ],
+    "extraReportedIndexes": [],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.99,
+        "confidence": 0.98
+      }
+    ]
+  }
+}

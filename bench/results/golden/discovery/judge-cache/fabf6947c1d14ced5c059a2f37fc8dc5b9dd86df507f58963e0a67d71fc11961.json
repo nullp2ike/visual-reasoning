@@ -1,0 +1,39 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The 'See all' link in the 'Fastest near you' section is positioned at the far right edge and appears clipped, with the trailing letter cut off by the screen boundary.",
+    "The restaurant images appear to be low-resolution illustrations or placeholders that do not match the photorealistic food imagery used in the 'Popular right now' section, creating visual inconsistency."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "OpenAI Decisions matched no reported issue; closest was R1 (p=0.01)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      }
+    ]
+  }
+}

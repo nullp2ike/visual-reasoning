@@ -60,6 +60,7 @@ import {
   AskFramesResponseSchema,
   AskImageResponseSchema,
   AskNativeVideoResponseSchema,
+  CheckImageResponseSchema,
   CheckResponseSchema,
   CompareResponseSchema,
   parseAskResponse,
@@ -288,7 +289,13 @@ function createDriver(provider: ProviderName, config: ProviderConfig): ProviderD
   return PROVIDER_REGISTRY[provider](config);
 }
 
-const checkSchemaOptions = toSchemaOptions(CheckResponseSchema);
+/** Image-only check helpers (elementsVisible, accessibility, …) never take video. */
+const checkSchemaOptions = toSchemaOptions(CheckImageResponseSchema);
+const checkSchemaOptionsByMedia = {
+  image: checkSchemaOptions,
+  video: toSchemaOptions(CheckResponseSchema),
+  "native-video": toSchemaOptions(CheckResponseSchema),
+} as const satisfies Record<MediaContext["kind"], SendMessageOptions>;
 const askSchemaOptionsByMedia = {
   image: toSchemaOptions(AskImageResponseSchema),
   video: toSchemaOptions(AskFramesResponseSchema),
@@ -495,7 +502,7 @@ export function visualAI(config: VisualAIConfig = {}): VisualAIClient {
           driver,
           dispatch,
           prompt,
-          checkSchemaOptions,
+          checkSchemaOptionsByMedia[dispatch.mediaContext.kind],
         );
         debugLog(resolvedConfig, "check response", response.text, "response");
 

@@ -1,0 +1,28 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Tokumaru Ramen Bar Delivery fee text overlaps the delivery time text"
+  ],
+  "reportedIssues": [
+    "Text overlap on the 'Tokumaru Ramen Bar' listing: the delivery info line renders on top of the delivery-time/price metadata, making both strings illegible (roughly '25–30 min delivery • Ramen' overlapping '€0 delivery').",
+    "The delivery time for the 'Tokumaru Ramen Bar' appears struck through, which is inconsistent with the '€0 delivery' badge and the other listings where times are shown normally.",
+    "The 'Popular right now' image cards use inconsistent corner radii: the Tokumaru card has large rounded corners while the card below it (pizza) has square corners, making the list look visually mismatched."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the exact same text overlap between the delivery fee ('€0 delivery') and delivery time on the Tokumaru Ramen Bar listing."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

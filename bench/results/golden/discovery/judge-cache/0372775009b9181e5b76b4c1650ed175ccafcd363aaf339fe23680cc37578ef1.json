@@ -1,0 +1,39 @@
+{
+  "judgeModel": "openai-decisions/gpt-6-luna",
+  "judgePromptVersion": "openai-decisions-v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The delivery fee badge reads \"€0.90 delivery\", with the decimal point rendered as a raised mid-dot-like mark that makes the price look like \"€0 90\".",
+    "The \"Smash Bros Burgers\" card in the \"Fastest near you\" row has a noticeably darker, blurred photo than the neighboring cards, making the row look visually inconsistent."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "OpenAI Decisions matched no reported issue; closest was R1 (p=0.02)."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": null,
+        "probability": 0.99,
+        "confidence": 0.98
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": null,
+        "probability": 0.98,
+        "confidence": 0.96
+      }
+    ]
+  }
+}

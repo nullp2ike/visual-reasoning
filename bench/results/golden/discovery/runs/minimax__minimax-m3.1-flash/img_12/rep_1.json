@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "minimax/minimax-m3.1-flash",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-29T18:12:38.284Z",
+  "status": "ok",
+  "result": {
+    "summary": "The main visual defect is overlapping text in the 'Tokumaru Ramen Bar' listing, where the delivery fee/time/cuisine metadata lines collide and become unreadable, plus a stray strikethrough on the delivery time. Additionally, card styling is inconsistent (rounded vs. square image corners) in the 'Popular right now' section.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Text overlap on the 'Tokumaru Ramen Bar' listing: the delivery info line renders on top of the delivery-time/price metadata, making both strings illegible (roughly '25–30 min delivery • Ramen' overlapping '€0 delivery').",
+        "suggestion": "Stack the delivery time, fee, and cuisine metadata on separate lines or give each element its own row, and ensure the containers do not overlap."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The delivery time for the 'Tokumaru Ramen Bar' appears struck through, which is inconsistent with the '€0 delivery' badge and the other listings where times are shown normally.",
+        "suggestion": "Remove the strikethrough formatting from the delivery-time text so it reads clearly, unless the strikethrough is an intentional, clearly labeled promotion."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Popular right now' image cards use inconsistent corner radii: the Tokumaru card has large rounded corners while the card below it (pizza) has square corners, making the list look visually mismatched.",
+        "suggestion": "Apply the same border radius (and overflow handling) to all cards in the 'Popular right now' section."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1999,
+    "outputTokens": 389,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 128,
+    "estimatedCost": 0.00053325,
+    "reportedCost": 0.00051597,
+    "durationSeconds": 2.1824279999999563
+  }
+}

@@ -3,6 +3,8 @@ import {
   AskFramesResponseSchema,
   AskImageResponseSchema,
   AskNativeVideoResponseSchema,
+  CheckImageResponseSchema,
+  CheckResponseSchema,
   parseAskResponse,
   parseCheckResponse,
   parseCompareResponse,
@@ -391,6 +393,26 @@ describe("ask() response schemas per media kind", () => {
       "summary",
       "timestampReferences",
     ]);
+  });
+});
+
+describe("check() response schemas per media kind", () => {
+  // Same rule as ask(): nemotron-3.5-super-vl and minimax-m3.1-flash looped in
+  // whitespace when the image check schema required the video-only
+  // timestampSeconds on every statement.
+  it("image schema statements have no timestampSeconds", () => {
+    expect(Object.keys(CheckImageResponseSchema.shape.statements.element.shape).sort()).toEqual([
+      "confidence",
+      "pass",
+      "reasoning",
+      "statement",
+    ]);
+  });
+
+  it("video schema statements keep timestampSeconds", () => {
+    expect(Object.keys(CheckResponseSchema.shape.statements.element.shape)).toContain(
+      "timestampSeconds",
+    );
   });
 });
 

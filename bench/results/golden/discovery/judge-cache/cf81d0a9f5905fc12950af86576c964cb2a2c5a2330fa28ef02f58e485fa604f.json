@@ -1,0 +1,27 @@
+{
+  "judgeModel": "gemini-3.8-flash",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The delivery fee for 'Green Bowl Poké' (€0.90) and 'Smash Bros Burgers' (€2.40) is rendered in very light gray on a white background, giving it low contrast and making it hard to read.",
+    "The inactive bottom navigation labels ('Search', 'Orders', 'Profile') are shown in a pale gray that is low contrast and difficult to read.",
+    "The restaurant carousel under 'Fastest near you' is misaligned: the first card is inset from the left while the third card runs off the right edge, so the middle card ('Smash Bros Burgers') does not line up with its peers."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "None of the reported issues describe the category filter failing to filter restaurants by pizza cuisine."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1,
+      2
+    ]
+  }
+}

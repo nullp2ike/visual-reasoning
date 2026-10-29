@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "minimax/minimax-m3.1-flash",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-29T18:12:37.932Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely functional and well-structured. The main visual anomaly is a suspicious delivery-fee value on the Green Bowl Poké card (€0.90), plus minor polish issues around the fixed bottom navigation overlapping scrolled content and the promo code not being clearly presented as copyable.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The delivery fee for Green Bowl Poké is rendered as \"€0.90 delivery\", which appears to be a broken formatting result — likely a misrendered value such as \"€0.90\" where the expected fee is €0 or the price/fee value has been incorrectly parsed.",
+        "suggestion": "Verify the delivery fee data and formatting logic for Green Bowl Poké, ensuring valid fee values are displayed (e.g. \"€0 delivery\" or the correct amount)."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The bottom nav bar overlaps the vertically scrolling content (the pizza card beneath Tokumaru Ramen Bar is partially hidden behind the fixed navigation bar), so content can appear cut off when scrolled to the end of the list.",
+        "suggestion": "Add bottom padding equal to the navigation bar height to the scrollable content container so the last card can be fully viewed."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The promotional banner's \"Order now\" button uses the code \"TALLINN3\" for \"3 free deliveries\", but the code text is only referenced in the subtitle and is not clearly presented as a copyable code (no copy affordance visible).",
+        "suggestion": "Make the promo code visually distinct (e.g. in a bordered/chip style) and optionally add a copy-to-clipboard action."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1999,
+    "outputTokens": 403,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1920,
+    "estimatedCost": 0.00054165,
+    "reportedCost": 0.00028245,
+    "durationSeconds": 2.0510488749999785
+  }
+}

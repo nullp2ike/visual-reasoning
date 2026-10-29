@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "minimax/minimax-m3.1-flash",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-29T18:12:09.761Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely functional, but a raw localization key is shown as a section heading, and the delivery-fee information for the first popular restaurant is duplicated with inconsistent wording.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "A section heading displays the raw localization key 'home_feed.popular_title' instead of a human-readable title.",
+        "suggestion": "Replace the key with the localized heading text (e.g. 'Popular near you') and ensure translation strings are correctly mapped."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Tokumaru Ramen Bar' card shows '€0 delivery' in a badge while the metadata line below repeats '€0 delivery', creating duplicated and slightly inconsistent delivery-fee labeling.",
+        "suggestion": "Keep the delivery fee in a single place, or use different labels (e.g. 'Free delivery' badge plus 'No delivery fee' metadata) so the information is not redundant."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1999,
+    "outputTokens": 233,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1920,
+    "estimatedCost": 0.00043965,
+    "reportedCost": 0.00018045,
+    "durationSeconds": 1.5249854999999515
+  }
+}

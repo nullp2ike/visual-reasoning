@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "minimax/minimax-m3.1-flash",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-10-29T18:12:32.619Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page layout renders correctly overall, with no clearly broken components or overlapping elements. The main problems are content-related: the promotional banner describes the deliveries as \"free\" while adding a €10 minimum order, and pricing/discount labels are inconsistently formatted.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The promotional banner states \"3 free deliveries for you\" but also specifies \"min. order €10\", which is misleading since the deliveries are not actually free without a minimum spend.",
+        "suggestion": "Clarify the offer wording, e.g. \"3 free deliveries on orders over €10\", so users understand the minimum-order condition."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The delivery-fee labels for the restaurant cards appear to mix formats and signs: \"€0.90 delivery\" and \"€2.40 delivery\" read as unusually high positive fees while the list section uses \"€0 delivery\", and the -20% badge lacks a stated reference price.",
+        "suggestion": "Standardize the fee format (e.g. \"€0.90 delivery fee\", \"Free delivery\") and make discount badges clearer, such as \"20% off\" or \"-20% from €X\"."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1999,
+    "outputTokens": 291,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 1920,
+    "estimatedCost": 0.00047444999999999996,
+    "reportedCost": 0.00021525,
+    "durationSeconds": 1.863697959000012
+  }
+}

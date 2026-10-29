@@ -421,6 +421,65 @@ describe("visualAI", () => {
     });
   });
 
+  describe("check() response schema", () => {
+    // The image check prompt never mentions timestampSeconds. Requiring it on
+    // every statement under strict structured outputs made nemotron-3.5-super-vl
+    // loop in whitespace on half of its elementsVisible() calls.
+    type StrictSchema = {
+      properties: {
+        statements: { items: { properties: Record<string, unknown>; required: string[] } };
+      };
+    };
+    function sentStatementSchema(): { properties: Record<string, unknown>; required: string[] } {
+      const params = mockOpenAICreate.mock.calls[0][0] as {
+        text: { format: { schema: StrictSchema } };
+      };
+      return params.text.format.schema.properties.statements.items;
+    }
+    const expectedKeys = ["confidence", "pass", "reasoning", "statement"];
+
+    it("sends image check() a statement schema without timestampSeconds", async () => {
+      mockOpenAICreate.mockResolvedValueOnce({
+        output_text: makeCheckResponse(true),
+        usage: { input_tokens: 200, output_tokens: 100 },
+      });
+
+      const ai = visualAI({ model: "gpt-5-mini", apiKey: "test" });
+      const image = await readFile(join(FIXTURES_DIR, "small.png"));
+      await ai.check(image, "Test statement");
+
+      const items = sentStatementSchema();
+      expect(Object.keys(items.properties).sort()).toEqual(expectedKeys);
+      expect(items.required.sort()).toEqual(expectedKeys);
+    });
+
+    it("sends elementsVisible() a statement schema without timestampSeconds", async () => {
+      mockOpenAICreate.mockResolvedValueOnce({
+        output_text: makeCheckResponse(true),
+        usage: { input_tokens: 200, output_tokens: 100 },
+      });
+
+      const ai = visualAI({ model: "gpt-5-mini", apiKey: "test" });
+      const image = await readFile(join(FIXTURES_DIR, "small.png"));
+      await ai.elementsVisible(image, ["navigation bar"]);
+
+      expect(Object.keys(sentStatementSchema().properties).sort()).toEqual(expectedKeys);
+    });
+
+    it("sends accessibility() a statement schema without timestampSeconds", async () => {
+      mockOpenAICreate.mockResolvedValueOnce({
+        output_text: makeCheckResponse(true),
+        usage: { input_tokens: 200, output_tokens: 100 },
+      });
+
+      const ai = visualAI({ model: "gpt-5-mini", apiKey: "test" });
+      const image = await readFile(join(FIXTURES_DIR, "small.png"));
+      await ai.accessibility(image);
+
+      expect(Object.keys(sentStatementSchema().properties).sort()).toEqual(expectedKeys);
+    });
+  });
+
   describe("compare()", () => {
     it("returns CompareResult for two images", async () => {
       mockGoogleGenerate.mockResolvedValueOnce({

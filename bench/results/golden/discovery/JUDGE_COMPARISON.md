@@ -18,6 +18,7 @@ Judges compared: `gemini-3.8-flash` vs `gpt-5.6-luna` vs `gpt-6-luna` vs `meta/m
 | claude-sonnet-4-6 | 59% | 0.5 | 59% | 0.5 | 59% | 0.5 | 59% | 0.5 | 58% | 0.5 | 59% | 0.5 | 1% |
 | claude-sonnet-5 | 45% | 0.7 | 44% | 0.7 | 45% | 0.7 | 45% | 0.7 | 45% | 0.7 | 45% | 0.7 | 1% |
 | claude-sonnet-5-5 | 94% | 2.8 | 94% | 2.8 | 94% | 2.8 | 94% | 2.8 | 94% | 2.8 | 94% | 2.8 | 0% |
+| deepseek/deepseek-v4.1-flash-1017 | 56% | 0.4 | 56% | 0.4 | 54% | 0.5 | 54% | 0.5 | 58% | 0.4 | 58% | 0.4 | 4% |
 | gemini-3-flash-preview | 66% | 0.9 | 67% | 0.9 | 66% | 0.9 | 66% | 0.9 | 69% | 0.9 | 68% | 0.9 | 4% |
 | gemini-3.1-flash-lite | 47% | 0.6 | 44% | 0.6 | 44% | 0.6 | 45% | 0.6 | 47% | 0.6 | 46% | 0.6 | 4% |
 | gemini-3.1-pro-preview | 74% | 0.3 | 69% | 0.4 | 69% | 0.4 | 73% | 0.4 | 74% | 0.3 | 74% | 0.3 | 5% |
@@ -36,10 +37,14 @@ Judges compared: `gemini-3.8-flash` vs `gpt-5.6-luna` vs `gpt-6-luna` vs `meta/m
 | gpt-6-luna | 47% | 0.0 | 44% | 0.0 | 45% | 0.0 | 47% | 0.0 | 47% | 0.0 | 46% | 0.0 | 4% |
 | gpt-6-sol | 64% | 0.0 | 64% | 0.0 | 64% | 0.0 | 64% | 0.0 | 64% | 0.0 | 64% | 0.0 | 0% |
 | gpt-6.1-sol | 93% | 0.0 | 93% | 0.0 | 93% | 0.0 | 93% | 0.0 | 93% | 0.0 | 93% | 0.0 | 0% |
+| gpt-6.1-terra | 94% | 0.4 | 94% | 0.4 | 94% | 0.4 | 94% | 0.4 | 94% | 0.4 | 94% | 0.4 | 0% |
 | meta/muse-spark-1.3 | 78% | 0.1 | 78% | 0.1 | 78% | 0.1 | 78% | 0.1 | 78% | 0.1 | 78% | 0.1 | 0% |
 | meta/muse-spark-1.3-contributor | 81% | 0.1 | 81% | 0.1 | 80% | 0.1 | 81% | 0.1 | 81% | 0.1 | 81% | 0.1 | 1% |
+| meta/muse-wonder | 92% | 0.0 | 92% | 0.0 | 92% | 0.0 | 92% | 0.0 | 92% | 0.0 | 92% | 0.0 | 0% |
+| minimax/minimax-m3.1-flash | 44% | 1.3 | 44% | 1.3 | 44% | 1.3 | 42% | 1.3 | 42% | 1.3 | 45% | 1.3 | 2% |
 | moonshotai/kimi-k2.7-code | 72% | 0.1 | 71% | 0.1 | 69% | 0.1 | 69% | 0.1 | 68% | 0.1 | 68% | 0.1 | 4% |
 | moonshotai/kimi-k3 | 75% | 0.2 | 74% | 0.2 | 74% | 0.2 | 75% | 0.2 | 75% | 0.2 | 75% | 0.2 | 1% |
+| nvidia/nemotron-3.5-super-vl | 27% | 0.1 | 25% | 0.1 | 27% | 0.1 | 25% | 0.1 | 27% | 0.1 | 25% | 0.1 | 2% |
 | qwen/qwen3.7-plus | 55% | 0.1 | 54% | 0.1 | 51% | 0.2 | 53% | 0.2 | 55% | 0.1 | 54% | 0.1 | 5% |
 | qwen/qwen3.8-max | 86% | 1.0 | 86% | 0.9 | 85% | 0.9 | 86% | 1.0 | 86% | 0.9 | 86% | 0.9 | 1% |
 | x-ai/grok-4.5 | 62% | 2.2 | 62% | 2.2 | 62% | 2.2 | 62% | 2.2 | 62% | 2.2 | 64% | 2.2 | 1% |
@@ -48,7 +53,7 @@ Judges compared: `gemini-3.8-flash` vs `gpt-5.6-luna` vs `gpt-6-luna` vs `meta/m
 | xiaomi/mimo-v2.6-pro | 52% | 0.6 | 49% | 0.6 | 49% | 0.6 | 49% | 0.6 | 52% | 0.6 | 53% | 0.6 | 4% |
 | z-ai/glm-5.3-flash | 74% | 0.5 | 72% | 0.5 | 71% | 0.5 | 71% | 0.5 | 73% | 0.5 | 72% | 0.5 | 4% |
 
-## Disagreements (62)
+## Disagreements (69)
 
 ### img_01 01_raw_localization_key.png — gemini-3.1-pro-preview
 
@@ -296,6 +301,47 @@ Expected: Loading spinner is shown on top of already loaded content
   - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
   - rep 5: Jev matched R0 (p=0.97, confidence 0.93).
 
+### img_07 07_state_inconsistency.png — deepseek/deepseek-v4.1-flash-1017
+
+Expected: Loading spinner is shown on top of already loaded content
+
+- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The reported issue describes a loading spinner stuck over an already visible food image, matching the expected defect.
+  - rep 2: Both describe a loading spinner that remains visible over already loaded content/images.
+  - rep 3: Both describe a loading spinner displayed over content/images that have already loaded.
+  - rep 4: Both describe an unwanted loading spinner being displayed over content that has already loaded on the screen.
+  - rep 5: Both describe a loading spinner that remains visibly displayed over already loaded content/image.
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
+  - rep 1: The reported spinner is stuck over an already loaded restaurant image, matching the defect.
+  - rep 2: The reported issue describes a loading spinner stuck over an already displayed image in the content section.
+  - rep 3: The report describes a loading spinner overlaid on already fully loaded content.
+  - rep 4: The report describes a restaurant image stuck loading, not a spinner overlaying content that is already loaded.
+  - rep 5: The reported issue describes a loading spinner stuck over an already displayed image, matching the expected overlay defect.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
+  - rep 1: The reported spinner obscures an already loaded food image, matching the expected defect.
+  - rep 2: The report describes a loading spinner over an already displayed image.
+  - rep 3: The reported spinner overlays already loaded content, matching the expected defect.
+  - rep 4: The report describes a spinner replacing or covering a specific restaurant image that is still loading, not a spinner overlaying already loaded content.
+  - rep 5: The report describes a loading spinner displayed over an image that is already visible.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: missed, rep 5: found
+  - rep 1: Reported spinner obscuring the loaded food image is the spinner over loaded content.
+  - rep 2: Both describe a loading spinner displayed over an already loaded image.
+  - rep 3: Both describe a loading spinner overlaid on already loaded content.
+  - rep 4: Reported describes spinner replacing an unloaded image, not spinner over already-loaded content.
+  - rep 5: Both describe a loading spinner stuck over already-visible image content.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 2: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 3: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 4: OpenAI Decisions matched R0 (p=0.60, confidence 0.20).
+  - rep 5: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=0.99, confidence 0.98).
+  - rep 2: Jev matched R0 (p=0.94, confidence 0.88).
+  - rep 3: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 4: Jev matched R0 (p=0.66, confidence 0.32).
+  - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
+
 ### img_07 07_state_inconsistency.png — gemini-3.1-flash-lite
 
 Expected: Loading spinner is shown on top of already loaded content
@@ -459,6 +505,47 @@ Expected: Loading spinner is shown on top of already loaded content
   - rep 3: Jev matched R0 (p=0.99, confidence 0.97).
   - rep 4: Jev matched R0 (p=0.97, confidence 0.94).
   - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
+
+### img_07 07_state_inconsistency.png — nvidia/nemotron-3.5-super-vl
+
+Expected: Loading spinner is shown on top of already loaded content
+
+- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe the loading spinner displayed over the restaurant card content.
+  - rep 2: Both describe a loading spinner persistently displayed over the restaurant listing/food image content.
+  - rep 3: Both describe a loading spinner persisting on top of already loaded content/image.
+  - rep 4: Both describe a loading spinner displayed on top of food image/content.
+  - rep 5: Both describe a circular loading spinner stuck/displayed over card content.
+- **gpt-5.6-luna**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
+  - rep 1: The report describes a spinner for an image that is still loading, not a spinner displayed over already loaded content.
+  - rep 2: The reported circular spinner overlays the restaurant food image/content, matching a loading spinner shown on top of loaded content.
+  - rep 3: The reported stuck spinner overlays the already displayed restaurant card image, matching a loading spinner shown on loaded content.
+  - rep 4: The reported persistent spinner is overlaid on already displayed food-card content, matching the loading spinner defect.
+  - rep 5: The report describes an image that is failing to load, not a spinner remaining over content that has already loaded.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe a loading spinner displayed over a restaurant card whose other content is already loaded.
+  - rep 2: The reported spinner overlays the restaurant image, matching the defect of a loading spinner appearing on top of content.
+  - rep 3: The reported spinner overlays a loaded card image, matching the defect of a loading spinner appearing on top of loaded content.
+  - rep 4: The report describes a persistent loading spinner overlaid on the food image, matching the spinner shown over content.
+  - rep 5: The reported spinner is displayed over the already loaded Tokumaru Ramen Bar card content.
+- **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
+  - rep 1: Reported describes spinner for an unloaded image, not a spinner over already loaded content.
+  - rep 2: Both describe a circular loading spinner overlaid on the food image in the same listing.
+  - rep 3: Both describe a loading spinner overlaying already-loaded card image content.
+  - rep 4: Both describe a circular loading spinner overlaid on already visible content/image.
+  - rep 5: Reported describes spinner blocking an unloaded image, while expected is spinner over already-loaded content.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=0.95, confidence 0.90).
+  - rep 2: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+  - rep 3: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+  - rep 4: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+  - rep 5: OpenAI Decisions matched R0 (p=0.94, confidence 0.88).
+- **typesafe/jev-1.13**: rep 1: missed, rep 2: found, rep 3: found, rep 4: found, rep 5: missed
+  - rep 1: Jev matched no reported issue; closest was R0 (p=0.46).
+  - rep 2: Jev matched R0 (p=0.96, confidence 0.92).
+  - rep 3: Jev matched R0 (p=0.99, confidence 0.98).
+  - rep 4: Jev matched R0 (p=0.96, confidence 0.92).
+  - rep 5: Jev matched no reported issue; closest was R0 (p=0.48).
 
 ### img_07 07_state_inconsistency.png — qwen/qwen3.7-plus
 
@@ -869,6 +956,47 @@ Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
   - rep 3: Jev matched R0 (p=0.87, confidence 0.74).
   - rep 4: Jev matched R0 (p=0.76, confidence 0.51).
   - rep 5: Jev matched R0 (p=0.62, confidence 0.25).
+
+### img_09 09_text_truncation.png — minimax/minimax-m3.1-flash
+
+Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
+
+- **gemini-3.8-flash**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: The reported issue discusses a gradient seam on a promo banner rather than the truncated restaurant heading.
+  - rep 2: None of the reported issues mention the truncated restaurant heading.
+  - rep 3: None of the reported issues describe the truncated 'Tokumaru Ramen Bar' heading.
+  - rep 4: None of the reported issues mention the truncated 'Tokumaru Ramen Bar' heading.
+  - rep 5: The reported issue discusses a completely different restaurant title ('Trattoria Piccol...') rather than the 'Tokumaru Ramen Bar' heading.
+- **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: found
+  - rep 1: The reported issue concerns a gradient seam in a free-delivery banner, not the truncated Tokumaru Ramen Bar heading.
+  - rep 2: Neither reported issue describes the Tokumaru Ramen Bar heading being cut off mid-word.
+  - rep 3: Neither reported issue concerns the truncated "Tokumaru Ramen Bar" heading.
+  - rep 4: Neither reported issue concerns the "Tokumaru Ramen Bar" heading being truncated mid-word.
+  - rep 5: Both describe a restaurant title being cut off by the card or screen boundary without proper ellipsis.
+- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: found
+  - rep 1: The reported issue concerns the promo banner’s gradient, not the restaurant heading being cut off.
+  - rep 2: Neither reported issue describes the Tokumaru Ramen Bar heading being cut off.
+  - rep 3: Neither reported issue describes the Tokumaru Ramen Bar heading being cut off mid-word.
+  - rep 4: Neither reported issue describes the “Tokumaru Ramen Bar” heading being cut off mid-word.
+  - rep 5: Both describe the restaurant title being cut off instead of displaying correctly.
+- **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: Reported issue describes banner gradient seam, not truncated heading.
+  - rep 2: Neither report mentions the Tokumaru Ramen Bar heading being cut off.
+  - rep 3: No reported issue mentions the truncated restaurant heading.
+  - rep 4: Neither reported issue mentions the Tokumaru Ramen Bar heading being cut off.
+  - rep 5: Reported issue describes a different restaurant title Trattoria Piccol, not Tokumaru Ramen Bar.
+- **openai-decisions/gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: OpenAI Decisions matched no reported issue; closest was R0 (p=0.00).
+  - rep 2: OpenAI Decisions matched no reported issue; closest was R0 (p=0.01).
+  - rep 3: OpenAI Decisions matched no reported issue; closest was R1 (p=0.03).
+  - rep 4: OpenAI Decisions matched no reported issue; closest was R0 (p=0.03).
+  - rep 5: OpenAI Decisions matched no reported issue; closest was R0 (p=0.04).
+- **typesafe/jev-1.13**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: Jev matched no reported issue; closest was R0 (p=0.00).
+  - rep 2: Jev matched no reported issue; closest was R0 (p=0.00).
+  - rep 3: Jev matched no reported issue; closest was R0 (p=0.00).
+  - rep 4: Jev matched no reported issue; closest was R0 (p=0.00).
+  - rep 5: Jev matched no reported issue; closest was R0 (p=0.20).
 
 ### img_09 09_text_truncation.png — moonshotai/kimi-k2.7-code
 
@@ -1690,6 +1818,47 @@ Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
   - rep 4: Jev matched R0 (p=0.58, confidence 0.17).
   - rep 5: Jev matched R0 (p=0.86, confidence 0.72).
 
+### img_12 12_overlapping_elements.png — minimax/minimax-m3.1-flash
+
+Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
+
+- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue 0 describes the exact same text overlap between the delivery fee ('€0 delivery') and delivery time on the Tokumaru Ramen Bar listing.
+  - rep 2: Both describe an overlapping text issue within the delivery details under the Tokumaru Ramen Bar card.
+  - rep 3: Both describe the delivery fee text overlapping the delivery time text in the Tokumaru Ramen Bar listing.
+  - rep 4: Both report the overlapping delivery fee and delivery time text on the Tokumaru Ramen Bar card.
+  - rep 5: Reported issue 0 describes the exact same overlapping text between the delivery time and delivery fee for Tokumaru Ramen Bar.
+- **gpt-5.6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue 0 describes the delivery info and delivery-time/price text overlapping in the Tokumaru Ramen Bar listing.
+  - rep 2: The reported issue describes the delivery information overlapping the cuisine/tag text, not the delivery fee overlapping the delivery time.
+  - rep 3: The reported issue identifies the same Tokumaru Ramen Bar delivery time and delivery fee text overlap.
+  - rep 4: The reported issue identifies overlapping delivery time and delivery fee text on the Tokumaru Ramen Bar card.
+  - rep 5: Reported issue 0 describes the Tokumaru Ramen Bar delivery fee overlapping the delivery time text.
+- **gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue 0 describes the delivery information overlapping the delivery-time and price text on the Tokumaru Ramen Bar listing.
+  - rep 2: The expected issue is an overlap between delivery fee and delivery time, while the report describes delivery information overlapping the cuisine/tag text.
+  - rep 3: The report describes the delivery fee text overlapping the delivery time in the Tokumaru Ramen Bar listing.
+  - rep 4: The report describes the Tokumaru card’s delivery time and delivery fee text overlapping.
+  - rep 5: Reported issue 0 describes the delivery fee and delivery time overlapping for Tokumaru Ramen Bar.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe delivery fee text overlapping delivery time text on the Tokumaru Ramen Bar listing.
+  - rep 2: Reported describes delivery line overlapping cuisine tag text, not delivery fee text overlapping delivery time text.
+  - rep 3: Both describe overlapping delivery fee and delivery time text in Tokumaru Ramen Bar listing.
+  - rep 4: Both describe overlapping delivery time and fee text on the Tokumaru Ramen Bar card.
+  - rep 5: Both describe overlapping delivery time and fee text for Tokumaru Ramen Bar.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: missed, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=0.98, confidence 0.96).
+  - rep 2: OpenAI Decisions matched no reported issue; closest was R0 (p=0.44).
+  - rep 3: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 4: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+  - rep 5: OpenAI Decisions matched R0 (p=0.98, confidence 0.96).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 2: Jev matched R0 (p=0.65, confidence 0.30).
+  - rep 3: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 4: Jev matched R0 (p=0.99, confidence 0.98).
+  - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
+
 ### img_12 12_overlapping_elements.png — moonshotai/kimi-k2.7-code
 
 Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
@@ -2182,6 +2351,47 @@ Expected: An icon is missing from the top right corner, only a red do…
   - rep 4: Jev matched R1 (p=1.00, confidence 0.99).
   - rep 5: Jev matched R0 (p=0.78, confidence 0.55).
 
+### img_14 14_misalignment.png — deepseek/deepseek-v4.1-flash-1017
+
+Expected: Fastest near you carousel card heights are misaligned with …
+
+- **gemini-3.8-flash**: rep 1: found, rep 2: found, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: Both describe the vertical misalignment/height discrepancy among restaurant cards in the 'Fastest near you' section.
+  - rep 2: Both report that the cards in the 'Fastest near you' carousel have inconsistent or misaligned heights.
+  - rep 3: The expected issue describes card height misalignment, whereas the reported issue concerns clipped delivery fee text.
+  - rep 4: The reported issue specifically describes the misalignment of a time badge, not the height mismatch of the carousel cards themselves.
+  - rep 5: The reported issue focuses on the vertical misalignment of the time badge, whereas the expected defect is about the overall card heights being misaligned.
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
+  - rep 1: Reported issue 0 describes vertically misaligned restaurant card heights in the 'Fastest near you' carousel.
+  - rep 2: Reported issue 0 describes inconsistent heights among cards in the "Fastest near you" carousel.
+  - rep 3: The report describes vertically clipped delivery-fee text, not misaligned heights between the carousel cards.
+  - rep 4: The reported lower-positioned badge on one card indicates the same vertical layout misalignment among cards in the 'Fastest near you' carousel.
+  - rep 5: The reported bottom-alignment inconsistency in the Fastest near you carousel indicates the cards are misaligned in height.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: Reported issue 0 describes the restaurant cards in the same carousel having different heights and staggered content.
+  - rep 2: Reported issue 0 describes inconsistent card heights in the same carousel.
+  - rep 3: The report describes clipped delivery-fee text, not misaligned carousel card heights.
+  - rep 4: The report describes one time badge positioned too low, not misaligned heights among the carousel cards.
+  - rep 5: The report identifies a time-badge alignment issue, not misaligned carousel card heights.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: Reported 0 describes the same vertically misaligned Fastest near you cards.
+  - rep 2: Reported 0 describes the same inconsistent heights in the Fastest near you carousel.
+  - rep 3: Reported describes clipped delivery fee text, not misaligned card heights.
+  - rep 4: Reported describes badge placement within the image, not carousel cards having different heights.
+  - rep 5: Reported issue describes badge bottom-alignment, not card height misalignment.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=0.97, confidence 0.94).
+  - rep 2: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 3: OpenAI Decisions matched no reported issue; closest was R0 (p=0.22).
+  - rep 4: OpenAI Decisions matched R0 (p=0.95, confidence 0.90).
+  - rep 5: OpenAI Decisions matched R0 (p=0.92, confidence 0.84).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: missed, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 2: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 3: Jev matched no reported issue; closest was R0 (p=0.07).
+  - rep 4: Jev matched R0 (p=0.75, confidence 0.50).
+  - rep 5: Jev matched R0 (p=0.71, confidence 0.42).
+
 ### img_14 14_misalignment.png — gemini-3.8-flash
 
 Expected: Fastest near you carousel card heights are misaligned with …
@@ -2264,6 +2474,47 @@ Expected: Fastest near you carousel card heights are misaligned with …
   - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
   - rep 5: No issues were reported.
 
+### img_14 14_misalignment.png — minimax/minimax-m3.1-flash
+
+Expected: Fastest near you carousel card heights are misaligned with …
+
+- **gemini-3.8-flash**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: None of the reported issues mention the height misalignment of the carousel cards.
+  - rep 2: The reported issue is about star rating contrast, which does not match the carousel card height misalignment.
+  - rep 3: None of the reported issues describe uneven or misaligned card heights in the carousel.
+  - rep 4: None of the reported issues describe carousel card heights being misaligned; issue 2 refers to a vertically offset badge overlapping a photo.
+  - rep 5: None of the reported issues mention the height misalignment of the carousel cards in the 'Fastest near you' section.
+- **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: Neither report describes misaligned heights between the carousel cards.
+  - rep 2: The reported issue concerns the contrast of a yellow star rating icon, not misaligned carousel card heights.
+  - rep 3: The expected issue concerns inconsistent carousel card heights, while the reported carousel issue concerns right-edge clipping.
+  - rep 4: The reported issue concerns a badge overlapping and being vertically offset, not misaligned carousel card heights.
+  - rep 5: Neither reported issue describes misaligned heights among the Fastest near you carousel cards.
+- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: Neither report describes misaligned heights among the carousel cards.
+  - rep 2: The expected issue concerns inconsistent card heights in the “Fastest near you” carousel, while the report concerns the star rating icon’s contrast.
+  - rep 3: The reported carousel issue is about right-edge clipping, not misaligned card heights.
+  - rep 4: The report describes a mispositioned time badge, not misaligned carousel card heights.
+  - rep 5: Neither reported issue describes misaligned card heights in the Fastest near you carousel.
+- **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: No report describes misaligned card heights, only truncated name and promo code mismatch.
+  - rep 2: Reported issue describes star icon contrast, not carousel card height misalignment.
+  - rep 3: Reported 0 describes horizontal clipping, not misaligned card heights.
+  - rep 4: Reported 2 describes badge overlap and vertical offset, not misaligned card heights.
+  - rep 5: Neither report mentions Fastest near you carousel cards or height misalignment.
+- **openai-decisions/gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: missed, rep 5: missed
+  - rep 1: OpenAI Decisions matched no reported issue; closest was R0 (p=0.01).
+  - rep 2: OpenAI Decisions matched no reported issue; closest was R0 (p=0.00).
+  - rep 3: OpenAI Decisions matched no reported issue; closest was R0 (p=0.34).
+  - rep 4: OpenAI Decisions matched no reported issue; closest was R2 (p=0.25).
+  - rep 5: OpenAI Decisions matched no reported issue; closest was R1 (p=0.02).
+- **typesafe/jev-1.13**: rep 1: missed, rep 2: missed, rep 3: missed, rep 4: found, rep 5: missed
+  - rep 1: Jev matched no reported issue; closest was R0 (p=0.09).
+  - rep 2: Jev matched no reported issue; closest was R0 (p=0.00).
+  - rep 3: Jev matched no reported issue; closest was R0 (p=0.01).
+  - rep 4: Jev matched R2 (p=0.72, confidence 0.44).
+  - rep 5: Jev matched no reported issue; closest was R0 (p=0.00).
+
 ### img_14 14_misalignment.png — x-ai/grok-4.5
 
 Expected: Fastest near you carousel card heights are misaligned with …
@@ -2344,6 +2595,47 @@ Expected: Fastest near you carousel card heights are misaligned with …
   - rep 2: Jev matched no reported issue; closest was R0 (p=0.10).
   - rep 3: Jev matched no reported issue; closest was R0 (p=0.03).
   - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 5: Jev matched no reported issue; closest was R0 (p=0.01).
+
+### img_15 15_safe_area_violation.png — deepseek/deepseek-v4.1-flash-1017
+
+Expected: Bottom nav labels are cut off below the screen edge and a b…
+
+- **gemini-3.8-flash**: rep 1: found, rep 2: missed, rep 3: found, rep 4: missed, rep 5: missed
+  - rep 1: Both describe a broken horizontal element (described as an oversized search element or black bar) in the bottom navigation bar overlapping the nav icons.
+  - rep 2: No issues were reported.
+  - rep 3: Both describe a horizontal bar or line overlapping icons in the bottom navigation bar.
+  - rep 4: None of the reported issues describe the bottom nav labels being cut off or a black bar overlapping the icons.
+  - rep 5: The reported issue describes an incorrect or broken Search icon asset, whereas the expected defect is about bottom nav labels cut off and a black horizontal bar overlapping icons.
+- **gpt-5.6-luna**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: missed, rep 5: missed
+  - rep 1: The expected issue concerns bottom labels being clipped and a black bar overlapping icons, while the report describes an oversized malformed search element.
+  - rep 2: No issues were reported.
+  - rep 3: The reported horizontal slider-like line overlays the bottom navigation icons, matching the expected overlapping black bar defect.
+  - rep 4: None of the reported issues describes bottom navigation labels being cut off or a black bar overlapping the icons.
+  - rep 5: The expected issue concerns bottom navigation labels being clipped and overlapped by a black bar, while the reported issue concerns a malformed Search icon.
+- **gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: missed, rep 5: missed
+  - rep 1: The report describes an oversized search element overlapping navigation icons, not labels cut off by the screen edge and a black bar over the icons.
+  - rep 2: No issues were reported.
+  - rep 3: Both describe a horizontal bar or line overlaying the bottom navigation icons.
+  - rep 4: None of the reported issues describes the bottom navigation labels being cut off or a black bar overlapping its icons.
+  - rep 5: The expected defect concerns clipped navigation labels and a black bar overlapping icons, while the report describes a malformed Search icon.
+- **meta/muse-spark-1.3-contributor**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: missed, rep 5: missed
+  - rep 1: Reported describes an oversized search element, not cut-off labels with a black bar overlapping icons.
+  - rep 2: No issues were reported.
+  - rep 3: Both describe a horizontal bar/line overlapping icons in the bottom navigation bar.
+  - rep 4: No report describes cut-off nav labels or a black bar overlapping icons.
+  - rep 5: Reported issue describes a malformed Search icon shape, not cut-off labels or a bar overlapping icons.
+- **openai-decisions/gpt-6-luna**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: missed, rep 5: missed
+  - rep 1: OpenAI Decisions matched no reported issue; closest was R0 (p=0.30).
+  - rep 2: No issues were reported.
+  - rep 3: OpenAI Decisions matched R0 (p=0.56, confidence 0.12).
+  - rep 4: OpenAI Decisions matched no reported issue; closest was R2 (p=0.02).
+  - rep 5: OpenAI Decisions matched no reported issue; closest was R0 (p=0.04).
+- **typesafe/jev-1.13**: rep 1: missed, rep 2: missed, rep 3: found, rep 4: missed, rep 5: missed
+  - rep 1: Jev matched no reported issue; closest was R0 (p=0.01).
+  - rep 2: No issues were reported.
+  - rep 3: Jev matched R0 (p=0.58, confidence 0.16).
+  - rep 4: Jev matched no reported issue; closest was R2 (p=0.01).
   - rep 5: Jev matched no reported issue; closest was R0 (p=0.01).
 
 ### img_15 15_safe_area_violation.png — gemini-3.1-flash-lite

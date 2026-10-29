@@ -1,0 +1,48 @@
+{
+  "judgeModel": "typesafe/jev-1.13",
+  "judgePromptVersion": "jev-v2",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The bottom navigation bar overlaps with a browser-like overlay consisting of a dark horizontal line and small gray icons (magnifying glass, bookmark) that appear on top of the nav icons, making the bar look cluttered and misaligned.",
+    "The bottom navigation bar is visually cut off at the bottom of the screen, leaving the nav icons partially clipped and inconsistent spacing compared with the rest of the interface.",
+    "The promo code text reads \"Use code TALLINN3\" with an ambiguous space/word break that could be misread as \"TALL INN3\"."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          1
+        ],
+        "reasoning": "Jev matched R1 (p=0.88, confidence 0.76)."
+      }
+    ],
+    "extraReportedIndexes": [
+      2
+    ],
+    "decisions": [
+      {
+        "reportedIndex": 0,
+        "expectedIndex": 0,
+        "probability": 0.81,
+        "confidence": 0.62
+      },
+      {
+        "reportedIndex": 1,
+        "expectedIndex": 0,
+        "probability": 0.88,
+        "confidence": 0.76
+      },
+      {
+        "reportedIndex": 2,
+        "expectedIndex": null,
+        "probability": 1,
+        "confidence": 1
+      }
+    ]
+  }
+}
