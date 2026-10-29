@@ -57,6 +57,7 @@ describe("Model", () => {
   });
 
   it("has correct Google model values", () => {
+    expect(Model.Google.GEMINI_4_ARGON).toBe("gemini-4-argon");
     expect(Model.Google.GEMINI_3_8_FLASH).toBe("gemini-3.8-flash");
     expect(Model.Google.GEMINI_3_7_FLASH).toBe("gemini-3.7-flash");
     expect(Model.Google.GEMINI_3_6_FLASH).toBe("gemini-3.6-flash");

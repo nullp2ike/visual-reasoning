@@ -11,7 +11,8 @@ import { buildAiDiffPrompt } from "./prompt.js";
  *
  * The Flash-Lite models (`gemini-3.5-flash-lite`, `gemini-3.1-flash-lite`) and
  * the Pro tier (`gemini-3.1-pro-preview`) are deliberately absent: they do not
- * drive code execution reliably enough to annotate an image.
+ * drive code execution reliably enough to annotate an image. `gemini-4-argon`
+ * is absent too: it has not been verified for annotated diffs.
  */
 export const DIFF_ALLOWED_MODELS: ReadonlySet<string> = new Set([
   Model.Google.GEMINI_3_FLASH_PREVIEW,

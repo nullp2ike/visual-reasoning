@@ -81,7 +81,8 @@ export const benchConfig: BenchConfig = {
     "gpt-5.6-sol",
     "gpt-5.6-terra",
     "gpt-5.6-luna",
-    // Google: pro / flash / flash-lite
+    // Google: argon / pro / flash / flash-lite
+    "gemini-4-argon",
     "gemini-3.1-pro-preview",
     "gemini-3.8-flash",
     "gemini-3.7-flash",

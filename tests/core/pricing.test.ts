@@ -128,6 +128,12 @@ describe("calculateCost", () => {
     expect(cost).toBeCloseTo(0.000825, 10);
   });
 
+  it("calculates cost for google gemini-4-argon", () => {
+    const cost = calculateCost("google", "gemini-4-argon", 1000, 500);
+    // 1000 * (2/1M) + 500 * (10/1M) = 0.002 + 0.005 = 0.007
+    expect(cost).toBeCloseTo(0.007, 10);
+  });
+
   it("calculates cost for google gemini-3.8-flash", () => {
     const cost = calculateCost("google", "gemini-3.8-flash", 1000, 500);
     // 1000 * (0.75/1M) + 500 * (3.75/1M) = 0.00075 + 0.001875 = 0.002625

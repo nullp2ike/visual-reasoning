@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-08T17:04:22.868Z",
+  "generatedAt": "2026-10-29T17:39:46.081Z",
   "prompt": "What looks visually broken on this page?\n\nDo not report the following (treat these as features, not defects):\n- A horizontally scrollable row (restaurant carousels, category filter chips) whose last item is only partially visible at the right screen edge, including that item's title being clipped by the edge.\n- Content cut off by the bottom of the viewport, such as a partially visible card at the end of a vertical list.",
   "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
   "reasoningEffort": "medium",
@@ -49,6 +49,27 @@
       "meanInputTokens": 2087,
       "meanOutputTokens": 756.8111111111111,
       "meanReasoningTokens": null,
+      "cacheHitRate": null
+    },
+    {
+      "series": "gemini-4-argon",
+      "model": "gemini-4-argon",
+      "provider": "google",
+      "reasoningEffort": "medium",
+      "okRuns": 90,
+      "failedRuns": 0,
+      "meanRecall": 0.9411764705882353,
+      "anyRecall": 0.9411764705882353,
+      "flakiness": 0,
+      "extrasPerRun": 0,
+      "noBugsCleanRate": 1,
+      "latencyMedianSeconds": 7.010787749999996,
+      "latencyP95Seconds": 13.832352082999991,
+      "meanCostPerRun": 0.00582188888888889,
+      "totalCost": 0.5239700000000002,
+      "meanInputTokens": 1605,
+      "meanOutputTokens": 261.18888888888887,
+      "meanReasoningTokens": 146.30337078651687,
       "cacheHitRate": null
     },
     {
@@ -76624,6 +76645,3755 @@
         "reasoningTokens": 1511,
         "estimatedCost": 0.0074235,
         "durationSeconds": 9.336066208
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_01",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The section header above the 'Tokumaru Ramen Bar' card displays a raw localization key ('home_feed.popular_title') instead of the intended human-readable title.",
+          "suggestion": "Add or fix the missing translation string for the 'home_feed.popular_title' key (e.g., 'Popular near you') in the localization files."
+        }
+      ],
+      "summary": "Found 1 major content issue where an untranslated localization key is displayed as a section header.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 188,
+        "reasoningTokens": 77,
+        "estimatedCost": 0.00509,
+        "durationSeconds": 5.400665541
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_01",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The section heading above the 'Tokumaru Ramen Bar' card displays a raw localization key ('home_feed.popular_title') instead of translated user-facing text.",
+          "suggestion": "Add the missing translation string for 'home_feed.popular_title' in the localization files (e.g., 'Popular near you') or ensure the translation loader resolves this key properly."
+        }
+      ],
+      "summary": "Found 1 major content issue where an untranslated localization key is displayed as a section heading.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 289,
+        "reasoningTokens": 174,
+        "estimatedCost": 0.0060999999999999995,
+        "durationSeconds": 6.921534083
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_01",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The section header above the 'Tokumaru Ramen Bar' card displays a raw localization key ('home_feed.popular_title') instead of user-friendly text.",
+          "suggestion": "Provide the proper localized string (e.g., 'Popular near you') for the 'home_feed.popular_title' translation key."
+        }
+      ],
+      "summary": "Found 1 issue: an untranslated localization key is displayed as a section header.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 161,
+        "reasoningTokens": 49,
+        "estimatedCost": 0.00482,
+        "durationSeconds": 6.015568834000001
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_01",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The section heading above 'Tokumaru Ramen Bar' displays raw localization key 'home_feed.popular_title' instead of human-readable text.",
+          "suggestion": "Ensure the localization key 'home_feed.popular_title' is properly mapped in the translation files (e.g., to 'Popular near you') and loaded correctly before rendering."
+        }
+      ],
+      "summary": "Found 1 major content issue where an untranslated localization key is displayed as a section heading.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 191,
+        "reasoningTokens": 82,
+        "estimatedCost": 0.0051199999999999996,
+        "durationSeconds": 8.574342834
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_01",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The section heading above 'Tokumaru Ramen Bar' displays the raw localization key 'home_feed.popular_title' instead of human-readable text.",
+          "suggestion": "Provide the proper localized string (e.g., 'Popular near you' or 'Popular right now') for the 'home_feed.popular_title' translation key."
+        }
+      ],
+      "summary": "Found 1 issue: an untranslated localization key is displayed as a section header on the home feed.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 216,
+        "reasoningTokens": 72,
+        "estimatedCost": 0.00537,
+        "durationSeconds": 6.38704325
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_02",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The delivery fee under 'Smash Bros Burgers' in the 'Fastest near you' section is displayed as '€NaN delivery' instead of a valid currency amount.",
+          "suggestion": "Ensure the delivery fee value is properly parsed as a number before formatting, and provide a fallback display (such as hiding the fee or showing 'Free delivery' / 'Calculated at checkout') if the value is missing or invalid."
+        }
+      ],
+      "summary": "Found 1 major content issue where a delivery fee displays as '€NaN' due to a calculation or data parsing error.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 211,
+        "reasoningTokens": 50,
+        "estimatedCost": 0.00532,
+        "durationSeconds": 6.666850792
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_02",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "Under the 'Fastest near you' section, the delivery fee for 'Smash Bros Burgers' displays as '€NaN delivery' instead of a valid price.",
+          "suggestion": "Fix the data parsing or price calculation logic for the delivery fee and add a fallback state in case the numeric value is missing or invalid."
+        }
+      ],
+      "summary": "Found 1 major content and data formatting issue on the page.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 202,
+        "reasoningTokens": 73,
+        "estimatedCost": 0.00523,
+        "durationSeconds": 5.657251082999999
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_02",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "Under the 'Fastest near you' section, the 'Smash Bros Burgers' card displays '€NaN delivery' instead of a numeric delivery fee.",
+          "suggestion": "Ensure the delivery fee value is properly parsed as a number before formatting, and provide a fallback display state (e.g., hiding the fee or showing 'Free delivery' / 'Unavailable') if the data is missing or invalid."
+        }
+      ],
+      "summary": "Found 1 major content and functionality issue where a restaurant card displays '€NaN delivery' instead of a valid price.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 212,
+        "reasoningTokens": 54,
+        "estimatedCost": 0.00533,
+        "durationSeconds": 5.805952667
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_02",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The delivery fee under 'Smash Bros Burgers' in the 'Fastest near you' section displays '€NaN delivery' instead of a valid price.",
+          "suggestion": "Ensure the delivery fee value is properly parsed as a number before formatting, and provide a fallback display (e.g., 'Free delivery' or hiding the text) if the fee data is missing or invalid."
+        }
+      ],
+      "summary": "Found 1 major content issue where a delivery fee is displayed as 'NaN'.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 367,
+        "reasoningTokens": 254,
+        "estimatedCost": 0.00688,
+        "durationSeconds": 8.781133333999998
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_02",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The delivery fee under 'Smash Bros Burgers' in the 'Fastest near you' section displays as '€NaN delivery' instead of a valid price.",
+          "suggestion": "Ensure the delivery fee value is properly parsed as a number before formatting, and provide a fallback display (such as 'Free delivery' or hiding the text) if the value is missing or invalid."
+        }
+      ],
+      "summary": "Found 1 major content and data formatting issue on the page.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 186,
+        "reasoningTokens": 70,
+        "estimatedCost": 0.00507,
+        "durationSeconds": 74.17774520799999
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_03",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The image for the 'Tokumaru Ramen Bar' card under the 'Popular right now' section failed to load, displaying a gray placeholder box with a broken image icon instead of food photography.",
+          "suggestion": "Verify the image URL or asset path for the 'Tokumaru Ramen Bar' listing and ensure a valid restaurant image is loaded, or provide a more appealing fallback graphic related to the cuisine category."
+        }
+      ],
+      "summary": "Found 1 major visual issue: a broken image placeholder on a featured restaurant card.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.98, confidence 0.96).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.98,
+          "confidence": 0.96
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 196,
+        "reasoningTokens": 77,
+        "estimatedCost": 0.00517,
+        "durationSeconds": 6.661043459
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_03",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The cover image for 'Tokumaru Ramen Bar' under the 'Popular right now' section failed to load, showing a generic broken image placeholder icon on a gray background.",
+          "suggestion": "Verify the image URL for this restaurant listing and ensure a valid, appealing fallback food or restaurant category image is used if the primary asset is unavailable."
+        }
+      ],
+      "summary": "Found 1 major issue: a broken image placeholder is displayed for a prominent restaurant listing.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 192,
+        "reasoningTokens": 52,
+        "estimatedCost": 0.00513,
+        "durationSeconds": 5.041666667000001
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_03",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The cover image for 'Tokumaru Ramen Bar' under the 'Popular right now' section failed to load, displaying a broken image icon placeholder instead.",
+          "suggestion": "Verify the image URL or asset path for the 'Tokumaru Ramen Bar' listing and ensure a valid fallback restaurant image is provided if the primary asset fails to load."
+        }
+      ],
+      "summary": "Found 1 major visual issue: a broken image placeholder on one of the featured restaurant cards.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 444,
+        "reasoningTokens": 302,
+        "estimatedCost": 0.0076500000000000005,
+        "durationSeconds": 7.631814917
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_03",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The restaurant card for 'Tokumaru Ramen Bar' under the 'Popular right now' section displays a broken image placeholder instead of the restaurant's photo.",
+          "suggestion": "Verify the image URL or asset path for 'Tokumaru Ramen Bar' and ensure a valid fallback image (e.g., category-relevant default graphic or branded placeholder) is shown if an image fails to load."
+        }
+      ],
+      "summary": "Found 1 major visual issue: a broken cover image on a featured restaurant card.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.99,
+          "confidence": 0.98
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 288,
+        "reasoningTokens": 137,
+        "estimatedCost": 0.00609,
+        "durationSeconds": 6.4803060409999995
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_03",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The featured image for the 'Tokumaru Ramen Bar' card under the 'Popular right now' section failed to load, displaying a gray placeholder box with a broken image icon instead.",
+          "suggestion": "Verify the image URL/asset path for 'Tokumaru Ramen Bar', ensure the image server or CDN is reachable, and provide an appropriate fallback image if the restaurant photo is unavailable."
+        }
+      ],
+      "summary": "Found 1 major visual issue: a broken restaurant image on the 'Popular right now' section.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.99,
+          "confidence": 0.98
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 152,
+        "estimatedCost": 0.00473,
+        "durationSeconds": 6.965499707999999
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_04",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The second restaurant card under the 'Popular right now' section (the pizza card at the bottom) displays a '-0%' promotional badge in its top-left corner, which indicates a zero-percent discount.",
+          "suggestion": "Hide or conditionally omit promotional discount badges when the discount value is 0% or less."
+        }
+      ],
+      "summary": "Found 1 issue: an invalid '-0%' discount badge displayed on a restaurant card.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 381,
+        "reasoningTokens": 281,
+        "estimatedCost": 0.00702,
+        "durationSeconds": 8.869483165999998
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_04",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The second restaurant card under the 'Popular right now' section (featuring the pizza graphic) displays a '-0%' discount badge in the top-left corner.",
+          "suggestion": "Hide the discount badge entirely when the discount value is 0% or null, or ensure the correct promotional percentage is passed to the component."
+        }
+      ],
+      "summary": "Found 1 minor content issue where a promotional badge displays a meaningless '-0%' discount on a restaurant card.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 350,
+        "reasoningTokens": 245,
+        "estimatedCost": 0.00671,
+        "durationSeconds": 8.582498834000003
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_04",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The second restaurant card under the 'Popular right now' section displays a promotional badge reading '-0%' in the top-left corner.",
+          "suggestion": "Hide the discount badge when the discount value is 0%, or ensure the correct non-zero discount percentage is passed to the component."
+        }
+      ],
+      "summary": "Found 1 visual/content issue: a meaningless '-0%' discount badge displayed on a restaurant card.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 395,
+        "reasoningTokens": 298,
+        "estimatedCost": 0.00716,
+        "durationSeconds": 8.025497042
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_04",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The second restaurant card under the 'Popular right now' section (featuring a pizza image) displays a badge reading '-0%' in the top-left corner, indicating a zero percent discount.",
+          "suggestion": "Add conditional logic to hide discount badges when the discount value is 0% or not applicable."
+        }
+      ],
+      "summary": "Found 1 issue: a restaurant card displays a meaningless '-0%' discount badge.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 349,
+        "reasoningTokens": 252,
+        "estimatedCost": 0.0067,
+        "durationSeconds": 8.077597542
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_04",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The second restaurant card under 'Popular right now' displays a '-0%' promotional badge in the top-left corner of the image.",
+          "suggestion": "Hide discount badges when the discount value is 0% or null, or ensure the correct promotional percentage is passed to the component."
+        }
+      ],
+      "summary": "Found 1 minor content issue where a zero-percent discount badge is displayed on a restaurant card.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 229,
+        "reasoningTokens": 134,
+        "estimatedCost": 0.0055,
+        "durationSeconds": 7.191586207999997
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_05",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "critical",
+          "category": "accessibility",
+          "description": "The promotional banner near the top displays white text ('3 free deliveries for you' and 'Use code TALLINN3 at checkout • min. order €10') on a very light mint green background, resulting in poor legibility and failing WCAG contrast requirements.",
+          "suggestion": "Change the banner text color to a dark shade (such as dark green or charcoal) or darken the background color of the promotional card so the white text has sufficient contrast."
+        }
+      ],
+      "summary": "Found 1 critical accessibility issue where the promotional banner text has extremely low contrast against its light background.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 216,
+        "reasoningTokens": 87,
+        "estimatedCost": 0.00537,
+        "durationSeconds": 6.60629
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_05",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "critical",
+          "category": "accessibility",
+          "description": "The promotional banner ('3 free deliveries for you' and 'Use code TALLINN3 at checkout · min. order €10') uses white text on a very light mint-green background, resulting in extremely low color contrast that makes the text barely legible.",
+          "suggestion": "Darken the banner background color (e.g., to a deep green matching the brand primary color) or change the headline and subtext color to a dark shade (such as dark green or charcoal) to meet WCAG AA contrast requirements."
+        }
+      ],
+      "summary": "Found 1 critical accessibility and styling issue in the promotional banner where white text has very poor contrast against a light green background.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 246,
+        "reasoningTokens": 64,
+        "estimatedCost": 0.00567,
+        "durationSeconds": 5.879367708000002
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_05",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "accessibility",
+          "description": "The promotional banner ('3 free deliveries for you' and 'Use code TALLINN3 at checkout · min. order €10') uses white text on a pale mint-green background, resulting in severely insufficient color contrast that makes the text hard to read.",
+          "suggestion": "Change the banner text color to a dark shade (such as dark green or charcoal) or darken the banner's background color to meet WCAG AA contrast requirements."
+        }
+      ],
+      "summary": "Found 1 major accessibility and styling issue where promotional banner text has very low contrast against its background.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 251,
+        "reasoningTokens": 90,
+        "estimatedCost": 0.005719999999999999,
+        "durationSeconds": 12.461126417
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_05",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "critical",
+          "category": "accessibility",
+          "description": "The promotional banner ('3 free deliveries for you' and 'Use code TALLINN3 at checkout · min. order €10') uses white text on a very light pastel green background, resulting in extremely low color contrast that makes the text barely legible.",
+          "suggestion": "Change the banner text color to a dark shade (such as dark green or near-black) or darken the background color of the banner to meet WCAG contrast requirements."
+        }
+      ],
+      "summary": "Found 1 critical accessibility and visual issue regarding text contrast on the promotional banner.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 189,
+        "reasoningTokens": 66,
+        "estimatedCost": 0.0051,
+        "durationSeconds": 5.9457024590000005
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_05",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "critical",
+          "category": "accessibility",
+          "description": "The promotional banner ('3 free deliveries for you' and 'Use code TALLINN3 at checkout • min. order €10') uses white text on a very light mint green background, resulting in extremely low contrast that makes the text difficult to read.",
+          "suggestion": "Change the banner text color to a dark shade (such as dark green or charcoal) or darken the background color of the banner to meet WCAG contrast requirements."
+        }
+      ],
+      "summary": "Found 1 critical accessibility issue regarding text contrast on the promotional banner.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 204,
+        "reasoningTokens": 85,
+        "estimatedCost": 0.0052499999999999995,
+        "durationSeconds": 5.195718875000006
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_06",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The 'Orders' tab in the bottom navigation bar is missing its icon, leaving an empty space above the text label while all other tabs ('Home', 'Search', 'Profile') display icons.",
+          "suggestion": "Add an appropriate receipt, bag, or list icon above the 'Orders' label to maintain visual consistency across the bottom navigation bar."
+        }
+      ],
+      "summary": "Found 1 visual issue: the 'Orders' tab in the bottom navigation bar is missing its icon.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 251,
+        "reasoningTokens": 141,
+        "estimatedCost": 0.005719999999999999,
+        "durationSeconds": 8.532215042000004
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_06",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The 'Orders' tab in the bottom navigation bar is missing its icon above the label, while all other navigation items ('Home', 'Search', 'Profile') display icons consistently.",
+          "suggestion": "Add an appropriate icon (such as a receipt or shopping bag icon) above the 'Orders' label in the bottom navigation bar to match the styling and alignment of the other tabs."
+        }
+      ],
+      "summary": "Found 1 visual issue: the 'Orders' tab in the bottom navigation bar is missing its icon.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.99,
+          "confidence": 0.98
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 202,
+        "reasoningTokens": 85,
+        "estimatedCost": 0.00523,
+        "durationSeconds": 11.817464667
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_06",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The 'Orders' tab in the bottom navigation bar is missing its icon above the text label, while 'Home', 'Search', and 'Profile' all display their respective icons.",
+          "suggestion": "Add an appropriate icon (such as a receipt or shopping bag icon) above the 'Orders' label to maintain visual consistency across the bottom navigation bar."
+        }
+      ],
+      "summary": "Found 1 visual issue: the 'Orders' tab in the bottom navigation bar is missing its icon.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 237,
+        "reasoningTokens": 92,
+        "estimatedCost": 0.00558,
+        "durationSeconds": 10.670642415999994
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_06",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The 'Orders' tab in the bottom navigation bar is missing its icon above the text label, while 'Home', 'Search', and 'Profile' all display their respective icons.",
+          "suggestion": "Add an appropriate icon (such as a receipt or shopping bag icon) above the 'Orders' label to maintain visual consistency across the bottom navigation bar."
+        }
+      ],
+      "summary": "Found 1 issue: a missing navigation icon in the bottom tab bar.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 228,
+        "reasoningTokens": 89,
+        "estimatedCost": 0.00549,
+        "durationSeconds": 5.0295687079999984
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_06",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The 'Orders' tab in the bottom navigation bar is missing its icon, leaving a blank space above the text label while all other tabs ('Home', 'Search', 'Profile') display their respective icons.",
+          "suggestion": "Add an appropriate icon (such as a receipt or shopping bag icon) above the 'Orders' label in the bottom navigation bar to maintain visual consistency and usability."
+        }
+      ],
+      "summary": "Found 1 visual issue: the 'Orders' tab in the bottom navigation bar is missing its icon.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 213,
+        "reasoningTokens": 95,
+        "estimatedCost": 0.00534,
+        "durationSeconds": 9.298817415999999
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_07",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "A circular loading spinner is stuck overlaid in the center of the 'Tokumaru Ramen Bar' image even though the image and card content have already finished loading.",
+          "suggestion": "Ensure the loading indicator state is properly cleared and hidden once the image asset finishes loading or the data fetch completes."
+        }
+      ],
+      "summary": "Found 1 major visual issue where a loading spinner remains visible over an already loaded restaurant image.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 183,
+        "reasoningTokens": 88,
+        "estimatedCost": 0.00504,
+        "durationSeconds": 6.876344624999998
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_07",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "A circular loading spinner is stuck overlapping the center of the 'Tokumaru Ramen Bar' image under the 'Popular right now' section, even though the image and page content have already loaded.",
+          "suggestion": "Ensure the loading indicator or pull-to-refresh spinner is properly hidden and unmounted once the image or data fetch completes."
+        }
+      ],
+      "summary": "Found 1 visual issue: a stuck loading spinner overlaying an already rendered restaurant card image.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 213,
+        "reasoningTokens": 75,
+        "estimatedCost": 0.00534,
+        "durationSeconds": 6.581825042000004
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_07",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "A circular loading spinner overlay is stuck in the center of the 'Tokumaru Ramen Bar' image under the 'Popular right now' section, even though the image and card content have already finished loading.",
+          "suggestion": "Ensure the loading indicator state is properly cleared and hidden once the image asset or card data finishes loading."
+        }
+      ],
+      "summary": "Found 1 visual issue: a persistent loading spinner remains visible over an already-loaded restaurant card image.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 375,
+        "reasoningTokens": 271,
+        "estimatedCost": 0.00696,
+        "durationSeconds": 8.519830708
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_07",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "A circular loading spinner overlay is persistently displayed in the center of the 'Tokumaru Ramen Bar' image even though the card and its image have already loaded.",
+          "suggestion": "Hide or remove the loading indicator state once the card image and data have finished loading, or ensure the global refresh spinner is properly dismissed after the pull-to-refresh completes."
+        }
+      ],
+      "summary": "Found 1 major visual issue where a loading spinner remains visible over a fully loaded restaurant card image.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 185,
+        "reasoningTokens": 42,
+        "estimatedCost": 0.00506,
+        "durationSeconds": 4.285340417
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_07",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "A circular loading spinner is stuck in the center of the 'Tokumaru Ramen Bar' thumbnail image under the 'Popular right now' section, even though the image and card content have already loaded.",
+          "suggestion": "Ensure the loading indicator state is properly cleared and hidden once the image asset finishes loading or the data fetch completes."
+        }
+      ],
+      "summary": "Found 1 visual issue: a persistent loading spinner overlapping an already loaded restaurant card image.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 216,
+        "reasoningTokens": 80,
+        "estimatedCost": 0.00537,
+        "durationSeconds": 5.892488540999999
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_08",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The search bar placeholder text contains a typo: 'Restarants, dishes, groceries' instead of 'Restaurants, dishes, groceries'.",
+          "suggestion": "Correct the spelling of 'Restarants' to 'Restaurants' in the search input placeholder."
+        }
+      ],
+      "summary": "Found 1 minor content issue: a typo in the search bar placeholder text.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.99,
+          "confidence": 0.98
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 168,
+        "reasoningTokens": 73,
+        "estimatedCost": 0.00489,
+        "durationSeconds": 6.0690332080000005
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_08",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The search bar placeholder text contains a typo: 'Restarants, dishes, groceries' is missing the 'u' in 'Restaurants'.",
+          "suggestion": "Correct the placeholder text to 'Restaurants, dishes, groceries'."
+        }
+      ],
+      "summary": "Found 1 minor content issue: a spelling error in the search bar placeholder text.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.99,
+          "confidence": 0.98
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 132,
+        "reasoningTokens": 52,
+        "estimatedCost": 0.00453,
+        "durationSeconds": 5.605435999999994
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_08",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The search bar placeholder text contains a typo: 'Restarants, dishes, groceries' is missing the letter 'u' in 'Restaurants'.",
+          "suggestion": "Correct the spelling in the placeholder text to 'Restaurants, dishes, groceries'."
+        }
+      ],
+      "summary": "Found 1 minor content issue: a spelling mistake in the search bar placeholder text.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.99,
+          "confidence": 0.98
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 145,
+        "reasoningTokens": 61,
+        "estimatedCost": 0.00466,
+        "durationSeconds": 4.202731874999998
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_08",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The search input placeholder text contains a typo: 'Restarants, dishes, groceries' instead of 'Restaurants, dishes, groceries'.",
+          "suggestion": "Correct the spelling of 'Restarants' to 'Restaurants' in the search bar placeholder text."
+        }
+      ],
+      "summary": "Found 1 minor content issue: a typo in the search bar placeholder text.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.99,
+          "confidence": 0.98
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 157,
+        "reasoningTokens": 71,
+        "estimatedCost": 0.0047799999999999995,
+        "durationSeconds": 6.205992500000001
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_08",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The search input placeholder contains a typo: 'Restarants' instead of 'Restaurants'.",
+          "suggestion": "Update the placeholder text to 'Restaurants, dishes, groceries'."
+        }
+      ],
+      "summary": "Found 1 minor content issue: a spelling error in the search bar placeholder text.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 134,
+        "reasoningTokens": 64,
+        "estimatedCost": 0.00455,
+        "durationSeconds": 4.478018333
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_09",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "layout",
+          "description": "The restaurant name 'Tokumaru Ramen' in the 'Popular right now' section is clipped horizontally on the right, cutting off the letter 'n' ('Tokumaru Rameı') despite having ample empty space before the rating display.",
+          "suggestion": "Allow the title container to expand into the available flex space or use proper text ellipsis (`text-overflow: ellipsis`) only when space is genuinely constrained."
+        }
+      ],
+      "summary": "Found 1 visual layout issue where a restaurant title is unexpectedly clipped mid-character.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.80, confidence 0.60).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.8,
+          "confidence": 0.6
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 402,
+        "reasoningTokens": 284,
+        "estimatedCost": 0.00723,
+        "durationSeconds": 10.351432916000006
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_09",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "layout",
+          "description": "Under the 'Popular right now' section, the restaurant title 'Tokumaru Ramen' is clipped mid-character on the final 'n' ('Tokumaru Rameı'), even though there is ample empty space between the title and the rating on the right.",
+          "suggestion": "Increase the maximum width or flex-grow allocation of the restaurant title container so the full name renders without clipping, and use text-overflow: ellipsis if truncation is genuinely needed for very long names."
+        }
+      ],
+      "summary": "Found 1 layout issue where a restaurant title is prematurely clipped despite having sufficient available horizontal space.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.87, confidence 0.74).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.87,
+          "confidence": 0.74
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 399,
+        "reasoningTokens": 255,
+        "estimatedCost": 0.0072,
+        "durationSeconds": 8.490915625000001
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_09",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "layout",
+          "description": "In the 'Popular right now' section, the restaurant title 'Tokumaru Ramen' has its final letter clipped ('Tokumaru Rameı'), even though there is plenty of empty space between the title and the rating on the right.",
+          "suggestion": "Increase the width or flex-grow constraint of the title text container so the full restaurant name can be displayed without premature clipping, or use proper text-overflow ellipsis only when space actually runs out."
+        }
+      ],
+      "summary": "Found 1 layout issue where a restaurant title is prematurely clipped despite having ample available horizontal space.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.96, confidence 0.92).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.96,
+          "confidence": 0.92
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 368,
+        "reasoningTokens": 205,
+        "estimatedCost": 0.00689,
+        "durationSeconds": 7.055288625000001
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_09",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "layout",
+          "description": "In the 'Popular right now' section, the restaurant title 'Tokumaru Ramen' has its final letter 'n' cut off ('Tokumaru Rameı'), even though there is plenty of horizontal whitespace before the rating on the right.",
+          "suggestion": "Adjust the width constraint or flex rules of the restaurant title container so the text can utilize the available horizontal space without premature clipping, and use proper text-overflow ellipsis if truncation is required."
+        }
+      ],
+      "summary": "Found 1 layout issue where a restaurant title is prematurely clipped mid-character.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.91, confidence 0.82).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.91,
+          "confidence": 0.82
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 418,
+        "reasoningTokens": 283,
+        "estimatedCost": 0.007390000000000001,
+        "durationSeconds": 8.308365749999997
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_09",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "layout",
+          "description": "In the 'Popular right now' section, the restaurant name 'Tokumaru Ramen' has its final letter 'n' cut off mid-character ('Tokumaru Rameı'), even though there is plenty of empty space between the title and the rating on the right.",
+          "suggestion": "Expand the width constraint or flex-grow setting of the restaurant title container so it can utilize the available space before the rating badge, and use `text-overflow: ellipsis` if truncation is genuinely needed for longer names."
+        }
+      ],
+      "summary": "Found 1 visual layout issue where a restaurant title is prematurely clipped mid-character despite available horizontal space.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.90, confidence 0.80).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.9,
+          "confidence": 0.8
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 423,
+        "reasoningTokens": 280,
+        "estimatedCost": 0.00744,
+        "durationSeconds": 13.832352082999991
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_10",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The restaurant card for 'Green Bowl Poké' (with identical image, delivery time '15–25 min', and delivery fee '€0.90 delivery') is duplicated side-by-side in the 'Fastest near you' section.",
+          "suggestion": "Ensure the carousel data source deduplicates restaurant entries by unique ID before rendering the list."
+        }
+      ],
+      "summary": "Found 1 major content issue: a duplicate restaurant card is displayed in the 'Fastest near you' carousel.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.99,
+          "confidence": 0.98
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 199,
+        "reasoningTokens": 84,
+        "estimatedCost": 0.0052,
+        "durationSeconds": 5.991521542000002
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_10",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The restaurant card 'Green Bowl Poké' is duplicated side-by-side in the 'Fastest near you' horizontal list, showing identical images, names, delivery times, and prices.",
+          "suggestion": "Deduplicate items in the restaurant list data feed or carousel rendering logic so each restaurant appears only once per section."
+        }
+      ],
+      "summary": "Found 1 issue: a duplicate restaurant card in the 'Fastest near you' carousel.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.98, confidence 0.96).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.98,
+          "confidence": 0.96
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 211,
+        "reasoningTokens": 75,
+        "estimatedCost": 0.00532,
+        "durationSeconds": 5.7815268329999965
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_10",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The 'Green Bowl Poké' restaurant card (including the image, delivery time '15-25 min', title, and '€0.90 delivery' fee) is duplicated side-by-side in the 'Fastest near you' horizontal list.",
+          "suggestion": "Deduplicate the data source or fix the rendering loop for the 'Fastest near you' carousel so each restaurant appears only once."
+        }
+      ],
+      "summary": "Found 1 content issue: a duplicate restaurant card is displayed in the 'Fastest near you' carousel.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 350,
+        "reasoningTokens": 225,
+        "estimatedCost": 0.00671,
+        "durationSeconds": 9.547609334000008
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_10",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The restaurant card for 'Green Bowl Poké' is duplicated side-by-side in the 'Fastest near you' carousel with identical image, delivery time, and fee.",
+          "suggestion": "Deduplicate items in the 'Fastest near you' data feed or frontend rendering logic so each restaurant appears only once in the carousel."
+        }
+      ],
+      "summary": "Found 1 issue: a duplicate restaurant card in the 'Fastest near you' carousel.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 228,
+        "reasoningTokens": 90,
+        "estimatedCost": 0.00549,
+        "durationSeconds": 7.995861959000002
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_10",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The restaurant 'Green Bowl Poké' is rendered twice consecutively with identical details (image, delivery time '15–25 min', and delivery fee '€0.90 delivery') in the 'Fastest near you' horizontal carousel.",
+          "suggestion": "Ensure the data fetching or deduplication logic for the 'Fastest near you' carousel filters out duplicate restaurant entries so each item displayed is unique."
+        }
+      ],
+      "summary": "Found 1 major content issue where a restaurant card is duplicated in the 'Fastest near you' carousel.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 431,
+        "reasoningTokens": 308,
+        "estimatedCost": 0.007520000000000001,
+        "durationSeconds": 9.128268874999995
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_11",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The promotional badge on the bottom restaurant card (under 'Popular right now') displays an unrealistic '-100%' discount, indicating a calculation or data binding error.",
+          "suggestion": "Validate discount values before rendering and cap or hide invalid promotional badges (e.g., 100% off or negative values caused by missing price data)."
+        }
+      ],
+      "summary": "Found 1 major content issue on the page: an invalid discount percentage displayed on a restaurant card.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 451,
+        "reasoningTokens": 344,
+        "estimatedCost": 0.007719999999999999,
+        "durationSeconds": 8.534782040999998
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_11",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The second restaurant card under the 'Popular right now' section displays a '-100%' discount badge in the top-left corner, which indicates a calculation error or broken promotional data.",
+          "suggestion": "Verify the discount calculation logic and promotional data source to ensure valid discount percentages are displayed, or hide the badge when no valid discount applies."
+        }
+      ],
+      "summary": "Found 1 major content issue where a promotional discount badge displays an invalid '-100%' value.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 486,
+        "reasoningTokens": 378,
+        "estimatedCost": 0.00807,
+        "durationSeconds": 8.736003417
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_11",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The second restaurant card under the 'Popular right now' section displays an invalid '-100%' discount badge in the top-left corner.",
+          "suggestion": "Verify the discount calculation logic and data source for promotional badges to ensure valid percentage values are displayed, or hide the badge when the discount value is invalid."
+        }
+      ],
+      "summary": "Found 1 major content issue on the restaurant listing page: an invalid '-100%' discount badge displayed on one of the restaurant cards.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 410,
+        "reasoningTokens": 300,
+        "estimatedCost": 0.0073100000000000005,
+        "durationSeconds": 7.668365332999994
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_11",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The second restaurant card under the 'Popular right now' section displays a '-100%' promotional badge in the top-left corner, which indicates a broken discount calculation or placeholder value.",
+          "suggestion": "Verify the discount data source and logic to ensure valid promotional percentages are displayed, or replace '-100%' with '€0 delivery' or 'Free' if it applies only to the delivery fee."
+        }
+      ],
+      "summary": "Found 1 major content issue on the page regarding an unrealistic discount badge.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 417,
+        "reasoningTokens": 301,
+        "estimatedCost": 0.007379999999999999,
+        "durationSeconds": 7.164381874999992
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_11",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The promotional badge on the second card under the 'Popular right now' section displays '-100%', which is an unrealistic and likely broken discount value.",
+          "suggestion": "Validate discount percentage calculations and cap promotional badge values to valid ranges (e.g., 5% to 70%), or display 'Free' if an item is genuinely 100% off."
+        }
+      ],
+      "summary": "Found 1 major content issue where a promotional badge displays an invalid -100% discount.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 484,
+        "reasoningTokens": 369,
+        "estimatedCost": 0.00805,
+        "durationSeconds": 10.756922667000007
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_12",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "Under the 'Tokumaru Ramen Bar' heading in the 'Popular right now' section, the delivery time ('25–35 min') and delivery fee ('€0 delivery') text elements are overlapping and illegible.",
+          "suggestion": "Adjust the layout or flex/inline spacing of the metadata row so that the delivery time, separator, delivery fee, and cuisine tag are properly spaced without overlapping."
+        }
+      ],
+      "summary": "Found 1 major layout issue where delivery time and fee text overlap on a restaurant card.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 196,
+        "reasoningTokens": 79,
+        "estimatedCost": 0.00517,
+        "durationSeconds": 9.252341833
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_12",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "Under the 'Tokumaru Ramen Bar' listing in the 'Popular right now' section, the delivery time ('25–35 min') and delivery fee ('€0 delivery') text elements are overlapping and illegible.",
+          "suggestion": "Fix the positioning or flex/inline layout of the metadata subtext items so that the delivery time and delivery fee are properly spaced and separated (e.g., '25–35 min • €0 delivery • Ramen')."
+        }
+      ],
+      "summary": "Found 1 major layout issue where text elements overlap on a restaurant card.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 273,
+        "reasoningTokens": 110,
+        "estimatedCost": 0.00594,
+        "durationSeconds": 6.761912499999991
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_12",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "Under the 'Tokumaru Ramen Bar' listing in the 'Popular right now' section, the delivery time ('25–35 min') and delivery fee ('€0 delivery') text elements overlap, making both illegible.",
+          "suggestion": "Adjust the layout or flex/inline spacing of the metadata row so that the delivery time, separator, delivery fee, and cuisine type are properly spaced and do not collide."
+        }
+      ],
+      "summary": "Found 1 major layout issue where text elements overlap each other on a restaurant card.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 222,
+        "reasoningTokens": 103,
+        "estimatedCost": 0.00543,
+        "durationSeconds": 6.367502166999999
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_12",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "Under the 'Tokumaru Ramen Bar' listing in the 'Popular right now' section, the delivery time ('25-35 min') and delivery cost ('€0 delivery') text strings are overlapping, making both unreadable.",
+          "suggestion": "Use a proper flex or inline layout with spacing and a separator (such as a bullet point) so that the delivery time, delivery fee, and cuisine category render sequentially without colliding."
+        }
+      ],
+      "summary": "Found 1 major layout issue where delivery time and delivery fee text overlap on a restaurant card.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 217,
+        "reasoningTokens": 93,
+        "estimatedCost": 0.005379999999999999,
+        "durationSeconds": 6.083960625000007
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_12",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "Under 'Tokumaru Ramen Bar' in the 'Popular right now' section, the delivery time ('25-35 min') and delivery fee ('€0 delivery') text strings are overlapping and colliding with each other, making both unreadable.",
+          "suggestion": "Fix the layout container or flex/grid spacing for the restaurant metadata row so that the delivery time and delivery fee are properly separated (e.g., with a bullet separator and adequate spacing) rather than rendered on top of each other."
+        }
+      ],
+      "summary": "Found 1 major layout issue where delivery time and fee text overlap on a restaurant card.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 247,
+        "reasoningTokens": 76,
+        "estimatedCost": 0.00568,
+        "durationSeconds": 5.634905874999997
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_13",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The circular action button in the top-right corner of the header displays a red notification badge dot, but the main icon inside the button (such as a notification bell or shopping bag) fails to render, leaving an empty gray circle.",
+          "suggestion": "Ensure the SVG or icon asset for the top-right header button is properly loaded and visible with sufficient contrast against the light gray circular background."
+        }
+      ],
+      "summary": "Found 1 issue: a missing icon inside the top-right header action button.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.97, confidence 0.94).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.97,
+          "confidence": 0.94
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 343,
+        "reasoningTokens": 217,
+        "estimatedCost": 0.00664,
+        "durationSeconds": 8.749524999999995
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_13",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The circular button in the top-right corner of the header has a red notification badge dot, but its main icon (e.g., bell, cart, or profile icon) is missing, leaving an empty gray circle.",
+          "suggestion": "Ensure the SVG or icon asset for the top-right header action button loads properly and has appropriate color contrast against the light gray background."
+        }
+      ],
+      "summary": "Found 1 issue: a missing icon inside the circular button in the top-right header.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.99,
+          "confidence": 0.98
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 233,
+        "reasoningTokens": 84,
+        "estimatedCost": 0.00554,
+        "durationSeconds": 5.175550291000007
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_13",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The circular action button in the top-right corner (next to the delivery address) is missing its icon, rendering as an empty gray circle with a red notification badge.",
+          "suggestion": "Ensure the intended icon (such as a notification bell, cart, or profile icon) loads and renders properly inside the circular button."
+        }
+      ],
+      "summary": "Found 1 issue: the circular button in the top-right header is missing its icon, showing only a blank gray circle with a notification dot.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.96, confidence 0.92).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.96,
+          "confidence": 0.92
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 192,
+        "reasoningTokens": 78,
+        "estimatedCost": 0.00513,
+        "durationSeconds": 37.602707458000005
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_13",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The circular button in the top-right corner of the header shows a red notification badge dot, but the icon itself (e.g., notification bell or cart icon) is missing, leaving an empty gray circle.",
+          "suggestion": "Render the appropriate icon SVG/asset inside the circular button container and ensure its color contrasts properly against the light gray background."
+        }
+      ],
+      "summary": "Found 1 visual issue: a missing icon inside the top-right header action button.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.99, confidence 0.98).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.99,
+          "confidence": 0.98
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 250,
+        "reasoningTokens": 107,
+        "estimatedCost": 0.00571,
+        "durationSeconds": 6.570281082999994
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_13",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The circular button in the top-right corner (next to the delivery address) has a red notification badge dot, but its main icon (such as a notification bell or cart icon) is missing, leaving an empty gray circle.",
+          "suggestion": "Ensure the SVG or icon asset for the top-right header button loads and renders properly inside the circular container."
+        }
+      ],
+      "summary": "Found 1 major visual issue: the action button in the top-right header is missing its icon.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 408,
+        "reasoningTokens": 295,
+        "estimatedCost": 0.00729,
+        "durationSeconds": 8.199414082999995
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_14",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "layout",
+          "description": "In the 'Fastest near you' horizontal carousel, the middle card ('Smash Bros Burgers') is vertically misaligned and shifted downward compared to the adjacent cards ('Green Bowl Poké' and 'Trattoria Piccola').",
+          "suggestion": "Remove any unintended top margin or padding on the middle card so that all cards in the horizontal list align along their top edges."
+        }
+      ],
+      "summary": "Found 1 visual layout issue in the 'Fastest near you' carousel.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 270,
+        "reasoningTokens": 162,
+        "estimatedCost": 0.00591,
+        "durationSeconds": 11.325557875
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_14",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "layout",
+          "description": "In the 'Fastest near you' horizontal carousel, the middle card ('Smash Bros Burgers') is shifted downward and does not align vertically with the adjacent cards ('Green Bowl Poké' and 'Trattoria Piccol...').",
+          "suggestion": "Ensure all cards within the horizontal scroll container have consistent top margin/padding and vertical alignment (e.g., `align-items: flex-start`)."
+        }
+      ],
+      "summary": "Found 1 visual layout issue where a restaurant card in the 'Fastest near you' carousel is vertically misaligned.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 294,
+        "reasoningTokens": 136,
+        "estimatedCost": 0.00615,
+        "durationSeconds": 6.683790207999992
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_14",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "layout",
+          "description": "In the 'Fastest near you' horizontal carousel, the middle card ('Smash Bros Burgers') is shifted downward compared to the adjacent cards ('Green Bowl Poké' and 'Trattoria Piccola'), breaking the horizontal alignment of the row.",
+          "suggestion": "Ensure all cards in the 'Fastest near you' carousel share consistent top margin/padding and vertical alignment (e.g., `align-items: flex-start`) within the scroll container."
+        }
+      ],
+      "summary": "Found 1 layout issue where a card in the 'Fastest near you' carousel is vertically misaligned with its siblings.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 276,
+        "reasoningTokens": 107,
+        "estimatedCost": 0.00597,
+        "durationSeconds": 6.144802541000012
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_14",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "In the 'Fastest near you' carousel, the middle card ('Smash Bros Burgers') is shifted downward compared to the adjacent cards ('Green Bowl Poké' and 'Trattoria Piccola'), breaking the vertical alignment of the row.",
+          "suggestion": "Remove any top margin or vertical offset on the middle carousel item and ensure all cards in the horizontal scroll container are top-aligned (`align-items: flex-start`)."
+        }
+      ],
+      "summary": "Found 1 layout issue where a restaurant card in the horizontal carousel is vertically misaligned with its sibling cards.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 286,
+        "reasoningTokens": 126,
+        "estimatedCost": 0.00607,
+        "durationSeconds": 16.256030708999997
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_14",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "layout",
+          "description": "The 'Smash Bros Burgers' card in the 'Fastest near you' horizontal carousel is vertically misaligned, sitting noticeably lower than the adjacent 'Green Bowl Poké' and 'Trattoria' cards.",
+          "suggestion": "Align all cards in the 'Fastest near you' carousel to the same top baseline by removing any extra top margin or padding on the middle card."
+        }
+      ],
+      "summary": "Found 1 visual layout issue in the 'Fastest near you' carousel.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 231,
+        "reasoningTokens": 88,
+        "estimatedCost": 0.00552,
+        "durationSeconds": 5.288649374999993
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_15",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "The system home indicator bar at the bottom of the screen overlaps directly with the middle icons (search and orders) in the bottom navigation bar.",
+          "suggestion": "Add bottom safe-area inset padding (`env(safe-area-inset-bottom)`) to the bottom navigation bar so the icons sit cleanly above the system home indicator."
+        }
+      ],
+      "summary": "Found 1 major layout issue where the system home indicator overlaps with the bottom navigation bar icons.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.89, confidence 0.78).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.89,
+          "confidence": 0.78
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 191,
+        "reasoningTokens": 87,
+        "estimatedCost": 0.0051199999999999996,
+        "durationSeconds": 9.880635042000009
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_15",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "The OS home indicator bar at the bottom of the screen overlaps directly with the middle navigation icons (Search and Orders) in the bottom tab bar.",
+          "suggestion": "Add bottom safe-area inset padding (e.g., env(safe-area-inset-bottom)) to the bottom navigation container so the icons sit comfortably above the system home indicator."
+        }
+      ],
+      "summary": "Found 1 major layout issue where the system home indicator overlaps the bottom navigation bar icons.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.91, confidence 0.82).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.91,
+          "confidence": 0.82
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 222,
+        "reasoningTokens": 81,
+        "estimatedCost": 0.00543,
+        "durationSeconds": 5.557516292
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_15",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "The system home indicator bar at the bottom of the screen directly overlaps the middle icons (search and orders) in the bottom navigation bar, hurting visibility and tap interaction.",
+          "suggestion": "Add bottom safe-area padding (e.g., env(safe-area-inset-bottom)) to the bottom navigation bar so the icons sit cleanly above the system home indicator."
+        }
+      ],
+      "summary": "Found 1 major layout issue where the system home indicator overlaps with the bottom navigation bar icons.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.90, confidence 0.80).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.9,
+          "confidence": 0.8
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 194,
+        "reasoningTokens": 83,
+        "estimatedCost": 0.00515,
+        "durationSeconds": 5.550061707999994
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_15",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "The OS home indicator bar at the bottom of the screen overlaps directly with the middle icons (Search and Orders) in the bottom navigation bar due to missing safe-area bottom padding.",
+          "suggestion": "Add bottom padding to the bottom navigation bar using safe-area insets (e.g., env(safe-area-inset-bottom)) so the navigation icons sit cleanly above the system home indicator."
+        }
+      ],
+      "summary": "Found 1 major layout issue where the system home indicator overlaps the bottom navigation bar icons.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.95, confidence 0.90).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.95,
+          "confidence": 0.9
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 205,
+        "reasoningTokens": 89,
+        "estimatedCost": 0.00526,
+        "durationSeconds": 7.746691374999995
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_15",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "The OS home indicator bar at the bottom of the screen overlaps directly with the middle navigation icons (Search and Orders) in the bottom tab bar.",
+          "suggestion": "Add bottom safe-area inset padding (`env(safe-area-inset-bottom)`) to the bottom navigation bar container so the icons sit comfortably above the system home indicator."
+        }
+      ],
+      "summary": "Found 1 major layout issue where the system home indicator overlaps the bottom navigation bar icons.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=0.88, confidence 0.76).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 0.88,
+          "confidence": 0.76
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 217,
+        "reasoningTokens": 78,
+        "estimatedCost": 0.005379999999999999,
+        "durationSeconds": 10.737405333000002
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_16",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [],
+      "summary": "No visual defects or layout issues were found on this page. The interface appears clean, well-aligned, and properly styled.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": false,
+          "matchedReportedIndexes": [],
+          "reasoning": "No issues were reported.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 96,
+        "reasoningTokens": 52,
+        "estimatedCost": 0.00417,
+        "durationSeconds": 5.176154624999995
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_16",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [],
+      "summary": "No visual defects or broken elements were found on this page. The layout, typography, alignment, and color contrast all appear clean and consistent.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": false,
+          "matchedReportedIndexes": [],
+          "reasoning": "No issues were reported.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 95,
+        "reasoningTokens": 48,
+        "estimatedCost": 0.00416,
+        "durationSeconds": 5.901692750000002
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_16",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [],
+      "summary": "No visual defects or layout issues were found on this page. All UI elements, typography, spacing, and components appear properly aligned and styled.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": false,
+          "matchedReportedIndexes": [],
+          "reasoning": "No issues were reported.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 91,
+        "reasoningTokens": 44,
+        "estimatedCost": 0.0041199999999999995,
+        "durationSeconds": 6.966286874999991
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_16",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [],
+      "summary": "No visual defects or broken elements were found on the page. The layout, typography, alignment, and UI components appear properly rendered.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": false,
+          "matchedReportedIndexes": [],
+          "reasoning": "No issues were reported.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 103,
+        "reasoningTokens": 58,
+        "estimatedCost": 0.00424,
+        "durationSeconds": 22.908402625
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_16",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [],
+      "summary": "No visual defects were found on the page. All UI elements, typography, spacing, and layouts appear properly rendered and aligned.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": false,
+          "matchedReportedIndexes": [],
+          "reasoning": "No issues were reported.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 114,
+        "reasoningTokens": 70,
+        "estimatedCost": 0.00435,
+        "durationSeconds": 6.073921540999989
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_17",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "styling",
+          "description": "In the bottom navigation bar, the 'Profile' tab is highlighted in green as the active tab, even though the screen currently displayed is the 'Home' discovery feed.",
+          "suggestion": "Update the bottom navigation state so that the 'Home' tab is highlighted as active when viewing the main home feed, and 'Profile' appears in the inactive gray state."
+        }
+      ],
+      "summary": "Found 1 issue: the bottom navigation bar highlights the wrong active tab for the current screen.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 425,
+        "reasoningTokens": 282,
+        "estimatedCost": 0.00746,
+        "durationSeconds": 7.593232499999998
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_17",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "styling",
+          "description": "In the bottom navigation bar, the 'Profile' tab is highlighted in green as the active state, even though the screen currently displayed is clearly the 'Home' feed.",
+          "suggestion": "Update the bottom navigation bar state logic so that the 'Home' tab icon and label are highlighted in green when the user is on the main home screen, and set 'Profile' to the inactive gray state."
+        }
+      ],
+      "summary": "Found 1 minor styling and usability issue where the wrong tab is highlighted in the bottom navigation bar.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 471,
+        "reasoningTokens": 319,
+        "estimatedCost": 0.00792,
+        "durationSeconds": 7.996618417000005
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_17",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "styling",
+          "description": "The bottom navigation bar highlights the 'Profile' tab as active (in green) instead of the 'Home' tab, even though the user is currently viewing the Home screen.",
+          "suggestion": "Update the bottom navigation bar state logic so that the 'Home' icon and label are highlighted as active when viewing the main feed, and 'Profile' is shown in the inactive grey state."
+        }
+      ],
+      "summary": "Found 1 issue: an incorrect active tab state in the bottom navigation bar.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 395,
+        "reasoningTokens": 250,
+        "estimatedCost": 0.00716,
+        "durationSeconds": 8.745492459000001
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_17",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "styling",
+          "description": "In the bottom navigation bar, the 'Profile' tab is highlighted in green as the active state even though the screen displayed is clearly the main 'Home' feed.",
+          "suggestion": "Update the bottom navigation bar state management so the 'Home' tab is highlighted as active when viewing the main home screen."
+        }
+      ],
+      "summary": "Found 1 issue: the bottom navigation bar highlights the wrong active tab for the current screen.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 352,
+        "reasoningTokens": 254,
+        "estimatedCost": 0.00673,
+        "durationSeconds": 10.585687541999985
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_17",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "styling",
+          "description": "The bottom navigation bar highlights the 'Profile' tab as active (in green), even though the screen currently displayed is the main 'Home' feed.",
+          "suggestion": "Update the bottom navigation state logic so that the 'Home' tab icon and label are highlighted in green when viewing the home screen, and 'Profile' is styled as inactive."
+        }
+      ],
+      "summary": "Found 1 issue: an incorrect active state in the bottom navigation bar.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Jev matched R0 (p=1.00, confidence 1.00).",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "decisions": [
+        {
+          "reportedIndex": 0,
+          "expectedIndex": 0,
+          "probability": 1,
+          "confidence": 1
+        }
+      ],
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 489,
+        "reasoningTokens": 377,
+        "estimatedCost": 0.0081,
+        "durationSeconds": 7.623682125000006
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_18",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [],
+      "summary": "No visual issues or defects were found on the page. All elements are properly aligned, legible, and styled consistently.",
+      "expected": [],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 370,
+        "reasoningTokens": 335,
+        "estimatedCost": 0.0069099999999999995,
+        "durationSeconds": 9.040654875
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_18",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [],
+      "summary": "No visual issues found. The page layout, typography, spacing, and components all appear clean and properly rendered.",
+      "expected": [],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 288,
+        "reasoningTokens": 256,
+        "estimatedCost": 0.00609,
+        "durationSeconds": 7.07544975
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_18",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [],
+      "summary": "The page appears visually intact and well-structured with no defects detected.",
+      "expected": [],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 63,
+        "reasoningTokens": 30,
+        "estimatedCost": 0.0038399999999999997,
+        "durationSeconds": 4.630522833
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_18",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [],
+      "summary": "No visual issues or broken elements were detected on this page. The layout, typography, spacing, and components all appear well-structured and properly aligned.",
+      "expected": [],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 76,
+        "reasoningTokens": 36,
+        "estimatedCost": 0.00397,
+        "durationSeconds": 5.261422083
+      }
+    },
+    {
+      "model": "gemini-4-argon",
+      "series": "gemini-4-argon",
+      "imageId": "img_18",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [],
+      "summary": "No visual defects or layout issues were found on this page. All elements are properly aligned, spaced, and styled with good contrast.",
+      "expected": [],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 1605,
+        "outputTokens": 91,
+        "reasoningTokens": 46,
+        "estimatedCost": 0.0041199999999999995,
+        "durationSeconds": 4.674914958
       }
     },
     {

@@ -652,6 +652,7 @@ Astra uses the same output budget as other OpenAI models: the 4096 default, rais
 
 | Model                 | Model ID                 | Input $/MTok | Output $/MTok | Notes                              |
 | --------------------- | ------------------------ | ------------ | ------------- | ---------------------------------- |
+| Gemini 4 Argon        | `gemini-4-argon`         | $2           | $10           | Newest, strongest Gemini²          |
 | Gemini 3.8 Flash      | `gemini-3.8-flash`       | $0.75        | $3.75         | **Default** — newest GA flash¹     |
 | Gemini 3.7 Flash      | `gemini-3.7-flash`       | $0.75        | $3.75         | Prior GA flash; intro pricing¹     |
 | Gemini 3.6 Flash      | `gemini-3.6-flash`       | $1.50        | $7.50         | Prior GA flash; fewer out-tokens   |
@@ -662,6 +663,8 @@ Astra uses the same output budget as other OpenAI models: the 4096 default, rais
 | Gemini 3 Flash        | `gemini-3-flash-preview` | $0.50        | $3            | Prior default; cheapest flash tier |
 
 ¹ Gemini 3.8 Flash and 3.7 Flash introductory pricing runs through 2026-12-31; both revert to $1.50 / $7.50 per MTok on 2027-01-01.
+
+² Gemini 4 Argon introductory pricing runs through 2026-11-30 and reverts to $4 / $20 per MTok on 2026-12-01. It accepts `low`, `medium` and `high` thinking (`xhigh` clamps to `high`) and thinks by default even with no `reasoningEffort` set. Being a pro-tier model, it is not in the AI-diff allowlist, so `compare()` does not auto-include a diff image with it.
 
 ### OpenRouter
 
@@ -721,7 +724,7 @@ breakage.
 
 Current coverage, at `medium` effort with 5 repeats per cell:
 
-- 38 model/effort/fidelity series over 3,420 graded runs
+- 39 model/effort/fidelity series over 3,510 graded runs
 
 A few results worth knowing before you choose a default:
 
@@ -731,6 +734,7 @@ A few results worth knowing before you choose a default:
 | `claude-sonnet-5-5` _(Anthropic default)_ | 94%              | 2.81         | $0.011     |
 | `gpt-6.1-sol` _(OpenAI default)_          | 93%              | 0.02         | $0.0055    |
 | `gemini-3.8-flash` _(Google default)_     | 87%              | 0.34         | $0.0050    |
+| `gemini-4-argon`                          | 94%              | 0.00         | $0.0058    |
 
 Recall is not the whole picture. `claude-sonnet-5-5` matches the Fable tier on
 recall but reports 2.81 extras per run against `gpt-6.1-sol`'s 0.02 — for

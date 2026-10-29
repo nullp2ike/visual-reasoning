@@ -122,6 +122,12 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
     inputPricePerToken: 0.25 / PER_MILLION,
     outputPricePerToken: 2 / PER_MILLION,
   },
+  // Introductory pricing through 2026-11-30; reverts to $4/$20 per MTok
+  // on 2026-12-01 (https://blog.google/.../gemini-4-argon/).
+  [`${Provider.GOOGLE}:${Model.Google.GEMINI_4_ARGON}`]: {
+    inputPricePerToken: 2 / PER_MILLION,
+    outputPricePerToken: 10 / PER_MILLION,
+  },
   // Introductory pricing through 2026-12-31; reverts to $1.50/$7.50 per MTok
   // on 2027-01-01 (https://blog.google/.../3-8-flash-and-3-8-flash-cyber/).
   [`${Provider.GOOGLE}:${Model.Google.GEMINI_3_8_FLASH}`]: {
