@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.30.0] - 2026-11-18
+
+### Added
+
+- **Gemini 4 Carbon (`gemini-4-carbon`)** as a supported Google model: the Gemini 4 deep-reasoning flagship, generally available since 2026-11-10, at an introductory **$2 / $10 per MTok through 2026-11-30, reverting to $4 / $20 on 2026-12-01**, the same schedule as Argon. No driver changes were needed: like Argon it accepts `thinkingLevel` `low`, `medium` and `high`, which is exactly what the library sends (`minimal` clamps to `low` and `xhigh` to `high`). On the `golden` discovery bench (judged by `gpt-6-luna`, `medium` effort, 5 reps) it completed 90 of 90 calls and scored 94% recall (94% in any rep, 0% flakiness) with 0.0 extras per run and a clean result on all 5 control reps — exactly Argon's figures, at roughly twice Argon's cost ($0.0105 against $0.0058 per run) and latency (12.2s against 7.0s median), reasoning a median ~600 tokens per call. On this bench it does not earn its premium over Argon. Available as `Model.Google.GEMINI_4_CARBON`, and it is in the bench roster.
+- **Gemini 4 Hydrogen (`gemini-4-hydrogen`)** as a supported Google model: the efficient agentic Gemini 4 tier, released 2026-11-13, at **$1.50 / $7.50 per MTok**, flat across its full 1M-token context with no introductory window. No driver changes were needed. On the `golden` discovery bench it completed 90 of 90 calls and scored 94% recall (0% flakiness) with 0.0 extras per run and a clean control, matching Carbon and Argon at a 6.3s median (p95 9.1s), the fastest Gemini 4, at $0.0093 per run. Once Carbon and Argon revert to $4 / $20 on 2026-12-01 it becomes the cheapest Gemini 4 tier. Available as `Model.Google.GEMINI_4_HYDROGEN`, and it is in the bench roster.
+- **Qwen4 Max (`qwen/qwen4-max`)** as a supported OpenRouter model: Alibaba's new flagship, added to OpenRouter 2026-11-16, at **$1.425 / $4.275 per MTok** there (Alibaba's own list is $1.50 / $4.50; cached input at 5% of the input rate is not modelled). It takes text, image and video input with a 1M-token context, and thinking is on by default. It goes through the existing OpenRouter driver unchanged and needs no enlarged output budget: it reasoned a median ~300 tokens per call on the bench, nowhere near Qwen3.8 Max's ~3,200. On the `golden` discovery bench it completed 90 of 90 calls and scored **96% recall (100% in any rep, 6% flakiness)**, third overall behind Claude Fable 5.2 and Claude Opus 5.5 and the best non-Claude score on the board — a large upgrade over Qwen3.8 Max's 85%, at a fifth of the latency (16.2s against 78.2s median) and a sixth of the cost ($0.0040 against $0.0232 per run). The trade-off is noise: 2.1 extras per run, in Sonnet 5.5's territory, and it reported something on the clean control. Available as `Model.OpenRouter.QWEN_4_MAX`, and it is in the bench roster.
+
+### Notes for upgraders
+
+- The three new models were scored by the canonical `gpt-6-luna` judge only; the other five judges' tracked reports do not include them yet. The `gemini-3.8-flash` judge is also still missing its Claude Fable 5.2 verdicts from 0.29.0.
+
 ## [0.29.0] - 2026-11-18
 
 ### Added
