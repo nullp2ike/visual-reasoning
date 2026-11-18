@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:36:18.879Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely clean and well-structured. No critical or major visual defects were found; horizontal clipping and bottom cutoff are expected carousel/viewport behavior. The only notable inconsistency is the favorite (heart) button treatment differing between the two 'Popular right now' cards.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite/heart button is styled inconsistently across cards: on the pizza card it sits on a dark circular scrim, while on the Tokumaru Ramen Bar card it is a bare white outline with no background container. This makes the control look unfinished on the ramen card and reduces its visibility if the underlying image were lighter.",
+        "suggestion": "Apply the same circular semi-transparent dark scrim behind the heart icon on every restaurant card so the control is consistent and always legible regardless of image brightness."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Cards in the 'Fastest near you' carousel show only name and delivery fee, while 'Popular right now' cards include rating, time, and cuisine. The missing rating/cuisine metadata in the carousel makes it harder to compare options at a glance.",
+        "suggestion": "Consider adding a compact rating (e.g., star + score) or cuisine tag to the carousel cards for consistency and better decision-making, if space allows."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 1186,
+    "reasoningTokens": 863,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.007555350000000001,
+    "reportedCost": 0.00547599,
+    "durationSeconds": 29.489006
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:38:58.430Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-structured, but there is one clear visual defect: overlapping text in the metadata line beneath the 'Tokumaru Ramen Bar' card, where the delivery time and delivery fee strings are rendered on top of each other. A couple of minor contrast/legibility concerns are also noted.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Under 'Tokumaru Ramen Bar', the metadata line shows overlapping text: the delivery time ('25–35 min') and the delivery fee ('€0 delivery') are drawn on top of one another, producing garbled, unreadable text ('25–3€0delivery').",
+        "suggestion": "Fix the metadata row layout so the time, separator dot, fee, and cuisine tag are laid out sequentially (e.g., flex row with gaps or proper inline spacing) instead of absolutely positioned/overlapping elements. Ensure each segment has its own space and truncates gracefully if needed."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary text such as the search placeholder ('Restaurants, dishes, groceries') and the gray delivery-fee/metadata text is low-contrast light gray on a very light background, which may be hard to read for some users.",
+        "suggestion": "Darken secondary/placeholder text to meet at least a 4.5:1 contrast ratio against its background."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 435,
+    "reasoningTokens": 130,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.004344825,
+    "reportedCost": 0.004344825,
+    "durationSeconds": 9.500449124999985
+  }
+}

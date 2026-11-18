@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_04",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:37:03.468Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-structured, but there is one clear content/logic defect (a '-0%' discount badge), inconsistent image and icon treatments across cards, and a low-contrast search placeholder. Horizontal clipping of the last carousel item and the cut-off card at the viewport bottom were treated as intended behavior.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The second 'Popular right now' card (pizza) shows a promo badge reading '-0%', which is a meaningless discount value and looks like a rendering/data bug.",
+        "suggestion": "Suppress the discount badge when the computed discount is 0 or null; only render badges for valid positive discounts (e.g. '-20%') or fall back to another label such as '€0 delivery'."
+      },
+      {
+        "priority": "major",
+        "category": "styling",
+        "description": "The first 'Fastest near you' thumbnail (Green Bowl Poké) uses a light gray background with the plate illustration pushed to the right and cropped at the bottom, while the other thumbnails use dark, fully centered imagery. It reads as a broken/unloaded or improperly fitted image.",
+        "suggestion": "Use consistent image aspect ratio and object-fit (cover, centered) plus a uniform placeholder/background color for all carousel thumbnails so no artwork is clipped or off-center."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Favorite (heart) buttons are styled inconsistently: on the ramen card the heart sits directly on the image with no backing, while on the pizza card it has a dark circular scrim. The unbacked heart has poor contrast against light image areas.",
+        "suggestion": "Apply the same semi-transparent circular background (and identical size/position) to all favorite buttons to guarantee contrast and visual consistency."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search field placeholder 'Restaurants, dishes, groceries' is light gray on a very light gray fill, giving a contrast ratio well below 4.5:1 and making it hard to read.",
+        "suggestion": "Darken the placeholder text (e.g. #6B7280 or darker) or lighten the field background to reach at least 4.5:1 contrast."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Cards in 'Fastest near you' show only name and delivery fee, with no rating or cuisine info, whereas 'Popular right now' cards show rating, time and cuisine — the missing metadata makes the two rows feel inconsistent and gives less decision-making info.",
+        "suggestion": "Add rating and cuisine (or an explicit 'New' label when no rating exists) to the fastest carousel cards for consistent information density."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 1098,
+    "reasoningTokens": 440,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.0071791500000000005,
+    "reportedCost": 0.00717915,
+    "durationSeconds": 23.370807749999994
+  }
+}

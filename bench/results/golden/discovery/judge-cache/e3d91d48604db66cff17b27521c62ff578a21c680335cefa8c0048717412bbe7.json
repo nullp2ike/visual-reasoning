@@ -1,0 +1,30 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Loading spinner is shown on top of already loaded content"
+  ],
+  "reportedIssues": [
+    "The 'Popular right now' card for Tokumaru Ramen Bar shows a circular loading spinner centered over an image that already appears fully loaded. The persistent spinner over rendered content reads as a stuck/broken loading state.",
+    "The search field placeholder ('Restaurants, dishes, groceries') is light gray on a very light gray fill, giving low contrast that may fail WCAG 1.4.3 for readable text.",
+    "In the 'Fastest near you' row, the first card uses a flat light-gray illustrated thumbnail while the neighboring cards use dark photographic-style backgrounds, creating an inconsistent visual rhythm in the row.",
+    "The 'Fastest near you' cards show only name and delivery fee, while 'Popular right now' cards show rating, time and cuisine; the ETA badge is the only metadata on the small cards, leaving them visually sparse and uneven in information density."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes a persistent spinner over an already loaded image."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ]
+  }
+}

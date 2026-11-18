@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:39:52.635Z",
+  "status": "ok",
+  "result": {
+    "summary": "The layout, spacing, typography and bottom navigation render cleanly. The main visual/logic defect is a mismatch between the selected category filter and the content shown: 'Pizza' is the active chip, yet the carousels and list display poké, burgers and ramen restaurants. A couple of minor consistency issues in card imagery/favorite-button treatment were also noted.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The 'Pizza' category chip is shown in the active (dark/selected) state, but the results below are not pizza-related: 'Fastest near you' shows Green Bowl Poké, Smash Bros Burgers and Trattoria Piccolo, and 'Popular right now' leads with Tokumaru Ramen Bar. The active filter state visually contradicts the rendered content, making the filter appear broken.",
+        "suggestion": "Either apply the selected category to the restaurant rows/list (show only pizza places when 'Pizza' is active) or reset the chip selection to 'All' on initial load so the highlighted state matches the displayed content."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Card imagery is visually inconsistent within the same row: the first 'Fastest near you' tile uses a flat light-grey illustration background while the adjacent tiles use dark, blurred photographic-style backgrounds, making the row look uneven.",
+        "suggestion": "Normalize card image treatment (consistent background tone/blur or a shared placeholder style) so tiles in a carousel read as a uniform set."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) button on the large 'Popular right now' cards sits on a semi-transparent dark circular scrim that is barely distinguishable over the dark ramen image, reducing its visibility compared with the lighter pizza card.",
+        "suggestion": "Use a consistent solid or higher-opacity scrim (or a light-filled circle with a dark icon) behind the heart so the affordance has adequate contrast on both dark and light imagery."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 812,
+    "reasoningTokens": 337,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.005956500000000001,
+    "reportedCost": 0.00387714,
+    "durationSeconds": 17.362246416999987
+  }
+}

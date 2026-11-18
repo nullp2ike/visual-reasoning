@@ -83,7 +83,9 @@ export const benchConfig: BenchConfig = {
     "gpt-5.6-sol",
     "gpt-5.6-terra",
     "gpt-5.6-luna",
-    // Google: argon / pro / flash / flash-lite
+    // Google: carbon / hydrogen / argon / pro / flash / flash-lite
+    "gemini-4-carbon",
+    "gemini-4-hydrogen",
     "gemini-4-argon",
     "gemini-3.1-pro-preview",
     "gemini-3.8-flash",
@@ -131,6 +133,7 @@ export const benchConfig: BenchConfig = {
     "x-ai/grok-4.5",
     "moonshotai/kimi-k3",
     "moonshotai/kimi-k2.7-code",
+    "qwen/qwen4-max",
     "qwen/qwen3.8-max",
     "qwen/qwen3.7-plus",
     // Cheapest row on the board ($0.15/$0.50 per MTok) and the only one under

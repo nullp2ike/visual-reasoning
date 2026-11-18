@@ -134,6 +134,17 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
     outputPricePerToken: 2 / PER_MILLION,
   },
   // Introductory pricing through 2026-11-30; reverts to $4/$20 per MTok
+  // on 2026-12-01, like Argon.
+  [`${Provider.GOOGLE}:${Model.Google.GEMINI_4_CARBON}`]: {
+    inputPricePerToken: 2 / PER_MILLION,
+    outputPricePerToken: 10 / PER_MILLION,
+  },
+  // Flat across the full 1M context; not introductory.
+  [`${Provider.GOOGLE}:${Model.Google.GEMINI_4_HYDROGEN}`]: {
+    inputPricePerToken: 1.5 / PER_MILLION,
+    outputPricePerToken: 7.5 / PER_MILLION,
+  },
+  // Introductory pricing through 2026-11-30; reverts to $4/$20 per MTok
   // on 2026-12-01 (https://blog.google/.../gemini-4-argon/).
   [`${Provider.GOOGLE}:${Model.Google.GEMINI_4_ARGON}`]: {
     inputPricePerToken: 2 / PER_MILLION,
@@ -214,6 +225,10 @@ const PRICING_TABLE: Record<string, ModelPricing> = {
   [`${Provider.OPENROUTER}:${Model.OpenRouter.KIMI_K2_7_CODE}`]: {
     inputPricePerToken: 0.82 / PER_MILLION,
     outputPricePerToken: 3.75 / PER_MILLION,
+  },
+  [`${Provider.OPENROUTER}:${Model.OpenRouter.QWEN_4_MAX}`]: {
+    inputPricePerToken: 1.425 / PER_MILLION,
+    outputPricePerToken: 4.275 / PER_MILLION,
   },
   [`${Provider.OPENROUTER}:${Model.OpenRouter.QWEN_3_8_MAX}`]: {
     inputPricePerToken: 2 / PER_MILLION,

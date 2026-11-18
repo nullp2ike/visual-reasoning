@@ -59,6 +59,8 @@ describe("Model", () => {
   });
 
   it("has correct Google model values", () => {
+    expect(Model.Google.GEMINI_4_CARBON).toBe("gemini-4-carbon");
+    expect(Model.Google.GEMINI_4_HYDROGEN).toBe("gemini-4-hydrogen");
     expect(Model.Google.GEMINI_4_ARGON).toBe("gemini-4-argon");
     expect(Model.Google.GEMINI_3_8_FLASH).toBe("gemini-3.8-flash");
     expect(Model.Google.GEMINI_3_7_FLASH).toBe("gemini-3.7-flash");
@@ -82,6 +84,7 @@ describe("Model", () => {
     expect(Model.OpenRouter.GROK_4_5).toBe("x-ai/grok-4.5");
     expect(Model.OpenRouter.KIMI_K3).toBe("moonshotai/kimi-k3");
     expect(Model.OpenRouter.KIMI_K2_7_CODE).toBe("moonshotai/kimi-k2.7-code");
+    expect(Model.OpenRouter.QWEN_4_MAX).toBe("qwen/qwen4-max");
     expect(Model.OpenRouter.QWEN_3_8_MAX).toBe("qwen/qwen3.8-max");
     expect(Model.OpenRouter.QWEN_3_7_PLUS).toBe("qwen/qwen3.7-plus");
     expect(Model.OpenRouter.QWEN_3_6_FLASH).toBe("qwen/qwen3.6-flash");

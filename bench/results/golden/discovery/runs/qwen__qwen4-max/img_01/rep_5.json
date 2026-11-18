@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:36:41.991Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but one clear defect stands out: a section heading displays a raw localization key ('home_feed.popular_title') instead of human-readable text. A couple of minor polish items (low-contrast search placeholder) are also noted. Carousel edge clipping and the bottom-cut card are expected scrolling behavior and not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The second section heading renders the untranslated i18n key 'home_feed.popular_title' instead of a localized title such as 'Popular near you'. This looks broken to users and is inconsistent with the properly labeled 'Fastest near you' section above it.",
+        "suggestion": "Add the missing translation string for the 'home_feed.popular_title' key in all supported locales, and add a fallback/default string plus a build-time or runtime check that flags missing translation keys so raw keys never reach the UI."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search field placeholder 'Restaurants, dishes, groceries' is light gray on a very light gray background, giving low contrast that may be hard to read for low-vision users.",
+        "suggestion": "Darken the placeholder text (or lighten/adjust the field background) to reach at least a 4.5:1 contrast ratio against the input background."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 376,
+    "reasoningTokens": 84,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.0040926,
+    "reportedCost": 0.00201324,
+    "durationSeconds": 7.8950014999999985
+  }
+}

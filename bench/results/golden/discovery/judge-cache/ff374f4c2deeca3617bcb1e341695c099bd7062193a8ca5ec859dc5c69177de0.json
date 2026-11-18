@@ -1,0 +1,30 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Delivery fee shows €NaN"
+  ],
+  "reportedIssues": [
+    "The 'Smash Bros Burgers' card in 'Fastest near you' shows '€NaN delivery' instead of a price. This is a broken number formatting/undefined data value exposed directly to users and undermines trust in pricing information.",
+    "Card thumbnails in 'Fastest near you' are visually inconsistent: the first card uses a plain light-gray background while the others use dark photographic backgrounds, making the row look uneven.",
+    "On the first carousel card, the '15–25 min' badge sits over the plate illustration and nearly touches the card's left/bottom edges, appearing cramped compared with the other cards where the badge has more breathing room.",
+    "Cards in 'Fastest near you' show only name and delivery fee, while 'Popular right now' cards include rating, time, and cuisine. The inconsistency makes the top row feel incomplete and gives users less decision-making info."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the delivery fee displaying €NaN on a card."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ]
+  }
+}

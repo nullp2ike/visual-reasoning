@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:36:48.498Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-composed, but one clear data-rendering defect stands out: a delivery fee displays as '€NaN', indicating a broken numeric value. A couple of minor contrast/polish issues were also noted. Carousel edge clipping and bottom-of-viewport cutoff were treated as intended behavior and excluded.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "Under 'Smash Bros Burgers' in the 'Fastest near you' row, the delivery fee reads '€NaN delivery', exposing an invalid/undefined numeric value to users.",
+        "suggestion": "Fix the data source or parsing so the fee is a valid number, and add a fallback (e.g., 'Free delivery', 'Delivery fee unavailable', or hide the line) when the value is null/NaN. Format currency with a safe formatter that never outputs NaN."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search field placeholder 'Restaurants, dishes, groceries' is light gray on a very light gray background, likely below the 4.5:1 contrast ratio for readable text.",
+        "suggestion": "Darken the placeholder text (e.g., #6B7280 or darker) or darken the field background slightly to meet WCAG AA contrast."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Secondary metadata text (e.g., '€0.90 delivery', '25–35 min · €0 delivery · Ramen', 'DELIVER TO') uses a fairly light gray that may be hard to read at small sizes.",
+        "suggestion": "Increase the gray darkness for small secondary text to ensure at least 4.5:1 contrast against the white background."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 506,
+    "reasoningTokens": 82,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.004648350000000001,
+    "reportedCost": 0.00256899,
+    "durationSeconds": 11.307458541
+  }
+}

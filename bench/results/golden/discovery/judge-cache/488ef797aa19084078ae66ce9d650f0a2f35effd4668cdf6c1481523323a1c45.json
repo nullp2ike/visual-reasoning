@@ -1,0 +1,30 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Fastest near you carousel card heights are misaligned with each other"
+  ],
+  "reportedIssues": [
+    "In the 'Fastest near you' row the cards are not vertically aligned. The first (Green Bowl Poké) and third (Trattoria Piccol...) thumbnails start at the same top edge, while the middle card (Smash Bros Burgers) thumbnail, ETA badge and text block are all offset roughly 25–30px lower. This makes the row look staggered/broken and creates uneven whitespace above and below the middle card.",
+    "The ETA badge on the middle card sits noticeably lower and closer to the card's bottom edge than the badges on the neighbouring cards, reinforcing the inconsistent rhythm of the row and nearly touching the title text below.",
+    "The search field placeholder 'Restaurants, dishes, groceries' is rendered in a very light grey on a light grey field, giving a contrast ratio well below the 4.5:1 recommendation for readable text.",
+    "Information density is inconsistent between sections: 'Popular right now' cards show rating, cuisine and delivery time, while 'Fastest near you' cards show only name and delivery fee with no rating or cuisine tag, which makes the two lists feel like different components."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          1
+        ],
+        "reasoning": "Both reports describe the middle card or its contents sitting lower than neighboring cards in the same carousel row."
+      }
+    ],
+    "extraReportedIndexes": [
+      2,
+      3
+    ]
+  }
+}

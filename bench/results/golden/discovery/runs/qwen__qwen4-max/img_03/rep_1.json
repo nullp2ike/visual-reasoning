@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_03",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:36:52.367Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-structured, but one clear visual defect stands out: the hero image for the 'Tokumaru Ramen Bar' card in 'Popular right now' fails to load and shows a generic broken-image placeholder icon on an empty gray block. A couple of minor contrast/consistency issues are also noted. Carousel clipping at the right edge and the card cut off at the bottom were treated as intended behavior.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The 'Tokumaru Ramen Bar' card in the 'Popular right now' section displays a broken/missing image: a large empty light-gray rectangle with a generic 'broken image' glyph in the center, while all other restaurant cards show real food imagery. This makes the primary promoted listing look unfinished and unappetizing.",
+        "suggestion": "Fix the image URL/loading pipeline for this restaurant and add a graceful fallback (branded placeholder, blurred cuisine illustration, or solid brand-color tile with the restaurant name) instead of the raw broken-image icon. Also add lazy-load retry/error handling so failed images never render the system placeholder glyph."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) button on the image-less card is a mid-gray circle with a white outline heart, giving it noticeably weaker contrast than the same control on the pizza card below (dark translucent circle). On the light gray placeholder it is easy to miss.",
+        "suggestion": "Use a consistent dark translucent scrim (e.g. rgba(0,0,0,0.45)) behind the heart icon on all cards, regardless of whether the image loaded, to keep the affordance visible and consistent."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search field placeholder 'Restaurants, dishes, groceries' is rendered in a very light gray on a light gray field, likely below the 4.5:1 contrast ratio needed for readable text.",
+        "suggestion": "Darken the placeholder color (e.g. #6B7280 or darker) so it meets WCAG AA contrast against the field background, and ensure the field has an accessible label."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' carousel, the delivery-time badges ('15–25 min', '20–30 min') sit at the bottom-left overlapping the food imagery, and on the first card the badge covers part of the plate, slightly obscuring the dish.",
+        "suggestion": "Add a subtle scrim or padding behind the ETA badge, or position it consistently in a corner with enough margin so it does not cover the main subject of the photo."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 787,
+    "reasoningTokens": 141,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.005849625000000001,
+    "reportedCost": 0.005849625,
+    "durationSeconds": 20.317289041999995
+  }
+}

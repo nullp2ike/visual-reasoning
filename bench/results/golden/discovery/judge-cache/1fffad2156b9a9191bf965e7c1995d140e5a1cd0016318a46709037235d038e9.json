@@ -1,0 +1,30 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Profile is highlighted in the bottom nav bar while the home feed is shown"
+  ],
+  "reportedIssues": [
+    "The bottom tab bar shows 'Profile' as the active/selected tab (green icon and label), but the visible content is the Home feed (delivery address, search, categories, promo banner, restaurant carousels). The active tab state does not match the displayed screen, which misleads users about where they are in the app.",
+    "The favorite/heart buttons are styled inconsistently across restaurant cards: on the ramen card the heart sits directly on the image with no backing shape, while on the pizza card it has a dark circular background. This makes the same control look like two different components.",
+    "The search placeholder 'Restaurants, dishes, groceries' is light gray on a very light gray field, giving a low contrast ratio (roughly 2.5:1) that is hard to read for low-vision users and in bright light.",
+    "Cards in 'Fastest near you' show only name and delivery fee, while 'Popular right now' cards show rating, time, fee and cuisine. The inconsistency in information density between the two sections can look like missing data on the first row."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes Profile selected in the bottom navigation while the Home feed is displayed."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ]
+  }
+}

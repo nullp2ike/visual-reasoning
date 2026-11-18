@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:40:11.187Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but there is one significant state inconsistency (the bottom navigation highlights 'Profile' while the Home feed is displayed) plus several smaller styling/consistency problems: mismatched favorite-button treatments, inconsistent card imagery and missing ratings in the 'Fastest near you' row, duplicated delivery-fee information, and low-contrast search placeholder text. Carousel edge clipping and the bottom-cut card were treated as intended behavior and not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom tab bar shows 'Profile' as the active tab (green icon and label), but the content on screen is clearly the Home/discovery feed (delivery address, search, category chips, promo banner, restaurant lists). The 'Home' tab is rendered in the inactive gray state, so the navigation state does not match the visible screen.",
+        "suggestion": "Sync the tab bar's selected state with the currently rendered route so 'Home' is highlighted on this feed, and only highlight 'Profile' when the profile screen is actually shown."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) control is styled inconsistently between cards in the same 'Popular right now' list: on the Tokumaru Ramen Bar card it is a bare white outline with no background, while on the pizza card below it sits inside a dark circular button. On the light/busy ramen artwork the bare heart also has weaker affordance and contrast.",
+        "suggestion": "Use one consistent favorite-button component (e.g., always a semi-opaque dark circular scrim behind the heart) across all restaurant cards to guarantee contrast and a uniform tap target."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Card imagery in 'Fastest near you' is visually inconsistent: the first card (Green Bowl Poké) uses a very light, washed-out gray image where the plate illustration almost blends into the background, while the neighbouring cards use rich dark photography-style images. The first tile reads as an unloaded/placeholder image rather than finished content.",
+        "suggestion": "Normalize image treatment (consistent background tone, crop and saturation) or verify the first card's asset actually loaded; add a distinct skeleton/placeholder state so a real image is never mistaken for a loading tile."
+      },
+      {
+        "priority": "minor",
+        "category": "missing-element",
+        "description": "Cards in 'Fastest near you' show only name and delivery fee, with no rating, while cards in 'Popular right now' show a star rating and review count. The two restaurant card types in the same screen present different information density, which makes comparison harder.",
+        "suggestion": "Either add the rating (or a placeholder such as 'New') to the compact carousel cards, or document the intentional difference; keeping key decision data consistent improves scannability."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The delivery fee is duplicated on the Tokumaru Ramen Bar card: a '€0 delivery' badge overlays the image and the meta line below repeats '€0 delivery'. The redundant text adds noise without new information.",
+        "suggestion": "Show the free-delivery message in only one place — keep the image badge and drop the duplicate from the meta row (replace it with cuisine/distance info), or vice versa."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search field placeholder 'Restaurants, dishes, groceries' is light gray on a very light gray fill, giving low contrast that may fail WCAG 1.4.3 for users with low vision; the small gray secondary text (e.g. '€0.90 delivery', meta separators) is also close to the threshold.",
+        "suggestion": "Darken the placeholder and secondary text (target at least 4.5:1 against their backgrounds) or darken the search field fill slightly to raise contrast."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 1461,
+    "reasoningTokens": 542,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.008730975000000002,
+    "reportedCost": 0.006651615,
+    "durationSeconds": 30.527282167
+  }
+}

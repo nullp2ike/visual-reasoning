@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:40:03.786Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but there is a notable state/content mismatch: the 'Pizza' filter chip is selected while the restaurant results show poke, burgers and ramen. There are also small styling inconsistencies in the carousel/favorite controls. Horizontal clipping and bottom-viewport cutoff were treated as intended behavior and not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The 'Pizza' category chip is shown in the active/selected state, yet the content below does not reflect that filter: 'Fastest near you' shows Green Bowl Poké, Smash Bros Burgers and Trattoria, and 'Popular right now' leads with a ramen restaurant. Only the partially visible bottom card is pizza-related, so the selected filter appears not to be applied to the lists.",
+        "suggestion": "Either apply the selected category filter to all restaurant sections (or hide/label sections that are intentionally filter-independent, e.g. 'Popular near you'), or reset the chip to 'All' so the active state matches the displayed results."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) button is styled inconsistently between cards: on the Tokumaru Ramen card the heart sits directly on the image with no backing shape, while on the pizza card it has a dark circular scrim. This makes the control look unfinished on the first card and reduces its legibility over lighter image areas.",
+        "suggestion": "Apply the same semi-transparent circular background (and identical size/position) to the heart button on every restaurant card for consistent affordance and contrast."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the 'Fastest near you' row, the delivery-time badge on the first card overlaps and obscures a large portion of the small dish illustration, and the plate artwork appears cropped off-center compared with the other thumbnails, making the row look uneven.",
+        "suggestion": "Use consistent image cropping/centering (object-fit: cover with a focal point) across carousel thumbnails and add bottom padding or reposition the time badge so it does not cover the main subject of the image."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Cards in 'Fastest near you' show only name and delivery fee, with no rating or cuisine label, while 'Popular right now' cards show rating, time and cuisine. The inconsistent information density makes the two sections feel like different components.",
+        "suggestion": "Standardize the metadata shown on restaurant cards (e.g. rating and cuisine tag, or at least a consistent secondary line) across both sections."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 1098,
+    "reasoningTokens": 479,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.0071791500000000005,
+    "reportedCost": 0.00509979,
+    "durationSeconds": 24.841527875
+  }
+}

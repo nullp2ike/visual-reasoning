@@ -1,0 +1,28 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The second section heading displays the raw i18n key 'home_feed.popular_title' instead of a localized label (e.g. 'Popular near you'), indicating a missing translation string or failed lookup.",
+    "The favorite (heart) button is styled inconsistently between cards: on the ramen card it sits directly on the image with no background, while on the pizza card it has a dark circular backdrop. On light images the bare icon could become hard to see.",
+    "The ramen card shows a '€0 delivery' badge on the image and repeats '€0 delivery' in the metadata line below, creating redundant information."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both describe the section heading showing the raw home_feed.popular_title translation key instead of localized text."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "gemini-4-carbon",
+  "provider": "google",
+  "imageId": "img_02",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:36:39.356Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 major issue: a numeric formatting error displaying '€NaN delivery' on one of the restaurant cards.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The delivery fee for 'Smash Bros Burgers' in the 'Fastest near you' section renders as '€NaN delivery' instead of a valid price.",
+        "suggestion": "Ensure the delivery fee value is properly parsed as a valid number before formatting, and provide a fallback (e.g., hiding the fee or showing 'Free delivery' / 'Unavailable') if the data is missing or invalid."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1605,
+    "outputTokens": 487,
+    "reasoningTokens": 330,
+    "estimatedCost": 0.00808,
+    "durationSeconds": 9.077913417
+  }
+}

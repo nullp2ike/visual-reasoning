@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:36:18.879Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed with no broken layouts, overlapping text, or missing assets. Two minor cosmetic/consistency issues stand out: inconsistent styling of the favorite (heart) buttons between restaurant cards, and low-contrast placeholder text in the search field. Horizontal carousel clipping and the bottom-cut card were treated as intended behavior.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite/heart button on the 'Tokumaru Ramen Bar' card appears as a bare white outline directly on the photo, while the same button on the pizza card below sits inside a dark circular scrim. This inconsistent treatment makes the first heart harder to see and looks unfinished.",
+        "suggestion": "Apply the same semi-transparent dark circular background (or consistent scrim) behind the heart icon on all restaurant cards for uniform appearance and reliable contrast over any image."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search field placeholder 'Restaurants, dishes, groceries' is light gray on a very light gray background, giving low contrast that may be hard to read for low-vision users.",
+        "suggestion": "Darken the placeholder text (e.g., to a mid-gray around #6B7280) so it meets at least a 4.5:1 contrast ratio against the input background."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 614,
+    "reasoningTokens": 325,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.0051100500000000005,
+    "reportedCost": 0.00303069,
+    "durationSeconds": 16.439504542
+  }
+}

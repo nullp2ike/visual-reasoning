@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_14",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:39:16.477Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but the 'Fastest near you' carousel has a clear vertical alignment defect: the middle card (Smash Bros Burgers) is shifted down relative to its neighbours, producing a staggered, broken-looking row. A couple of minor contrast/consistency issues were also noted. Horizontal edge clipping and bottom-viewport cutoff were excluded per instructions.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' row the cards are not vertically aligned. The first (Green Bowl Poké) and third (Trattoria Piccol...) thumbnails start at the same top edge, while the middle card (Smash Bros Burgers) thumbnail, ETA badge and text block are all offset roughly 25–30px lower. This makes the row look staggered/broken and creates uneven whitespace above and below the middle card.",
+        "suggestion": "Align all carousel items to a common top baseline (e.g. align-items: flex-start on the row) and give every card the same fixed thumbnail height/aspect ratio so image, badge, title and delivery fee sit on identical vertical positions."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The ETA badge on the middle card sits noticeably lower and closer to the card's bottom edge than the badges on the neighbouring cards, reinforcing the inconsistent rhythm of the row and nearly touching the title text below.",
+        "suggestion": "Position the ETA pill with a consistent inset (e.g. 8–12px from the thumbnail's bottom-left corner) for all cards, and keep a uniform gap between thumbnail and title."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search field placeholder 'Restaurants, dishes, groceries' is rendered in a very light grey on a light grey field, giving a contrast ratio well below the 4.5:1 recommendation for readable text.",
+        "suggestion": "Darken the placeholder colour (e.g. #6B7280 or darker) so it meets at least 4.5:1 against the field background."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Information density is inconsistent between sections: 'Popular right now' cards show rating, cuisine and delivery time, while 'Fastest near you' cards show only name and delivery fee with no rating or cuisine tag, which makes the two lists feel like different components.",
+        "suggestion": "Standardise the restaurant card metadata (at minimum rating and cuisine) across both sections, or intentionally differentiate them with a clearly compact card style."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 1041,
+    "reasoningTokens": 422,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.006935475000000002,
+    "reportedCost": 0.006935475,
+    "durationSeconds": 21.538744959000002
+  }
+}

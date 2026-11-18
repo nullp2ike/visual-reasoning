@@ -656,7 +656,9 @@ Astra uses the same output budget as other OpenAI models: the 4096 default, rais
 
 | Model                 | Model ID                 | Input $/MTok | Output $/MTok | Notes                              |
 | --------------------- | ------------------------ | ------------ | ------------- | ---------------------------------- |
-| Gemini 4 Argon        | `gemini-4-argon`         | $2           | $10           | Newest, strongest Gemini²          |
+| Gemini 4 Carbon       | `gemini-4-carbon`        | $2           | $10           | Top Gemini for deep reasoning²     |
+| Gemini 4 Hydrogen     | `gemini-4-hydrogen`      | $1.50        | $7.50         | Efficient agentic Gemini 4 tier    |
+| Gemini 4 Argon        | `gemini-4-argon`         | $2           | $10           | Strongest Gemini of its release²   |
 | Gemini 3.8 Flash      | `gemini-3.8-flash`       | $0.75        | $3.75         | **Default** — newest GA flash¹     |
 | Gemini 3.7 Flash      | `gemini-3.7-flash`       | $0.75        | $3.75         | Prior GA flash; intro pricing¹     |
 | Gemini 3.6 Flash      | `gemini-3.6-flash`       | $1.50        | $7.50         | Prior GA flash; fewer out-tokens   |
@@ -668,7 +670,7 @@ Astra uses the same output budget as other OpenAI models: the 4096 default, rais
 
 ¹ Gemini 3.8 Flash and 3.7 Flash introductory pricing runs through 2026-12-31; both revert to $1.50 / $7.50 per MTok on 2027-01-01.
 
-² Gemini 4 Argon introductory pricing runs through 2026-11-30 and reverts to $4 / $20 per MTok on 2026-12-01. It accepts `low`, `medium` and `high` thinking (`xhigh` clamps to `high`) and thinks by default even with no `reasoningEffort` set. Being a pro-tier model, it is not in the AI-diff allowlist, so `compare()` does not auto-include a diff image with it.
+² Gemini 4 Carbon and Argon introductory pricing runs through 2026-11-30 and reverts to $4 / $20 per MTok on 2026-12-01. It accepts `low`, `medium` and `high` thinking (`xhigh` clamps to `high`) and thinks by default even with no `reasoningEffort` set. Being a pro-tier model, it is not in the AI-diff allowlist, so `compare()` does not auto-include a diff image with it.
 
 ### OpenRouter
 
@@ -683,6 +685,7 @@ Any [OpenRouter](https://openrouter.ai/models) model slug (always `vendor/model`
 | Grok 4.5                 | `x-ai/grok-4.5`                     | $2           | $6            | Prior xAI flagship, 500K context    |
 | Kimi K3                  | `moonshotai/kimi-k3`                | $3           | $15           | Moonshot flagship, 1M context       |
 | Kimi K2.7 Code           | `moonshotai/kimi-k2.7-code`         | $0.82        | $3.75         | Agentic/coding tier with vision⁵    |
+| Qwen4 Max                | `qwen/qwen4-max`                    | $1.425       | $4.275        | Qwen flagship; image + video input  |
 | Qwen3.8 Max              | `qwen/qwen3.8-max`                  | $2           | $6            | First Max tier with image input⁴    |
 | Qwen3.7 Plus             | `qwen/qwen3.7-plus`                 | $0.32        | $1.28         | Cost-effective, GUI/screen-reading⁴ |
 | Qwen3.6 Flash            | `qwen/qwen3.6-flash`                | $0.19        | $1.13         | Prior default — cheap flash vision  |

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_15",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:39:49.042Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but the bottom navigation bar is overlapped by the system home-indicator bar, causing icons to be visually struck through. A couple of minor polish issues (unlabeled tab icons, low-contrast secondary text) were also noted. Carousel clipping and bottom-cut cards were treated as intended behavior.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The horizontal home-indicator bar sits directly on top of the bottom tab bar, drawing a black line through the search and orders/receipt icons and leaving the tab bar with no bottom safe-area padding.",
+        "suggestion": "Add safe-area-inset-bottom padding to the tab bar so icons and labels sit above the home indicator, and increase the bar's height accordingly."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Bottom navigation items are icon-only with no visible text labels, making their purpose (home, search, orders, profile) ambiguous and harder to identify.",
+        "suggestion": "Add short text labels under each tab icon (or at minimum ensure descriptive accessibility labels are provided)."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Secondary metadata text such as '€0.90 delivery' and the '25–35 min · €0 delivery · Ramen' line uses a light gray that appears close to the minimum contrast threshold on white.",
+        "suggestion": "Darken the secondary text color slightly to comfortably meet WCAG AA contrast (4.5:1) for small text."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 552,
+    "reasoningTokens": 218,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.004845,
+    "reportedCost": 0.00276564,
+    "durationSeconds": 12.341407082999998
+  }
+}

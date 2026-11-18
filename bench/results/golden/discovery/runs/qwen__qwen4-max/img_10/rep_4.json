@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:38:31.459Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-structured, but the 'Fastest near you' carousel shows two identical 'Green Bowl Poké' cards (same image, name, delivery fee and ETA), which reads as a data/rendering duplication bug. There are also smaller inconsistencies: the carousel cards use generic placeholder-style illustrations and lack the rating/cuisine metadata shown on the 'Popular right now' cards, and the search placeholder text is low-contrast.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The first two cards in 'Fastest near you' are exact duplicates: both are 'Green Bowl Poké' with the same image, '15–25 min' badge and '€0.90 delivery' label. This looks like a duplicated list item or a keying/rendering bug rather than intentional content.",
+        "suggestion": "Deduplicate the restaurant feed by restaurant ID and verify the list rendering keys so each venue appears only once; if two branches genuinely exist, differentiate them with location/branch names."
+      },
+      {
+        "priority": "minor",
+        "category": "missing-element",
+        "description": "The 'Fastest near you' cards show only name and delivery fee, while 'Popular right now' cards include rating, review count, ETA and cuisine tag. The inconsistency makes the carousel cards feel incomplete, and the plate imagery looks like a generic placeholder illustration rather than a real dish/brand photo.",
+        "suggestion": "Add rating and cuisine (or ETA) metadata to the carousel cards for consistency, and replace placeholder illustrations with actual restaurant/dish imagery or a clearly designed fallback."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search field placeholder 'Restaurants, dishes, groceries' is rendered in a very light gray on a light gray background, likely falling below the 4.5:1 contrast ratio needed for readable text.",
+        "suggestion": "Darken the placeholder text (e.g., to a mid-gray around #6B7280 or darker) so it meets WCAG AA contrast against the field background."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 804,
+    "reasoningTokens": 314,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.005922300000000001,
+    "reportedCost": 0.00384294,
+    "durationSeconds": 16.340002374999983
+  }
+}

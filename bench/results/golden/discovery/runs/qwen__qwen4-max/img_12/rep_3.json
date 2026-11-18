@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:39:02.526Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-composed, but there is one clearly broken layout defect: the delivery time and delivery fee metadata under 'Tokumaru Ramen Bar' are rendered on top of each other, producing illegible overlapping text. A secondary, cosmetic inconsistency exists in the favorite (heart) button treatment between restaurant cards.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Under the 'Tokumaru Ramen Bar' card, the metadata line shows overlapping text: '25–35 min' and '€0 delivery' are drawn in the same position, rendering as garbled '25–3€0delivery'. The two labels collide and are unreadable.",
+        "suggestion": "Render the metadata as a single inline row with proper spacing and a separator (e.g. '25–35 min · €0 delivery · Ramen'), or fix the absolutely-positioned/overlapping elements so each label occupies its own space. Ensure the container allows wrapping or truncation instead of overlap."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite/heart button on the ramen card has no circular scrim behind it, while the pizza card's heart sits on a dark circular background. On the busy ramen image the un-backed white outline heart has weaker contrast and looks inconsistent.",
+        "suggestion": "Apply the same semi-transparent dark circular background to the heart button on all restaurant cards for consistent styling and reliable contrast over any image."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 444,
+    "reasoningTokens": 126,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.0043833000000000006,
+    "reportedCost": 0.00230394,
+    "durationSeconds": 11.038424874999997
+  }
+}

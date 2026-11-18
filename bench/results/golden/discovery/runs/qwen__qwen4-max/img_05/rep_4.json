@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_05",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:37:26.126Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-structured, but the promotional banner has a serious contrast problem: white heading and subtitle text sit on a very pale mint-green background, making the offer details nearly unreadable. A minor styling inconsistency exists between the favorite (heart) buttons on the popular cards.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "accessibility",
+        "description": "In the '3 free deliveries for you' promo banner, both the headline and the subtitle ('Use code TALLINN3 at checkout · min. order €10') are rendered in white/near-white on a very light mint-green background. The contrast ratio is far below WCAG minimums, so the offer text and promo code are effectively illegible.",
+        "suggestion": "Use a dark text color (e.g., dark green/near-black) on the light banner background, or darken/saturate the banner background so white text achieves at least 4.5:1 contrast (3:1 for large headline text)."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite/heart button treatment is inconsistent between cards: on the Tokumaru Ramen card the heart icon appears without a visible circular backdrop, while on the pizza card below it sits inside a dark translucent circle. This makes the control look different across identical card types.",
+        "suggestion": "Apply a consistent backdrop (e.g., a semi-transparent dark or light circle) to the heart button on all cards so the affordance and contrast remain uniform regardless of the underlying image."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 640,
+    "reasoningTokens": 276,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.0052212000000000005,
+    "reportedCost": 0.00314184,
+    "durationSeconds": 15.018903208000003
+  }
+}

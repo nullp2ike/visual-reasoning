@@ -1,0 +1,30 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The promotional badge on the pizza card reads '−100%', which implies the item is entirely free. This is almost certainly a data/formatting error (e.g., a doubled sign or a percentage computed incorrectly) and undermines trust in the pricing information.",
+    "The favorite (heart) buttons are inconsistent: on the ramen card the heart sits directly on the image with no backing shape, while on the pizza card it has a dark circular background. This makes the affordance look unfinished on the first card.",
+    "The search field placeholder 'Restaurants, dishes, groceries' is light gray on a very light gray fill, giving low contrast that may be hard to read for low-vision users.",
+    "In the 'Fastest near you' row, the delivery-time pill overlaps the food image and sits flush against the card's bottom-left corner, partially covering the dish and looking cramped compared to the badge placement on the larger cards."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the pizza card’s promotional badge showing −100%."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ]
+  }
+}

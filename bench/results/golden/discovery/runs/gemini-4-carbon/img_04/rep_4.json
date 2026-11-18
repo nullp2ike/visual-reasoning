@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "gemini-4-carbon",
+  "provider": "google",
+  "imageId": "img_04",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:36:56.472Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 issue: a restaurant card displays a nonsensical '-0%' discount badge.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The second card under 'Popular right now' (featuring the pizza image) displays a '-0%' promotional discount badge in its top-left corner.",
+        "suggestion": "Conditionally hide the discount badge when the discount value is zero or null so only valid promotions greater than 0% are displayed."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1605,
+    "outputTokens": 801,
+    "reasoningTokens": 705,
+    "estimatedCost": 0.01122,
+    "durationSeconds": 14.124542000000002
+  }
+}

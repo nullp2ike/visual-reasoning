@@ -103,6 +103,8 @@ export const Model = {
     GPT_5_MINI: "gpt-5-mini",
   },
   Google: {
+    GEMINI_4_CARBON: "gemini-4-carbon",
+    GEMINI_4_HYDROGEN: "gemini-4-hydrogen",
     GEMINI_4_ARGON: "gemini-4-argon",
     GEMINI_3_8_FLASH: "gemini-3.8-flash",
     GEMINI_3_7_FLASH: "gemini-3.7-flash",
@@ -125,6 +127,7 @@ export const Model = {
     GROK_4_5: "x-ai/grok-4.5",
     KIMI_K3: "moonshotai/kimi-k3",
     KIMI_K2_7_CODE: "moonshotai/kimi-k2.7-code",
+    QWEN_4_MAX: "qwen/qwen4-max",
     QWEN_3_8_MAX: "qwen/qwen3.8-max",
     QWEN_3_7_PLUS: "qwen/qwen3.7-plus",
     QWEN_3_6_FLASH: "qwen/qwen3.6-flash",

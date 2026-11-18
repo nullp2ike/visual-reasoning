@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:36:35.539Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-structured, but one section heading renders a raw localization key instead of human-readable text, which is the most visually broken element. There are also a couple of minor styling inconsistencies in the restaurant cards.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The second section heading displays the raw i18n key 'home_feed.popular_title' instead of a translated label (e.g. 'Popular near you'), while the sibling section correctly shows 'Fastest near you'.",
+        "suggestion": "Add the missing translation string for 'home_feed.popular_title' in all locale files and ensure a human-readable fallback is rendered when a key is missing."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) button treatment is inconsistent between cards: on the ramen card the heart sits directly on the image with no background, while on the pizza card it has a dark circular scrim. On light imagery the un-scrimmed white heart would be hard to see.",
+        "suggestion": "Apply the same semi-transparent circular background/scrim to the heart button on every card for consistent appearance and reliable contrast."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary metadata text such as '€0.90 delivery' and '25–35 min · €0 delivery · Ramen' uses light grey on white, which appears close to or below the 4.5:1 contrast ratio for small text.",
+        "suggestion": "Darken the secondary text color (e.g. to around #5A5F66) so small metadata text meets WCAG AA contrast."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 513,
+    "reasoningTokens": 150,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.004678275000000001,
+    "reportedCost": 0.002598915,
+    "durationSeconds": 11.115986292
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:36:18.879Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but one clear defect stands out: an untranslated localization key ('home_feed.popular_title') is rendered as a section heading instead of human-readable text. A secondary, minor inconsistency exists between the metadata shown on the 'Fastest near you' cards and the popular restaurant cards.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The second section heading displays the raw i18n key 'home_feed.popular_title' instead of a localized, human-readable title (e.g., 'Popular near you'). This looks broken to users and undermines trust in the app.",
+        "suggestion": "Add the missing translation string for the key 'home_feed.popular_title' in all supported locales, and add a fallback/default value plus a build-time or runtime check that flags missing translation keys so raw keys never reach production UI."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Cards in the 'Fastest near you' row show only name and delivery fee, while cards in the popular section show rating, time, fee and cuisine. The inconsistent metadata density makes the first row feel incomplete and harder to compare.",
+        "suggestion": "Standardize card metadata across sections (e.g., include rating and cuisine tag on the compact cards, or at least a rating) so users get consistent decision-making information."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 388,
+    "reasoningTokens": 96,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.004143900000000001,
+    "reportedCost": 0.0041439,
+    "durationSeconds": 13.088946459
+  }
+}

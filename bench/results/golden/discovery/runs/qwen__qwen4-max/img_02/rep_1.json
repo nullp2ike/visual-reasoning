@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:36:42.841Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but one clear data-rendering defect stands out: a restaurant card displays '€NaN delivery' instead of a valid price. Carousel edge clipping and the bottom-cut card were treated as intended behavior and not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Smash Bros Burgers' card in the 'Fastest near you' row shows '€NaN delivery', indicating an undefined/missing delivery fee value was passed into currency formatting and rendered as NaN.",
+        "suggestion": "Validate the delivery fee data before formatting; provide a fallback (e.g., 'Free delivery', '€0 delivery', or hide the fee line) when the value is null/undefined, and fix the upstream data source or parsing that produces NaN."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 387,
+    "reasoningTokens": 190,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.004139625000000001,
+    "reportedCost": 0.004139625,
+    "durationSeconds": 10.446630041
+  }
+}

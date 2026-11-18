@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_05",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:37:12.727Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-structured, but the promotional banner has a serious contrast problem: white headline and body text sit on a very pale mint-green background, making the offer nearly illegible. A couple of minor cosmetic inconsistencies were also noted in the 'Fastest near you' carousel.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "accessibility",
+        "description": "In the '3 free deliveries for you' promo banner, the headline and the supporting line ('Use code TALLINN3 at checkout · min. order €10') are rendered in white on a very light mint-green background. The contrast ratio is far below WCAG minimums, so the offer text is barely readable.",
+        "suggestion": "Use a dark text color (e.g., dark green/near-black) on the light banner, or darken/saturate the banner background so white text achieves at least 4.5:1 contrast (3:1 for large headline text)."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The subtext in the promo banner is even lower contrast than the headline because it is smaller, lighter-weight white text on the same pale background, compounding the readability problem.",
+        "suggestion": "Apply a secondary dark color with sufficient contrast for the small supporting text, and consider slightly increasing its weight/size."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Fastest near you' carousel thumbnails are visually inconsistent: the first card (Green Bowl Poké) uses a light gray/white background while the other cards use dark blurred backgrounds, making the row look uneven.",
+        "suggestion": "Normalize card image treatment (consistent background tone, blur, or overlay) so all thumbnails share the same visual style."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 595,
+    "reasoningTokens": 217,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.005028825000000001,
+    "reportedCost": 0.005028825,
+    "durationSeconds": 12.968892875000005
+  }
+}

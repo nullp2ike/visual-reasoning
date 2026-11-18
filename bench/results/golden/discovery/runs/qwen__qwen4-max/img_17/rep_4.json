@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:40:14.469Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but there is one significant state inconsistency: the bottom navigation highlights 'Profile' as active while the screen clearly shows the Home feed. Secondary findings include inconsistent styling of the favorite (heart) buttons between cards and low-contrast placeholder text in the search field. Clipped carousel items and the bottom-cut card were treated as intended behavior and excluded.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom tab bar shows 'Profile' as the active/selected tab (green icon and label), but the visible content is the Home feed (delivery address, search, categories, promo banner, restaurant carousels). The active tab state does not match the displayed screen, which misleads users about where they are in the app.",
+        "suggestion": "Bind the tab bar's selected state to the current route so 'Home' is highlighted on this screen, and only highlight 'Profile' when the profile screen is actually displayed."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite/heart buttons are styled inconsistently across restaurant cards: on the ramen card the heart sits directly on the image with no backing shape, while on the pizza card it has a dark circular background. This makes the same control look like two different components.",
+        "suggestion": "Apply a single consistent treatment (e.g., a semi-transparent dark circular scrim behind the heart on all cards) so the control is recognizable and legible over any image."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search placeholder 'Restaurants, dishes, groceries' is light gray on a very light gray field, giving a low contrast ratio (roughly 2.5:1) that is hard to read for low-vision users and in bright light.",
+        "suggestion": "Darken the placeholder text to reach at least 4.5:1 contrast against the field background, and ensure the input has an accessible label independent of the placeholder."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Cards in 'Fastest near you' show only name and delivery fee, while 'Popular right now' cards show rating, time, fee and cuisine. The inconsistency in information density between the two sections can look like missing data on the first row.",
+        "suggestion": "Either add a compact rating/time line to the 'Fastest near you' cards or intentionally document the reduced card variant so the difference reads as deliberate design rather than missing content."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 854,
+    "reasoningTokens": 257,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.0061360500000000005,
+    "reportedCost": 0.00405669,
+    "durationSeconds": 17.229471833999995
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:36:18.879Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed and consistent. No critical or major visual breakage was found; the clipped carousel item and the bottom card cut off by the viewport are expected scrolling behavior. Only a couple of minor cosmetic/consistency issues were identified.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) buttons are styled inconsistently between cards: on the Tokumaru Ramen Bar card the heart sits directly on the image with no background, while on the pizza card below it has a dark circular backdrop. This makes the control look like two different components and reduces legibility of the first heart against lighter parts of the image.",
+        "suggestion": "Apply a consistent treatment to all favorite buttons, e.g. always render the heart inside a semi-transparent dark circular scrim so it stays visible and uniform over any image."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search field placeholder text ('Restaurants, dishes, groceries') is light gray on a very light gray fill, giving low contrast that may be hard to read for users with low vision.",
+        "suggestion": "Darken the placeholder color (or the field background) to reach at least a 4.5:1 contrast ratio against the input fill."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Cards in the 'Fastest near you' row show only name and delivery fee, while 'Popular right now' cards show rating, time, fee and cuisine. The inconsistency makes the two sections feel like different card types and omits useful decision info (rating/time) in the first row's text area.",
+        "suggestion": "Unify the card metadata layout, or intentionally differentiate the compact carousel style with a documented pattern (e.g. add rating next to the delivery fee) so the sections read as a coherent system."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 883,
+    "reasoningTokens": 434,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.006260025000000001,
+    "reportedCost": 0.006260025,
+    "durationSeconds": 22.891759
+  }
+}

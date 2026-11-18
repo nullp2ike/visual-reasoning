@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_03",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:36:59.828Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page layout is largely intact, but one prominent visual defect stands out: the hero image for the 'Tokumaru Ramen Bar' card in 'Popular right now' fails to load and shows a generic broken-image placeholder icon on a gray box. A secondary, minor issue is the low-contrast favorite (heart) button overlaid on that light placeholder. Horizontal clipping of carousel items and the bottom-cut pizza card were treated as intended behavior and not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The image for the 'Tokumaru Ramen Bar' card under 'Popular right now' is missing. Instead of food photography, a large light-gray rectangle with a broken-image icon is displayed, making the card look unfinished and inconsistent with the pizza card below it.",
+        "suggestion": "Fix the image URL/loading pipeline and add a proper fallback (e.g., a branded skeleton shimmer or a cuisine-specific illustration) so a broken-image glyph is never shown to users. Also verify lazy-loading and error handling for remote images."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The favorite/heart button on the Tokumaru card is a white outline icon on a medium-gray circle sitting on a light-gray placeholder, giving weak contrast compared to the same button on the dark pizza image below.",
+        "suggestion": "Use a consistent semi-opaque dark scrim behind the heart button (as on the pizza card) or a filled icon variant so it remains clearly visible and meets contrast requirements on any background, including light or missing images."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 458,
+    "reasoningTokens": 86,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.004443150000000001,
+    "reportedCost": 0.00236379,
+    "durationSeconds": 10.536989708
+  }
+}

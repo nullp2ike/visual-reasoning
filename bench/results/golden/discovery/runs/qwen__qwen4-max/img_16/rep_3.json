@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_16",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:39:52.720Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but there is a notable state/content mismatch: the 'Pizza' category chip is selected while the listings below show poke, burgers and ramen. There are also small inconsistencies in the favorite-button treatment and low-contrast placeholder text.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The 'Pizza' filter chip is shown in the active/selected state, yet the content below is unfiltered: 'Fastest near you' shows Green Bowl Poké, Smash Bros Burgers and Trattoria, and 'Popular right now' leads with Tokumaru Ramen Bar. Only the second popular card is pizza-related, so the selected filter appears not to be applied to the rendered results.",
+        "suggestion": "Either render the results filtered by the selected category (pizza-only restaurants/dishes) or reset the chip selection to 'All' so the visual state matches the content being displayed."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Inconsistent favorite (heart) button styling between cards: on the Tokumaru Ramen Bar card the heart sits directly on the image with no circular scrim, while the pizza card below uses a dark translucent circular background. On lighter image areas the un-backed icon would be hard to see.",
+        "suggestion": "Apply the same dark translucent circular backdrop (or a consistent shadow/scrim) to the heart button on every restaurant card for uniform appearance and reliable contrast."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search field placeholder 'Restaurants, dishes, groceries' is very light gray on a light gray fill, giving a low contrast ratio that is difficult to read for low-vision users.",
+        "suggestion": "Darken the placeholder text (aim for at least 4.5:1 against the field background) or lighten the field fill to increase contrast."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Cards in 'Fastest near you' show only name and delivery fee, while 'Popular right now' cards also show rating, ETA and cuisine. The missing rating/cuisine metadata makes the two rows feel inconsistent and gives users less information to compare options.",
+        "suggestion": "Add a compact rating and/or cuisine tag to the 'Fastest near you' cards, or intentionally document the reduced metadata design so both rows feel deliberate."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 854,
+    "reasoningTokens": 285,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.0061360500000000005,
+    "reportedCost": 0.00405669,
+    "durationSeconds": 18.43605012500001
+  }
+}

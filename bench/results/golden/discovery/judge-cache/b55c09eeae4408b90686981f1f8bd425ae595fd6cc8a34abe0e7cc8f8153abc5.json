@@ -1,0 +1,30 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The second card in “Popular right now” shows a promotion badge reading “−100%”. A 100% discount implies the item is free, which is almost certainly invalid promo data (or a sign/formatting bug) and undermines trust in the offers shown.",
+    "The favorite (heart) button is inconsistent between cards: on the ramen card it is a bare white outline sitting directly on the photo, while on the pizza card it has a dark circular scrim behind it. On light imagery the bare icon would be hard to see.",
+    "Cards in “Fastest near you” show only name and delivery fee, while “Popular right now” cards show rating, time, fee and cuisine. The missing rating/cuisine metadata makes the two rows feel inconsistent and gives users less decision information in the first row.",
+    "The search field placeholder “Restaurants, dishes, groceries” is light gray on a very light gray fill, giving low contrast that may fail WCAG 1.4.3 for users with low vision."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the promotion badge showing “−100%,” the same defect."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ]
+  }
+}

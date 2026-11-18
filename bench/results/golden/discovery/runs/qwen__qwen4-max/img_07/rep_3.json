@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_07",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:37:50.500Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but the 'Tokumaru Ramen Bar' hero card shows a loading spinner overlaid on an already-rendered image, indicating a stuck/incorrect loading state. There is also a stray dark rectangle artifact in that same illustration. Carousel edge clipping and the bottom card cut-off are expected behavior and excluded.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The Tokumaru Ramen Bar card displays a circular loading spinner centered on top of a fully loaded food image, suggesting the loading indicator never dismissed or the image state is out of sync.",
+        "suggestion": "Hide the spinner once the image has loaded (tie it to the image onLoad/state flag) and add a timeout/fallback so a persistent spinner cannot remain over rendered content."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "A solid dark-green rectangle appears floating over the upper-right of the ramen bowl illustration, looking like a misplaced or unstyled graphic element rather than part of the artwork.",
+        "suggestion": "Verify the illustration asset layers; remove or correctly position/round the stray shape so it reads as intentional (e.g., a nori sheet) rather than a rendering artifact."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "The 'Fastest near you' cards show only name and delivery fee with no rating or cuisine metadata, while 'Popular right now' cards include them, creating inconsistent information density between sections.",
+        "suggestion": "If intentional, keep it; otherwise align card metadata (rating, time, cuisine) across sections for a consistent scanning experience."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 521,
+    "reasoningTokens": 171,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.004712475000000001,
+    "reportedCost": 0.002633115,
+    "durationSeconds": 12.697553790999999
+  }
+}

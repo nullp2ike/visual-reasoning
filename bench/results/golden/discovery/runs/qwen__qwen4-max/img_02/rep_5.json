@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:36:49.924Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but there is one clear data-rendering defect: a delivery fee displays as '€NaN', indicating an undefined/invalid numeric value leaked into the UI. A couple of minor visual inconsistencies were also noted in the 'Fastest near you' carousel.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "The 'Smash Bros Burgers' card in 'Fastest near you' shows '€NaN delivery' instead of a price. This is a broken number formatting/undefined data value exposed directly to users and undermines trust in pricing information.",
+        "suggestion": "Fix the data source/formatting logic so the delivery fee is always a valid number; add a guard that falls back to a sensible state (e.g. 'Free delivery', 'Delivery fee at checkout', or hide the line) when the value is null/undefined, and never render NaN."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Card thumbnails in 'Fastest near you' are visually inconsistent: the first card uses a plain light-gray background while the others use dark photographic backgrounds, making the row look uneven.",
+        "suggestion": "Normalize image treatment (consistent background, aspect ratio, and overlay/gradient) across all carousel cards, or supply a properly cropped hero image for the first restaurant."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "On the first carousel card, the '15–25 min' badge sits over the plate illustration and nearly touches the card's left/bottom edges, appearing cramped compared with the other cards where the badge has more breathing room.",
+        "suggestion": "Apply uniform badge padding/insets (e.g. 12px from card edges) and ensure the badge does not overlap the main subject of the image."
+      },
+      {
+        "priority": "minor",
+        "category": "missing-element",
+        "description": "Cards in 'Fastest near you' show only name and delivery fee, while 'Popular right now' cards include rating, time, and cuisine. The inconsistency makes the top row feel incomplete and gives users less decision-making info.",
+        "suggestion": "Add rating and cuisine tags (or at least a rating) to the 'Fastest near you' cards for consistency with the rest of the page."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 676,
+    "reasoningTokens": 126,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.005375100000000001,
+    "reportedCost": 0.00329574,
+    "durationSeconds": 13.519022000000005
+  }
+}

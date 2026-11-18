@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_09",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:38:10.214Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but the restaurant name in the 'Popular right now' section is clipped mid-word without an ellipsis and crowds the rating, and there are a couple of minor consistency/contrast issues. Carousel edge clipping and bottom viewport cutoff were treated as intended behavior.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The restaurant title 'Tokumaru Ramen' in the 'Popular right now' list is cut off mid-character (renders as 'Tokumaru Ramen' with the final letters sliced) instead of being truncated with an ellipsis, and it runs directly into the rating block '4.8 (500+)' on the same row.",
+        "suggestion": "Constrain the title width with flex/min-width:0, apply single-line truncation with text-overflow: ellipsis, and reserve fixed space plus a gap for the rating so the two never collide."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) button is styled inconsistently between cards: on the ramen card it sits on a plain dark area with no visible container, while on the pizza card it has a distinct circular translucent background.",
+        "suggestion": "Use the same circular scrim/background for the heart button on all restaurant cards so the affordance is consistent and visible over any image."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search placeholder text ('Restaurants, dishes, groceries') is light gray on a light gray field, giving low contrast that may be hard to read for low-vision users.",
+        "suggestion": "Darken the placeholder color to meet at least a 4.5:1 contrast ratio against the input background."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 894,
+    "reasoningTokens": 470,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.006307050000000001,
+    "reportedCost": 0.00630705,
+    "durationSeconds": 21.200442207999995
+  }
+}

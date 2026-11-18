@@ -1,0 +1,32 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Loading spinner is shown on top of already loaded content"
+  ],
+  "reportedIssues": [
+    "The 'Tokumaru Ramen Bar' card in 'Popular right now' shows a circular loading spinner centered on top of a fully rendered (but dimmed/blurred) food image. The card's text, rating, delivery info and '€0 delivery' badge are already loaded, so the persistent spinner looks like a stuck/failed image load rather than an intentional state.",
+    "The image behind the spinner is noticeably darkened/blurred compared to the pizza card below it, creating an inconsistent look between two adjacent cards in the same list.",
+    "The search field placeholder 'Restaurants, dishes, groceries' is light gray on a very light gray fill, giving low contrast that may fail WCAG 1.4.3 for users with low vision.",
+    "Cards in 'Fastest near you' show only name and delivery fee, while 'Popular right now' cards show rating, time, fee and cuisine. The absence of ratings/cuisine in the first row makes the two sections feel inconsistent and gives users less decision-making info.",
+    "The first carousel tile (Green Bowl Poké) uses a light/white photo background while the adjacent tiles use dark backgrounds, producing a visually uneven row."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes a spinner over an already rendered card image and loaded content."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+}

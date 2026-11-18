@@ -1,0 +1,30 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "In the bottom navigation bar, the horizontal home-indicator bar overlaps the Search and Orders icons, and the icons appear vertically clipped at the bottom screen edge. The tab bar has no bottom safe-area inset, so its content collides with the system gesture indicator.",
+    "Bottom navigation items are icon-only with no text labels, and the active state is conveyed by color alone (green Home icon), making the destinations ambiguous and the state hard to perceive for color-blind users.",
+    "Favorite (heart) buttons are styled inconsistently across the 'Popular right now' cards: the ramen card shows a bare white heart outline while the pizza card shows the heart inside a translucent dark circular button.",
+    "The search field placeholder 'Restaurants, dishes, groceries' is light gray on a very light gray fill, giving low contrast that may fail WCAG text contrast requirements."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both describe bottom navigation content clipped at the screen edge and overlapped by the home-indicator bar."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ]
+  }
+}

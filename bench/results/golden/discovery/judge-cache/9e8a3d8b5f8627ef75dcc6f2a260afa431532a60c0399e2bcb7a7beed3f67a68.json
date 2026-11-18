@@ -1,0 +1,30 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The second 'Popular right now' card (pizza) shows a discount badge reading '−100%', which implies the item is free and looks like a data/formatting error (stray minus sign and an impossible 100% discount).",
+    "Favorite (heart) buttons are styled inconsistently: on the ramen card the heart is a bare white outline over the photo, while on the pizza card it sits inside a dark circular scrim. The bare version can become unreadable over light imagery.",
+    "The search field placeholder ('Restaurants, dishes, groceries') and the magnifier icon are very light gray on a light gray fill, likely below the 4.5:1 contrast threshold.",
+    "The 'Fastest near you' tiles show only name and delivery fee with no rating or cuisine metadata, unlike the 'Popular right now' cards, making the two sections look visually unbalanced and the first tile's pale image appear washed out/empty."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the pizza card’s discount badge displaying −100%."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ]
+  }
+}

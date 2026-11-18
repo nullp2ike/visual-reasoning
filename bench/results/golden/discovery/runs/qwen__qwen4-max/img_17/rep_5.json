@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:40:18.017Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but the bottom navigation state contradicts the content being shown (Profile is highlighted while a Home feed is displayed), and the favorite/heart buttons are styled inconsistently between cards. A couple of minor content/contrast inconsistencies were also noted.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom tab bar shows 'Profile' as the active/selected tab (green icon and label), yet the screen displays the Home discovery feed (delivery address, search, categories, promo banner, restaurant carousels). The active state does not match the current screen, which misleads users about where they are in the app.",
+        "suggestion": "Bind the tab bar's selected state to the current route so 'Home' is highlighted on this screen, and only highlight 'Profile' when the profile screen is actually presented."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) control is inconsistent across restaurant cards: on the Tokumaru Ramen Bar card the white heart sits directly on the photo with no backing plate, while on the pizza card below it the heart sits inside a dark circular scrim. On light imagery the unbacked white heart would become nearly invisible.",
+        "suggestion": "Apply the same semi-transparent dark circular background (or a consistent shadow/scrim) behind the heart icon on every card so the affordance is uniform and legible over any image."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Cards in 'Fastest near you' show only a name and delivery fee, while 'Popular right now' cards show rating, time, fee and cuisine. The horizontal cards also omit ratings entirely, making it hard to compare restaurants across sections.",
+        "suggestion": "Add a compact rating (and optionally cuisine tag) to the carousel cards, or document the intentional density difference so the information hierarchy stays predictable."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "Secondary metadata text (e.g. '€0.90 delivery', '25–35 min · €0 delivery · Ramen') and the search placeholder are rendered in light gray on white, which appears close to or below the 4.5:1 contrast threshold for small text.",
+        "suggestion": "Darken the secondary/placeholder gray (e.g. to around #5F6368 or darker) to guarantee at least 4.5:1 contrast for small text."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 907,
+    "reasoningTokens": 312,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.006362625,
+    "reportedCost": 0.004283265,
+    "durationSeconds": 18.787156791000015
+  }
+}

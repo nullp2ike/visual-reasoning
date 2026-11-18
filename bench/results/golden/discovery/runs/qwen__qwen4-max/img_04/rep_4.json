@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_04",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:37:12.098Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-structured, but a few visual defects stand out: a nonsensical \"-0%\" discount badge on the second popular restaurant card, an inconsistent favorite (heart) button treatment between the two large cards, and a dish image in the first carousel card that appears mis-scaled/cropped against the card edge. Carousel edge clipping and bottom-of-viewport cutoff were treated as intended behavior and not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The second card in \"Popular right now\" (pizza) shows a discount badge reading \"-0%\", which is a meaningless/invalid promotion value and looks like a data or formatting bug.",
+        "suggestion": "Hide the discount badge when the discount value is 0 or null, and validate the promo data source so only real discounts (e.g. \"-20%\") render a badge."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite/heart icon is rendered inconsistently: on the ramen card it sits directly on the photo with no backing shape, while on the pizza card it has a dark circular background. On the lighter/busy ramen photo the plain white outline heart is harder to see.",
+        "suggestion": "Apply the same circular scrim/background container to the heart button on all restaurant cards so it has consistent styling and reliable contrast over any image."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "In the \"Fastest near you\" row, the Green Bowl Poké thumbnail appears off-center and cropped by the card's bottom/right edge (the plate is cut off), unlike the other thumbnails where the dish is fully centered within the frame.",
+        "suggestion": "Use a consistent object-fit/object-position (e.g. cover with center positioning) and correct source asset framing so dish images are centered and not unintentionally clipped inside the card."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The ramen card repeats the same information twice: a \"€0 delivery\" badge overlaid on the image and \"€0 delivery\" again in the metadata line below the title.",
+        "suggestion": "Show the free-delivery message in only one place (either the image badge or the metadata row) to reduce redundancy and visual noise."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 912,
+    "reasoningTokens": 455,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.006384000000000001,
+    "reportedCost": 0.00430464,
+    "durationSeconds": 27.432104333
+  }
+}

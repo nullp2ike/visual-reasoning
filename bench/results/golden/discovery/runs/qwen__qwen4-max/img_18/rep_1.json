@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:36:18.879Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed with no critical breakage. Carousel edge clipping and the bottom-cut pizza card are expected scroll behavior and were excluded. Remaining findings are minor: low-contrast search placeholder text and inconsistent styling of the favorite (heart) buttons across restaurant cards.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search field placeholder 'Restaurants, dishes, groceries' is light gray on a very light gray background, giving weak contrast that may be hard to read for low-vision users.",
+        "suggestion": "Darken the placeholder text (e.g., to a mid-gray around #6B7280 or darker) so it meets at least a 4.5:1 contrast ratio against the field background."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Favorite (heart) buttons are styled inconsistently: the Tokumaru Ramen card shows a bare white heart directly on the image, while the pizza card below uses a heart inside a dark translucent circular badge. On lighter food images the bare heart could become hard to see.",
+        "suggestion": "Apply the same translucent dark circular background to all favorite buttons so the icon remains legible and visually consistent regardless of the underlying image."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "In the 'Fastest near you' row, the first card uses a flat light-gray illustrated background while the neighboring cards use dark photographic backgrounds, making the row look visually uneven.",
+        "suggestion": "Use consistent image treatment (e.g., same background tone or a subtle scrim/gradient) across carousel cards so the row reads as a cohesive set."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 1310,
+    "reasoningTokens": 900,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.008085450000000001,
+    "reportedCost": 0.00600609,
+    "durationSeconds": 29.147248292
+  }
+}

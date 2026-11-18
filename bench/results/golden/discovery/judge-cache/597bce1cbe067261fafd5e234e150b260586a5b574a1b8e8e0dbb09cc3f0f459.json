@@ -1,0 +1,30 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Promo banner text is unreadable, white text on a pale mint background"
+  ],
+  "reportedIssues": [
+    "The promo banner headline '3 free deliveries for you' is rendered in white on a very light mint-green background, giving a contrast ratio far below the 4.5:1 (and 3:1 for large text) WCAG minimum. The text is barely readable.",
+    "The banner subtitle 'Use code TALLINN3 at checkout · min. order €10' is small white text on the same pale green background, making the promo code and minimum-order condition effectively unreadable.",
+    "Cards in 'Fastest near you' show only name and delivery fee, while 'Popular right now' cards include rating, ETA and cuisine. The inconsistent information density makes the top row feel incomplete compared to the rest of the page.",
+    "The first carousel image (Green Bowl Poké) is a washed-out, low-contrast illustration on a near-white background, which looks visually flat and inconsistent next to the rich, dark photographic-style images of the other cards."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          1
+        ],
+        "reasoning": "Both reports describe white promo-banner text that is unreadable against the pale mint background."
+      }
+    ],
+    "extraReportedIndexes": [
+      2,
+      3
+    ]
+  }
+}

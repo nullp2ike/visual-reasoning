@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_02",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:36:48.244Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-structured, but one clear data-rendering defect stands out: a delivery fee displays as '€NaN', indicating a failed numeric value. A couple of minor contrast/polish observations are also noted. Carousel edge clipping and the bottom-cut card were excluded per instructions.",
+    "issues": [
+      {
+        "priority": "critical",
+        "category": "content",
+        "description": "The 'Smash Bros Burgers' card in 'Fastest near you' shows '€NaN delivery' instead of a valid price. This is a broken numeric value (Not-a-Number) leaking into the UI, signaling a data parsing/formatting failure.",
+        "suggestion": "Fix the delivery-fee computation/formatting so it always yields a valid number. Add a fallback (e.g., 'Free delivery', 'Delivery fee unavailable', or hide the line) when the value is null/undefined/NaN, and validate the source data."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search field placeholder 'Restaurants, dishes, groceries' is light gray on a very light gray background, giving low contrast that may be hard to read for low-vision users.",
+        "suggestion": "Darken the placeholder text or the field background to meet at least a 4.5:1 contrast ratio for readable text."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Secondary metadata text (e.g., '€0.90 delivery', '25–35 min · €0 delivery · Ramen') uses a fairly light gray that sits near the lower bound of acceptable contrast on white.",
+        "suggestion": "Slightly darken secondary text color to ensure consistent WCAG AA contrast across all metadata labels."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 470,
+    "reasoningTokens": 100,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.0044944500000000005,
+    "reportedCost": 0.00241509,
+    "durationSeconds": 11.873200582999997
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_18",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:36:18.879Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed with clear hierarchy and consistent spacing. No critical or major visual breakage was found (carousel edge clipping and bottom-of-viewport cutoff are expected scrolling behavior). A few minor cosmetic inconsistencies remain: mismatched image treatments in the 'Fastest near you' row, inconsistent favorite-button styling between restaurant cards, and low-contrast search placeholder text.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "In the 'Fastest near you' carousel, the first card (Green Bowl Poké) uses a flat light-gray image background while the neighboring cards (Smash Bros Burgers, Trattoria) use dark blurred photo-style backgrounds, making the row look visually inconsistent.",
+        "suggestion": "Apply a consistent image treatment (same background style/overlay or same aspect-ratio crop) across all carousel thumbnails so the row reads as a uniform set."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) button is styled inconsistently: on the Tokumaru Ramen Bar card it is a bare white outline placed directly on the image, while on the pizza card below it sits inside a dark translucent circular background.",
+        "suggestion": "Use the same circular scrim/background for the heart icon on all restaurant cards to guarantee legibility over any image and keep the component consistent."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search field placeholder 'Restaurants, dishes, groceries' is light gray on a light gray fill, giving low contrast that may be hard to read for low-vision users.",
+        "suggestion": "Darken the placeholder text (target at least 4.5:1 contrast against the field background) or darken the field fill slightly."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 975,
+    "reasoningTokens": 598,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.006653325000000002,
+    "reportedCost": 0.004573965,
+    "durationSeconds": 23.73948625
+  }
+}

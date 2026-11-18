@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:36:32.192Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-structured, but one section header displays a raw localization key instead of translated text, which is the most obvious visual break. There is also a minor inconsistency in the favorite (heart) button styling between cards.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The section heading above the Tokumaru Ramen Bar card renders the raw i18n key 'home_feed.popular_title' instead of a human-readable title (e.g., 'Popular near you'). This looks broken and unprofessional to users.",
+        "suggestion": "Add the missing translation string for the key 'home_feed.popular_title' in the localization files and ensure a sensible fallback title is displayed if a key is missing."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite heart icon on the ramen card has no dark circular background, unlike the pizza card below where the heart sits on a dark circle. On the lighter ramen image the white outline heart has weak contrast and the treatment is inconsistent across cards.",
+        "suggestion": "Apply the same semi-transparent dark circular backdrop to the heart button on all restaurant cards for consistent styling and adequate contrast against any image."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 357,
+    "reasoningTokens": 61,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.004011375000000001,
+    "reportedCost": 0.001932015,
+    "durationSeconds": 8.044237416999998
+  }
+}

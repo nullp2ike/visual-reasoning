@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:38:46.799Z",
+  "status": "ok",
+  "result": {
+    "summary": "The layout is largely intact (carousel clipping and bottom-cut card are expected). The main defect is an implausible '−100%' discount badge, plus inconsistent favorite-button styling and a couple of low-contrast text elements.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The second 'Popular right now' card (pizza) shows a discount badge reading '−100%', which implies the item is free and looks like a data/formatting error (stray minus sign and an impossible 100% discount).",
+        "suggestion": "Validate discount values server/client-side, clamp to a sane range (e.g. 5–90%), and render as '-20%' style only for valid promos; hide the badge when no discount applies."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Favorite (heart) buttons are styled inconsistently: on the ramen card the heart is a bare white outline over the photo, while on the pizza card it sits inside a dark circular scrim. The bare version can become unreadable over light imagery.",
+        "suggestion": "Apply the same semi-transparent circular background/scrim to all heart buttons so they are consistent and always legible regardless of the underlying image."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search field placeholder ('Restaurants, dishes, groceries') and the magnifier icon are very light gray on a light gray fill, likely below the 4.5:1 contrast threshold.",
+        "suggestion": "Darken the placeholder/icon color (e.g. #6B7280 or darker) to meet WCAG AA contrast against the field background."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Fastest near you' tiles show only name and delivery fee with no rating or cuisine metadata, unlike the 'Popular right now' cards, making the two sections look visually unbalanced and the first tile's pale image appear washed out/empty.",
+        "suggestion": "Add consistent secondary metadata (rating/time) to carousel tiles and use higher-contrast imagery or a subtle border so light photos don't blend into the white background."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 757,
+    "reasoningTokens": 224,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.005721375000000001,
+    "reportedCost": 0.003642015,
+    "durationSeconds": 18.690275375
+  }
+}

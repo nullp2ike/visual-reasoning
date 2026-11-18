@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_08",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:37:54.880Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but a few visual/content defects stand out: a typo in the search placeholder, inconsistent favorite (heart) button styling between restaurant cards, and inconsistent image treatment in the 'Fastest near you' carousel. Carousel edge clipping and bottom viewport cutoff were treated as intended behavior and not reported.",
+    "issues": [
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The search field placeholder reads 'Restarants, dishes, groceries' — 'Restaurants' is misspelled (missing 'u').",
+        "suggestion": "Correct the placeholder text to 'Restaurants, dishes, groceries'."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite/heart button is styled inconsistently across cards: on the Tokumaru Ramen Bar card it is a bare white outline heart with no backdrop, while on the pizza card below it sits inside a dark translucent circular container. On lighter imagery the bare heart would also have poor contrast.",
+        "suggestion": "Use a single consistent heart-button component (e.g., always a semi-transparent dark circular backdrop with a white icon) across all restaurant cards to guarantee contrast and visual consistency."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "In the 'Fastest near you' row, the first tile (Green Bowl Poké) uses a flat light-gray background while the other tiles use dark, blurred photo-style backgrounds, making the row look visually inconsistent and the first tile appear unfinished/placeholder-like.",
+        "suggestion": "Apply a consistent image treatment (same background style, blur, and aspect ratio) to all carousel tiles, or supply a proper hero image for the first restaurant."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Cards in 'Fastest near you' show only name and delivery fee, with no rating or cuisine tag, whereas 'Popular right now' cards show rating, time, fee, and cuisine. The inconsistent metadata density makes the top row feel incomplete.",
+        "suggestion": "Include at least a rating or cuisine label on the 'Fastest near you' cards, or intentionally document the reduced metadata design so the rows feel consistent."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 974,
+    "reasoningTokens": 445,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.00664905,
+    "reportedCost": 0.00664905,
+    "durationSeconds": 20.42061245799999
+  }
+}

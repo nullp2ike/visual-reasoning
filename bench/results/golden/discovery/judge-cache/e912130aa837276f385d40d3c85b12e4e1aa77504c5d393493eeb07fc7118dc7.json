@@ -1,0 +1,28 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Delivery fee shows €NaN"
+  ],
+  "reportedIssues": [
+    "The 'Smash Bros Burgers' card in 'Fastest near you' shows '€NaN delivery' instead of a valid price. This is a broken numeric value (Not-a-Number) leaking into the UI, signaling a data parsing/formatting failure.",
+    "The search field placeholder 'Restaurants, dishes, groceries' is light gray on a very light gray background, giving low contrast that may be hard to read for low-vision users.",
+    "Secondary metadata text (e.g., '€0.90 delivery', '25–35 min · €0 delivery · Ramen') uses a fairly light gray that sits near the lower bound of acceptable contrast on white."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes a restaurant card showing a malformed €NaN delivery fee."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

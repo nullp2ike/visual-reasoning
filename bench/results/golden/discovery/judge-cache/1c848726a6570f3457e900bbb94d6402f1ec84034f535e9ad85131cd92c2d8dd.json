@@ -1,0 +1,28 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The second section heading displays the raw i18n key 'home_feed.popular_title' instead of a translated label (e.g. 'Popular near you'), while the sibling section correctly shows 'Fastest near you'.",
+    "The favorite (heart) button treatment is inconsistent between cards: on the ramen card the heart sits directly on the image with no background, while on the pizza card it has a dark circular scrim. On light imagery the un-scrimmed white heart would be hard to see.",
+    "Secondary metadata text such as '€0.90 delivery' and '25–35 min · €0 delivery · Ramen' uses light grey on white, which appears close to or below the 4.5:1 contrast ratio for small text."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 identifies the same section heading displaying the raw home_feed.popular_title translation key."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

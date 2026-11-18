@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:38:38.483Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-structured, but the 'Fastest near you' carousel shows clear defects: two identical duplicate restaurant cards and images that appear washed out by a white overlay (resembling a stuck loading/skeleton state), inconsistent with the fully rendered third card. A couple of minor contrast/decoration issues were also noted. Edge-clipped carousel items and the bottom-cut card were treated as intended behavior.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The first two cards in 'Fastest near you' are exact duplicates: same name ('Green Bowl Poké'), same image, same '15–25 min' badge and same '€0.90 delivery' text. This looks like duplicated/placeholder data rather than real distinct restaurants.",
+        "suggestion": "Deduplicate the carousel feed by restaurant ID and ensure each card renders unique restaurant data; add a fallback state if fewer than three distinct results are available."
+      },
+      {
+        "priority": "major",
+        "category": "styling",
+        "description": "The two poké bowl images appear faded/low-contrast with a whitish gradient veil over them, while the third card (burger) is fully saturated. This inconsistency reads as a stuck shimmer/skeleton overlay or an incorrectly applied gradient mask on loaded images.",
+        "suggestion": "Remove the white overlay/gradient once images finish loading, or apply the same image treatment consistently across all carousel cards so loaded photos render at full opacity and contrast."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search field placeholder ('Restaurants, dishes, groceries') is light gray on a very light gray background, giving low contrast that may be hard to read for low-vision users.",
+        "suggestion": "Darken the placeholder text (target at least 4.5:1 contrast against the field background) or use a darker field background."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The decorative circles on the green promo banner create a visible hard seam/edge where the lighter circle shape meets the banner's bottom-right rounded corner, making the decoration look abruptly clipped.",
+        "suggestion": "Clip the decorative shapes to the banner's rounded container and soften their edges/opacity so the transition blends smoothly with the banner background."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Cards in 'Fastest near you' show only name and delivery fee, while 'Popular right now' cards include rating, time, and cuisine. The missing rating/cuisine metadata makes the top carousel feel incomplete and inconsistent.",
+        "suggestion": "Add rating and cuisine (or a placeholder such as 'New') to the compact cards so information density is consistent across sections."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 994,
+    "reasoningTokens": 341,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.006734550000000001,
+    "reportedCost": 0.00465519,
+    "durationSeconds": 20.648981457999994
+  }
+}

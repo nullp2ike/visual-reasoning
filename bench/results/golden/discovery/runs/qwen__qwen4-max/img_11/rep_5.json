@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:38:47.841Z",
+  "status": "ok",
+  "result": {
+    "summary": "The layout, typography and spacing are generally clean and consistent. The clearest visual defect is an implausible '-100%' discount badge on the second 'Popular right now' card, which reads as broken data. There is also a small inconsistency in how the favorite (heart) buttons are rendered across cards. Horizontal clipping of the carousel/chips and the card cut off at the bottom were treated as intended behavior.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The badge on the pizza card in 'Popular right now' reads '−100%', implying the item is entirely free. This looks like a data/formatting bug (e.g., a percentage computed or sign-flipped incorrectly) and undermines trust in the promotions shown.",
+        "suggestion": "Validate discount values before rendering (clamp to a sensible range such as 5–90%) and verify the sign/format logic. If a full free-item offer is intended, use explicit wording like 'Free item' or '100% off' rather than a bare '−100%' chip."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite/heart control is styled inconsistently between cards: on the ramen card the heart sits on the dark image with no visible circular backdrop, while on the pizza card it has a distinct dark translucent circle. This makes the same control look like two different components.",
+        "suggestion": "Apply one shared style for the favorite button (same translucent scrim circle, size, padding and icon stroke) on every card so it stays legible and consistent over any image."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The 'Fastest near you' cards use very different image treatments (the first tile is a pale, low-contrast illustration on light gray while the others are dark photographic-style images), making the row look visually uneven and the white time pill on the light tile nearly blends into the background.",
+        "suggestion": "Normalize card imagery (consistent background tone/crop or a subtle overlay) and give the delivery-time pill a slight shadow or border so it separates clearly from light images."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 759,
+    "reasoningTokens": 251,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.005729925,
+    "reportedCost": 0.003650565,
+    "durationSeconds": 17.66110399999999
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_10",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:38:29.551Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but the 'Fastest near you' carousel contains two identical duplicate restaurant cards (same name, image, delivery time, and fee), which looks like a data/rendering bug. There is also a minor inconsistency in the metadata shown between carousel cards and list cards.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "In the 'Fastest near you' row, the first two cards are exact duplicates: both are 'Green Bowl Poké' with the same image, '15–25 min' badge, and '€0.90 delivery' text. This appears to be a duplicated list item rather than intentional content.",
+        "suggestion": "Deduplicate the restaurant data feeding the carousel (e.g., by restaurant ID) so each venue appears only once, and verify the backend query isn't returning repeated rows."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Card metadata is inconsistent between sections: the 'Fastest near you' cards show only name and delivery fee, while 'Popular right now' cards include rating, time, fee, and cuisine. The compact cards also lack the favorite (heart) affordance present on the larger cards, making the UI feel uneven.",
+        "suggestion": "Align the card templates where possible, or add at least a rating or cuisine tag to the compact carousel cards so users get comparable information across sections."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 746,
+    "reasoningTokens": 402,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.005674350000000001,
+    "reportedCost": 0.00359499,
+    "durationSeconds": 17.201817874999993
+  }
+}

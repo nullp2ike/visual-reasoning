@@ -1,0 +1,26 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "In the 'Popular right now' section, the restaurant title 'Tokumaru Ramen' is clipped mid-glyph (renders as 'Tokumaru Rameı') where it collides with the right-aligned rating '4.8 (500+)'. There is no ellipsis or proper truncation, so the name looks visually broken.",
+    "The favorite/heart button is styled inconsistently between cards: on the ramen card it sits directly on the image with no backing shape, while on the pizza card it has a dark circular background. This makes the first icon harder to see and looks unintentional."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the same Tokumaru Ramen title clipped mid-word without an ellipsis."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ]
+  }
+}

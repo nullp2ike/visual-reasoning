@@ -1,0 +1,30 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −0%"
+  ],
+  "reportedIssues": [
+    "The second card in \"Popular right now\" (pizza) shows a discount badge reading \"-0%\", which is a meaningless/invalid promotion value and looks like a data or formatting bug.",
+    "The favorite/heart icon is rendered inconsistently: on the ramen card it sits directly on the photo with no backing shape, while on the pizza card it has a dark circular background. On the lighter/busy ramen photo the plain white outline heart is harder to see.",
+    "In the \"Fastest near you\" row, the Green Bowl Poké thumbnail appears off-center and cropped by the card's bottom/right edge (the plate is cut off), unlike the other thumbnails where the dish is fully centered within the frame.",
+    "The ramen card repeats the same information twice: a \"€0 delivery\" badge overlaid on the image and \"€0 delivery\" again in the metadata line below the title."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the pizza card’s discount badge showing “-0%,” the same invalid discount value."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ]
+  }
+}

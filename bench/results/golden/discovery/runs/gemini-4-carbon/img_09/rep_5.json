@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "gemini-4-carbon",
+  "provider": "google",
+  "imageId": "img_09",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:37:54.670Z",
+  "status": "ok",
+  "result": {
+    "summary": "Found 1 layout issue where a restaurant title is prematurely clipped mid-character despite having ample available space.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Under 'Popular right now', the restaurant title 'Tokumaru Ramen' is abruptly clipped mid-character ('Tokumaru Rameı') without an ellipsis, even though there is plenty of empty horizontal space before the star rating on the right.",
+        "suggestion": "Allow the title container to flex into the available space (e.g., flex: 1 with an appropriate margin before the rating) and apply 'text-overflow: ellipsis' so long names truncate cleanly if they ever exceed the available width."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1605,
+    "outputTokens": 1025,
+    "reasoningTokens": 849,
+    "estimatedCost": 0.01346,
+    "durationSeconds": 17.263820583000008
+  }
+}

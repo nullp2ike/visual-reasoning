@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_14",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:39:31.665Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely clean, but the 'Fastest near you' carousel has a clear vertical misalignment: the middle card (Smash Bros Burgers) is shifted down relative to its neighbors, breaking the row's baseline grid for images, badges, titles and delivery fees. A secondary cosmetic concern is the washed-out, low-contrast look of the first card's photo compared with the other thumbnails.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Fastest near you' row, the second card (Smash Bros Burgers) is offset roughly 30px lower than the first and third cards. Its image top edge, ETA badge, restaurant name and delivery-fee line all sit lower than the adjacent cards, so the row looks broken/uneven rather than intentionally staggered.",
+        "suggestion": "Give all carousel cards the same fixed image height and align them to a common top baseline (e.g., align-items: flex-start with identical image aspect ratio and consistent padding), so titles and metadata lines line up horizontally across the row."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The Green Bowl Poké thumbnail appears washed out / very light and blurry compared with the richer, darker thumbnails of the other restaurants, making the dish hard to read and the row visually inconsistent.",
+        "suggestion": "Verify the image asset loaded at full quality (not a blurred placeholder) and normalize brightness/contrast or apply a consistent overlay so all thumbnails have comparable visual weight."
+      },
+      {
+        "priority": "minor",
+        "category": "layout",
+        "description": "ETA badges are positioned inconsistently within the card images (first card badge sits mid-image while the second sits at the very bottom edge), reinforcing the impression of misaligned cards.",
+        "suggestion": "Anchor the ETA badge to a fixed offset from the image's bottom-left corner (e.g., 8px inset) for every card in the carousel."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 890,
+    "reasoningTokens": 428,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.006289950000000001,
+    "reportedCost": 0.00421059,
+    "durationSeconds": 20.927052915999987
+  }
+}

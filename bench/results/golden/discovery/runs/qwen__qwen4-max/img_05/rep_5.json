@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_05",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:37:26.472Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-structured, but the promotional banner has a serious text-contrast problem: white headline and subtitle text sit on a very light mint-green background, making them hard to read. There is also a small inconsistency in the favorite (heart) button styling between cards.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "accessibility",
+        "description": "In the '3 free deliveries for you' promo banner, the white headline and the white subtitle ('Use code TALLINN3 at checkout · min. order €10') are placed on a pale mint-green background, resulting in very low contrast. The subtitle in particular is nearly illegible.",
+        "suggestion": "Use dark text (e.g., dark green/near-black) on the light banner background, or darken/saturate the banner background so white text meets WCAG AA contrast (4.5:1 for body text)."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite/heart button is inconsistent between the 'Popular right now' cards: on the ramen card it appears as a bare white outline icon, while on the pizza card it sits inside a dark circular background.",
+        "suggestion": "Apply a consistent treatment (e.g., always a semi-transparent dark circular backdrop) to the heart button so it remains visible and uniform over any image."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 528,
+    "reasoningTokens": 202,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.004742400000000001,
+    "reportedCost": 0.00266304,
+    "durationSeconds": 10.596563374999999
+  }
+}

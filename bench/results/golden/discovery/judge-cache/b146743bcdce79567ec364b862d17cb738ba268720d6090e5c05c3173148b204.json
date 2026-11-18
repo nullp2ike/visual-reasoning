@@ -1,0 +1,30 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "An icon is missing from the top right corner, only a red dot is visible"
+  ],
+  "reportedIssues": [
+    "The circular button in the top-right header appears empty: a plain light-gray circle with a small red dot and no avatar image, user initials, or icon. It reads as a failed image load or missing glyph rather than an intentional control.",
+    "The search field placeholder 'Restaurants, dishes, groceries' and the magnifier icon are very light gray on a light gray fill, giving low contrast that may fail WCAG 1.4.11/1.4.3 for readability.",
+    "Favorite (heart) buttons are inconsistent between cards: the ramen card shows a bare white heart outline directly on the photo, while the pizza card shows the heart inside a dark translucent circular background. The bare version has poor contrast against lighter image areas.",
+    "Cards in 'Fastest near you' show only name and delivery fee, with no rating, cuisine tag, or promo badge, while 'Popular right now' cards show rating and cuisine. The inconsistency makes the first row look like partially loaded content."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the top-right circular button showing only a red dot with its icon missing."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ]
+  }
+}

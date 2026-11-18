@@ -1,0 +1,30 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The bottom navigation bar does not respect the device safe area: the black home-indicator pill overlaps and visually cuts through the Search and Orders tab icons, and the icons are positioned at the very bottom edge of the screen with no bottom padding, making them look clipped and hard to tap.",
+    "The four bottom tab items show icons only, with no text labels (Home, Search, Orders, Account), which makes the middle icons (magnifier vs. receipt) ambiguous and reduces clarity of the active state.",
+    "Favorite (heart) buttons are styled inconsistently between cards: the ramen card's heart sits directly on the image with no backing shape, while the pizza card's heart has a dark translucent circular background. On lighter imagery the bare white heart would have poor contrast.",
+    "In the 'Fastest near you' row, the first thumbnail uses a light gray studio background while the following thumbnails use dark, moody backgrounds, creating a visually uneven carousel."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "The report describes the bottom navigation icons being overlapped by the home indicator and clipped at the screen edge, matching the safe-area defect."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ]
+  }
+}

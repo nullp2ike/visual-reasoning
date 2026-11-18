@@ -1,0 +1,28 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "In the 'Popular right now' section, the restaurant title renders as 'Tokumaru Rame' with the final glyph sliced in half vertically (no ellipsis). The text is being clipped by the fixed-width container reserved for the rating ('4.8 (500+)') rather than truncated cleanly, making the name look broken and unreadable.",
+    "The search field placeholder 'Restaurants, dishes, groceries' is a very light gray on a near-white fill, likely below the 4.5:1 contrast ratio needed for readable text.",
+    "The 'Fastest near you' thumbnails are visually inconsistent: the first card uses a light gray backdrop while the others use dark blurred backdrops, and the food illustrations vary in scale/crop, making the row look uneven."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the same Tokumaru restaurant title being clipped mid-word without an ellipsis."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

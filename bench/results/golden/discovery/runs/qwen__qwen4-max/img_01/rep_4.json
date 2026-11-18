@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_01",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:36:40.265Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-structured, but one clear defect stands out: an untranslated localization key ('home_feed.popular_title') is rendered as a section heading instead of human-readable text. A couple of minor styling inconsistencies were also noted in the restaurant cards.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The second section heading displays the raw i18n key 'home_feed.popular_title' instead of a localized label (e.g. 'Popular near you'), indicating a missing translation string or failed lookup.",
+        "suggestion": "Add the missing translation for 'home_feed.popular_title' in all supported locales and ensure the i18n fallback renders a readable default string rather than the raw key."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) button is styled inconsistently between cards: on the ramen card it sits directly on the image with no background, while on the pizza card it has a dark circular backdrop. On light images the bare icon could become hard to see.",
+        "suggestion": "Apply the same semi-transparent circular background (or scrim) behind the heart icon on all cards for consistent appearance and reliable contrast."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The ramen card shows a '€0 delivery' badge on the image and repeats '€0 delivery' in the metadata line below, creating redundant information.",
+        "suggestion": "Show the delivery-fee badge only when it adds new information (e.g. a promo or discount), or omit the duplicate text in the metadata row."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 429,
+    "reasoningTokens": 85,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.004319175000000001,
+    "reportedCost": 0.002239815,
+    "durationSeconds": 12.058389624999997
+  }
+}

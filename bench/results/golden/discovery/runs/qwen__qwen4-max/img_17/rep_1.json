@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_17",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:40:07.348Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-composed, but the bottom navigation state contradicts the visible content: 'Profile' is marked active while a Home/discovery feed is displayed. A couple of smaller inconsistencies exist in the favorite-button treatment and low-contrast placeholder text. Carousel clipping at the right edge and the card cut off at the bottom were treated as intended behavior.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The bottom tab bar highlights 'Profile' in green as the active tab, but the screen content is clearly the Home/discovery feed (delivery address, search, category chips, promo banner, restaurant carousels). The active-state indicator does not match the rendered screen.",
+        "suggestion": "Set the active tab to 'Home' (green icon + label) and render 'Profile' in the inactive gray style, so the navigation state reflects the current route."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) buttons on the 'Popular right now' cards are styled inconsistently: the Tokumaru Ramen Bar card shows a bare white heart outline directly on the photo, while the pizza card below shows the heart inside a translucent dark circular badge. On lighter imagery the bare icon would be hard to see.",
+        "suggestion": "Apply the same circular scrim/badge background to all favorite buttons so the icon has consistent shape, size and contrast regardless of the underlying photo."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search field placeholder 'Restaurants, dishes, groceries' is very light gray on a light gray fill, giving low contrast that may fail WCAG 1.4.3 for readable text.",
+        "suggestion": "Darken the placeholder color (e.g. to a mid-gray around #6B7280) or darken the field fill so the text reaches at least 4.5:1 contrast."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "Card imagery in 'Fastest near you' is visually inconsistent: the first tile uses a bright near-white background while the following tiles use dark blurred backgrounds, making the row look uneven and the first tile's edges blend into the page.",
+        "suggestion": "Normalize the image treatment (consistent background/blur or a subtle border/overlay on light images) so all tiles in the row read as a uniform set."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 746,
+    "reasoningTokens": 232,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.005674350000000001,
+    "reportedCost": 0.00567435,
+    "durationSeconds": 14.43976658299999
+  }
+}

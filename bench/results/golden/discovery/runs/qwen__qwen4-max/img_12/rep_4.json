@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_12",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:39:03.021Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-structured, but there is one clear visual defect: in the 'Popular right now' section, the restaurant metadata line under 'Tokumaru Ramen Bar' renders two text strings on top of each other, producing garbled, unreadable text. A secondary minor redundancy exists with the delivery fee shown twice for the same card.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "Under 'Tokumaru Ramen Bar', the delivery time and delivery fee text overlap on the same line (reads like '25–3€0 delivery · Ramen' instead of '25–35 min · €0 delivery · Ramen'). The two labels are drawn at the same horizontal position, making both unreadable.",
+        "suggestion": "Lay the metadata out in a single horizontal flow (e.g., flex row with gap and separator dots) or ensure each text element has its own measured width/position so '25–35 min', '€0 delivery', and 'Ramen' do not collide. Add truncation/ellipsis rules for narrow widths."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "The '€0 delivery' information is duplicated for the Tokumaru Ramen Bar card: once as a badge overlay on the image and again in the metadata line beneath the title, adding visual noise.",
+        "suggestion": "Show the free-delivery badge only on the image (or only in the metadata line) to avoid repeating the same information twice within one card."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 535,
+    "reasoningTokens": 203,
+    "cachedInputTokens": 1536,
+    "estimatedCost": 0.004772325000000001,
+    "reportedCost": 0.002692965,
+    "durationSeconds": 10.811651333000016
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "model": "qwen/qwen4-max",
+  "provider": "openrouter",
+  "imageId": "img_11",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-18T10:38:42.381Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is largely well-structured, but there is one clearly broken data value (a “-100%” discount badge) plus a few smaller inconsistencies: the favorite/heart control is styled differently between cards, the “Fastest near you” cards omit rating/cuisine metadata shown elsewhere, and the search placeholder has weak contrast.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The second card in “Popular right now” shows a promotion badge reading “−100%”. A 100% discount implies the item is free, which is almost certainly invalid promo data (or a sign/formatting bug) and undermines trust in the offers shown.",
+        "suggestion": "Validate discount values server-side and clamp/reject implausible percentages (e.g., >90%). Render realistic values such as “−20%” and hide the badge entirely when no valid promotion exists."
+      },
+      {
+        "priority": "minor",
+        "category": "styling",
+        "description": "The favorite (heart) button is inconsistent between cards: on the ramen card it is a bare white outline sitting directly on the photo, while on the pizza card it has a dark circular scrim behind it. On light imagery the bare icon would be hard to see.",
+        "suggestion": "Apply the same circular semi-transparent dark background (and identical size/position) to the heart button on every restaurant card for consistent affordance and legibility."
+      },
+      {
+        "priority": "minor",
+        "category": "content",
+        "description": "Cards in “Fastest near you” show only name and delivery fee, while “Popular right now” cards show rating, time, fee and cuisine. The missing rating/cuisine metadata makes the two rows feel inconsistent and gives users less decision information in the first row.",
+        "suggestion": "Use a shared card metadata template so all restaurant cards display rating and cuisine (or intentionally document the compact variant), keeping information density consistent across sections."
+      },
+      {
+        "priority": "minor",
+        "category": "accessibility",
+        "description": "The search field placeholder “Restaurants, dishes, groceries” is light gray on a very light gray fill, giving low contrast that may fail WCAG 1.4.3 for users with low vision.",
+        "suggestion": "Darken the placeholder text (e.g., #6B7280 or darker) or lighten the field background so the text reaches at least a 4.5:1 contrast ratio, and ensure the icon has an accessible label."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 1744,
+    "outputTokens": 942,
+    "reasoningTokens": 273,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.006512250000000001,
+    "reportedCost": 0.00651225,
+    "durationSeconds": 20.59454475
+  }
+}

@@ -140,6 +140,24 @@ describe("calculateCost", () => {
     expect(cost).toBeCloseTo(0.000825, 10);
   });
 
+  it("calculates cost for google gemini-4-carbon", () => {
+    const cost = calculateCost("google", "gemini-4-carbon", 1000, 500);
+    // 1000 * (2/1M) + 500 * (10/1M) = 0.002 + 0.005 = 0.007
+    expect(cost).toBeCloseTo(0.007, 10);
+  });
+
+  it("calculates cost for google gemini-4-hydrogen", () => {
+    const cost = calculateCost("google", "gemini-4-hydrogen", 1000, 500);
+    // 1000 * (1.5/1M) + 500 * (7.5/1M) = 0.0015 + 0.00375 = 0.00525
+    expect(cost).toBeCloseTo(0.00525, 10);
+  });
+
+  it("calculates cost for openrouter qwen/qwen4-max", () => {
+    const cost = calculateCost("openrouter", "qwen/qwen4-max", 1000, 500);
+    // 1000 * (1.425/1M) + 500 * (4.275/1M) = 0.001425 + 0.0021375 = 0.0035625
+    expect(cost).toBeCloseTo(0.0035625, 10);
+  });
+
   it("calculates cost for google gemini-4-argon", () => {
     const cost = calculateCost("google", "gemini-4-argon", 1000, 500);
     // 1000 * (2/1M) + 500 * (10/1M) = 0.002 + 0.005 = 0.007

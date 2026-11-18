@@ -1,0 +1,30 @@
+{
+  "judgeModel": "gpt-6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Restaurant cover image failed to load"
+  ],
+  "reportedIssues": [
+    "The 'Tokumaru Ramen Bar' card in the 'Popular right now' section displays a broken/missing image: a large empty light-gray rectangle with a generic 'broken image' glyph in the center, while all other restaurant cards show real food imagery. This makes the primary promoted listing look unfinished and unappetizing.",
+    "The favorite (heart) button on the image-less card is a mid-gray circle with a white outline heart, giving it noticeably weaker contrast than the same control on the pizza card below (dark translucent circle). On the light gray placeholder it is easy to miss.",
+    "The search field placeholder 'Restaurants, dishes, groceries' is rendered in a very light gray on a light gray field, likely below the 4.5:1 contrast ratio needed for readable text.",
+    "In the 'Fastest near you' carousel, the delivery-time badges ('15–25 min', '20–30 min') sit at the bottom-left overlapping the food imagery, and on the first card the badge covers part of the plate, slightly obscuring the dish."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "The Tokumaru Ramen Bar card is described as showing a broken or missing image."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ]
+  }
+}
