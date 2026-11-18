@@ -4,6 +4,12 @@ AI-powered visual assertions for E2E tests. Send screenshots — or short video 
 
 Every supported model is benchmarked against hand-labelled screenshots — **[see how they compare](https://nullp2ike.github.io/visual-reasoning/)** ([methodology](#benchmarks)).
 
+To learn more, watch the talk from Nordic Testing Days 2026:
+
+[<img src="https://i.ytimg.com/vi/V8JMO7qaA5k/hqdefault.jpg" alt="Lessons Learned From AI-Powered Visual Reasoning Feedback — Nordic Testing Days 2026" width="480">](https://youtu.be/V8JMO7qaA5k)
+
+**[Lessons Learned From AI-Powered Visual Reasoning Feedback](https://youtu.be/V8JMO7qaA5k)** — Nordic Testing Days 2026
+
 ## Installation
 
 ```bash
