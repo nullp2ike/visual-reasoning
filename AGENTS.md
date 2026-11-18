@@ -64,3 +64,12 @@ Run all checks: `pnpm typecheck && pnpm lint && pnpm test && pnpm build`
 5. Tag: `git tag -a vX.Y.Z -m "vX.Y.Z: <summary>"`
 6. Push: `git push origin main --tags`
 7. Publish: `pnpm publish --access public`
+8. Create the GitHub release (a pushed tag alone does not create one, so GitHub keeps showing the previous version as latest). The body is the version's `CHANGELOG.md` section plus an npm / changelog footer:
+
+   ```bash
+   V=X.Y.Z
+   { awk -v v="$V" '$0 ~ "^## \\[" v "\\]" {f=1; next} f && /^## \[/ {exit} f' CHANGELOG.md
+     printf '\n---\n\n**npm:** [`visual-ai-assertions@%s`](https://www.npmjs.com/package/visual-ai-assertions/v/%s) · **Full changelog:** [CHANGELOG.md](https://github.com/nullp2ike/visual-reasoning/blob/v%s/CHANGELOG.md)\n' "$V" "$V" "$V"
+   } > /tmp/release-notes.md
+   gh release create "v$V" --title "v$V" --notes-file /tmp/release-notes.md --verify-tag --latest
+   ```
