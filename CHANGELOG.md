@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.29.0] - 2026-11-18
+
+### Added
+
+- **Claude Fable 5.2 (`claude-fable-5-2`)** as a supported Anthropic model: the successor to Fable 5.1 and Anthropic's most capable widely released model, at **$8 / $40 per MTok**, below Fable 5.1's $10 / $50. Cached input ($0.20/MTok) is not modelled, since `calculateCost` applies no cache discount on any provider. It has a 1M-token context and 128K max output. No driver changes were needed: it takes the same adaptive-thinking path (`thinking: {type: "adaptive"}` plus `output_config.effort`) as the other current Anthropic models, and it is listed as `xhigh`-capable, so `reasoningEffort: "xhigh"` passes through rather than being remapped to `max`. Note that thinking is always on for this model: it thinks even with no `reasoningEffort` set. On the `golden` discovery bench (judged by `gpt-6-luna`, `medium` effort, 5 reps) it completed 90 of 90 calls and scored **100% recall (0% flakiness) with 0.0 extras per run and a clean result on all 5 reps of the defect-free control** — the first model on the board to pair perfect recall with zero extras (Opus 5.5 also scores 100% but reports 0.5 extras per run). All five available judges agree on every figure. It is also the fastest Claude in the roster at a median 4.5s per call (p95 5.9s), and at $0.0277 per run it costs under two thirds of Fable 5.1's $0.0426. The sixth judge, `gemini-3.8-flash`, has no verdicts for it yet because the Google API account's prepaid credits ran out mid-scoring. Available as `Model.Anthropic.FABLE_5_2`, and it is in the bench roster. `claude-sonnet-5-5` remains the Anthropic default.
+
 ## [0.28.0] - 2026-10-29
 
 ### Added
