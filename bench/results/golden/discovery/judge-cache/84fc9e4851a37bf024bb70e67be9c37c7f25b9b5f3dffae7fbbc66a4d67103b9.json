@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The 'Pizza' filter chip appears in the selected/active state (dark fill, white text), but the listings below are not filtered to pizza: 'Fastest near you' shows Green Bowl Poké and Smash Bros Burgers, and 'Popular right now' leads with Tokumaru Ramen Bar. The chip state does not match the displayed content; on an unfiltered home feed, 'All' would be expected to be the active chip."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the Pizza chip being active while the feed still shows non-pizza restaurants, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

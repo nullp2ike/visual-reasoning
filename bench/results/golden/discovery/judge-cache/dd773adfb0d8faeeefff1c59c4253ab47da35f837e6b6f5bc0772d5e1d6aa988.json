@@ -1,0 +1,28 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Green Bowl Poké card appears twice in the carousel"
+  ],
+  "reportedIssues": [
+    "The first two cards in 'Fastest near you' are exact duplicates: both are 'Green Bowl Poké' with the same image, '15–25 min' badge and '€0.90 delivery' label. This looks like a duplicated list item or a keying/rendering bug rather than intentional content.",
+    "The 'Fastest near you' cards show only name and delivery fee, while 'Popular right now' cards include rating, review count, ETA and cuisine tag. The inconsistency makes the carousel cards feel incomplete, and the plate imagery looks like a generic placeholder illustration rather than a real dish/brand photo.",
+    "The search field placeholder 'Restaurants, dishes, groceries' is rendered in a very light gray on a light gray background, likely falling below the 4.5:1 contrast ratio needed for readable text."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the same two identical 'Green Bowl Poké' cards in the 'Fastest near you' carousel as duplicates."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

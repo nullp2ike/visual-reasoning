@@ -1,0 +1,26 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "Active 'Pizza' filter chip does not filter displayed items, showing burgers and poké bowls instead.",
+    "Restaurant name 'Trattoria Piccol...' is truncated prematurely."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue says the active Pizza filter chip fails to filter, showing burgers and poke bowls, which is the same defect as the feed ignoring the Pizza selection."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Profile is highlighted in the bottom nav bar while the home feed is shown"
+  ],
+  "reportedIssues": [
+    "The bottom tab bar shows 'Profile' as the active tab (green icon and label), but the content on screen is clearly the Home/discovery feed (delivery address, search, category chips, promo banner, restaurant lists). The 'Home' tab is rendered in the inactive gray state, so the navigation state does not match the visible screen.",
+    "The favorite (heart) control is styled inconsistently between cards in the same 'Popular right now' list: on the Tokumaru Ramen Bar card it is a bare white outline with no background, while on the pizza card below it sits inside a dark circular button. On the light/busy ramen artwork the bare heart also has weaker affordance and contrast.",
+    "Card imagery in 'Fastest near you' is visually inconsistent: the first card (Green Bowl Poké) uses a very light, washed-out gray image where the plate illustration almost blends into the background, while the neighbouring cards use rich dark photography-style images. The first tile reads as an unloaded/placeholder image rather than finished content.",
+    "Cards in 'Fastest near you' show only name and delivery fee, with no rating, while cards in 'Popular right now' show a star rating and review count. The two restaurant card types in the same screen present different information density, which makes comparison harder.",
+    "The delivery fee is duplicated on the Tokumaru Ramen Bar card: a '€0 delivery' badge overlays the image and the meta line below repeats '€0 delivery'. The redundant text adds noise without new information.",
+    "The search field placeholder 'Restaurants, dishes, groceries' is light gray on a very light gray fill, giving low contrast that may fail WCAG 1.4.3 for users with low vision; the small gray secondary text (e.g. '€0.90 delivery', meta separators) is also close to the threshold."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the Profile tab being active while the Home/discovery feed is displayed, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  }
+}

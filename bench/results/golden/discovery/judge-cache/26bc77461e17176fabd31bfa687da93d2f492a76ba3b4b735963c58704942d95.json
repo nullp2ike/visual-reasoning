@@ -1,0 +1,28 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Delivery fee shows €NaN"
+  ],
+  "reportedIssues": [
+    "Under 'Smash Bros Burgers' in the 'Fastest near you' row, the delivery fee reads '€NaN delivery', exposing an invalid/undefined numeric value to users.",
+    "The search field placeholder 'Restaurants, dishes, groceries' is light gray on a very light gray background, likely below the 4.5:1 contrast ratio for readable text.",
+    "Secondary metadata text (e.g., '€0.90 delivery', '25–35 min · €0 delivery · Ramen', 'DELIVER TO') uses a fairly light gray that may be hard to read at small sizes."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the same delivery fee text showing '€NaN' under Smash Bros Burgers, matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

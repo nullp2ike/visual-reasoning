@@ -1,0 +1,30 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Fastest near you carousel card heights are misaligned with each other"
+  ],
+  "reportedIssues": [
+    "In the 'Fastest near you' row the cards are not vertically aligned. The middle card (Smash Bros Burgers) sits roughly 30–35px lower than the first and third cards, so its image top edge, restaurant name and delivery fee text are all offset from the neighboring cards, producing a jagged, broken-looking row.",
+    "Card image heights in the 'Fastest near you' row appear inconsistent (the first tile is slightly taller/shorter than the others), which contributes to the uneven text baselines below the images.",
+    "The search field placeholder ('Restaurants, dishes, groceries') is light gray on a very light gray fill, giving low contrast that may be hard to read for low-vision users.",
+    "The Green Bowl Poké thumbnail is a pale plate on a near-white/light gray background, so the image almost blends into the card and looks empty compared with the other richly colored thumbnails."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0,
+          1
+        ],
+        "reasoning": "Both reports describe the cards in the 'Fastest near you' row being vertically misaligned, one via the middle card's offset and the other via inconsistent image heights."
+      }
+    ],
+    "extraReportedIndexes": [
+      2,
+      3
+    ]
+  }
+}

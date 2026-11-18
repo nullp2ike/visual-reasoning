@@ -1,0 +1,28 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The 'Pizza' category chip is shown in the active (dark/selected) state, but the results below are not pizza-related: 'Fastest near you' shows Green Bowl Poké, Smash Bros Burgers and Trattoria Piccolo, and 'Popular right now' leads with Tokumaru Ramen Bar. The active filter state visually contradicts the rendered content, making the filter appear broken.",
+    "Card imagery is visually inconsistent within the same row: the first 'Fastest near you' tile uses a flat light-grey illustration background while the adjacent tiles use dark, blurred photographic-style backgrounds, making the row look uneven.",
+    "The favorite (heart) button on the large 'Popular right now' cards sits on a semi-transparent dark circular scrim that is barely distinguishable over the dark ramen image, reducing its visibility compared with the lighter pizza card."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the Pizza chip being active while the feed shows non-pizza restaurants, which is the same defect."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

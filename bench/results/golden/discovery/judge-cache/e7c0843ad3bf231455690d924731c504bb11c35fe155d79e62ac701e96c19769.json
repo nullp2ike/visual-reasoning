@@ -1,0 +1,25 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant title 'Tokumaru Ramen' renders with a malformed final character that looks like 'Rameı' (dotless i), so the name appears misspelled.",
+    "Secondary gray text (delivery fees, the '(500+)' review count, and the '25–35 min' metadata) is light gray on a white background, which may fall below recommended contrast ratios."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "Reported issue 0 describes a dotless-i glyph misrendering in the title, not the heading being cut off mid-word, and no report mentions truncation."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1
+    ]
+  }
+}

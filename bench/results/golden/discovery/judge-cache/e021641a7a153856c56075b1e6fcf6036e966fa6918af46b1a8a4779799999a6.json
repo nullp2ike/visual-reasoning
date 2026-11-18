@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "Category chip 'Pizza' is selected/active, but the 'Fastest near you' and 'Popular right now' lists show non-pizza restaurants (Poké, Burgers, Trattoria, Ramen). Filter state does not match displayed content."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue describes the Pizza chip being selected while the lists still show non-pizza restaurants, which is the same defect."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

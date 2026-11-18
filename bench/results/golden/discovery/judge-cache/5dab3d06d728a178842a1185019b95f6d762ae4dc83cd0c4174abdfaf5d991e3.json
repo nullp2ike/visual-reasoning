@@ -1,0 +1,30 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The 'Pizza' category chip is shown in the active/selected state, yet the content below does not reflect that filter: 'Fastest near you' shows Green Bowl Poké, Smash Bros Burgers and Trattoria, and 'Popular right now' leads with a ramen restaurant. Only the partially visible bottom card is pizza-related, so the selected filter appears not to be applied to the lists.",
+    "The favorite (heart) button is styled inconsistently between cards: on the Tokumaru Ramen card the heart sits directly on the image with no backing shape, while on the pizza card it has a dark circular scrim. This makes the control look unfinished on the first card and reduces its legibility over lighter image areas.",
+    "In the 'Fastest near you' row, the delivery-time badge on the first card overlaps and obscures a large portion of the small dish illustration, and the plate artwork appears cropped off-center compared with the other thumbnails, making the row look uneven.",
+    "Cards in 'Fastest near you' show only name and delivery fee, with no rating or cuisine label, while 'Popular right now' cards show rating, time and cuisine. The inconsistent information density makes the two sections feel like different components."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the Pizza chip shown as selected while the feed lists still show non-pizza restaurants, matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2,
+      3
+    ]
+  }
+}

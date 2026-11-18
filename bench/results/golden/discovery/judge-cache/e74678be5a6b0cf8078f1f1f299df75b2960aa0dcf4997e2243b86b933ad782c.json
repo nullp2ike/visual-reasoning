@@ -1,0 +1,30 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "In the 'Popular right now' list, the heart/favorite icon on the first card (Tokumaru Ramen Bar) is rendered as a bare white outline, while the second card's heart sits inside a dark translucent circular button. The two affordances look like different components.",
+    "The search field placeholder 'Restaurants, dishes, groceries' is a very light gray on a light gray fill, giving low contrast that may fail WCAG 1.4.3 for users with low vision.",
+    "The 'Pizza' category chip is shown as selected, yet the visible results (Green Bowl Poké, Smash Bros Burgers, Tokumaru Ramen Bar) are not pizza places, which makes the filter appear non-functional or confusing.",
+    "The 'Fastest near you' thumbnails use flat, emoji-like illustrations on heavily blurred backgrounds, while 'Popular right now' uses richer full-bleed illustrations; the mixed asset quality makes the top row look like placeholder imagery."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          2
+        ],
+        "reasoning": "Reported issue 2 describes the Pizza chip being selected while the visible results are non-pizza restaurants, which is the same filter-not-applied defect."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1,
+      3
+    ]
+  }
+}

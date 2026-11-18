@@ -1,0 +1,26 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Section title shows the raw translation key home_feed.popular_title instead of translated text"
+  ],
+  "reportedIssues": [
+    "The second section heading renders the untranslated i18n key 'home_feed.popular_title' instead of a localized title such as 'Popular near you'. This looks broken to users and is inconsistent with the properly labeled 'Fastest near you' section above it.",
+    "The search field placeholder 'Restaurants, dishes, groceries' is light gray on a very light gray background, giving low contrast that may be hard to read for low-vision users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the second section heading showing the untranslated key 'home_feed.popular_title', which is the same defect."
+      }
+    ],
+    "extraReportedIndexes": [
+      1
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The badge on the pizza card in 'Popular right now' reads '−100%', implying the item is entirely free. This looks like a data/formatting bug (e.g., a percentage computed or sign-flipped incorrectly) and undermines trust in the promotions shown.",
+    "The favorite/heart control is styled inconsistently between cards: on the ramen card the heart sits on the dark image with no visible circular backdrop, while on the pizza card it has a distinct dark translucent circle. This makes the same control look like two different components.",
+    "The 'Fastest near you' cards use very different image treatments (the first tile is a pale, low-contrast illustration on light gray while the others are dark photographic-style images), making the row look visually uneven and the white time pill on the light tile nearly blends into the background."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the same '−100%' discount badge on the pizza card as the expected defect."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

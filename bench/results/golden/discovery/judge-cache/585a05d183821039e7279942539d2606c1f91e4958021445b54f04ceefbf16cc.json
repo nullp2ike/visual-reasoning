@@ -1,0 +1,28 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Fastest near you carousel card heights are misaligned with each other"
+  ],
+  "reportedIssues": [
+    "In the 'Fastest near you' row the cards are not vertically aligned. The first (Green Bowl Poké) and third (Trattoria Piccol…) cards start at the same top edge, while the middle card (Smash Bros Burgers) sits roughly 30px lower, so its image, ETA badge, title and delivery-fee line all fall out of line with the adjacent cards. This makes the row look broken/jittery rather than intentionally staggered.",
+    "The favorite/heart control is rendered inconsistently between the two 'Popular right now' cards: on the ramen card it appears as a bare white outline glyph, while on the pizza card it sits inside a visible dark circular button. The same control should not change container treatment from card to card.",
+    "Metadata density is inconsistent between sections: 'Popular right now' cards show rating, ETA, delivery fee and cuisine, while 'Fastest near you' cards show only name and delivery fee (no rating or cuisine tag), leaving noticeably empty space under those titles."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the same misalignment of cards in the 'Fastest near you' row, with the middle card sitting lower than its neighbors."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

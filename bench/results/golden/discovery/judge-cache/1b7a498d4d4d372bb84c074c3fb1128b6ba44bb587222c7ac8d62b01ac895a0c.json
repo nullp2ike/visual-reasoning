@@ -1,0 +1,28 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The pizza card's promo badge reads '−100%', which is not a meaningful discount value (a negative 100% discount implies the item is free or is a formatting/sign error). It also differs in format from the other badge ('€0 delivery'), suggesting a data or template bug.",
+    "The favorite/heart button is styled inconsistently across cards: on the pizza card it sits inside a dark translucent circular background, while on the Tokumaru Ramen card the heart appears without any circular container, making it look unfinished and reducing its visibility against varied imagery.",
+    "The search field placeholder ('Restaurants, dishes, groceries') and magnifier icon are light gray on a very light gray background, giving low contrast that may be hard to read for users with low vision."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the pizza card's promo badge reading '−100%' as a meaningless discount value, the same defect as expected."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The 'Pizza' category chip is visibly selected (dark active state), yet the 'Fastest near you' and 'Popular right now' sections show poké, burgers, and ramen restaurants. The filter appears to have no effect on the displayed content, which is confusing and suggests broken filtering logic.",
+    "The search field placeholder 'Restaurants, dishes, groceries' is light gray on a very light gray background, giving low contrast that may be hard to read for low-vision users.",
+    "Card metadata is inconsistent between sections: 'Popular right now' cards show rating, time, delivery fee and cuisine, while 'Fastest near you' cards show only name and delivery fee (no rating or cuisine), making the layout feel uneven."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the Pizza category chip being selected while the feed still shows poké, burgers, and ramen, matching the expected defect exactly."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

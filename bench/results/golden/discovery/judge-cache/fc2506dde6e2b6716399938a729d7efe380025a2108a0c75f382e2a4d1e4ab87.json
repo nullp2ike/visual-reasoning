@@ -1,0 +1,25 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Discount badge shows −100%"
+  ],
+  "reportedIssues": [
+    "The Tokumaru Ramen Bar meta line repeats delivery information already shown in the '€0 delivery' badge on the card image.",
+    "The '−100%' badge on the pizza card has no context about what it discounts (item price, delivery fee, or the whole order)."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": false,
+        "matchedReportedIndexes": [],
+        "reasoning": "Report 1 concerns the same −100% badge but only says it lacks context about what it discounts, not that the 100% value itself is wrong; report 0 concerns a different element."
+      }
+    ],
+    "extraReportedIndexes": [
+      0,
+      1
+    ]
+  }
+}

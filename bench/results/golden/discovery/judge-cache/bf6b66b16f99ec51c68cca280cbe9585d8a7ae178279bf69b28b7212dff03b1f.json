@@ -1,0 +1,23 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Pizza category is selected but the feed still shows all cuisines"
+  ],
+  "reportedIssues": [
+    "The 'Pizza' filter chip is rendered in the selected (dark) state, but the content below is unfiltered: 'Fastest near you' shows a poké bowl, a burger place and a pasta trattoria, and 'Popular right now' leads with Tokumaru Ramen Bar. The active filter state does not match the displayed results."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue describes the Pizza filter chip being selected while the feed still shows unfiltered cuisines like poké, burgers, and ramen, matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

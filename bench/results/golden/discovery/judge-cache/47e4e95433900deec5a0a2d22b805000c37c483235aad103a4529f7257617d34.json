@@ -1,0 +1,28 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Bottom nav labels are cut off below the screen edge and a black horizontal bar overlaps the icons"
+  ],
+  "reportedIssues": [
+    "The horizontal home-indicator bar sits directly on top of the bottom tab bar, drawing a black line through the search and orders/receipt icons and leaving the tab bar with no bottom safe-area padding.",
+    "Bottom navigation items are icon-only with no visible text labels, making their purpose (home, search, orders, profile) ambiguous and harder to identify.",
+    "Secondary metadata text such as '€0.90 delivery' and the '25–35 min · €0 delivery · Ramen' line uses a light gray that appears close to the minimum contrast threshold on white."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the home-indicator bar overlapping the bottom tab bar icons and lacking bottom safe-area padding, matching the black bar overlap and edge clipping of the nav."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

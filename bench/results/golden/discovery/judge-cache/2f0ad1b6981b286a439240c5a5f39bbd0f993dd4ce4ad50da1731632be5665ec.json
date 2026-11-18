@@ -1,0 +1,28 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant title 'Tokumaru Ramen' in the 'Popular right now' list is cut off mid-character (renders as 'Tokumaru Ramen' with the final letters sliced) instead of being truncated with an ellipsis, and it runs directly into the rating block '4.8 (500+)' on the same row.",
+    "The favorite (heart) button is styled inconsistently between cards: on the ramen card it sits on a plain dark area with no visible container, while on the pizza card it has a distinct circular translucent background.",
+    "The search placeholder text ('Restaurants, dishes, groceries') is light gray on a light gray field, giving low contrast that may be hard to read for low-vision users."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the same restaurant title being sliced mid-character with no ellipsis, which is the same truncation defect."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "judgeModel": "claude-haiku-5-5",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Delivery fee shows €NaN"
+  ],
+  "reportedIssues": [
+    "The 'Smash Bros Burgers' card in 'Fastest near you' displays '€NaN delivery' — an unformatted/undefined numeric value leaking into the UI instead of a price.",
+    "The favorite (heart) button on the Tokumaru Ramen Bar card has no visible circular background, while the same button on the pizza card below sits on a dark translucent circle. On the light/busy ramen artwork the outlined heart is harder to see and the treatment is inconsistent.",
+    "Time ranges use a mathematical minus sign ('15−25 min', '20−30 min', '25−35 min') rather than an en dash, which reads oddly and can be mispronounced by screen readers."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue 0 describes the delivery fee on the Smash Bros Burgers card showing '€NaN', matching the expected €NaN delivery fee defect."
+      }
+    ],
+    "extraReportedIndexes": [
+      1,
+      2
+    ]
+  }
+}
