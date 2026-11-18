@@ -1,0 +1,23 @@
+{
+  "judgeModel": "meta/muse-spark-1.3-contributor",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "The \"Tokumaru Ramen Bar\" heading is cut off mid-word, rendering as \"Tokumaru Ramei\" with no ellipsis"
+  ],
+  "reportedIssues": [
+    "The restaurant name on the first \"Popular right now\" card is hard-clipped mid-character. It reads \"Tokumaru Rameı\", with the final \"n\" sliced vertically, even though there is plenty of empty horizontal space before the rating (4.8 (500+)). There is no ellipsis, which suggests the title container has a too-narrow fixed width with overflow hidden."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Both describe the Tokumaru Ramen Bar name clipped mid-character with no ellipsis."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

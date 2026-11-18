@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-2",
+  "provider": "anthropic",
+  "imageId": "img_10",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-10T18:56:02.446Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen is mostly well-formed, but the 'Fastest near you' carousel shows the same restaurant card (Green Bowl Poké, 15–25 min, €0.90 delivery) twice in a row, which points to a duplicated list item. The partially visible carousel card on the right and the pizza card cut off at the bottom are normal scrolling behaviour and are not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "In the 'Fastest near you' carousel, the first two cards are identical: both show 'Green Bowl Poké' with the same image, the same '15–25 min' badge and the same '€0.90 delivery' text. The restaurant is rendered twice in adjacent positions.",
+        "suggestion": "Deduplicate the carousel data, for example by restaurant ID, so each restaurant appears only once. Check the list rendering and keys and the API response for repeated entries."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 304,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.028872,
+    "durationSeconds": 3.4911820000000007
+  }
+}

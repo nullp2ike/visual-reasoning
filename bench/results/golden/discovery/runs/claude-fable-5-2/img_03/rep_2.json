@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-2",
+  "provider": "anthropic",
+  "imageId": "img_03",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-10T18:55:32.251Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly intact. One clear visual defect: the hero image on the Tokumaru Ramen Bar card under \"Popular right now\" did not load and shows a grey placeholder with a broken-image icon. The partially visible carousel item and the bottom-cropped pizza card are expected scroll behaviour and are not reported.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "missing-element",
+        "description": "The Tokumaru Ramen Bar card in \"Popular right now\" has no cover photo. It shows a flat grey block with a broken-image icon, while other cards (e.g. the pizza card below) render full food imagery. The \"€0 delivery\" badge and the heart button float over an empty area.",
+        "suggestion": "Check that the restaurant's image URL or asset is valid and loads. Add a branded fallback (e.g. a cuisine illustration or the restaurant logo) and retry logic so a failed load never shows a raw broken-image icon."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 322,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.029592,
+    "durationSeconds": 3.7151998330000007
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-2",
+  "provider": "anthropic",
+  "imageId": "img_16",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-10T18:56:23.015Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-rendered, but there is one clear state mismatch: the 'Pizza' category chip is selected, yet the content below is unfiltered (poké, burgers, ramen). No other visual breakage was found; the clipped carousel items and the cut-off bottom card are expected scroll behaviour.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The 'Pizza' filter chip is shown as selected (dark fill), but the content is not filtered to pizza: 'Fastest near you' lists Green Bowl Poké and Smash Bros Burgers, and 'Popular right now' leads with Tokumaru Ramen Bar. The selected state and the displayed results contradict each other.",
+        "suggestion": "Either apply the Pizza filter so only pizza restaurants are listed, or reset the selected chip to 'All' when the feed is unfiltered. Keep the chip's selected state in sync with the actual filter."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 321,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.029552,
+    "durationSeconds": 3.4675947920000034
+  }
+}

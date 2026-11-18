@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-2",
+  "provider": "anthropic",
+  "imageId": "img_12",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-10T18:56:05.975Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders cleanly overall, but there is one clear visual defect: the metadata line under the Tokumaru Ramen Bar card has two text elements drawn on top of each other, which makes the delivery time and fee unreadable.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the 'Popular right now' section, the metadata row under 'Tokumaru Ramen Bar' has overlapping text. The delivery time ('25–35 min') and the delivery fee ('€0 delivery') are drawn on top of each other, producing garbled text like '25–3€0mdelivery' before the '• Ramen' label. Neither value can be read.",
+        "suggestion": "Lay the metadata items out in a single row with proper spacing and separators (e.g. '25–35 min • €0 delivery • Ramen'). Check for absolute positioning, negative margins, or a missing flex gap or separator that lets the fee label collapse onto the time label."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 320,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.029511999999999997,
+    "durationSeconds": 4.765317917
+  }
+}

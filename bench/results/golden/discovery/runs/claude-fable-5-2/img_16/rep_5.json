@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-2",
+  "provider": "anthropic",
+  "imageId": "img_16",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-10T18:56:24.225Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders cleanly overall, but one state inconsistency stands out: the 'Pizza' category chip is shown as selected, yet the content below is unfiltered (poké, burgers, ramen). The clipped carousel card and the card cut off at the bottom of the viewport are expected scroll behaviour, not defects.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "The 'Pizza' filter chip appears in the selected/active state (dark fill, white text), but the listings below are not filtered to pizza: 'Fastest near you' shows Green Bowl Poké and Smash Bros Burgers, and 'Popular right now' leads with Tokumaru Ramen Bar. The chip state does not match the displayed content; on an unfiltered home feed, 'All' would be expected to be the active chip.",
+        "suggestion": "Sync the chip's selected state with the applied filter: either highlight 'All' when the feed is unfiltered, or filter the listings to pizza restaurants when 'Pizza' is selected."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 348,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.030632,
+    "durationSeconds": 4.045162000000004
+  }
+}

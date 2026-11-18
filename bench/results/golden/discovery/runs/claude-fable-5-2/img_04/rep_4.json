@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-2",
+  "provider": "anthropic",
+  "imageId": "img_04",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-10T18:55:36.707Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen is mostly well-rendered, but one defect stands out: the discount badge on the second 'Popular right now' card (the pizza restaurant) reads '−0%', which is a meaningless discount value. The partially visible third carousel card and the pizza card cut off at the bottom are expected scrolling behaviour, not defects.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The promotional badge on the pizza restaurant card in the 'Popular right now' list displays '−0%'. A zero-percent discount is meaningless and suggests a missing or uncomputed discount value being rendered instead of the real percentage (or the badge being hidden).",
+        "suggestion": "Show the actual discount percentage from the promotion data, and hide the badge entirely when the discount value is zero, null, or unavailable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 275,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.027712,
+    "durationSeconds": 4.167179375000002
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "judgeModel": "gpt-5.6-luna",
+  "judgePromptVersion": "v1",
+  "expectedIssues": [
+    "Delivery fee shows €NaN"
+  ],
+  "reportedIssues": [
+    "The delivery fee under 'Smash Bros Burgers' in the 'Fastest near you' carousel reads '€NaN delivery'. A failed number computation or format is leaking into the UI, where neighbouring cards show valid prices such as '€0.90 delivery' and '€1.90 delivery'."
+  ],
+  "verdict": {
+    "expected": [
+      {
+        "expectedIndex": 0,
+        "found": true,
+        "matchedReportedIndexes": [
+          0
+        ],
+        "reasoning": "Reported issue describes the delivery fee for Smash Bros Burgers displaying €NaN, matching the expected defect."
+      }
+    ],
+    "extraReportedIndexes": []
+  }
+}

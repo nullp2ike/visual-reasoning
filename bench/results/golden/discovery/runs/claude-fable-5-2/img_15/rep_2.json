@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-2",
+  "provider": "anthropic",
+  "imageId": "img_15",
+  "rep": 2,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-10T18:56:18.880Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly intact, but the bottom navigation bar is visibly broken: it is cut off at the bottom of the screen, its tab labels are missing, and the system home gesture indicator overlaps the icons. No other clear defects found in the header, promo banner, carousels, or restaurant cards.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "The bottom navigation bar is clipped by the bottom edge of the screen: only the top portions of the four tab icons (home, search, orders, profile) are visible and no tab labels are shown. The system home gesture indicator bar is drawn directly over the search and orders icons, showing the nav bar ignores the bottom safe-area inset.",
+        "suggestion": "Add bottom safe-area/system navigation inset padding to the bottom nav bar and ensure it has its full height, so icons and labels render completely above the gesture indicator."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 299,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.028671999999999996,
+    "durationSeconds": 4.158448833000002
+  }
+}

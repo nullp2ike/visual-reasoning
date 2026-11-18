@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-29T18:15:46.287Z",
+  "generatedAt": "2026-11-10T18:57:29.224Z",
   "prompt": "What looks visually broken on this page?\n\nDo not report the following (treat these as features, not defects):\n- A horizontally scrollable row (restaurant carousels, category filter chips) whose last item is only partially visible at the right screen edge, including that item's title being clipped by the edge.\n- Content cut off by the bottom of the viewport, such as a partially visible card at the end of a vertical list.",
   "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
   "reasoningEffort": "medium",
@@ -9,6 +9,27 @@
   "judgePromptVersion": "v1",
   "overrideCount": 0,
   "models": [
+    {
+      "series": "claude-fable-5-2",
+      "model": "claude-fable-5-2",
+      "provider": "anthropic",
+      "reasoningEffort": "medium",
+      "okRuns": 90,
+      "failedRuns": 0,
+      "meanRecall": 1,
+      "anyRecall": 1,
+      "flakiness": 0,
+      "extrasPerRun": 0,
+      "noBugsCleanRate": 1,
+      "latencyMedianSeconds": 4.508730416500001,
+      "latencyP95Seconds": 5.915806250000001,
+      "meanCostPerRun": 0.027733777777777784,
+      "totalCost": 2.4960400000000007,
+      "meanInputTokens": 2089,
+      "meanOutputTokens": 275.5444444444444,
+      "meanReasoningTokens": null,
+      "cacheHitRate": 0
+    },
     {
       "series": "claude-opus-5-5",
       "model": "claude-opus-5-5",
@@ -7857,6 +7878,3161 @@
         "cachedInputTokens": 0,
         "estimatedCost": 0.05449000000000001,
         "durationSeconds": 11.05598725
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_01",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The second section heading shows the untranslated localization key 'home_feed.popular_title' instead of a proper title (e.g. 'Popular near you'), directly above the Tokumaru Ramen Bar card.",
+          "suggestion": "Make sure the 'home_feed.popular_title' string key is defined in the active locale's translation file and add a fallback to the default language so raw keys are never displayed to users."
+        }
+      ],
+      "summary": "The home feed is mostly rendered correctly, but one section heading displays a raw localization key instead of human-readable text. No other clear visual defects were found; the partially visible carousel items and bottom card are expected scroll behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Both reports describe the section title displaying the raw home_feed.popular_title translation key instead of translated text.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 232,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.025991999999999998,
+        "durationSeconds": 5.980903417
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_01",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The second section heading displays the raw i18n key 'home_feed.popular_title' instead of a translated title (e.g. 'Popular right now'). The placeholder string is exposed to users above the Tokumaru Ramen Bar card.",
+          "suggestion": "Make sure the 'home_feed.popular_title' translation key exists in the active locale's string resources, and add a fallback to the default language so raw keys are never rendered in the UI."
+        }
+      ],
+      "summary": "The home feed is mostly rendered correctly, but one section header shows a raw, unresolved localization key instead of a human-readable title. No other clear visual defects were found; the clipped carousel items and the bottom-cut card are expected scrolling behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Both describe the section title showing the raw home_feed.popular_title translation key.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 253,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.026831999999999998,
+        "durationSeconds": 5.781217667000001
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_01",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The second section heading displays the raw i18n key 'home_feed.popular_title' instead of a translated title (e.g. 'Popular right now'). The translation string is missing or failed to resolve, exposing an internal identifier to users.",
+          "suggestion": "Add the missing translation for the 'home_feed.popular_title' key in the active locale and make sure a human-readable fallback string is used when a key cannot be resolved."
+        }
+      ],
+      "summary": "The home feed is mostly rendered correctly, but one section heading shows a raw, unresolved localization key instead of user-facing text. No other clear visual defects were found; the clipped carousel items and the cut-off bottom card are expected scrolling behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes the second section heading exposing the same raw translation key.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 248,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.026631999999999996,
+        "durationSeconds": 5.329400167
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_01",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The heading of the second restaurant section displays the raw, unresolved i18n key 'home_feed.popular_title' instead of a translated title such as 'Popular right now'.",
+          "suggestion": "Make sure the translation key exists in the active locale's string resources and is resolved correctly. Add a human-readable fallback string so raw keys never reach the UI."
+        }
+      ],
+      "summary": "The home feed is mostly rendered correctly, but one section heading shows a raw localization key instead of user-facing text. No other clear visual defects were found; the clipped carousel item and the bottom-cut card are expected scroll behaviour.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report identifies the same section heading displaying the raw translation key home_feed.popular_title.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 221,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.025552,
+        "durationSeconds": 5.015981792
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_01",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The second section heading shows the untranslated localization key 'home_feed.popular_title' instead of a human-readable title (e.g., 'Popular right now'). This is a missing/unresolved i18n string exposed to users.",
+          "suggestion": "Ensure the translation key 'home_feed.popular_title' exists in the active locale's string resources and add a sensible fallback (default language string) so raw keys never render in the UI."
+        }
+      ],
+      "summary": "The home feed is mostly rendered correctly, but one section heading displays a raw localization key instead of user-facing text. No other clear visual defects were found; the clipped carousel item and bottom-cut pizza card are expected scroll behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Both describe the section title displaying the raw home_feed.popular_title translation key instead of translated text.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 243,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.026431999999999997,
+        "durationSeconds": 5.305933292
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_02",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The delivery fee under 'Smash Bros Burgers' in the 'Fastest near you' carousel reads '€NaN delivery'. A failed number computation or format is leaking into the UI, where neighbouring cards show valid prices such as '€0.90 delivery' and '€1.90 delivery'.",
+          "suggestion": "Guard against missing or non-numeric delivery fee values before formatting. Show a fallback such as 'Delivery fee unavailable' or hide the fee line, and find out why the fee for this restaurant is undefined or unparsable."
+        }
+      ],
+      "summary": "The home screen renders mostly correctly, but one data-formatting defect stands out: the delivery fee on the Smash Bros Burgers card shows a raw 'NaN' value instead of a price. No other clear visual defects were found; the clipped carousel items and the bottom-cut card are expected scrolling behaviour.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes the delivery fee displaying €NaN.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 317,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.029391999999999998,
+        "durationSeconds": 4.574410417
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_02",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The Smash Bros Burgers card in the \"Fastest near you\" carousel shows \"€NaN delivery\" as its delivery fee. A raw NaN value is being rendered to users instead of a valid price, unlike neighboring cards that show €0.90 and €1.90.",
+          "suggestion": "Validate the delivery fee before formatting it. If the fee is missing or not numeric, show a fallback such as \"Delivery fee unavailable\" or hide the fee line, and fix the upstream data or parsing that produces NaN."
+        }
+      ],
+      "summary": "The home screen is largely intact, but one clear defect stands out: the delivery fee for the Smash Bros Burgers card in the \"Fastest near you\" carousel shows \"€NaN delivery\" instead of a price. No other visual breakage was found; the clipped third carousel card and the partially visible pizza card at the bottom are expected scroll behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes a delivery fee displayed as €NaN.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 324,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.029671999999999997,
+        "durationSeconds": 4.342027958
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_02",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The Smash Bros Burgers card in the 'Fastest near you' carousel displays '€NaN delivery' instead of a real delivery fee. A failed number computation or missing value is being shown directly to the user.",
+          "suggestion": "Validate the delivery fee before formatting it. If the value is missing or not a number, show a fallback such as 'Delivery fee unavailable' or hide the fee line, and fix the underlying data or parsing that produces NaN."
+        }
+      ],
+      "summary": "The home screen is mostly rendered correctly, but one restaurant card in the 'Fastest near you' carousel shows a raw 'NaN' value where the delivery fee should be. No other clear visual defects were found; the clipped carousel item and the pizza card cut off at the bottom are expected scroll behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes a delivery fee displayed as €NaN.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 281,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027951999999999998,
+        "durationSeconds": 3.884270790999999
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_02",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "In the 'Fastest near you' carousel, the Smash Bros Burgers card shows its delivery fee as '€NaN delivery' instead of a numeric price. This is a failed number formatting or missing data value exposed to the user.",
+          "suggestion": "Validate the delivery fee before formatting. If the value is missing or not a number, show a fallback such as 'Delivery fee unavailable' or hide the fee line, and fix the upstream data or parsing that produces NaN."
+        }
+      ],
+      "summary": "The home screen renders mostly cleanly, but one restaurant card shows a raw unformatted value: the Smash Bros Burgers delivery fee reads '€NaN delivery'. No other clear visual defects were found; the clipped carousel items and the cut-off bottom card are expected scrolling behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes the Smash Bros Burgers card showing a delivery fee of €NaN.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 286,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.028151999999999996,
+        "durationSeconds": 4.271772875000001
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_02",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The delivery fee for 'Smash Bros Burgers' in the 'Fastest near you' carousel displays as '€NaN delivery', a raw failed number-formatting value exposed to users. Neighboring cards show valid fees (€0.90, €1.90).",
+          "suggestion": "Guard the price formatter against null/undefined/non-numeric fee values. Show a fallback (e.g., hide the fee line, or show 'Delivery fee unavailable' or 'Free delivery' when appropriate) instead of rendering NaN, and check the upstream data for this restaurant."
+        }
+      ],
+      "summary": "The home screen is mostly well-rendered, but one clear data-rendering defect stands out: the Smash Bros Burgers card in the 'Fastest near you' carousel shows '€NaN delivery' instead of a valid delivery fee. No other significant visual breakage was found; the clipped carousel items and the bottom-cut pizza card are expected scrolling behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes the delivery fee displaying as €NaN.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 342,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.030392,
+        "durationSeconds": 4.5290701250000005
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_03",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The cover image for the 'Tokumaru Ramen Bar' card under 'Popular right now' is not displayed. A flat grey box with a broken-image icon appears instead, while the other restaurant cards show their food photos.",
+          "suggestion": "Check that the image URL/asset for this restaurant is valid and loads correctly. Add a branded fallback image (e.g. a cuisine-type illustration or the restaurant logo) and retry logic so a broken-image icon is never shown to users."
+        }
+      ],
+      "summary": "The page is mostly well rendered, but one clear visual defect stands out: the hero image for the 'Tokumaru Ramen Bar' card in the 'Popular right now' section failed to load and shows a grey placeholder with a broken-image icon. The rest of the layout (header, search, chips, promo banner, carousel, bottom navigation) appears intact.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Both describe the Tokumaru Ramen Bar cover image failing to display.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 309,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.029072,
+        "durationSeconds": 3.5684884170000006
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_03",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The Tokumaru Ramen Bar card in \"Popular right now\" has no cover photo. It shows a flat grey block with a broken-image icon, while other cards (e.g. the pizza card below) render full food imagery. The \"€0 delivery\" badge and the heart button float over an empty area.",
+          "suggestion": "Check that the restaurant's image URL or asset is valid and loads. Add a branded fallback (e.g. a cuisine illustration or the restaurant logo) and retry logic so a failed load never shows a raw broken-image icon."
+        }
+      ],
+      "summary": "The page is mostly intact. One clear visual defect: the hero image on the Tokumaru Ramen Bar card under \"Popular right now\" did not load and shows a grey placeholder with a broken-image icon. The partially visible carousel item and the bottom-cropped pizza card are expected scroll behaviour and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report says the restaurant card’s cover photo failed to load and appears as a broken-image placeholder.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 322,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.029592,
+        "durationSeconds": 3.7151998330000007
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_03",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The 'Tokumaru Ramen Bar' card in the 'Popular right now' section has no cover photo. It shows a flat grey box with a broken-image icon, while other cards (e.g. the pizza card below it) render their imagery correctly.",
+          "suggestion": "Check the image URL or asset for this restaurant and fix the load failure. Add a branded fallback (e.g. a cuisine illustration or restaurant logo) so a failed load does not expose a broken-image icon."
+        }
+      ],
+      "summary": "The page is mostly intact, with one clear visual defect: the hero image for the 'Tokumaru Ramen Bar' card in 'Popular right now' failed to load and shows a grey placeholder with a broken-image icon. The carousel and bottom-of-viewport clipping are expected scroll behaviour and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes the restaurant card’s cover image failing to load and displaying a broken-image placeholder.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 297,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.028592,
+        "durationSeconds": 3.1753938340000003
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_03",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The Tokumaru Ramen Bar card in the 'Popular right now' section has no cover photo. It shows a flat grey box with a broken-image icon, while the other restaurant cards display food imagery.",
+          "suggestion": "Check that the image URL or asset for this restaurant is valid and loads. Add a branded fallback (e.g. a cuisine illustration or restaurant logo) so a failed load never shows a raw broken-image icon."
+        }
+      ],
+      "summary": "The page is mostly intact. One clear visual defect: the hero image for the Tokumaru Ramen Bar card in 'Popular right now' did not load and shows a grey placeholder with a broken-image icon. The clipped carousel item at the right edge and the cut-off pizza card at the bottom are normal scroll behaviour and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The Tokumaru Ramen Bar card’s cover image is broken and appears as a grey box.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 290,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.028311999999999997,
+        "durationSeconds": 3.541981333
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_03",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The Tokumaru Ramen Bar card in the 'Popular right now' section shows a flat grey box with a broken-image icon instead of the restaurant's cover photo. The other cards (Green Bowl Poké, Smash Bros Burgers, the pizza card) render their images correctly.",
+          "suggestion": "Check that the image URL/asset for this restaurant is valid and loads. Add a branded fallback image (e.g. a cuisine illustration) and retry logic so a failed load never exposes a broken-image icon."
+        }
+      ],
+      "summary": "The page has one clear visual defect: the hero image for the Tokumaru Ramen Bar card in 'Popular right now' failed to load and shows a grey placeholder with a broken-image icon. The rest of the screen (header, search, filter chips, promo banner, carousel, bottom navigation) renders as expected.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The Tokumaru Ramen Bar card shows a broken-image placeholder instead of its cover photo.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 307,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.028991999999999997,
+        "durationSeconds": 3.517176374999999
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_04",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The discount badge on the second 'Popular right now' restaurant card (the pizza image) reads '–0%'. A zero-percent discount is meaningless and suggests a missing or uncomputed discount value being rendered instead of the badge being hidden.",
+          "suggestion": "Hide the discount badge when the discount value is zero, null or undefined, and make sure the real percentage is populated from the data (e.g. '–20%') before rendering."
+        }
+      ],
+      "summary": "The home screen is mostly well-formed, but one promotional badge displays an obviously broken value: the discount pill on the second 'Popular right now' card reads '–0%'. No other visual defects were found; the clipped carousel item and the bottom card cut-off are expected scrolling behaviour.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The reported issue describes the discount badge displaying −0%.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 266,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027351999999999998,
+        "durationSeconds": 4.112585249999999
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_04",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The discount badge on the second \"Popular right now\" card (pizza image) shows \"−0%\". A zero-percent discount is meaningless and suggests a missing or uncomputed value, or a badge that should be hidden when there is no discount.",
+          "suggestion": "Hide the badge when the discount is zero or missing, and check the data binding or formatting so the real percentage (e.g. \"−20%\") is shown when a promotion exists."
+        }
+      ],
+      "summary": "The home screen is mostly well-formed, but there is one content defect: the discount badge on the second restaurant card under \"Popular right now\" reads \"−0%\", which is a meaningless value. No other clear visual defects were found; the clipped carousel item and the card cut off at the bottom are expected scroll behaviour.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report identifies the discount badge showing −0%, the same defect as expected.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 276,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027752,
+        "durationSeconds": 4.248730458000002
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_04",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The promo badge on the second restaurant card in 'Popular right now' (the pizza card) displays '−0%'. A zero percent discount is nonsensical and suggests a missing or uncomputed discount value being rendered instead of the badge being hidden.",
+          "suggestion": "Populate the badge with the real discount percentage, and hide the badge entirely when the discount value is 0, null, or undefined."
+        }
+      ],
+      "summary": "The home screen is mostly well-formed, but one visible content defect stands out: the discount badge on the second 'Popular right now' card reads '−0%', which is a meaningless promotion value. Clipped carousel items and the bottom-cut card are expected scrolling behavior and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The reported issue identifies the promo badge displaying −0%, the same discount badge defect.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 253,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.026831999999999998,
+        "durationSeconds": 3.937484208
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_04",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The promotional badge on the pizza restaurant card in the 'Popular right now' list displays '−0%'. A zero-percent discount is meaningless and suggests a missing or uncomputed discount value being rendered instead of the real percentage (or the badge being hidden).",
+          "suggestion": "Show the actual discount percentage from the promotion data, and hide the badge entirely when the discount value is zero, null, or unavailable."
+        }
+      ],
+      "summary": "The home screen is mostly well-rendered, but one defect stands out: the discount badge on the second 'Popular right now' card (the pizza restaurant) reads '−0%', which is a meaningless discount value. The partially visible third carousel card and the pizza card cut off at the bottom are expected scrolling behaviour, not defects.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The reported issue describes the promotional badge displaying −0%, matching the expected discount badge defect.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 275,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027712,
+        "durationSeconds": 4.167179375000002
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_04",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The promo badge on the second restaurant card under 'Popular right now' (the pizza card) shows '−0%'. A zero-percent discount is meaningless and suggests a missing or uncomputed discount value being rendered instead of the badge being hidden.",
+          "suggestion": "Hide the discount badge when the discount is zero or undefined, and check the data binding or formatting so the real percentage (e.g. '−20%') is shown when a promotion exists."
+        }
+      ],
+      "summary": "The home screen is largely well laid out, with one clear content defect: the discount badge on the second 'Popular right now' card reads '−0%', which is a meaningless promotional value. The partially visible carousel items and the card cut off at the bottom are expected scroll behaviour and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The reported issue describes the promo badge showing −0%, the same discount badge defect.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 269,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027471999999999996,
+        "durationSeconds": 3.956008750000001
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_05",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "critical",
+          "category": "accessibility",
+          "description": "The promo banner's headline \"3 free deliveries for you\" and subtext \"Use code TALLINN3 at checkout · min. order €10\" are white on a pale mint-green background. Contrast is extremely low, so the offer and the promo code are almost invisible. Only the \"Order now\" button is legible.",
+          "suggestion": "Use a dark text color (e.g. dark green or near-black) on the light mint background, or darken the banner background to a saturated brand green so white text reaches at least 4.5:1 contrast."
+        }
+      ],
+      "summary": "The page is mostly intact, but the promotional banner has a serious contrast failure: its headline and promo code text are white on a very light mint background and are nearly unreadable. No other significant visual breakage was found; the clipped carousel items and the bottom-cut pizza card are expected scrolling behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Reported issue 0 describes the promo banner text being nearly invisible because white text is on a pale mint-green background.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 302,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.028791999999999998,
+        "durationSeconds": 5.866387416999998
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_05",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "critical",
+          "category": "accessibility",
+          "description": "In the promo banner, the headline '3 free deliveries for you' and the subtext 'Use code TALLINN3 at checkout · min. order €10' are white on a very light mint-green background. The text is almost invisible, so users are likely to miss the offer and the promo code.",
+          "suggestion": "Use a dark text color (e.g., dark green or near-black) on the pale background, or darken the banner background to a saturated green so white text meets WCAG contrast (at least 4.5:1)."
+        }
+      ],
+      "summary": "The page is mostly intact, but the promotional banner has a serious contrast failure: its headline and promo code text are white on a very pale mint background and are nearly unreadable. No other clear visual defects were found; clipped carousel items and the cut-off bottom card are expected scroll behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Both describe white promo banner text that is nearly unreadable against a pale mint background.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 284,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.028072,
+        "durationSeconds": 5.938146667000001
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_05",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "critical",
+          "category": "accessibility",
+          "description": "The promo banner text ('3 free deliveries for you' and 'Use code TALLINN3 at checkout · min. order €10') is white on a very light mint-green background, making it almost unreadable. The promo code and minimum order condition are effectively lost to users.",
+          "suggestion": "Use a dark text color (e.g., dark green or near-black) on the pale banner, or darken the banner background to a saturated green so white text meets WCAG contrast (at least 4.5:1 for the body line)."
+        }
+      ],
+      "summary": "The page is mostly well-formed, but the promotional banner has a serious contrast failure: its headline and promo-code text are white on a very pale mint background and are almost invisible. No other clear visual defects were found; the clipped carousel items and bottom card are expected scrolling behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Reported issue describes the promo banner text as white on a very light mint-green background and nearly unreadable.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 284,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.028072,
+        "durationSeconds": 5.611354791999998
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_05",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "critical",
+          "category": "accessibility",
+          "description": "The promo banner text ('3 free deliveries for you' and 'Use code TALLINN3 at checkout · min. order €10') is rendered in white/very light text on a pale mint-green background, making it almost unreadable. The promo code and minimum order condition are effectively lost to users.",
+          "suggestion": "Use a dark text color (e.g., the dark green/near-black used elsewhere) on the light banner, or darken the banner background to a saturated green so white text meets WCAG contrast of at least 4.5:1."
+        }
+      ],
+      "summary": "The page is mostly well-formed, but the promotional banner has a serious contrast problem: its headline and promo code text are nearly invisible against the pale mint background. No other clear visual defects were found; the partially visible carousel items and bottom card are expected scroll behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Reported issue 0 describes the promo banner text being nearly unreadable because white text appears on a pale mint background.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 288,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.028232,
+        "durationSeconds": 5.968846542
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_05",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "critical",
+          "category": "accessibility",
+          "description": "The promo banner's headline ('3 free deliveries for you') and subtext ('Use code TALLINN3 at checkout · min. order €10') are white on a very light mint-green background. The text is almost invisible, so the offer and promo code are effectively unreadable.",
+          "suggestion": "Use a dark text colour (e.g. dark green or near-black) on the light banner, or darken the banner background to a saturated green so the white text meets WCAG contrast of at least 4.5:1."
+        }
+      ],
+      "summary": "The page is mostly intact, but the promotional banner has a serious contrast failure: its headline and subtext are white on a very pale mint background and are almost unreadable. No other clear visual defects were found; the clipped carousel items and the cut-off card at the bottom are expected scrolling behaviour.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Reported issue describes the promo banner text as nearly invisible white text on a very light mint background.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 286,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.028151999999999996,
+        "durationSeconds": 5.304770167000003
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_06",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The 'Orders' tab in the bottom navigation bar has no icon. Home, Search and Profile each show an icon above their label, but Orders shows only the text label with an empty space where the icon should be.",
+          "suggestion": "Restore the Orders tab icon (e.g. a receipt or bag glyph). Check that the icon asset loads and is referenced correctly, and that its tint colour is not matching the background in the inactive state."
+        }
+      ],
+      "summary": "Found 1 issue: the bottom navigation bar is missing the icon for the Orders tab, leaving a blank gap above its label. The rest of the page (header, search, filter chips, promo banner, carousels, restaurant cards) renders as expected.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Both describe the Orders item in the bottom navigation missing its icon.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 253,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.026831999999999998,
+        "durationSeconds": 5.496396042000001
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_06",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The 'Orders' tab in the bottom navigation bar has no icon. Home, Search and Profile each show an icon above their label, but Orders shows only the text label with an empty space above it, which makes the bar look inconsistent and broken.",
+          "suggestion": "Restore the Orders tab icon (e.g., a receipt or bag glyph). Check that the icon asset loads correctly and is rendered with the same size and tint as the other inactive tab icons."
+        }
+      ],
+      "summary": "Found 1 issue: the Orders tab in the bottom navigation bar is missing its icon, while the other three tabs (Home, Search, Profile) each show one. The rest of the page (header, search, filter chips, promo banner, carousels, restaurant cards) renders as expected.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Reported issue 0 describes the Orders bottom-navigation tab missing its icon.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 272,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027592,
+        "durationSeconds": 5.069078916000002
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_06",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "In the bottom navigation bar, the Orders tab shows only its text label with an empty space above it, while Home, Search and Profile each display an icon above their label. The icon appears to have failed to load or render.",
+          "suggestion": "Restore the Orders tab icon (e.g. a receipt or bag glyph) by checking the asset reference or icon name, and make sure it renders at the same size and alignment as the other tab icons."
+        }
+      ],
+      "summary": "Found 1 issue: the Orders tab in the bottom navigation bar is missing its icon. The rest of the page (header, search, category chips, promo banner, carousels and restaurant cards) renders correctly.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report states that the Orders tab has no icon in the bottom navigation bar.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 237,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.026192,
+        "durationSeconds": 5.409647625000002
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_06",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The 'Orders' tab in the bottom navigation bar has no icon. Home, Search and Profile each show an icon above their label, but Orders shows only the text label with an empty space where the icon should be.",
+          "suggestion": "Restore the Orders tab icon (e.g. a receipt or bag glyph). Check that the icon asset loads and is referenced correctly, and that its tint colour is not matching the background."
+        }
+      ],
+      "summary": "Found 1 issue: the Orders tab in the bottom navigation bar is missing its icon. The rest of the page (header, search, filter chips, promo banner, carousels, restaurant cards) renders as expected.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report states that the Orders tab in the bottom navigation bar is missing its icon.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 235,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.026111999999999996,
+        "durationSeconds": 5.313975624999999
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_06",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The 'Orders' tab in the bottom navigation bar has no icon. Home, Search, and Profile each show an icon above their label, while Orders shows only the text label with an empty space where the icon should be.",
+          "suggestion": "Restore the Orders tab icon (e.g., a receipt or bag glyph). Check that the icon asset loads correctly and is not failing to render due to a missing resource, wrong path, or a tint color matching the background."
+        }
+      ],
+      "summary": "Found 1 issue: the bottom navigation bar is missing the icon for the Orders tab, leaving a blank gap above its label. The rest of the page (header, search, filter chips, promo banner, carousels, and restaurant cards) renders as expected.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Both describe the Orders item in the bottom navigation missing its icon.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 259,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027072,
+        "durationSeconds": 5.252449208000002
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_07",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "A circular loading spinner (white disc with a green progress arc) sits in the centre of the Tokumaru Ramen Bar card image under 'Popular right now', although the image and the rest of the page are fully loaded. It looks like a stuck loading state and obscures the food photo.",
+          "suggestion": "Hide the loading indicator once the card image or data has loaded (or on error or timeout). Check that the spinner's visibility is tied to the image load state and is cleared in the onLoad/onError callbacks."
+        }
+      ],
+      "summary": "The page is mostly rendered correctly, but one visual defect stands out: a loading spinner is stuck over the centre of the Tokumaru Ramen Bar card image even though the image and all other content have fully loaded.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The reported spinner remains over a fully loaded card image, matching the expected loading spinner on loaded content.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 265,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027311999999999996,
+        "durationSeconds": 5.632880207999999
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_07",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "A circular loading spinner (white disc with a green progress arc) sits in the centre of the Tokumaru Ramen Bar hero image, although the image and the rest of the card content have fully loaded. It looks like a stuck loading state and obscures the food photo.",
+          "suggestion": "Hide or unmount the spinner once the image's load or error event fires. Make sure the loading state is reset correctly, including for cached images, and add a timeout fallback."
+        }
+      ],
+      "summary": "The page is mostly rendered correctly, but one defect stands out: a loading spinner is stuck over the fully loaded Tokumaru Ramen Bar card image. No other clear visual breakage was found, aside from expected carousel and viewport clipping.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes a loading spinner remaining over fully loaded content.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 259,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027072,
+        "durationSeconds": 5.485967124999999
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_07",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "A circular loading spinner (white disc with a partial green progress ring) is overlaid on the centre of the Tokumaru Ramen Bar card image under 'Popular right now', although the image and all card details are already fully displayed. The loading indicator appears stuck or orphaned and partly covers the food photo.",
+          "suggestion": "Hide or remove the spinner once the card image/content has loaded (e.g. on the image load or error callback), and ensure the loading state is cleared properly so it never renders over loaded content."
+        }
+      ],
+      "summary": "The page is mostly rendered correctly, but one visual defect stands out: a loading spinner is stuck on top of the Tokumaru Ramen Bar card image even though the image and the rest of the page have fully loaded.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The reported spinner overlays a fully loaded card image, matching the expected defect.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 268,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027431999999999998,
+        "durationSeconds": 5.820943707999999
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_07",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "A circular loading spinner (white disc with a partial green progress ring) is overlaid in the centre of the Tokumaru Ramen Bar card image under 'Popular right now', although the card image, title, rating and metadata are all fully rendered. The loader appears stuck or was never dismissed, covering the photo and suggesting the card is still loading.",
+          "suggestion": "Hide or unmount the spinner once the card image/content has finished loading (e.g., on the image's load/error callback), and make sure the loading state is reset correctly when the card data resolves."
+        }
+      ],
+      "summary": "The page is mostly rendered correctly, but one clear defect stands out: a loading spinner is stuck on top of the Tokumaru Ramen Bar card image even though the image and the rest of the page have fully loaded.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The reported spinner overlays a fully loaded card, matching the expected loading spinner shown over loaded content.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 281,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027951999999999998,
+        "durationSeconds": 5.897979584000001
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_07",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "A circular loading spinner (white circle with a green progress arc) is displayed in the center of the Tokumaru Ramen Bar card in the 'Popular right now' section, overlaying the ramen image. The image and all card details (title, rating, delivery info) are already fully rendered, so the spinner appears stuck or left over from a loading state that never cleared.",
+          "suggestion": "Make sure the loading indicator is hidden once the card image and content finish loading (or on load error). Check the image load callback and state handling for this card so the spinner overlay is removed and does not persist over loaded content."
+        }
+      ],
+      "summary": "The page is mostly well rendered, but one defect stands out: a loading spinner is stuck on top of the Tokumaru Ramen Bar card image even though the image and the rest of the page have fully loaded. No other clear visual defects were found; the clipped carousel item and bottom-cut pizza card are expected scrolling behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The spinner is shown over a fully rendered card image and details.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 328,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.029831999999999997,
+        "durationSeconds": 6.427392249999997
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_08",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The search bar placeholder is misspelled as 'Restarants, dishes, groceries' — 'Restaurants' is missing the 'u'.",
+          "suggestion": "Correct the placeholder text to 'Restaurants, dishes, groceries'."
+        }
+      ],
+      "summary": "The page layout is largely intact; the only visible defect is a typo in the search field placeholder. The clipped carousel item at the right edge and the partially visible card at the bottom are expected scrolling behavior and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The reported issue identifies the same misspelling, “Restarants,” of “Restaurants.”",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 184,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.024071999999999996,
+        "durationSeconds": 4.495444665999999
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_08",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The search field placeholder reads 'Restarants, dishes, groceries'; 'Restaurants' is misspelled (missing 'u').",
+          "suggestion": "Correct the placeholder text to 'Restaurants, dishes, groceries'."
+        }
+      ],
+      "summary": "The page is largely intact visually, with one content defect: the search bar placeholder contains a typo. The clipped carousel item and the cut-off card at the bottom are expected scrolling behavior and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The reported issue identifies the same misspelling of “Restaurants” as “Restarants” in the search placeholder.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 178,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.023832,
+        "durationSeconds": 4.418738042000001
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_08",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The search field placeholder reads 'Restarants, dishes, groceries'. 'Restaurants' is misspelled (missing the 'u').",
+          "suggestion": "Correct the placeholder string to 'Restaurants, dishes, groceries'."
+        }
+      ],
+      "summary": "The page layout is largely intact, with one visible defect: a typo in the search bar placeholder text. Carousels, chips, cards, the promo banner and bottom navigation render as expected.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The reported issue identifies the same misspelling of “Restaurants” as “Restarants” in the search placeholder.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 172,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.023592,
+        "durationSeconds": 4.0519953330000025
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_08",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The search field placeholder reads 'Restarants, dishes, groceries'. 'Restaurants' is misspelled (missing the 'u').",
+          "suggestion": "Correct the placeholder string to 'Restaurants, dishes, groceries'."
+        }
+      ],
+      "summary": "The page layout is largely intact; the one clear defect is a typo in the search bar placeholder. Carousel clipping at the right edge and the cut-off card at the bottom are expected scroll behavior and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The reported issue identifies the same misspelling of “Restaurants” as “Restarants” in the search field placeholder.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 182,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.023992,
+        "durationSeconds": 4.152062249999996
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_08",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "content",
+          "description": "The search field placeholder reads 'Restarants, dishes, groceries'; 'Restaurants' is misspelled (missing 'u').",
+          "suggestion": "Correct the placeholder text to 'Restaurants, dishes, groceries'."
+        }
+      ],
+      "summary": "The page layout is largely intact, with one visible content defect: the search bar placeholder contains a typo. Partially visible carousel items and the bottom-cut card are expected scrolling behavior and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The reported issue identifies the same misspelling of “Restaurants” as “Restarants” in the search placeholder.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 178,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.023832,
+        "durationSeconds": 4.057365207999996
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_09",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "The restaurant name on the first \"Popular right now\" card is hard-clipped mid-character. It reads \"Tokumaru Rameı\", with the final \"n\" sliced vertically, even though there is plenty of empty horizontal space before the rating (4.8 (500+)). There is no ellipsis, which suggests the title container has a too-narrow fixed width with overflow hidden.",
+          "suggestion": "Remove the fixed or max width on the title and let it flex to fill the space up to the rating. If truncation is ever needed, use an ellipsis (text-overflow: ellipsis) rather than a hard clip."
+        }
+      ],
+      "summary": "The home screen is mostly well rendered, but one defect stands out: the restaurant title \"Tokumaru Ramen\" in the Popular right now list is cut off mid-glyph, with the final \"n\" partially sliced. No other clear visual breakage was found.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Both describe the Tokumaru Ramen Bar heading being clipped mid-word without an ellipsis.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 321,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.029552,
+        "durationSeconds": 4.537089749999999
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_09",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "The restaurant name on the first 'Popular right now' card reads 'Tokumaru Rameı': the final letter is sliced off mid-glyph with no ellipsis. There is plenty of empty space between the title and the rating on the right, so the title container appears to be too narrow or has overflow hidden.",
+          "suggestion": "Remove the fixed or constrained width on the title so it can fill the space up to the rating block (e.g. flex: 1). If truncation is ever needed, use a proper ellipsis rather than a hard clip."
+        }
+      ],
+      "summary": "The home screen is mostly intact, but one restaurant title in the 'Popular right now' list is visibly clipped mid-character. The partially visible carousel item and the bottom-cut pizza card are expected scrolling behaviour and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Both describe the Tokumaru Ramen Bar heading being clipped mid-word without an ellipsis.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 283,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.028031999999999998,
+        "durationSeconds": 4.292745332999999
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_09",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "The restaurant name on the first 'Popular right now' card is cut off mid-glyph: it reads 'Tokumaru Rameı' with the final 'n' sliced in half. There is no ellipsis, and there is ample empty space between the title and the '4.8 (500+)' rating, so the title container appears to have an incorrect fixed/too-narrow width with overflow hidden.",
+          "suggestion": "Remove the fixed width constraint on the title so it can flex to fill the available space up to the rating element. If truncation is ever needed, use proper ellipsis truncation (text-overflow: ellipsis / maxLines with ellipsize) instead of hard clipping."
+        }
+      ],
+      "summary": "The home screen is mostly well-rendered, but one restaurant title in the 'Popular right now' list is visibly clipped mid-character: 'Tokumaru Ramen' renders as 'Tokumaru Rame' followed by a partial letter, despite plenty of horizontal space being available before the rating.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Both describe the Tokumaru Ramen Bar heading cut off mid-word without an ellipsis.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 349,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.030671999999999998,
+        "durationSeconds": 4.657760291999999
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_09",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "The restaurant title \"Tokumaru Ramen\" in the first Popular right now card is clipped mid-glyph: the final \"n\" is sliced off so it reads \"Tokumaru Rameı\". There is no ellipsis, and ample empty space sits between the title and the rating (4.8) on the right.",
+          "suggestion": "Remove the fixed or too-narrow width on the title element so it can use the available space up to the rating. If truncation is ever needed, use a proper ellipsis (text-overflow: ellipsis) rather than a hard clip."
+        }
+      ],
+      "summary": "The home screen is mostly intact, but one visual defect stands out: the restaurant title \"Tokumaru Ramen\" in the Popular right now list is cut off mid-letter, even though there is plenty of free space to its right. No other clear breakage was found.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Both describe the Tokumaru Ramen heading clipped mid-word without an ellipsis.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 298,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.028631999999999998,
+        "durationSeconds": 3.990879958000005
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_09",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "The restaurant name in the first 'Popular right now' card reads 'Tokumaru Rame' followed by a partial letter: the final 'n' is sliced vertically. The title container appears too narrow or has overflow hidden, although there is ample empty space before the rating '4.8 (500+)' on the right.",
+          "suggestion": "Remove the fixed or max width on the title element so it can fill the space up to the rating (e.g. flex: 1 with min-width: 0). If truncation is ever needed, use text-overflow: ellipsis rather than hard clipping mid-glyph."
+        }
+      ],
+      "summary": "The home screen is mostly intact, but one defect stands out: the restaurant title 'Tokumaru Ramen' in the 'Popular right now' card is cut off mid-letter, even though there is plenty of free space to its right. No other broken elements were found, aside from intentional carousel and viewport clipping.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Both describe the restaurant heading being clipped mid-word, with its final letter partially cut off.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 320,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.029511999999999997,
+        "durationSeconds": 4.419526750000005
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_10",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The \"Fastest near you\" carousel shows \"Green Bowl Poké\" in both the first and second positions, with identical image, 15–25 min badge and €0.90 delivery fee. This looks like a duplicated list item and wastes a slot that should show a different restaurant.",
+          "suggestion": "Deduplicate the carousel data by restaurant ID before rendering, and check that the backend query or list keying is not returning or rendering the same item twice."
+        }
+      ],
+      "summary": "The home feed is mostly intact, but the \"Fastest near you\" carousel shows the same restaurant card (Green Bowl Poké) twice in a row. No other clear visual defects were found; the clipped third carousel card and the pizza card cut off at the bottom are expected scrolling behaviour.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Reported issue 0 describes Green Bowl Poké appearing in both the first and second carousel positions.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 276,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027752,
+        "durationSeconds": 3.2068709589999997
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_10",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The 'Fastest near you' carousel shows 'Green Bowl Poké' twice in adjacent cards with identical image, 15–25 min time badge and €0.90 delivery fee. This looks like a duplicated list item.",
+          "suggestion": "De-duplicate the carousel data by restaurant ID so each restaurant appears once, and check the list rendering keys and the API response for repeated entries."
+        }
+      ],
+      "summary": "The home screen is mostly intact, but the 'Fastest near you' carousel shows the same restaurant card (Green Bowl Poké) twice in a row. No other clear visual breakage was found; the clipped carousel item and bottom-cut card are expected scroll behaviour.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Reported issue 0 describes Green Bowl Poké appearing twice in adjacent carousel cards.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 251,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.026751999999999998,
+        "durationSeconds": 2.924196167000002
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_10",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "In the 'Fastest near you' carousel, the first two cards are identical: both show 'Green Bowl Poké' with the same image, the same '15–25 min' badge and the same '€0.90 delivery' text. This looks like a duplicated entry rendered twice.",
+          "suggestion": "De-duplicate the carousel data (e.g., by restaurant ID) so each restaurant appears only once, and check the list rendering/keys so an item is not repeated in place of a different restaurant."
+        }
+      ],
+      "summary": "The home screen is mostly well-rendered, but the 'Fastest near you' carousel shows the same restaurant card (Green Bowl Poké, 15–25 min, €0.90 delivery) twice in a row, which looks like a duplicated list item. No other clear visual breakage was found; the clipped carousel/chip items at the right edge and the cut-off pizza card at the bottom are expected scrolling behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes Green Bowl Poké appearing twice as duplicate cards in the carousel.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 324,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.029671999999999997,
+        "durationSeconds": 3.553663915999998
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_10",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The \"Fastest near you\" carousel shows the identical \"Green Bowl Poké\" card in the first and second positions, with the same image, 15–25 min badge and €0.90 delivery fee. This looks like a duplicated data entry or rendering bug and wastes prime carousel space.",
+          "suggestion": "Deduplicate the carousel items by restaurant ID before rendering, and check the backend response and list keying so each restaurant appears only once."
+        }
+      ],
+      "summary": "The home feed renders cleanly overall, but the \"Fastest near you\" carousel shows the same restaurant card (Green Bowl Poké, 15–25 min, €0.90 delivery) twice in a row, which points to a duplicated list item. No other clear visual defects were found; the clipped carousel item at the right edge and the cut-off card at the bottom are expected scrolling behaviour.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes the Green Bowl Poké card duplicated in the first and second carousel positions.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 307,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.028991999999999997,
+        "durationSeconds": 3.445383375000005
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_10",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "In the 'Fastest near you' carousel, the first two cards are identical: both show 'Green Bowl Poké' with the same image, the same '15–25 min' badge and the same '€0.90 delivery' text. The restaurant is rendered twice in adjacent positions.",
+          "suggestion": "Deduplicate the carousel data, for example by restaurant ID, so each restaurant appears only once. Check the list rendering and keys and the API response for repeated entries."
+        }
+      ],
+      "summary": "The home screen is mostly well-formed, but the 'Fastest near you' carousel shows the same restaurant card (Green Bowl Poké, 15–25 min, €0.90 delivery) twice in a row, which points to a duplicated list item. The partially visible carousel card on the right and the pizza card cut off at the bottom are normal scrolling behaviour and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes Green Bowl Poké appearing twice in adjacent carousel cards.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 304,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.028872,
+        "durationSeconds": 3.4911820000000007
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_11",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The discount badge on the second restaurant card under 'Popular right now' (the pizza card) shows '−100%'. This is an implausible discount and is most likely a wrong or miscalculated value, or a formatting bug. It could mislead users into expecting a free order.",
+          "suggestion": "Check the data source and the discount calculation and formatting logic for this badge. Display the real discount (e.g. '−10%' or '−20%'), and add validation so out-of-range values such as 100% or more are not rendered."
+        }
+      ],
+      "summary": "The page is largely well-formed, with one clear content defect: the promotional badge on the second 'Popular right now' card reads '−100%', which is an implausible discount value. The clipped carousel item and the card cut off at the bottom are expected scrolling behaviour and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report identifies the discount badge displaying −100% as an implausible value.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 282,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027991999999999996,
+        "durationSeconds": 5.765471167000003
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_11",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The discount badge on the second 'Popular right now' restaurant card (pizza image) shows '−100%'. A 100% discount is implausible and is likely a wrong value or formatting/calculation error (e.g., meant −10% or −20%).",
+          "suggestion": "Check the promotion data source and badge formatting logic. Display the correct discount percentage, and add validation so out-of-range values (e.g., ≥100%) are not rendered."
+        }
+      ],
+      "summary": "The page is largely well-formed, with one clear content defect: the promotional badge on the second 'Popular right now' card reads '−100%', which is an implausible discount value. No other visual breakage was found; the clipped carousel items and bottom-cut card are expected scrolling behaviour.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report identifies the discount badge displaying −100%.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 264,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027271999999999998,
+        "durationSeconds": 5.915806250000001
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_11",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The discount badge on the second restaurant card (pizza image) in 'Popular right now' shows '−100%'. A 100% discount is implausible and suggests a data or formatting error (for example a wrong value or a miscalculated percentage), which could mislead users.",
+          "suggestion": "Check the source data and formatting logic for the promo badge. Show the correct discount (e.g. '−10%' or '−20%') and add validation to cap or hide out-of-range discount values."
+        }
+      ],
+      "summary": "The page is mostly well-formed, with one clear content defect: the promotional badge on the second 'Popular right now' card reads '−100%', which is an implausible discount value. Clipped carousel items at the right edge and the bottom-cut card are expected scrolling behaviour and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes the discount badge showing −100%.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 275,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027712,
+        "durationSeconds": 5.694331332999995
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_11",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The promo badge on the pizza restaurant card in 'Popular right now' shows '−100%', which is an implausible discount (everything free) and likely a wrong or unformatted value from a data or calculation error.",
+          "suggestion": "Check the discount data source and calculation for this badge; show the correct percentage (e.g. −10% or −20%) and add validation to hide or cap the badge when the value is out of a sensible range."
+        }
+      ],
+      "summary": "The page is largely well-formed, with one clear content defect: the promo badge on the second 'Popular right now' card reads '−100%', which is an implausible discount value. Carousel clipping on the right and the cut-off card at the bottom are expected scroll behaviour and not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The reported issue describes the promo badge showing −100%, the same discount defect.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 255,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.026912,
+        "durationSeconds": 5.725235833999999
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_11",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "content",
+          "description": "The discount badge on the pizza restaurant card in 'Popular right now' displays '−100%', which is an implausible discount (everything free). It is likely a data or formatting bug, e.g. a wrong value or a miscalculated percentage, and could mislead users.",
+          "suggestion": "Verify the discount data source and the percentage calculation and formatting. Validate promo values against a sensible range (e.g. 5–70%) and hide the badge when the value is invalid."
+        }
+      ],
+      "summary": "The page is mostly well-formed, but one content defect stands out: the promotional badge on the second 'Popular right now' card reads '−100%', an implausible discount value. No other clear visual breakage was found; the clipped carousel items and the cut-off bottom card are expected scrolling behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report identifies the discount badge displaying −100% as an implausible discount.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 275,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027712,
+        "durationSeconds": 5.623804208000001
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_12",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "In the 'Popular right now' section, the metadata row under 'Tokumaru Ramen Bar' has overlapping text. The delivery time ('25–35 min') and the delivery fee ('€0 delivery') are drawn on top of each other, producing garbled text like '25–3€0mdelivery' before the '• Ramen' label. Neither value can be read.",
+          "suggestion": "Lay the metadata items out in a single row with proper spacing and separators (e.g. '25–35 min • €0 delivery • Ramen'). Check for absolute positioning, negative margins, or a missing flex gap or separator that lets the fee label collapse onto the time label."
+        }
+      ],
+      "summary": "The page renders cleanly overall, but there is one clear visual defect: the metadata line under the Tokumaru Ramen Bar card has two text elements drawn on top of each other, which makes the delivery time and fee unreadable.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Both describe the delivery fee and delivery time text overlapping for Tokumaru Ramen Bar.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 320,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.029511999999999997,
+        "durationSeconds": 4.765317917
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_12",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "In the Tokumaru Ramen Bar card's metadata row, the delivery time (about '25–35 min') and the delivery fee text ('€0 delivery') overlap each other. The result is garbled text reading roughly '25–35€0mdelivery', so neither value can be read. Only the trailing '• Ramen' is legible.",
+          "suggestion": "Place the time, fee and cuisine as separate inline or flex items with proper spacing and separators (for example '25–35 min • €0 delivery • Ramen'). Remove any absolute positioning or negative margins that let the segments collide, and check the row with long and short values."
+        }
+      ],
+      "summary": "The page is mostly intact, but one clear rendering defect stands out: the metadata line under the Tokumaru Ramen Bar card has two text fragments drawn on top of each other, which makes the delivery time and fee unreadable. The partially visible carousel item and the card cut off at the bottom are expected scrolling behaviour and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Reported issue 0 describes the delivery fee and delivery time overlapping in the Tokumaru Ramen Bar card.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 345,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.030511999999999997,
+        "durationSeconds": 4.957871209000005
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_12",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "In the 'Popular right now' section, the metadata row under 'Tokumaru Ramen Bar' has overlapping text: the delivery time (e.g. '25–35 min') and the delivery fee text ('€0 delivery') are rendered on top of each other, producing garbled text like '25–3€0 delivery'. Only the trailing '• Ramen' is legible.",
+          "suggestion": "Lay out the metadata items in a row with proper spacing and separators (e.g. '25–35 min • €0 delivery • Ramen'). Check for absolute positioning, negative margins, or a missing flex gap/width on the time and delivery-fee elements so they do not occupy the same horizontal space."
+        }
+      ],
+      "summary": "The page is mostly rendered correctly, but there is one clear visual defect: on the Tokumaru Ramen Bar card, the metadata line has two text items drawn on top of each other, making the delivery time and delivery fee unreadable. The partially visible carousel item and the bottom-cropped card are expected scrolling behaviour and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Both describe the delivery fee and delivery time overlapping in Tokumaru Ramen Bar’s metadata row.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 371,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.031552,
+        "durationSeconds": 5.026891958
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_12",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "On the 'Tokumaru Ramen Bar' card, the metadata line below the restaurant name has overlapping text: the delivery time (e.g. '25–35 min') and the delivery fee (e.g. '€0 delivery') are rendered on top of each other, producing an illegible string like '25–3€0mdelivery' before the '• Ramen' item.",
+          "suggestion": "Place the delivery time and delivery fee as separate inline items in a row with proper spacing and separators (e.g. '25–35 min • €0 delivery • Ramen'). Check for absolute positioning, negative margins or a missing flex gap on those metadata elements."
+        }
+      ],
+      "summary": "The page is mostly rendered correctly, but there is one clear visual defect: on the Tokumaru Ramen Bar card the metadata line has two text fragments drawn on top of each other, making it unreadable. Other elements (carousels, chips, banner, bottom navigation) look as intended.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Both reports describe the delivery fee and delivery time text overlapping on the Tokumaru Ramen Bar card.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 337,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.030191999999999997,
+        "durationSeconds": 4.268191124999998
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_12",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "On the Tokumaru Ramen Bar card, the delivery time (e.g. '25–35 min') and the delivery fee (e.g. '€0 delivery') overlap in the metadata row, producing garbled text ('25–3€0mdelivery'). Neither value can be read, and one separator dot appears to be missing.",
+          "suggestion": "Lay out the metadata items in a horizontal flow (flex row with a gap and separators) so each sits beside the previous one. Remove any absolute positioning, negative margin or zero-width constraint that causes the time and fee labels to collapse onto each other."
+        }
+      ],
+      "summary": "The page renders cleanly overall, but there is one clear visual defect: on the Tokumaru Ramen Bar card, the metadata line under the restaurant name has two text items drawn on top of each other, making it unreadable. No other broken elements were found; the clipped carousel item and the cut-off pizza card at the bottom are normal scrolling behaviour.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Both reports describe the delivery fee and delivery time overlapping on the Tokumaru Ramen Bar card.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 342,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.030392,
+        "durationSeconds": 5.0338397910000054
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_13",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The circular button at the top right of the header (beside the delivery address) is an empty light-grey circle with only a red badge dot. The icon inside it (probably a notification bell or cart) has not rendered, so the button's purpose cannot be identified.",
+          "suggestion": "Check that the icon asset or icon font glyph for this header button loads and renders correctly, and that its tint colour is not matching the background. Add a fallback icon and an accessible label so the button stays identifiable."
+        }
+      ],
+      "summary": "The page is mostly intact, but one element is visibly broken: the circular button in the top-right header shows only a red notification dot on an empty grey circle, with its icon missing. The clipped carousel item, clipped chip and cut-off pizza card are expected scroll behaviour and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes the top-right icon missing while only its red badge dot remains visible.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 278,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027832,
+        "durationSeconds": 3.880906415999998
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_13",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The circular button in the top-right of the header (next to the delivery address) is a blank light-grey circle with only a small red badge dot. The icon glyph that should be inside it (e.g. a bell or cart) is missing, so users cannot tell what the button does.",
+          "suggestion": "Restore the icon inside the header button: check that the asset or icon font loads and that its tint colour does not match the background. Add a fallback icon and an accessible label so the button's purpose is always clear."
+        }
+      ],
+      "summary": "The page is largely intact, but one element is visibly broken: the circular button in the top-right header shows an empty grey circle with only a red notification dot, so its icon (likely a notification bell or cart) failed to render. The rest of the layout, including the carousels, promo banner, cards and bottom navigation, appears as intended.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Both describe a missing icon in the top-right area, with only a red dot visible.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 287,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.028192,
+        "durationSeconds": 3.362145709000004
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_13",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The circular button in the top-right corner of the header, next to the delivery address, is a blank light-gray circle with only a small red badge dot. The icon or avatar that should sit inside it (probably a notification bell or profile image) is missing or failed to load, so the button's purpose is unclear.",
+          "suggestion": "Check that the icon or avatar asset loads and renders inside the button. Add a fallback glyph (e.g. bell icon or user initials) for when the image fails, and give the button an accessible label."
+        }
+      ],
+      "summary": "The page is mostly intact, but there is one clear visual defect: the circular button in the top-right header is empty, showing only a red notification dot with no icon inside. Clipped carousel items and the cut-off pizza card at the bottom are expected scrolling behaviour and are not reported.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Both describe a missing icon in the top-right area, with only a red dot visible.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 285,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.028111999999999998,
+        "durationSeconds": 3.2281904589999977
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_13",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The circular button at the top right of the header is an empty light-grey circle with only a small red badge dot. The icon or avatar it should contain (e.g. notification bell or profile image) is missing, so the button's purpose is unclear.",
+          "suggestion": "Make sure the icon or avatar asset loads and renders inside the button. Add a fallback glyph (e.g. bell icon or user initials) for when the image fails, and check that the icon colour does not match the button background."
+        }
+      ],
+      "summary": "Found 1 issue: the circular button in the top-right header shows only an empty grey circle with a red notification dot, so its icon or avatar appears to have failed to render. The rest of the page (search bar, category chips, promo banner, carousels, restaurant cards, bottom navigation) renders as expected.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes a missing icon in the top-right button, leaving only the red dot visible.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 279,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027872,
+        "durationSeconds": 3.5971008330000043
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_13",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "missing-element",
+          "description": "The circular button at the top-right of the header (next to the delivery address) has no icon. Only the light grey circle and a red badge dot are rendered, so its purpose (notifications, cart, etc.) cannot be determined.",
+          "suggestion": "Restore the missing icon glyph inside the button. Check that the icon asset or font loads correctly and that the icon colour is not matching the background. Add an accessible label to the button as well."
+        }
+      ],
+      "summary": "The page is mostly intact, with one clear defect: the round button in the top-right of the header shows only an empty grey circle with a red notification dot. Its icon (likely a bell or cart) is missing. The carousels, cards, promo banner and bottom navigation look as intended.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The reported top-right header button is missing its icon and shows only a red dot, matching the expected defect.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 257,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.026992,
+        "durationSeconds": 3.351747499999998
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_14",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "In the 'Fastest near you' carousel, the 'Smash Bros Burgers' card sits about 28px lower than the 'Green Bowl Poké' and 'Trattoria Piccola' cards. Its image, time badge, title and delivery fee are all offset downward, so the row looks uneven and the card's text crowds the 'Popular right now' section below.",
+          "suggestion": "Align all carousel cards to the top of the row (e.g. align-items: flex-start on the container) and remove any stray top margin, padding or transform on the second card so images and text baselines line up across the row."
+        }
+      ],
+      "summary": "The home feed is mostly intact, but one layout defect stands out: in the 'Fastest near you' carousel the second card (Smash Bros Burgers) is shifted down relative to the cards on either side, breaking the row's top alignment.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes one card in the 'Fastest near you' carousel sitting lower than the others, making the card heights appear misaligned.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 297,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.028592,
+        "durationSeconds": 4.204216041
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_14",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "minor",
+          "category": "layout",
+          "description": "In the \"Fastest near you\" carousel, the Smash Bros Burgers card is shifted down by roughly 28px compared with the Green Bowl Poké and Trattoria Piccola cards. Its image, time badge, title and delivery text all sit lower, so the row looks uneven.",
+          "suggestion": "Align all carousel cards to the top of the row (e.g. align-items: flex-start) and remove any stray top margin, padding or transform on the second card so its image and text line up with the others."
+        }
+      ],
+      "summary": "Found 1 layout issue: in the \"Fastest near you\" carousel, the second card (Smash Bros Burgers) sits lower than its neighbours, breaking the row's top alignment. The rest of the page appears to render correctly.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The Smash Bros Burgers card is lower than the other cards in the same carousel, creating misaligned card heights.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 271,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027552,
+        "durationSeconds": 3.844603624999996
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_14",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "In the \"Fastest near you\" carousel, the Smash Bros Burgers card is shifted about 28px lower than the Green Bowl Poké and Trattoria Piccolo cards. Its image starts lower, and its title and delivery fee text fall below the neighbouring cards' text baselines, so the row looks uneven.",
+          "suggestion": "Top-align all carousel cards (for example, align-items: flex-start on the row) and remove any stray top margin, padding or transform on the second card so that images, titles and delivery text share the same baselines."
+        }
+      ],
+      "summary": "The page is mostly well rendered, but there is one layout defect in the \"Fastest near you\" carousel: the second card (Smash Bros Burgers) sits lower than the cards on either side of it, breaking the row's top alignment.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes one card in the Fastest near you carousel sitting lower than neighboring cards, misaligning their heights.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 285,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.028111999999999998,
+        "durationSeconds": 3.8968687080000017
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_14",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "In the \"Fastest near you\" carousel, the Smash Bros Burgers card is shifted down by roughly 28px compared with the Green Bowl Poké and Trattoria Piccola cards. Its image starts lower, and its title and delivery fee text sit below the baseline of the neighbouring cards, so the row looks uneven.",
+          "suggestion": "Align all carousel cards to the top of the row (for example, align-items: flex-start or a consistent top constraint) and remove any stray top margin, padding or offset on the second card so images and text line up across the row."
+        }
+      ],
+      "summary": "The page is mostly well-formed, but there is one clear layout defect: in the \"Fastest near you\" carousel, the second card (Smash Bros Burgers) sits lower than its neighbours, breaking the row's top alignment. Nothing else looks broken; the clipped last carousel item and the cut-off card at the bottom are expected scroll behaviour.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes one card in the “Fastest near you” carousel sitting lower than its neighbors, misaligning the card heights.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 332,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.029991999999999998,
+        "durationSeconds": 4.269085958000003
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_14",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "In the \"Fastest near you\" carousel, the Smash Bros Burgers card is pushed down relative to the others. Its image starts at about y=658 while the Green Bowl Poké and Trattoria Piccola images start at about y=631. Its title and delivery fee text also sit lower than the neighbouring cards' text, so the row looks uneven.",
+          "suggestion": "Align all carousel cards to the top of the row (e.g. align-items: flex-start with no stray top margin or padding on individual cards), and check the second card for an extra margin, transform or wrapper offset."
+        }
+      ],
+      "summary": "The page is mostly well-formed, but one layout defect stands out: in the \"Fastest near you\" carousel the second card (Smash Bros Burgers) sits about 28px lower than its neighbours, so the row's images and text do not line up. Nothing else looks clearly broken.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The Smash Bros Burgers card is vertically offset from the other cards in the “Fastest near you” carousel, causing misaligned card heights.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 311,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.029151999999999997,
+        "durationSeconds": 5.008103624999996
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_15",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "The bottom tab bar is clipped by the bottom edge of the screen. Only the upper part of the four icons (home, search, orders, profile) is visible, there are no labels, and the system gesture handle overlaps the search and orders icons. The bar appears to ignore the bottom safe-area inset or is positioned partly off-screen.",
+          "suggestion": "Anchor the navigation bar fully inside the viewport and add bottom safe-area padding (e.g. env(safe-area-inset-bottom) or window insets) so icons and labels are fully visible and sit above the gesture indicator."
+        }
+      ],
+      "summary": "The page is mostly intact, but the bottom navigation bar is broken: it is cut off at the bottom of the viewport, showing only the top of its icons with no labels, and the system home-gesture indicator overlaps the icons. The rest of the page (header, search, chips, promo banner, carousels, cards) renders normally.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes the bottom navigation clipped off-screen with the system gesture area overlapping its icons.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 326,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.029752,
+        "durationSeconds": 4.522016167000001
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_15",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "The bottom navigation bar is clipped by the bottom edge of the screen: only the top portions of the four tab icons (home, search, orders, profile) are visible and no tab labels are shown. The system home gesture indicator bar is drawn directly over the search and orders icons, showing the nav bar ignores the bottom safe-area inset.",
+          "suggestion": "Add bottom safe-area/system navigation inset padding to the bottom nav bar and ensure it has its full height, so icons and labels render completely above the gesture indicator."
+        }
+      ],
+      "summary": "The page is mostly intact, but the bottom navigation bar is visibly broken: it is cut off at the bottom of the screen, its tab labels are missing, and the system home gesture indicator overlaps the icons. No other clear defects found in the header, promo banner, carousels, or restaurant cards.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes the bottom navigation being clipped and the home indicator overlapping its icons.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 299,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.028671999999999996,
+        "durationSeconds": 4.158448833000002
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_15",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "The system home-indicator/gesture bar overlaps the bottom navigation, striking through the search and orders tab icons. The tab bar also sits too low: icons are clipped at the screen edge and no labels are visible, which suggests the safe-area inset is not respected.",
+          "suggestion": "Add bottom safe-area padding (window insets) to the bottom navigation so the tab icons and labels sit fully above the system gesture handle, and make sure the bar's full height is visible."
+        }
+      ],
+      "summary": "The page is largely intact, but the bottom navigation bar is visually broken: the system gesture handle is drawn on top of the tab icons, and the tab bar is clipped at the bottom of the screen. No other clear defects were found.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes bottom navigation icons and labels clipped by the screen edge, with the gesture bar overlapping the icons.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 258,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027032,
+        "durationSeconds": 4.103123750000006
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_15",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "The bottom navigation bar collides with the system gesture/home indicator: the dark horizontal pill is drawn directly across the Search and Orders tab icons, and the tab icons are pushed to the very bottom edge of the screen with their lower portions clipped and no labels visible. The nav bar does not respect the bottom safe-area inset.",
+          "suggestion": "Apply bottom safe-area inset padding to the tab bar so the icons and labels sit above the home indicator, and ensure the bar's full height is rendered within the viewport."
+        }
+      ],
+      "summary": "The page is mostly intact, but the bottom navigation bar is visibly broken: the system home-indicator/gesture bar is drawn on top of the tab icons, and the tab bar appears cut off with no labels and icons clipped at the bottom edge. The rest of the page (header, search, chips, promo banner, carousels, restaurant cards) renders correctly.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes the bottom navigation being clipped at the screen edge and overlapped by the dark system bar.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 322,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.029592,
+        "durationSeconds": 4.380301375000003
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_15",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "layout",
+          "description": "The bottom navigation bar is cut off at the bottom of the screen: only the top portion of the four tab icons (home, search, orders, profile) is visible, any labels are missing or clipped, and the system gesture handle overlaps the search and orders icons. The bar appears to ignore the bottom safe-area inset.",
+          "suggestion": "Apply bottom safe-area/navigation-bar inset padding to the bottom nav so the full icons (and labels) sit above the system gesture handle, and ensure the bar's height is not clipped by the viewport."
+        }
+      ],
+      "summary": "The page is mostly well-rendered, but the bottom navigation bar is broken: it is clipped by the bottom of the screen and overlapped by the system gesture handle, with the tab icons cut off and no labels visible. No other significant defects were found in the header, promo banner, carousels, or restaurant cards.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes clipped bottom navigation labels and icons, with the system gesture bar overlapping the icons.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 309,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.029072,
+        "durationSeconds": 4.127230583000004
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_16",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "The 'Pizza' filter chip is shown as selected (dark fill), but the content is not filtered to pizza: 'Fastest near you' lists Green Bowl Poké and Smash Bros Burgers, and 'Popular right now' leads with Tokumaru Ramen Bar. The selected state and the displayed results contradict each other.",
+          "suggestion": "Either apply the Pizza filter so only pizza restaurants are listed, or reset the selected chip to 'All' when the feed is unfiltered. Keep the chip's selected state in sync with the actual filter."
+        }
+      ],
+      "summary": "The page is mostly well-rendered, but there is one clear state mismatch: the 'Pizza' category chip is selected, yet the content below is unfiltered (poké, burgers, ramen). No other visual breakage was found; the clipped carousel items and the cut-off bottom card are expected scroll behaviour.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The Pizza category is selected, but the feed displays restaurants from other cuisines instead of filtering to pizza.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 321,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.029552,
+        "durationSeconds": 3.4675947920000034
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_16",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "The 'Pizza' filter chip appears in the selected state (dark filled background, white text), but the content below is not filtered: 'Fastest near you' shows Green Bowl Poké and Smash Bros Burgers, and 'Popular right now' leads with Tokumaru Ramen Bar. The selected chip does not match the displayed content, so either the wrong chip is highlighted (should be 'All') or the filter was not applied.",
+          "suggestion": "Sync the chip selection state with the feed. If no filter is active, highlight 'All'; if Pizza is selected, filter the lists to show only pizza restaurants."
+        }
+      ],
+      "summary": "The page renders cleanly overall, but there is one state inconsistency: the 'Pizza' category chip is shown as selected, yet the feed below is unfiltered and the Home tab still shows the default mixed content (poké, burgers, ramen). No other visual breakage was found; the clipped carousel items and the bottom-cut card are expected scroll behaviour.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The Pizza chip is selected, but the feed displays restaurants from other cuisines instead of being filtered to pizza.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 352,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.030792,
+        "durationSeconds": 4.103234667000004
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_16",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "The 'Pizza' filter chip is shown in the selected (dark filled) state, yet the feed below shows non-pizza restaurants (Green Bowl Poké, Smash Bros Burgers, Tokumaru Ramen Bar tagged 'Ramen') and generic sections like 'Fastest near you' and 'Popular right now'. The selected chip does not match the displayed content.",
+          "suggestion": "Make the chip state and feed consistent: either highlight 'All' when the feed is unfiltered, or filter the listings to pizza restaurants when 'Pizza' is selected."
+        }
+      ],
+      "summary": "The page renders cleanly overall with no broken layout, overlap, or clipping beyond the expected carousel and viewport cut-offs. The one clear defect is a state mismatch: the 'Pizza' category chip is shown as selected, but the content below is unfiltered (poké, burgers, ramen).",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The selected Pizza filter is active, but the feed still includes restaurants and sections unrelated to pizza.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 325,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.029712,
+        "durationSeconds": 3.840033292
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_16",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "The 'Pizza' filter chip is in the selected state (dark fill, white text), but the content below is not filtered to pizza: 'Fastest near you' shows Green Bowl Poké, Smash Bros Burgers and Trattoria Piccol…, and 'Popular right now' leads with Tokumaru Ramen Bar. The selected chip and the displayed content contradict each other.",
+          "suggestion": "Sync the chip's selected state with the feed: either filter the lists to pizza restaurants when 'Pizza' is active, or show 'All' as selected by default when the unfiltered home feed is displayed."
+        }
+      ],
+      "summary": "The page renders cleanly overall, but one state inconsistency stands out: the 'Pizza' category chip is shown as selected while the feed below is unfiltered (poké, burgers, ramen, pasta). No other visual breakage was found; the clipped carousel items and bottom card are expected scroll behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The Pizza chip is selected, but the feed still shows restaurants from other cuisines.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 334,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.030071999999999998,
+        "durationSeconds": 3.9663487920000042
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_16",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "The 'Pizza' filter chip appears in the selected/active state (dark fill, white text), but the listings below are not filtered to pizza: 'Fastest near you' shows Green Bowl Poké and Smash Bros Burgers, and 'Popular right now' leads with Tokumaru Ramen Bar. The chip state does not match the displayed content; on an unfiltered home feed, 'All' would be expected to be the active chip.",
+          "suggestion": "Sync the chip's selected state with the applied filter: either highlight 'All' when the feed is unfiltered, or filter the listings to pizza restaurants when 'Pizza' is selected."
+        }
+      ],
+      "summary": "The page renders cleanly overall, but one state inconsistency stands out: the 'Pizza' category chip is shown as selected, yet the content below is unfiltered (poké, burgers, ramen). The clipped carousel card and the card cut off at the bottom of the viewport are expected scroll behaviour, not defects.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The active Pizza filter is selected, but the feed still displays listings from other cuisines.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 348,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.030632,
+        "durationSeconds": 4.045162000000004
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_17",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "styling",
+          "description": "The bottom navigation bar shows 'Profile' as the active tab (green icon and bold green label) even though the displayed screen is the Home feed (delivery address, search, promo banner, restaurant lists). The 'Home' tab is rendered in the inactive grey state, so users get a misleading indication of where they are.",
+          "suggestion": "Bind the active tab state to the current route so that 'Home' is highlighted on the home feed and 'Profile' is shown in the inactive grey style."
+        }
+      ],
+      "summary": "The home feed renders cleanly overall, but the bottom navigation highlights the wrong tab: 'Profile' is shown as active while the screen is clearly the Home feed. No other visual defects were found; the clipped carousel item and the cut-off card at the bottom are expected scrolling behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Reported issue 0 describes Profile active in the bottom navigation while the Home feed is displayed.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 285,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.028111999999999998,
+        "durationSeconds": 5.733564583000007
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_17",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "styling",
+          "description": "The bottom navigation bar shows 'Profile' as the active tab (green icon and bold green label) while the screen content is the Home feed (delivery address, promo banner, restaurant lists). The 'Home' tab is rendered in inactive grey, so the selected-state indicator does not match the current screen.",
+          "suggestion": "Bind the active tab state to the current route so that 'Home' is highlighted on the home feed and 'Profile' is rendered in the inactive grey style."
+        }
+      ],
+      "summary": "The home feed renders cleanly overall, but the bottom navigation highlights the wrong tab: 'Profile' is shown as active while the screen displayed is clearly the Home feed. No other visual defects found; the clipped carousel item and bottom-cut card are expected scrolling behaviour.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Reported issue describes Profile selected in the bottom navigation while the Home feed is displayed.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 281,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027951999999999998,
+        "durationSeconds": 5.773586500000005
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_17",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "The bottom navigation bar shows \"Profile\" as the active tab (green icon and bold green label), while the screen content is clearly the Home feed (delivery address, promo banner, restaurant lists). The Home tab is rendered in inactive grey.",
+          "suggestion": "Bind the active tab state to the current route so that Home is highlighted on the home feed, and Profile is only highlighted when the Profile screen is displayed."
+        }
+      ],
+      "summary": "The home feed renders cleanly overall, but the bottom navigation highlights the wrong tab: \"Profile\" is shown as active (green) while the screen displayed is the Home feed. No other clear visual defects were found; the clipped carousel items and the cut-off pizza card are expected scroll behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Reported issue describes Profile active in the bottom navigation while the Home feed is displayed.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 270,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027511999999999998,
+        "durationSeconds": 5.444081209000004
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_17",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "functionality",
+          "description": "The bottom navigation bar highlights 'Profile' as the active tab (green icon and bold green label), but the screen shown is the Home feed (delivery address, promo banner, 'Fastest near you', 'Popular right now'). The Home tab appears in the inactive grey state.",
+          "suggestion": "Bind the nav bar's selected state to the current route so the Home tab is highlighted when the Home feed is displayed, and Profile is shown as inactive."
+        }
+      ],
+      "summary": "The home feed renders cleanly overall, but the bottom navigation shows the wrong active state: the Profile tab is highlighted while the Home feed is displayed. No other visual breakage found; the clipped carousel items and the bottom-cut pizza card are expected scrolling behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "Reported issue describes Profile highlighted while the Home feed is displayed.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 273,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.027631999999999997,
+        "durationSeconds": 5.901465250000008
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_17",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [
+        {
+          "priority": "major",
+          "category": "styling",
+          "description": "The bottom navigation bar shows the \"Profile\" tab in the active state (green icon and bold green label) while the screen content is the Home feed (delivery address, promo banner, restaurant lists). The \"Home\" tab is rendered in inactive grey, so the active indicator does not match the current screen.",
+          "suggestion": "Bind the active tab state to the current route so that \"Home\" is highlighted on the home feed and \"Profile\" returns to the inactive grey style."
+        }
+      ],
+      "summary": "The home feed renders cleanly overall, but the bottom navigation highlights the wrong tab: \"Profile\" is shown as active while the screen displayed is clearly the Home feed. No other visual defects found; the clipped carousel item and the cut-off pizza card are expected scrolling behavior.",
+      "expected": [
+        {
+          "expectedIndex": 0,
+          "found": true,
+          "matchedReportedIndexes": [
+            0
+          ],
+          "reasoning": "The report describes the Profile tab highlighted while the Home feed is displayed.",
+          "overridden": false
+        }
+      ],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 284,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.028072,
+        "durationSeconds": 5.398730584000004
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_18",
+      "rep": 1,
+      "status": "ok",
+      "reportedIssues": [],
+      "summary": "The page renders cleanly with no visually broken elements. Header, search bar, category chips, promo banner, carousels, restaurant cards and bottom navigation are all aligned and consistent. The partially visible carousel item, the clipped filter chip at the right edge, and the pizza card cut off at the bottom are expected scrolling behaviour, not defects.",
+      "expected": [],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 129,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.021872,
+        "durationSeconds": 5.178406
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_18",
+      "rep": 2,
+      "status": "ok",
+      "reportedIssues": [],
+      "summary": "The page renders cleanly with no visible visual defects. Header, search bar, filter chips, promo banner, carousels, restaurant cards and bottom navigation are all aligned, legible and consistently styled. The clipped carousel item on the right and the cut-off pizza card at the bottom are expected scrolling behaviour.",
+      "expected": [],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 119,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.021471999999999998,
+        "durationSeconds": 4.957051958
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_18",
+      "rep": 3,
+      "status": "ok",
+      "reportedIssues": [],
+      "summary": "The page renders cleanly with no visually broken elements. Header, search bar, category chips, promo banner, carousels, restaurant cards and bottom navigation are all properly aligned, legible and consistently styled. The partially visible carousel item and chip at the right edge, and the pizza card cut off at the bottom, are expected scroll behaviour.",
+      "expected": [],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 126,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.021751999999999997,
+        "durationSeconds": 5.110980416
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_18",
+      "rep": 4,
+      "status": "ok",
+      "reportedIssues": [],
+      "summary": "The page renders cleanly with no visible defects. Header, search bar, filter chips, promo banner, carousels, restaurant cards and bottom navigation are all aligned, legible and consistently styled. The partially visible carousel item and chip at the right edge and the pizza card cut off at the bottom are expected scrolling behaviour.",
+      "expected": [],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 122,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.021592,
+        "durationSeconds": 5.024267709000001
+      }
+    },
+    {
+      "model": "claude-fable-5-2",
+      "series": "claude-fable-5-2",
+      "imageId": "img_18",
+      "rep": 5,
+      "status": "ok",
+      "reportedIssues": [],
+      "summary": "The page renders cleanly with no visually broken elements. The header, search bar, category chips, promo banner, carousels, restaurant cards and bottom navigation are all aligned, legible and consistently styled. The partially visible carousel item, the clipped category chip at the right edge, and the pizza card cut off at the bottom are expected scrolling behaviour.",
+      "expected": [],
+      "extraReportedIndexes": [],
+      "overridden": false,
+      "usage": {
+        "inputTokens": 2089,
+        "outputTokens": 129,
+        "cachedInputTokens": 0,
+        "estimatedCost": 0.021872,
+        "durationSeconds": 5.016968833
       }
     },
     {
@@ -94584,7 +97760,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the section title showing the raw translation key instead of translated text.",
+          "reasoning": "Both describe the section title displaying the raw translation key instead of translated text.",
           "overridden": false
         }
       ],
@@ -94621,7 +97797,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Both describe the section heading showing the raw translation key home_feed.popular_title instead of translated text.",
+          "reasoning": "Both describe the section title displaying the raw translation key instead of translated text.",
           "overridden": false
         }
       ],
@@ -94896,7 +98072,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The report describes Smash Bros Burgers showing an invalid €NaN delivery fee.",
+          "reasoning": "The reported issue describes Smash Bros Burgers showing a €NaN delivery fee.",
           "overridden": false
         }
       ],
@@ -95044,7 +98220,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The report says the restaurant card shows a broken-image placeholder instead of its photo, matching the failed cover image.",
+          "reasoning": "The report describes the restaurant card showing a broken-image placeholder instead of its photo.",
           "overridden": false
         }
       ],
@@ -95081,7 +98257,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The Tokumaru Ramen Bar card shows a broken-image placeholder instead of its restaurant photo.",
+          "reasoning": "The report describes the restaurant card showing a broken-image placeholder instead of its photo.",
           "overridden": false
         }
       ],
@@ -95594,7 +98770,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The report says the Orders navigation item is missing its icon.",
+          "reasoning": "Reported issue 0 says the Orders navigation item is missing its icon.",
           "overridden": false
         }
       ],
@@ -96023,7 +99199,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "Reported issue 0 describes the same misspelling in the search placeholder.",
+          "reasoning": "Reported issue 0 describes the same misspelling of “Restaurants” in the search placeholder.",
           "overridden": false
         }
       ],
@@ -97089,7 +100265,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The report describes a blank top-right control showing only a red notification dot, matching the missing icon.",
+          "reasoning": "Both describe the top-right icon or control missing, with only a red notification dot visible.",
           "overridden": false
         }
       ],
@@ -97163,7 +100339,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The report describes a card sitting lower than neighboring cards in the same carousel, indicating misaligned card heights.",
+          "reasoning": "The report says a card in the “Fastest near you” carousel sits lower than neighboring cards, describing misaligned card heights.",
           "overridden": false
         }
       ],
@@ -97319,7 +100495,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The report describes a card in the “Fastest near you” row sitting lower than its neighbors, matching the carousel card height misalignment.",
+          "reasoning": "The report says a card in the “Fastest near you” carousel sits lower than neighboring cards, describing misaligned card heights.",
           "overridden": false
         }
       ],
@@ -97803,7 +100979,7 @@
           "matchedReportedIndexes": [
             0
           ],
-          "reasoning": "The report describes the Profile tab highlighted while the Home feed is displayed.",
+          "reasoning": "Both describe the Profile tab being highlighted while the Home feed is displayed.",
           "overridden": false
         }
       ],

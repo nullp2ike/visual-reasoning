@@ -10,10 +10,11 @@ import type {
 } from "./types.js";
 
 // Opus 4.7 introduced a dedicated "xhigh" effort tier, carried forward by
-// Fable 5.1, Fable 5, Opus 4.8, Opus 5, Opus 5.5, Sonnet 5, Sonnet 5.5, and Haiku 5.5.
-// Older Anthropic models (Opus 4.6, Sonnet 4.6) reject "xhigh" but accept
-// "max", which is why our xhigh maps to "max" on those models only.
+// Fable 5.2, Fable 5.1, Fable 5, Opus 4.8, Opus 5, Opus 5.5, Sonnet 5, Sonnet 5.5,
+// and Haiku 5.5. Older Anthropic models (Opus 4.6, Sonnet 4.6) reject "xhigh"
+// but accept "max", which is why our xhigh maps to "max" on those models only.
 const XHIGH_CAPABLE_MODELS: ReadonlySet<string> = new Set([
+  Model.Anthropic.FABLE_5_2,
   Model.Anthropic.FABLE_5_1,
   Model.Anthropic.FABLE_5,
   Model.Anthropic.OPUS_5_5,

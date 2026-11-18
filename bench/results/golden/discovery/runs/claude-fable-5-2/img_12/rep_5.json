@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-2",
+  "provider": "anthropic",
+  "imageId": "img_12",
+  "rep": 5,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-10T18:56:10.785Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page renders cleanly overall, but there is one clear visual defect: on the Tokumaru Ramen Bar card, the metadata line under the restaurant name has two text items drawn on top of each other, making it unreadable. No other broken elements were found; the clipped carousel item and the cut-off pizza card at the bottom are normal scrolling behaviour.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "On the Tokumaru Ramen Bar card, the delivery time (e.g. '25–35 min') and the delivery fee (e.g. '€0 delivery') overlap in the metadata row, producing garbled text ('25–3€0mdelivery'). Neither value can be read, and one separator dot appears to be missing.",
+        "suggestion": "Lay out the metadata items in a horizontal flow (flex row with a gap and separators) so each sits beside the previous one. Remove any absolute positioning, negative margin or zero-width constraint that causes the time and fee labels to collapse onto each other."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 342,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.030392,
+    "durationSeconds": 5.0338397910000054
+  }
+}

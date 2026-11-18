@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-2",
+  "provider": "anthropic",
+  "imageId": "img_14",
+  "rep": 4,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-10T18:56:17.601Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly well-formed, but there is one clear layout defect: in the \"Fastest near you\" carousel, the second card (Smash Bros Burgers) sits lower than its neighbours, breaking the row's top alignment. Nothing else looks broken; the clipped last carousel item and the cut-off card at the bottom are expected scroll behaviour.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "layout",
+        "description": "In the \"Fastest near you\" carousel, the Smash Bros Burgers card is shifted down by roughly 28px compared with the Green Bowl Poké and Trattoria Piccola cards. Its image starts lower, and its title and delivery fee text sit below the baseline of the neighbouring cards, so the row looks uneven.",
+        "suggestion": "Align all carousel cards to the top of the row (for example, align-items: flex-start or a consistent top constraint) and remove any stray top margin, padding or offset on the second card so images and text line up across the row."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 332,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.029991999999999998,
+    "durationSeconds": 4.269085958000003
+  }
+}

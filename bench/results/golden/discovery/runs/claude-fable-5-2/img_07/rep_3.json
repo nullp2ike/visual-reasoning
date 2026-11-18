@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-2",
+  "provider": "anthropic",
+  "imageId": "img_07",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-10T18:55:50.353Z",
+  "status": "ok",
+  "result": {
+    "summary": "The page is mostly rendered correctly, but one visual defect stands out: a loading spinner is stuck on top of the Tokumaru Ramen Bar card image even though the image and the rest of the page have fully loaded.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "functionality",
+        "description": "A circular loading spinner (white disc with a partial green progress ring) is overlaid on the centre of the Tokumaru Ramen Bar card image under 'Popular right now', although the image and all card details are already fully displayed. The loading indicator appears stuck or orphaned and partly covers the food photo.",
+        "suggestion": "Hide or remove the spinner once the card image/content has loaded (e.g. on the image load or error callback), and ensure the loading state is cleared properly so it never renders over loaded content."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 268,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.027431999999999998,
+    "durationSeconds": 5.820943707999999
+  }
+}

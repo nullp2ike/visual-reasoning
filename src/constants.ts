@@ -71,6 +71,7 @@ export const Provider = {
 /** Known model names grouped by provider. */
 export const Model = {
   Anthropic: {
+    FABLE_5_2: "claude-fable-5-2",
     FABLE_5_1: "claude-fable-5-1",
     FABLE_5: "claude-fable-5",
     OPUS_5_5: "claude-opus-5-5",

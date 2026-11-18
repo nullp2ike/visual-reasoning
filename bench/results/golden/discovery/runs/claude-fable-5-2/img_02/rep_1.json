@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-2",
+  "provider": "anthropic",
+  "imageId": "img_02",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-10T18:55:26.981Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home screen renders mostly correctly, but one data-formatting defect stands out: the delivery fee on the Smash Bros Burgers card shows a raw 'NaN' value instead of a price. No other clear visual defects were found; the clipped carousel items and the bottom-cut card are expected scrolling behaviour.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The delivery fee under 'Smash Bros Burgers' in the 'Fastest near you' carousel reads '€NaN delivery'. A failed number computation or format is leaking into the UI, where neighbouring cards show valid prices such as '€0.90 delivery' and '€1.90 delivery'.",
+        "suggestion": "Guard against missing or non-numeric delivery fee values before formatting. Show a fallback such as 'Delivery fee unavailable' or hide the fee line, and find out why the fee for this restaurant is undefined or unparsable."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 317,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.029391999999999998,
+    "durationSeconds": 4.574410417
+  }
+}

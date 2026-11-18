@@ -10,6 +10,7 @@ Judges compared: `gemini-3.8-flash` vs `gpt-5.6-luna` vs `gpt-6-luna` vs `meta/m
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | claude-fable-5 | 94% | 0.9 | 94% | 0.8 | 94% | 0.8 | 94% | 0.9 | 94% | 0.8 | 94% | 0.9 | 0% |
 | claude-fable-5-1 | 94% | 0.2 | 94% | 0.2 | 94% | 0.2 | 94% | 0.2 | 94% | 0.2 | 94% | 0.2 | 0% |
+| claude-fable-5-2 | – | – | 100% | 0.0 | 100% | 0.0 | 100% | 0.0 | 100% | 0.0 | 100% | 0.0 | – |
 | claude-haiku-4-5 | 26% | 0.0 | 26% | 0.0 | 26% | 0.0 | 27% | 0.0 | 27% | 0.0 | 26% | 0.0 | 1% |
 | claude-haiku-5-5 | 88% | 0.9 | 86% | 1.0 | 82% | 1.0 | 86% | 0.9 | 81% | 1.0 | 86% | 1.0 | 7% |
 | claude-opus-4-8 | 54% | 0.4 | 51% | 0.4 | 49% | 0.4 | 54% | 0.4 | 54% | 0.4 | 53% | 0.4 | 5% |
@@ -53,7 +54,43 @@ Judges compared: `gemini-3.8-flash` vs `gpt-5.6-luna` vs `gpt-6-luna` vs `meta/m
 | xiaomi/mimo-v2.6-pro | 52% | 0.6 | 49% | 0.6 | 49% | 0.6 | 49% | 0.6 | 52% | 0.6 | 53% | 0.6 | 4% |
 | z-ai/glm-5.3-flash | 74% | 0.5 | 72% | 0.5 | 71% | 0.5 | 71% | 0.5 | 73% | 0.5 | 72% | 0.5 | 4% |
 
-## Disagreements (69)
+## Disagreements (86)
+
+### img_01 01_raw_localization_key.png — claude-fable-5-2
+
+Expected: Section title shows the raw translation key home_feed.popul…
+
+- **gemini-3.8-flash**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The report identifies the same section heading displaying the raw key home_feed.popular_title instead of translated text.
+  - rep 2: Reported issue identifies the same section heading displaying the raw key home_feed.popular_title instead of translated text.
+  - rep 3: The reported issue identifies the same section heading displaying the raw key home_feed.popular_title instead of translated text.
+  - rep 4: The reported issue identifies the same section heading displaying the raw home_feed.popular_title translation key instead of translated text.
+  - rep 5: The reported issue identifies the same section heading displaying the raw key home_feed.popular_title instead of translated text.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both reports describe the section title displaying the raw home_feed.popular_title translation key instead of translated text.
+  - rep 2: Both describe the section title showing the raw home_feed.popular_title translation key.
+  - rep 3: The report describes the second section heading exposing the same raw translation key.
+  - rep 4: The report identifies the same section heading displaying the raw translation key home_feed.popular_title.
+  - rep 5: Both describe the section title displaying the raw home_feed.popular_title translation key instead of translated text.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe the same untranslated home_feed.popular_title section heading.
+  - rep 2: Both describe the section title showing raw key home_feed.popular_title instead of translated text.
+  - rep 3: Both describe the same section title showing raw key home_feed.popular_title instead of translated text.
+  - rep 4: Both describe the same raw i18n key shown as section title.
+  - rep 5: Both describe the section title showing the raw key home_feed.popular_title instead of translated text.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 2: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 3: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 4: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 5: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 2: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 3: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
 
 ### img_01 01_raw_localization_key.png — gemini-3.1-pro-preview
 
@@ -96,6 +133,78 @@ Expected: Section title shows the raw translation key home_feed.popul…
   - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
   - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
 
+### img_02 02_invalid_placeholder_data.png — claude-fable-5-2
+
+Expected: Delivery fee shows €NaN
+
+- **gemini-3.8-flash**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue describes the delivery fee for Smash Bros Burgers displaying €NaN, matching the expected defect.
+  - rep 2: The reported issue describes the delivery fee displaying €NaN, matching the expected defect.
+  - rep 3: The reported issue describes the same €NaN delivery fee defect, specifically on the Smash Bros Burgers card.
+  - rep 4: The reported issue describes the Smash Bros Burgers card displaying a €NaN delivery fee, matching the expected defect.
+  - rep 5: The reported issue explicitly states that the delivery fee displays as €NaN.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The report describes the delivery fee displaying €NaN.
+  - rep 2: The report describes a delivery fee displayed as €NaN.
+  - rep 3: The report describes a delivery fee displayed as €NaN.
+  - rep 4: The report describes the Smash Bros Burgers card showing a delivery fee of €NaN.
+  - rep 5: The report describes the delivery fee displaying as €NaN.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe the delivery fee showing €NaN.
+  - rep 2: Both describe €NaN displayed as delivery fee.
+  - rep 3: Both describe €NaN shown as delivery fee.
+  - rep 4: Both describe delivery fee displayed as €NaN.
+  - rep 5: Both describe the delivery fee displaying as €NaN.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+  - rep 2: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 3: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 4: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+  - rep 5: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 2: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 3: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
+
+### img_03 03_broken_image.png — claude-fable-5-2
+
+Expected: Restaurant cover image failed to load
+
+- **gemini-3.8-flash**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The report describes the restaurant cover image failing to load and showing a broken-image placeholder.
+  - rep 2: The report describes the restaurant card's cover photo failing to load, showing a grey placeholder and broken-image icon.
+  - rep 3: The report describes the Tokumaru Ramen Bar restaurant card's cover image failing to load, shown as a broken-image placeholder.
+  - rep 4: The Tokumaru Ramen Bar card displays a broken-image placeholder instead of its restaurant cover image.
+  - rep 5: The reported Tokumaru Ramen Bar card has a broken cover image that failed to load.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe the Tokumaru Ramen Bar cover image failing to display.
+  - rep 2: The report says the restaurant card’s cover photo failed to load and appears as a broken-image placeholder.
+  - rep 3: The report describes the restaurant card’s cover image failing to load and displaying a broken-image placeholder.
+  - rep 4: The Tokumaru Ramen Bar card’s cover image is broken and appears as a grey box.
+  - rep 5: The Tokumaru Ramen Bar card shows a broken-image placeholder instead of its cover photo.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe the restaurant cover image failing to load and display.
+  - rep 2: Both describe the restaurant card cover image failing to load.
+  - rep 3: Both describe the restaurant card missing its cover photo with a broken image placeholder.
+  - rep 4: Reported issue describes the same restaurant cover photo failing to load as a grey broken-image box.
+  - rep 5: Reported issue describes the same broken cover photo on the Tokumaru Ramen Bar card.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+  - rep 2: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 3: OpenAI Decisions matched R0 (p=0.98, confidence 0.96).
+  - rep 4: OpenAI Decisions matched R0 (p=0.98, confidence 0.96).
+  - rep 5: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 2: Jev matched R0 (p=0.99, confidence 0.98).
+  - rep 3: Jev matched R0 (p=0.99, confidence 0.98).
+  - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 5: Jev matched R0 (p=0.99, confidence 0.98).
+
 ### img_03 03_broken_image.png — gemini-3.1-flash-lite
 
 Expected: Restaurant cover image failed to load
@@ -137,6 +246,114 @@ Expected: Restaurant cover image failed to load
   - rep 4: Jev matched no reported issue; closest was R0 (p=0.50).
   - rep 5: Jev matched R0 (p=0.98, confidence 0.96).
 
+### img_04 04_pointless_zero_discount.png — claude-fable-5-2
+
+Expected: Discount badge shows −0%
+
+- **gemini-3.8-flash**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The reported issue identifies the discount badge displaying 0%, matching the expected −0% badge defect.
+  - rep 2: The reported issue explicitly identifies the discount badge showing "−0%", matching the expected defect.
+  - rep 3: The reported issue identifies the promo badge displaying “−0%,” matching the expected discount badge defect.
+  - rep 4: The reported promotional badge displays −0%, matching the expected discount badge defect.
+  - rep 5: The reported issue identifies the promo badge showing '−0%' and explains that the zero-percent discount should not be displayed.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The reported issue describes the discount badge displaying −0%.
+  - rep 2: The report identifies the discount badge showing −0%, the same defect as expected.
+  - rep 3: The reported issue identifies the promo badge displaying −0%, the same discount badge defect.
+  - rep 4: The reported issue describes the promotional badge displaying −0%, matching the expected discount badge defect.
+  - rep 5: The reported issue describes the promo badge showing −0%, the same discount badge defect.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe a discount badge displaying -0%.
+  - rep 2: Both describe the discount badge showing −0%.
+  - rep 3: Both describe a promo badge showing -0% discount.
+  - rep 4: Both describe the same discount badge incorrectly showing −0%.
+  - rep 5: Both describe the promo badge showing −0% discount.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 2: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+  - rep 3: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 4: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 5: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 2: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 3: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
+
+### img_05 05_contrast_failure.png — claude-fable-5-2
+
+Expected: Promo banner text is unreadable, white text on a pale mint …
+
+- **gemini-3.8-flash**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue identifies the same promo banner's white text on a pale mint background as having extremely low contrast and being unreadable.
+  - rep 2: The reported issue identifies the promo banner's white text as nearly invisible against the pale mint background.
+  - rep 3: Reported issue identifies the same promo banner text contrast problem: white text is unreadable against a pale mint background.
+  - rep 4: Reported issue 0 describes the promo banner's white text becoming unreadable against the pale mint background.
+  - rep 5: Reported issue describes the same promo banner text being unreadable because white text is placed on a pale mint background.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue 0 describes the promo banner text being nearly invisible because white text is on a pale mint-green background.
+  - rep 2: Both describe white promo banner text that is nearly unreadable against a pale mint background.
+  - rep 3: Reported issue describes the promo banner text as white on a very light mint-green background and nearly unreadable.
+  - rep 4: Reported issue 0 describes the promo banner text being nearly unreadable because white text appears on a pale mint background.
+  - rep 5: Reported issue describes the promo banner text as nearly invisible white text on a very light mint background.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe white promo banner text unreadable on pale mint background.
+  - rep 2: Both describe promo banner white text on pale mint background as unreadable.
+  - rep 3: Both describe white promo banner text on pale mint background as unreadable.
+  - rep 4: Both describe white promo banner text unreadable on pale mint background.
+  - rep 5: Reported issue describes the same white-on-mint unreadable promo banner text.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+  - rep 2: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 3: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 4: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 5: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 2: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 3: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
+
+### img_06 06_missing_nav_icon.png — claude-fable-5-2
+
+Expected: Orders icon is missing from the bottom nav bar
+
+- **gemini-3.8-flash**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The report explicitly states that the Orders tab in the bottom navigation bar is missing its icon.
+  - rep 2: Reported issue 0 describes the Orders tab missing its icon in the bottom navigation bar.
+  - rep 3: The reported issue describes the Orders icon missing from the bottom navigation bar while its text label remains.
+  - rep 4: Reported issue 0 specifically states that the Orders tab in the bottom navigation bar has no icon.
+  - rep 5: Reported issue 0 describes the Orders tab missing its icon in the bottom navigation bar.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe the Orders item in the bottom navigation missing its icon.
+  - rep 2: Reported issue 0 describes the Orders bottom-navigation tab missing its icon.
+  - rep 3: The report states that the Orders tab has no icon in the bottom navigation bar.
+  - rep 4: The report states that the Orders tab in the bottom navigation bar is missing its icon.
+  - rep 5: Both describe the Orders item in the bottom navigation missing its icon.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe missing icon for Orders tab in bottom nav.
+  - rep 2: Both describe the missing icon for the Orders tab in the bottom nav.
+  - rep 3: Both describe the missing Orders icon in the bottom nav bar.
+  - rep 4: Both describe the Orders tab lacking its icon in the bottom navigation bar.
+  - rep 5: Both describe the missing Orders icon in the bottom nav bar.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 2: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 3: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 4: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 5: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 2: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 3: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
+
 ### img_06 06_missing_nav_icon.png — gemini-3.1-flash-lite
 
 Expected: Orders icon is missing from the bottom nav bar
@@ -177,6 +394,42 @@ Expected: Orders icon is missing from the bottom nav bar
   - rep 3: No issues were reported.
   - rep 4: No issues were reported.
   - rep 5: No issues were reported.
+
+### img_07 07_state_inconsistency.png — claude-fable-5-2
+
+Expected: Loading spinner is shown on top of already loaded content
+
+- **gemini-3.8-flash**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The reported spinner remains over the fully loaded card image, matching a loading spinner displayed on already loaded content.
+  - rep 2: The report describes a loading spinner over content that has already fully loaded.
+  - rep 3: The reported issue describes a loading spinner overlaid on a fully loaded content card.
+  - rep 4: The reported spinner is overlaid on fully loaded card content, matching a loading indicator remaining visible after content loads.
+  - rep 5: The spinner overlays a fully loaded restaurant card, matching a loading indicator left on top of loaded content.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The reported spinner remains over a fully loaded card image, matching the expected loading spinner on loaded content.
+  - rep 2: The report describes a loading spinner remaining over fully loaded content.
+  - rep 3: The reported spinner overlays a fully loaded card image, matching the expected defect.
+  - rep 4: The reported spinner overlays a fully loaded card, matching the expected loading spinner shown over loaded content.
+  - rep 5: The spinner is shown over a fully rendered card image and details.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe a stuck loading spinner over already-loaded content.
+  - rep 2: Both describe a stuck loading spinner obscuring already-loaded content.
+  - rep 3: Reported issue describes the same stuck loading spinner overlaid on already loaded card content.
+  - rep 4: Reported issue describes a stuck spinner overlaying fully rendered card content.
+  - rep 5: Reported issue describes a stuck loading spinner overlaying fully rendered card content.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 2: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 3: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 4: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 5: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 2: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 3: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
 
 ### img_07 07_state_inconsistency.png — claude-opus-4-8
 
@@ -628,6 +881,78 @@ Expected: Loading spinner is shown on top of already loaded content
   - rep 3: Jev matched R0 (p=0.72, confidence 0.43).
   - rep 4: Jev matched R0 (p=1.00, confidence 0.99).
   - rep 5: Jev matched R0 (p=0.99, confidence 0.99).
+
+### img_08 08_typo_in_text.png — claude-fable-5-2
+
+Expected: The word Restaurants is misspelled Restarants
+
+- **gemini-3.8-flash**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The reported issue identifies the same misspelling of “Restaurants” as “Restarants,” specifically in the search bar placeholder.
+  - rep 2: Reported issue 0 identifies the same misspelling of “Restaurants” as “Restarants” in the search placeholder.
+  - rep 3: The reported issue identifies the same misspelling of “Restaurants” as “Restarants” in the search placeholder.
+  - rep 4: Reported issue identifies the same misspelling of “Restaurants” as “Restarants” in the search placeholder.
+  - rep 5: The reported search placeholder identifies the same misspelling of “Restaurants” as “Restarants.”
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The reported issue identifies the same misspelling, “Restarants,” of “Restaurants.”
+  - rep 2: The reported issue identifies the same misspelling of “Restaurants” as “Restarants” in the search placeholder.
+  - rep 3: The reported issue identifies the same misspelling of “Restaurants” as “Restarants” in the search placeholder.
+  - rep 4: The reported issue identifies the same misspelling of “Restaurants” as “Restarants” in the search field placeholder.
+  - rep 5: The reported issue identifies the same misspelling of “Restaurants” as “Restarants” in the search placeholder.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe Restaurants misspelled as Restarants.
+  - rep 2: Both describe Restaurants misspelled as Restarants in the search field.
+  - rep 3: Both describe Restaurants misspelled as Restarants.
+  - rep 4: Both describe Restaurants misspelled as Restarants.
+  - rep 5: Both describe Restaurants misspelled as Restarants.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 2: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 3: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 4: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 5: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=0.99, confidence 0.98).
+  - rep 2: Jev matched R0 (p=0.99, confidence 0.98).
+  - rep 3: Jev matched R0 (p=0.99, confidence 0.98).
+  - rep 4: Jev matched R0 (p=0.99, confidence 0.98).
+  - rep 5: Jev matched R0 (p=0.99, confidence 0.98).
+
+### img_09 09_text_truncation.png — claude-fable-5-2
+
+Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
+
+- **gemini-3.8-flash**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The report describes the Tokumaru Ramen Bar heading/name being hard-clipped mid-word as “Tokumaru Rameı” without an ellipsis.
+  - rep 2: The reported issue describes the same Tokumaru Ramen Bar heading being clipped mid-letter without an ellipsis.
+  - rep 3: The report describes the same Tokumaru Ramen Bar heading being cut off mid-word without an ellipsis.
+  - rep 4: Both describe the Tokumaru Ramen title being clipped mid-word without an ellipsis.
+  - rep 5: The report describes the same restaurant heading being clipped mid-word without an ellipsis.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe the Tokumaru Ramen Bar heading being clipped mid-word without an ellipsis.
+  - rep 2: Both describe the Tokumaru Ramen Bar heading being clipped mid-word without an ellipsis.
+  - rep 3: Both describe the Tokumaru Ramen Bar heading cut off mid-word without an ellipsis.
+  - rep 4: Both describe the Tokumaru Ramen heading clipped mid-word without an ellipsis.
+  - rep 5: Both describe the restaurant heading being clipped mid-word, with its final letter partially cut off.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe the Tokumaru Ramen Bar name clipped mid-character with no ellipsis.
+  - rep 2: Both describe the Tokumaru Ramen title cut off mid-glyph with no ellipsis.
+  - rep 3: Both describe the Tokumaru Ramen Bar title cut off mid-character with no ellipsis.
+  - rep 4: Both describe the Tokumaru title clipped mid-letter with no ellipsis in the same card.
+  - rep 5: Both describe the Tokumaru Ramen title cut off mid-word with the final letter sliced.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 2: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+  - rep 3: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+  - rep 4: OpenAI Decisions matched R0 (p=0.98, confidence 0.96).
+  - rep 5: OpenAI Decisions matched R0 (p=0.96, confidence 0.92).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=0.99, confidence 0.98).
+  - rep 2: Jev matched R0 (p=0.98, confidence 0.96).
+  - rep 3: Jev matched R0 (p=0.94, confidence 0.88).
+  - rep 4: Jev matched R0 (p=0.94, confidence 0.88).
+  - rep 5: Jev matched R0 (p=0.91, confidence 0.82).
 
 ### img_09 09_text_truncation.png — claude-haiku-5-5
 
@@ -1203,6 +1528,42 @@ Expected: The "Tokumaru Ramen Bar" heading is cut off mid-word, rende…
   - rep 4: No issues were reported.
   - rep 5: Jev matched no reported issue; closest was R0 (p=0.00).
 
+### img_10 10_duplicate_elements.png — claude-fable-5-2
+
+Expected: Green Bowl Poké card appears twice in the carousel
+
+- **gemini-3.8-flash**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The report explicitly identifies Green Bowl Poké appearing twice in the carousel as a duplicated list item.
+  - rep 2: Reported issue 0 describes the Green Bowl Poké card appearing twice in the carousel.
+  - rep 3: Reported issue 0 explicitly describes the Green Bowl Poké card appearing twice in the carousel.
+  - rep 4: Reported issue 0 explicitly describes the Green Bowl Poké card appearing twice in the carousel.
+  - rep 5: The report explicitly states that Green Bowl Poké appears twice as identical adjacent cards in the carousel.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue 0 describes Green Bowl Poké appearing in both the first and second carousel positions.
+  - rep 2: Reported issue 0 describes Green Bowl Poké appearing twice in adjacent carousel cards.
+  - rep 3: The report describes Green Bowl Poké appearing twice as duplicate cards in the carousel.
+  - rep 4: The report describes the Green Bowl Poké card duplicated in the first and second carousel positions.
+  - rep 5: The report describes Green Bowl Poké appearing twice in adjacent carousel cards.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue describes the same duplicated Green Bowl Poké card in the carousel.
+  - rep 2: Both describe duplicate Green Bowl Poké cards in the carousel.
+  - rep 3: Both describe duplicate Green Bowl Poké cards in the carousel.
+  - rep 4: Both describe identical Green Bowl Poké card duplicated in carousel.
+  - rep 5: Both describe duplicate Green Bowl Poké cards in the carousel.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 2: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 3: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 4: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+  - rep 5: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 2: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 3: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
+
 ### img_10 10_duplicate_elements.png — claude-opus-4-8
 
 Expected: Green Bowl Poké card appears twice in the carousel
@@ -1324,6 +1685,42 @@ Expected: Green Bowl Poké card appears twice in the carousel
   - rep 2: Jev matched R0 (p=0.81, confidence 0.61).
   - rep 3: Jev matched R0 (p=0.93, confidence 0.87).
   - rep 4: Jev matched R0 (p=1.00, confidence 0.99).
+  - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
+
+### img_11 11_impossible_discount_value.png — claude-fable-5-2
+
+Expected: Discount badge shows −100%
+
+- **gemini-3.8-flash**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue 0 identifies the discount badge showing −100%, matching the expected defect.
+  - rep 2: The reported issue identifies the discount badge showing −100%, matching the expected defect.
+  - rep 3: The reported issue identifies the discount badge showing −100%, which is the same defect.
+  - rep 4: The reported issue identifies the promo badge showing −100%, matching the expected discount badge defect.
+  - rep 5: The reported issue identifies the discount badge displaying −100%, matching the expected defect exactly.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The report identifies the discount badge displaying −100% as an implausible value.
+  - rep 2: The report identifies the discount badge displaying −100%.
+  - rep 3: The report describes the discount badge showing −100%.
+  - rep 4: The reported issue describes the promo badge showing −100%, the same discount defect.
+  - rep 5: The report identifies the discount badge displaying −100% as an implausible discount.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue describes the same −100% discount badge on the pizza card.
+  - rep 2: Both describe the same -100% discount badge defect.
+  - rep 3: Both describe the discount badge showing −100%.
+  - rep 4: Both describe the discount badge showing −100%.
+  - rep 5: Both describe the discount badge showing −100%.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 2: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 3: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 4: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 5: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 2: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 3: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
   - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
 
 ### img_11 11_impossible_discount_value.png — claude-haiku-5-5
@@ -1489,6 +1886,42 @@ Expected: Discount badge shows −100%
   - rep 3: Jev matched R0 (p=0.67, confidence 0.34).
   - rep 4: Jev matched no reported issue; closest was R0 (p=0.00).
   - rep 5: Jev matched no reported issue; closest was R0 (p=0.00).
+
+### img_12 12_overlapping_elements.png — claude-fable-5-2
+
+Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
+
+- **gemini-3.8-flash**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue 0 identifies the delivery fee and delivery time text overlapping for Tokumaru Ramen Bar.
+  - rep 2: Reported issue describes the delivery fee and delivery time texts overlapping in the Tokumaru Ramen Bar card.
+  - rep 3: Reported issue describes the delivery fee and delivery time overlapping for Tokumaru Ramen Bar.
+  - rep 4: The reported issue identifies overlapping delivery fee and delivery time text on the Tokumaru Ramen Bar card.
+  - rep 5: The reported issue describes the delivery fee and delivery time overlapping on the Tokumaru Ramen Bar card.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe the delivery fee and delivery time text overlapping for Tokumaru Ramen Bar.
+  - rep 2: Reported issue 0 describes the delivery fee and delivery time overlapping in the Tokumaru Ramen Bar card.
+  - rep 3: Both describe the delivery fee and delivery time overlapping in Tokumaru Ramen Bar’s metadata row.
+  - rep 4: Both reports describe the delivery fee and delivery time text overlapping on the Tokumaru Ramen Bar card.
+  - rep 5: Both reports describe the delivery fee and delivery time overlapping on the Tokumaru Ramen Bar card.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue describes the same overlapping delivery time and fee text under Tokumaru Ramen Bar.
+  - rep 2: Both describe delivery fee overlapping delivery time in Tokumaru Ramen Bar card.
+  - rep 3: Both describe delivery time and fee text overlapping under Tokumaru Ramen Bar.
+  - rep 4: Both describe delivery fee text overlapping delivery time text on the Tokumaru Ramen Bar card.
+  - rep 5: Both describe delivery fee and delivery time overlapping on Tokumaru Ramen Bar card.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+  - rep 2: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+  - rep 3: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+  - rep 4: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+  - rep 5: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 2: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 3: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 5: Jev matched R0 (p=0.99, confidence 0.98).
 
 ### img_12 12_overlapping_elements.png — claude-haiku-4-5
 
@@ -2105,6 +2538,42 @@ Expected: Tokumaru Ramen Bar Delivery fee text overlaps the delivery …
   - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
   - rep 5: Jev matched no reported issue; closest was R0 (p=0.25).
 
+### img_13 13_orphaned_notification_badge.png — claude-fable-5-2
+
+Expected: An icon is missing from the top right corner, only a red do…
+
+- **gemini-3.8-flash**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The reported issue describes the top-right circular button showing only a red dot because its icon is missing.
+  - rep 2: The reported issue describes the top-right circular button showing only a red dot because its icon glyph is missing.
+  - rep 3: The reported issue describes the same top-right circular control showing only a red dot because its icon is missing.
+  - rep 4: The reported issue describes the top-right circular button lacking its icon and showing only a red dot.
+  - rep 5: The reported top-right circular button has a missing icon and only a red badge dot, matching the expected defect.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The report describes the top-right icon missing while only its red badge dot remains visible.
+  - rep 2: Both describe a missing icon in the top-right area, with only a red dot visible.
+  - rep 3: Both describe a missing icon in the top-right area, with only a red dot visible.
+  - rep 4: The report describes a missing icon in the top-right button, leaving only the red dot visible.
+  - rep 5: The reported top-right header button is missing its icon and shows only a red dot, matching the expected defect.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe top-right button missing its icon with only red dot visible.
+  - rep 2: Both describe top-right button showing only red dot with missing icon glyph.
+  - rep 3: Both describe the top-right element showing only a red dot with its icon missing.
+  - rep 4: Both describe the top-right element missing its icon leaving only the red dot visible.
+  - rep 5: Both describe missing icon in top-right button showing only red dot.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 2: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 3: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+  - rep 4: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 5: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 2: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 3: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
+
 ### img_13 13_orphaned_notification_badge.png — gemini-3-flash-preview
 
 Expected: An icon is missing from the top right corner, only a red do…
@@ -2351,6 +2820,42 @@ Expected: An icon is missing from the top right corner, only a red do…
   - rep 4: Jev matched R1 (p=1.00, confidence 0.99).
   - rep 5: Jev matched R0 (p=0.78, confidence 0.55).
 
+### img_14 14_misalignment.png — claude-fable-5-2
+
+Expected: Fastest near you carousel card heights are misaligned with …
+
+- **gemini-3.8-flash**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The report explicitly describes one card in the 'Fastest near you' carousel sitting lower than the others, causing misaligned card heights.
+  - rep 2: The report describes misaligned card heights/vertical positioning within the same "Fastest near you" carousel.
+  - rep 3: The report identifies the Fastest near you carousel and describes one card being vertically misaligned with its neighboring cards.
+  - rep 4: The report describes misaligned card positioning and heights within the "Fastest near you" carousel.
+  - rep 5: The report identifies the same Fastest near you carousel and describes one card being vertically offset with lower content, causing misaligned card heights.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The report describes one card in the 'Fastest near you' carousel sitting lower than the others, making the card heights appear misaligned.
+  - rep 2: The Smash Bros Burgers card is lower than the other cards in the same carousel, creating misaligned card heights.
+  - rep 3: The report describes one card in the Fastest near you carousel sitting lower than neighboring cards, misaligning their heights.
+  - rep 4: The report describes one card in the “Fastest near you” carousel sitting lower than its neighbors, misaligning the card heights.
+  - rep 5: The Smash Bros Burgers card is vertically offset from the other cards in the “Fastest near you” carousel, causing misaligned card heights.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe uneven vertical alignment of cards in Fastest near you carousel.
+  - rep 2: Both describe uneven vertical alignment of Fastest near you carousel cards.
+  - rep 3: Both describe misaligned card heights in the Fastest near you carousel.
+  - rep 4: Reported issue describes the same Fastest near you carousel misalignment.
+  - rep 5: Reported describes same uneven card alignment in Fastest near you carousel.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+  - rep 2: OpenAI Decisions matched R0 (p=0.90, confidence 0.80).
+  - rep 3: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 4: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 5: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 2: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 3: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
+
 ### img_14 14_misalignment.png — deepseek/deepseek-v4.1-flash-1017
 
 Expected: Fastest near you carousel card heights are misaligned with …
@@ -2596,6 +3101,42 @@ Expected: Fastest near you carousel card heights are misaligned with …
   - rep 3: Jev matched no reported issue; closest was R0 (p=0.03).
   - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
   - rep 5: Jev matched no reported issue; closest was R0 (p=0.01).
+
+### img_15 15_safe_area_violation.png — claude-fable-5-2
+
+Expected: Bottom nav labels are cut off below the screen edge and a b…
+
+- **gemini-3.8-flash**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The report describes the bottom navigation being clipped off-screen, with labels missing and the system bar overlapping the icons.
+  - rep 2: The reported issue describes the bottom navigation being clipped, with labels missing and the system gesture bar overlapping the icons.
+  - rep 3: The report describes the bottom navigation being too low, with labels absent/clipped and a black system gesture bar overlapping the icons.
+  - rep 4: The reported issue describes the bottom navigation labels being clipped and a dark system bar overlapping the icons due to an unsafe bottom layout.
+  - rep 5: The reported issue describes the bottom navigation being clipped below the screen with labels missing and an overlapping system bar affecting the icons.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The report describes the bottom navigation clipped off-screen with the system gesture area overlapping its icons.
+  - rep 2: The report describes the bottom navigation being clipped and the home indicator overlapping its icons.
+  - rep 3: The report describes bottom navigation icons and labels clipped by the screen edge, with the gesture bar overlapping the icons.
+  - rep 4: The report describes the bottom navigation being clipped at the screen edge and overlapped by the dark system bar.
+  - rep 5: The report describes clipped bottom navigation labels and icons, with the system gesture bar overlapping the icons.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe bottom tab bar clipped off-screen with missing labels and overlapping bar/handle.
+  - rep 2: Both describe bottom nav clipped at screen edge with labels missing and system bar overlapping icons.
+  - rep 3: Both describe bottom nav icons clipped at screen edge with missing labels and overlapped by black gesture bar.
+  - rep 4: Both describe bottom nav icons clipped at the screen edge with labels missing and a black bar overlapping the icons.
+  - rep 5: Both describe bottom nav cut off with labels clipped and a bar/handle overlapping the icons.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 2: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+  - rep 3: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 4: OpenAI Decisions matched R0 (p=0.99, confidence 0.98).
+  - rep 5: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=0.98, confidence 0.96).
+  - rep 2: Jev matched R0 (p=0.99, confidence 0.98).
+  - rep 3: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 5: Jev matched R0 (p=0.97, confidence 0.94).
 
 ### img_15 15_safe_area_violation.png — deepseek/deepseek-v4.1-flash-1017
 
@@ -2883,3 +3424,75 @@ Expected: Bottom nav labels are cut off below the screen edge and a b…
   - rep 3: Jev matched R0 (p=0.93, confidence 0.87).
   - rep 4: Jev matched R0 (p=0.69, confidence 0.38).
   - rep 5: Jev matched R0 (p=0.93, confidence 0.85).
+
+### img_16 16_filter_content_mismatch.png — claude-fable-5-2
+
+Expected: Pizza category is selected but the feed still shows all cui…
+
+- **gemini-3.8-flash**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The report describes the Pizza category appearing selected while the feed displays non-pizza cuisines, which is the same filtering defect.
+  - rep 2: The Pizza category is visibly selected, but the feed still displays non-Pizza cuisines, indicating the filter was not applied.
+  - rep 3: The report describes the Pizza filter appearing selected while the feed still contains non-pizza cuisines and generic content.
+  - rep 4: The report states that Pizza is selected while the feed still displays restaurants from other cuisines.
+  - rep 5: The report describes the Pizza category appearing selected while the feed still contains non-pizza cuisines.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: The Pizza category is selected, but the feed displays restaurants from other cuisines instead of filtering to pizza.
+  - rep 2: The Pizza chip is selected, but the feed displays restaurants from other cuisines instead of being filtered to pizza.
+  - rep 3: The selected Pizza filter is active, but the feed still includes restaurants and sections unrelated to pizza.
+  - rep 4: The Pizza chip is selected, but the feed still shows restaurants from other cuisines.
+  - rep 5: The active Pizza filter is selected, but the feed still displays listings from other cuisines.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe Pizza selected but feed still shows non-pizza cuisines.
+  - rep 2: Both describe Pizza chip selected while feed shows non-pizza cuisines.
+  - rep 3: Both describe Pizza filter selected while feed shows non-pizza cuisines.
+  - rep 4: Reported 0 describes Pizza chip selected while feed shows non-pizza items, same defect.
+  - rep 5: Reported issue describes Pizza chip selected while listings show non-pizza cuisines.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 2: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 3: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 4: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 5: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 2: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 3: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 5: Jev matched R0 (p=1.00, confidence 1.00).
+
+### img_17 17_wrong_active_nav_state.png — claude-fable-5-2
+
+Expected: Profile is highlighted in the bottom nav bar while the home…
+
+- **gemini-3.8-flash**: no verdicts
+- **gpt-5.6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue describes Profile highlighted while the Home feed is displayed, matching the expected navigation-state defect.
+  - rep 2: The report describes Profile highlighted while the displayed content is the Home feed, exactly matching the expected defect.
+  - rep 3: Reported issue describes Profile highlighted as active while the Home feed is displayed.
+  - rep 4: The report describes the Profile tab highlighted while the Home feed is displayed.
+  - rep 5: The report describes the Profile tab highlighted while the Home feed is displayed, exactly matching the expected defect.
+- **gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Reported issue 0 describes Profile active in the bottom navigation while the Home feed is displayed.
+  - rep 2: Reported issue describes Profile selected in the bottom navigation while the Home feed is displayed.
+  - rep 3: Reported issue describes Profile active in the bottom navigation while the Home feed is displayed.
+  - rep 4: Reported issue describes Profile highlighted while the Home feed is displayed.
+  - rep 5: The report describes the Profile tab highlighted while the Home feed is displayed.
+- **meta/muse-spark-1.3-contributor**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Both describe Profile shown active in bottom nav while Home feed is displayed.
+  - rep 2: Reported issue describes Profile active while Home feed is shown.
+  - rep 3: Both describe Profile tab active while Home feed content is shown.
+  - rep 4: Both describe Profile tab active while Home feed content is displayed.
+  - rep 5: Both describe Profile tab active while Home feed content is displayed.
+- **openai-decisions/gpt-6-luna**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 2: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 3: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 4: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+  - rep 5: OpenAI Decisions matched R0 (p=1.00, confidence 1.00).
+- **typesafe/jev-1.13**: rep 1: found, rep 2: found, rep 3: found, rep 4: found, rep 5: found
+  - rep 1: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 2: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 3: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 4: Jev matched R0 (p=1.00, confidence 1.00).
+  - rep 5: Jev matched R0 (p=1.00, confidence 1.00).

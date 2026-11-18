@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-2",
+  "provider": "anthropic",
+  "imageId": "img_17",
+  "rep": 1,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-10T18:56:26.088Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home feed renders cleanly overall, but the bottom navigation highlights the wrong tab: 'Profile' is shown as active while the screen is clearly the Home feed. No other visual defects were found; the clipped carousel item and the cut-off card at the bottom are expected scrolling behavior.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "styling",
+        "description": "The bottom navigation bar shows 'Profile' as the active tab (green icon and bold green label) even though the displayed screen is the Home feed (delivery address, search, promo banner, restaurant lists). The 'Home' tab is rendered in the inactive grey state, so users get a misleading indication of where they are.",
+        "suggestion": "Bind the active tab state to the current route so that 'Home' is highlighted on the home feed and 'Profile' is shown in the inactive grey style."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 285,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.028111999999999998,
+    "durationSeconds": 5.733564583000007
+  }
+}

@@ -591,14 +591,14 @@ Set `VISUAL_AI_REASONING_EFFORT` to apply one without touching code; an explicit
 
 When omitted, each provider uses its default behavior. The `"xhigh"` level enables maximum reasoning depth. `"minimal"` is **not portable** — several OpenAI models reject it with HTTP 400 (including the `gpt-6.1-terra` default), and Google/OpenRouter clamp it to `low` rather than send it; use `"low"` as the floor unless you know the model accepts it.
 
-| Provider                                                             | Native Parameter                                      | `"xhigh"` maps to    |
-| -------------------------------------------------------------------- | ----------------------------------------------------- | -------------------- |
-| Anthropic (Fable 5.1/5, Opus 5.5/5/4.8/4.7, Sonnet 5.5/5, Haiku 5.5) | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "xhigh"`    |
-| Anthropic (Opus 4.6, Sonnet 4.6)                                     | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "max"`      |
-| Anthropic (Haiku 4.5)                                                | budget-based extended thinking (token budget)         | 16384-token budget   |
-| OpenAI                                                               | `reasoning.effort` (Responses API)                    | `effort: "xhigh"`    |
-| Google                                                               | `thinkingConfig.thinkingLevel` (1:1: low/medium/high) | `"high"` (max level) |
-| OpenRouter                                                           | `reasoning.effort` (normalized low/medium/high)       | `effort: "high"`     |
+| Provider                                                                 | Native Parameter                                      | `"xhigh"` maps to    |
+| ------------------------------------------------------------------------ | ----------------------------------------------------- | -------------------- |
+| Anthropic (Fable 5.2/5.1/5, Opus 5.5/5/4.8/4.7, Sonnet 5.5/5, Haiku 5.5) | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "xhigh"`    |
+| Anthropic (Opus 4.6, Sonnet 4.6)                                         | `thinking.type: "adaptive"` + `output_config.effort`  | `effort: "max"`      |
+| Anthropic (Haiku 4.5)                                                    | budget-based extended thinking (token budget)         | 16384-token budget   |
+| OpenAI                                                                   | `reasoning.effort` (Responses API)                    | `effort: "xhigh"`    |
+| Google                                                                   | `thinkingConfig.thinkingLevel` (1:1: low/medium/high) | `"high"` (max level) |
+| OpenRouter                                                               | `reasoning.effort` (normalized low/medium/high)       | `effort: "high"`     |
 
 ## Supported Models
 
@@ -608,7 +608,8 @@ All listed models support image/vision input. Pass any model ID to the `model` c
 
 | Model             | Model ID            | Input $/MTok | Output $/MTok | Notes                                             |
 | ----------------- | ------------------- | ------------ | ------------- | ------------------------------------------------- |
-| Claude Fable 5.1  | `claude-fable-5-1`  | $10          | $50           | Most capable; long-horizon agentic work           |
+| Claude Fable 5.2  | `claude-fable-5-2`  | $8           | $40           | Most capable; long-horizon agentic work           |
+| Claude Fable 5.1  | `claude-fable-5-1`  | $10          | $50           | Predecessor to Fable 5.2                          |
 | Claude Fable 5    | `claude-fable-5`    | $10          | $50           | Predecessor to Fable 5.1, same price              |
 | Claude Opus 5.5   | `claude-opus-5-5`   | $4           | $20           | Newest Opus; >30% faster output than Opus 5       |
 | Claude Opus 5     | `claude-opus-5`     | $5           | $25           | Previous Opus flagship; supports `xhigh`          |

@@ -9,6 +9,11 @@ interface ModelPricing {
 const PER_MILLION = 1_000_000;
 
 const PRICING_TABLE: Record<string, ModelPricing> = {
+  // Fable 5.2 succeeds Fable 5.1 at a lower price point.
+  [`${Provider.ANTHROPIC}:${Model.Anthropic.FABLE_5_2}`]: {
+    inputPricePerToken: 8 / PER_MILLION,
+    outputPricePerToken: 40 / PER_MILLION,
+  },
   // Fable 5.1 is priced identically to Fable 5, the tier it succeeds.
   [`${Provider.ANTHROPIC}:${Model.Anthropic.FABLE_5_1}`]: {
     inputPricePerToken: 10 / PER_MILLION,

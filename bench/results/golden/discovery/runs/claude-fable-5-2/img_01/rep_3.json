@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-fable-5-2",
+  "provider": "anthropic",
+  "imageId": "img_01",
+  "rep": 3,
+  "promptHash": "eb5cd65bcbb75ec155d3cf4ddaa2190b4e967d27e85b3d948f8bc90812282571",
+  "reasoningEffort": "medium",
+  "imageFidelity": "auto",
+  "maxTokens": 8192,
+  "timestamp": "2026-11-10T18:55:26.768Z",
+  "status": "ok",
+  "result": {
+    "summary": "The home feed is mostly rendered correctly, but one section heading shows a raw, unresolved localization key instead of user-facing text. No other clear visual defects were found; the clipped carousel items and the cut-off bottom card are expected scrolling behavior.",
+    "issues": [
+      {
+        "priority": "major",
+        "category": "content",
+        "description": "The second section heading displays the raw i18n key 'home_feed.popular_title' instead of a translated title (e.g. 'Popular right now'). The translation string is missing or failed to resolve, exposing an internal identifier to users.",
+        "suggestion": "Add the missing translation for the 'home_feed.popular_title' key in the active locale and make sure a human-readable fallback string is used when a key cannot be resolved."
+      }
+    ]
+  },
+  "usage": {
+    "inputTokens": 2089,
+    "outputTokens": 248,
+    "cachedInputTokens": 0,
+    "estimatedCost": 0.026631999999999996,
+    "durationSeconds": 5.329400167
+  }
+}
